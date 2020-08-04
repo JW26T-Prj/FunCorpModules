@@ -145,7 +145,7 @@ function eventNewGame()
 		data[name].p2=false
 		data[name].pcount=0
 	end
-	tfm.exec.chatMessage("<VP><b>Você pode ver todas as salas que compõem o module #anvilwar na /sala #anvilwar00rooms.</b><br><br>Participe do nosso grupo no Discord e fique por dentro das novas atualizações!<br><b>https://discord.gg/Bhk8q2D</b><br><br><BL>Welcome to module #clickwar!<br>Use the mouse to generate explosions and kill other mices!<br><br>Module developed by Hecarimjhenx#0000.",name)
+	tfm.exec.chatMessage("<VP><b>Você pode ver todas as salas que compõem o module #anvilwar na /sala #anvilwar00rooms.</b><br><br><BL>Welcome to module #clickwar!<br>Use the mouse to generate explosions and kill other mices!<br><br>Module developed by Hecarimjhenx#0000.",name)
 end
 function eventLoop(pass,falt)
 	if pass > 1200 and pass < 1700 then
@@ -197,7 +197,7 @@ function eventLoop(pass,falt)
 		tfm.exec.newGame("#10")
 	end
 	if prox == false then
-		ui.setMapName("<N>Click War RTM 3330.011  <BL>|  <N>Intensity: <b>"..intensity.."</b>")
+		ui.setMapName("<N>Click War RTM 3431.012  <BL>|  <N>Intensity: <b>"..intensity.."</b>")
 	else
 		ui.setMapName("<b>"..winner.."</b> <N>wons the match! Next match on "..math.floor(falt/1000).." seconds.<")
 	end
