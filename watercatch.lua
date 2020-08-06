@@ -1,4 +1,5 @@
 tfm.exec.disableAutoNewGame(true)
+tfm.exec.disableAutoShaman(true)
 tfm.exec.disableAutoTimeLeft(true)
 tfm.exec.disableAllShamanSkills(true)
 tfm.exec.disableDebugCommand(true)
@@ -7,12 +8,13 @@ tfm.exec.disableDebugCommand(true)
 tfm.exec.setRoomMaxPlayers(30)
 shaman=""
 alives=0
-cannons=3
+cannons=4
 z=0
 data={}
 mode="hide"
-map="@7760487"
-tfm.exec.newGame(map)
+changed=false
+map="@7763582"
+xml=''
 function eventPlayerDied(n)
 	if not tfm.get.room.playerList[n].isShaman then
 		alives=alives-1
@@ -29,12 +31,6 @@ function eventPlayerDied(n)
 			tfm.exec.setPlayerScore(shaman,-1,false)
 			mode="end"
 			tfm.exec.setGameTime(10)
-			for n,p in pairs(tfm.get.room.playerList) do
-				if not tfm.get.room.playerList[n].isShaman and not tfm.get.room.playerList[n].isDead then
-					tfm.exec.giveCheese(n)
-					tfm.exec.playerVictory(n)
-				end
-			end
 		end
 	end
 end
@@ -52,8 +48,12 @@ function eventSummoningEnd(name,id,x,y)
 	end
 end
 function eventNewGame()
+ui.addTextArea(0,"",nil,-800,-400,2400,1200,0x6a7495,0x6a7495,1.0,true)
+xml=tfm.get.room.xmlMapInfo.xml
+if changed == true then
+ui.removeTextArea(0,nil)
 z=-1
-cannons=3
+cannons=4
 ui.removeTextArea(22,nil)
 alives=0
 mode="hide"
@@ -68,7 +68,7 @@ for n,p in pairs(tfm.get.room.playerList) do
 	["y"]=0;
 	["o"]=100;
 	};		
- 	data[n] = newData;
+	data[n] = newData;
 	tfm.exec.bindKeyboard(n,32,true,true)
 		if tfm.get.room.playerList[n].isShaman then
 		ui.addTextArea(22,"",n,-1000,-1000,3000,3000,0x000001,0x000001,1.0,true)
@@ -79,8 +79,10 @@ end
 tfm.exec.setGameTime(60)
 tfm.exec.chatMessage("<font color='#0080ff'><b>Bem-vindos ao module #watercatch!</b><br><J>O objetivo é bem simples: Fugir do shaman, se escondendo dentro do profundo lago e tomando cuidado para não morrer afogado!<br>Shamans, não esqueçam de se mexer, ou irão morrer AFK!<br><br>Module criado por Spectra_phantom#6089. Tradução para o português feita por Rakan_raster#0000.")
 end
+end
 function eventLoop(p,r)
-ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><J> Version RTM 2126.012 by Spectra_phantom#6089<")
+if changed == true then
+ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><J> Version RTM 2227.013 by Spectra_phantom#6089<")
 local m=math.floor(r/60000)
 local s=math.floor((((m*60000)-r) * -1) / 1000)
 ui.addTextArea(-1,"<font size='28'><font face='DejaVu Sans Mono,Consolas'><font color='#222222'><b>0"..m..":"..s.."</b>",n,693,27,110,44,0,0,1.0,true)
@@ -120,23 +122,22 @@ for n,q in pairs(tfm.get.room.playerList) do
 				end
 				data[n].y=0
 			else
-				if tfm.get.room.playerList[n].y <= 500 then
-					data[n].o=data[n].o-0.6
-				elseif tfm.get.room.playerList[n].y > 500 then
-					if tfm.get.room.playerList[n].x >= 1000 and tfm.get.room.playerList[n].x <= 1300 then
+				if tfm.get.room.playerList[n].y <= 1020 then
+					data[n].o=data[n].o-0.8
+				elseif tfm.get.room.playerList[n].y > 1020 then
+					if tfm.get.room.playerList[n].x >= 2750 and tfm.get.room.playerList[n].x <= 3030 then
 						data[n].o=data[n].o-0.2
-					elseif tfm.get.room.playerList[n].x >= 2280 and tfm.get.room.playerList[n].x <= 2520 then
-						data[n].o=data[n].o-0.2
-					elseif tfm.get.room.playerList[n].x >= 3500 and tfm.get.room.playerList[n].x <= 3800 then
+					elseif tfm.get.room.playerList[n].x >= 1010 and tfm.get.room.playerList[n].x <= 1290 then
 						data[n].o=data[n].o-0.2
 					else
-						data[n].o=data[n].o-1.2
+						data[n].o=data[n].o-1.4
 					end
 				end
 			end
 			if data[n].o <= 0 then
 				tfm.exec.killPlayer(n)
 				tfm.exec.chatMessage("<R>O jogador <b>"..n.."</b> morreu afogado!")
+				tfm.exec.addShamanObject(54, tfm.get.room.playerList[n].x, tfm.get.room.playerList[n].y, 0, 0.1, 0.1, false)
 			end
 		end
 		ui.addTextArea(0,"<font size='10'><font face='DejaVu Sans Mono,Consolas'><R>Oxygen Meter | | | | 20 | | | | <N>| | | | | | | 40 | | | | | | | | | | | 60 | | | | | | | | | | | 80 | | | | | | | | | | | 100",n,20,369,760,14,0x181818,0x090909,0.7,true)
@@ -169,6 +170,14 @@ end
 tfm.exec.chatMessage("<VP>Tempo esgotado! <b>"..lives.."</b> ratos sobreviveram! Iniciando nova partida...")
 end
 if r <= 1 and mode == "end" then
-	tfm.exec.newGame(map)
+	tfm.exec.newGame(xml)
+	end
+else
+	if p >= 4500 and changed == false then
+		tfm.exec.disableAutoShaman(false)
+		tfm.exec.newGame(xml)
+		changed=true
 	end
 end
+end
+tfm.exec.newGame(map)
