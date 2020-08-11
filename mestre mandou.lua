@@ -23,7 +23,7 @@ for _,f in next,{"command","mapa","pw","limit","run","fc"} do
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N>Bem-vindo ao novo Mestre Mandou! Nesta sala seu objetivo é fazer tudo o que o script mandar.<br><ROSE>Script criado por <b>Nasus_assassin#1534</b>. Traduzido por Fosfus7heads#0000. Versão RTM 4330.026",
+	welcome = "<N>Bem-vindo ao novo Mestre Mandou! Nesta sala seu objetivo é fazer tudo o que o script mandar.<br><ROSE>Script criado por <b>Nasus_assassin#1534</b>. Traduzido por Fosfus7heads#0000. Versão RTM 5031.027",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -94,7 +94,7 @@ lang.br = {
 	ds = "Dance e sente!"
 }
 lang.en = {
-	welcome = "<N>Welcome to script Master Says! On this module you have to do everything that the master says.<br><ROSE>Module created by <b>Nasus_assassin#1534</b>. Version RTM 4330.026",
+	welcome = "<N>Welcome to script Master Says! On this module you have to do everything that the master says.<br><ROSE>Module created by <b>Nasus_assassin#1534</b>. Version RTM 5031.027",
 	dancar = "Dance!",
 	sentar = "Sit!",
 	confetar = "Throw 5 confetti!",
@@ -165,7 +165,7 @@ lang.en = {
 	ds = "Dance and sit!"
 }
 lang.fr = {
-	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Nasus_assassin#1534</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 4330.026",
+	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Nasus_assassin#1534</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 5031.027",
 	dancar = "Danse !",
 	sentar = "Assis !",
 	confetar = "Lance 5 fois des confettis !",
@@ -236,7 +236,7 @@ lang.fr = {
 	ds = "Danse et assis !"
 }
 lang.tr = {
-	welcome = "<N> Master Says'ýn senaryosuna hoþ geldiniz! Bu modülde ustanýn söylediði her þeyi yapmalýsýnýz. <br> <ROSE><b>Nasus_assassin#1534</b> tarafýndan oluþturulan model. Tercüme eden Star#6725. Versiyon RTM 4330.026",
+	welcome = "<N> Master Says'ýn senaryosuna hoþ geldiniz! Bu modülde ustanýn söylediði her þeyi yapmalýsýnýz. <br> <ROSE><b>Nasus_assassin#1534</b> tarafýndan oluþturulan model. Tercüme eden Star#6725. Versiyon RTM 5031.027",
 	dancar = "Dans!",
 	sentar = "Sit!",
 	confetar = "5 konfeti atýn!",
@@ -331,7 +331,7 @@ function eventNewPlayer(name)
 	tfm.exec.chatMessage(""..text.welcome.."",name)
 	if string.find(tfm.get.room.name,name) then
 		admin=name
-		tfm.exec.chatMessage("You are the administrator of this room. Use !pw [password] to change the password of the room and !mapa [@code] to run a custom map.<br><br>If you are a FunCorp member, type !fc to enable the FunCorp mode.",admin)
+		tfm.exec.chatMessage("You are the administrator of this room. Use !pw [password] to change the password of the room and !run [@code] to run a custom map.<br><br>If you are a FunCorp member, type !fc to enable the FunCorp mode.",admin)
 	end
 end
 for name,player in pairs(tfm.get.room.playerList) do
@@ -483,6 +483,18 @@ function eventChatCommand(name,message)
 		end
 	end
 end
+function showCommand(id,text)
+	ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..id.." <font size='22'><p align='center'><b>"..text.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+end
+function whiteSquare(x)
+	ui.addTextArea(1,"",nil,x,320,80,65,0xffffff,0xffffff,0.68,false)
+end
+function verticalRectangle(x)
+	ui.addTextArea(1,"",nil,x,0,80,400,0xffffff,0xffffff,0.68,false)
+end
+function horizontalRectangle(y)
+	ui.addTextArea(1,"",nil,0,y,1600,60,0xffffff,0xffffff,0.68,false)
+end
 function getCommand()
 	rodada=rodada+1
 	for name,player in pairs(tfm.get.room.playerList) do
@@ -490,93 +502,93 @@ function getCommand()
 		data[name].s=0
 	end
 	if active == 1 then
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.dancar.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		showCommand(active,text.dancar)
 		tfm.exec.setGameTime(5)
 	end
 	if active == 2 then
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.sentar.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		showCommand(active,text.sentar)
 		tfm.exec.setGameTime(5)
 	end
 	if active == 3 then
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.confetar.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		showCommand(active,text.confetar)
 		tfm.exec.setGameTime(6)
 	end
 	if active == 4 then
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.mouse.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		showCommand(active,text.mouse)
 		tfm.exec.setGameTime(5)
 	end
 	if active == 5 then
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.beijos.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		showCommand(active,text.beijos)
 		tfm.exec.setGameTime(15)
 	end
 	if active == 6 then
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.dormir.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		showCommand(active,text.dormir)
 		tfm.exec.setGameTime(5)
 	end
 	if active == 7 then
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.raiva.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		showCommand(active,text.raiva)
 		tfm.exec.setGameTime(5)
 	end
 	if active == 8 then
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.chorem.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		showCommand(active,text.chorem)
 		tfm.exec.setGameTime(5)
 	end
 	if active == 9 then
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.esquerda.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		showCommand(active,text.esquerda)
 		tfm.exec.setGameTime(5)
 		for name,player in pairs(tfm.get.room.playerList) do
 			data[name].c=1
 		end
 	end
 	if active == 10 then
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.direita.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		showCommand(active,text.direita)
 		tfm.exec.setGameTime(5)
 		for name,player in pairs(tfm.get.room.playerList) do
 			data[name].c=1
 		end
 	end
 	if active == 11 then
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.digitar.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		showCommand(active,text.digitar)
 		tfm.exec.setGameTime(7)
 	end
 	if active == 12 then
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.falar.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		showCommand(active,text.falar)
 		tfm.exec.setGameTime(5)
 		for name,player in pairs(tfm.get.room.playerList) do
 			data[name].c=1
 		end
 	end
 	if active == 13 then
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.pular.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		showCommand(active,text.pular)
 		tfm.exec.setGameTime(5)
 		for name,player in pairs(tfm.get.room.playerList) do
 			data[name].c=1
 		end
 	end
 	if active == 14 then
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.mexer.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		showCommand(active,text.mexer)
 		tfm.exec.setGameTime(5)
 		for name,player in pairs(tfm.get.room.playerList) do
 			data[name].c=1
 		end
 	end
 	if active == 15 then
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.bandeira.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		showCommand(active,text.bandeira)
 		tfm.exec.setGameTime(8)
 	end
 	if active == 16 then
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.ano.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		showCommand(active,text.ano)
 		tfm.exec.setGameTime(5)
 	end
 	if active == 17 then
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.vesquerda.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		showCommand(active,text.vesquerda)
 		tfm.exec.setGameTime(5)
 		for name,player in pairs(tfm.get.room.playerList) do
 			data[name].c=1
 		end
 	end
 	if active == 18 then
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.vdireita.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		showCommand(active,text.vdireita)
 		tfm.exec.setGameTime(5)
 		for name,player in pairs(tfm.get.room.playerList) do
 			data[name].c=1
@@ -584,75 +596,75 @@ function getCommand()
 	end
 	if active == 19 then
 		xpos=math.random(60,700)
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.quadrado.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		showCommand(active,text.quadrado)
 		tfm.exec.setGameTime(5)
 		for name,player in pairs(tfm.get.room.playerList) do
 			data[name].c=1
 		end
-		ui.addTextArea(1,"",nil,xpos,320,80,65,0xffffff,0xffffff,0.68,false)
+		whiteSquare(xpos)
 	end
 	if active == 20 then
 		xpos=math.random(60,700)
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.retangulo.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		showCommand(active,text.retangulo)
 		tfm.exec.setGameTime(6)
 		for name,player in pairs(tfm.get.room.playerList) do
 			data[name].c=1
 		end
-		ui.addTextArea(1,"",nil,xpos,0,80,400,0xffffff,0xffffff,0.68,false)
+		verticalRectangle(xpos)
 	end
 	if active == 21 then
 		xpos=math.random(60,700)
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.nretangulo.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		showCommand(active,text.nretangulo)
 		tfm.exec.setGameTime(6)
 		for name,player in pairs(tfm.get.room.playerList) do
 			data[name].c=1
 		end
-		ui.addTextArea(1,"",nil,xpos,0,80,400,0xffffff,0xffffff,0.68,false)
+		verticalRectangle(xpos)
 	end
 	if active == 22 then
 		ypos=math.random(40,300)
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.retangulo.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		showCommand(active,text.retangulo)
 		tfm.exec.setGameTime(6)
 		for name,player in pairs(tfm.get.room.playerList) do
 			data[name].c=1
 		end
-		ui.addTextArea(1,"",nil,0,ypos,1600,60,0xffffff,0xffffff,0.68,false)
+		horizontalRectangle(ypos)
 	end
 	if active == 23 then
 		ypos=math.random(40,300)
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.nretangulo.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		showCommand(active,text.nretangulo)
 		tfm.exec.setGameTime(6)
 		for name,player in pairs(tfm.get.room.playerList) do
 			data[name].c=1
 		end
-		ui.addTextArea(1,"",nil,0,ypos,1600,60,0xffffff,0xffffff,0.68,false)
+		horizontalRectangle(ypos)
 	end
 	if active == 24 then
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.preesquerda30.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		showCommand(active,text.preesquerda30)
 		tfm.exec.setGameTime(8)
 	end
 	if active == 25 then
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.predireita30.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		showCommand(active,text.predireita30)
 		tfm.exec.setGameTime(8)
 	end
 	if active == 26 then
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.preesquerda60.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		showCommand(active,text.preesquerda60)
 		tfm.exec.setGameTime(12)
 	end
 	if active == 27 then
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.predireita60.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		showCommand(active,text.predireita60)
 		tfm.exec.setGameTime(12)
 	end
 	if active == 28 then
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.espaco.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		showCommand(active,text.espaco)
 		tfm.exec.setGameTime(8)
 	end
 	if active == 29 then
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.nome.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		showCommand(active,text.nome)
 		tfm.exec.setGameTime(10)
 	end
 	if active == 30 then
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.ndance.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		showCommand(active,text.ndance)
 		tfm.exec.setGameTime(6)
 		for name,player in pairs(tfm.get.room.playerList) do
 			data[name].c=1
@@ -661,18 +673,18 @@ function getCommand()
 	if active == 31 then
 		xpos=math.random(60,700)
 		local xpos2=math.random(60,700)
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.quadrado.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		showCommand(active,text.quadrado)
 		tfm.exec.setGameTime(5)
 		for name,player in pairs(tfm.get.room.playerList) do
 			data[name].c=1
 		end
-		ui.addTextArea(1,"",nil,xpos,320,80,65,0xffffff,0xffffff,0.68,false)
+		whiteSquare(xpos)
 		ui.addTextArea(2,"",nil,xpos2,320,80,65,0xff0000,0xff0000,0.62,false)
 	end
 	if active == 32 then
 		xpos=math.random(60,700)
 		local xpos2=math.random(60,700)
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.quadradov.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		showCommand(active,text.quadradov)
 		tfm.exec.setGameTime(5)
 		for name,player in pairs(tfm.get.room.playerList) do
 			data[name].c=1
@@ -683,18 +695,18 @@ function getCommand()
 	if active == 33 then
 		xpos=math.random(60,700)
 		local xpos2=math.random(60,700)
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.retangulo.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		showCommand(active,text.retangulo)
 		tfm.exec.setGameTime(5)
 		for name,player in pairs(tfm.get.room.playerList) do
 			data[name].c=1
 		end
-		ui.addTextArea(1,"",nil,xpos,0,80,400,0xffffff,0xffffff,0.68,false)
+		verticalRectangle(xpos)
 		ui.addTextArea(2,"",nil,xpos2,0,80,400,0xff0000,0xff0000,0.62,false)
 	end
 	if active == 34 then
 		xpos=math.random(60,700)
 		local xpos2=math.random(60,700)
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.retangulov.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		showCommand(active,text.retangulov)
 		tfm.exec.setGameTime(5)
 		for name,player in pairs(tfm.get.room.playerList) do
 			data[name].c=1
@@ -703,38 +715,38 @@ function getCommand()
 		ui.addTextArea(2,"",nil,xpos,0,80,400,0xff0000,0xff0000,0.62,false)
 	end
 	if active == 35 then
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.abaixar.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		showCommand(active,text.abaixar)
 		tfm.exec.setGameTime(7)
 	end
 	if active == 36 then
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.action.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		showCommand(active,text.action)
 		tfm.exec.setGameTime(8)
 	end
 	if active == 37 then
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.ds.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		showCommand(active,text.ds)
 		tfm.exec.setGameTime(10)
 	end
 	if active == 38 then
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.key1.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		showCommand(active,text.key1)
 		tfm.exec.setGameTime(8)
 	end
 	if active == 39 then
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.action1.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		showCommand(active,text.action1)
 		tfm.exec.setGameTime(10)
 	end
 	if active == 40 then
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.laugh.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		showCommand(active,text.laugh)
 		tfm.exec.setGameTime(5)
 	end
 	if active == 41 then
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.laugh2.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		showCommand(active,text.laugh2)
 		tfm.exec.setGameTime(5)
 		for name,player in pairs(tfm.get.room.playerList) do
 			data[name].c=1
 		end
 	end
 	if active == 42 then
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.stone.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		showCommand(active,text.stone)
 		tfm.exec.setGameTime(5)
 		for name,player in pairs(tfm.get.room.playerList) do
 			data[name].c=1
@@ -744,52 +756,52 @@ function getCommand()
 		end
 	end
 	if active == 43 then
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.noob.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		showCommand(active,text.noob)
 		tfm.exec.setGameTime(10)
 	end
 	if active == 44 then
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.action2.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		showCommand(active,text.action2)
 		tfm.exec.setGameTime(9)
 	end
 	if active == 45 then
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.jump.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		showCommand(active,text.jump)
 		tfm.exec.setGameTime(5)
 	end
 	if active == 46 then
 		xpos=math.random(60,700)
 		local xpos2=math.random(60,700)
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.nretangulo.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		showCommand(active,text.nretangulo)
 		tfm.exec.setGameTime(6)
 		for name,player in pairs(tfm.get.room.playerList) do
 			data[name].c=1
 		end
-		ui.addTextArea(1,"",nil,xpos,0,80,400,0xffffff,0xffffff,0.68,false)
+		verticalRectangle(xpos)
 		ui.addTextArea(2,"",nil,xpos2,0,80,400,0xff0000,0xff0000,0.62,false)
 	end
 	if active == 47 then
 		number=math.random(10000000,99999999)
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.number..""..number.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		showCommand(active,text.number..number)
 		tfm.exec.setGameTime(11)
 	end
 	if active == 48 then
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.key.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		showCommand(active,text.key)
 		tfm.exec.setGameTime(5)
 	end
 	if active == 49 then
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.jump2.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		showCommand(active,text.jump2)
 		tfm.exec.setGameTime(9)
 	end
 	if active == 50 then
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.action3.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		showCommand(active,text.action3)
 		tfm.exec.setGameTime(8)
 	end
 	if active == 51 then
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.area.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		showCommand(active,text.area)
 		ui.addTextArea(250,"<a href='event:command51'>CLICK HERE",nil,math.random(100,700),math.random(50,350),100,25,0,0,1.0,true)
 		tfm.exec.setGameTime(10)
 	end
 	if active == 52 then
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.dancing.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		showCommand(active,text.dancing)
 		for name,player in pairs(tfm.get.room.playerList) do
 			data[name].c=1
 			tfm.exec.playEmote(name,0)
@@ -797,7 +809,7 @@ function getCommand()
 		tfm.exec.setGameTime(7)
 	end
 	if active == 53 then
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.freeze.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		showCommand(active,text.freeze)
 		for name,player in pairs(tfm.get.room.playerList) do
 			data[name].c=1
 			tfm.exec.freezePlayer(name,true)
@@ -805,21 +817,21 @@ function getCommand()
 		tfm.exec.setGameTime(7)
 	end
 	if active == 54 then
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.transform.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		showCommand(active,text.transform)
 		tfm.exec.setGameTime(10)
 	end
 	if active == 55 then
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.down1.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		showCommand(active,text.down1)
 		tfm.exec.setGameTime(9)
 	end
 	if active == 56 then
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.kill.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		showCommand(active,text.kill)
 		tfm.exec.setGameTime(10)
 	end
 	if active == 57 then
 		xpos=math.random(60,700)
 		xpos2=math.random(60,700)
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.quadradoa.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		showCommand(active,text.quadradoa)
 		tfm.exec.setGameTime(5)
 		for name,player in pairs(tfm.get.room.playerList) do
 			data[name].c=1
@@ -828,21 +840,21 @@ function getCommand()
 		ui.addTextArea(2,"",nil,xpos,320,80,65,0x0000ff,0x0000ff,0.62,false)
 	end
 	if active == 58 then
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.naction.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		showCommand(active,text.naction)
 		for name,player in pairs(tfm.get.room.playerList) do
 			data[name].c=1
 		end
 		tfm.exec.setGameTime(7)
 	end
 	if active == 59 then
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.nchorem.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		showCommand(active,text.nchorem)
 		for name,player in pairs(tfm.get.room.playerList) do
 			data[name].c=1
 		end
 		tfm.exec.setGameTime(7)
 	end
 	if active == 60 then
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.math.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		showCommand(active,text.math)
 		tfm.exec.setGameTime(8)
 	end
 end
@@ -877,7 +889,7 @@ function eventChatMessage(name,message)
 		end
 	end
 	if active == 43 then
-		if string.upper(message) == "EU SOU NOOB" or string.upper(message) == "I AM NOOB" then
+		if string.upper(message) == "EU SOU NOOB" or string.upper(message) == "I AM NOOB" or string.upper(message) == "BEN NOOB" then
 			data[name].c=1
 		end
 	end
@@ -1116,6 +1128,9 @@ function eventKeyboard(name,id,down,x,y)
 		if id == 40 or id == 83 then
 			data[name].c=1
 		end
+		if id == 38 or id == 87 then
+			tfm.exec.killPlayer(name)
+		end
 	end
 	if active == 38 then
 		if id == 46 then
@@ -1146,16 +1161,21 @@ function eventKeyboard(name,id,down,x,y)
 			end
 		end
 	end
+	if active == 59 then
+		if id == 48 or id == 50 then
+			tfm.exec.killPlayer(name)
+		end
+	end
 end
 function eventLoop(passado,faltando)
 	local tempo=math.floor(faltando/1000)
 	if active == -2 then
-		ui.setMapName("<N>"..text.mices.."  <BL>|  <N>Version RTM 4330.026 by Nasus<")
+		ui.setMapName("<N>"..text.mices.."  <BL>|  <N>Version RTM 5031.027 by Nasus<")
 	elseif active == -1 then
-		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."  <BL>|  <N>Version RTM 4330.026 by Nasus<")
+		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."  <BL>|  <N>Version RTM 5031.027 by Nasus<")
 	end
 	if active >= 0 then
-		ui.setMapName("<N>"..text.mestre.."  <BL>|  <N>"..text.time.." : <J>"..math.ceil(faltando/1000).."s  <BL>|  <N>"..text.mice.." : <J>"..vivo.." / "..rato.."  <BL>|  <N>"..text.round.." : <J>"..rodada.."  <BL>|  <N>Version RTM 4330.026 by Nasus<")
+		ui.setMapName("<N>"..text.mestre.."  <BL>|  <N>"..text.time.." : <J>"..math.ceil(faltando/1000).."s  <BL>|  <N>"..text.mice.." : <J>"..vivo.." / "..rato.."  <BL>|  <N>"..text.round.." : <J>"..rodada.."  <BL>|  <N>Version RTM 5031.027 by Nasus<")
 		if passado > 1200 and passado < 1700 and unlocked == true then
 			tfm.exec.chatMessage(""..text.playingmap.." <J>"..tfm.get.room.currentMap.."<BL> "..text.created.." <J>"..tfm.get.room.xmlMapInfo.author)
 		end
