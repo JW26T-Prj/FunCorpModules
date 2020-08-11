@@ -61,9 +61,9 @@ function showBar()
 	for i=1,41 do
 		if mapas[i] == tfm.get.room.currentMap then
 			if map_names[i] == "" then
-				ui.setMapName("<J><b>"..tfm.get.room.currentMap.."</b>  <BL>|   <N>Difficulty : "..bar.."  <BL>|  <N>#objects RTM 7249.033<")
+				ui.setMapName("<J><b>"..tfm.get.room.currentMap.."</b>  <BL>|   <N>Difficulty : "..bar.."  <BL>|  <N>#objects RTM 7350.034<")
 			else
-				ui.setMapName("<J><b>"..map_names[i].."</b>  <BL>|   <N>Difficulty : "..bar.."  <BL>|  <N>#objects RTM 7249.033<")
+				ui.setMapName("<J><b>"..map_names[i].."</b>  <BL>|   <N>Difficulty : "..bar.."  <BL>|  <N>#objects RTM 7350.034<")
 			end
 		end
 	end
@@ -78,23 +78,23 @@ function showTextSmall(text)
 end
 function changeBar()
 	if functs.level == 1 then
-		bar="<font face='Segoe UI Symbol'><VP>▁　　　<J>　　<font color='#ff0000'>　　<font face='Verdana'>"
+		bar="<font face='Segoe UI Symbol'><VP>▁   <J>  <font color='#ff0000'>  <font face='Verdana'>"
 	elseif functs.level == 2 then
-		bar="<font face='Segoe UI Symbol'><VP>▁▂　　<J>　　<font color='#ff0000'>　　<font face='Verdana'>"
+		bar="<font face='Segoe UI Symbol'><VP>▁▂  <J>  <font color='#ff0000'>  <font face='Verdana'>"
 	elseif functs.level == 3 then
-		bar="<font face='Segoe UI Symbol'><VP>▁▂▃　<J>　　<font color='#ff0000'>　　<font face='Verdana'>"
+		bar="<font face='Segoe UI Symbol'><VP>▁▂▃ <J>  <font color='#ff0000'>  <font face='Verdana'>"
 	elseif functs.level == 4 then
-		bar="<font face='Segoe UI Symbol'><VP>▁▂▃▄<J>　　<font color='#ff0000'>　　<font face='Verdana'>"
+		bar="<font face='Segoe UI Symbol'><VP>▁▂▃▄<J>  <font color='#ff0000'>  <font face='Verdana'>"
 	elseif functs.level == 5 then
-		bar="<font face='Segoe UI Symbol'><VP>▁▂▃▄<J>▅　<font color='#ff0000'>　　<font face='Verdana'>"
+		bar="<font face='Segoe UI Symbol'><VP>▁▂▃▄<J>▅ <font color='#ff0000'>  <font face='Verdana'>"
 	elseif functs.level == 6 then
-		bar="<font face='Segoe UI Symbol'><VP>▁▂▃▄<J>▅▆<font color='#ff0000'>　　<font face='Verdana'>"
+		bar="<font face='Segoe UI Symbol'><VP>▁▂▃▄<J>▅▆<font color='#ff0000'>  <font face='Verdana'>"
 	elseif functs.level == 7 then
-		bar="<font face='Segoe UI Symbol'><VP>▁▂▃▄<J>▅▆<font color='#ff0000'>▇　<font face='Verdana'>"
+		bar="<font face='Segoe UI Symbol'><VP>▁▂▃▄<J>▅▆<font color='#ff0000'>▇ <font face='Verdana'>"
 	elseif functs.level >= 8 then
 		bar="<font face='Segoe UI Symbol'><VP>▁▂▃▄<J>▅▆<font color='#ff0000'>▇█<font face='Verdana'>"
 	else
-		bar="<font face='Segoe UI Symbol'><VP>　　　　<J>　　<font color='#ff0000'>　　<font face='Verdana'>"
+		bar="<font face='Segoe UI Symbol'><VP>    <J>  <font color='#ff0000'>  <font face='Verdana'>"
 	end
 end
 function removeText()
