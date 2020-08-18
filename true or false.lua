@@ -1,4 +1,4 @@
-﻿blue_ground={type = 12,width = 350,height = 800,foregound = 1,friction = 0.0,restitution = 0.0,angle = 0,color = 0x0000ff,miceCollision = true,groundCollision = true,dynamic = true, fixedRotation = true, mass = 999999}
+blue_ground={type = 12,width = 350,height = 800,foregound = 1,friction = 0.0,restitution = 0.0,angle = 0,color = 0x0000ff,miceCollision = true,groundCollision = true,dynamic = true, fixedRotation = true, mass = 999999}
 red_ground={type = 12,width = 350,height = 800,foregound = 1,friction = 0.0,restitution = 0.0,angle = 0,color = 0xff0000,miceCollision = true,groundCollision = true,dynamic = true, fixedRotation = true, mass = 999999}
 center_ground={type = 12,width = 20,height = 400,foregound = 1,friction = 0.0,restitution = 0.0,angle = 0,color = 0x000000,miceCollision = true,groundCollision = true,dynamic = false}
 tfm.exec.disableAutoNewGame(true)
@@ -11,7 +11,6 @@ tfm.exec.disablePhysicalConsumables(true)
 limits={questions=10,time=7,mices_alive=0}
 questions={question="",answer="",round=0}
 admin=""
-kazarina={name="Barodius"}
 for _,f in next,{"per","skip","limits","return","cancel","at","change","admin78"} do
 	system.disableChatCommandDisplay(f)
 end
@@ -33,8 +32,8 @@ function eventNewGame()
 			tfm.exec.setPlayerScore(name,-1,false)
 		end
 		if name:sub(1,1) == "*" then
-		   	tfm.exec.killPlayer(name)
-		   	tfm.exec.chatMessage("<R>Souris aren't allowed to play on this module. Create an account or log in to play True or False.",name)
+			tfm.exec.killPlayer(name)
+			tfm.exec.chatMessage("<R>Souris aren't allowed to play on this module. Create an account or log in to play True or False.",name)
 		end
 	end
 	questions.round=0
@@ -126,13 +125,6 @@ function eventPopupAnswer(id,name,answer)
 			tfm.exec.chatMessage("<R>"..name.." skipped your turn.")
 		end
 	end
-	if id == 30 then
-		if answer == "" then
-			kazarina.name="Barodius"
-		else
-			kazarina.name=answer
-		end
-	end
 end
 function eventChatCommand(name,message)
 	if name == "Spectra_phantom#6089" or name == "Forzaldenon#0000" or name == "Miss_fortune#9548" or name == "Aphelios#1910" or name == admin then
@@ -172,9 +164,6 @@ function eventChatCommand(name,message)
 				reset()
 				tfm.exec.chatMessage("<R>This shaman has been skipped.")
 			end
-		end
-		if message == "change" then
-			ui.addPopup(30,2,"Barodius?",name,350,175,200,true)
 		end
 	end
 	if tfm.get.room.playerList[name].isShaman and current_mode == "waiting" then
