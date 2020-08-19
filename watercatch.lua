@@ -83,21 +83,21 @@ end
 end
 function eventLoop(p,r)
 if changed == true then
-ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><J> Version RTM 2328.014 by Spectra_phantom#6089<")
+ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><J> Version RTM 2429.015 by Spectra_phantom#6089<")
 local m=math.floor(r/60000)
 local s=math.floor((((m*60000)-r) * -1) / 1000)
 ui.addTextArea(-1,"<font size='28'><font face='DejaVu Sans Mono,Consolas'><font color='#222222'><b>0"..m..":"..s.."</b>",n,693,27,110,44,0,0,1.0,true)
 ui.addTextArea(-2,"<font size='28'><font face='DejaVu Sans Mono,Consolas'><b>0"..m..":"..s.."</b>",n,690,24,110,44,0,0,1.0,true)
-ui.addTextArea(-3,"<font size='14'><font face='Corbel'>remaining time",n,690,60,128,44,0,0,1.0,true)
+ui.addTextArea(-3,"<font size='14'><font face='Verdana'>remaining time",n,690,60,128,44,0,0,1.0,true)
 if s < 10 then
 	ui.addTextArea(-1,"<font size='28'><font face='DejaVu Sans Mono,Consolas'><font color='#222222'><b>0"..m..":0"..s.."</b>",n,693,27,110,44,0,0,1.0,true)
 	ui.addTextArea(-2,"<font size='28'><font face='DejaVu Sans Mono,Consolas'><b>0"..m..":0"..s.."</b>",n,690,24,110,44,0,0,1.0,true)
-	ui.addTextArea(-3,"<font size='14'><font face='Corbel'>remaining time",n,690,60,128,44,0,0,1.0,true)
+	ui.addTextArea(-3,"<font size='14'><font face='Verdana'>remaining time",n,690,60,128,44,0,0,1.0,true)
 end
 if mode == "game" or mode == "hide" then
 	ui.addTextArea(31,"<font size='28'><font face='DejaVu Sans Mono,Consolas'><font color='#222222'><b>"..alives.."</b>",n,15,27,40,44,0,0,1.0,true)
 	ui.addTextArea(30,"<font size='28'><font face='DejaVu Sans Mono,Consolas'><b>"..alives.."</b>",n,12,24,40,44,0,0,1.0,true)
-	ui.addTextArea(32,"<font size='14'><font face='Corbel'>mice(s) remaining",n,9,60,128,44,0,0,1.0,true)
+	ui.addTextArea(32,"<font size='14'><font face='Verdana'>mice(s) remaining",n,9,60,128,44,0,0,1.0,true)
 else
 	for i=30,32 do
 		ui.removeTextArea(i,nil)
