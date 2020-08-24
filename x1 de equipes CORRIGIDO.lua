@@ -23,14 +23,33 @@ system.disableChatCommandDisplay("teams")
 estado="inicial"
 data={}
 mapa="@7772396"
+function showText(name)
+	for i=41,44 do
+		ui.removeTextArea(i,nil)
+	end
+	ui.addTextArea(41, "<p align='center'><a href='event:enter_vermelho'>Enter on RED team</a></p>", name, 300, 155, 200, 20, 0x800000, 0x600000,1.0,true)
+	ui.addTextArea(42, "<p align='center'><a href='event:enter_azul'>Enter on BLUE team</a></p>", name, 300, 185, 200, 20, 0x80, 0x60,1.0,true)
+	if times >= 3 then
+		ui.addTextArea(43, "<p align='center'><a href='event:enter_amarelo'>Enter on YELLOW team</a></p>", name, 300, 215, 200, 20, 0x808000, 0x606000,1.0,true)
+	end
+	if times >= 4 then
+		ui.addTextArea(44, "<p align='center'><a href='event:enter_verde'>Enter on GREEN team</a></p>", name, 300, 245, 200, 20, 0x008000, 0x006000,1.0,true)
+	end
+end
 function eventNewPlayer(name)
 	data[name]={time=0}
+	if estado == "inicial" then
+		if not admin == "" then
+			showText(name)
+		end
+	end
 end
 for name,player in pairs(tfm.get.room.playerList) do
 	eventNewPlayer(name)
 end
 function ResetMap()
 	tfm.exec.newGame(mapa)
+	showText()
 end
 function ResetScores()
 	for name,player in pairs(tfm.get.room.playerList) do
@@ -77,25 +96,12 @@ function eventChatCommand(name,message)
 		end
 	end
 end
-function showText(name)
-	for i=41,44 do
-		ui.removeTextArea(i,nil)
-	end
-	ui.addTextArea(41, "<p align='center'><a href='event:enter_vermelho'>Enter on RED team</a></p>", name, 300, 155, 200, 20, 0x800000, 0x600000,1.0,true)
-	ui.addTextArea(42, "<p align='center'><a href='event:enter_azul'>Enter on BLUE team</a></p>", name, 300, 185, 200, 20, 0x80, 0x60,1.0,true)
-	if times >= 3 then
-		ui.addTextArea(43, "<p align='center'><a href='event:enter_amarelo'>Enter on YELLOW team</a></p>", name, 300, 215, 200, 20, 0x808000, 0x606000,1.0,true)
-	end
-	if times >= 4 then
-		ui.addTextArea(44, "<p align='center'><a href='event:enter_verde'>Enter on GREEN team</a></p>", name, 300, 245, 200, 20, 0x008000, 0x006000,1.0,true)
-	end
-end
 function eventNewGame()
 	pos=0
 	for name,player in pairs(tfm.get.room.playerList) do
 		if string.find(tfm.get.room.name,name) then
 			admin=name
-			tfm.exec.chatMessage("<ROSE>Type !start to start the game or !limit [number] to change the victory limit.")
+			tfm.exec.chatMessage("<ROSE>Type !start to start the game or !limit [number] to change the victory limit.",name)
 		end
 	end
 	if estado == "inicial" then
@@ -103,7 +109,7 @@ function eventNewGame()
 			tfm.exec.chatMessage("<VP>The module can't be started. <br>Please check if you inserted correctly your nickname on room name.<br><br>Example: <b>/room #anvilwar00x1#Spectra_phantom#6089</b><br><br>If this is a FunCorp room, verify the nickname typed on the script (including #tag)<br><br>Script disabled.")
 		else
 			for name,player in pairs(tfm.get.room.playerList) do
-				showText(name)
+				showText()
 			end
 		end
 		tfm.exec.setGameTime(36000)
@@ -209,7 +215,7 @@ function eventPlayerWon(name)
 end
 function eventLoop(passado,faltando)
 	if estado == "rodando" then
-		ui.setMapName("         Team X1 Script by Nasus  <BL>|  <N>Scores : <R><b>"..score_vermelho.."</b> <N>- <BL><b>"..score_azul.."</b> <N>- <J><b>"..score_amarelo.."</b> <N>- <VP><b>"..score_verde.."</b>  <BL>|  <N>Limit : <ROSE><b>"..limite.."</b>  <BL>|  <N>Version RTM 0309.001<")
+		ui.setMapName("         Team X1 Script by Nasus  <BL>|  <N>Scores : <R><b>"..score_vermelho.."</b> <N>- <BL><b>"..score_azul.."</b> <N>- <J><b>"..score_amarelo.."</b> <N>- <VP><b>"..score_verde.."</b>  <BL>|  <N>Limit : <ROSE><b>"..limite.."</b>  <BL>|  <N>Version RTM 0410.002<")
 		if faltando <= 1 then
 			if score_vermelho < limite and score_verde < limite and score_azul < limite and score_amarelo < limite then
 				tfm.exec.newGame("#17")
@@ -225,7 +231,7 @@ function eventLoop(passado,faltando)
 		
 	end
 	if estado == "inicial" then
-		ui.setMapName("                Team X1 Script - Version RTM 0309.001 - Made by <ROSE><b>Nasus_assassin#1534</b><")
+		ui.setMapName("                Team X1 Script - Version RTM 0410.002 - Made by <ROSE><b>Nasus_assassin#1534</b><")
 	end
 end
 function FinalizarJogo()
@@ -235,18 +241,38 @@ function FinalizarJogo()
 	if score_vermelho >= limite then
 		tfm.exec.chatMessage("<R>The RED team has won the match with "..score_vermelho.." points!")
 		ui.setMapName("<R>The RED team has won the match with "..score_vermelho.." points!<")
+		for name,player in pairs(tfm.get.room.playerList) do
+			if not data[name].time == 1 then
+				tfm.exec.killPlayer(name)
+			end
+		end
 	elseif score_azul >= limite then
 		tfm.exec.chatMessage("<BL>The BLUE team has won the match with "..score_azul.." points!")
 		ui.setMapName("<BL>The BLUE team has won the match with "..score_azul.." points!<")
+		for name,player in pairs(tfm.get.room.playerList) do
+			if not data[name].time == 2 then
+				tfm.exec.killPlayer(name)
+			end
+		end
 	elseif score_amarelo >= limite then
 		tfm.exec.chatMessage("<J>The YELLOW team has won the match with "..score_amarelo.." points!")
 		ui.setMapName("<J>The YELLOW team has won the match with "..score_amarelo.." points!<")
+		for name,player in pairs(tfm.get.room.playerList) do
+			if not data[name].time == 3 then
+				tfm.exec.killPlayer(name)
+			end
+		end
 	elseif score_verde >= limite then
 		tfm.exec.chatMessage("<VP>The GREEN team has won the match with "..score_verde.." points!")
 		ui.setMapName("<VP>The GREEN team has won the match with "..score_verde.." points!<")
+		for name,player in pairs(tfm.get.room.playerList) do
+			if not data[name].time == 4 then
+				tfm.exec.killPlayer(name)
+			end
+		end
 	end
 	ResetScores()
 	tfm.exec.setGameTime(30)
 end
-ResetMap()
+tfm.exec.newGame(mapa)
 ResetScores()
