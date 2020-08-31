@@ -23,7 +23,7 @@ for _,f in next,{"command","mapa","pw","limit","run","fc","q","a","t","kill"} do
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N>Bem-vindo ao Mestre Mandou! Nesta sala seu objetivo é fazer tudo o que o script mandar.<br><ROSE>Script criado por <b>Nasus_assassin#1534</b>. Traduzido por Fosfus7heads#0000. Versão RTM 5334.030",
+	welcome = "<N>Bem-vindo ao Mestre Mandou! Nesta sala seu objetivo é fazer tudo o que o script mandar.<br><ROSE>Script criado por <b>Nasus_assassin#1534</b>. Traduzido por Fosfus7heads#0000. Versão RTM 5435.031",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -94,7 +94,7 @@ lang.br = {
 	ds = "Dance e sente!"
 }
 lang.en = {
-	welcome = "<N>Welcome to script Master Says! On this module you have to do everything that the master says.<br><ROSE>Module created by <b>Nasus_assassin#1534</b>. Version RTM 5334.030",
+	welcome = "<N>Welcome to script Master Says! On this module you have to do everything that the master says.<br><ROSE>Module created by <b>Nasus_assassin#1534</b>. Version RTM 5435.031",
 	dancar = "Dance!",
 	sentar = "Sit!",
 	confetar = "Throw 5 confetti!",
@@ -165,7 +165,7 @@ lang.en = {
 	ds = "Dance and sit!"
 }
 lang.fr = {
-	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Nasus_assassin#1534</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 5334.030",
+	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Nasus_assassin#1534</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 5435.031",
 	dancar = "Danse !",
 	sentar = "Assis !",
 	confetar = "Lance 5 fois des confettis !",
@@ -236,7 +236,7 @@ lang.fr = {
 	ds = "Danse et assis !"
 }
 lang.tr = {
-	welcome = "<N> Master Says'ýn senaryosuna hoþ geldiniz! Bu modülde ustanýn söylediði her þeyi yapmalýsýnýz. <br> <ROSE><b>Nasus_assassin#1534</b> tarafýndan oluþturulan model. Tercüme eden Star#6725. Versiyon RTM 5334.030",
+	welcome = "<N> Master Says'ýn senaryosuna hoþ geldiniz! Bu modülde ustanýn söylediði her þeyi yapmalýsýnýz. <br> <ROSE><b>Nasus_assassin#1534</b> tarafýndan oluþturulan model. Tercüme eden Star#6725. Versiyon RTM 5435.031",
 	dancar = "Dans!",
 	sentar = "Sit!",
 	confetar = "5 konfeti atýn!",
@@ -609,7 +609,7 @@ function getCommand()
 	if active == 19 then
 		xpos=math.random(60,700)
 		showCommand(active,text.quadrado)
-		tfm.exec.setGameTime(5)
+		tfm.exec.setGameTime(6)
 		for name,player in pairs(tfm.get.room.playerList) do
 			data[name].c=1
 		end
@@ -686,7 +686,7 @@ function getCommand()
 		xpos=math.random(60,700)
 		local xpos2=math.random(60,700)
 		showCommand(active,text.quadrado)
-		tfm.exec.setGameTime(5)
+		tfm.exec.setGameTime(6)
 		for name,player in pairs(tfm.get.room.playerList) do
 			data[name].c=1
 		end
@@ -697,7 +697,7 @@ function getCommand()
 		xpos=math.random(60,700)
 		local xpos2=math.random(60,700)
 		showCommand(active,text.quadradov)
-		tfm.exec.setGameTime(5)
+		tfm.exec.setGameTime(6)
 		for name,player in pairs(tfm.get.room.playerList) do
 			data[name].c=1
 		end
@@ -708,7 +708,7 @@ function getCommand()
 		xpos=math.random(60,700)
 		local xpos2=math.random(60,700)
 		showCommand(active,text.retangulo)
-		tfm.exec.setGameTime(5)
+		tfm.exec.setGameTime(6)
 		for name,player in pairs(tfm.get.room.playerList) do
 			data[name].c=1
 		end
@@ -719,7 +719,7 @@ function getCommand()
 		xpos=math.random(60,700)
 		local xpos2=math.random(60,700)
 		showCommand(active,text.retangulov)
-		tfm.exec.setGameTime(5)
+		tfm.exec.setGameTime(6)
 		for name,player in pairs(tfm.get.room.playerList) do
 			data[name].c=1
 		end
@@ -844,7 +844,7 @@ function getCommand()
 		xpos=math.random(60,700)
 		xpos2=math.random(60,700)
 		showCommand(active,text.quadradoa)
-		tfm.exec.setGameTime(5)
+		tfm.exec.setGameTime(6)
 		for name,player in pairs(tfm.get.room.playerList) do
 			data[name].c=1
 		end
@@ -882,7 +882,9 @@ function eventTextAreaCallback(id,name,callback)
 end
 function eventChatMessage(name,message)
 	if active == 11 then
-		data[name].c=1
+		if string.len(message) >= 2 then
+			data[name].c=1
+		end
 	end
 	if active == 12 or active == 14 or active == 59 then
 		tfm.exec.killPlayer(name)
@@ -1191,12 +1193,12 @@ end
 function eventLoop(passado,faltando)
 	local tempo=math.floor(faltando/1000)
 	if active == -2 then
-		ui.setMapName("<N>"..text.mices.."  <BL>|  <N>Version RTM 5334.030 by Nasus<")
+		ui.setMapName("<N>"..text.mices.."  <BL>|  <N>Version RTM 5435.031 by Nasus<")
 	elseif active == -1 then
-		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."  <BL>|  <N>Version RTM 5334.030 by Nasus<")
+		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."  <BL>|  <N>Version RTM 5435.031 by Nasus<")
 	end
 	if active >= 0 then
-		ui.setMapName("<N>"..text.mestre.."  <BL>|  <N>"..text.time.." : <J>"..math.ceil(faltando/1000).."s  <BL>|  <N>"..text.mice.." : <J>"..vivo.." / "..rato.."  <BL>|  <N>"..text.round.." : <J>"..rodada.."  <BL>|  <N>Version RTM 5334.030 by Nasus<")
+		ui.setMapName("<N>"..text.mestre.."  <BL>|  <N>"..text.time.." : <J>"..math.ceil(faltando/1000).."s  <BL>|  <N>"..text.mice.." : <J>"..vivo.." / "..rato.."  <BL>|  <N>"..text.round.." : <J>"..rodada.."  <BL>|  <N>Version RTM 5435.031 by Nasus<")
 		if passado > 1200 and passado < 1700 and unlocked == true then
 			tfm.exec.chatMessage(""..text.playingmap.." <J>"..tfm.get.room.currentMap.."<BL> "..text.created.." <J>"..tfm.get.room.xmlMapInfo.author)
 		end
