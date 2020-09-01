@@ -15,7 +15,8 @@ testing={6788848,6789206,6789260,6790433,6790911,6790896,6792320,6790467,6798615
 troll={6789263,6790300,4411212,6781398,7394517,7354947,3398791,1347551,7201360,1429677,6897042,3766247,7296284,1852537,7712670,7748874,7712670,1564662}
 }
 active=0; vivo=0; rato=0; dificuldade=1; rodadas=0; rodada=0; number=0; xpos=0; ypos=0; data={}; lang={}; tempo=10; counter=0; map_cat=-2; q=""; a=""; qtime=10;
-fc_cmds={1,2,4,5,6,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,28,30,31,32,33,34,35,36,40,41,42,43,45,46,47,48,49,50,51,53,57,58,59}
+fc_cmds={1,2,4,5,6,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,28,30,31,32,33,34,35,36,40,41,42,43,45,46,47,48,49,50,51,53,57,58,59,61,62}
+spiderweb={type = 15,width = 40,height = 40}
 fc_mode=false
 unlocked=true
 xpos=0; xpos2=0;
@@ -23,7 +24,7 @@ for _,f in next,{"command","mapa","pw","limit","run","fc","q","a","t","kill"} do
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N>Bem-vindo ao Mestre Mandou! Nesta sala seu objetivo é fazer tudo o que o script mandar.<br><ROSE>Script criado por <b>Nasus_assassin#1534</b>. Traduzido por Fosfus7heads#0000. Versão RTM 5435.031",
+	welcome = "<N>Bem-vindo ao Mestre Mandou! Nesta sala seu objetivo é fazer tudo o que o script mandar.<br><ROSE>Script criado por <b>Nasus_assassin#1534</b>. Traduzido por Fosfus7heads#0000. Versão RTM 6036.032",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -71,7 +72,7 @@ lang.br = {
 	jump2 = "Pulem 5 vezes!",
 	action3 = "Dê um beijo depois chore!",
 	area = "Descubra onde está o texto escondido e clique nele!",
-	dancing = "Bora dançar galera!",
+	dancing = "É hora da festa!",
 	freeze = "Todo mundo parado!",
 	transform = "Dance e durma!",
 	down1 = "Abaixem 3 vezes!",
@@ -91,10 +92,13 @@ lang.br = {
 	action = "Façam qualquer ação!",
 	naction = "Não façam nenhuma ação!",
 	math = "Quanto é 1+1?",
-	ds = "Dance e sente!"
+	ds = "Dance e sente!",
+	seq4 = "Dance, sente, durma e bata palmas!",
+	spider = "Cuidado com as teias de aranha!",
+	key2 = "Pressione F4!",
 }
 lang.en = {
-	welcome = "<N>Welcome to script Master Says! On this module you have to do everything that the master says.<br><ROSE>Module created by <b>Nasus_assassin#1534</b>. Version RTM 5435.031",
+	welcome = "<N>Welcome to script Master Says! On this module you have to do everything that the master says.<br><ROSE>Module created by <b>Nasus_assassin#1534</b>. Version RTM 6036.032",
 	dancar = "Dance!",
 	sentar = "Sit!",
 	confetar = "Throw 5 confetti!",
@@ -162,10 +166,13 @@ lang.en = {
 	action = "Do any action!",
 	naction = "Don't do any action!",
 	math = "How much is 1+1?",
-	ds = "Dance and sit!"
+	ds = "Dance and sit!",
+	seq4 = "Dance, sit, sleep and clap!",
+	spider = "Caution with the spider webs!",
+	key2 = "Press F4!",
 }
 lang.fr = {
-	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Nasus_assassin#1534</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 5435.031",
+	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Nasus_assassin#1534</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 6036.032",
 	dancar = "Danse !",
 	sentar = "Assis !",
 	confetar = "Lance 5 fois des confettis !",
@@ -233,10 +240,13 @@ lang.fr = {
 	naction = "Ne fais rien !",
 	action = "Faites n'importe quelle action !",
 	math = "Combien vaut 1 + 1?",
-	ds = "Danse et assis !"
+	ds = "Danse et assis !",
+	seq4 = "Dance, assis-toi, dors et applaudir!",
+	spider = "Attention aux toiles d'araignées!",
+	key2 = "Appuie sur la touche F4!",
 }
 lang.tr = {
-	welcome = "<N> Master Says'ýn senaryosuna hoþ geldiniz! Bu modülde ustanýn söylediði her þeyi yapmalýsýnýz. <br> <ROSE><b>Nasus_assassin#1534</b> tarafýndan oluþturulan model. Tercüme eden Star#6725. Versiyon RTM 5435.031",
+	welcome = "<N> Master Says'ýn senaryosuna hoþ geldiniz! Bu modülde ustanýn söylediði her þeyi yapmalýsýnýz. <br> <ROSE><b>Nasus_assassin#1534</b> tarafýndan oluþturulan model. Tercüme eden Star#6725. Versiyon RTM 6036.032",
 	dancar = "Dans!",
 	sentar = "Sit!",
 	confetar = "5 konfeti atýn!",
@@ -305,8 +315,10 @@ lang.tr = {
 	action = "Herhangi bir iþlem yapýn!",
 	naction = "Hiçbir þey yapmayýn!",
 	math = "1 + 1 ne kadar?",
-	ds = "Dans ve sit!"
-
+	ds = "Dans ve sit!",
+	seq4 = "Dans et, otur, uyu ve alkışla!",
+	spider = "Örümcek ağlarına dikkat!",
+	key2 = "F4 tuþuna basýn!",
 }
 if tfm.get.room.community == "br" then
 	text = lang.br
@@ -319,7 +331,7 @@ else
 end
 function eventNewPlayer(name)
 	rato=rato+1
-	for k=32, 90 do
+	for k=17, 116 do
 		tfm.exec.bindKeyboard(name,k,false,true)
 	end
 	system.bindMouse(name,true)
@@ -383,9 +395,6 @@ function eventPlayerDied(name)
 end
 function selectMap()
 	map_cat=map_cat+1
-	if map_cat > 5 and fc_mode == false then
-		map_cat=0;
-	end
 	if map_cat > 7 then
 		map_cat=0;
 	end
@@ -432,7 +441,7 @@ function eventNewGame()
 	end
 	rodadas=math.floor(20+(rato/3.5))
 	if tfm.get.room.community == "br" then
-		tfm.exec.chatMessage("<VP><b>Você pode ver todas as salas que compõem o module #anvilwar na /sala #anvilwar00rooms.</b><br><R>Atenção: O Mestre Mandou está passando por algumas reformas. Alguns bugs podem ser esperados durante esse tempo, portanto tentem jogar os outros modules da sala #anvilwar.")
+		tfm.exec.chatMessage("<VP><b>Você pode ver todas as salas que compõem o module #anvilwar na /sala #anvilwar00rooms.</b>")
 	end
 	tfm.exec.setNameColor(admin,0xff0000)
 end
@@ -441,7 +450,7 @@ function eventPlayerLeft()
 end
 function sortearComandos()
 	if fc_mode == false then
-		active=math.random(1,60)
+		active=math.random(1,63)
 	else
 		active=tonumber(fc_cmds[math.random(#fc_cmds)])
 	end
@@ -496,7 +505,7 @@ function eventChatCommand(name,message)
 	end
 end
 function showCommand(id,text)
-	ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..id.." <font size='22'><p align='center'><b>"..text.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+	ui.addTextArea(0,"<font face='Yu Gothic,Arial'><font color='#202020'>#"..id.." <font size='16'><p align='center'><b>"..text.."",nil,25,372,750,24,0xd1d1d1,0x161616,0.96,true)
 end
 function whiteSquare(x)
 	ui.addTextArea(1,"",nil,x,320,80,65,0xffffff,0xffffff,0.68,false)
@@ -818,7 +827,7 @@ function getCommand()
 			data[name].c=1
 			tfm.exec.playEmote(name,0)
 		end
-		tfm.exec.setGameTime(7)
+		tfm.exec.setGameTime(15)
 	end
 	if active == 53 then
 		showCommand(active,text.freeze)
@@ -869,6 +878,24 @@ function getCommand()
 		showCommand(active,text.math)
 		tfm.exec.setGameTime(8)
 	end
+	if active == 61 then
+		showCommand(active,text.seq4)
+		tfm.exec.setGameTime(13)
+	end
+	if active == 62 then
+		showCommand(active,text.spider)
+		for name,player in pairs(tfm.get.room.playerList) do
+			data[name].c=1
+		end
+		tfm.exec.setGameTime(10)
+		for i=1,5 do
+			tfm.exec.addPhysicObject(i, math.random(100,700), math.random(50,350), spiderweb)
+		end
+	end
+	if active == 63 then
+		showCommand(active,text.key2)
+		tfm.exec.setGameTime(10)
+	end
 	if active == 99 then
 		showCommand(active,q)
 		tfm.exec.setGameTime(qtime)
@@ -886,7 +913,7 @@ function eventChatMessage(name,message)
 			data[name].c=1
 		end
 	end
-	if active == 12 or active == 14 or active == 59 then
+	if active == 12 or active == 14 or active == 53 or active == 59 then
 		tfm.exec.killPlayer(name)
 	end
 	if active == 16 then
@@ -1043,6 +1070,20 @@ function eventEmotePlayed(name,id)
 			tfm.exec.killPlayer(name)
 		end
 	end
+	if active == 61 then
+		if id == 0 and data[name].s == 0 then
+			data[name].s=1
+		end
+		if id == 8 and data[name].s == 1 then
+			data[name].s=2
+		end
+		if id == 6 and data[name].s == 2 then
+			data[name].s=3
+		end
+		if id == 5 and data[name].s == 3 then
+			data[name].c=1
+		end
+	end
 end
 function eventMouse(name,x,y)
 	if active == 4 then
@@ -1068,7 +1109,7 @@ function eventKeyboard(name,id,down,x,y)
 			tfm.exec.killPlayer(name)
 		end
 	end
-	if active == 14 then
+	if active == 14 or active == 53 then
 		tfm.exec.killPlayer(name)
 	end
 	if active == 24 then
@@ -1189,16 +1230,21 @@ function eventKeyboard(name,id,down,x,y)
 			tfm.exec.killPlayer(name)
 		end
 	end
+	if active == 63 then
+		if id == 115 then
+			data[name].c=1
+		end
+	end
 end
 function eventLoop(passado,faltando)
 	local tempo=math.floor(faltando/1000)
 	if active == -2 then
-		ui.setMapName("<N>"..text.mices.."  <BL>|  <N>Version RTM 5435.031 by Nasus<")
+		ui.setMapName("                        <N>"..text.mices.."  <BL>|  <N><b>Version RTM 6036.032</b><")
 	elseif active == -1 then
-		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."  <BL>|  <N>Version RTM 5435.031 by Nasus<")
+		ui.setMapName("          <VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."  <BL>|  <N><b>Version RTM 6036.032</b><")
 	end
 	if active >= 0 then
-		ui.setMapName("<N>"..text.mestre.."  <BL>|  <N>"..text.time.." : <J>"..math.ceil(faltando/1000).."s  <BL>|  <N>"..text.mice.." : <J>"..vivo.." / "..rato.."  <BL>|  <N>"..text.round.." : <J>"..rodada.."  <BL>|  <N>Version RTM 5435.031 by Nasus<")
+		ui.setMapName("             "..tfm.get.room.currentMap.."  <BL>|  <N>"..text.mestre.."  <BL>|  <N>"..text.mice.." : <J>"..vivo.." / "..rato.."  <BL>|  <N>"..text.round.." : <J>"..rodada.."  <BL>|  <ROSE><b>Version RTM 6036.032</b><")
 		if passado > 1200 and passado < 1700 and unlocked == true then
 			tfm.exec.chatMessage(""..text.playingmap.." <J>"..tfm.get.room.currentMap.."<BL> "..text.created.." <J>"..tfm.get.room.xmlMapInfo.author)
 		end
@@ -1302,6 +1348,11 @@ function eventLoop(passado,faltando)
 				end
 			end
 		end
+		if active == 52 then
+			for name,player in pairs(tfm.get.room.playerList) do
+				tfm.exec.setNameColor(name,math.random(1,16777215))
+			end
+		end
 		if active == 53 then
 			for name,player in pairs(tfm.get.room.playerList) do
 				tfm.exec.freezePlayer(name,false)
@@ -1311,6 +1362,9 @@ function eventLoop(passado,faltando)
 		ui.removeTextArea(1,nil)
 		ui.removeTextArea(2,nil)
 		ui.removeTextArea(250,nil)
+		for i=1,5 do
+			tfm.exec.removePhysicObject(i)
+		end
 		active=0
 		if rodada == 4 or rodada == 6 or rodada == 8 or rodada == 10 or rodada == 12 then
 			dificuldade=dificuldade+1
