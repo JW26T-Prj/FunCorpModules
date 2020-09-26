@@ -1,6 +1,6 @@
 -- Transformice #anvilwar module loader - Version 2.122
 -- By Spectra_phantom#6089 / Nasus_assassin#1534
--- Included sub-modules: #mestre, #truefalse, #watercatch, #fall2, #cd.
+-- Included sub-modules: #mestre, #truefalse, #fall2, #cd.
 
 local anvilwar = {
 	_NAME = "anvilwar",
