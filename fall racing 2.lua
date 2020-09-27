@@ -6,14 +6,14 @@ tfm.exec.disablePhysicalConsumables(true)
 tfm.exec.disableMortCommand(true)
 tfm.exec.disableDebugCommand(true)
 tfm.exec.disableMinimalistMode(true)
-tfm.exec.setRoomMaxPlayers(22)
+tfm.exec.setRoomMaxPlayers(25)
 xml2=''
 creator=""
 position=0
 objective=60
 enabled=false
 map=""
-mapas={"@7411648","@7568910","@7410842","@7568917","@7568919","@7568922","@7568923","@7568928","@7568964","@7568967","@7568965","@7354962","@7569413","@7721624","@6621726","@6316396"}
+mapas={"@7411648","@7568910","@7410842","@7568917","@7568919","@7568922","@7568923","@7568928","@7568964","@7568967","@7568965","@7354962","@7569413","@7721624","@6621726","@6316396","@7786244","@7786245","@7786246","@7786247","@7786249","@7786250"}
 system.disableChatCommandDisplay("obj")
 lobby="@7404106"
 changed=false
@@ -38,16 +38,16 @@ function eventNewGame()
 			ui.removeTextArea(0,nil)
 		end
 	else
-		ui.addTextArea(10,"<font face='Eras Demi ITC'><font color='#00ffff'><font size='47'>Fall Racing 2.4",nil,330,42,400,100,0,0,1.0,true)
-		ui.setMapName("Welcome to Fall Racing 2.4! Script made by <b>Azirdeathray#0000</b>.<")
-		tfm.exec.setGameTime(60)
+		ui.addTextArea(10,"<font face='Eras Demi ITC'><font color='#00ffff'><font size='47'>Fall Racing 2.5",nil,330,42,400,100,0,0,1.0,true)
+		ui.setMapName("Welcome to Fall Racing 2.5! Script made by <b>Azirdeathray#0000</b>.<")
+		tfm.exec.setGameTime(90)
 	end
 end
 function eventLoop(p,f)
 	if p >= 5000 and p <= 6000 and changed == false and enabled == true then
 		tfm.exec.newGame(xml2)
 		changed=true
-		ui.setMapName("<J>#fall 2.4   <BL>|   <J>"..creator.." <BL>- "..map.."   <BL>|   <J>Objective : <J>"..objective.." points<")
+		ui.setMapName("<J>#fall 2.5   <BL>|   <J>"..creator.." <BL>- "..map.."   <BL>|   <J>Objective : <J>"..objective.." points<")
 	end
 	if f <= 1 and enabled == true then
 		changed=false
@@ -84,13 +84,18 @@ function eventPlayerWon(name)
 	position=position+1
 	if position == 1 then
 		tfm.exec.setGameTime(20)
+		tfm.exec.setPlayerScore(name,1,true)
 	end
 	if position <= 8 then
 		tfm.exec.setPlayerScore(name,10-position,true)
-		tfm.exec.chatMessage("+ "..tostring(10-position).." points",name)
+		if position == 1 then
+			tfm.exec.chatMessage("+ 10 points",name)
+		else
+			tfm.exec.chatMessage("+ "..tostring(10-position).." points",name)
+		end
 	else
 		tfm.exec.setPlayerScore(name,1,true)
-		tfm.exec.chatMessage("+ 1 points",name)
+		tfm.exec.chatMessage("+ 1 point",name)
 	end
 end
 function eventPlayerDied(name)
@@ -102,8 +107,8 @@ function eventPlayerDied(name)
 end
 function eventNewPlayer(name)
 	if enabled == false then
-		ui.addTextArea(10,"<font face='Eras Demi ITC'><font color='#00ffff'><font size='47'>Fall Racing 2.4",nil,330,42,400,100,0,0,1.0,true)
-		ui.setMapName("Welcome to Fall Racing 2.4! Script made by <b>Azirdeathray#0000</b>.<")
+		ui.addTextArea(10,"<font face='Eras Demi ITC'><font color='#00ffff'><font size='47'>Fall Racing 2.5",nil,330,42,400,100,0,0,1.0,true)
+		ui.setMapName("Welcome to Fall Racing 2.5! Script made by <b>Azirdeathray#0000</b>.<")
 	end
 	tfm.exec.chatMessage("<J>Welcome to the #fall2 module!<br><br>The objective of this room is fall to the end of the map!<br>The player that score more points will win the game!<br><br><R>WARNING: This script require at least 3GB of RAM to work without problems.<J><br><br>Script made by Azirdeathray#0000",name)
 end
