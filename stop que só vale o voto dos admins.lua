@@ -1,5 +1,5 @@
 -- STOP
--- Escrito por Ninguem - 31/08/2015 // Updated by Nasus_assassin#1534 - 28/08/2020
+-- Escrito por Ninguem - 31/08/2015 // Updated by Nasus_assassin#1534 - 06/10/2020
 -- Limit of 20 categories.
 
 ADM = {"Nasus_assassin#1534"} -- editar com seu nome aqui!
@@ -105,7 +105,7 @@ end
 function atualizaPalavras(p)
 	local cont = 0
 	for i, v in pairs(CAT) do
-		ui.addTextArea(i+1000, string.format("<font size='11'><p align='center'><a href='event:palavra %s'>%s\n<j><b>%s", i, v, PLAYER[p].palavra[v]), p, ((i-1)%5)*160+5, math.floor((i-1)/5)*70+150, 150, 60, 1, 1, 0.8, true)
+		ui.addTextArea(i+1000, string.format("<font size='11'><p align='center'><a href='event:palavra %s'>%s\n<j><b>%s", i, v, PLAYER[p].palavra[v]), p, ((i-1)%5)*160+5, math.floor((i-1)/5)*70+130, 150, 60, 1, 1, 0.8, true)
 		if PLAYER[p].palavra[v] ~= "" then
 			cont = cont + 1
 		end
@@ -162,7 +162,7 @@ function eventChatCommand(p, cmd)
 			end
 			MODO = "fim"
 			PALAVRA = 1
-			ui.addTextArea(ID.msg, "<p align='center'>Clique nas palavras ERRADAS e marque de <r>vermelho <n> para anular seus pontos.", nil, 5, 50, 790, 20, 1, 1, 0.8, true)
+			ui.addTextArea(ID.msg, "<p align='center'>Clique nas palavras ERRADAS e marque de <r>vermelho <n>para anular seus pontos.", nil, 5, 50, 790, 20, 1, 1, 0.8, true)
 			ESCOLHA = {}
 			selecionaPalavra()
 			for i, v in pairs(PLAYER) do
@@ -232,7 +232,7 @@ function eventNewPlayer(p)
 		atualizaPlayer(true)
 	end
 	tfm.exec.respawnPlayer(p)
-	ui.setMapName("STOP! Script edited by Nasus_assassin#1534 - 28/08/2020<")
+	ui.setMapName("STOP! Script edited by Nasus_assassin#1534 - 06/10/2020<")
 end
 
 function eventPlayerLeft(p)
@@ -283,7 +283,7 @@ function eventLoop(current, remaining)
 			MODO = "round"
 			TEMPO = os.time()+30000+(4500*#CAT)
 			ui.removeTextArea(ID.cat, nil)
-			ui.addTextArea(ID.cat, string.format("<p align='center'>A letra é:\n<font size='50px'><rose>%s</rose></font></p>", LETRA), nil, 300, 50, 200, 80, 1, 1, 0.8, true)
+			ui.addTextArea(ID.cat, string.format("<p align='center'>A letra é:\n<font size='50px'><rose>%s</rose></font></p>", LETRA), nil, 300, 30, 200, 80, 1, 1, 0.8, true)
 			for i, v in pairs(PLAYER) do
 				atualizaPalavras(i)
 			end
@@ -377,5 +377,5 @@ tfm.exec.disableAutoShaman(true)
 tfm.exec.disableAutoScore(true)
 tfm.exec.disableAutoNewGame(true)
 tfm.exec.newGame("@7631682")
-ui.setMapName("STOP! Script edited by Nasus_assassin#1534 - 28/08/2020<")
+ui.setMapName("STOP! Script edited by Nasus_assassin#1534 - 06/10/2020<")
 atualizaCat(true)
