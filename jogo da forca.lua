@@ -1,16 +1,13 @@
 -- Funcorp, se o jogo começar a sortear muita gente off/fora da sala, digite !reset para reiniciar o script.
-admin = "Rakan_raster#0000" -- insira seu nome!
+admin = "Aphelios#1910" -- insira seu nome!
 tfm.exec.disableAfkDeath(true)
 tfm.exec.disableAutoShaman(true)
 tfm.exec.disableAutoNewGame(true)
 tfm.exec.disableAutoScore(true)
 tfm.exec.disableAutoTimeLeft(true)
 system.disableChatCommandDisplay("skip")
-
 chars = {}
-
 lang = {}
-
 lang.br = {
   ask_word = "<font face='Verdana'><font size='12'>Escolha uma palavra",
   choose_word = "<font face='Verdana'><font size='12'>Escolha a sua palavra:<br>MÁXIMO 13 LETRAS!",
@@ -28,35 +25,26 @@ lang.br = {
   quit = "<font face='Verdana'><font size='12'>O mestre do jogo saiu."
 }
 text = lang.br
-
 players = {}
 master = ""
-
 letters = {}
 invertLetters = {}
-
 word = ""
 hasDefinedWord = false
-
 timer = 0
 bestPlayer = ""
 pendu_level = 0
-
 beginReset = false
 hasToReset = false
 resetTimer = 0
-
 resetModule = false
 isTimeOut = false
 hasWon = false
 hasLost = false
 hasSkipped = false
 hasQuit = false
-
 lettersEntered = {}
-
 id = {}
-
 id["ask_word_main"] = 1
 id["ask_word_button"] = 2
 id["ask_word_popup"] = 3
@@ -70,28 +58,22 @@ id["one_player_label"] = 10
 
 function eventNewGame()
   updatePlayersList()
-
   ui.removeTextArea(id["one_player"])
   ui.removeTextArea(id["one_player_label"])
-
   letters = {}
   invertLetters = {}
   word = ""
   hasDefinedWord = false
   timer = 0
-
   if getNbPlayers() > 1 then
     master = randomPlayer()
     tfm.exec.movePlayer(master, 400, 90, false, 0, 0, false)
-
     askWord()
     drawPendu()
   else
     removeAll()
-
     ui.addTextArea(id["one_player"], "", nil, 5, 110, 800, 25, 0xC0C0C0, 0x595959, 1f)
     ui.addTextArea(id["one_player_label"], "<p align='center'><BL><font color='#000000'>"..text.more_players.."</font></p>", nil, 25, 115, 750, 30, 0xC0C0C0, 0xC0C0C0, 0f)
-
     drawWord()
     drawPendu()
   end
@@ -103,7 +85,6 @@ end
 
 function eventNewPlayer(playerName)
   table.insert(players, playerName)
-
   if getNbPlayers() == 2 then
     tfm.exec.newGame('@4677521')
   else
@@ -115,15 +96,12 @@ end
 
 function eventPlayerLeft(playerName)
   local toRemove = 0
-
   for i,p in pairs(players) do
     if p==playerName then
       toRemove = i
     end
   end
-
   table.remove(players, toRemove)
-
   if getNbPlayers() == 1 then
     tfm.exec.newGame("@4677521")
   else
@@ -143,9 +121,7 @@ function eventLoop(currentTime, timeRemaining)
   if beginReset then
     ui.removeTextArea(id["ask_word_main"])
     ui.removeTextArea(id["ask_word_button"])
-
     resetTimer = resetTimer + 0.5
-
     ui.addTextArea(id["reset_timer"], "", nil, 5, 110, 800, 25, 0xC0C0C0, 0x595959, 1f)
     if isTimeOut then ui.addTextArea(id["reset_timer_label"], "<p align='center'><BL>"..text.time_out.." <font color='#000000'>"..text.next_turn_1.."<font color='#FF0000'>"..math.floor(7 - resetTimer).."</font>"..text.next_turn_2.."</font></p>", nil, 25, 115, 750, 30, 0xC0C0C0, 0xC0C0C0, 0f) end
 		if ResetModule then ui.addTextArea(id["reset_timer_label"],"<p align='center'><font color='#000000'>O script será reiniciado para a reobtenção dos jogadores presentes na sala.</font></p>", nil, 25, 115, 750, 30, 0xC0C0C0, 0xC0C0C0, 0f) end
@@ -154,14 +130,11 @@ function eventLoop(currentTime, timeRemaining)
     if hasSkiped then ui.addTextArea(id["reset_timer_label"], "<p align='center'><BL>"..text.pass_turn.."<font color='#000000'> "..text.next_turn_1.."<font color='#FF0000'>"..math.floor(7 - resetTimer).."</font>"..text.next_turn_2.."</font></p>", nil, 25, 115, 750, 30, 0xC0C0C0, 0xC0C0C0, 0f) end
     if hasQuit then ui.addTextArea(id["reset_timer_label"], "<p align='center'><BL>"..text.quit.."<font color='#000000'> "..text.next_turn_1.."<font color='#FF0000'>"..math.floor(7 - resetTimer).."</font>"..text.next_turn_2.."</font></p>", nil, 25, 115, 750, 30, 0xC0C0C0, 0xC0C0C0, 0f) end
   end
-
   checkBestPlayer()
-
   if timer==25 and not hasDefinedWord and getNbPlayers() > 1 then
     isTimeOut = true
     reset()
   end
-
   if resetTimer==7 then
     isTimeOut = false
     hasWon = false
@@ -173,97 +146,75 @@ function eventLoop(currentTime, timeRemaining)
 			resetModule = false
 		end
     hasToReset = true
-
     reset()
   end
 end
 
 function eventChatCommand(playerName, message)
   local args = {}
-
   for arg in message:gmatch("[^%s]+") do
     table.insert(args, arg:lower())
   end
-
   if not hasLost and not hasSkiped and not hasQuit and args[1] ~= nil then
     if args[1]==word and playerName ~= master and not hasWon then
       local score = 0
-
       for _,letter in pairs(letters) do
         if letter=="_" then score = score + 872 end
       end
-
       tfm.exec.setPlayerScore(playerName, score, true)
-
       local i = 1
-
       while i <= word:len() do
         if letters[i]~="_" then
           invertLetters[i] = letters[i]
           letters[i] = "_"
         end
-
         i = i + 1
       end
-
       drawWord()
       hasWon = true
       reset()
     end
-
     if message == "skip" and playerName==admin and not hasWon and not hasLost and not isTimeOut then
       hasSkiped = true
       reset()
 	  tfm.exec.chatMessage("<R>Esta palavra foi anulada: "..word.."",nil)
     end
-
 	if message == "rodar" and playerName==admin then
 		tfm.exec.newGame('@4677521')
 	end
-
 	if message == "reset" and playerName==admin then
 		tfm.exec.chatMessage("<VP>O script será reiniciado para a obtenção dos jogadores.",nil)
 		beginReset = true
 		resetModule = true
 	end
-
     if args[1]:len()==1 and hasDefinedWord and args[1]~= "_" and args[1]~="-" and args[1]~="'" and playerName ~= master then
       local isEntered = false
-
       for _,letter in pairs(lettersEntered) do
         if letter==args[1] then
           isEntered = true
         end
       end
-
       if not isEntered then
         local score = 0
         local idsToRemove = {}
         local isFalse = true
-
         table.insert(lettersEntered, args[1])
-
         for id,letter in pairs(letters) do
           if letter==args[1] then
             table.insert(idsToRemove, id)
             isFalse = false
           end
         end
-
         for _,idToRemove in pairs(idsToRemove) do
           invertLetters[idToRemove] = letters[idToRemove]
           letters[idToRemove] = "_"
         end
-
         score = #idsToRemove
-
         if isFalse then
           if tfm.get.room.playerList[playerName].score > 0 then score = -1 end
           pendu_level = pendu_level + 1
         end
-
         tfm.exec.setPlayerScore(playerName, score, true)
-
         drawWord()
         drawPendu()
       end
@@ -280,15 +231,12 @@ end
 function eventPopupAnswer(popupId, playerName, answer)
   if popupId==id["ask_word_popup"] and not isTimeOut and master==playerName then
     local choosedWord = tostring(answer)
-
     if checkWord(choosedWord) then
       defineWord(choosedWord)
       hasDefinedWord = true
-
       askWord()
-		tfm.exec.setGameTime(60)
-		tfm.exec.chatMessage("<N>A palavra é: "..word.."",admin)
-
+      tfm.exec.setGameTime(60)
+      tfm.exec.chatMessage("<N>A palavra é: "..word.."",admin)
       ui.removeTextArea(id["turn"])
       ui.removeTextArea(id["turn_label"])
     end
@@ -300,12 +248,10 @@ function askWord()
   ui.removeTextArea(id["reset_timer_label"])
   ui.removeTextArea(id["ask_word_main"])
   ui.removeTextArea(id["ask_word_button"])
-
   if not hasDefinedWord then
     ui.addTextArea(id["ask_word_main"], "", master, 5, 110, 800, 35, 0xC0C0C0, 0x595959, 1f)
     ui.addTextArea(id["ask_word_button"], "<p align='center'><a href='event:callbackAskWord'>"..text.ask_word.."</a></p>", master, 300, 120, 190, 16, 0x595959, 0x595959, 1f)
-	tfm.exec.chatMessage("<ROSE>Clique em 'Escolha uma palavra' para escolher uma palavra.<br>Não serão permitidas palavras completamente desconhecidas, com números e etc.<br>Você possui 25 segundos para escolher uma palavra, caso contrário sua vez será cancelada e outro entrará em seu lugar.",master)
-
+    tfm.exec.chatMessage("<ROSE>Clique em 'Escolha uma palavra' para escolher uma palavra.<br>Não serão permitidas palavras completamente desconhecidas, com números e etc.<br>Você possui 25 segundos para escolher uma palavra, caso contrário sua vez será cancelada e outro entrará em seu lugar.",master)
     for p,_ in pairs(tfm.get.room.playerList) do
       if p~=master then
         ui.addTextArea(id["turn"], "", p, 5, 110, 800, 25, 0xC0C0C0, 0x595959, 1f)
@@ -317,16 +263,12 @@ end
 
 function defineWord(new_word)
   word = string.lower(string.gsub(new_word, " ", "-"))
-
   letters = {}
-
   local i = 36
-
   while i < 54 do
     ui.removeTextArea(i)
     i = i + 1
   end
-
   for letter in new_word:gmatch"." do
     if letter==" " or letter=="-" then
       table.insert(invertLetters, "-")
@@ -339,7 +281,6 @@ function defineWord(new_word)
       table.insert(invertLetters, "_")
     end
   end
-
   drawWord()
   drawPendu()
 end
@@ -348,10 +289,8 @@ function drawWord()
   local textId = 36
   local i = 1
   local ancreX = 40
-
   if #word==0 then
     local i = 36
-
     while i < 54 do
       ui.removeTextArea(i)
       i = i + 1
@@ -363,15 +302,12 @@ function drawWord()
       textId = textId + 1
       i = i + 1
     end
-
     local finished = true
     local j = 1
-
     while j <= word:len() do
       if invertLetters[j]=="_" then finished = false end
       j = j + 1
     end
-
     if finished then
       hasWon = true
       reset()
@@ -381,10 +317,8 @@ end
 
 function drawPendu()
   local pendu = ""
-
   if pendu_level==1 then
     pendu = pendu.."<br /><br /><br /><br /><br /><br /><br /><br /><br /> _________"
-
   elseif pendu_level==2 then
     pendu = pendu.."<br />"
     pendu = pendu.."        |<br />"
@@ -396,7 +330,6 @@ function drawPendu()
     pendu = pendu.."        |<br />"
     pendu = pendu.."        |<br />"
     pendu = pendu.." ____|____"
-
   elseif pendu_level==3 then
     pendu = pendu.."        __________.__<br />"
     pendu = pendu.."        |<br />"
@@ -408,7 +341,6 @@ function drawPendu()
     pendu = pendu.."        |<br />"
     pendu = pendu.."        |<br />"
     pendu = pendu.." ____|____"
-
   elseif pendu_level==4 then
     pendu = pendu.."        __________.__<br />"
     pendu = pendu.."        |  /<br />"
@@ -420,7 +352,6 @@ function drawPendu()
     pendu = pendu.."        |<br />"
     pendu = pendu.."        |<br />"
     pendu = pendu.." ____|____"
-
   elseif pendu_level==5 then
     pendu = pendu.."        __________.__<br />"
     pendu = pendu.."        |  /      |<br />"
@@ -432,7 +363,6 @@ function drawPendu()
     pendu = pendu.."        |<br />"
     pendu = pendu.."        |<br />"
     pendu = pendu.." ____|____"
-
   elseif pendu_level==6 then
     pendu = pendu.."        __________.__<br />"
     pendu = pendu.."        |  /      |<br />"
@@ -444,7 +374,6 @@ function drawPendu()
     pendu = pendu.."        |<br />"
     pendu = pendu.."        |<br />"
     pendu = pendu.." ____|____"
-
   elseif pendu_level==7 then
     pendu = pendu.."        __________.__<br />"
     pendu = pendu.."        |  /      |<br />"
@@ -456,7 +385,6 @@ function drawPendu()
     pendu = pendu.."        |<br />"
     pendu = pendu.."        |<br />"
     pendu = pendu.." ____|____"
-
   elseif pendu_level==8 then
     pendu = pendu.."        __________.__<br />"
     pendu = pendu.."        |  /      |<br />"
@@ -468,7 +396,6 @@ function drawPendu()
     pendu = pendu.."        |<br />"
     pendu = pendu.."        |<br />"
     pendu = pendu.." ____|____"
-
   elseif pendu_level==9 then
     pendu = pendu.."        __________.__<br />"
     pendu = pendu.."        |  /      |<br />"
@@ -480,7 +407,6 @@ function drawPendu()
     pendu = pendu.."        |<br />"
     pendu = pendu.."        |<br />"
     pendu = pendu.." ____|____"
-
   elseif pendu_level==10 then
     pendu = pendu.."        __________.__<br />"
     pendu = pendu.."        |  /      |<br />"
@@ -492,7 +418,6 @@ function drawPendu()
     pendu = pendu.."        |<br />"
     pendu = pendu.."        |<br />"
     pendu = pendu.." ____|____"
-
   elseif pendu_level==11 then
     pendu = pendu.."        __________.__<br />"
     pendu = pendu.."        |  /      |<br />"
@@ -504,24 +429,20 @@ function drawPendu()
     pendu = pendu.."        |<br />"
     pendu = pendu.."        |<br />"
     pendu = pendu.." ____|____"
-
     hasLost = true
     reset()
   end
-
   ui.addTextArea(id["pendu"], pendu, nil, 323, 235, 135, 138, 0x010101, 0xFFFFFF, 0.5f)
 end
 
 function reset()
   beginReset = true
-
   if hasToReset then
 	tfm.exec.setGameTime(25)
-
     if getNbPlayers() < 2 then
       tfm.exec.newGame('@4677521')
     else
-	letters = {}
+      letters = {}
       invertLetters = {}
       word = ""
       hasDefinedWord = false
@@ -530,15 +451,11 @@ function reset()
       hasToReset = false
       resetTimer = 0
       lettersEntered = {}
-
       drawWord()
       drawPendu()
-
       local randX = math.random(750)
       tfm.exec.movePlayer(master, randX, 385, false, 0, 0, false)
-
       local oldMaster = master
-
       if getNbPlayers()~=1 then
         if bestPlayer==oldMaster then
           while master==oldMaster do
@@ -550,14 +467,10 @@ function reset()
       else
         master = bestPlayer
       end
-
       randX = math.random(750)
-
       tfm.exec.movePlayer(master, randX, 90, false, 0, 0, false)
       tfm.exec.setPlayerScore(master, 0, false)
-
       timer = 0
-
       askWord()
     end
   end
@@ -583,7 +496,6 @@ function checkWord(word_arg)
         return false
       end
     end
-
     return true
   else
     return false
@@ -593,7 +505,6 @@ end
 function checkBestPlayer()
   topScore = 0
   bestPlayer = randomPlayer()
-
   for name,player in pairs(tfm.get.room.playerList) do
     if player.score >= topScore then
       topScore = player.score
@@ -608,7 +519,6 @@ end
 
 function updatePlayersList()
   players = {}
-
   for p,_ in pairs(tfm.get.room.playerList) do
     table.insert(players, p)
   end
