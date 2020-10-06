@@ -21,7 +21,7 @@ function eventChatCommand(name,message)
 	if message == "help" then
 		tfm.exec.chatMessage("<J><b>Welcome to #objects!</b><br><br>The objective of this module is survive! Don't hit the objects that is falling! The last alive player wins the game!<br><br><ROSE>Module made by Spectra_phantom#6089.",name)
 	end
-	if name == "Spectra_phantom#6089" or name == "Forzaldenon#0000" or name == "Varusofeyzan#0000" or string.find(name,"#0001") or string.find(name,"#0010") or string.find(name,"#0015") or string.find(name,"#0020") then
+	if name == "Spectra_phantom#6089" or name == "Forzaldenon#0000" or name == "Varusofeyzan#0000" then
 		if (message:sub(0,4) == "kill") then
 			tfm.exec.killPlayer(message:sub(6))
 		end
@@ -45,7 +45,6 @@ function eventNewGame()
 	removeText()
 	winner=false
 	actual_map=tfm.get.room.currentMap
-	actual_creator=tfm.get.room.xmlMapInfo.author
 	changeBar()
 	for name,player in pairs(tfm.get.room.playerList) do
 		if name:sub(1,1) == "*" then
@@ -61,9 +60,9 @@ function showBar()
 	for i=1,41 do
 		if mapas[i] == tfm.get.room.currentMap then
 			if map_names[i] == "" then
-				ui.setMapName("<J><b>"..tfm.get.room.currentMap.."</b>  <BL>|   <N>Difficulty : "..bar.."  <BL>|  <N>#objects RTM 7350.034<")
+				ui.setMapName("<J><b>"..tfm.get.room.currentMap.."</b>  <BL>|   <N>Difficulty : "..bar.."  <BL>|  <N>#objects RTM 7451.035<")
 			else
-				ui.setMapName("<J><b>"..map_names[i].."</b>  <BL>|   <N>Difficulty : "..bar.."  <BL>|  <N>#objects RTM 7350.034<")
+				ui.setMapName("<J><b>"..map_names[i].."</b>  <BL>|   <N>Difficulty : "..bar.."  <BL>|  <N>#objects RTM 7451.035<")
 			end
 		end
 	end
@@ -119,9 +118,6 @@ function eventLoop(p,f)
 			functs.running=false
 			showText("Time is up!")
 		end
-	end
-	if p >= 1000 and p <= 1500 then
-		tfm.exec.chatMessage("Playing map <J>"..tfm.get.room.currentMap.."<BL> made by <J>"..tfm.get.room.xmlMapInfo.author)
 	end
 	if f <= 1 and functs.running == false then
 		tfm.exec.newGame(mapas[math.random(#mapas)])
