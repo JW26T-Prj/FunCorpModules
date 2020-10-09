@@ -109,7 +109,7 @@ perguntas={
 "Em qual dia do ano o Transformice foi criado?","1","2",1,
 "Quantos anos tem o Tigrounette?","33","35",2,
 "Qual o limite antigo de membros em uma tribo do Transformice?","5000","2000",2,
-"Qual a tag atribuída aos administradores do Transformice?","#0000","#0001",2,
+"Qual o nome de um module de testes extinto em que todos viravam Pikachu e tinham que descer a ladeira?","#surble","#surbler",1,
 "No começo da vida do Defilante, quem ganhava as partidas recebia 2 firsts e quantos queijos?","0","2",1,
 "Qual destas categorias de mapas é atribuída a mapas de Survivor Vampiro?","P11","P13",1,
 "O module #freezertag antes era um submódulo de qual module?","#parkour","#circuit",1,
