@@ -42,7 +42,7 @@ perguntas={
 "O cargo de Modsent é atribuído a jogadores que são...","Moderadores e Funcorps","Moderadores e Sentinelas",2,
 "Quem é o gerenciador atual do module #pictionary?","Shamousey#0020","Ork#0015",1,
 "Qual o nome do cargo pré-definido do criador de uma tribo?","Shaman da Tribo","Líder Espiritual",2,
-"Em qual ano o ex-module maker Haxhhhhhhhhh deixou o Transformice?","2017","2018",2,
+"Qual o nome do título que a Melibellule usa?","La Belette","Fromadmin",2,
 "Qual o nome da equipe que é responsável pela categorização de mapas do Transformice?","Module Team","Mapcrew",2,
 "Quantas vezes você precisa completar um mapa bootcamp para ele ser contabilizado no perfil?","1","2",2,
 "Usuários do servidor BR eram proibidos de falar no antigo servidor EN1.","Verdadeiro","Falso",2,
