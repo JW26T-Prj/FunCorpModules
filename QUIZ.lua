@@ -1,5 +1,5 @@
 -- Para adicionar novas perguntas, utilize a seguinte sintaxe na hora de inserir: "PERGUNTA","RESPOSTA 1","RESPOSTA 2",1 ou 2
--- Atualmente existem 145 perguntas nesse código. Para sugestões de perguntas contate Reksai_void2600#6638.
+-- Atualmente existem 148 perguntas nesse código. Para sugestões de perguntas contate Reksai_void2600#6638.
 -- Caso queira pular alguma pergunta por estar muito repetida ou algo do tipo, use o comando !random.
 piso={type = 6,width = 350,height = 30,foregound = 1,friction = 1.0,restitution = 0.0,angle = 0,color = 0,miceCollision = true,groundCollision = true,dynamic = false}
 for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand"} do
@@ -41,6 +41,7 @@ perguntas={
 "Qual a categoria atribuída a mapas de Cafofo da Tribo?","P22","P20",1,
 "O cargo de Modsent é atribuído a jogadores que são...","Moderadores e Funcorps","Moderadores e Sentinelas",2,
 "Quem é o gerenciador atual do module #pictionary?","Shamousey#0020","Ork#0015",1,
+"Quantas árvores de habilidades de shaman existem no Transformice?","3","5",2,
 "Qual o nome do cargo pré-definido do criador de uma tribo?","Shaman da Tribo","Líder Espiritual",2,
 "Qual o nome do título que a Melibellule usa?","La Belette","Fromadmin",2,
 "Qual o nome da equipe que é responsável pela categorização de mapas do Transformice?","Module Team","Mapcrew",2,
@@ -64,6 +65,7 @@ perguntas={
 "Qual categoria de mapas é atribuída aos mapas de Defilante?","P18","P19",1,
 "Qual o nome da equipe que é responsável pelos modules do Transformice?","Module Team","Mapcrew",1,
 "Qual categoria de mapas é atribuída aos mapas Racing?","P7","P17",2,
+"Qual o nome do título que o Tigrounette usa?","La Belette","Les Populaires",1,
 "A habilidade 'Espírito Ancestral' faz parte de qual árvore de Habilidades?","Guia Espiritual","Mestre do Vento",1,
 "Quantos queijos custa a compra de um 2ª visual de roupas no Transformice?","100","1000",2,
 "Quem é o criador do module #circuit?","Bolodefchoco#0000","Ninguem#0095",2,
@@ -79,10 +81,11 @@ perguntas={
 "Quantos pregos para o Shaman existem no Transformice?","3","5",2,
 "Quantos tamanhos de tábua existem no Transformice?","4","3",1,
 "É possível deixar os pisos invisíveis no Transformice","Verdadeiro","Falso",1,
+"Qual a idade mínima para virar MapCrew no Transformice?","18","Não tem idade mínima",2,
 "Qual título é desbloqueado quando você consegue 1 bootcamp?","Principiante","Recruta",2,
 "Qual foi a maior quantidade de pessoas logadas no Transformice, aproximadamente?","100000","85000",2,
 "Qual o nick dos criadores do Transformice?","Melibellule e Tigrounette","Melibellule e Trigrounette",1,
-"Quem é o criador atual do module Mestre Mandou?","Nasus_assassin#1534","Darakdarkus7#0000",1,
+"Quem é o criador do module Mestre Mandou?","Nasus_assassin#1534","Darakdarkus7#0000",1,
 "Quem é o criador do module O Chão é Lava?","Miss_fortune#9548","Osicat#0000",2,
 "Qual o nome do antigo fun-site no qual você poderia acessar um Ranking dos ratos?","Cheese For Mice","Viprin Drawing Editor",1,
 "Qual o limite de jogadores em uma tribo no Transformice?","2000","5000",2,
