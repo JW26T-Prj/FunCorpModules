@@ -132,7 +132,7 @@ end
 function eventNewGame()
 	ui.removeTextArea(1,nil)
 	sudden=false
-	tfm.exec.setGameTime(120)
+	tfm.exec.setGameTime(140)
 	winner=""
 	increase=0;
 	remain=10
@@ -170,7 +170,7 @@ function eventLoop(pass,falt)
 	end
 	if sudden == true then
 		intensity=intensity+2
-		if falt < 20000 then
+		if falt < 40000 then
 			intensity=intensity+1
 		end
 		for name,player in pairs(tfm.get.room.playerList) do
@@ -179,25 +179,25 @@ function eventLoop(pass,falt)
 			end
 		end
 	end
-	if falt < 50000 and falt > 49375 then
+	if falt < 70000 and falt > 69375 then
 		tfm.exec.chatMessage("The ultra hard mode will be enabled in 10 seconds!",nil)
 	end
-	if falt < 40000 and sudden == false and falt > 30000 then
+	if falt < 60000 and sudden == false and falt > 50000 then
 		tfm.exec.chatMessage("<R>Ultra hard mode enabled!",nil)
 		ui.addTextArea(1,"",nil,-1000,-1000,3000,3000,0x000001,0x000001,0.8,false)
 		sudden=true;
 	end
-	if falt < 20000 and sudden == true and falt > 19000 then
+	if falt < 40000 and sudden == true and falt > 19000 then
 		ui.addTextArea(1,"",nil,-1000,-1000,3000,3000,0x000001,0x000001,0.91,false)
 	end
-	if falt < 10000 and sudden == true and falt > 9000 then
+	if falt < 20000 and sudden == true and falt > 9000 then
 		ui.addTextArea(1,"",nil,-1000,-1000,3000,3000,0x000001,0x000001,0.96,false)
 	end
 	if falt < 100 then
 		tfm.exec.newGame("#10")
 	end
 	if prox == false then
-		ui.setMapName("<N>Click War RTM 3431.012  <BL>|  <N>Intensity: <b>"..intensity.."</b>")
+		ui.setMapName("<N>Click War RTM 3532.013  <BL>|  <N>Intensity: <b>"..intensity.."</b>")
 	else
 		ui.setMapName("<b>"..winner.."</b> <N>wons the match! Next match on "..math.floor(falt/1000).." seconds.<")
 	end
