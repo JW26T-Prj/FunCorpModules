@@ -1,5 +1,5 @@
 admin="" -- If you are a FunCorp member, please change this with your nickname and type !tc to enable the FunCorp special resources and commands.
--- FunCorp, you can use the !command [number from 1-67] to execute a command separately. Use only when FunCorp mode (!fc) is enabled.
+-- FunCorp, you can use the !command [number from 1-71] to execute a command separately. Use only when FunCorp mode (!fc) is enabled.
 for _,f in next,{"AutoShaman","AutoNewGame","AutoTimeLeft","DebugCommand"} do
 	tfm.exec["disable"..f](true)
 end
@@ -24,7 +24,7 @@ for _,f in next,{"command","mapa","pw","limit","run","fc","q","a","t","kill"} do
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N>Bem-vindo ao Mestre Mandou! Nesta sala seu objetivo é fazer tudo o que o script mandar.<br><ROSE>Script criado por <b>Nasus_assassin#1534</b>. Traduzido por Fosfus7heads#0000. Versão RTM 6844.040",
+	welcome = "<N>Bem-vindo ao Mestre Mandou! Nesta sala seu objetivo é fazer tudo o que o script mandar.<br><ROSE>Script criado por <b>Nasus_assassin#1534</b>. Traduzido por Fosfus7heads#0000. Versão RTM 7045.041",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -98,10 +98,15 @@ lang.br = {
 	seq4 = "Dance, sente, durma e bata palmas!",
 	spider = "Cuidado com as teias de aranha!",
 	key2 = "Pressione F4!",
-	clap = "Bata palmas 5 vezes!"
+	clap = "Bata palmas 5 vezes!",
+	completed = "Você completou o comando com sucesso!",
+	rain = "Chuva de ovelhas!",
+	catch = "Colete todos os '+1' do mapa!",
+	skull = "Cuidado com as caveiras!",
+	gravity = "A gravidade foi alterada!",
 }
 lang.en = {
-	welcome = "<N>Welcome to script Master Says! On this module you have to do everything that the master says.<br><ROSE>Module created by <b>Nasus_assassin#1534</b>. Version RTM 6844.040",
+	welcome = "<N>Welcome to script Master Says! On this module you have to do everything that the master says.<br><ROSE>Module created by <b>Nasus_assassin#1534</b>. Version RTM 7045.041",
 	dancar = "Dance!",
 	sentar = "Sit!",
 	confetar = "Throw 5 confetti!",
@@ -175,10 +180,15 @@ lang.en = {
 	seq4 = "Dance, sit, sleep and clap!",
 	spider = "Caution with the spider webs!",
 	key2 = "Press F4!",
-	clap = "Clap 5 times!"
+	clap = "Clap 5 times!",
+	completed = "You completed the command!",
+	rain = "Caution with the sheeps!",
+	catch = "Collect all '+1' badges of the map!",
+	skull = "Caution with the skull badges!",
+	gravity = "The gravity was changed!",
 }
 lang.fr = {
-	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Nasus_assassin#1534</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 6844.040",
+	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Nasus_assassin#1534</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 7045.041",
 	dancar = "Danse !",
 	sentar = "Assis !",
 	confetar = "Lance 5 fois des confettis !",
@@ -252,10 +262,15 @@ lang.fr = {
 	seq4 = "Dance, assis-toi, dors et applaudir!",
 	spider = "Attention aux toiles d'araignées!",
 	key2 = "Appuie sur la touche F4!",
-	clap = "Tape dans tes mains 5 fois!"
+	clap = "Tape dans tes mains 5 fois!",
+	completed = "Vous avez terminé la commande !",
+	rain = "Attention aux moutons !",
+	catch = "Collecter tous les '+1' badges de la carte !",
+	skull = "Attention aux crânes!",
+	gravity = "La gravité a été changée!",
 }
 lang.tr = {
-	welcome = "<N> Master Says'ýn senaryosuna hoþ geldiniz! Bu modülde ustanýn söylediði her þeyi yapmalýsýnýz. <br> <ROSE><b>Nasus_assassin#1534</b> tarafýndan oluþturulan model. Tercüme eden Star#6725. Versiyon RTM 6844.040",
+	welcome = "<N> Master Says'ýn senaryosuna hoþ geldiniz! Bu modülde ustanýn söylediði her þeyi yapmalýsýnýz. <br> <ROSE><b>Nasus_assassin#1534</b> tarafýndan oluþturulan model. Tercüme eden Star#6725. Versiyon RTM 7045.041",
 	dancar = "Dans!",
 	sentar = "Sit!",
 	confetar = "5 konfeti atýn!",
@@ -330,7 +345,12 @@ lang.tr = {
 	seq4 = "Dans et, otur, uyu ve alkışla!",
 	spider = "Örümcek ağlarına dikkat!",
 	key2 = "F4 tuþuna basýn!",
-	clap = "5 kez ellerini çırp !"
+	clap = "5 kez ellerini çırp !",
+	completed = "Komutu tamamladın!",
+	rain = "Koyunlara dikkat !",
+	catch = "Haritanın '+1' tüm rozetlerini topla !",
+	skull = "Kafataslarına dikkat edin!",
+	gravity = "Yerçekimi değişti!",
 }
 if tfm.get.room.community == "br" or tfm.get.room.community == "pt" then
 	text = lang.br
@@ -382,7 +402,7 @@ function eventPlayerDied(name)
 		end
 	end
 	if active == 56 then
-		data[name].c=1
+		data[name].c=1; tfm.exec.chatMessage(text.completed,name)
 		tfm.exec.respawnPlayer(name)
 	end
 	if active >= 57 then
@@ -438,6 +458,7 @@ function eventNewGame()
 	vivo=0
 	rato=0
 	dificuldade=1
+	tfm.exec.setWorldGravity(0, 10)
 	if unlocked == true then
 		tfm.exec.setGameTime(15)
 	else
@@ -462,7 +483,7 @@ function eventPlayerLeft()
 end
 function sortearComandos()
 	if fc_mode == false then
-		active=math.random(1,67)
+		active=math.random(1,71)
 	else
 		active=tonumber(fc_cmds[math.random(#fc_cmds)])
 	end
@@ -570,14 +591,14 @@ function getCommand()
 		showCommand(active,text.esquerda)
 		tfm.exec.setGameTime(5)
 		for name,player in pairs(tfm.get.room.playerList) do
-			data[name].c=1
+			data[name].c=1;
 		end
 	end
 	if active == 10 then
 		showCommand(active,text.direita)
 		tfm.exec.setGameTime(5)
 		for name,player in pairs(tfm.get.room.playerList) do
-			data[name].c=1
+			data[name].c=1;
 		end
 	end
 	if active == 11 then
@@ -588,21 +609,21 @@ function getCommand()
 		showCommand(active,text.falar)
 		tfm.exec.setGameTime(5)
 		for name,player in pairs(tfm.get.room.playerList) do
-			data[name].c=1
+			data[name].c=1;
 		end
 	end
 	if active == 13 then
 		showCommand(active,text.pular)
 		tfm.exec.setGameTime(5)
 		for name,player in pairs(tfm.get.room.playerList) do
-			data[name].c=1
+			data[name].c=1;
 		end
 	end
 	if active == 14 then
 		showCommand(active,text.mexer)
 		tfm.exec.setGameTime(5)
 		for name,player in pairs(tfm.get.room.playerList) do
-			data[name].c=1
+			data[name].c=1;
 		end
 	end
 	if active == 15 then
@@ -617,14 +638,14 @@ function getCommand()
 		showCommand(active,text.vesquerda)
 		tfm.exec.setGameTime(5)
 		for name,player in pairs(tfm.get.room.playerList) do
-			data[name].c=1
+			data[name].c=1;
 		end
 	end
 	if active == 18 then
 		showCommand(active,text.vdireita)
 		tfm.exec.setGameTime(5)
 		for name,player in pairs(tfm.get.room.playerList) do
-			data[name].c=1
+			data[name].c=1;
 		end
 	end
 	if active == 19 then
@@ -632,7 +653,7 @@ function getCommand()
 		showCommand(active,text.quadrado)
 		tfm.exec.setGameTime(6)
 		for name,player in pairs(tfm.get.room.playerList) do
-			data[name].c=1
+			data[name].c=1;
 		end
 		whiteSquare(xpos)
 	end
@@ -641,7 +662,7 @@ function getCommand()
 		showCommand(active,text.retangulo)
 		tfm.exec.setGameTime(6)
 		for name,player in pairs(tfm.get.room.playerList) do
-			data[name].c=1
+			data[name].c=1;
 		end
 		verticalRectangle(xpos)
 	end
@@ -650,7 +671,7 @@ function getCommand()
 		showCommand(active,text.nretangulo)
 		tfm.exec.setGameTime(6)
 		for name,player in pairs(tfm.get.room.playerList) do
-			data[name].c=1
+			data[name].c=1;
 		end
 		verticalRectangle(xpos)
 	end
@@ -659,7 +680,7 @@ function getCommand()
 		showCommand(active,text.retangulo)
 		tfm.exec.setGameTime(6)
 		for name,player in pairs(tfm.get.room.playerList) do
-			data[name].c=1
+			data[name].c=1;
 		end
 		horizontalRectangle(ypos)
 	end
@@ -668,7 +689,7 @@ function getCommand()
 		showCommand(active,text.nretangulo)
 		tfm.exec.setGameTime(6)
 		for name,player in pairs(tfm.get.room.playerList) do
-			data[name].c=1
+			data[name].c=1;
 		end
 		horizontalRectangle(ypos)
 	end
@@ -700,7 +721,7 @@ function getCommand()
 		showCommand(active,text.ndance)
 		tfm.exec.setGameTime(6)
 		for name,player in pairs(tfm.get.room.playerList) do
-			data[name].c=1
+			data[name].c=1;
 		end
 	end
 	if active == 31 then
@@ -709,7 +730,7 @@ function getCommand()
 		showCommand(active,text.quadrado)
 		tfm.exec.setGameTime(6)
 		for name,player in pairs(tfm.get.room.playerList) do
-			data[name].c=1
+			data[name].c=1;
 		end
 		whiteSquare(xpos)
 		ui.addTextArea(2,"",nil,xpos2,320,80,65,0xff0000,0xff0000,0.62,false)
@@ -720,7 +741,7 @@ function getCommand()
 		showCommand(active,text.quadradov)
 		tfm.exec.setGameTime(6)
 		for name,player in pairs(tfm.get.room.playerList) do
-			data[name].c=1
+			data[name].c=1;
 		end
 		ui.addTextArea(1,"",nil,xpos2,320,80,65,0xffffff,0xffffff,0.68,false)
 		ui.addTextArea(2,"",nil,xpos,320,80,65,0xff0000,0xff0000,0.62,false)
@@ -731,7 +752,7 @@ function getCommand()
 		showCommand(active,text.retangulo)
 		tfm.exec.setGameTime(6)
 		for name,player in pairs(tfm.get.room.playerList) do
-			data[name].c=1
+			data[name].c=1;
 		end
 		verticalRectangle(xpos)
 		ui.addTextArea(2,"",nil,xpos2,0,80,400,0xff0000,0xff0000,0.62,false)
@@ -742,7 +763,7 @@ function getCommand()
 		showCommand(active,text.retangulov)
 		tfm.exec.setGameTime(6)
 		for name,player in pairs(tfm.get.room.playerList) do
-			data[name].c=1
+			data[name].c=1;
 		end
 		ui.addTextArea(1,"",nil,xpos2,0,80,400,0xffffff,0xffffff,0.68,false)
 		ui.addTextArea(2,"",nil,xpos,0,80,400,0xff0000,0xff0000,0.62,false)
@@ -775,14 +796,14 @@ function getCommand()
 		showCommand(active,text.laugh2)
 		tfm.exec.setGameTime(5)
 		for name,player in pairs(tfm.get.room.playerList) do
-			data[name].c=1
+			data[name].c=1;
 		end
 	end
 	if active == 42 then
 		showCommand(active,text.stone)
 		tfm.exec.setGameTime(6)
 		for name,player in pairs(tfm.get.room.playerList) do
-			data[name].c=1
+			data[name].c=1;
 		end
 		for i=1,24 do
 			tfm.exec.addShamanObject(85,(i*80)-20,64,0,0,0,false)
@@ -806,7 +827,7 @@ function getCommand()
 		showCommand(active,text.nretangulo)
 		tfm.exec.setGameTime(6)
 		for name,player in pairs(tfm.get.room.playerList) do
-			data[name].c=1
+			data[name].c=1;
 		end
 		verticalRectangle(xpos)
 		ui.addTextArea(2,"",nil,xpos2,0,80,400,0xff0000,0xff0000,0.62,false)
@@ -836,7 +857,7 @@ function getCommand()
 	if active == 52 then
 		showCommand(active,text.dancing)
 		for name,player in pairs(tfm.get.room.playerList) do
-			data[name].c=1
+			data[name].c=1;
 			tfm.exec.playEmote(name,0)
 		end
 		tfm.exec.setGameTime(15)
@@ -844,7 +865,7 @@ function getCommand()
 	if active == 53 then
 		showCommand(active,text.freeze)
 		for name,player in pairs(tfm.get.room.playerList) do
-			data[name].c=1
+			data[name].c=1;
 			tfm.exec.freezePlayer(name,true)
 		end
 		tfm.exec.setGameTime(5)
@@ -867,7 +888,7 @@ function getCommand()
 		showCommand(active,text.quadradoa)
 		tfm.exec.setGameTime(6)
 		for name,player in pairs(tfm.get.room.playerList) do
-			data[name].c=1
+			data[name].c=1;
 		end
 		ui.addTextArea(1,"",nil,xpos2,320,80,65,0xff0000,0xff0000,0.68,false)
 		ui.addTextArea(2,"",nil,xpos,320,80,65,0x0000ff,0x0000ff,0.62,false)
@@ -875,14 +896,14 @@ function getCommand()
 	if active == 58 then
 		showCommand(active,text.naction)
 		for name,player in pairs(tfm.get.room.playerList) do
-			data[name].c=1
+			data[name].c=1;
 		end
 		tfm.exec.setGameTime(10)
 	end
 	if active == 59 then
 		showCommand(active,text.nchorem)
 		for name,player in pairs(tfm.get.room.playerList) do
-			data[name].c=1
+			data[name].c=1;
 		end
 		tfm.exec.setGameTime(7)
 	end
@@ -897,7 +918,7 @@ function getCommand()
 	if active == 62 then
 		showCommand(active,text.spider)
 		for name,player in pairs(tfm.get.room.playerList) do
-			data[name].c=1
+			data[name].c=1;
 		end
 		tfm.exec.setGameTime(10)
 		for i=1,6 do
@@ -914,7 +935,7 @@ function getCommand()
 		showCommand(active,text.quadradov)
 		tfm.exec.setGameTime(6)
 		for name,player in pairs(tfm.get.room.playerList) do
-			data[name].c=1
+			data[name].c=1;
 		end
 		ui.addTextArea(2,"",nil,xpos,320,80,65,0xff0000,0xff0000,0.68,false)
 		ui.addTextArea(1,"",nil,xpos2,320,80,65,0x0000ff,0x0000ff,0.62,false)
@@ -931,21 +952,62 @@ function getCommand()
 		showCommand(active,text.clap)
 		tfm.exec.setGameTime(9)
 	end
+	if active == 68 then
+		showCommand(active,text.rain)
+		tfm.exec.setGameTime(8)
+		for name,player in pairs(tfm.get.room.playerList) do
+			data[name].c=1;
+		end
+		for i=1,24 do
+			tfm.exec.addShamanObject(40,(i*80)-20,64,0,0,0,false)
+		end
+	end
+	if active == 69 then
+		showCommand(active,text.catch)
+		tfm.exec.setGameTime(math.random(12,18))
+		for i=1,4 do
+			tfm.exec.addBonus(0, math.random(120,680), math.random(90,290), i, 0)
+		end
+	end
+	if active == 70 then
+		showCommand(active,text.skull)
+		tfm.exec.setGameTime(6)
+		for name,player in pairs(tfm.get.room.playerList) do
+			data[name].c=1;
+		end
+		for i=5,9 do
+			tfm.exec.addBonus(2, math.random(120,680), math.random(90,290), i, 0)
+		end
+	end
+	if active == 71 then
+		showCommand(active,text.gravity)
+		tfm.exec.setGameTime(9)
+		for name,player in pairs(tfm.get.room.playerList) do
+			data[name].c=1;
+		end
+		tfm.exec.setWorldGravity(0, math.random(-5,20))
+	end
 	if active == 99 then
 		showCommand(active,q)
 		tfm.exec.setGameTime(qtime)
 	end
 end
+function eventPlayerBonusGrabbed(name, id)
+	data[name].s=data[name].s+1
+	if data[name].s >= 4 then
+		data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+	end
+end		
 function eventTextAreaCallback(id,name,callback)
 	if callback == "command51" then
-		data[name].c=1
+		data[name].c=1; tfm.exec.chatMessage(text.completed,name)
 		ui.removeTextArea(250,name)
 	end
 end
 function eventChatMessage(name,message)
 	if active == 11 then
 		if string.len(message) >= 2 then
-			data[name].c=1
+			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
 		end
 	end
 	if active == 12 or active == 14 or active == 59 then
@@ -953,14 +1015,14 @@ function eventChatMessage(name,message)
 	end
 	if active == 16 then
 		if message == "2020" then
-			data[name].c=1
+			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
 		else
 			tfm.exec.killPlayer(name)
 		end
 	end
 	if active == 29 then
 		if string.upper(message) == string.upper(name) then
-			data[name].c=1
+			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
 		end
 	end
 	if active == 41 then
@@ -970,7 +1032,7 @@ function eventChatMessage(name,message)
 	end
 	if active == 43 then
 		if string.upper(message) == "EU SOU NOOB" or string.upper(message) == "I AM NOOB" or string.upper(message) == "BEN NOOB" then
-			data[name].c=1
+			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
 		end
 		if string.find(message,"PRO") or string.find(message,"pro") or string.find(message,"Pro") then
 			tfm.exec.killPlayer(name)
@@ -978,36 +1040,36 @@ function eventChatMessage(name,message)
 	end
 	if active == 47 then
 		if message == tostring(number) then
-			data[name].c=1
+			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
 		end
 	end
 	if active == 60 then
 		if message == "2" then
-			data[name].c=1
+			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
 		end
 	end
 	if active == 99 then
 		if string.upper(message) == string.upper(a) then
-			data[name].c=1
+			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
 		end
 	end
 end
 function eventEmotePlayed(name,id)
 	if active == 1 then
 		if id == 0 or id == 10 then
-			data[name].c=1
+			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
 		end
 	end
 	if active == 2 then
 		if id == 8 then
-			data[name].c=1
+			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
 		end
 	end
 	if active == 3 then
 		if id == 9 then
 			data[name].s=data[name].s+1
 			if data[name].s >= 5 then
-				data[name].c=1
+				data[name].c=1; tfm.exec.chatMessage(text.completed,name)
 			end
 		end
 	end
@@ -1015,23 +1077,23 @@ function eventEmotePlayed(name,id)
 		if id == 3 then
 			data[name].s=data[name].s+1
 			if data[name].s >= 10 then
-				data[name].c=1
+				data[name].c=1; tfm.exec.chatMessage(text.completed,name)
 			end
 		end
 	end
 	if active == 6 then
 		if id == 6 then
-			data[name].c=1
+			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
 		end
 	end
 	if active == 7 then
 		if id == 4 then
-			data[name].c=1
+			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
 		end
 	end
 	if active == 8 then
 		if id == 2 then
-			data[name].c=1
+			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
 		end
 	end
 	if active == 14 or active == 53 or active == 58 then
@@ -1039,7 +1101,7 @@ function eventEmotePlayed(name,id)
 	end
 	if active == 15 then
 		if id == 10 then
-			data[name].c=1
+			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
 		end
 	end
 	if active == 30 then
@@ -1048,14 +1110,14 @@ function eventEmotePlayed(name,id)
 		end
 	end
 	if active == 36 then
-		data[name].c=1
+		data[name].c=1; tfm.exec.chatMessage(text.completed,name)
 	end
 	if active == 37 then
 		if id == 0 and data[name].s == 0 then
 			data[name].s=1
 		end
 		if id == 8 and data[name].s == 1 then
-			data[name].c=1
+			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
 		end
 	end
 	if active == 39 then
@@ -1066,12 +1128,12 @@ function eventEmotePlayed(name,id)
 			data[name].s=2
 		end
 		if id == 6 and data[name].s == 2 then
-			data[name].c=1
+			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
 		end
 	end
 	if active == 40 then
 		if id == 1 then
-			data[name].c=1
+			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
 		end
 	end
 	if active == 41 then
@@ -1084,7 +1146,7 @@ function eventEmotePlayed(name,id)
 			data[name].s=1
 		end
 		if id == 1 and data[name].s == 1 then
-			data[name].c=1
+			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
 		end
 	end
 	if active == 50 then
@@ -1092,7 +1154,7 @@ function eventEmotePlayed(name,id)
 			data[name].s=1
 		end
 		if id == 2 and data[name].s == 1 then
-			data[name].c=1
+			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
 		end
 	end
 	if active == 54 then
@@ -1100,7 +1162,7 @@ function eventEmotePlayed(name,id)
 			data[name].s=1
 		end
 		if id == 6 and data[name].s == 1 then
-			data[name].c=1
+			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
 		end
 	end
 	if active == 59 then
@@ -1119,14 +1181,14 @@ function eventEmotePlayed(name,id)
 			data[name].s=3
 		end
 		if id == 5 and data[name].s == 3 then
-			data[name].c=1
+			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
 		end
 	end
 	if active == 67 then
 		if id == 5 then
 			data[name].s=data[name].s+1
 			if data[name].s >= 5 then
-				data[name].c=1
+				data[name].c=1; tfm.exec.chatMessage(text.completed,name)
 			end
 		end
 	end
@@ -1135,7 +1197,7 @@ function eventMouse(name,x,y)
 	if active == 4 then
 		data[name].s=data[name].s+1
 		if data[name].s >= 10 then
-			data[name].c=1
+			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
 		end
 	end
 end
@@ -1165,7 +1227,7 @@ function eventKeyboard(name,id,down,x,y)
 			end
 			data[name].s=data[name].s+1
 			if data[name].s >= 30 then
-				data[name].c=1
+				data[name].c=1; tfm.exec.chatMessage(text.completed,name)
 			end
 		end
 		if data[name].key == 37 and id == 65 then
@@ -1182,7 +1244,7 @@ function eventKeyboard(name,id,down,x,y)
 			end
 			data[name].s=data[name].s+1
 			if data[name].s >= 30 then
-				data[name].c=1
+				data[name].c=1; tfm.exec.chatMessage(text.completed,name)
 			end
 		end
 		if data[name].key == 39 and id == 68 then
@@ -1199,7 +1261,7 @@ function eventKeyboard(name,id,down,x,y)
 			end
 			data[name].s=data[name].s+1
 			if data[name].s >= 60 then
-				data[name].c=1
+				data[name].c=1; tfm.exec.chatMessage(text.completed,name)
 			end
 		end
 		if data[name].key == 37 and id == 65 then
@@ -1216,7 +1278,7 @@ function eventKeyboard(name,id,down,x,y)
 			end
 			data[name].s=data[name].s+1
 			if data[name].s >= 60 then
-				data[name].c=1
+				data[name].c=1; tfm.exec.chatMessage(text.completed,name)
 			end
 		end
 		if data[name].key == 39 and id == 68 then
@@ -1230,13 +1292,13 @@ function eventKeyboard(name,id,down,x,y)
 		if id == 32 then
 			data[name].s=data[name].s+1
 			if data[name].s >= 15 then
-				data[name].c=1
+				data[name].c=1; tfm.exec.chatMessage(text.completed,name)
 			end
 		end
 	end
 	if active == 35 then
 		if id == 40 or id == 83 then
-			data[name].c=1
+			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
 		end
 		if id == 38 or id == 87 then
 			tfm.exec.killPlayer(name)
@@ -1244,22 +1306,23 @@ function eventKeyboard(name,id,down,x,y)
 	end
 	if active == 38 then
 		if id == 46 then
-			data[name].c=1
+			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
 		end
 	end
 	if active == 45 then
 		if id == 38 or id == 87 then
-			data[name].c=1
+			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
 		end
 	end
 	if active == 48 then
-		data[name].c=1
+		data[name].c=1; tfm.exec.chatMessage(text.completed,name)
 	end
 	if active == 49 then
 		if id == 38 or id == 87 then
 			data[name].s=data[name].s+1
 			if data[name].s >= 5 then
-				data[name].c=1
+				data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+				
 			end
 		end
 	end
@@ -1267,7 +1330,7 @@ function eventKeyboard(name,id,down,x,y)
 		if id == 40 or id == 83 then
 			data[name].s=data[name].s+1
 			if data[name].s >= 1 then
-				data[name].c=1
+				data[name].c=1; tfm.exec.chatMessage(text.completed,name)
 			end
 		end
 	end
@@ -1278,7 +1341,7 @@ function eventKeyboard(name,id,down,x,y)
 	end
 	if active == 63 then
 		if id == 115 then
-			data[name].c=1
+			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
 		end
 	end
 	if active == 65 then
@@ -1288,7 +1351,7 @@ function eventKeyboard(name,id,down,x,y)
 			end
 			data[name].s=data[name].s+1
 			if data[name].s >= 15 then
-				data[name].c=1
+				data[name].c=1; tfm.exec.chatMessage(text.completed,name)
 			end
 		end
 		if data[name].key == 37 and id == 65 then
@@ -1305,7 +1368,7 @@ function eventKeyboard(name,id,down,x,y)
 			end
 			data[name].s=data[name].s+1
 			if data[name].s >= 15 then
-				data[name].c=1
+				data[name].c=1; tfm.exec.chatMessage(text.completed,name)
 			end
 		end
 		if data[name].key == 39 and id == 68 then
@@ -1319,12 +1382,12 @@ end
 function eventLoop(passado,faltando)
 	local tempo=math.floor(faltando/1000)
 	if active == -2 then
-		ui.setMapName("                        <N>"..text.mices.."  <BL>|  <N><b>Version RTM 6844.040</b><")
+		ui.setMapName("                        <N>"..text.mices.."  <BL>|  <N><b>Version RTM 7045.041</b><")
 	elseif active == -1 then
-		ui.setMapName("          <VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."  <BL>|  <N><b>Version RTM 6844.040</b><")
+		ui.setMapName("          <VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."  <BL>|  <N><b>Version RTM 7045.041</b><")
 	end
 	if active >= 0 then
-		ui.setMapName("             "..tfm.get.room.currentMap.."  <BL>|  <N>"..text.mestre.."  <BL>|  <N>"..text.mice.." : <J>"..vivo.." / "..rato.."  <BL>|  <N>"..text.round.." : <J>"..rodada.."  <BL>|  <ROSE><b>Version RTM 6844.040</b><")
+		ui.setMapName("             "..tfm.get.room.currentMap.."  <BL>|  <N>"..text.mestre.."  <BL>|  <N>"..text.mice.." : <J>"..vivo.." / "..rato.."  <BL>|  <N>"..text.round.." : <J>"..rodada.."  <BL>|  <ROSE><b>Version RTM 7045.041</b><")
 		if passado > 1200 and passado < 1700 and unlocked == true then
 			tfm.exec.chatMessage(""..text.playingmap.." <J>"..tfm.get.room.currentMap.."<BL> "..text.created.." <J>"..tfm.get.room.xmlMapInfo.author)
 		end
@@ -1445,8 +1508,14 @@ function eventLoop(passado,faltando)
 		for i=1,6 do
 			tfm.exec.removePhysicObject(i)
 		end
+		for i=1,4 do
+			tfm.exec.removeBonus(i)
+		end
+		for i=5,9 do
+			tfm.exec.removeBonus(i)
+		end
 		active=0
-		if rodada == 4 or rodada == 6 or rodada == 8 or rodada == 10 or rodada == 12 then
+		if rodada == 3 or rodada == 6 or rodada == 9 or rodada == 12 or rodada == 15 or rodada == 18 then
 			dificuldade=dificuldade+1
 		end
 		for name,player in pairs(tfm.get.room.playerList) do
@@ -1469,6 +1538,9 @@ function eventLoop(passado,faltando)
 		if data[name] then
 			if data[name].c == 1 then
 				tfm.exec.setNameColor(name,0x00ff00)
+				if completed == false then
+					completed=true
+				end
 			else
 				tfm.exec.setNameColor(name,0xc2c2da)
 			end
