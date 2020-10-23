@@ -80,7 +80,7 @@ perguntas={
 "Qual a tribo do Tigrounette?","Lute como uma garota","Les Populaires",2,
 "Qual título é desbloqueado quando você consegue 20.000 firsts?","RELÂMPAGO","Mestre do Vento",2,
 "Qual título é desbloqueado quando você cria uma conta no Transformice?","Alpha & Ômega","Ratinho",2,
-"Há quantos tipos de piso no Transformice?","15","16",1,
+"Há quantos tipos de piso no Transformice?","15","16",2,
 "Quantos pregos para o Shaman existem no Transformice?","3","5",2,
 "Quantos tamanhos de tábua existem no Transformice?","4","3",1,
 "É possível deixar os pisos invisíveis no Transformice","Verdadeiro","Falso",1,
