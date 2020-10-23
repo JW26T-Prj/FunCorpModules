@@ -11,7 +11,7 @@ jogadores={assasinos={},detetives={},medicos={},vivos=0,lista={}}
 quant={assasinos=0,detetives=0,medicos=0,vitimas=0,vivos=0}
 limites={assasinos=0,detetives=0,medicos=0}
 modo="inicial"
-mapa="@7710965"
+mapa="@7404327"
 contador=0
 tfm.exec.setRoomMaxPlayers(48)
 system.disableChatCommandDisplay("reiniciar")
@@ -25,7 +25,7 @@ function eventChatCommand(name,comando)
 	end
 end
 function eventNewGame()
-	ui.setMapName("Cidade Dorme v3! Versão RTM 1008.002 gerenciada por Spectra_phantom#6089.<")
+	ui.setMapName("        <b>Cidade Dorme v3</b>  <BL>|  <N>Versão RTM 1109.003 gerenciada por Spectra_phantom#6089.<")
 	contador=0
 	tfm.exec.setGameTime(40)
 	jogadores={assasinos={},detetives={},medicos={},vivos=0,lista={}}
@@ -163,7 +163,7 @@ end
 function eventLoop()
 	contador=contador+0.5
 	if modo == "aguardando" then
-		ui.setMapName("<J>Assasinos vivos: <R><b>"..quant.assasinos.."</b>  <BL>|  <J>Detetives vivos: <VP><b>"..quant.detetives.."</b>  <BL>|  <N>Versão RTM 1008.002<")
+		ui.setMapName("<J>Assasinos vivos: <R><b>"..quant.assasinos.."</b>  <BL>|  <J>Detetives vivos: <VP><b>"..quant.detetives.."</b>  <BL>|  <N>Versão RTM 1109.003<")
 	end
 	if contador == 1 then
 		if admin == "" then
