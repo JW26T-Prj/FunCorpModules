@@ -474,7 +474,7 @@ function eventNewGame()
 	end
 	rodadas=math.floor(20+(rato/3.5))
 	if tfm.get.room.community == "br" then
-		tfm.exec.chatMessage("<VP><b>Você pode ver todas as salas que compõem o module #anvilwar na /sala #anvilwar00rooms.<br><br><ROSE>Atenção: Nos próximos dias, o comando do Mestre Mandou será passado para outro usuário. Não aguardem grandes mudanças no module até lá.")
+		tfm.exec.chatMessage("<VP><b>Você pode ver todas as salas que compõem o module #anvilwar na /sala #anvilwar00rooms.</b><br><br><ROSE>Atenção: Nos próximos dias, o comando do Mestre Mandou será passado para outro usuário. Não aguardem grandes mudanças no module até lá.")
 	end
 	tfm.exec.setNameColor(admin,0xff0000)
 end
