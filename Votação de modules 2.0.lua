@@ -1,9 +1,9 @@
 -- SCRIPT AGORA GERENCIADO POR RAKAN_RASTER#0000, A OUTRA CRIADORA PASSOU PRA MIM!!!
 -- FunCorp, este script é usado para que os ratos possam votar em até 6 scripts diferentes.
--- Substitua na linha 6 do código a variável 'admin' pelo seu nickname com a #tag. Ao rodar o código, digite !start e escolha os scripts e aguarde a votação.
+-- Substitua na linha 6 do código na variável 'admin' o meu nome pelo seu nickname com a #tag. Ao rodar o código, digite !start e escolha os scripts e aguarde a votação.
 -- Caso você também queira, substitua na linha 6 do código a variável 'tempo', para definir a quantidade de tempo até o resultado final.
 -- Se por algum motivo você precise reiniciar a votação, digite !reset para reiniciar tudo. Neste caso, volte a definir os scripts novamente.
-admin="Forzaldenon#0000"
+admin="Rakan_raster#0000"
 tempo=90
 scripts={name1="",name2="",name3="",name4="",name5="",name6="",count1=0,count2=0,count3=0,count4=0,count5=0,count6=0}
 for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","AfkDeath"} do
