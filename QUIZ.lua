@@ -150,7 +150,7 @@ perguntas={
 "Qual a tag atribuída a ex-membros da equipe do Transformice?","#0020","#0095",2,
 "Tigrounette é homem ou mulher?","Homem","Mulher",1,
 "É possível presentear outros ratos com itens da loja utilizando somente queijos.","Verdadeiro","Falso",2,
-"Qual a função da habilidade de shaman 'Superstar'?","Todos os ratos ao redor dançam","Todos os ratos ao redor beijam",1,
+"Qual a função da habilidade de shaman 'Superstar'?","Os ratos ao redor dançam","Os ratos ao redor beijam",1,
 "Qual o último título de ratos salvos pelo Shaman?","Virtuoso","Alpha & Ômega",2,
 "Qual o nome do jogo de Zumbis lançado pela Atelier 801?","League of Legends","Dead Maze",2,
 "Quantas medalhas comemorativas de aniversário existem no Transformice?","2","10",1,
