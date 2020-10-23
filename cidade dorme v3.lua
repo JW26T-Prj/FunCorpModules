@@ -25,7 +25,7 @@ function eventChatCommand(name,comando)
 	end
 end
 function eventNewGame()
-	ui.setMapName("Cidade Dorme v3! Versão RTM 0907.001 gerenciada por Rakan_raster#0000.<")
+	ui.setMapName("Cidade Dorme v3! Versão RTM 1008.002 gerenciada por Spectra_phantom#6089.<")
 	contador=0
 	tfm.exec.setGameTime(40)
 	jogadores={assasinos={},detetives={},medicos={},vivos=0,lista={}}
@@ -163,14 +163,14 @@ end
 function eventLoop()
 	contador=contador+0.5
 	if modo == "aguardando" then
-		ui.setMapName("<J>Assasinos vivos: <R><b>"..quant.assasinos.."</b>  <BL>|  <J>Detetives vivos: <VP><b>"..quant.detetives.."</b>  <BL>|  <N>Versão RTM 0907.001<")
+		ui.setMapName("<J>Assasinos vivos: <R><b>"..quant.assasinos.."</b>  <BL>|  <J>Detetives vivos: <VP><b>"..quant.detetives.."</b>  <BL>|  <N>Versão RTM 1008.002<")
 	end
 	if contador == 1 then
 		if admin == "" then
-			tfm.exec.chatMessage("<VP>O module não pode ser iniciado. <br>Certifique-se de que inseriu seu nome corretamente no nome da sala.<br><br>Exemplo: <b>/sala #anvilwar00cd3#Rakan_raster#0000</b><br><br>Em caso de un FunCorp, certifique-se que inseriu o nome corretamente no código.<br><br>Script desativado.")
+			tfm.exec.chatMessage("<VP>O module não pode ser iniciado. <br>Certifique-se de que inseriu seu nome corretamente no nome da sala.<br><br>Exemplo: <b>/sala #anvilwar00cd3#Spectra_phantom#6089</b><br><br>Em caso de un FunCorp, certifique-se que inseriu o nome corretamente no código.<br><br>Script desativado.")
 		else
 			if jogadores.vivos >= 5 then
-				tfm.exec.chatMessage("<J>Bem-vindos ao module Cidade Dorme v3. Neste module vocês deverão descobrir quem são os assasinos e impedir que eles matem todos os detetives ou todas as vítimas.<br><br>Module gerenciado por Rakan_raster#0000.<br><br>A partida será iniciada em 30 segundos.")
+				tfm.exec.chatMessage("<J>Bem-vindos ao module Cidade Dorme v3. Neste module vocês deverão descobrir quem são os assasinos e impedir que eles matem todos os detetives ou todas as vítimas.<br><br>Module gerenciado por Spectra_phantom#6089. Traduzido por Rakan_raster#0000.<br><br>A partida será iniciada em 30 segundos.")
 			else
 				tfm.exec.chatMessage("<R>Número insuficiente de jogadores na sala. O script requer pelo menos 5 jogadores.")
 				contador=-30
@@ -183,7 +183,7 @@ function eventLoop()
 			definirLimites()
 		else
 			tfm.exec.chatMessage("<R>Ratos ativos insuficientes na sala. Reiniciando o código...")
-			contador=980
+			contador=990
 		end
 	end
 	if contador == 40 then
