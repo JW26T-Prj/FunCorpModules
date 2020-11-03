@@ -14,7 +14,7 @@ for _,f in next,{"command","mapa","pw","limit","run","fc","q","a","t","kill"} do
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N><b>Bem-vindos ao novo Mestre Mandou!</b><br>O objetivo deste module é muito simples: Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><VP>Tenha sempre cuidado com os comandos trolls!<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Jessiewind26#2546<br><br><ROSE>Versão RTM 8148.044",
+	welcome = "<N><b>Bem-vindos ao novo Mestre Mandou!</b><br>O objetivo deste module é muito simples: Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><VP>Tenha sempre cuidado com os comandos trolls!<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Jessiewind26#2546<br><br><ROSE>Versão RTM 8249.045",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -96,7 +96,7 @@ lang.br = {
 	gravity = "A gravidade foi alterada!",
 }
 lang.en = {
-	welcome = "<N><b>Welcome to new Simon Says module!</b><br>The objective is very simple: Follow all the commands that the game says and test all your limits!<br><VP>Please pay attention to the troll commands!<br><br><J><b>Script developed by Rakan_raster#0000</b><br>EN translation by Kazarina#4878, Concept by Jessiewind26#2546<br><br><ROSE>Version RTM 8148.044",
+	welcome = "<N><b>Welcome to new Simon Says module!</b><br>The objective is very simple: Follow all the commands that the game says and test all your limits!<br><VP>Please pay attention to the troll commands!<br><br><J><b>Script developed by Rakan_raster#0000</b><br>EN translation by Kazarina#4878, Concept by Jessiewind26#2546<br><br><ROSE>Version RTM 8249.045",
 	dancar = "Dance!",
 	sentar = "Sit!",
 	confetar = "Throw 5 confetti!",
@@ -178,7 +178,7 @@ lang.en = {
 	gravity = "The gravity was changed!",
 }
 lang.fr = {
-	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Rakan_raster#0000</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 8148.044",
+	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Rakan_raster#0000</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 8249.045",
 	dancar = "Danse !",
 	sentar = "Assis !",
 	confetar = "Lance 5 fois des confettis !",
@@ -260,7 +260,7 @@ lang.fr = {
 	gravity = "La gravité a été changée!",
 }
 lang.tr = {
-	welcome = "<N> Master Says'ýn senaryosuna hoþ geldiniz! Bu modülde ustanýn söylediði her þeyi yapmalýsýnýz. <br> <ROSE><b>Rakan_raster#0000</b> tarafýndan oluþturulan model. Tercüme eden Star#6725. Versiyon RTM 8148.044",
+	welcome = "<N> Master Says'ýn senaryosuna hoþ geldiniz! Bu modülde ustanýn söylediði her þeyi yapmalýsýnýz. <br> <ROSE><b>Rakan_raster#0000</b> tarafýndan oluþturulan model. Tercüme eden Star#6725. Versiyon RTM 8249.045",
 	dancar = "Dans!",
 	sentar = "Sit!",
 	confetar = "5 konfeti atýn!",
@@ -392,7 +392,7 @@ function eventPlayerDied(name)
 		end
 	end
 	if active == 56 then
-		data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+		completeCommand(name)
 		tfm.exec.respawnPlayer(name)
 	end
 	if active >= 57 then
@@ -417,6 +417,10 @@ function eventPlayerDied(name)
 end
 function selectMap()
 	tfm.exec.newGame(mapas[math.random(#mapas)])
+end
+function completeCommand(name)
+	data[name].c=1
+	tfm.exec.chatMessage(text.completed,name)
 end
 function eventNewGame()
 	ui.removeTextArea(0,nil)
@@ -934,7 +938,7 @@ function getCommand()
 	end
 	if active == 69 then
 		showCommand(active,text.catch)
-		tfm.exec.setGameTime(math.random(12,18))
+		tfm.exec.setGameTime(math.random(16,25))
 		for i=1,4 do
 			tfm.exec.addBonus(0, math.random(120,680), math.random(90,290), i, 0)
 		end
@@ -963,21 +967,23 @@ function getCommand()
 	end
 end
 function eventPlayerBonusGrabbed(name, id)
-	data[name].s=data[name].s+1
-	if data[name].s >= 4 then
-		data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+	if active == 69 then
+		data[name].s=data[name].s+1
+		if data[name].s >= 4 then
+			completeCommand(name)
+		end
 	end
 end		
 function eventTextAreaCallback(id,name,callback)
 	if callback == "command51" then
-		data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+		completeCommand(name)
 		ui.removeTextArea(250,name)
 	end
 end
 function eventChatMessage(name,message)
 	if active == 11 then
 		if string.len(message) >= 2 then
-			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+			completeCommand(name)
 		end
 	end
 	if active == 12 or active == 14 or active == 59 then
@@ -985,14 +991,14 @@ function eventChatMessage(name,message)
 	end
 	if active == 16 then
 		if message == "2020" then
-			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+			completeCommand(name)
 		else
 			tfm.exec.killPlayer(name)
 		end
 	end
 	if active == 29 then
 		if string.upper(message) == string.upper(name) then
-			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+			completeCommand(name)
 		end
 	end
 	if active == 41 then
@@ -1002,7 +1008,7 @@ function eventChatMessage(name,message)
 	end
 	if active == 43 then
 		if string.upper(message) == "EU SOU NOOB" or string.upper(message) == "I AM NOOB" or string.upper(message) == "BEN NOOB" then
-			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+			completeCommand(name)
 		end
 		if string.find(message,"PRO") or string.find(message,"pro") or string.find(message,"Pro") then
 			tfm.exec.killPlayer(name)
@@ -1010,36 +1016,42 @@ function eventChatMessage(name,message)
 	end
 	if active == 47 then
 		if message == tostring(number) then
-			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+			completeCommand(name)
 		end
 	end
 	if active == 60 then
 		if message == "2" then
-			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+			completeCommand(name)
+		elseif message == "3" then
+			tfm.exec.killPlayer(name)
+		elseif message == "11" then
+			tfm.exec.killPlayer(name)
+		elseif message == "22" then
+			tfm.exec.killPlayer(name)
 		end
 	end
 	if active == 99 then
 		if string.upper(message) == string.upper(a) then
-			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+			completeCommand(name)
 		end
 	end
 end
 function eventEmotePlayed(name,id)
 	if active == 1 then
 		if id == 0 or id == 10 then
-			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+			completeCommand(name)
 		end
 	end
 	if active == 2 then
 		if id == 8 then
-			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+			completeCommand(name)
 		end
 	end
 	if active == 3 then
 		if id == 9 then
 			data[name].s=data[name].s+1
 			if data[name].s >= 5 then
-				data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+				completeCommand(name)
 			end
 		end
 	end
@@ -1047,23 +1059,23 @@ function eventEmotePlayed(name,id)
 		if id == 3 then
 			data[name].s=data[name].s+1
 			if data[name].s >= 10 then
-				data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+				completeCommand(name)
 			end
 		end
 	end
 	if active == 6 then
 		if id == 6 then
-			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+			completeCommand(name)
 		end
 	end
 	if active == 7 then
 		if id == 4 then
-			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+			completeCommand(name)
 		end
 	end
 	if active == 8 then
 		if id == 2 then
-			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+			completeCommand(name)
 		end
 	end
 	if active == 14 or active == 53 or active == 58 then
@@ -1071,7 +1083,7 @@ function eventEmotePlayed(name,id)
 	end
 	if active == 15 then
 		if id == 10 then
-			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+			completeCommand(name)
 		end
 	end
 	if active == 30 then
@@ -1080,14 +1092,14 @@ function eventEmotePlayed(name,id)
 		end
 	end
 	if active == 36 then
-		data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+		completeCommand(name)
 	end
 	if active == 37 then
 		if id == 0 and data[name].s == 0 then
 			data[name].s=1
 		end
 		if id == 8 and data[name].s == 1 then
-			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+			completeCommand(name)
 		end
 	end
 	if active == 39 then
@@ -1098,12 +1110,12 @@ function eventEmotePlayed(name,id)
 			data[name].s=2
 		end
 		if id == 6 and data[name].s == 2 then
-			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+			completeCommand(name)
 		end
 	end
 	if active == 40 then
 		if id == 1 then
-			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+			completeCommand(name)
 		end
 	end
 	if active == 41 then
@@ -1116,7 +1128,7 @@ function eventEmotePlayed(name,id)
 			data[name].s=1
 		end
 		if id == 1 and data[name].s == 1 then
-			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+			completeCommand(name)
 		end
 	end
 	if active == 50 then
@@ -1124,7 +1136,7 @@ function eventEmotePlayed(name,id)
 			data[name].s=1
 		end
 		if id == 2 and data[name].s == 1 then
-			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+			completeCommand(name)
 		end
 	end
 	if active == 54 then
@@ -1132,7 +1144,7 @@ function eventEmotePlayed(name,id)
 			data[name].s=1
 		end
 		if id == 6 and data[name].s == 1 then
-			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+			completeCommand(name)
 		end
 	end
 	if active == 59 then
@@ -1151,14 +1163,14 @@ function eventEmotePlayed(name,id)
 			data[name].s=3
 		end
 		if id == 5 and data[name].s == 3 then
-			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+			completeCommand(name)
 		end
 	end
 	if active == 67 then
 		if id == 5 then
 			data[name].s=data[name].s+1
 			if data[name].s >= 5 then
-				data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+				completeCommand(name)
 			end
 		end
 	end
@@ -1167,7 +1179,7 @@ function eventMouse(name,x,y)
 	if active == 4 then
 		data[name].s=data[name].s+1
 		if data[name].s >= 10 then
-			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+			completeCommand(name)
 		end
 	end
 end
@@ -1197,7 +1209,7 @@ function eventKeyboard(name,id,down,x,y)
 			end
 			data[name].s=data[name].s+1
 			if data[name].s >= 30 then
-				data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+				completeCommand(name)
 			end
 		end
 		if data[name].key == 37 and id == 65 then
@@ -1214,7 +1226,7 @@ function eventKeyboard(name,id,down,x,y)
 			end
 			data[name].s=data[name].s+1
 			if data[name].s >= 30 then
-				data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+				completeCommand(name)
 			end
 		end
 		if data[name].key == 39 and id == 68 then
@@ -1231,7 +1243,7 @@ function eventKeyboard(name,id,down,x,y)
 			end
 			data[name].s=data[name].s+1
 			if data[name].s >= 60 then
-				data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+				completeCommand(name)
 			end
 		end
 		if data[name].key == 37 and id == 65 then
@@ -1248,7 +1260,7 @@ function eventKeyboard(name,id,down,x,y)
 			end
 			data[name].s=data[name].s+1
 			if data[name].s >= 60 then
-				data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+				completeCommand(name)
 			end
 		end
 		if data[name].key == 39 and id == 68 then
@@ -1262,13 +1274,13 @@ function eventKeyboard(name,id,down,x,y)
 		if id == 32 then
 			data[name].s=data[name].s+1
 			if data[name].s >= 15 then
-				data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+				completeCommand(name)
 			end
 		end
 	end
 	if active == 35 then
 		if id == 40 or id == 83 then
-			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+			completeCommand(name)
 		end
 		if id == 38 or id == 87 then
 			tfm.exec.killPlayer(name)
@@ -1276,22 +1288,22 @@ function eventKeyboard(name,id,down,x,y)
 	end
 	if active == 38 then
 		if id == 46 then
-			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+			completeCommand(name)
 		end
 	end
 	if active == 45 then
 		if id == 38 or id == 87 then
-			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+			completeCommand(name)
 		end
 	end
 	if active == 48 then
-		data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+		completeCommand(name)
 	end
 	if active == 49 then
 		if id == 38 or id == 87 then
 			data[name].s=data[name].s+1
 			if data[name].s >= 5 then
-				data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+				completeCommand(name)
 				
 			end
 		end
@@ -1300,7 +1312,7 @@ function eventKeyboard(name,id,down,x,y)
 		if id == 40 or id == 83 then
 			data[name].s=data[name].s+1
 			if data[name].s >= 1 then
-				data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+				completeCommand(name)
 			end
 		end
 	end
@@ -1311,7 +1323,7 @@ function eventKeyboard(name,id,down,x,y)
 	end
 	if active == 63 then
 		if id == 115 then
-			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+			completeCommand(name)
 		end
 	end
 	if active == 65 then
@@ -1321,7 +1333,7 @@ function eventKeyboard(name,id,down,x,y)
 			end
 			data[name].s=data[name].s+1
 			if data[name].s >= 15 then
-				data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+				completeCommand(name)
 			end
 		end
 		if data[name].key == 37 and id == 65 then
@@ -1338,7 +1350,7 @@ function eventKeyboard(name,id,down,x,y)
 			end
 			data[name].s=data[name].s+1
 			if data[name].s >= 15 then
-				data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+				completeCommand(name)
 			end
 		end
 		if data[name].key == 39 and id == 68 then
@@ -1352,11 +1364,11 @@ end
 function eventLoop(passado,faltando)
 	local tempo=math.floor(faltando/1000)
 	if active == -2 then
-		ui.setMapName("                        <N>"..text.mices.."  <BL>|  <VP><b>Versão RTM 8148.044</b><")
+		ui.setMapName("                        <N>"..text.mices.."  <BL>|  <VP><b>Versão RTM 8249.045</b><")
 	elseif active == -1 then
-		ui.setMapName("          <VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."  <BL>|  <VP><b>Versão RTM 8148.044</b><")
+		ui.setMapName("          <VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."  <BL>|  <VP><b>Versão RTM 8249.045</b><")
 	elseif active >= 0 then
-		ui.setMapName("                               "..tfm.get.room.currentMap.."  <BL>|  <N>"..text.mice.." : <J>"..vivo.." / "..rato.."  <BL>|  <N>"..text.round.." : <J>"..rodada.."  <BL>|  <VP><b>Versão RTM 8148.044</b><")
+		ui.setMapName("                               "..tfm.get.room.currentMap.."  <BL>|  <N>"..text.mice.." : <J>"..vivo.." / "..rato.."  <BL>|  <N>"..text.round.." : <J>"..rodada.."  <BL>|  <VP><b>Versão RTM 8249.045</b><")
 	end
 	if rato < 4 then
 		if tfm.get.room.currentMap == "@2637755" and unlocked == true then
