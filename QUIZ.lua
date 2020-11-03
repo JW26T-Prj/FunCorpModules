@@ -1,5 +1,5 @@
 -- Para adicionar novas perguntas, utilize a seguinte sintaxe na hora de inserir: "PERGUNTA","RESPOSTA 1","RESPOSTA 2",1 ou 2
--- Atualmente existem 156 perguntas nesse código. Para sugestões de perguntas contate Reksai_void2600#6638.
+-- Atualmente existem 160 perguntas nesse código. Para sugestões de perguntas contate Reksai_void2600#6638.
 -- Caso queira pular alguma pergunta por estar muito repetida ou algo do tipo, use o comando !random.
 piso={type = 6,width = 350,height = 30,foregound = 1,friction = 1.0,restitution = 0.0,angle = 0,color = 0,miceCollision = true,groundCollision = true,dynamic = false}
 for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand"} do
@@ -39,6 +39,7 @@ perguntas={
 "Qual destes comandos é utilizado para a inserção de um código especial da Japan Expo?","/lua","/code",2,
 "A habilidade 'Meep!' faz parte de qual árvore de Habilidades?","Selvagem","Físico",1,
 "Qual a categoria atribuída a mapas de Cafofo da Tribo?","P22","P20",1,
+"FunCorps são capazes de rodar scripts LUA em salas que não são de modules.","Verdadeiro","Falso",1,
 "O cargo de Modsent é atribuído a jogadores que são...","Moderadores e Funcorps","Moderadores e Sentinelas",2,
 "Quem é o gerenciador atual do module #pictionary?","Shamousey#0020","Ork#0015",1,
 "Quantas árvores de habilidades de shaman existem no Transformice?","3","5",2,
@@ -55,6 +56,7 @@ perguntas={
 "Quantos queijos são necessários para redistribuir as habilidades de shaman?","100 queijos","Depende do nível",2,
 "Quantos ratos salvos são necessários para desbloquear o modo difícil?","1000","2000",1,
 "O Transformice possui uma série animada de desenhos no YouTube.","Verdadeiro","Falso",1,
+"Vanilla, Survivor e Defilante são modules do Transformice.","Verdadeiro","Falso",2,
 "Quantos ratos salvos são necessários para desbloquear o modo divino?","5000","10000",1,
 "Os membros da Staff podem entrar nos cafofos das tribos, mesmo não sendo membro delas.","Verdadeiro","Falso",1,
 "Japan Expo é o nome de um evento do Transformice que acontece em qual país?","Japão","França",2,
@@ -72,6 +74,8 @@ perguntas={
 "Quantos queijos custa a compra de um 2ª visual de roupas no Transformice?","100","1000",2,
 "Quem é o criador do module #circuit?","Bolodefchoco#0000","Ninguem#0095",2,
 "Quantos queijos custa a customização de uma roupa no Transformice?","2000","4000",1,
+"Em qual ano estreou o sistema de missões no Transformice?","2019","2020",1,
+"Quem foi o primeiro gerenciador do module Mestre Mandou?","Haxhhhhhhhhh#0000","Jessiewind26#2546",2,
 "Quantos queijos custa a customização de um item de shaman no Transformice?","2000","4000",2,
 "Qual o nome da plataforma de execução que o Transformice utiliza?","Adobe Air","Adobe Flash Player",2,
 "É possível ganhar queijos no perfil apenas jogando modules.","Verdadeiro","Falso",2,
@@ -88,7 +92,7 @@ perguntas={
 "Qual título é desbloqueado quando você consegue 1 bootcamp?","Principiante","Recruta",2,
 "Qual foi a maior quantidade de pessoas logadas no Transformice, aproximadamente?","100000","85000",2,
 "Qual o nick dos criadores do Transformice?","Melibellule e Tigrounette","Melibellule e Trigrounette",1,
-"Quem é o criador do module Mestre Mandou?","Nasus_assassin#1534","Darakdarkus7#0000",1,
+"Quem é o criador do module Mestre Mandou?","Nasus_assassin#1534","Rakan_raster#0000",2,
 "Quem é o criador do module O Chão é Lava?","Miss_fortune#9548","Osicat#0000",2,
 "Qual o limite de consumíveis que podem ser armazenados no inventário?","80","200",1,
 "Qual o nome do antigo fun-site no qual você poderia acessar um Ranking dos ratos?","Cheese For Mice","Viprin Drawing Editor",1,
