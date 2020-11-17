@@ -1,11 +1,7 @@
-tfm.exec.disableAutoNewGame(true)
-tfm.exec.disableAutoShaman(true)
-tfm.exec.disableAutoTimeLeft(true)
-tfm.exec.disableAllShamanSkills(true)
-tfm.exec.disableDebugCommand(true)
-tfm.exec.disablePhysicalConsumables(true)
-tfm.exec.disableDebugCommand(true)
-tfm.exec.setRoomMaxPlayers(30)
+for _,f in next,{"AutoShaman","AutoNewGame","AutoTimeLeft","DebugCommand","AllShamanSkills","PhysicalConsumables"} do
+	tfm.exec["disable"..f](true)
+end
+tfm.exec.setRoomMaxPlayers(32)
 shaman=""
 alives=0
 cannons=4
@@ -13,7 +9,7 @@ z=0
 data={}
 mode="hide"
 changed=false
-map="@7763582"
+map="@7802869"
 xml=''
 tfm.exec.newGame(map)
 function eventPlayerDied(n)
@@ -36,7 +32,7 @@ function eventPlayerDied(n)
 	end
 end
 function eventNewPlayer(name)
-	tfm.exec.chatMessage("<font color='#0080ff'><b>Bem-vindos ao module #watercatch!</b><br><J>O objetivo é bem simples: Fugir do shaman, se escondendo dentro do profundo lago e tomando cuidado para não morrer afogado!<br>Shamans, não esqueçam de se mexer, ou irão morrer AFK!<br><br>Module criado por Spectra_phantom#6089. Tradução para o português feita por Rakan_raster#0000.",name)
+	tfm.exec.chatMessage("<font color='#0080ff'><b>Bem-vindos ao module #watercatch!</b><br><J>O objetivo é bem simples: Fugir do shaman, se escondendo dentro do profundo lago e tomando cuidado para não morrer afogado!<br>Shamans, não esqueçam de se mexer, ou irão morrer AFK!<br><br>Module criado por Spectra_phantom#6089. Tradução para o português feita por Rakan_raster#0000. Mapa feito por Morganadxana#0000.",name)
 end
 function eventSummoningEnd(name,id,x,y)
 	cannons=cannons-1
@@ -78,12 +74,12 @@ for n,p in pairs(tfm.get.room.playerList) do
 	end
 end
 tfm.exec.setGameTime(60)
-tfm.exec.chatMessage("<font color='#0080ff'><b>Bem-vindos ao module #watercatch!</b><br><J>O objetivo é bem simples: Fugir do shaman, se escondendo dentro do profundo lago e tomando cuidado para não morrer afogado!<br>Shamans, não esqueçam de se mexer, ou irão morrer AFK!<br><br>Module criado por Spectra_phantom#6089. Tradução para o português feita por Rakan_raster#0000.")
+tfm.exec.chatMessage("<font color='#0080ff'><b>Bem-vindos ao module #watercatch!</b><br><J>O objetivo é bem simples: Fugir do shaman, se escondendo dentro do profundo lago e tomando cuidado para não morrer afogado!<br>Shamans, não esqueçam de se mexer, ou irão morrer AFK!<br><br>Module criado por Spectra_phantom#6089. Tradução para o português feita por Rakan_raster#0000. Mapa feito por Morganadxana#0000.")
 end
 end
 function eventLoop(p,r)
 if changed == true then
-ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><J> Version RTM 2429.015 by Spectra_phantom#6089<")
+ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><J> Version RTM 3030.016 by Spectra_phantom#6089<")
 local m=math.floor(r/60000)
 local s=math.floor((((m*60000)-r) * -1) / 1000)
 ui.addTextArea(-1,"<font size='28'><font face='DejaVu Sans Mono,Consolas'><font color='#222222'><b>0"..m..":"..s.."</b>",n,693,27,110,44,0,0,1.0,true)
@@ -117,7 +113,7 @@ for n,q in pairs(tfm.get.room.playerList) do
 			end
 		end
 		if not tfm.get.room.playerList[n].isDead then
-			if tfm.get.room.playerList[n].y < 280 then
+			if tfm.get.room.playerList[n].y < 250 then
 				if data[n].o < 100 then
 					data[n].o=data[n].o+1
 				end
@@ -126,13 +122,7 @@ for n,q in pairs(tfm.get.room.playerList) do
 				if tfm.get.room.playerList[n].y <= 1020 then
 					data[n].o=data[n].o-0.9
 				elseif tfm.get.room.playerList[n].y > 1020 then
-					if tfm.get.room.playerList[n].x >= 2750 and tfm.get.room.playerList[n].x <= 3030 then
-						data[n].o=data[n].o-0.3
-					elseif tfm.get.room.playerList[n].x >= 1010 and tfm.get.room.playerList[n].x <= 1290 then
-						data[n].o=data[n].o-0.3
-					else
-						data[n].o=data[n].o-1.2
-					end
+					data[n].o=data[n].o-1.8
 				end
 			end
 			if data[n].o <= 0 then
@@ -155,7 +145,7 @@ if r <= 2000 and mode == "hide" then
 	mode="game"
 	tfm.exec.setGameTime(135+(alives*5))
 	ui.removeTextArea(22,nil)
-	tfm.exec.chatMessage("<J>O shaman foi liberado! Salvem-se quem puder!<br><br>As <N>zonas brancas<J> estão ATIVADAS. Ratos que permanecerem nelas terão seu consumo de oxigênio reduzido quando dentro delas.")
+	tfm.exec.chatMessage("<J>O shaman foi liberado! Salvem-se quem puder!<br><br>As <N>zonas brancas<J> estão <R>DESATIVADAS<J>.")
 end
 if r <= 1000 and mode == "game" then
 	tfm.exec.setGameTime(15)
