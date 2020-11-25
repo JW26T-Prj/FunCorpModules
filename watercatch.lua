@@ -81,7 +81,7 @@ end
 end
 function eventLoop(p,r)
 if changed == true then
-ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><J> Version RTM 3031.017 by Spectra_phantom#6089<")
+ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><J> Version RTM 3132.018 by Spectra_phantom#6089<")
 local m=math.floor(r/60000)
 local s=math.floor((((m*60000)-r) * -1) / 1000)
 ui.addTextArea(-1,"<font size='28'><font face='DejaVu Sans Mono,Consolas'><font color='#222222'><b>0"..m..":"..s.."</b>",n,693,27,110,44,0,0,1.0,true)
@@ -143,6 +143,21 @@ for n,q in pairs(tfm.get.room.playerList) do
 				tfm.exec.chatMessage("<R>O jogador <b>"..n.."</b> morreu afogado!")
 				tfm.exec.addShamanObject(54, tfm.get.room.playerList[n].x, tfm.get.room.playerList[n].y, 0, 0.1, 0.1, false)
 			end
+			if tfm.get.room.playerList[n].x >= 1300 and tfm.get.room.playerList[n].x <= 1500 then
+				if tfm.get.room.playerList[n].y >= 690 and tfm.get.room.playerList[n].y <= 840 then
+					data[n].o=data[n].o+0.3
+				end
+			end
+			if tfm.get.room.playerList[n].x >= 3380 and tfm.get.room.playerList[n].x <= 3580 then
+				if tfm.get.room.playerList[n].y >= 1205 and tfm.get.room.playerList[n].y <= 1355 then
+					data[n].o=data[n].o+0.7
+				end
+			end
+			if tfm.get.room.playerList[n].x >= 1530 and tfm.get.room.playerList[n].x <= 1730 then
+				if tfm.get.room.playerList[n].y >= 1730 and tfm.get.room.playerList[n].y <= 1880 then
+					data[n].o=data[n].o+1.4
+				end
+			end
 		end
 		ui.addTextArea(0,"<font size='10'><font face='DejaVu Sans Mono,Consolas'><R>O² Meter | 20 | | <N>| | 40 | | | | 60 | | | | 80 | | | | 100",n,220,20,360,14,0x181818,0x090909,0.7,true)
 		if data[n].o > 30 then
@@ -166,7 +181,7 @@ if r <= 2000 and mode == "hide" then
 	mode="game"
 	tfm.exec.setGameTime(150+(alives*5))
 	ui.removeTextArea(22,nil)
-	tfm.exec.chatMessage("<J>O shaman foi liberado! Salvem-se quem puder!<br><br>As <N>zonas brancas<J> estão <R>DESATIVADAS<J> temporariamente.")
+	tfm.exec.chatMessage("<J>O shaman foi liberado! Salvem-se quem puder!<br><br>As <N>zonas brancas<J> estão <VP>ATIVADAS<J>. Ratos que permanecerem nelas terão seu consumo de oxigênio reduzido quando dentro delas.")
 end
 if r <= 1000 and mode == "game" then
 	tfm.exec.setGameTime(15)
