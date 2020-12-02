@@ -14,7 +14,7 @@ for _,f in next,{"command","mapa","pw","limit","run","fc","q","a","t","kill"} do
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N><b>Bem-vindos ao novo Mestre Mandou!</b><br>O objetivo deste module é muito simples: Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><VP>Tenha sempre cuidado com os comandos trolls!<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Jessiewind26#2546<br><br><ROSE>Versão RTM 8350.046",
+	welcome = "<N><b>Bem-vindos ao novo Mestre Mandou!</b><br>O objetivo deste module é muito simples: Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><VP>Tenha sempre cuidado com os comandos trolls!<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Jessiewind26#2546<br><br><ROSE>Versão RTM 8451.047",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -96,7 +96,7 @@ lang.br = {
 	gravity = "A gravidade foi alterada!",
 }
 lang.en = {
-	welcome = "<N><b>Welcome to new Simon Says module!</b><br>The objective is very simple: Follow all the commands that the game says and test all your limits!<br><VP>Please pay attention to the troll commands!<br><br><J><b>Script developed by Rakan_raster#0000</b><br>EN translation by Kazarina#4878, Concept by Jessiewind26#2546<br><br><ROSE>Version RTM 8350.046",
+	welcome = "<N><b>Welcome to new Simon Says module!</b><br>The objective is very simple: Follow all the commands that the game says and test all your limits!<br><VP>Please pay attention to the troll commands!<br><br><J><b>Script developed by Rakan_raster#0000</b><br>EN translation by Kazarina#4878, Concept by Jessiewind26#2546<br><br><ROSE>Version RTM 8451.047",
 	dancar = "Dance!",
 	sentar = "Sit!",
 	confetar = "Throw 5 confetti!",
@@ -178,7 +178,7 @@ lang.en = {
 	gravity = "The gravity was changed!",
 }
 lang.fr = {
-	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Rakan_raster#0000</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 8350.046",
+	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Rakan_raster#0000</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 8451.047",
 	dancar = "Danse !",
 	sentar = "Assis !",
 	confetar = "Lance 5 fois des confettis !",
@@ -260,7 +260,7 @@ lang.fr = {
 	gravity = "La gravité a été changée!",
 }
 lang.tr = {
-	welcome = "<N> Master Says'ýn senaryosuna hoþ geldiniz! Bu modülde ustanýn söylediði her þeyi yapmalýsýnýz. <br> <ROSE><b>Rakan_raster#0000</b> tarafýndan oluþturulan model. Tercüme eden Star#6725. Versiyon RTM 8350.046",
+	welcome = "<N> Master Says'ýn senaryosuna hoþ geldiniz! Bu modülde ustanýn söylediði her þeyi yapmalýsýnýz. <br> <ROSE><b>Rakan_raster#0000</b> tarafýndan oluþturulan model. Tercüme eden Star#6725. Versiyon RTM 8451.047",
 	dancar = "Dans!",
 	sentar = "Sit!",
 	confetar = "5 konfeti atýn!",
@@ -574,7 +574,7 @@ function getCommand()
 	end
 	if active == 11 then
 		showCommand(active,text.digitar)
-		tfm.exec.setGameTime(7)
+		tfm.exec.setGameTime(8)
 	end
 	if active == 12 then
 		showCommand(active,text.falar)
@@ -937,7 +937,7 @@ function getCommand()
 		showCommand(active,text.catch)
 		tfm.exec.setGameTime(math.random(16,25))
 		for i=1,4 do
-			tfm.exec.addBonus(0, math.random(120,680), math.random(90,290), i, 0)
+			tfm.exec.addBonus(0, math.random(120,680), math.random(100,280), i, 0)
 		end
 	end
 	if active == 70 then
@@ -947,7 +947,7 @@ function getCommand()
 			data[name].c=1;
 		end
 		for i=5,9 do
-			tfm.exec.addBonus(2, math.random(120,680), math.random(90,290), i, 0)
+			tfm.exec.addBonus(2, math.random(100,700), math.random(80,300), i, 0)
 		end
 	end
 	if active == 71 then
@@ -980,7 +980,9 @@ end
 function eventChatMessage(name,message)
 	if active == 11 then
 		if string.len(message) >= 2 then
-			completeCommand(name)
+			if not string.lower(message) == "oi" or string.lower(message) == "ok" then
+				completeCommand(name)
+			end
 		end
 	end
 	if active == 12 or active == 14 or active == 59 then
@@ -1361,11 +1363,11 @@ end
 function eventLoop(passado,faltando)
 	local tempo=math.floor(faltando/1000)
 	if active == -2 then
-		ui.setMapName("                        <N>"..text.mices.."  <BL>|  <VP><b>Versão RTM 8350.046</b><")
+		ui.setMapName("                        <N>"..text.mices.."  <BL>|  <VP><b>Versão RTM 8451.047</b><")
 	elseif active == -1 then
-		ui.setMapName("          <VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."  <BL>|  <VP><b>Versão RTM 8350.046</b><")
+		ui.setMapName("          <VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."  <BL>|  <VP><b>Versão RTM 8451.047</b><")
 	elseif active >= 0 then
-		ui.setMapName("                               "..tfm.get.room.currentMap.."  <BL>|  <N>"..text.mice.." : <J>"..vivo.." / "..rato.."  <BL>|  <N>"..text.round.." : <J>"..rodada.."  <BL>|  <VP><b>Versão RTM 8350.046</b><")
+		ui.setMapName("                               "..tfm.get.room.currentMap.."  <BL>|  <N>"..text.mice.." : <J>"..vivo.." / "..rato.."  <BL>|  <N>"..text.round.." : <J>"..rodada.."  <BL>|  <VP><b>Versão RTM 8451.047</b><")
 	end
 	if rato < 4 then
 		if tfm.get.room.currentMap == "@2637755" and unlocked == true then
