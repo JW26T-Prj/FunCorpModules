@@ -11,6 +11,7 @@ mapas={"@7565678","@7358458","@7356189","@7513747","@7488224","@7434176","@75663
 map_names={"The Beginning of All","Platforms on The Heaven","Simple Circles","The Pyramid of Lava","The Damage of Fall","False Beach","Inside the Fire Cave","","","","A Simple Snow Box","The Maze of Lava","The Grasses that Disappear","Without Limits","Don't Jump!","Don't Touch on Lava","Choose Your Side","Where Are We?","The Island Forest","Black and White - Objects Edition","The Lake of Fall","On the Edge of Void - Objects Edition","White and Black","Mortal Cinema","Background Directions","Without Plans","Defilante Maze","Testing Purposes","Under the Darkness","Fallen Layers","Defilante Platform","Threshold of Boxes","Simple Black","Grassy Walls","Thickness of Clouds","Unreal Illusion","Testing Lava Cave","Ninja Directions","Limits of Tomorrow","",""}
 objects={1,2,3,6,10,17,23,35,39,40,45,46,54,60,61,68,85,89,90}
 actual_map=""
+remaining=0
 actual_creator=""
 bar=""
 loop=0
@@ -45,7 +46,6 @@ function eventNewGame()
 	removeText()
 	winner=false
 	actual_map=tfm.get.room.currentMap
-	changeBar()
 	for name,player in pairs(tfm.get.room.playerList) do
 		if name:sub(1,1) == "*" then
 		   	tfm.exec.killPlayer(name)
@@ -60,9 +60,9 @@ function showBar()
 	for i=1,41 do
 		if mapas[i] == tfm.get.room.currentMap then
 			if map_names[i] == "" then
-				ui.setMapName("<J><b>"..tfm.get.room.currentMap.."</b>  <BL>|   <N>Difficulty : "..bar.."  <BL>|  <N>#objects RTM 7552.036<")
+				ui.setMapName("<J><b>"..tfm.get.room.currentMap.."</b>  <BL>|   <N>Difficulty : <R><b>"..functs.level.."</b>  <BL>|  <N>#objects RTM 7653.037  <BL>|  <N>Time Left : <J><b>"..remaining.."</b><")
 			else
-				ui.setMapName("<J><b>"..map_names[i].."</b>  <BL>|   <N>Difficulty : "..bar.."  <BL>|  <N>#objects RTM 7552.036<")
+				ui.setMapName("<J><b>"..map_names[i].."</b>  <BL>|   <N>Difficulty : <R><b>"..functs.level.."</b>  <BL>|  <N>#objects RTM 7653.037  <BL>|  <N>Time Left : <J><b>"..remaining.."</b><")
 			end
 		end
 	end
@@ -74,27 +74,6 @@ end
 function showTextSmall(text)
 	ui.addTextArea(1,"<font size='32'><p align='center'><font color='#222222'>"..text.."",nil,103,103,600,80,0,0,1.0,true)
 	ui.addTextArea(0,"<font size='32'><p align='center'><font color='#ffffff'>"..text.."",nil,100,100,600,80,0,0,1.0,true)
-end
-function changeBar()
-	if functs.level == 1 then
-		bar="<font face='Segoe UI Symbol'><VP>▁   <J>  <font color='#ff0000'>  <font face='Verdana'>"
-	elseif functs.level == 2 then
-		bar="<font face='Segoe UI Symbol'><VP>▁▂  <J>  <font color='#ff0000'>  <font face='Verdana'>"
-	elseif functs.level == 3 then
-		bar="<font face='Segoe UI Symbol'><VP>▁▂▃ <J>  <font color='#ff0000'>  <font face='Verdana'>"
-	elseif functs.level == 4 then
-		bar="<font face='Segoe UI Symbol'><VP>▁▂▃▄<J>  <font color='#ff0000'>  <font face='Verdana'>"
-	elseif functs.level == 5 then
-		bar="<font face='Segoe UI Symbol'><VP>▁▂▃▄<J>▅ <font color='#ff0000'>  <font face='Verdana'>"
-	elseif functs.level == 6 then
-		bar="<font face='Segoe UI Symbol'><VP>▁▂▃▄<J>▅▆<font color='#ff0000'>  <font face='Verdana'>"
-	elseif functs.level == 7 then
-		bar="<font face='Segoe UI Symbol'><VP>▁▂▃▄<J>▅▆<font color='#ff0000'>▇ <font face='Verdana'>"
-	elseif functs.level >= 8 then
-		bar="<font face='Segoe UI Symbol'><VP>▁▂▃▄<J>▅▆<font color='#ff0000'>▇█<font face='Verdana'>"
-	else
-		bar="<font face='Segoe UI Symbol'><VP>    <J>  <font color='#ff0000'>  <font face='Verdana'>"
-	end
 end
 function removeText()
 	for i=0,1 do
@@ -110,6 +89,7 @@ function eventNewPlayer(name)
 	tfm.exec.chatMessage("<J><b>Welcome to #objects!</b><br><br>The objective of this module is survive! Don't hit the objects that is falling! The last alive player wins the game!<br><br><ROSE>Module made by Spectra_phantom#6089.",name)
 end
 function eventLoop(p,f)
+	remaining=math.floor(f/1000)
 	showBar()
 	if f <= 3000 and functs.running == true and winner == false then
 		for name,player in pairs(tfm.get.room.playerList) do
@@ -135,7 +115,6 @@ function eventLoop(p,f)
 	end
 	if functs.running == true then
 		loop=loop+1
-		changeBar()
 		object=objects[math.random(#objects)]
 		if loop >= 10-functs.level and winner == false then
 			removeText()
