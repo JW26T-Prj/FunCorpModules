@@ -23,7 +23,7 @@ system.disableChatCommandDisplay("limite")
 mapa="@4677521"
 lang = {}
 lang.br = {
-	welcome = "<J>Bem-vindo ao module do Jogo das 3 Pistas! Não sabe como jogar? Digite !help.<br><br>Script criado por Spectra_phantom#6089 e os membros da Spectra Advanced Module Group. Tradução e conceito original por Hecarimjhenx#0000.",
+	welcome = "<J>Bem-vindo ao module do Jogo das 3 Pistas! Não sabe como jogar? Digite !help.<br><br>Script criado por Spectra_phantom#6089. Tradução e conceito original por Hecarimjhenx#0000.",
 	time = "<R>Tempo esgotado! A resposta era ",
 	fim = "<R>Partida encerrada! O jogador com melhor pontuação será o shaman!",
 	shaman = "<R>Acabou o tempo! Outro shaman será escolhido.",
@@ -39,7 +39,7 @@ lang.br = {
 	responder = "<ROSE>Podem responder agora!"
 }
 lang.en = {
-	welcome = "<J>Welcome to 3 Tips Game! If you want help, type !help.<br><br>Script made by Spectra_phantom#6089 and the Spectra Advanced Module Group.",
+	welcome = "<J>Welcome to 3 Tips Game! If you want help, type !help.<br><br>Script made by Spectra_phantom#6089.",
 	time = "<R>End of time! The answer was",
 	fim = "<R>The match ended! The best player will be the shaman.",
 	shaman = "<R>Time is gone! Other shaman will be selected.",
@@ -118,7 +118,7 @@ function eventLoop(p,f)
 	if valendo == true and f <= 39000 then
 		ui.addTextArea(3,"<font size='17'><p align='center'><font face='Segoe UI'><J>"..text.c8p.." <b>"..dica8.."",nil,5,110,780,32,0x000001,0x000001,0.9,true)
 	end
-	ui.setMapName("<J>"..text.module.."   <G>|   <N>Question : <V>"..pergunta.."/"..limite.."   <G>|   <N>Time : <V>"..tempo.."s   <G>|   <N>Compilation RTM 24<")
+	ui.setMapName("<J>"..text.module.."   <G>|   <N>Question : <V>"..pergunta.."/"..limite.."   <G>|   <N>Time : <V>"..tempo.."s   <G>|   <N>Compilation RTM 25<")
 end
 function eventChatCommand(name,message)
 	if message == "skip" then
