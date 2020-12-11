@@ -1,4 +1,4 @@
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.0
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.0.1
 -- Esta nova versão possui diversos tipos de perguntas.
 -- Você pode selecionar o tema editando a linha 16.
 -- Temas:
@@ -170,7 +170,7 @@ perguntas={
 "Quantas medalhas comemorativas de aniversário existem no Transformice?","2","10",1,
 "Em qual árvore de habilidades está presente a habilidade 'Desintegração controlada'?","Físico","Mecânico",1,
 "Em qual ano foi lançado o Poisson, antigo jogo que depois tornou o Transformice?","2010","2008",2,
-"Por quantas horas você é banido por Hack no Transformice, por padrão?","360","168",2,
+"Por quantas horas você é banido por Hack no Transformice, por padrão?","360","168",1,
 "Qual o nome do antigo jogo do Transformice para celular?","Dead Maze","Run For Cheese",2,
 "Os donos da Atelier 801 e da Ubisoft já se encontraram pessoalmente.","Não","Sim",1,
 "Em qual árvore de habilidades está presente a habilidade 'Volta da natureza'?","Físico","Selvagem",2,
@@ -211,7 +211,7 @@ pergunta=0
 rodada=0
 actual_question={quest="",a1="",a2="",answer=nil}
 function eventNewGame()
-	ui.setMapName("Quiz de Perguntas - Versão 2.0 - por Reksai_void2600#6638<")
+	ui.setMapName("Quiz de Perguntas - Versão 2.0.1 - por Reksai_void2600#6638<")
 	tfm.exec.setGameTime(18)
 end
 function reset()
@@ -229,7 +229,7 @@ function eventChatCommand(name,message)
 end
 function eventNewPlayer(name)
 	tfm.exec.chatMessage("Aguarde a próxima rodada para jogar.",name)
-	ui.setMapName("Quiz de Perguntas - Versão 2.0 - por Reksai_void2600#6638<")
+	ui.setMapName("Quiz de Perguntas - Versão 2.0.1 - por Reksai_void2600#6638<")
 end
 function eventLoop(p,f)
 	if f < 2000 and modo == "inicial" then
