@@ -1,7 +1,7 @@
 -- Script de X1 entre 4 equipes feito pelo Nasus_assassin#1534. Altere a linha 4 do código, na variável 'admin' pelo seu nickname com #tag
 -- Para iniciar o jogo, digite !start. Retornar à tela inicial, digite !reset. Para alterar o limite de vitórias, digite !limit [número]. Alterar o número de times, digite !teams [2-4].
 -- Adicionado por Patrick_mahomes#1795.
-admin="" -- colocar seu nome aqui!
+admin="Morganadxana#0000" -- colocar seu nome aqui!
 tfm.exec.disableAutoNewGame(true)
 tfm.exec.disableAutoShaman(true)
 tfm.exec.disableAutoTimeLeft(true)
@@ -108,9 +108,7 @@ function eventNewGame()
 		if admin == "" then
 			tfm.exec.chatMessage("<VP>The module can't be started. <br>Please check if you inserted correctly your nickname on room name.<br><br>Example: <b>/room #anvilwar00x1#Spectra_phantom#6089</b><br><br>If this is a FunCorp room, verify the nickname typed on the script (including #tag)<br><br>Script disabled.")
 		else
-			for name,player in pairs(tfm.get.room.playerList) do
-				showText()
-			end
+			showText()
 		end
 		tfm.exec.setGameTime(36000)
 	elseif estado == "rodando" then
@@ -207,15 +205,36 @@ function eventPlayerWon(name)
 		elseif data[name].time == 4 then
 			score_verde=score_verde+1
 			tfm.exec.chatMessage("<VP>"..name.." scored 1 point to the GREEN team! This team now have "..score_verde.." point(s).")
-			if score_amarelo >= limite then
+			if score_verde >= limite then
 				FinalizarJogo()
 			end
 		end
 	end
 end
+function eventPlayerDied(n)
+local i=0
+local n
+for pname,player in pairs(tfm.get.room.playerList) do
+	if not player.isDead and not player.isShaman then
+		i=i+1
+		n=pname
+	end
+end
+if i==0 then
+	tfm.exec.setGameTime(5)
+elseif i==1 then
+	tfm.exec.setGameTime(20)
+end
+end
 function eventLoop(passado,faltando)
 	if estado == "rodando" then
-		ui.setMapName("         Team X1 Script by Nasus  <BL>|  <N>Scores : <R><b>"..score_vermelho.."</b> <N>- <BL><b>"..score_azul.."</b> <N>- <J><b>"..score_amarelo.."</b> <N>- <VP><b>"..score_verde.."</b>  <BL>|  <N>Limit : <ROSE><b>"..limite.."</b>  <BL>|  <N>Version RTM 0410.002<")
+		if times == 4 then
+			ui.setMapName("             Team X1 Script by Nasus  <BL>|  <N>Scores : <R><b>"..score_vermelho.."</b> <N>- <BL><b>"..score_azul.."</b> <N>- <J><b>"..score_amarelo.."</b> <N>- <VP><b>"..score_verde.."</b><N> / <ROSE><b>"..limite.."</b>  <BL>|  <N>Time : <J><b>"..math.ceil(faltando/1000).."s</b><")
+		elseif times == 3 then
+			ui.setMapName("             Team X1 Script by Nasus  <BL>|  <N>Scores : <R><b>"..score_vermelho.."</b> <N>- <BL><b>"..score_azul.."</b> <N>- <J><b>"..score_amarelo.."</b><N> / <ROSE><b>"..limite.."</b>  <BL>|  <N>Time : <J><b>"..math.ceil(faltando/1000).."s</b><")
+		elseif times == 2 then
+			ui.setMapName("             Team X1 Script by Nasus  <BL>|  <N>Scores : <R><b>"..score_vermelho.."</b> <N>- <BL><b>"..score_azul.."</b><N> / <ROSE><b>"..limite.."</b>  <BL>|  <N>Time : <J><b>"..math.ceil(faltando/1000).."s</b><")
+		end
 		if faltando <= 1 then
 			if score_vermelho < limite and score_verde < limite and score_azul < limite and score_amarelo < limite then
 				tfm.exec.newGame("#17")
@@ -231,7 +250,7 @@ function eventLoop(passado,faltando)
 		
 	end
 	if estado == "inicial" then
-		ui.setMapName("                Team X1 Script - Version RTM 0410.002 - Made by <ROSE><b>Nasus_assassin#1534</b><")
+		ui.setMapName("                Team X1 Script - Version <N>RTM 0511.003<J> - Made by <ROSE><b>Nasus_assassin#1534</b><")
 	end
 end
 function FinalizarJogo()
