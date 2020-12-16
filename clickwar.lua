@@ -4,19 +4,7 @@ end
 for _,g in next,{"p","rank","help"} do
 system.disableChatCommandDisplay(g,true)
 end
-sudden=false
-powerups=true
-winner=""
-data={}
-players_table={}
-increase=0
-intensity=40
-nightmode=false
-night=0
-mices=0
-remain=10
-last_win=""
-times=1;
+sudden=false; powerups=true; winner=""; data={}; players_table={}; increase=0; intensity=40; nightmode=false; night=0; mices=0; remain=10; last_win=""; times=1;
 enabled=false
 tfm.exec.setRoomMaxPlayers(25)
 function split(t,s)
@@ -145,7 +133,7 @@ function eventNewGame()
 		data[name].p2=false
 		data[name].pcount=0
 	end
-	tfm.exec.chatMessage("<VP><b>Você pode ver todas as salas que compõem o module #anvilwar na /sala #anvilwar00rooms.</b><br><br><BL>Welcome to module #clickwar!<br>Use the mouse to generate explosions and kill other mices!<br><br>Module developed by Hecarimjhenx#0000.",name)
+	tfm.exec.chatMessage("<N>Welcome to module #clickwar!<br>Use the mouse to generate explosions and kill other mices!<br><br>Module developed by Hecarimjhenx#0000.<br><br>#CLICKWAR REBORN IS COMING TO 2021!",name)
 end
 function eventLoop(pass,falt)
 	if pass > 1200 and pass < 1700 then
@@ -197,7 +185,7 @@ function eventLoop(pass,falt)
 		tfm.exec.newGame("#10")
 	end
 	if prox == false then
-		ui.setMapName("<N>Click War RTM 3532.013  <BL>|  <N>Intensity: <b>"..intensity.."</b>")
+		ui.setMapName("<N>Click War RTM 3633.014  <BL>|  <N>Intensity: <b>"..intensity.."</b>")
 	else
 		ui.setMapName("<b>"..winner.."</b> <N>wons the match! Next match on "..math.floor(falt/1000).." seconds.<")
 	end
