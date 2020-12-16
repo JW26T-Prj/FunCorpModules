@@ -1,4 +1,4 @@
--- SCRIPT EXCLUSIVO DA SPECTRA ADVANCED MODULE GROUP!! NGM MAIS TEM!
+-- SCRIPT EXCLUSIVO DE SHUN_KAZAMI#7014 (antigo membro da SAMG)
 -- Versão ORIGINAL do Corrida das Perguntas (vulgo #bolodefchoco00perguntas) importado diretamente do criador original (Haxhhhhhhhhh).
 -- Mapa novo feito por Shun_kazami#7014 e script agora administrado por Shun_kazami#7014.
 tfm.exec.disableAutoNewGame(true)
@@ -72,9 +72,9 @@ function eventPopupAnswer(id,name,answer)
 	end	
 end
 function eventNewPlayer(name)
-	ui.setMapName("Questions Race v10.0 [versão de 32-bits]. By Spectra Advanced Module Group.<")
+	ui.setMapName("Questions Race v10.1 [versão de 32-bits]. By Shun_kazami#7014. Versão original.<")
 	tfm.exec.respawnPlayer(name)
-	tfm.exec.chatMessage("<N>Script de Corrida das Perguntas, importado diretamente da versão original feita por Haxhhhhhhhhh.<br><b>Versão 10.0</b><br><br>Atualmente administrado por Shun_kazami#7014, mapa feito também por Shun_kazami#7014.<br><br><ROSE>SCRIPT EXCLUSIVO DA SPECTRA ADVANCED MODULE GROUP",name)
+	tfm.exec.chatMessage("<N>Script de Corrida das Perguntas, importado diretamente da versão original feita por Haxhhhhhhhhh.<br><b>Versão 10.1</b><br><br>Atualmente administrado por Shun_kazami#7014, mapa feito também por Shun_kazami#7014.<br><br><ROSE>SCRIPT EXCLUSIVO DA SPECTRA ADVANCED MODULE GROUP",name)
 	if not data[name] then
 		table.insert(players_table,name)
 		data[name]={p=0}
@@ -106,7 +106,7 @@ end
 function eventNewGame()
 	palavra=""
 	ui.removeTextArea(2,NIL)
-	ui.setMapName("Questions Race v10.0 [versão de 32-bits]. By Spectra Advanced Module Group.<")
+	ui.setMapName("Questions Race v10.1 [versão de 32-bits]. By Shun_kazami#7014. Versão original.<")
 	for id,name in pairs(players_table) do
 		data[name].p=0
 	end
