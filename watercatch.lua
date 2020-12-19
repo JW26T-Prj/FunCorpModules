@@ -2,15 +2,10 @@ for _,f in next,{"AutoShaman","AutoNewGame","AutoTimeLeft","DebugCommand","AllSh
 	tfm.exec["disable"..f](true)
 end
 tfm.exec.setRoomMaxPlayers(32)
-shaman=""
-alives=0
-cannons=4
-z=0
-data={}
-mode="hide"
-changed=false
+shaman=""; alives=0; cannons=4; z=0; data={}; mode="hide"; changed=false; loop=0;
 map="@7802869"
 xml=''
+powerups={x1=-1,x2=-1,x3=-1,x4=-1,y1=-1,y2=-1,y3=-1,y4=-1,t1=0,t2=0,t3=0,t4=0}
 tfm.exec.newGame(map)
 function eventPlayerDied(n)
 	if not tfm.get.room.playerList[n].isShaman then
@@ -45,6 +40,106 @@ function eventSummoningEnd(name,id,x,y)
 		tfm.exec.killPlayer(shaman)
 	end
 end
+function eventKeyboard(name,key,down)
+	if key == 32 and mode == "game" then
+		if tfm.get.room.playerList[name].x > powerups.x1-10 and tfm.get.room.playerList[name].x < powerups.x1+34 then
+			if tfm.get.room.playerList[name].y > powerups.y1-10 and tfm.get.room.playerList[name].y < powerups.y1+34 then
+				powerups.x1=-1
+				powerups.y1=-1
+				ui.removeTextArea(100,nil)
+				if powerups.t1 == 1 then
+					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup AFUNDAR!")
+					dropPlayer(name)
+				elseif powerups.t1 == 2 then
+					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup OXIGÊNIO!")
+					data[name].o=data[name].o+40
+					if data[name].o > 100 then
+						data[name].o=100
+					end
+				elseif powerups.t1 == 3 then
+					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup VELOCIDADE!")
+					if tfm.get.room.playerList[name].isFacingRight == true then
+						tfm.exec.movePlayer(name,0,0,true,60,0,false)
+					else
+						tfm.exec.movePlayer(name,0,0,true,-60,0,false)
+					end
+				end
+			end
+		end
+		if tfm.get.room.playerList[name].x > powerups.x2-10 and tfm.get.room.playerList[name].x < powerups.x2+34 then
+			if tfm.get.room.playerList[name].y > powerups.y2-10 and tfm.get.room.playerList[name].y < powerups.y2+34 then
+				powerups.x2=-1
+				powerups.y2=-1
+				ui.removeTextArea(101,nil)
+				if powerups.t2 == 1 then
+					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup AFUNDAR!")
+					dropPlayer(name)
+				elseif powerups.t2 == 2 then
+					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup OXIGÊNIO!")
+					data[name].o=data[name].o+40
+					if data[name].o > 100 then
+						data[name].o=100
+					end
+				elseif powerups.t2 == 3 then
+					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup VELOCIDADE!")
+					if tfm.get.room.playerList[name].isFacingRight == true then
+						tfm.exec.movePlayer(name,0,0,true,60,0,false)
+					else
+						tfm.exec.movePlayer(name,0,0,true,-60,0,false)
+					end
+				end
+			end
+		end
+		if tfm.get.room.playerList[name].x > powerups.x3-10 and tfm.get.room.playerList[name].x < powerups.x3+34 then
+			if tfm.get.room.playerList[name].y > powerups.y3-10 and tfm.get.room.playerList[name].y < powerups.y3+34 then
+				powerups.x3=-1
+				powerups.y3=-1
+				ui.removeTextArea(102,nil)
+				if powerups.t3 == 1 then
+					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup PRISÃO!")
+					dropPlayer(name)
+				elseif powerups.t3 == 2 then
+					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup OXIGÊNIO!")
+					data[name].o=data[name].o+40
+					if data[name].o > 100 then
+						data[name].o=100
+					end
+				elseif powerups.t3 == 3 then
+					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup VELOCIDADE!")
+					if tfm.get.room.playerList[name].isFacingRight == true then
+						tfm.exec.movePlayer(name,0,0,true,60,0,false)
+					else
+						tfm.exec.movePlayer(name,0,0,true,-60,0,false)
+					end
+				end
+			end
+		end
+		if tfm.get.room.playerList[name].x > powerups.x4-10 and tfm.get.room.playerList[name].x < powerups.x4+34 then
+			if tfm.get.room.playerList[name].y > powerups.y4-10 and tfm.get.room.playerList[name].y < powerups.y4+34 then
+				powerups.x4=-1
+				powerups.y4=-1
+				ui.removeTextArea(103,nil)
+				if powerups.t4 == 1 then
+					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup PRISÃO!")
+					dropPlayer(name)
+				elseif powerups.t4 == 2 then
+					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup OXIGÊNIO!")
+					data[name].o=data[name].o+40
+					if data[name].o > 100 then
+						data[name].o=100
+					end
+				elseif powerups.t4 == 3 then
+					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup VELOCIDADE!")
+					if tfm.get.room.playerList[name].isFacingRight == true then
+						tfm.exec.movePlayer(name,0,0,true,60,0,false)
+					else
+						tfm.exec.movePlayer(name,0,0,true,-60,0,false)
+					end
+				end
+			end
+		end
+	end		
+end
 function eventNewGame()
 tfm.exec.chatMessage("<font color='#0080ff'><b>Bem-vindos ao module #watercatch!</b><br><J>O objetivo é bem simples: Fugir do shaman, se escondendo dentro do profundo lago e tomando cuidado para não morrer afogado!<br>Shamans, não esqueçam de se mexer, ou irão morrer AFK!<br><br>Module e mapa criados por Morganadxana#0000. Tradução para o português feita por Rakan_raster#0000.")
 xml=tfm.get.room.xmlMapInfo.xml
@@ -62,17 +157,15 @@ for n,p in pairs(tfm.get.room.playerList) do
 	end
 	alives=alives+1
 	newData={
-	["x"]=0;
-	["yp"]=0;
-	["y"]=0;
 	["o"]=100;
+	["i"]=0;
+	["t"]=0;
 	["c"]=0;
-	["d"]=0;
-	};		
-	data[n] = newData;
+	};
+	data[n] = newData;	
 	tfm.exec.bindKeyboard(n,32,true,true)
 		if tfm.get.room.playerList[n].isShaman then
-		ui.addTextArea(22,"",n,-1000,-1000,3000,3000,0x000001,0x000001,1.0,true)
+		ui.addTextArea(22,"",n,-800,-800,2400,2400,0x000001,0x000001,1.0,true)
 		shaman=n
 		alives=alives-1
 	end
@@ -80,9 +173,36 @@ end
 tfm.exec.setGameTime(60)
 end
 end
+function genPowerup(pos,type,x,y)
+	if pos == 1 then
+		ui.addTextArea(100,"<font size='18'><p align='center'>!",nil,x,y,24,24,0x161636,0x121224,1.0,false)
+		powerups.x1=x
+		powerups.y1=y
+		powerups.t1=type
+	elseif pos == 2 then
+		ui.addTextArea(101,"<font size='18'><p align='center'>!",nil,x,y,24,24,0x161636,0x121224,1.0,false)
+		powerups.x2=x
+		powerups.y2=y
+		powerups.t2=type
+	elseif pos == 3 then
+		ui.addTextArea(102,"<font size='18'><p align='center'>!",nil,x,y,24,24,0x161636,0x121224,1.0,false)
+		powerups.x3=x
+		powerups.y3=y
+		powerups.t3=type
+	elseif pos == 4 then
+		ui.addTextArea(103,"<font size='18'><p align='center'>!",nil,x,y,24,24,0x161636,0x121224,1.0,false)
+		powerups.x4=x
+		powerups.y4=y
+		powerups.t4=type
+	end
+end
+function dropPlayer(name)
+	data[name].i=tfm.exec.addShamanObject(61,tfm.get.room.playerList[name].x,tfm.get.room.playerList[name].y,0,0,0,false)
+	data[name].t=6
+end
 function eventLoop(p,r)
 if changed == true then
-ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><J> Versão v1.1.10 - criado por Morganadxana#0000<")
+ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><J> Versão v1.2.1 - criado por Morganadxana#0000<")
 local m=math.floor(r/60000)
 local s=math.floor((((m*60000)-r) * -1) / 1000)
 ui.addTextArea(-1,"<font size='28'><font face='DejaVu Sans Mono,Consolas'><font color='#222222'><b>0"..m..":"..s.."</b>",n,693,27,110,44,0,0,1.0,true)
@@ -97,8 +217,18 @@ if mode == "game" or mode == "hide" then
 	ui.addTextArea(31,"<font size='28'><font face='DejaVu Sans Mono,Consolas'><font color='#222222'><b>"..alives.."</b>",n,15,27,40,44,0,0,1.0,true)
 	ui.addTextArea(30,"<font size='28'><font face='DejaVu Sans Mono,Consolas'><b>"..alives.."</b>",n,12,24,40,44,0,0,1.0,true)
 	ui.addTextArea(32,"<font size='14'><font face='Verdana'>rato(s) vivo(s)",n,9,60,128,44,0,0,1.0,true)
+	loop=loop+0.5
+	if loop == 30 then
+		for i=1,4 do
+			genPowerup(i,math.random(1,3),math.random(400,2800),math.random(250,1300))
+		end
+		loop=0
+	end
 else
 	for i=30,32 do
+		ui.removeTextArea(i,nil)
+	end
+	for i=100,103 do
 		ui.removeTextArea(i,nil)
 	end
 end
@@ -116,6 +246,13 @@ for n,q in pairs(tfm.get.room.playerList) do
 			end
 		end
 		if not tfm.get.room.playerList[n].isDead then
+			if data[n].t > 0 then
+				data[n].t=data[n].t-0.5
+				if data[n].t <= 0 then
+					tfm.exec.removeObject(data[n].i)
+				end
+			end
+			if mode == "game" or mode == "hide" then
 			if tfm.get.room.playerList[n].y < 250 then
 				if data[n].o < 100 then
 					data[n].o=data[n].o+2
@@ -138,6 +275,7 @@ for n,q in pairs(tfm.get.room.playerList) do
 						data[n].c=0
 					end
 				end
+			end
 			end
 			if data[n].o <= 0 then
 				tfm.exec.killPlayer(n)
