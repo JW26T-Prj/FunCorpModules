@@ -2,7 +2,7 @@ for _,f in next,{"AutoShaman","AutoNewGame","AutoTimeLeft","DebugCommand","AllSh
 	tfm.exec["disable"..f](true)
 end
 tfm.exec.setRoomMaxPlayers(32)
-shaman=""; alives=0; cannons=4; z=0; data={}; mode="hide"; changed=false; loop=0;
+shaman=""; alives=0; cannons=4; z=0; data={}; mode="hide"; changed=false; loop=0; timer=0;
 map="@7802869"
 xml=''
 powerups={x1=-1,x2=-1,x3=-1,x4=-1,y1=-1,y2=-1,y3=-1,y4=-1,t1=0,t2=0,t3=0,t4=0}
@@ -48,7 +48,7 @@ function eventKeyboard(name,key,down)
 				powerups.y1=-1
 				ui.removeTextArea(100,nil)
 				if powerups.t1 == 1 then
-					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup AFUNDAR!")
+					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup PRISÃO!")
 					dropPlayer(name)
 				elseif powerups.t1 == 2 then
 					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup OXIGÊNIO!")
@@ -63,6 +63,10 @@ function eventKeyboard(name,key,down)
 					else
 						tfm.exec.movePlayer(name,0,0,true,-60,0,false)
 					end
+				elseif powerups.t1 == 4 then
+					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup AFUNDAR!")
+					tfm.exec.setWorldGravity(0,17.5)
+					timer=2.5
 				end
 			end
 		end
@@ -72,7 +76,7 @@ function eventKeyboard(name,key,down)
 				powerups.y2=-1
 				ui.removeTextArea(101,nil)
 				if powerups.t2 == 1 then
-					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup AFUNDAR!")
+					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup PRISÃO!")
 					dropPlayer(name)
 				elseif powerups.t2 == 2 then
 					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup OXIGÊNIO!")
@@ -87,6 +91,10 @@ function eventKeyboard(name,key,down)
 					else
 						tfm.exec.movePlayer(name,0,0,true,-60,0,false)
 					end
+				elseif powerups.t2 == 4 then
+					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup AFUNDAR!")
+					tfm.exec.setWorldGravity(0,17.5)
+					timer=2.5
 				end
 			end
 		end
@@ -111,6 +119,10 @@ function eventKeyboard(name,key,down)
 					else
 						tfm.exec.movePlayer(name,0,0,true,-60,0,false)
 					end
+				elseif powerups.t3 == 4 then
+					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup AFUNDAR!")
+					tfm.exec.setWorldGravity(0,17.5)
+					timer=2.5
 				end
 			end
 		end
@@ -135,6 +147,10 @@ function eventKeyboard(name,key,down)
 					else
 						tfm.exec.movePlayer(name,0,0,true,-60,0,false)
 					end
+				elseif powerups.t4 == 4 then
+					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup AFUNDAR!")
+					tfm.exec.setWorldGravity(0,17.5)
+					timer=2.5
 				end
 			end
 		end
@@ -157,7 +173,7 @@ for n,p in pairs(tfm.get.room.playerList) do
 	end
 	alives=alives+1
 	newData={
-	["o"]=100;
+	["o"]=99;
 	["i"]=0;
 	["t"]=0;
 	["c"]=0;
@@ -197,12 +213,12 @@ function genPowerup(pos,type,x,y)
 	end
 end
 function dropPlayer(name)
-	data[name].i=tfm.exec.addShamanObject(61,tfm.get.room.playerList[name].x,tfm.get.room.playerList[name].y,0,0,0,false)
+	data[name].i=tfm.exec.addShamanObject(61,tfm.get.room.playerList[name].x,tfm.get.room.playerList[name].y+10,0,0,0,false)
 	data[name].t=6
 end
 function eventLoop(p,r)
 if changed == true then
-ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><J> Versão v1.2.1 - criado por Morganadxana#0000<")
+ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><J> Versão v1.3.3 - criado por Morganadxana#0000<")
 local m=math.floor(r/60000)
 local s=math.floor((((m*60000)-r) * -1) / 1000)
 ui.addTextArea(-1,"<font size='28'><font face='DejaVu Sans Mono,Consolas'><font color='#222222'><b>0"..m..":"..s.."</b>",n,693,27,110,44,0,0,1.0,true)
@@ -220,15 +236,12 @@ if mode == "game" or mode == "hide" then
 	loop=loop+0.5
 	if loop == 30 then
 		for i=1,4 do
-			genPowerup(i,math.random(1,3),math.random(400,2800),math.random(250,1300))
+			genPowerup(i,math.random(1,4),math.random(400,2800),math.random(250,1300))
 		end
 		loop=0
 	end
 else
-	for i=30,32 do
-		ui.removeTextArea(i,nil)
-	end
-	for i=100,103 do
+	for i=-6,103 do
 		ui.removeTextArea(i,nil)
 	end
 end
@@ -244,8 +257,12 @@ for n,q in pairs(tfm.get.room.playerList) do
 			end
 			end
 			end
-		end
-		if not tfm.get.room.playerList[n].isDead then
+			if timer > 0 then
+				timer=timer-0.5
+			else
+				tfm.exec.setWorldGravity(0,10.5)
+			end
+			if not tfm.get.room.playerList[n].isDead then
 			if data[n].t > 0 then
 				data[n].t=data[n].t-0.5
 				if data[n].t <= 0 then
@@ -254,8 +271,8 @@ for n,q in pairs(tfm.get.room.playerList) do
 			end
 			if mode == "game" or mode == "hide" then
 			if tfm.get.room.playerList[n].y < 250 then
-				if data[n].o < 100 then
-					data[n].o=data[n].o+2
+				if data[n].o < 99 then
+					data[n].o=data[n].o+1
 				end
 				data[n].y=0
 			else
@@ -263,15 +280,15 @@ for n,q in pairs(tfm.get.room.playerList) do
 					data[n].o=data[n].o-0.4
 					data[n].c=0
 				elseif tfm.get.room.playerList[n].y > 920 and tfm.get.room.playerList[n].y < 1380 then
-					data[n].o=data[n].o-0.8
+					data[n].o=data[n].o-0.7
 					data[n].c=0
 				elseif tfm.get.room.playerList[n].y > 1380 then
-					data[n].o=data[n].o-1.6
+					data[n].o=data[n].o-1
 					data[n].c=data[n].c+1
 					if data[n].c == 1 then
 						tfm.exec.chatMessage("<ROSE>Você está no fundo do lago. A pressão consome o seu rato e faz com que seu oxigênio seja gasto mais rapidamente.",n)
 					end
-					if data[n].c > 12 then
+					if data[n].c > 24 then
 						data[n].c=0
 					end
 				end
@@ -298,21 +315,25 @@ for n,q in pairs(tfm.get.room.playerList) do
 				end
 			end
 		end
-		ui.addTextArea(0,"<font size='10'><font face='DejaVu Sans Mono,Consolas'><R>O² Meter | 20 | | <N>| | 40 | | | | 60 | | | | 80 | | | | 100",n,220,20,360,14,0x181818,0x090909,0.7,true)
+		end
 		if data[n].o > 30 then
-			ui.addTextArea(10,"",n,220,40,data[n].o*3.6,3,0x0080ff,0x0060ff,1.0,true)
+			ui.addTextArea(10,"",n,5,366-(data[n].o*1.5),16,190,0x8000ff,0x6000ff,1.0,true)
+			ui.addTextArea(0,"<font size='11'><font face='DejaVu Sans Mono,Consolas'>O² Nível",n,5,195,64,14,0,0,0.7,true)
+			ui.addTextArea(-4,"<font size='11'><font face='DejaVu Sans Mono,Consolas'>90<br>-<br>72<br>-<br>54<br>-<br>36<br>-<R><b><br>18<br>-<br>0",n,30,218,39,180,0,0,0.7,true)
+			ui.addTextArea(-5,"<font size='25'><p align='center'><font face='DejaVu Sans Mono,Consolas'><font color='#00ff00'>"..math.floor(data[n].o).."",n,30,370,39,39,0x090909,0x000000,0.7,true)
 			data[n].d=0
-		elseif data[n].o > 0 then
-			ui.addTextArea(10,"",n,220,40,data[n].o*3.6,3,0xff8000,0xff6000,1.0,true)
+		elseif data[n].o > 0 and mode == "game" then
+			ui.addTextArea(10,"",n,5,366-(data[n].o*1.5),16,190,0xff8000,0xff6000,1.0,true)
+			ui.addTextArea(0,"<font size='11'><font face='DejaVu Sans Mono,Consolas'>O² Nível",n,5,195,64,14,0,0,0.7,true)
+			ui.addTextArea(-4,"<font size='11'><font face='DejaVu Sans Mono,Consolas'>90<br>-<br>72<br>-<br>54<br>-<br>36<br>-<R><b><br>18<br>-<br>0",n,30,218,39,180,0,0,0.7,true)
+			ui.addTextArea(-5,"<font size='25'><p align='center'><font face='DejaVu Sans Mono,Consolas'><font color='#00ff00'>"..math.floor(data[n].o).."",n,30,370,39,39,0x090909,0x000000,0.7,true)
 			data[n].d=data[n].d+1
-			if data[n].d == 1 then
+			if data[n].d == 1 and data[n].o > 0 then
 				tfm.exec.chatMessage("<R>Você está ficando sem oxigênio! Saia da água o mais rápido possível ou você morrerá afogado!",n)
 			end
 			if data[n].d > 5 then
 				data[n].d=0
 			end
-		elseif data[n].o <= 0 then
-			ui.addTextArea(10,"",n,220,40,3,3,0xff8000,0xff6000,1.0,true)
 		end
 	end
 end
