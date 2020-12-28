@@ -43,6 +43,16 @@ function eventRanking(name)
 	ui.addTextArea(8004,"<p align='right'><font size='16'><font face='Consolas'>"..str3,name,485,130,60,220,0x030321,0x030321,nil,true)
 	ui.addTextArea(8006,"<p align='center'><font size='16'><R><a href='event:close'>Close</a>",name,300,350,210,20,0x2A1209,0x2A1209,nil,true)
 end
+function menuShow(name,title,content,height)
+	ui.addTextArea(9000,"<B><J><font size='15'><font face='Verdana'><p align='center'>"..title.."",name,150,130,500,30,0x212121,0x363634,1.0,true)
+	ui.addTextArea(9007,"<font size='12'><font face='Verdana'>"..content.."",name,150,165,500,height,0x151515,0x3F3F3D,1.0,true)
+	ui.addTextArea(9006,"<font size='16'><font face='Verdana'><p align='center'><R><a href='event:closep'>X</a>",name,620,130,30,27,0,0,1.0,true)
+end
+function menuShow2(name,title,content,height)
+	ui.addTextArea(9000,"<B><J><font size='15'><font face='Verdana'><p align='center'>"..title.."",name,250,130,300,30,0x212121,0x363634,1.0,true)
+	ui.addTextArea(9007,"<font size='12'><font face='Verdana'>"..content.."",name,250,165,300,height,0x151515,0x3F3F3D,1.0,true)
+	ui.addTextArea(9006,"<font size='16'><font face='Verdana'><p align='center'><R><a href='event:closep'>X</a>",name,520,130,30,27,0,0,1.0,true)
+end
 function eventChatCommand(name,message)
 	local arg = split(message, " ")
 	if arg[1] == "p" then
@@ -53,9 +63,7 @@ function eventChatCommand(name,message)
 		end
 
 		if tfm.get.room.playerList[nome] then
-			ui.addTextArea(8003,'<B><J><font size="17"><p align="center">'..nome,name,245,95,315,30,nil,0x5F5F5F,nil,true)
-			ui.addTextArea(8004,"<font size='12'><b>Score: "..data[nome].score.."</b><br><br>Wins: "..data[nome].wins.."<br>Matches: "..data[nome].matches.."",name,255,125,290,90,0x030321,0x030321,nil,true)
-			ui.addTextArea(8005,"<R><p align='center'><B><a href='event:fechar'>Close</a>",name,255,210,290,20,0x2A1209,0x2A1209,nil,true)
+			menuShow2(nome,nome,"<font size='12'><b>Score: "..data[nome].score.."</b><br><br>Wins: "..data[nome].wins.."<br>Matches: "..data[nome].matches.."",75)
 		else
 			tfm.exec.chatMessage("Function not allowed",name)
 		end
@@ -73,9 +81,7 @@ function eventChatCommand(name,message)
 		end
 	end
 	if message == "help" then
-		ui.addTextArea(9000,"<B><J><font size='13'><p align='center'>Help",name,100,90,600,30,nil,0x5F5F5F,nil,true)
-		ui.addTextArea(9005,"<font size='13'><font face='Consolas'>The objetive of this module is kill the other players using the mouse to generate spirits.<br><br>At moment, 5 powerups are available:<br>F1 = Fast Spirits (700 points)<br>F2 = Double Power (250 points)<br>F3 = Box Meteor (550 points)<br>F4 = Night Mode (400 points)<br>F5 = Ultra Explosion (1000 points)<br><br>Module made by Hecarimjhenx#0000.",name,150,125,500,175,0x030321,0x030321,nil,true)
-		ui.addTextArea(9006,"<font size='13'><R><a href='event:closep'>Close</a>",name,300,297,190,20,0x2A1209,0x2A1209,nil,true)
+		menuShow(name,"Help","The objetive of this module is kill the other players using the mouse to generate spirits.<br><br>At moment, 5 powerups are available:<br>F1 = Fast Spirits (700 points)<br>F2 = Double Power (250 points)<br>F3 = Box Meteor (550 points)<br>F4 = Night Mode (400 points)<br>F5 = Ultra Explosion (1000 points)<br>F6 = Stone Meteor (750 points)<br><br>Module made by Hecarimjhenx#0000. Version RTM 3734.015",180)
 	end
 end
 function eventNewPlayer(name)
@@ -84,11 +90,11 @@ function eventNewPlayer(name)
 		table.insert(players_table,name)
 		data[name]={time=0,matches=0,wins=0,score=0,p1=false,p2=false,pcount=0}
 	end
-	ui.addTextArea(299,"<p align='center'><a href='event:show_menu'><font size='18'>Menu",name,365,376,70,24,0x000001,0x000001,0.75,true)
+	ui.addTextArea(299,"<p align='center'><a href='event:show_menu'><font size='18'>Menu",name,5,25,70,24,0x000001,0x000001,0.75,true)
 	for i=112,123 do
 		tfm.exec.bindKeyboard(name,i,true,true)
-		system.bindMouse(name,true)
 	end
+	system.bindMouse(name,true)
 	tfm.exec.chatMessage("<br>Welcome to module #clickwar!<br>Use the mouse to generate explosions and kill other mices!<br><br>Module developed by Hecarimjhenx#0000.",name)
 end
 for name,player in pairs(tfm.get.room.playerList) do
@@ -185,16 +191,18 @@ function eventLoop(pass,falt)
 		tfm.exec.newGame("#10")
 	end
 	if prox == false then
-		ui.setMapName("<N>Click War RTM 3633.014  <BL>|  <N>Intensity: <b>"..intensity.."</b>")
+		ui.setMapName("<font face='Rockwell,Verdana'><N>Click War RTM <b>3734.015</b>  <G>|  <N>Intensity: <b>"..intensity.."</b>  <G>|  <VP>Module made by <b>Hecarimjhenx#0000</b><")
 	else
 		ui.setMapName("<b>"..winner.."</b> <N>wons the match! Next match on "..math.floor(falt/1000).." seconds.<")
 	end
 	remain=remain-0.5
 	if remain <= 3 and remain >= 0.5 then
-		ui.addTextArea(0,"<font size='33'><p align='center'>"..math.ceil(remain).."",nil,370,350,60,45,0x000001,0x000001,0.8,true)
+		ui.addTextArea(-1,"<font size='56'><p align='center'><font color='#222222'>"..math.ceil(remain).."",nil,103,93,600,80,0,0,1.0,true)
+		ui.addTextArea(0,"<font size='56'><p align='center'><font color='#ffffff'>"..math.ceil(remain).."",nil,100,90,600,80,0,0,1.0,true)
 	end
 	if remain <= 0 then
 		ui.removeTextArea(0,nil)
+		ui.removeTextArea(-1,nil)
 		enabled=true;
 	end
 	for name,player in pairs(tfm.get.room.playerList) do
@@ -255,11 +263,11 @@ function eventPlayerDied(name)
 end
 function eventTextAreaCallback(id,name,callback)
 	if callback == "show_menu" then
-		ui.addTextArea(299,"<p align='center'><a href='event:hide_menu'><font size='18'>Menu",name,365,376,70,24,0x000001,0x000001,0.75,true)
-		ui.addTextArea(298,"<p align='center'><a href='event:help'>Help</a>  |  <a href='event:profile'>Profile</a>  |  <a href='event:ranking'>Ranking</a>",name,300,350,200,20,0x000001,0x000001,0.80,true)
+		ui.addTextArea(299,"<p align='center'><a href='event:hide_menu'><font size='18'>Menu",name,5,25,70,24,0x000001,0x000001,0.75,true)
+		ui.addTextArea(298,"<p align='center'><a href='event:help'>Help</a><br><a href='event:profile'>Profile</a><br><a href='event:ranking'>Ranking</a>",name,5,55,90,50,0x000001,0x000001,0.80,true)
 	end
 	if callback == "hide_menu" then
-		ui.addTextArea(299,"<p align='center'><a href='event:show_menu'><font size='18'>Menu",name,365,376,70,24,0x000001,0x000001,0.75,true)
+		ui.addTextArea(299,"<p align='center'><a href='event:show_menu'><font size='18'>Menu",name,5,25,70,24,0x000001,0x000001,0.75,true)
 		ui.removeTextArea(298,name)
 	end
 	if callback == "ranking" then
@@ -325,6 +333,13 @@ function eventKeyboard(name,key,down,x,y)
 						tfm.exec.explosion(i*100,j*100,intensity,intensity*1.5,false)
 						tfm.exec.displayParticle(10,i*100,j*100,0,0,0,0,nil)
 					end
+				end
+			end
+			if key == 117 and data[name].score >= 750 then
+				data[name].score=data[name].score-750
+				tfm.exec.chatMessage("<J>"..name.." used the powerup Stone Meteor!")
+				for i=-12,38 do
+					tfm.exec.addShamanObject(85,i*30,-1,0,0,0,false)
 				end
 			end
 		end
