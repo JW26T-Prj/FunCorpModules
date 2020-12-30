@@ -24,6 +24,7 @@ function eventNewGame()
 	for name,player in pairs(tfm.get.room.playerList) do
 		newData={
 			["step"]=0;
+			["c"]=0;
 			}
 		data[name]=newData;
 		for i=30, 87 do
@@ -60,6 +61,7 @@ function eventKeyboard(name,id)
 					if round <= 10 then
 						tfm.exec.movePlayer(name,400,350,false,0,0,false)
 						data[name].step=0
+						data[name].c=1
 					else
 						data[name].step=5
 					end
@@ -89,6 +91,7 @@ function eventKeyboard(name,id)
 					if round > 10 and round <= 20 then
 						tfm.exec.movePlayer(name,400,350,false,0,0,false)
 						data[name].step=0
+						data[name].c=1
 					else
 						data[name].step=9
 					end
@@ -117,6 +120,7 @@ function eventKeyboard(name,id)
 				if id == setas.c12[1] or id == setas.c12[2] then
 					tfm.exec.movePlayer(name,400,350,false,0,0,false)
 					data[name].step=0
+					data[name].c=1
 				else
 					tfm.exec.killPlayer(name)
 				end
@@ -160,7 +164,7 @@ function eventNewPlayer(name)
 	end
 end
 function eventLoop(p,f)
-	ui.setMapName("Arrows! <N><b>v2.0.1</b>  <G>|   <N>Round : <V>"..round.."  <G>|  <N>Desenvolvido por <VP><b>Patrick_mahomes#1795 e Yone#5530</b><")
+	ui.setMapName("Arrows! <N><b>v2.0.2</b>  <G>|   <N>Round : <V>"..round.."  <G>|  <N>Desenvolvido por <VP><b>Patrick_mahomes#1795 e Yone#5530</b><")
 	faltando=f;
 	if f < 1 then
 		if valendo == false then
@@ -182,6 +186,7 @@ function eventLoop(p,f)
 				tfm.exec.setGameTime(36000)
 				for name,player in pairs(tfm.get.room.playerList) do
 					data[name].step=1
+					data[name].c=0
 					tfm.exec.movePlayer(name,400,260,false,0,0,false)
 				end
 			end
@@ -195,6 +200,7 @@ function eventLoop(p,f)
 				tfm.exec.setGameTime(36000)
 				for name,player in pairs(tfm.get.room.playerList) do
 					data[name].step=1
+					data[name].c=0
 					tfm.exec.movePlayer(name,400,260,false,0,0,false)
 				end
 			end
@@ -208,6 +214,7 @@ function eventLoop(p,f)
 				tfm.exec.setGameTime(36000)
 				for name,player in pairs(tfm.get.room.playerList) do
 					data[name].step=1
+					data[name].c=0
 					tfm.exec.movePlayer(name,400,260,false,0,0,false)
 				end
 			end
@@ -221,6 +228,7 @@ function eventLoop(p,f)
 				tfm.exec.setGameTime(36000)
 				for name,player in pairs(tfm.get.room.playerList) do
 					data[name].step=1
+					data[name].c=0
 					tfm.exec.movePlayer(name,400,260,false,0,0,false)
 				end
 			end
@@ -234,6 +242,7 @@ function eventLoop(p,f)
 				tfm.exec.setGameTime(36000)
 				for name,player in pairs(tfm.get.room.playerList) do
 					data[name].step=1
+					data[name].c=0
 					tfm.exec.movePlayer(name,400,260,false,0,0,false)
 				end
 			end
@@ -247,6 +256,7 @@ function eventLoop(p,f)
 				tfm.exec.setGameTime(36000)
 				for name,player in pairs(tfm.get.room.playerList) do
 					data[name].step=1
+					data[name].c=0
 					tfm.exec.movePlayer(name,400,260,false,0,0,false)
 				end
 			end
@@ -257,7 +267,7 @@ function eventLoop(p,f)
 		else
 			for name,player in pairs(tfm.get.room.playerList) do
 				if faltando > 4000 then
-				if tfm.get.room.playerList[name].y < 320 then
+				if tfm.get.room.playerList[name].y < 320 and data[name].c == 0 then
 					tfm.exec.killPlayer(name)
 				else
 					tfm.exec.setPlayerScore(name,1,true)
