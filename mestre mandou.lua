@@ -16,7 +16,7 @@ for _,f in next,{"command","mapa","pw","limit","run","fc","q","a","t","kill"} do
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N><b>Bem-vindos ao novo Mestre Mandou!</b><br>O objetivo deste module é muito simples: Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><VP>Tenha sempre cuidado com os comandos trolls!<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Jessiewind26#2546<br><br><ROSE>Versão RTM 9057.053",
+	welcome = "<N><b>Bem-vindos ao novo Mestre Mandou!</b><br>O objetivo deste module é muito simples: Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><VP>Tenha sempre cuidado com os comandos trolls!<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Jessiewind26#2546<br><br><ROSE>Versão RTM 9158.054",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -99,7 +99,7 @@ lang.br = {
 	black = "Um buraco negro surgiu e está puxando todos vocês!",
 }
 lang.en = {
-	welcome = "<N><b>Welcome to new Simon Says module!</b><br>The objective is very simple: Follow all the commands that the game says and test all your limits!<br><VP>Please pay attention to the troll commands!<br><br><J><b>Script developed by Rakan_raster#0000</b><br>EN translation by Kazarina#4878, Concept by Jessiewind26#2546<br><br><ROSE>Version RTM 9057.053",
+	welcome = "<N><b>Welcome to new Simon Says module!</b><br>The objective is very simple: Follow all the commands that the game says and test all your limits!<br><VP>Please pay attention to the troll commands!<br><br><J><b>Script developed by Rakan_raster#0000</b><br>EN translation by Kazarina#4878, Concept by Jessiewind26#2546<br><br><ROSE>Version RTM 9158.054",
 	dancar = "Dance!",
 	sentar = "Sit!",
 	confetar = "Throw 5 confetti!",
@@ -182,7 +182,7 @@ lang.en = {
 	black = "A black hole emerged and is pushing all mices!",
 }
 lang.fr = {
-	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Rakan_raster#0000</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 9057.053",
+	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Rakan_raster#0000</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 9158.054",
 	dancar = "Danse !",
 	sentar = "Assis !",
 	confetar = "Lance 5 fois des confettis !",
@@ -265,7 +265,7 @@ lang.fr = {
 	black = "Un trou noir émerge et pousse toutes les souris!",
 }
 lang.tr = {
-	welcome = "<N> Master Says'ýn senaryosuna hoþ geldiniz! Bu modülde ustanýn söylediði her þeyi yapmalýsýnýz. <br> <ROSE><b>Rakan_raster#0000</b> tarafýndan oluþturulan model. Tercüme eden Star#6725. Versiyon RTM 9057.053",
+	welcome = "<N> Master Says'ýn senaryosuna hoþ geldiniz! Bu modülde ustanýn söylediði her þeyi yapmalýsýnýz. <br> <ROSE><b>Rakan_raster#0000</b> tarafýndan oluþturulan model. Tercüme eden Star#6725. Versiyon RTM 9158.054",
 	dancar = "Dans!",
 	sentar = "Sit!",
 	confetar = "5 konfeti atýn!",
@@ -454,11 +454,8 @@ function eventNewGame()
 			data[name].key=0
 		end
 	end
-	rodadas=math.floor(20+(rato/3.5))
+	rodadas=math.floor(25+(rato/4))
 	tfm.exec.setNameColor(admin,0xff0000)
-	if not tfm.get.room.currentMap == "@2637755" then
-		tfm.exec.chatMessage("<ROSE><i>Spectra's map loader v2.153</i><br><N>Loading current map information...<br>----------------------------------------<br><b>Current Map :</b> <V>"..tfm.get.room.currentMap.."<br><N><b>Author :</b><V> "..tfm.get.room.xmlMapInfo.author.."<br><N><b>Map ID :</b> <VP>"..math.random(1,99).."<N><br>----------------------------------------")
-	end
 end
 function eventPlayerLeft()
 	rato=rato-1
@@ -903,8 +900,8 @@ function getCommand()
 			data[name].c=1;
 		end
 		tfm.exec.setGameTime(10)
-		for i=1,6 do
-			tfm.exec.addPhysicObject(i, math.random(100,700), math.random(50,350), spiderweb)
+		for i=1,8 do
+			tfm.exec.addPhysicObject(i, math.random(50,750), math.random(50,350), spiderweb)
 		end
 	end
 	if active == 63 then
@@ -968,7 +965,7 @@ function getCommand()
 		for name,player in pairs(tfm.get.room.playerList) do
 			data[name].c=1;
 		end
-		tfm.exec.setWorldGravity(math.random(-16,16), 15)
+		tfm.exec.setWorldGravity(math.random(-20,20), 17.5)
 	end
 	if active == 98 then
 		showCommand(active,q)
@@ -1386,11 +1383,11 @@ end
 function eventLoop(passado,faltando)
 	local tempo=math.floor(faltando/1000)
 	if active == -2 then
-		ui.setMapName("                        <N>"..text.mices.."  <V>|  <VP><b>"..text.version.." RTM 9057.053</b><")
+		ui.setMapName("                        <N>"..text.mices.."  <V>|  <VP><b>"..text.version.." RTM 9158.054</b><")
 	elseif active == -1 then
-		ui.setMapName("          <VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."  <V>|  <VP><b>"..text.version.." RTM 9057.053</b><")
+		ui.setMapName("          <VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."  <V>|  <VP><b>"..text.version.." RTM 9158.054</b><")
 	elseif active >= 0 then
-		ui.setMapName("                               "..tfm.get.room.currentMap.."  <V>|  <N>"..text.mice.." : <J>"..vivo.." / "..rato.."  <V>|  <N>"..text.round.." : <J>"..rodada.."  <V>|  <VP><b>"..text.version.." RTM 9057.053</b><")
+		ui.setMapName("                               "..tfm.get.room.currentMap.."  <V>|  <N>"..text.mice.." : <J>"..vivo.." / "..rato.."  <V>|  <N>"..text.round.." : <J>"..rodada.."  <V>|  <VP><b>"..text.version.." RTM 9158.054</b><")
 	end
 	if rato < 4 then
 		if tfm.get.room.currentMap == "@2637755" and unlocked == true then
