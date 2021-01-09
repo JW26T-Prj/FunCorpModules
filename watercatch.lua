@@ -1,12 +1,13 @@
 for _,f in next,{"AutoShaman","AutoNewGame","AutoTimeLeft","DebugCommand","AllShamanSkills","PhysicalConsumables"} do
 	tfm.exec["disable"..f](true)
 end
+for _,f in next,{"help","ajuda"} do
+	system.disableChatCommandDisplay(f)
+end
 tfm.exec.setRoomMaxPlayers(32)
-shaman=""; alives=0; cannons=4; z=0; data={}; mode="hide"; changed=false; loop=0; timer=0;
-map="@7802869"
-xml=''
+shaman=""; alives=0; cannons=4; z=0; data={}; mode="hide"; changed=false; loop=0; timer=0; xml='';
+tfm.exec.newGame("@7802869")
 powerups={x1=-1,x2=-1,x3=-1,x4=-1,y1=-1,y2=-1,y3=-1,y4=-1,t1=0,t2=0,t3=0,t4=0}
-tfm.exec.newGame(map)
 function eventPlayerDied(n)
 	if not tfm.get.room.playerList[n].isShaman then
 		alives=alives-1
@@ -14,7 +15,7 @@ function eventPlayerDied(n)
 	if alives <= 0 then
 		mode="end"
 		tfm.exec.setGameTime(15)
-		tfm.exec.chatMessage("<R>O shaman matou todos os ratos e venceu o jogo!<br>Próxima rodada iniciando em 15 segundos.")
+		tfm.exec.chatMessage("<N>O shaman matou todos os ratos e venceu o jogo!<br>Próxima rodada iniciando em 15 segundos.")
 	end
 	data[n].o=0
 	if mode == "hide" or mode == "game" then
@@ -28,6 +29,11 @@ function eventPlayerDied(n)
 end
 function eventNewPlayer(name)
 	tfm.exec.chatMessage("<font color='#0080ff'><b>Bem-vindos ao module #watercatch!</b><br><J>O objetivo é bem simples: Fugir do shaman, se escondendo dentro do profundo lago e tomando cuidado para não morrer afogado!<br>Shamans, não esqueçam de se mexer, ou irão morrer AFK!<br><br>Module e mapa criados por Morganadxana#0000. Tradução para o português feita por Rakan_raster#0000.",name)
+end
+function eventChatCommand(name,message)
+	if message == "help" or message == "ajuda" then
+		tfm.exec.chatMessage("<J>O objetivo é bem simples: Fugir do shaman, se escondendo dentro do profundo lago e tomando cuidado para não morrer afogado!<br>Shamans, não esqueçam de se mexer, ou irão morrer AFK!<br><br>Module e mapa criados por Morganadxana#0000. Tradução para o português feita por Rakan_raster#0000.",name)
+	end
 end
 function eventSummoningEnd(name,id,x,y)
 	cannons=cannons-1
@@ -59,9 +65,9 @@ function eventKeyboard(name,key,down)
 				elseif powerups.t1 == 3 then
 					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup VELOCIDADE!")
 					if tfm.get.room.playerList[name].isFacingRight == true then
-						tfm.exec.movePlayer(name,0,0,true,60,0,false)
+						tfm.exec.movePlayer(name,0,0,true,120,0,false)
 					else
-						tfm.exec.movePlayer(name,0,0,true,-60,0,false)
+						tfm.exec.movePlayer(name,0,0,true,-120,0,false)
 					end
 				elseif powerups.t1 == 4 then
 					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup AFUNDAR!")
@@ -87,9 +93,9 @@ function eventKeyboard(name,key,down)
 				elseif powerups.t2 == 3 then
 					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup VELOCIDADE!")
 					if tfm.get.room.playerList[name].isFacingRight == true then
-						tfm.exec.movePlayer(name,0,0,true,60,0,false)
+						tfm.exec.movePlayer(name,0,0,true,120,0,false)
 					else
-						tfm.exec.movePlayer(name,0,0,true,-60,0,false)
+						tfm.exec.movePlayer(name,0,0,true,-120,0,false)
 					end
 				elseif powerups.t2 == 4 then
 					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup AFUNDAR!")
@@ -115,9 +121,9 @@ function eventKeyboard(name,key,down)
 				elseif powerups.t3 == 3 then
 					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup VELOCIDADE!")
 					if tfm.get.room.playerList[name].isFacingRight == true then
-						tfm.exec.movePlayer(name,0,0,true,60,0,false)
+						tfm.exec.movePlayer(name,0,0,true,120,0,false)
 					else
-						tfm.exec.movePlayer(name,0,0,true,-60,0,false)
+						tfm.exec.movePlayer(name,0,0,true,-120,0,false)
 					end
 				elseif powerups.t3 == 4 then
 					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup AFUNDAR!")
@@ -143,9 +149,9 @@ function eventKeyboard(name,key,down)
 				elseif powerups.t4 == 3 then
 					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup VELOCIDADE!")
 					if tfm.get.room.playerList[name].isFacingRight == true then
-						tfm.exec.movePlayer(name,0,0,true,60,0,false)
+						tfm.exec.movePlayer(name,0,0,true,120,0,false)
 					else
-						tfm.exec.movePlayer(name,0,0,true,-60,0,false)
+						tfm.exec.movePlayer(name,0,0,true,-120,0,false)
 					end
 				elseif powerups.t4 == 4 then
 					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup AFUNDAR!")
@@ -157,8 +163,8 @@ function eventKeyboard(name,key,down)
 	end		
 end
 function eventNewGame()
-tfm.exec.chatMessage("<font color='#0080ff'><b>Bem-vindos ao module #watercatch!</b><br><J>O objetivo é bem simples: Fugir do shaman, se escondendo dentro do profundo lago e tomando cuidado para não morrer afogado!<br>Shamans, não esqueçam de se mexer, ou irão morrer AFK!<br><br>Module e mapa criados por Morganadxana#0000. Tradução para o português feita por Rakan_raster#0000.")
 xml=tfm.get.room.xmlMapInfo.xml
+tfm.exec.chatMessage("<font color='#0080ff'><b>Bem-vindos ao module #watercatch!</b><br><J>O objetivo é bem simples: Fugir do shaman, se escondendo dentro do profundo lago e tomando cuidado para não morrer afogado!<br>Shamans, não esqueçam de se mexer, ou irão morrer AFK!<br><br>Module e mapa criados por Morganadxana#0000. Tradução para o português feita por Rakan_raster#0000.")
 ui.addTextArea(0,"",nil,-800,-400,2400,1200,0x6a7495,0x6a7495,1.0,true)
 if changed == true then
 ui.removeTextArea(0,nil)
@@ -218,7 +224,7 @@ function dropPlayer(name)
 end
 function eventLoop(p,r)
 if changed == true then
-ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><J> Versão v1.4.0 - criado por Morganadxana#0000<")
+ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><J> Versão v1.5.0 - criado por Morganadxana#0000<")
 local m=math.floor(r/60000)
 local s=math.floor((((m*60000)-r) * -1) / 1000)
 ui.addTextArea(-1,"<font size='28'><font face='DejaVu Sans Mono,Consolas'><font color='#222222'><b>0"..m..":"..s.."</b>",n,693,27,110,44,0,0,1.0,true)
@@ -259,6 +265,7 @@ for n,q in pairs(tfm.get.room.playerList) do
 			end
 			if timer > 0 then
 				timer=timer-0.5
+				tfm.exec.setWorldGravity(0,17.5)
 			elseif timer == 0 then
 				tfm.exec.setWorldGravity(0,10.5)
 			end
@@ -282,15 +289,6 @@ for n,q in pairs(tfm.get.room.playerList) do
 				elseif tfm.get.room.playerList[n].y > 920 and tfm.get.room.playerList[n].y < 1380 then
 					data[n].o=data[n].o-0.7
 					data[n].c=0
-				elseif tfm.get.room.playerList[n].y > 1380 then
-					data[n].o=data[n].o-1
-					data[n].c=data[n].c+1
-					if data[n].c == 1 then
-						tfm.exec.chatMessage("<ROSE>Você está no fundo do lago. A pressão consome o seu rato e faz com que seu oxigênio seja gasto mais rapidamente.",n)
-					end
-					if data[n].c > 24 then
-						data[n].c=0
-					end
 				end
 			end
 			end
@@ -336,7 +334,7 @@ if r <= 2000 and mode == "hide" then
 	mode="game"
 	tfm.exec.setGameTime(150+(alives*5))
 	ui.removeTextArea(22,nil)
-	tfm.exec.chatMessage("<J>O shaman foi liberado! Salvem-se quem puder!<br><br>As <N>zonas brancas<J> estão <VP>ATIVADAS<J>. Ratos que permanecerem nelas terão seu consumo de oxigênio reduzido quando dentro delas.")
+	tfm.exec.chatMessage("<J>O shaman foi liberado! Salvem-se quem puder!<br><br>As <N>zonas brancas<J> estão <VP>ATIVADAS<J>. Ratos que permanecerem nelas terão seu consumo de oxigênio reduzido quando dentro delas.<br><br>Os itens marcados com <BL>!<N> são poderes especiais, que podem trazer efeitos positivos ou negativos aos ratos.")
 end
 if r <= 1000 and mode == "game" then
 	tfm.exec.setGameTime(15)
