@@ -81,7 +81,7 @@ function eventChatCommand(name,message)
 		end
 	end
 	if message == "help" then
-		menuShow(name,"Help","The objetive of this module is kill the other players using the mouse to generate spirits.<br><br>At moment, 5 powerups are available:<br>F1 = Fast Spirits (700 points)<br>F2 = Double Power (250 points)<br>F3 = Box Meteor (550 points)<br>F4 = Night Mode (400 points)<br>F5 = Ultra Explosion (1000 points)<br>F6 = Stone Meteor (750 points)<br><br>Module made by Hecarimjhenx#0000. Version RTM 3734.015",180)
+		menuShow(name,"Help","The objetive of this module is kill the other players using the mouse to generate spirits.<br><br>At moment, 5 powerups are available:<br>F1 = Fast Spirits (700 points)<br>F2 = Double Power (250 points)<br>F3 = Box Meteor (550 points)<br>F4 = Night Mode (400 points)<br>F5 = Ultra Explosion (1000 points)<br>F6 = Stone Meteor (750 points)<br><br>Module made by Hecarimjhenx#0000. Version RTM 3835.016",180)
 	end
 end
 function eventNewPlayer(name)
@@ -95,7 +95,7 @@ function eventNewPlayer(name)
 		tfm.exec.bindKeyboard(name,i,true,true)
 	end
 	system.bindMouse(name,true)
-	tfm.exec.chatMessage("<br>Welcome to module #clickwar!<br>Use the mouse to generate explosions and kill other mices!<br><br>Module developed by Hecarimjhenx#0000.",name)
+	tfm.exec.chatMessage("<N>Welcome to module #clickwar!<br>Use the mouse to generate explosions and kill other mices!<br><br>Module developed by Hecarimjhenx#0000.<br><br>#CLICKWAR REBORN IS COMING TO 2021!",name)
 end
 for name,player in pairs(tfm.get.room.playerList) do
 	eventNewPlayer(name)
@@ -139,7 +139,7 @@ function eventNewGame()
 		data[name].p2=false
 		data[name].pcount=0
 	end
-	tfm.exec.chatMessage("<N>Welcome to module #clickwar!<br>Use the mouse to generate explosions and kill other mices!<br><br>Module developed by Hecarimjhenx#0000.<br><br>#CLICKWAR REBORN IS COMING TO 2021!",name)
+	tfm.exec.chatMessage("<ROSE><i>Spectra's map loader v2.153</i><br><N>Loading current map information...<br>----------------------------------------<br><b>Current Map :</b> <V>"..tfm.get.room.currentMap.."<br><N><b>Author :</b><V> "..tfm.get.room.xmlMapInfo.author.."<br><N><b>Map ID :</b> <VP>"..math.random(1,99).."<N><br>----------------------------------------")
 end
 function eventLoop(pass,falt)
 	if pass > 1200 and pass < 1700 then
@@ -191,7 +191,7 @@ function eventLoop(pass,falt)
 		tfm.exec.newGame("#10")
 	end
 	if prox == false then
-		ui.setMapName("<font face='Rockwell,Verdana'><N>Click War RTM <b>3734.015</b>  <G>|  <N>Intensity: <b>"..intensity.."</b>  <G>|  <VP>Module made by <b>Hecarimjhenx#0000</b><")
+		ui.setMapName("<font face='Rockwell,Verdana'><N>Click War RTM <b>3835.016</b>  <G>|  <N>Intensity: <b>"..intensity.."</b>  <G>|  <VP>Module made by <b>Hecarimjhenx#0000</b><")
 	else
 		ui.setMapName("<b>"..winner.."</b> <N>wons the match! Next match on "..math.floor(falt/1000).." seconds.<")
 	end
