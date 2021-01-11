@@ -10,7 +10,6 @@ tfm.exec.disableAllShamanSkills(true)
 tfm.exec.disablePhysicalConsumables(true)
 limits={questions=10,time=7,mices_alive=0}
 questions={question="",answer="",round=0}
-admin=""
 for _,f in next,{"per","skip","limits","return","cancel","at","change","admin78"} do
 	system.disableChatCommandDisplay(f)
 end
@@ -22,7 +21,6 @@ for name,player in pairs(tfm.get.room.playerList) do
 	tfm.exec.setPlayerScore(name,0,false)
 end
 function eventNewGame()
-	tfm.exec.setNameColor(admin,0xFF0000)
 	ui.removeTextArea(0,nil)
 	limits.mices_alive=0
 	for name,player in pairs(tfm.get.room.playerList) do
@@ -39,17 +37,10 @@ function eventNewGame()
 	questions.round=0
 	ui.addPopup(10,0,"",nil,-1000,-1000,128,false)
 	ui.addPopup(11,0,"",nil,-1100,-1000,128,false)
-	if tfm.get.room.community == "br" then
-		tfm.exec.chatMessage("<VP><b>Você pode ver todas as salas que compõem o module #anvilwar na /sala #anvilwar00rooms.</b>")
-	end
 end
 function eventNewPlayer(name)
 	tfm.exec.setPlayerScore(name,0,false)
-	ui.setMapName("True or False II revision 3 Remaked by Spectra_phantom#6089<")
-	if string.find(tfm.get.room.name,name) then
-		admin=name
-		tfm.exec.chatMessage("You are the administrator of this room. Your commands:<br>!cancel = Skip the current shaman<br>!return = Cancel the current question<br>!limits = Change the limit of questions",name)
-	end
+	ui.setMapName("True or False II revision 4 Remaked by Spectra_phantom#6089<")
 end
 for name,player in pairs(tfm.get.room.playerList) do
 	eventNewPlayer(name)
@@ -68,7 +59,7 @@ function reset()
 			tfm.exec.setPlayerScore(name,-1,false)
 		end
 	end
-	ui.setMapName("True or False II revision 3 Remaked by Spectra_phantom#6089<")
+	ui.setMapName("True or False II revision 4 Remaked by Spectra_phantom#6089<")
 end
 function isTrue()
 	tfm.exec.chatMessage("<VP>The answer is TRUE!")
@@ -127,7 +118,7 @@ function eventPopupAnswer(id,name,answer)
 	end
 end
 function eventChatCommand(name,message)
-	if name == "Spectra_phantom#6089" or name == "Forzaldenon#0000" or name == "Miss_fortune#9548" or name == "Aphelios#1910" or name == admin then
+	if name == "Spectra_phantom#6089" or name == "Forzaldenon#0000" or name == "Hecarimjhenx#0000" or name == "Aphelios#1910" then
 		if message == "limits" then
 			ui.addPopup(0,2,"Type the limit of questions (min: 1, max: 15)",name,350,175,200,true)
 		end
