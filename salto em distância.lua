@@ -1,6 +1,7 @@
 -- Novo script de Salto em Distância, com novo mapa e marcadores para a distância percorrida.
 data={}
 recorde=0
+recorder="----"
 tfm.exec.setRoomMaxPlayers(25)
 tfm.exec.disableAutoNewGame(true)
 tfm.exec.disableAutoShaman(true)
@@ -23,7 +24,6 @@ function eventPlayerDied(n)
 	tfm.exec.giveCheese(n)
 end
 function eventNewPlayer(n)
-	tfm.exec.setUIMapName("Long Jump v1.14 - Script made by Miss_fortune#9548, new map made by Fosfus7heads#0000<")
 	newData={
 		["x"]=0;
 		["position"]=0;
@@ -42,6 +42,7 @@ for name,player in pairs(tfm.get.room.playerList) do
 	eventNewPlayer(name)
 end
 function eventLoop()
+	ui.setMapName("<D>Long Jump script v1.15 by <ROSE><b>Patrick_mahomes#1795</b>   <V>|   <N>Actual record : <VP><b>"..recorde.."</b> pts <N>- <VP><b>"..recorder.."</b><")
 	for name,player in pairs(tfm.get.room.playerList) do
 		ui.addTextArea(1,"<font size='18'><b><font face='Courier New'>0 |||||||||| 4000 |||||||||| 8000 ||||||||| 12000 ||||||||| 16000 ||",nil,20,20,670,20,0x000001,0x000001,0.8,true)
 		ui.addTextArea(2,"<p align='center'><font size='20'><b><font color='#800000'><font face='Courier New'>"..data[name].x.."",name,700,18,80,22,0xff0000,0x800000,0.9,true)
@@ -64,6 +65,7 @@ function eventLoop()
 			end
 			if data[name].x > recorde then
 				recorde=data[name].x
+				recorder=name
 				tfm.exec.chatMessage("<ROSE>New high score on game: <b>"..data[name].x.." pixels</b>, made by "..name.."!")
 				ui.addTextArea(81,"",nil,data[name].x-3,50,6,990,0xff00ff,0x800080,0.8,false)
 				tfm.exec.setPlayerScore(name,data[name].x,false)
