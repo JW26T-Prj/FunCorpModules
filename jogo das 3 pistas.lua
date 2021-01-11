@@ -118,7 +118,7 @@ function eventLoop(p,f)
 	if valendo == true and f <= 39000 then
 		ui.addTextArea(3,"<font size='17'><p align='center'><font face='Segoe UI'><J>"..text.c8p.." <b>"..dica8.."",nil,5,110,780,32,0x000001,0x000001,0.9,true)
 	end
-	ui.setMapName("<J>"..text.module.."   <G>|   <N>Question : <V>"..pergunta.."/"..limite.."   <G>|   <N>Time : <V>"..tempo.."s   <G>|   <N>Compilation RTM 25<")
+	ui.setMapName("<J>"..text.module.."   <G>|   <N>Question : <V>"..pergunta.."/"..limite.."   <G>|   <N>Time : <V>"..tempo.."s   <G>|   <N>Compilation RTM 26<")
 end
 function eventChatCommand(name,message)
 	if message == "skip" then
@@ -162,9 +162,6 @@ function eventNewGame()
 		tfm.exec.bindKeyboard(name,71,true,true)
 		rato=rato+1
 		tfm.exec.setPlayerScore(name,0,false)
-	end
-	if tfm.get.room.community == "br" then
-		tfm.exec.chatMessage("<VP><b>Você pode ver todas as salas que compõem o module #anvilwar na /sala #anvilwar00rooms.</b><br><br>Participe do nosso grupo no Discord e fique por dentro das novas atualizações!<br><b>https://discord.gg/Bhk8q2D</b>")
 	end
 end
 function eventChatMessage(name,message)
