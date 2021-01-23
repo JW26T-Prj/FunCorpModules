@@ -37,7 +37,7 @@ function eventRanking(name)
 		end
 	end
 	ui.addTextArea(9000,"<B><J><font size='15'><font face='Verdana'><p align='center'>Temporary Ranking",name,150,130,500,30,0x212121,0x363634,1.0,true)
-	ui.addTextArea(9007,"<font size='12'><font face='Consolas'>#N   Name                                         Score     Wins",name,150,165,500,150,0x151515,0x3F3F3D,1.0,true)
+	ui.addTextArea(9007,"<font size='12'><font face='Consolas'>#N   Name                                     Score      Wins",name,150,165,500,150,0x151515,0x3F3F3D,1.0,true)
 	ui.addTextArea(9006,"<font size='16'><font face='Verdana'><p align='center'><R><a href='event:closep'>X</a>",name,620,130,30,27,0,0,1.0,true)
 	ui.addTextArea(9005,"<B><font size='12'><font face='Consolas'>"..str1,name,150,165,480,220,0,0,nil,true)
 	ui.addTextArea(9004,"<p align='right'><font size='12'><font face='Consolas'>"..str2,name,454,165,60,220,0,0,nil,true)
@@ -82,10 +82,10 @@ function eventChatCommand(name,message)
 		end
 	end
 	if message == "help" then
-		menuShow(name,"Help","The objetive of this module is kill the other players using the mouse to generate spirits.<br><br>At moment, 6 powerups are available:<br>F1 = Fast Spirits (700 points)<br>F2 = Double Power (250 points)<br>F3 = Box Meteor (550 points)<br>F4 = Night Mode (400 points)<br>F5 = Ultra Explosion (1000 points)<br>F6 = Stone Meteor (750 points)<br><br>Module made by Hecarimjhenx#0000. Version RTM 4037.018",180)
+		menuShow(name,"Help","The objetive of this module is kill the other players using the mouse to generate spirits.<br><br>At moment, 6 powerups are available:<br>F1 = Fast Spirits (700 points)<br>F2 = Double Power (350 points)<br>F3 = Box Meteor (550 points)<br>F4 = Night Mode (400 points)<br>F5 = Ultra Explosion (800 points)<br>F6 = Stone Meteor (750 points)<br><br>Module made by Hecarimjhenx#0000. Version RTM 4138.019",180)
 	end
 	if message == "powerups" then
-		menuShow(name,"Powerups List","<b>F1 - Fast Spirits</b><br>Allows you to use spirits without the default timeout.<br><b>F2 - Double Power</b><br>Double the power of your anvils, independently of actual intensity.<br><b>F3 - Box Meteor</b><br>Spawns a meteor of large box on the map.<br><b>F4 - Night Mode</b><br>Blacks out the map for 2 seconds.<br><b>F5 - Ultra Explosion</b><br>Spawns a huge amount of spirits around the map.<br><b>F6 - Stone Meteor</b><br>Spawns a lot of stones falling from the top of map.",180)
+		menuShow(name,"Powerups List","<b>F1 - Fast Spirits - 700 points</b><br>Allows you to use spirits without the default timeout.<br><b>F2 - Double Power - 350 points</b><br>Double the power of your anvils, independently of actual intensity.<br><b>F3 - Box Meteor - 550 points</b><br>Spawns a meteor of large box on the map.<br><b>F4 - Night Mode - 400 points</b><br>Blacks out the map for 2 seconds.<br><b>F5 - Ultra Explosion - 800 points</b><br>Spawns a huge amount of spirits around the map.<br><b>F6 - Stone Meteor - 750 points</b><br>Spawns a lot of stones falling from the top of map.",180)
 	end
 end
 function eventNewPlayer(name)
@@ -144,7 +144,7 @@ function eventNewGame()
 		data[name].p2=false
 		data[name].pcount=0
 	end
-	tfm.exec.chatMessage("<ROSE><i>Spectra's map loader v2.156</i><br><N>Loading current map information...<br>----------------------------------------<br><b>Current Map :</b> <V>"..tfm.get.room.currentMap.."<br><N><b>Author :</b><V> "..tfm.get.room.xmlMapInfo.author.."<br><N><br>----------------------------------------")
+	tfm.exec.chatMessage("<ROSE><i>Spectra's map loader v2.156</i><br><N>Loading current map information...<br>----------------------------------------<br><b>Current Map :</b> <V>"..tfm.get.room.currentMap.."<br><N><b>Author :</b><V> "..tfm.get.room.xmlMapInfo.author.."<br><N>----------------------------------------")
 end
 function eventLoop(pass,falt)
 	if nightmode == true then
@@ -176,10 +176,10 @@ function eventLoop(pass,falt)
 		end
 	end
 	if falt < 70000 and falt > 69375 then
-		tfm.exec.chatMessage("The ultra hard mode will be enabled in 10 seconds!",nil)
+		tfm.exec.chatMessage("<ROSE>The ultra hard mode will be enabled in 10 seconds!",nil)
 	end
 	if falt < 60000 and sudden == false and falt > 50000 then
-		tfm.exec.chatMessage("<R>Ultra hard mode enabled!",nil)
+		tfm.exec.chatMessage("<R><b>Ultra hard mode enabled!</b>",nil)
 		imageId = tfm.exec.addImage("1772bdf9f9e.png","&1",240,80,nul)
 		remain=-0.5
 		ui.addTextArea(1,"",nil,-1000,-1000,3000,3000,0x000001,0x000001,0.8,false)
@@ -195,7 +195,7 @@ function eventLoop(pass,falt)
 		tfm.exec.newGame("#10")
 	end
 	if prox == false then
-		ui.setMapName("<font face='Rockwell,Verdana'><N>Click War RTM <b>4037.018</b>  <G>|  <N>Intensity: <b>"..intensity.."</b>  <G>|  <VP>Module made by <b>Hecarimjhenx#0000</b><")
+		ui.setMapName("<font face='Rockwell,Verdana'><N>Click War RTM <b>4138.019</b>  <G>|  <N>Intensity: <b>"..intensity.."</b>  <G>|  <VP>Module made by <b>Hecarimjhenx#0000</b><")
 	else
 		ui.setMapName("<b>"..winner.."</b> <N>wons the match! Next match on "..math.floor(falt/1000).." seconds.<")
 	end
@@ -224,19 +224,26 @@ function eventLoop(pass,falt)
 		data[name].time=data[name].time+1
 	end
 	if enabled == true then
-		increase=increase+0.5
-		if increase >= 2 then
-			if sudden == false then
-				intensity=intensity+1
-				increase=0;
-				for name,player in pairs(tfm.get.room.playerList) do
-					if not tfm.get.room.playerList[name].isDead then
-						if pass > 30000 then
-							data[name].score=math.floor(data[name].score+(intensity/24))
+		if intensity < 217 then
+			increase=increase+0.5
+			if increase >= 2 then
+				if sudden == false then
+					intensity=intensity+1
+					increase=0;
+					for name,player in pairs(tfm.get.room.playerList) do
+						if not tfm.get.room.playerList[name].isDead then
+							if pass > 30000 then
+								data[name].score=math.floor(data[name].score+(intensity/24))
+							end
+							if pass > 60000 then
+								data[name].score=math.floor(data[name].score+(intensity/24))
+							end
 						end
 					end
 				end
 			end
+		else
+			intensity=217
 		end
 	end
 end
@@ -325,9 +332,9 @@ function eventKeyboard(name,key,down,x,y)
 				data[name].pcount=16
 				tfm.exec.chatMessage("<J>"..name.." used the powerup Fast Spirits!")
 			end
-			if key == 113 and data[name].score >= 250 then
+			if key == 113 and data[name].score >= 350 then
 				data[name].p2=true
-				data[name].score=data[name].score-250
+				data[name].score=data[name].score-350
 				data[name].pcount=20
 				tfm.exec.chatMessage("<J>"..name.." used the powerup Double Power!")
 			end
@@ -344,8 +351,8 @@ function eventKeyboard(name,key,down,x,y)
 				ui.addTextArea(2571,"",nil,-800,-600,3000,3000,0x010101,0x010101,0.99,true)
 				nightmode=true
 			end
-			if key == 116 and data[name].score >= 1000 then
-				data[name].score=data[name].score-1000
+			if key == 116 and data[name].score >= 800 then
+				data[name].score=data[name].score-800
 				tfm.exec.chatMessage("<J>"..name.." used the powerup Mega Explosion!")
 				for i=-4,12 do
 					for j=-2,6 do
