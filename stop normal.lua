@@ -1,5 +1,5 @@
 -- STOP
--- Escrito por Ninguem - 31/08/2015 // Updated by Nasus_assassin#1534 - 06/10/2020
+-- Escrito por Ninguem - 31/08/2015 // Updated by Nasus_assassin#1534 - 09/02/2021
 -- Limit of 20 categories.
 
 ADM = {"Nasus_assassin#1534"} -- editar com seu nome aqui!
@@ -11,6 +11,7 @@ MODO = "inicio"
 ROUND = 1
 PALAVRA = 1
 MAXROUND = 5
+TEMAS = 14
 TEMPO = false
 LETRA = ""
 
@@ -21,7 +22,7 @@ function atualizaCat(first)
 	end
 	txt = txt .. "\n<vp>- <a href='event:add'>Adicionar</a>\n\n<rose><p align='center'><font size='16px'><a href='event:start'>Começar</a></p></font>"
 	for i, v in pairs(ADM) do
-		ui.addTextArea(ID.cat, txt, v, 300, 50, 200, 300, 1, 1, 0.8, true)
+		ui.addTextArea(ID.cat, txt, v, 300, 50, 200, 330, 1, 1, 0.8, true)
 	end
 end
 
@@ -171,6 +172,7 @@ function eventTextAreaCallback(id, p, cmd)
 			ui.addPopup(ID.add, 2, "Adicionar categoria", p, 300, 200, 200, true)
 		elseif arg[1] == "del" then
 			table.remove(CAT, buscaItem(CAT, table.concat(arg, " ", 2)))
+			TEMAS = TEMAS - 1
 			atualizaCat(false)
 		elseif arg[1] == "start" then
 			MODO = "espera"
@@ -206,17 +208,22 @@ end
 function eventPopupAnswer(id, p, resp)
 	if id == ID.add and resp ~= "" and MODO == "inicio" then
 		if not buscaItem(CAT, resp) then
-			table.insert(CAT, resp)
-			atualizaCat(false)
+			if TEMAS >= 15 then
+				tfm.exec.chatMessage("<R>Limite máximo de 15 temas atingido!",p)
+			else
+				table.insert(CAT, resp)
+				atualizaCat(false)
+				TEMAS = TEMAS + 1
+			end
 		end
-	elseif MODO == "round" and (string.upper(resp)):sub(1,1) == LETRA then
+	elseif MODO == "round" and (string.upper(resp)):sub(1,1) == LETRA and string.len(resp) >= 2 then
 		PLAYER[p].palavra[CAT[id]] = string.upper(resp)
 		atualizaPalavras(p)
 	end
 end
 
 function eventNewPlayer(p)
-	ui.setMapName("STOP! Script edited by Nasus_assassin#1534 - 06/10/2020<")
+	ui.setMapName("STOP! Script edited by Nasus_assassin#1534 - 09/02/2021<")
 	PLAYER[p] = {num = 0, pontos = 0, vitoria = 0, palavra = {}}
 	for i, v in pairs(CAT) do
 		PLAYER[p].palavra[v] = ""
@@ -369,5 +376,5 @@ tfm.exec.disableAutoShaman(true)
 tfm.exec.disableAutoScore(true)
 tfm.exec.disableAutoNewGame(true)
 tfm.exec.newGame("@7631682")
-ui.setMapName("STOP! Script edited by Nasus_assassin#1534 - 06/10/2020<")
+ui.setMapName("STOP! Script edited by Nasus_assassin#1534 - 09/02/2021<")
 atualizaCat(true)
