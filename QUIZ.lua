@@ -1,11 +1,9 @@
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.0.1
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.0.2
 -- Esta nova versão possui diversos tipos de perguntas.
 -- Você pode selecionar o tema editando a linha 16.
 -- Temas:
 -- 0 = transformice
 -- 1 = conhecimentos gerais (INCOMPLETO)
--- 2 = EM BREVE (NÃO ESCOLHA)
--- 3 = EM BREVE (NÃO ESCOLHA)
 -- Para adicionar novas perguntas, utilize a seguinte sintaxe na hora de inserir: "PERGUNTA","RESPOSTA 1","RESPOSTA 2",1 ou 2
 -- Para sugestões de perguntas ou correção de bugs contate Reksai_void2600#6638.
 -- Caso queira pular alguma pergunta por estar muito repetida ou algo do tipo, use o comando !random.
@@ -13,6 +11,7 @@ piso={type = 6,width = 350,height = 30,foregound = 1,friction = 1.0,restitution 
 for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand"} do
 	tfm.exec["disable"..f](true)
 end
+vivos=0
 tema=0 -- Edite conforme mostrado acima!
 admin="Reksai_void2600#6638" -- COLOQUE SEU NOME!
 system.disableChatCommandDisplay("random")
@@ -81,7 +80,7 @@ perguntas={
 "Qual o nome do título que o Tigrounette usa?","La Belette","Les Populaires",1,
 "A habilidade 'Espírito Ancestral' faz parte de qual árvore de Habilidades?","Guia Espiritual","Mestre do Vento",1,
 "Quantos queijos custa a compra de um 2ª visual de roupas no Transformice?","100","1000",2,
-"Quem é o criador do module #circuit?","Bolodefchoco#0000","Ninguem#0095",2,
+"Quem é o criador do module #circuit?","Bolodefchoco#0015","Ninguem#0095",2,
 "Quantos queijos custa a customização de uma roupa no Transformice?","2000","4000",1,
 "Em qual ano estreou o sistema de missões no Transformice?","2019","2020",1,
 "Quem foi o primeiro gerenciador do module Mestre Mandou?","Haxhhhhhhhhh#0000","Jessiewind26#2546",2,
@@ -90,6 +89,7 @@ perguntas={
 "É possível ganhar queijos no perfil apenas jogando modules.","Verdadeiro","Falso",2,
 "Qual modo do Transformice foi desativado devido a limitação dos vídeos no Transformice?","Music","Nekodancer",1,
 "Em qual ano estreou o fórum em HTML5 do Atelier 801?","2015","2016",1,
+"Usuários comuns não podem criar mapas nos quais o shaman possa usar portais.","Verdadeiro","Falso",2,
 "Apenas membros da Staff do Transformice podem criar mapas no modo Noite.","Verdaeiro","Falso",2,
 "Qual a tribo do Tigrounette?","Lute como uma garota","Les Populaires",2,
 "Qual título é desbloqueado quando você consegue 20.000 firsts?","RELÂMPAGO","Mestre do Vento",2,
@@ -97,6 +97,7 @@ perguntas={
 "Há quantos tipos de piso no Transformice?","16","18",2,
 "Quantos pregos para o Shaman existem no Transformice?","3","5",2,
 "Quantos tamanhos de tábua existem no Transformice?","4","3",1,
+"Para se usar o comando /lua no cafofo da tribo, você precisa ter a permissão de...","Usar o /np no cafofo","Mudar o cafofo da tribo",1,
 "É possível deixar os pisos invisíveis no Transformice","Verdadeiro","Falso",1,
 "Qual a idade mínima para virar MapCrew no Transformice?","18","Não tem idade mínima",2,
 "Qual título é desbloqueado quando você consegue 1 bootcamp?","Principiante","Recruta",2,
@@ -107,7 +108,7 @@ perguntas={
 "Qual o limite de consumíveis que podem ser armazenados no inventário?","80","200",1,
 "Qual o nome do antigo fun-site no qual você poderia acessar um Ranking dos ratos?","Cheese For Mice","Viprin Drawing Editor",1,
 "Qual o limite de jogadores em uma tribo no Transformice?","2000","5000",2,
-"Quem é o líder brasileiro da Module Team do Transformice?","Bolodefchoco#0000","Shun_kazami#7014",1,
+"Qual o comando que serve para ver as combinações de roupa do jogo?","/dressing","/shop",1,
 "Em qual ano estreou o evento de Natal do Transformice?","2011","2010",2,
 "Qual é o primeiro nome do Tigrounette?","Jean","Dean",1,
 "Qual destes títulos é atribuído a quantidade de ratos salvos no modo difícil?","Virtuoso","Redentor",1,
@@ -119,6 +120,7 @@ perguntas={
 "A seta é sempre o primeiro item do shaman.","Falso","Verdadeiro",1,
 "Qual a idade mínima para virar moderador no Transformice?","18","16",1,
 "Qual a idade mínima para virar FunCorp no Transformice?","16","Não tem idade mínima",2,
+"Quantos tamanhos de tela de vídeo existem no Transformice?","2","3",1,
 "Em teoria, qual a largura máxima que um mapa no Transformice pode ter?","4800","9830",2,
 "Em teoria, qual a altura máxima que um mapa no Transformice pode ter?","800","9830",2,
 "Quem é o criador atual do module #unotfm?","Ninguem#0095","Spectra_phantom#6089",1,
@@ -138,7 +140,7 @@ perguntas={
 "O module #freezertag antes era um submódulo de qual module?","#parkour","#circuit",1,
 "Qual o nome do código que é usado para carregar mapas do Transformice?","Lua","XML",2,
 "Qual destes usuários nunca se tornou Funcorp?","Patrick_mahomes#1795","Reksai_void2600#6638",1,
-"Qual destes modules não foi feito por um brasileiro?","Mestre Mandou","Freezertag",1,
+"Qual destes modules não foi feito por um brasileiro?","#anvilwar","#freezertag",1,
 "Qual destas ratas morreu na vida real, dando origem a uma decoração do Transformice?","Elise","Papaille",1,
 "Em qual mês do ano geralmente termina o evento de Natal?","Dezembro","Janeiro",2,
 "Em qual ano foram intoduzidos os modules no Transformice?","2014","2013",2,
@@ -174,14 +176,15 @@ perguntas={
 "Qual o nome do antigo jogo do Transformice para celular?","Dead Maze","Run For Cheese",2,
 "Os donos da Atelier 801 e da Ubisoft já se encontraram pessoalmente.","Não","Sim",1,
 "Em qual árvore de habilidades está presente a habilidade 'Volta da natureza'?","Físico","Selvagem",2,
-"Qual o nome atual da ex-modsent Racola?","Alrly#0095","Keith#0095",1,
+"Qual o nome atual da ex-modsent Racola?","Alriy#0095","Keith#0095",1,
 "Quantos ratos salvos são necessários para desbloquear o modo normal?","0","1000",1,
 "Quando você cria uma conta no Transformice, seu inventário vem vazio.","Verdadeiro","Falso",2,
 "Qual o comando que desbloqueia um item de cabeça de bolo?","/atelier801","/transformice",1,
 "O capacete de 20 queijos é o único item que pode ser customizado sem gastar queijos/morangos.","Verdadeiro","Falso",1,
 "A partir de 2021, só será possível jogar Transformice através da Steam.","Verdadeiro","Falso",2,
+"Qual o último título de ratos salvos em modo difícil pelo Shaman?","Virtuoso","Alpha & Ômega",1,
 "É possível mudar a gravidade do mapa no Transformice utilizando código LUA.","Verdadeiro","Falso",1,
-"Apenas membros da LUA Team podem carregar modules nas salas do Transformice.","Verdadeiro","Falso",2,
+"Apenas membros da Module Team podem carregar modules nas salas do Transformice.","Verdadeiro","Falso",2,
 "Quantos servidores host da Atelier801 existem no Brasil?","0","1",1,
 "Qual é a margem máxima offscreen de largura e altura no qual os ratos podem permanecer vivos?","400px por lado","800px por lado",1,
 }
@@ -211,8 +214,10 @@ pergunta=0
 rodada=0
 actual_question={quest="",a1="",a2="",answer=nil}
 function eventNewGame()
-	ui.setMapName("Quiz de Perguntas - Versão 2.0.1 - por Reksai_void2600#6638<")
 	tfm.exec.setGameTime(18)
+	for name,player in pairs(tfm.get.room.playerList) do
+		vivos=vivos+1
+	end
 end
 function reset()
 	rodada=0
@@ -229,14 +234,14 @@ function eventChatCommand(name,message)
 end
 function eventNewPlayer(name)
 	tfm.exec.chatMessage("Aguarde a próxima rodada para jogar.",name)
-	ui.setMapName("Quiz de Perguntas - Versão 2.0.1 - por Reksai_void2600#6638<")
 end
 function eventLoop(p,f)
+	ui.setMapName("<N>Quiz de Perguntas - Versão 2.0.2 - por Reksai_void2600#6638  <BL>|  <N>Ratos vivos : <V>"..vivos.."<")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
 	end
-	if f < 500 and modo == "perguntar" then
+	if f < 1250 and modo == "perguntar" then
 		for name,player in pairs(tfm.get.room.playerList) do
 			if tfm.get.room.playerList[name].x >= 395 and tfm.get.room.playerList[name].x <= 405 then
 				tfm.exec.killPlayer(name)
@@ -263,7 +268,7 @@ function eventLoop(p,f)
 end
 function randomQuests()
 	for name,player in pairs(tfm.get.room.playerList) do
-		tfm.exec.movePlayer(name,400,355,false)
+		tfm.exec.movePlayer(name,400,145,false)
 	end
 	tfm.exec.setGameTime(15)
 	tfm.exec.addPhysicObject(0, 225, 410, piso)
@@ -299,6 +304,7 @@ end
 function eventPlayerDied(name)
 	local i=0
 	local n
+	vivos=vivos-1
 	for pname,player in pairs(tfm.get.room.playerList) do
 		if not player.isDead then
 			i=i+1
