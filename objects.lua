@@ -1,7 +1,7 @@
 tfm.exec.disableAutoNewGame(true)
 tfm.exec.disableAutoShaman(true)
 tfm.exec.disableAutoTimeLeft(true)
-tfm.exec.setRoomMaxPlayers(25)
+tfm.exec.setRoomMaxPlayers(22)
 tfm.exec.disablePhysicalConsumables(true)
 tfm.exec.disableAutoScore(true)
 for _,f in next,{"help","kill","run","restart","shutdown"} do
@@ -52,17 +52,14 @@ function eventNewGame()
 		   	tfm.exec.chatMessage("<R>Souris aren't allowed to play on this module. Create an account or log in to play Objects.",name)
 		end
 	end
-	if tfm.get.room.community == "br" then
-		tfm.exec.chatMessage("<VP><b>Você pode ver todas as salas que compõem o module #anvilwar na /sala #anvilwar00rooms.</b>")
-	end
 end
 function showBar()
 	for i=1,41 do
 		if mapas[i] == tfm.get.room.currentMap then
 			if map_names[i] == "" then
-				ui.setMapName("<J><b>"..tfm.get.room.currentMap.."</b>  <BL>|   <N>Difficulty : <R><b>"..functs.level.."</b>  <BL>|  <N>#objects RTM 7653.037  <BL>|  <N>Time Left : <J><b>"..remaining.."</b><")
+				ui.setMapName("<J><b>"..tfm.get.room.currentMap.."</b>  <BL>|   <N>Difficulty : <R><b>"..functs.level.."</b>  <BL>|  <N>#objects RTM 7754.038  <BL>|  <N>Time Left : <J><b>"..remaining.."</b><")
 			else
-				ui.setMapName("<J><b>"..map_names[i].."</b>  <BL>|   <N>Difficulty : <R><b>"..functs.level.."</b>  <BL>|  <N>#objects RTM 7653.037  <BL>|  <N>Time Left : <J><b>"..remaining.."</b><")
+				ui.setMapName("<J><b>"..map_names[i].."</b>  <BL>|   <N>Difficulty : <R><b>"..functs.level.."</b>  <BL>|  <N>#objects RTM 7754.038  <BL>|  <N>Time Left : <J><b>"..remaining.."</b><")
 			end
 		end
 	end
