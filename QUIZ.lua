@@ -1,4 +1,4 @@
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.0.2
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.0.3
 -- Esta nova versão possui diversos tipos de perguntas.
 -- Você pode selecionar o tema editando a linha 16.
 -- Temas:
@@ -27,12 +27,13 @@ perguntas={
 "Quantos morangos custa o item mais caro da loja?","550","600",1,
 "Funcorps fazem parte da Staff BR?","Sim","Não",2,
 "Qual a categoria atribuída a mapas de Survivor?","P10","P12",1,
-"O que acontece se você digitar /langue fr?","Muda a linguagem do jogo","Te leva para a sala fr",1,
+"Qual a função do comando /langue?","Muda a linguagem do jogo","Muda você de sala",1,
 "Qual destes jogos não foi feito pela Atelier 801?","Bombom","Fortoresse",1,
 "Qual o limite máximo de amigos do Transformice?","500","1000",1,
 "Há quantos emoticons no Transformice?","10","14",1,
 "Há quantas ações de rato no Transformice?","10","14",2,
 "Qual o nome do antigo modo do module #deathmatch?","Baffbotffa","Baffbot",1,
+"A partir de qual nível todas as habilidades de shaman são desbloqueadas?","20","30",1,
 "O que acontece se você digitar /version?","Desconecta você do jogo","Abre a versão do jogo",2,
 "Qual título é desbloqueado quando você consegue 40.000 firsts?","RELÂMPAGO","Mestre do Vento",1,
 "Existem quantas habilidades de Shaman no Transformice?","75","65",1,
@@ -42,6 +43,8 @@ perguntas={
 "Qual destes pregos não pode ser utilizado no modo difícil?","Vermelho","Amarelo",1,
 "Há quantas categorias de itens na loja?","16","17",2,
 "Em que ano o Transformice atingiu seu número máximo de jogadores ativos?","2012","2013",1,
+"Quantos queijos custa a exportação de um mapa como cafofo da tribo?","5","40",1,
+"Quantos jogos a Atelier 801 tem atualmente?","5","6",1,
 "Qual destes usuários é responsável pela sala #anvilwar?","Jessiewind26#2546","Spectra_phantom#6089",2,
 "Qual destes usuários é responsável pelo module #batata?","Laagaadoo#0000","Ikke#0095",1,
 "Qual destes comandos é utilizado para a inserção de um código especial da Japan Expo?","/lua","/code",2,
@@ -72,6 +75,7 @@ perguntas={
 "Qual dessas tags é atribuída aos Mapcrews do Transformice?","#0020","Não tem tag definida",1,
 "Qual destes comandos é utilizado para a inserção de um script LUA?","/lua","/code",1,
 "Qual destes eventos não é mais utilizado no Transformice?","Carnaval","Natal",1,
+"Qual destes usuários nunca se tornou Funcorp?","Viego#0345","Bolodefchoco#0000",1,
 "Se você ficar muito tempo dentro da água, você morre automaticamente.","Verdadeiro","Falso",2,
 "É possível ganhar queijos na loja apenas jogando modules.","Verdadeiro","Falso",1,
 "Qual categoria de mapas é atribuída aos mapas de Defilante?","P18","P19",1,
@@ -87,6 +91,7 @@ perguntas={
 "Quantos queijos custa a customização de um item de shaman no Transformice?","2000","4000",2,
 "Qual o nome da plataforma de execução que o Transformice utiliza?","Adobe Air","Adobe Flash Player",2,
 "É possível ganhar queijos no perfil apenas jogando modules.","Verdadeiro","Falso",2,
+"É possível comprar morangos pelo celular no Brasil.","Verdadeiro","Falso",2,
 "Qual modo do Transformice foi desativado devido a limitação dos vídeos no Transformice?","Music","Nekodancer",1,
 "Em qual ano estreou o fórum em HTML5 do Atelier 801?","2015","2016",1,
 "Usuários comuns não podem criar mapas nos quais o shaman possa usar portais.","Verdadeiro","Falso",2,
@@ -109,6 +114,7 @@ perguntas={
 "Qual o nome do antigo fun-site no qual você poderia acessar um Ranking dos ratos?","Cheese For Mice","Viprin Drawing Editor",1,
 "Qual o limite de jogadores em uma tribo no Transformice?","2000","5000",2,
 "Qual o comando que serve para ver as combinações de roupa do jogo?","/dressing","/shop",1,
+"O dono de uma tribo pode exibir mensagens no chat utilizando o comando /lua no cafofo da tribo.","Verdadeiro","Falso",2,
 "Em qual ano estreou o evento de Natal do Transformice?","2011","2010",2,
 "Qual é o primeiro nome do Tigrounette?","Jean","Dean",1,
 "Qual destes títulos é atribuído a quantidade de ratos salvos no modo difícil?","Virtuoso","Redentor",1,
@@ -126,10 +132,12 @@ perguntas={
 "Quem é o criador atual do module #unotfm?","Ninguem#0095","Spectra_phantom#6089",1,
 "Em qual ano foi introduzido o esquema de #tags nos nomes do Transformice?","2018","2019",1,
 "Quantos bootcamps são necessários para desbloquear o título Recruta?","1","3",1,
+"Usuários podem adicionar imagens no cafofo da tribo utilizando o comando /lua.","Verdadeiro","Falso",1,
 "Quando um rato morre no Transformice, começa a sair...","Bolhas","Sangue",1,
 "Qual é o nome do primeiro module do Transformice?","sharpie debuglua","batata",1,
 "O dia de lançamento do Transformice é também um feriado nacional no Brasil. Qual é esse feriado?","Dia das Mães","Dia do Trabalho",2,
 "Qual destes modules possui mais submódulos?","#parkour","#anvilwar",2,
+"Para usar o café, você precisa estar no mínimo no nível...","30","40",1,
 "Em qual dia do ano o Transformice foi criado?","1","2",1,
 "Qual o limite de queijos que podem ser armazenados no inventário?","80","200",2,
 "Quantos anos tem o Tigrounette?","33","35",2,
@@ -154,7 +162,7 @@ perguntas={
 "Qual a idade mínima para virar membro da Module Team no Transformice?","16","Não tem idade mínima",2,
 "Qual destes comandos servem para ver informações ténicas do cliente e do sistema?","/info","/^^",2,
 "Qual o último título desbloqueável de queijos do Transformice?","MEU QUEIJO!","Alpha & Omega",1,
-"Para falar no café, você precisa de quantos queijos no perfil?","100","300",2,
+"Para falar no café, você precisa de quantos queijos no perfil?","100","500",2,
 "Qual destes modules foi dos mais acessados em 2014?","#pictionary","#minigolf",1,
 "Qual comando é utilizado para ver a árvore de funções e eventos LUA do Transformice?","/luahelp","/luatree",1,
 "Qual era o nome da sala que, após uma sequência de comandos, dava morangos de graça?","286637850","286657250",1,
@@ -236,7 +244,7 @@ function eventNewPlayer(name)
 	tfm.exec.chatMessage("Aguarde a próxima rodada para jogar.",name)
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas - Versão 2.0.2 - por Reksai_void2600#6638  <BL>|  <N>Ratos vivos : <V>"..vivos.."<")
+	ui.setMapName("<N>Quiz de Perguntas - Versão 2.0.3 - por Reksai_void2600#6638  <BL>|  <N>Ratos vivos : <V>"..vivos.."<")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
