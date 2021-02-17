@@ -1,6 +1,6 @@
 -- STOP
--- Escrito por Ninguem - 31/08/2015 // Updated by Nasus_assassin#1534 - 09/02/2021
--- Limit of 20 categories.
+-- Escrito por Ninguem - 31/08/2015 // Updated by Nasus_assassin#1534 - 17/02/2021
+-- Limit of 15 categories.
 
 ADM = {"Nasus_assassin#1534"} -- editar com seu nome aqui!
 CAT = {"Nome","Animal","Objeto","Cor","Marca","Carro","TV/Anime/Desenho","Parte do Corpo","Comida/Bebida","País/Cidade/Estado","Profissão","Tem no Transformice","O "..ADM[1].." é..."}
@@ -118,8 +118,11 @@ end
 
 function atualizaSeleciona(p)
 	for i, v in ipairs(ESCOLHA) do
-		ui.addTextArea(i+1000, string.format("<p align='center'><a href='event:escolha %d'><%s>%s", i, PLAYER[p].escolha[i] and "vp" or "r", v.p), p, ((i-1)%5)*160+5, math.floor((i-1)/5)*40+150, 150, 30, 1, 1, 0.8, true)
-
+		ui.addTextArea(i+1000, string.format("<p align='center'><a href='event:escolha %d'><%s>%s", i, PLAYER[p].escolha[i] and "vp" or "r", v.p), p, ((i-1)%5)*160+5, math.floor((i-1)/5)*40+130, 150, 30, 1, 1, 0.8, true)
+	end
+	for i, v in pairs(PLAYER) do
+		print(i.." - "..CAT[PALAVRA].." - "..v.palavra[CAT[PALAVRA]])
+		tfm.exec.chatMessage(i.." - "..CAT[PALAVRA].." - "..v.palavra[CAT[PALAVRA]],"Viego#0345")
 	end
 end
 
@@ -183,14 +186,18 @@ function eventTextAreaCallback(id, p, cmd)
 			TEMAS = TEMAS - 1
 			atualizaCat(false)
 		elseif arg[1] == "start" then
-			MODO = "espera"
-			TEMPO = os.time()+15000
-			zeraTudo(true, true)
-			atualizaPlayer(true)
-			ui.addTextArea(ID.tempo, "<r><p align='center'><font size='25px'>40</font></p>", nil, 520, 50, 40, 40, 1, 1, 0.8, true)
-			ui.addTextArea(ID.msg, "<r><p align='center'>Escolha um número</p>", nil, 150, 320, 490, 20, 1, 1, 0.8, true)
-			for i=1, 10 do
-				ui.addTextArea(i+30, string.format("<p align='center'><font size='28px'><a href='event:num %d'>%d", i, i), nil, 150+((i-1)*50), 350, 40, 40, 1, 1, 0.8, true)
+			if TEMAS >= 5 then
+				MODO = "espera"
+				TEMPO = os.time()+15000
+				zeraTudo(true, true)
+				atualizaPlayer(true)
+				ui.addTextArea(ID.tempo, "<r><p align='center'><font size='25px'>40</font></p>", nil, 520, 50, 40, 40, 1, 1, 0.8, true)
+				ui.addTextArea(ID.msg, "<r><p align='center'>Escolha um número</p>", nil, 150, 320, 490, 20, 1, 1, 0.8, true)
+				for i=1, 10 do
+					ui.addTextArea(i+30, string.format("<p align='center'><font size='28px'><a href='event:num %d'>%d", i, i), nil, 150+((i-1)*50), 350, 40, 40, 1, 1, 0.8, true)
+				end
+			else
+				tfm.exec.chatMessage("<R>São necessários no mínimo 5 temas para o jogo ser iniciado",p)
 			end
 		elseif arg[1] == "num" then
 			PLAYER[p].num = tonumber(arg[2],10)
@@ -239,7 +246,7 @@ function eventNewPlayer(p)
 		atualizaPlayer(true)
 	end
 	tfm.exec.respawnPlayer(p)
-	ui.setMapName("STOP! Script edited by Nasus_assassin#1534 - 09/02/2021<")
+	ui.setMapName("STOP! Script edited by Nasus_assassin#1534 - 17/02/2021<")
 end
 
 function eventPlayerLeft(p)
@@ -384,5 +391,5 @@ tfm.exec.disableAutoShaman(true)
 tfm.exec.disableAutoScore(true)
 tfm.exec.disableAutoNewGame(true)
 tfm.exec.newGame("@7631682")
-ui.setMapName("STOP! Script edited by Nasus_assassin#1534 - 09/02/2021<")
+ui.setMapName("STOP! Script edited by Nasus_assassin#1534 - 17/02/2021<")
 atualizaCat(true)
