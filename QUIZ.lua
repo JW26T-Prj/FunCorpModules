@@ -1,4 +1,4 @@
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.0.3
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.0.4
 -- Esta nova versão possui diversos tipos de perguntas.
 -- Você pode selecionar o tema editando a linha 16.
 -- Temas:
@@ -75,7 +75,7 @@ perguntas={
 "Qual dessas tags é atribuída aos Mapcrews do Transformice?","#0020","Não tem tag definida",1,
 "Qual destes comandos é utilizado para a inserção de um script LUA?","/lua","/code",1,
 "Qual destes eventos não é mais utilizado no Transformice?","Carnaval","Natal",1,
-"Qual destes usuários nunca se tornou Funcorp?","Viego#0345","Bolodefchoco#0000",1,
+"Qual destes usuários nunca se tornou Funcorp?","Viego#0345","Bolodefchoco#0015",1,
 "Se você ficar muito tempo dentro da água, você morre automaticamente.","Verdadeiro","Falso",2,
 "É possível ganhar queijos na loja apenas jogando modules.","Verdadeiro","Falso",1,
 "Qual categoria de mapas é atribuída aos mapas de Defilante?","P18","P19",1,
@@ -119,7 +119,7 @@ perguntas={
 "Qual é o primeiro nome do Tigrounette?","Jean","Dean",1,
 "Qual destes títulos é atribuído a quantidade de ratos salvos no modo difícil?","Virtuoso","Redentor",1,
 "A partir de qual ano foi possível criar mapas com largura maior que a normal?","2012","2011",2,
-"Em qual cidade francesa fica situada a sede da Atelier 801?","Lille","Paris",1,
+"Em qual cidade fica situada a sede da Atelier 801?","Lille","Paris",1,
 "Quantos firsts são necessários para desbloquear o título 'O Mito'?","1100","1000",1,
 "Qual a largura máxima que um mapa pode ter sem ter o modo defilante ativado?","1600","4800",1,
 "Qual destes objetos não pode ser utilizado no modo difícil?","Sp","Seta",1,
@@ -137,7 +137,7 @@ perguntas={
 "Qual é o nome do primeiro module do Transformice?","sharpie debuglua","batata",1,
 "O dia de lançamento do Transformice é também um feriado nacional no Brasil. Qual é esse feriado?","Dia das Mães","Dia do Trabalho",2,
 "Qual destes modules possui mais submódulos?","#parkour","#anvilwar",2,
-"Para usar o café, você precisa estar no mínimo no nível...","30","40",1,
+"Para usar o café, você precisa estar com quantos dias jogados de conta?","30","40",1,
 "Em qual dia do ano o Transformice foi criado?","1","2",1,
 "Qual o limite de queijos que podem ser armazenados no inventário?","80","200",2,
 "Quantos anos tem o Tigrounette?","33","35",2,
@@ -153,7 +153,7 @@ perguntas={
 "Em qual mês do ano geralmente termina o evento de Natal?","Dezembro","Janeiro",2,
 "Em qual ano foram intoduzidos os modules no Transformice?","2014","2013",2,
 "Qual destes comandos servem para ver os seus mapas criados?","/maps","/lsmap",2,
-"Quem é o criador e gerenciador atual do module #shamousey?","Shamousey#0020","Gmctf#0000",1,
+"Quem é o criador e gerenciador atual do module #shamousey?","Shamousey#0015","Gmctf#0000",1,
 "Quantos objetos de shaman podem ser utilizados no modo padrão?","13","14",2,
 "Em qual ano houve o desban de todas as contas banidas permanentes no Transformice?","2012","2013",2,
 "Em qual país está situado o host de baixo ping disponível no Brasil?","Canadá","México",1,
@@ -162,7 +162,7 @@ perguntas={
 "Qual a idade mínima para virar membro da Module Team no Transformice?","16","Não tem idade mínima",2,
 "Qual destes comandos servem para ver informações ténicas do cliente e do sistema?","/info","/^^",2,
 "Qual o último título desbloqueável de queijos do Transformice?","MEU QUEIJO!","Alpha & Omega",1,
-"Para falar no café, você precisa de quantos queijos no perfil?","100","500",2,
+"Para falar no café, você precisa de quantos queijos no perfil?","100","1000",2,
 "Qual destes modules foi dos mais acessados em 2014?","#pictionary","#minigolf",1,
 "Qual comando é utilizado para ver a árvore de funções e eventos LUA do Transformice?","/luahelp","/luatree",1,
 "Qual era o nome da sala que, após uma sequência de comandos, dava morangos de graça?","286637850","286657250",1,
@@ -244,7 +244,7 @@ function eventNewPlayer(name)
 	tfm.exec.chatMessage("Aguarde a próxima rodada para jogar.",name)
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas - Versão 2.0.3 - por Reksai_void2600#6638  <BL>|  <N>Ratos vivos : <V>"..vivos.."<")
+	ui.setMapName("<N>Quiz de Perguntas - Versão 2.0.4 - por Reksai_void2600#6638  <BL>|  <N>Ratos vivos : <V>"..vivos.."<")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
