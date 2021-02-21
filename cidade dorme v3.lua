@@ -1,6 +1,6 @@
 -- NÃO SE ESQUEÇA DE COLOCAR O SEU NOME NA LINHA 3 ANTES DE INICIAR!!
 -- Para reiniciar o script em caso de falta de ratos ou de qualquer bug, digite !reiniciar.
-admin="Forzaldenon#0000" -- colocar seu nome aqui, funcorp!
+admin="" -- colocar seu nome aqui, funcorp!
 for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand","MortCommand"} 
 do
 	tfm.exec["disable"..f](true)
