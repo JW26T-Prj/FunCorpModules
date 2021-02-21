@@ -16,7 +16,7 @@ caracteres={c1="",c2="",c3="",c4="",c5="",c6="",c7="",c8="",c9="",c10="",c11="",
 setas={c1={0,0},c2={0,0},c3={0,0},c4={0,0},c5={0,0},c6={0,0},c7={0,0},c8={0,0},c9={0,0},c10={0,0},c11={0,0},c12={0,0}}
 mapa='<C><P DS="m;200,340,600,340" F="0" /><Z><S><S L="40" X="780" H="80" Y="350" T="6" P="0,0,0.3,0.2,0,0,0,0" /><S L="40" X="20" H="80" Y="354" T="6" P="0,0,0.3,0.2,0,0,0,0" /><S P="0,0,0.3,0.2,0,0,0,0" L="800" H="20" Y="390" T="6" X="400" /><S L="800" X="400" H="20" Y="320" T="6" P="0,0,0.3,0.2,0,0,0,0" /><S L="40" X="80" H="80" Y="250" T="6" P="0,0,0.3,0.2,0,0,0,0" /><S L="40" X="720" H="80" Y="250" T="6" P="0,0,0.3,0.2,0,0,0,0" /><S L="680" X="400" H="20" Y="201" T="6" P="0,0,0.3,0.2,0,0,0,0" /></S><D><DS Y="377" X="401" /></D><O /></Z></C>'
 function eventNewGame()
-	tfm.exec.chatMessage("<ROSE><b>Bem-vindo ao module #arrows!</b><br><J>O objetivo da sala é simples. Você deve fazer a sequência de setas conforme pede o jogo antes que a barra vermelha termine.<br><br>Module criado originalmente por <N><b>Shun_kazami#7014</b> e <J>atualizado por <N><b>Patrick_mahomes#1795 e Yone#5530</b><J>.<br><R>Versão 2.0.1",name)
+	tfm.exec.chatMessage("<ROSE><b>Bem-vindo ao module #arrows!</b><br><J>O objetivo da sala é simples. Você deve fazer a sequência de setas conforme pede o jogo antes que a barra vermelha termine.<br><br>Module criado originalmente por <N><b>Shun_kazami#7014</b> e <J>atualizado por <N><b>Patrick_mahomes#1795 e Yone#5530</b><J>.<br><R>Versão 2.0.3",name)
 	for i=0, 15 do
 			ui.removeTextArea(i,nil)
 		end
@@ -164,7 +164,7 @@ function eventNewPlayer(name)
 	end
 end
 function eventLoop(p,f)
-	ui.setMapName("Arrows! <N><b>v2.0.2</b>  <G>|   <N>Round : <V>"..round.."  <G>|  <N>Desenvolvido por <VP><b>Patrick_mahomes#1795 e Yone#5530</b><")
+	ui.setMapName("Arrows! <N><b>v2.0.3</b>  <G>|   <N>Round : <V>"..round.."  <G>|  <N>Desenvolvido por <VP><b>Patrick_mahomes#1795 e Yone#5530</b><")
 	faltando=f;
 	if f < 1 then
 		if valendo == false then
