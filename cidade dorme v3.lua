@@ -1,6 +1,6 @@
 -- NÃO SE ESQUEÇA DE COLOCAR O SEU NOME NA LINHA 3 ANTES DE INICIAR!!
 -- Para reiniciar o script em caso de falta de ratos ou de qualquer bug, digite !reiniciar.
-admin="" -- colocar seu nome aqui, funcorp!
+admin="Forzaldenon#0000" -- colocar seu nome aqui, funcorp!
 for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand","MortCommand"} 
 do
 	tfm.exec["disable"..f](true)
@@ -13,6 +13,7 @@ limites={assasinos=0,detetives=0,medicos=0}
 modo="inicial"
 mapa="@2684847"
 contador=0
+rodada=0
 tfm.exec.setRoomMaxPlayers(48)
 system.disableChatCommandDisplay("reiniciar")
 system.disableChatCommandDisplay("help")
@@ -25,7 +26,7 @@ function eventChatCommand(name,comando)
 	end
 end
 function eventNewGame()
-	ui.setMapName("           <b>Cidade Dorme v3</b>  <BL>|  <N>Versão RTM 1311.005 gerenciada por Rakan_raster#0000.<")
+	ui.setMapName("           <b>Cidade Dorme v3</b>  <BL>|  <N>Versão RTM 1412.006 gerenciada por Rakan_raster#0000.<")
 	contador=0
 	tfm.exec.setGameTime(40)
 	jogadores={assasinos={},detetives={},medicos={},vivos=0,lista={}}
@@ -40,6 +41,7 @@ function eventNewGame()
 			tfm.exec.chatMessage("<ROSE>Digite !reiniciar quando a sala tiver com 5 ratos ou mais para começar a partida.")
 		end
 	end
+	rodada=0
 end
 function escolherAssasinos(name)
 	if data[string.lower(name)] and data[string.lower(name)].type == 0 then
@@ -64,7 +66,7 @@ function escolherDetetives(name)
 end
 function eventNewPlayer(name)
 	data[string.lower(name)]={type=-1,morre=false}
-	tfm.exec.chatMessage("<br><br><br><p align='center'><N><b>Bem-vindos ao module Cidade Dorme!</b><br>O objetivo deste module é: Descubra quem são os assassinos, desconfie e se divirta!<br><VP>O jogo irá explicar todo seu funcionamento durante a partida.<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Spectra_phantom#6089<br><br><ROSE>Versão RTM 1311.005<br><p align='left'>",name)
+	tfm.exec.chatMessage("<br><br><br><p align='center'><N><b>Bem-vindos ao module Cidade Dorme!</b><br>O objetivo deste module é: Descubra quem são os assassinos, desconfie e se divirta!<br><VP>O jogo irá explicar todo seu funcionamento durante a partida.<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Spectra_phantom#6089<br><br><ROSE>Versão RTM 1412.006<br><p align='left'>",name)
 end
 function eventPlayerDied(name)
 	if data[string.lower(name)].type == 0 then
@@ -163,14 +165,14 @@ end
 function eventLoop()
 	contador=contador+0.5
 	if modo == "aguardando" then
-		ui.setMapName("<J>Assasinos vivos: <R><b>"..quant.assasinos.."</b>  <BL>|  <J>Detetives vivos: <VP><b>"..quant.detetives.."</b>  <BL>|  <N>Versão RTM 1311.005<")
+		ui.setMapName("<J>Assasinos vivos: <R><b>"..quant.assasinos.."</b>  <BL>|  <J>Detetives vivos: <VP><b>"..quant.detetives.."</b>  <BL>|  <J>Rodada atual: <N><b>"..rodada.."</b>  <BL>|  <N>Versão RTM 1412.006<")
 	end
 	if contador == 1 then
 		if admin == "" then
 			tfm.exec.chatMessage("<VP>O module não pode ser iniciado. <br>Certifique-se de que inseriu seu nome corretamente no nome da sala.<br><br>Exemplo: <b>/sala #anvilwar00cd3#Spectra_phantom#6089</b><br><br>Em caso de un FunCorp, certifique-se que inseriu o nome corretamente no código.<br><br>Script desativado.")
 		else
 			if jogadores.vivos >= 5 then
-				tfm.exec.chatMessage("<br><br><br><p align='center'><N><b>Bem-vindos ao module Cidade Dorme!</b><br>O objetivo deste module é: Descubra quem são os assassinos, desconfie e se divirta!<br><VP>O jogo irá explicar todo seu funcionamento durante a partida.<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Spectra_phantom#6089<br><br><ROSE>Versão RTM 1311.005<br><p align='left'>")
+				tfm.exec.chatMessage("<br><br><br><p align='center'><N><b>Bem-vindos ao module Cidade Dorme!</b><br>O objetivo deste module é: Descubra quem são os assassinos, desconfie e se divirta!<br><VP>O jogo irá explicar todo seu funcionamento durante a partida.<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Spectra_phantom#6089<br><br><ROSE>Versão RTM 1412.006<br><p align='left'>")
 			else
 				tfm.exec.chatMessage("<R>Número insuficiente de jogadores na sala. O script requer pelo menos 5 jogadores.")
 				contador=-30
@@ -201,10 +203,11 @@ function eventLoop()
 	end
 	if contador == 58 then
 		tfm.exec.chatMessage("<VP>O JOGO COMEÇOU!")
+		rodada=rodada+1
 	end
 	if contador == 62 then
 		for name,player in pairs(tfm.get.room.playerList) do
-			if data[string.lower(name)] and data[string.lower(name)].type == 1 then
+			if data[string.lower(name)] and data[string.lower(name)].type == 1 and tfm.get.room.playerList[name].isDead == false then
 				ui.addPopup(101,2,"Quem deseja matar? POR FAVOR, NÃO SE ESQUEÇA DE POR A #TAG NO NOME!!!:",name,10,320,780,true)
 			end
 		end
@@ -214,7 +217,7 @@ function eventLoop()
 			if data[string.lower(name)] and data[string.lower(name)].type == 1 then
 				ui.addPopup(101,0,"",name,-1710,325,20,true)
 			end
-			if data[string.lower(name)] and data[string.lower(name)].type == 2 then
+			if data[string.lower(name)] and data[string.lower(name)].type == 2 and tfm.get.room.playerList[name].isDead == false then
 				ui.addPopup(102,2,"Quem deseja salvar dos assasinos? POR FAVOR, NÃO SE ESQUEÇA DE POR A #TAG NO NOME!!!",name,10,320,780,true)
 			end
 		end
@@ -259,7 +262,7 @@ function eventLoop()
 	end
 	if contador == 140 then
 		for name,player in pairs(tfm.get.room.playerList) do
-			if data[string.lower(name)] and data[string.lower(name)].type == 3 then
+			if data[string.lower(name)] and data[string.lower(name)].type == 3 and tfm.get.room.playerList[name].isDead == false then
 				ui.addPopup(103,2,"Quem você acha que é o assasino? POR FAVOR, NÃO SE ESQUEÇA DE POR A #TAG NO NOME!!!",name,10,320,780,true)
 			end
 		end
@@ -316,7 +319,7 @@ function eventPopupAnswer(id,name,message)
 		end
 	end
 	if id == 102 and contador >= 90 and contador <= 123 then
-		if data[string.lower(message)] and data[string.lower(message)].morre == false then
+		if data[string.lower(message)] then
 			if data[string.lower(message)].morre == true then
 				data[string.lower(message)].morre=false
 				jogadores.vitimas=jogadores.vitimas+1
