@@ -136,7 +136,7 @@ function eventTextAreaCallback(id,name,callback)
 		for i=41,44 do
 			ui.removeTextArea(i,name)
 		end
-		ui.addTextArea(45, "<p align='center'><a href='event:sair'>Leave this team</a></p>", name, 300, 185, 200, 20, 0x808080, 0x606060,1.0,true)
+		ui.addTextArea(45, "<p align='center'><a href='event:sair'>Sair do time</a></p>", name, 300, 185, 200, 20, 0x808080, 0x606060,1.0,true)
 	end
 	if callback == "enter_azul" then
 		tfm.exec.respawnPlayer(name)
@@ -145,7 +145,7 @@ function eventTextAreaCallback(id,name,callback)
 		for i=41,44 do
 			ui.removeTextArea(i,name)
 		end
-		ui.addTextArea(45, "<p align='center'><a href='event:sair'>Leave this team</a></p>", name, 300, 185, 200, 20, 0x808080, 0x606060,1.0,true)
+		ui.addTextArea(45, "<p align='center'><a href='event:sair'>Sair do time</a></p>", name, 300, 185, 200, 20, 0x808080, 0x606060,1.0,true)
 	end
 	if callback == "enter_amarelo" then
 		tfm.exec.respawnPlayer(name)
@@ -154,7 +154,7 @@ function eventTextAreaCallback(id,name,callback)
 		for i=41,44 do
 			ui.removeTextArea(i,name)
 		end
-		ui.addTextArea(45, "<p align='center'><a href='event:sair'>Leave this team</a></p>", name, 300, 185, 200, 20, 0x808080, 0x606060,1.0,true)
+		ui.addTextArea(45, "<p align='center'><a href='event:sair'>Sair do time</a></p>", name, 300, 185, 200, 20, 0x808080, 0x606060,1.0,true)
 	end
 	if callback == "enter_verde" then
 		tfm.exec.respawnPlayer(name)
@@ -163,7 +163,7 @@ function eventTextAreaCallback(id,name,callback)
 		for i=41,44 do
 			ui.removeTextArea(i,name)
 		end
-		ui.addTextArea(45, "<p align='center'><a href='event:sair'>Leave this team</a></p>", name, 300, 185, 200, 20, 0x808080, 0x606060,1.0,true)
+		ui.addTextArea(45, "<p align='center'><a href='event:sair'>Sair do time</a></p>", name, 300, 185, 200, 20, 0x808080, 0x606060,1.0,true)
 	end
 	if callback == "sair" then
 		tfm.exec.killPlayer(name)
@@ -250,7 +250,7 @@ function eventLoop(passado,faltando)
 		
 	end
 	if estado == "inicial" then
-		ui.setMapName("         Script de X1 de Equipes - Versão <N>RTM 0612.004<J> - Desenvolvido por <ROSE><b>Rakan_raster#0000</b><")
+		ui.setMapName("         Script de X1 de Equipes - Versão <N>RTM 0713.005<J> - Desenvolvido por <ROSE><b>Rakan_raster#0000</b><")
 	end
 end
 function FinalizarJogo()
