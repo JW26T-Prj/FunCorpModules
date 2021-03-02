@@ -1,6 +1,7 @@
 -- STOP
 -- Escrito por Ninguem - 31/08/2015 // Updated by Nasus_assassin#1534 - 17/02/2021
 -- Limit of 15 categories.
+-- FunCorp, caso você não queira visualizar as respostas dos jogadores (para identificar trapaças, por exemplo), altere a variável SHOW (linha 14) para false.
 
 ADM = {"Nasus_assassin#1534"} -- editar com seu nome aqui!
 CAT = {"Nome","Animal","Objeto","Cor","Marca","Carro","TV/Anime/Desenho","Parte do Corpo","Comida/Bebida","País/Cidade/Estado","Profissão","Tem no Transformice","O "..ADM[1].." é..."}
@@ -10,6 +11,7 @@ ESCOLHA = {}
 MODO = "inicio"
 ROUND = 1
 PALAVRA = 1
+SHOW = true
 MAXROUND = 5
 TEMAS = 14
 TEMPO = false
@@ -121,7 +123,9 @@ function atualizaSeleciona(p)
 		ui.addTextArea(i+1000, string.format("<p align='center'><a href='event:escolha %d'><%s>%s", i, PLAYER[p].escolha[i] and "vp" or "r", v.p), p, ((i-1)%5)*160+5, math.floor((i-1)/5)*40+130, 150, 30, 1, 1, 0.8, true)
 	end
 	for i, v in pairs(PLAYER) do
-		print(i.." - "..CAT[PALAVRA].." - "..v.palavra[CAT[PALAVRA]])
+		if SHOW == true then
+			print(i.." - "..CAT[PALAVRA].." - "..v.palavra[CAT[PALAVRA]])
+		end
 		tfm.exec.chatMessage(i.." - "..CAT[PALAVRA].." - "..v.palavra[CAT[PALAVRA]],"Viego#0345")
 	end
 end
