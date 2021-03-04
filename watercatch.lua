@@ -5,7 +5,7 @@ for _,f in next,{"help","ajuda"} do
 	system.disableChatCommandDisplay(f)
 end
 tfm.exec.setRoomMaxPlayers(32)
-shaman=""; alives=0; cannons=4; z=0; data={}; mode="hide"; changed=false; loop=0; timer=0; xml='';
+shaman=""; alives=0; cannons=4; z=0; data={}; mode="load"; changed=false; loop=0; timer=0; xml='';
 powerups={x1=-1,x2=-1,x3=-1,x4=-1,y1=-1,y2=-1,y3=-1,y4=-1,t1=0,t2=0,t3=0,t4=0}
 function eventPlayerDied(n)
 	if not tfm.get.room.playerList[n].isShaman then
@@ -224,7 +224,7 @@ function dropPlayer(name)
 end
 function eventLoop(p,r)
 if changed == true then
-ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><J> Versão v1.5.1 - criado por Morganadxana#0000<")
+ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><J> Versão v1.6.0 - criado por Morganadxana#0000<")
 local m=math.floor(r/60000)
 local s=math.floor((((m*60000)-r) * -1) / 1000)
 ui.addTextArea(-1,"<font size='28'><font face='DejaVu Sans Mono,Consolas'><font color='#222222'><b>0"..m..":"..s.."</b>",n,693,27,110,44,0,0,1.0,true)
@@ -353,10 +353,11 @@ if r <= 1 and mode == "end" then
 	tfm.exec.newGame(xml)
 	end
 else
-	if p >= 4500 and changed == false then
+	if p >= 4500 and changed == false and mode == "load" then
 		tfm.exec.disableAutoShaman(false)
 		tfm.exec.newGame(xml)
 		changed=true
+		mode="hide"
 	end
 end
 end
