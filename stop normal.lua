@@ -1,9 +1,9 @@
 -- STOP
--- Escrito por Ninguem - 31/08/2015 // Updated by Nasus_assassin#1534 - 17/02/2021
--- Limit of 15 categories.
+-- Escrito por Ninguem - 31/08/2015 // Atualizado por Reksai_void2600#6638 - 04/03/2021
+-- Limite de 15 categorias.
 -- FunCorp, caso você não queira visualizar as respostas dos jogadores (para identificar trapaças, por exemplo), altere a variável SHOW (linha 14) para false.
 
-ADM = {"Nasus_assassin#1534"} -- editar com seu nome aqui!
+ADM = {"Reksai_void2600#6638"} -- editar com seu nome aqui!
 CAT = {"Nome","Animal","Objeto","Cor","Marca","Carro","TV/Anime/Desenho","Parte do Corpo","Comida/Bebida","País/Cidade/Estado","Profissão","Tem no Transformice","O(A) "..ADM[1].." é...","Qualquer Coisa"}
 ID = {cat=1,camada=2,add=3,msg=4,tempo=5,stop=6}
 PLAYER = {}
@@ -234,7 +234,7 @@ function eventPopupAnswer(id, p, resp)
 end
 
 function eventNewPlayer(p)
-	ui.setMapName("STOP! Script edited by Nasus_assassin#1534 - 17/02/2021<")
+	ui.setMapName("STOP! Script editado por Reksai_void2600#6638 - 04/03/2021<")
 	PLAYER[p] = {num = 0, pontos = 0, vitoria = 0, palavra = {}}
 	for i, v in pairs(CAT) do
 		PLAYER[p].palavra[v] = ""
@@ -387,5 +387,5 @@ tfm.exec.disableAutoShaman(true)
 tfm.exec.disableAutoScore(true)
 tfm.exec.disableAutoNewGame(true)
 tfm.exec.newGame("@7631682")
-ui.setMapName("STOP! Script edited by Nasus_assassin#1534 - 17/02/2021<")
+ui.setMapName("STOP! Script editado por Reksai_void2600#6638 - 04/03/2021<")
 atualizaCat(true)
