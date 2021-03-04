@@ -1,6 +1,6 @@
 -- STOP
--- Escrito por Ninguem - 31/08/2015 // Updated by Nasus_assassin#1534 - 17/02/2021
--- Limit of 15 categories.
+-- Escrito por Ninguem - 31/08/2015 // Atualizado por Reksai_void2600#6638 - 04/03/2021
+-- Limite de 15 categorias.
 -- FunCorp, caso você não queira visualizar as respostas dos jogadores (para identificar trapaças, por exemplo), altere a variável SHOW (linha 14) para false.
 
 ADM = {"Nasus_assassin#1534"} -- editar com seu nome aqui!
@@ -250,7 +250,7 @@ function eventNewPlayer(p)
 		atualizaPlayer(true)
 	end
 	tfm.exec.respawnPlayer(p)
-	ui.setMapName("STOP! Script edited by Nasus_assassin#1534 - 17/02/2021<")
+	ui.setMapName("STOP! Script editado por Reksai_void2600#6638 - 04/03/2021<")
 end
 
 function eventPlayerLeft(p)
@@ -395,5 +395,5 @@ tfm.exec.disableAutoShaman(true)
 tfm.exec.disableAutoScore(true)
 tfm.exec.disableAutoNewGame(true)
 tfm.exec.newGame("@7631682")
-ui.setMapName("STOP! Script edited by Nasus_assassin#1534 - 17/02/2021<")
+ui.setMapName("STOP! Script editado por Reksai_void2600#6638 - 04/03/2021<")
 atualizaCat(true)
