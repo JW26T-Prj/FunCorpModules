@@ -1,4 +1,4 @@
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.0.4
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.0.5
 -- Esta nova versão possui diversos tipos de perguntas.
 -- Você pode selecionar o tema editando a linha 16.
 -- Temas:
@@ -38,13 +38,15 @@ perguntas={
 "Qual título é desbloqueado quando você consegue 40.000 firsts?","RELÂMPAGO","Mestre do Vento",1,
 "Existem quantas habilidades de Shaman no Transformice?","75","65",1,
 "O jogo Transformice foi desenvolvido em qual país?","EUA","França",2,
+"Qual o nome da Deusa Shaman do Transformice?","Elise","Elisah",2,
 "Quem é o criador atual do module True or False?","Spectra_phantom#6089","Haxhhhhhhhhh#0000",1,
 "Qual o nome da empresa que é responsável pelo Transformice?","Atelier 801","Riot Games",1,
 "Qual destes pregos não pode ser utilizado no modo difícil?","Vermelho","Amarelo",1,
 "Há quantas categorias de itens na loja?","16","17",2,
 "Em que ano o Transformice atingiu seu número máximo de jogadores ativos?","2012","2013",1,
 "Quantos queijos custa a exportação de um mapa como cafofo da tribo?","5","40",1,
-"Quantos jogos a Atelier 801 tem atualmente?","5","6",1,
+"Quantos jogos a Atelier 801 tem atualmente?","5","6",2,
+"Qual é a fricção e a restituição, respectivamente, de um piso de chocolate?","20 e 0","0 e 20",1,
 "Qual destes usuários é responsável pela sala #anvilwar?","Jessiewind26#2546","Spectra_phantom#6089",2,
 "Qual destes usuários é responsável pelo module #batata?","Laagaadoo#0000","Ikke#0095",1,
 "Qual destes comandos é utilizado para a inserção de um código especial da Japan Expo?","/lua","/code",2,
@@ -81,6 +83,7 @@ perguntas={
 "Qual categoria de mapas é atribuída aos mapas de Defilante?","P18","P19",1,
 "Qual o nome da equipe que é responsável pelos modules do Transformice?","Module Team","Mapcrew",1,
 "Qual categoria de mapas é atribuída aos mapas Racing?","P7","P17",2,
+"Qual destes modules foi feito por um brasileiro?","#batata","#pictionary",1,
 "Qual o nome do título que o Tigrounette usa?","La Belette","Les Populaires",1,
 "A habilidade 'Espírito Ancestral' faz parte de qual árvore de Habilidades?","Guia Espiritual","Mestre do Vento",1,
 "Quantos queijos custa a compra de um 2ª visual de roupas no Transformice?","100","1000",2,
@@ -92,11 +95,14 @@ perguntas={
 "Qual o nome da plataforma de execução que o Transformice utiliza?","Adobe Air","Adobe Flash Player",2,
 "É possível ganhar queijos no perfil apenas jogando modules.","Verdadeiro","Falso",2,
 "É possível comprar morangos pelo celular no Brasil.","Verdadeiro","Falso",2,
+"Em qual ano estreou o modo Defilante?","2014","2015",1,
 "Qual modo do Transformice foi desativado devido a limitação dos vídeos no Transformice?","Music","Nekodancer",1,
 "Em qual ano estreou o fórum em HTML5 do Atelier 801?","2015","2016",1,
 "Usuários comuns não podem criar mapas nos quais o shaman possa usar portais.","Verdadeiro","Falso",2,
+"Qual é a fricção e a restituição, respectivamente, de um piso de lava?","20 e 0","0 e 20",2,
 "Apenas membros da Staff do Transformice podem criar mapas no modo Noite.","Verdaeiro","Falso",2,
 "Qual a tribo do Tigrounette?","Lute como uma garota","Les Populaires",2,
+"É necessário vincular uma conta de e-mail quando você cria novas contas no Transformice.","Verdadeiro","Falso",1,
 "Qual título é desbloqueado quando você consegue 20.000 firsts?","RELÂMPAGO","Mestre do Vento",2,
 "Qual título é desbloqueado quando você cria uma conta no Transformice?","Alpha & Ômega","Ratinho",2,
 "Há quantos tipos de piso no Transformice?","16","18",2,
@@ -120,11 +126,13 @@ perguntas={
 "Qual destes títulos é atribuído a quantidade de ratos salvos no modo difícil?","Virtuoso","Redentor",1,
 "A partir de qual ano foi possível criar mapas com largura maior que a normal?","2012","2011",2,
 "Em qual cidade fica situada a sede da Atelier 801?","Lille","Paris",1,
+"Qual desses foi o PRIMEIRO desenvolvedor do module #perguntas?","Brenower#0000","Dhanny_mheyran#6701",2,
 "Quantos firsts são necessários para desbloquear o título 'O Mito'?","1100","1000",1,
-"Qual a largura máxima que um mapa pode ter sem ter o modo defilante ativado?","1600","4800",1,
+"Qual a largura máxima que um mapa pode ter sem ter o modo defilante ativado?","1600","9830",1,
 "Qual destes objetos não pode ser utilizado no modo difícil?","Sp","Seta",1,
 "A seta é sempre o primeiro item do shaman.","Falso","Verdadeiro",1,
 "Qual a idade mínima para virar moderador no Transformice?","18","16",1,
+"Qual foi a última versão do Flash Player que o Transformice deu suporte?","32.0","33.0",1,
 "Qual a idade mínima para virar FunCorp no Transformice?","16","Não tem idade mínima",2,
 "Quantos tamanhos de tela de vídeo existem no Transformice?","2","3",1,
 "Em teoria, qual a largura máxima que um mapa no Transformice pode ter?","4800","9830",2,
@@ -137,7 +145,7 @@ perguntas={
 "Qual é o nome do primeiro module do Transformice?","sharpie debuglua","batata",1,
 "O dia de lançamento do Transformice é também um feriado nacional no Brasil. Qual é esse feriado?","Dia das Mães","Dia do Trabalho",2,
 "Qual destes modules possui mais submódulos?","#parkour","#anvilwar",2,
-"Para usar o café, você precisa estar com quantos dias jogados de conta?","30","40",1,
+"Para usar o café, você precisa estar com quantos dias jogados de conta?","30","10",1,
 "Em qual dia do ano o Transformice foi criado?","1","2",1,
 "Qual o limite de queijos que podem ser armazenados no inventário?","80","200",2,
 "Quantos anos tem o Tigrounette?","33","35",2,
@@ -154,6 +162,7 @@ perguntas={
 "Em qual ano foram intoduzidos os modules no Transformice?","2014","2013",2,
 "Qual destes comandos servem para ver os seus mapas criados?","/maps","/lsmap",2,
 "Quem é o criador e gerenciador atual do module #shamousey?","Shamousey#0015","Gmctf#0000",1,
+"Quantos queijos custa para exportar um mapa como cafofo da tribo?","5","40",1,
 "Quantos objetos de shaman podem ser utilizados no modo padrão?","13","14",2,
 "Em qual ano houve o desban de todas as contas banidas permanentes no Transformice?","2012","2013",2,
 "Em qual país está situado o host de baixo ping disponível no Brasil?","Canadá","México",1,
@@ -211,10 +220,16 @@ perguntas1={
 "Fernando Collor de Mello foi o primeiro e único presidente a sofrer Impeachment no Brasil.","Verdadeiro","Falso",2,
 "Qual era o Presidente dos Estados Unidos no ano do ataque às Torres Gêmeas?","J.F. Kennedy","George W. Bush",2,
 "Na matemática, qual o nome da sequência onde o resultado é a soma dos dois números anteriores?","Fibonacci","Overload",1,
-"O Rio de Janeiro foi capital do Brasil até que ano?","1889","1960",2,
+"A cidade do Rio de Janeiro foi capital do Brasil até que ano?","1889","1960",2,
 "A área de um círculo pode ser calculada utilizando qual fórmula?","2.πr","π.r²",2,
 "Quantos anos possui Sílvio Santos?","88","90",2,
 "Qual destes mares possui maior concentração de sal por litro de água?","Mar Morto","Mar Mediterrâneo",1
+"A Rodovia Presidente Dutra (ou Via Dutra), que liga os estados do RJ e de SP, foi construída em qual governo Brasileiro?","Getúlio Vargas","Eurico Gaspar Dutra",2,
+"Qual é a unidade utilizada para medir a altura de sons?","decibéis","watts",1,
+"O ponto de maior altitude do Brasil fica localizado a quantos metros, aproximadamente?","2500","3000",2,
+"Qual é a fórmula para converter graus °C em graus °K?","K = C + 273","K = -40 + ((18 * C) - 40)",1,
+"Qual é o nome da fórmula utilizada para calcular equações do segundo grau?","Fórmula de Bhaskara","Teorema de Pitágoras",1,
+"Quantos planetas existem no Sistema Solar?","8","9",1,
 }
 mapa="@7786632"
 modo="inicial" -- não mude
@@ -244,7 +259,7 @@ function eventNewPlayer(name)
 	tfm.exec.chatMessage("Aguarde a próxima rodada para jogar.",name)
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas - Versão 2.0.4 - por Reksai_void2600#6638  <BL>|  <N>Ratos vivos : <V>"..vivos.."<")
+	ui.setMapName("<N>Quiz de Perguntas - Versão <b>2.0.5</b> - por Reksai_void2600#6638  <BL>|  <N>Ratos vivos : <V><b>"..vivos.."</b><")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
