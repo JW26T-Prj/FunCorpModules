@@ -223,8 +223,11 @@ function dropPlayer(name)
 	data[name].t=6
 end
 function eventLoop(p,r)
+if p >= 6000 and tfm.get.room.currentMap == "@7802869" then
+	tfm.exec.newGame(xml)
+end
 if changed == true then
-ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><J> Versão v1.6.0 - criado por Morganadxana#0000<")
+ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><J> Versão v1.6.1 - criado por Morganadxana#0000<")
 local m=math.floor(r/60000)
 local s=math.floor((((m*60000)-r) * -1) / 1000)
 ui.addTextArea(-1,"<font size='28'><font face='DejaVu Sans Mono,Consolas'><font color='#222222'><b>0"..m..":"..s.."</b>",n,693,27,110,44,0,0,1.0,true)
