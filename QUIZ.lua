@@ -1,4 +1,4 @@
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.0.5
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.0.6
 -- Esta nova versão possui diversos tipos de perguntas.
 -- Você pode selecionar o tema editando a linha 16.
 -- Temas:
@@ -66,7 +66,7 @@ perguntas={
 "No Transformice, os ratos que tocarem em um piso ácido...","Ficam presos nele","Morrem instantaneamente",2,
 "A habilidade 'Reparadora' faz parte de qual árvore de Habilidades?","Mecânico","Físico",1,
 "A mensagem de reinício do servidor do Transformice aparece em qual cor?","Rosa","Roxo",1,
-"Quantos queijos são necessários para redistribuir as habilidades de shaman?","100 queijos","Depende do nível",2,
+"Quantos queijos são necessários para redistribuir as habilidades de shaman?","10 queijos","Depende do nível",1,
 "Quantos ratos salvos são necessários para desbloquear o modo difícil?","1000","2000",1,
 "O Transformice possui uma série animada de desenhos no YouTube.","Verdadeiro","Falso",1,
 "Vanilla, Survivor e Defilante são modules do Transformice.","Verdadeiro","Falso",2,
@@ -77,7 +77,7 @@ perguntas={
 "Qual dessas tags é atribuída aos Mapcrews do Transformice?","#0020","Não tem tag definida",1,
 "Qual destes comandos é utilizado para a inserção de um script LUA?","/lua","/code",1,
 "Qual destes eventos não é mais utilizado no Transformice?","Carnaval","Natal",1,
-"Qual destes usuários nunca se tornou Funcorp?","Viego#0345","Bolodefchoco#0015",1,
+"Qual destes usuários nunca se tornou Funcorp?","Chavestomil#0000","Bolodefchoco#0015",1,
 "Se você ficar muito tempo dentro da água, você morre automaticamente.","Verdadeiro","Falso",2,
 "É possível ganhar queijos na loja apenas jogando modules.","Verdadeiro","Falso",1,
 "Qual categoria de mapas é atribuída aos mapas de Defilante?","P18","P19",1,
@@ -114,7 +114,7 @@ perguntas={
 "Qual título é desbloqueado quando você consegue 1 bootcamp?","Principiante","Recruta",2,
 "Qual foi a maior quantidade de pessoas logadas no Transformice, aproximadamente?","100000","85000",2,
 "Qual o nick dos criadores do Transformice?","Melibellule e Tigrounette","Mellibellule e Trigrounette",1,
-"Quem é o criador do module Mestre Mandou?","Nasus_assassin#1534","Rakan_raster#0000",2,
+"Quem é o criador do module Mestre Mandou?","Xayah_raster#7598","Rakan_raster#0000",2,
 "Quem é o criador do module O Chão é Lava?","Miss_fortune#9548","Osicat#0000",2,
 "Qual o limite de consumíveis que podem ser armazenados no inventário?","80","200",1,
 "Qual o nome do antigo fun-site no qual você poderia acessar um Ranking dos ratos?","Cheese For Mice","Viprin Drawing Editor",1,
@@ -259,7 +259,7 @@ function eventNewPlayer(name)
 	tfm.exec.chatMessage("Aguarde a próxima rodada para jogar.",name)
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas - Versão <b>2.0.5</b> - por Reksai_void2600#6638  <BL>|  <N>Ratos vivos : <V><b>"..vivos.."</b><")
+	ui.setMapName("<N>Quiz de Perguntas - Versão <b>2.0.6</b> - por Reksai_void2600#6638  <BL>|  <N>Ratos vivos : <V><b>"..vivos.."</b><")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
