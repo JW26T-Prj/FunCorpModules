@@ -11,7 +11,7 @@ jogadores={assasinos={},detetives={},medicos={},vivos=0,lista={}}
 quant={assasinos=0,detetives=0,medicos=0,vitimas=0,vivos=0}
 limites={assasinos=0,detetives=0,medicos=0}
 modo="inicial"
-mapa="@2684847"
+mapas={"@2684847","@2637755","@2632876","@1445145","@3110915","@3793051","@4477478","@5832272"}
 contador=0
 rodada=0
 tfm.exec.setRoomMaxPlayers(48)
@@ -26,7 +26,7 @@ function eventChatCommand(name,comando)
 	end
 end
 function eventNewGame()
-	ui.setMapName("           <b>Cidade Dorme v3</b>  <BL>|  <N>Versão RTM 1412.006 gerenciada por Rakan_raster#0000.<")
+	ui.setMapName("           <b>Cidade Dorme v3</b>  <BL>|  <N>Versão RTM 1513.007 gerenciada por Rakan_raster#0000.<")
 	contador=0
 	tfm.exec.setGameTime(40)
 	jogadores={assasinos={},detetives={},medicos={},vivos=0,lista={}}
@@ -66,7 +66,7 @@ function escolherDetetives(name)
 end
 function eventNewPlayer(name)
 	data[string.lower(name)]={type=-1,morre=false}
-	tfm.exec.chatMessage("<br><br><br><p align='center'><N><b>Bem-vindos ao module Cidade Dorme!</b><br>O objetivo deste module é: Descubra quem são os assassinos, desconfie e se divirta!<br><VP>O jogo irá explicar todo seu funcionamento durante a partida.<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Spectra_phantom#6089<br><br><ROSE>Versão RTM 1412.006<br><p align='left'>",name)
+	tfm.exec.chatMessage("<br><br><br><p align='center'><N><b>Bem-vindos ao module Cidade Dorme!</b><br>O objetivo deste module é: Descubra quem são os assassinos, desconfie e se divirta!<br><VP>O jogo irá explicar todo seu funcionamento durante a partida.<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Spectra_phantom#6089<br><br><ROSE>Versão RTM 1513.007<br><p align='left'>",name)
 end
 function eventPlayerDied(name)
 	if data[string.lower(name)].type == 0 then
@@ -165,14 +165,14 @@ end
 function eventLoop()
 	contador=contador+0.5
 	if modo == "aguardando" then
-		ui.setMapName("<J>Assasinos vivos: <R><b>"..quant.assasinos.."</b>  <BL>|  <J>Detetives vivos: <VP><b>"..quant.detetives.."</b>  <BL>|  <J>Rodada atual: <N><b>"..rodada.."</b>  <BL>|  <N>Versão RTM 1412.006<")
+		ui.setMapName("<J>Assasinos vivos: <R><b>"..quant.assasinos.."</b>  <BL>|  <J>Detetives vivos: <VP><b>"..quant.detetives.."</b>  <BL>|  <J>Rodada atual: <N><b>"..rodada.."</b>  <BL>|  <N>Versão RTM 1513.007<")
 	end
 	if contador == 1 then
 		if admin == "" then
 			tfm.exec.chatMessage("<VP>O module não pode ser iniciado. <br>Certifique-se de que inseriu seu nome corretamente no nome da sala.<br><br>Exemplo: <b>/sala #anvilwar00cd3#Spectra_phantom#6089</b><br><br>Em caso de un FunCorp, certifique-se que inseriu o nome corretamente no código.<br><br>Script desativado.")
 		else
 			if jogadores.vivos >= 5 then
-				tfm.exec.chatMessage("<br><br><br><p align='center'><N><b>Bem-vindos ao module Cidade Dorme!</b><br>O objetivo deste module é: Descubra quem são os assassinos, desconfie e se divirta!<br><VP>O jogo irá explicar todo seu funcionamento durante a partida.<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Spectra_phantom#6089<br><br><ROSE>Versão RTM 1412.006<br><p align='left'>")
+				tfm.exec.chatMessage("<br><br><br><p align='center'><N><b>Bem-vindos ao module Cidade Dorme!</b><br>O objetivo deste module é: Descubra quem são os assassinos, desconfie e se divirta!<br><VP>O jogo irá explicar todo seu funcionamento durante a partida.<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Spectra_phantom#6089<br><br><ROSE>Versão RTM 1513.007<br><p align='left'>")
 			else
 				tfm.exec.chatMessage("<R>Número insuficiente de jogadores na sala. O script requer pelo menos 5 jogadores.")
 				contador=-30
@@ -304,7 +304,7 @@ function eventLoop()
 		end
 	end
 	if contador >= 1000 then
-		tfm.exec.newGame(mapa)
+		tfm.exec.newGame(mapas[math.random(#mapas)])
 	end
 end
 function eventPopupAnswer(id,name,message)
@@ -340,4 +340,4 @@ function eventPopupAnswer(id,name,message)
 		end
 	end
 end
-tfm.exec.newGame(mapa)
+tfm.exec.newGame(mapas[math.random(#mapas)])
