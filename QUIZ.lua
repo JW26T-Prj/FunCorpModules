@@ -1,4 +1,4 @@
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.0.6
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.0.7
 -- Esta nova versão possui diversos tipos de perguntas.
 -- Você pode selecionar o tema editando a linha 16.
 -- Temas:
@@ -144,7 +144,7 @@ perguntas={
 "Quando um rato morre no Transformice, começa a sair...","Bolhas","Sangue",1,
 "Qual é o nome do primeiro module do Transformice?","sharpie debuglua","batata",1,
 "O dia de lançamento do Transformice é também um feriado nacional no Brasil. Qual é esse feriado?","Dia das Mães","Dia do Trabalho",2,
-"Qual destes modules possui mais submódulos?","#parkour","#anvilwar",2,
+"Qual destes comandos servem para ver informações do mapa atual?","/map","/info",2,
 "Para usar o café, você precisa estar com quantos dias jogados de conta?","30","10",1,
 "Em qual dia do ano o Transformice foi criado?","1","2",1,
 "Qual o limite de queijos que podem ser armazenados no inventário?","80","200",2,
@@ -212,11 +212,11 @@ perguntas1={
 "Em que ano foi derrubado o Muro de Berlim?","1989","1991",1,
 "Qual o nome da figura de linguagem que representa sons de animais e objetos, por exemplo?","Onomatopeia","Personificação",1,
 "Qual o nome do vírus transmissor da Dengue, Chikungunya e Zica?","Aedes Aegypti","Tripanossoma Cruzi",1,
-"Quantos rios conseguem cortar o Deserto do Saara sem secar?","1","2",1,
+"Quantos rios conseguem cortar o Deserto do Saara sem secar?","1","Nenhum",1,
 "Quantas camadas possui a atmosfera da Terra?","4","5",2,
 "A quantos graus °C a água ferve aproximadamente, no topo do Monte Everest?","100","71",2,
 "O clima Subtropical é o predominante na região Nordeste do Brasil.","Verdadeiro","Falso",2,
-"Qual foi o Presidente eleito nas eleições brasileiras de 1998?","Fernando Henrique","Lula",1,
+"Qual foi o Presidente eleito nas eleições brasileiras de 1998?","Fernando Henrique Cardoso","Lula",1,
 "Fernando Collor de Mello foi o primeiro e único presidente a sofrer Impeachment no Brasil.","Verdadeiro","Falso",2,
 "Qual era o Presidente dos Estados Unidos no ano do ataque às Torres Gêmeas?","J.F. Kennedy","George W. Bush",2,
 "Na matemática, qual o nome da sequência onde o resultado é a soma dos dois números anteriores?","Fibonacci","Overload",1,
@@ -230,6 +230,12 @@ perguntas1={
 "Qual é a fórmula para converter graus °C em graus °K?","K = C + 273","K = -40 + ((18 * C) - 40)",1,
 "Qual é o nome da fórmula utilizada para calcular equações do segundo grau?","Fórmula de Bhaskara","Teorema de Pitágoras",1,
 "Quantos planetas existem no Sistema Solar?","8","9",1,
+"Qual cidade do RJ é conhecida como 'Cidade Imperial'?","Petrópolis","Angra dos Reis",1,
+"Quantas usinas nucleares o Brasil possui funcionando?","2","3",1,
+"Qual foi o nome da pandemia que matou milhões de pessoas ao redor mundo no começo do século XX?","Covid-19","Gripe Espanhola",2,
+"Qual o oceano da Terra que possui a maior profundidade média?","Oceano Pacífico","Oceano Atlântico",1,
+"As nuvens são feitas de quê?","Vapor de água","Algodão",1,
+"Qual o estado da água quando ela passa diretamente do estado sólido para o gasoso, ou vice-versa?","Condensação","Sublimação",2,
 }
 mapa="@7786632"
 modo="inicial" -- não mude
@@ -237,6 +243,7 @@ pergunta=0
 rodada=0
 actual_question={quest="",a1="",a2="",answer=nil}
 function eventNewGame()
+	vivos=0
 	tfm.exec.setGameTime(18)
 	for name,player in pairs(tfm.get.room.playerList) do
 		vivos=vivos+1
@@ -259,7 +266,7 @@ function eventNewPlayer(name)
 	tfm.exec.chatMessage("Aguarde a próxima rodada para jogar.",name)
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas - Versão <b>2.0.6</b> - por Reksai_void2600#6638  <BL>|  <N>Ratos vivos : <V><b>"..vivos.."</b><")
+	ui.setMapName("<N>Quiz de Perguntas - Versão <b>2.0.7</b> - por Reksai_void2600#6638  <BL>|  <N>Ratos vivos : <V><b>"..vivos.."</b><")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
