@@ -5,7 +5,7 @@ for _,f in next,{"help","ajuda"} do
 	system.disableChatCommandDisplay(f)
 end
 tfm.exec.setRoomMaxPlayers(32)
-shaman=""; alives=0; cannons=4; z=0; data={}; mode="load"; changed=false; loop=0; timer=0; xml='';
+shaman=""; alives=0; cannons=4; z=0; data={}; mode="load"; changed=false; loop=0; timer=0; xml=''; time_passed=0; time_remain=0;
 powerups={x1=-1,x2=-1,x3=-1,x4=-1,y1=-1,y2=-1,y3=-1,y4=-1,t1=0,t2=0,t3=0,t4=0}
 function eventPlayerDied(n)
 	if not tfm.get.room.playerList[n].isShaman then
@@ -43,6 +43,16 @@ function eventSummoningEnd(name,id,x,y)
 	else
 		tfm.exec.chatMessage("<R>O shaman excedeu o limite de objetos utilizáveis!")
 		tfm.exec.killPlayer(shaman)
+	end
+end
+function resetMap()
+	if xml == '' then
+		tfm.exec.disableAutoShaman(true)
+		tfm.exec.newGame("@7802869")
+		changed=false
+		mode="load"
+	else
+		tfm.exec.newGame(xml)
 	end
 end
 function eventKeyboard(name,key,down)
@@ -161,7 +171,6 @@ function eventKeyboard(name,key,down)
 		end
 	end		
 end
-tfm.exec.newGame("@7802869")
 function eventNewGame()
 xml=tfm.get.room.xmlMapInfo.xml
 tfm.exec.chatMessage("<font color='#0080ff'><b>Bem-vindos ao module #watercatch!</b><br><J>O objetivo é bem simples: Fugir do shaman, se escondendo dentro do profundo lago e tomando cuidado para não morrer afogado!<br>Shamans, não esqueçam de se mexer, ou irão morrer AFK!<br><br>Module e mapa criados por Morganadxana#0000. Tradução para o português feita por Rakan_raster#0000.")
@@ -223,11 +232,14 @@ function dropPlayer(name)
 	data[name].t=6
 end
 function eventLoop(p,r)
-if p >= 6000 and tfm.get.room.currentMap == "@7802869" then
-	tfm.exec.newGame(xml)
+time_passed=math.ceil(p/1000)
+time_remain=math.ceil(r/1000)
+if time_passed >= 6 and tfm.get.room.currentMap == "@7802869" then
+	tfm.exec.disableAutoShaman(false)
+	resetMap()
 end
 if changed == true then
-ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><J> Versão v1.6.1 - criado por Morganadxana#0000<")
+ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><J> Versão v1.7.0 - criado por Morganadxana#0000<")
 local m=math.floor(r/60000)
 local s=math.floor((((m*60000)-r) * -1) / 1000)
 ui.addTextArea(-1,"<font size='28'><font face='DejaVu Sans Mono,Consolas'><font color='#222222'><b>0"..m..":"..s.."</b>",n,693,27,110,44,0,0,1.0,true)
@@ -352,13 +364,13 @@ for n,p in pairs(tfm.get.room.playerList) do
 end
 tfm.exec.chatMessage("<VP>Tempo esgotado! <b>"..lives.."</b> ratos sobreviveram! Iniciando nova partida...")
 end
-if r <= 1 and mode == "end" then
-	tfm.exec.newGame(xml)
+if time_remain <= 0 and mode == "end" then
+	resetMap()
 	end
 else
-	if p >= 4500 and changed == false and mode == "load" then
+	if time_passed >= 5 and changed == false and mode == "load" then
 		tfm.exec.disableAutoShaman(false)
-		tfm.exec.newGame(xml)
+		resetMap()
 		changed=true
 		mode="hide"
 	end
