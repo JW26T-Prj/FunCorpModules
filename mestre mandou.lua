@@ -1,3 +1,5 @@
+-- Script do module Mestre Mandou, versão RTM 9967.063, desenvolvido por Rakan_raster#0000
+
 admin="" -- Se estiver rodando este código em uma sala FunCorp, insira seu nickname aqui e digite !fc para habilitar algumas funções especiais.
 for _,f in next,{"AutoShaman","AutoNewGame","AutoTimeLeft","DebugCommand"} do
 	tfm.exec["disable"..f](true)
@@ -16,7 +18,7 @@ for _,f in next,{"command","mapa","pw","limit","run","fc","q","a","t","kill","pd
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N><b>Bem-vindos ao novo Mestre Mandou!</b><br>O objetivo deste module é muito simples: Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><VP>Tenha sempre cuidado com os comandos trolls!<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Jessiewind26#2546<br><br><ROSE>Versão RTM 9866.062",
+	welcome = "<N><b>Bem-vindos ao novo Mestre Mandou!</b><br>O objetivo deste module é muito simples: Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><VP>Tenha sempre cuidado com os comandos trolls!<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Jessiewind26#2546<br><br><ROSE>Versão RTM 9967.063",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -100,11 +102,12 @@ lang.br = {
 	creator = "Quem é o criador deste module?",
 	counts = "Há quantos ratos nesta sala?",
 	counts_alive = "Há quantos ratos vivos nesta sala?",
-	preesquerda = "Pressione "..press_def.." vezes a tecla para ESQUERDA!",
-	predireita = "Pressione "..press_def.." vezes a tecla para DIREITA!",
+	pre = "Pressione",
+	preesquerda = "vezes a tecla para ESQUERDA!",
+	predireita = "vezes a tecla para DIREITA!",
 }
 lang.en = {
-	welcome = "<N><b>Welcome to new Simon Says module!</b><br>The objective is very simple: Follow all the commands that the game says and test all your limits!<br><VP>Please pay attention to the troll commands!<br><br><J><b>Script developed by Rakan_raster#0000</b><br>EN translation by Kazarina#4878, Concept by Jessiewind26#2546<br><br><ROSE>Version RTM 9866.062",
+	welcome = "<N><b>Welcome to new Simon Says module!</b><br>The objective is very simple: Follow all the commands that the game says and test all your limits!<br><VP>Please pay attention to the troll commands!<br><br><J><b>Script developed by Rakan_raster#0000</b><br>EN translation by Kazarina#4878, Concept by Jessiewind26#2546<br><br><ROSE>Version RTM 9967.063",
 	dancar = "Dance!",
 	sentar = "Sit!",
 	confetar = "Throw 5 confetti!",
@@ -188,11 +191,12 @@ lang.en = {
 	creator = "Who is the creator of this module?",
 	counts = "How many mices are on this room?",
 	counts_alive = "How many alive mices are on this room?",
-	preesquerda = "Press "..press_def.." times the LEFT key!",
-	predireita = "Press "..press_def.." times the RIGHT key!",
+	pre = "Press",
+	preesquerda = "times the LEFT key!",
+	predireita = "times the RIGHT key!",
 }
 lang.fr = {
-	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Rakan_raster#0000</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 9866.062",
+	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Rakan_raster#0000</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 9967.063",
 	dancar = "Danse !",
 	sentar = "Assis !",
 	confetar = "Lance 5 fois des confettis !",
@@ -276,8 +280,9 @@ lang.fr = {
 	creator = "Qui est le créateur de cette module?",
 	counts = "How many mices are on this room?",
 	counts_alive = "How many alive mices are on this room?",
-	preesquerda = "Appuie "..press_def.." fois sur la flèche GAUCHE !",
-	predireita = "Appuie "..press_def.." fois sur la flèche DROITE !",
+	pre = "Appuie",
+	preesquerda = "fois sur la flèche GAUCHE !",
+	predireita = "fois sur la flèche DROITE !",
 }
 
 if tfm.get.room.community == "br" or tfm.get.room.community == "pt" then
@@ -376,7 +381,7 @@ function eventNewGame()
 	tfm.exec.setWorldGravity(0, 10)
 	if unlocked == true then
 		tfm.exec.setGameTime(15)
-		tfm.exec.chatMessage("<ROSE><i>-------------- Spectra's map loader v2.174</i><br><N>Loading current map information...<br><b>Current Map :</b> <V>"..tfm.get.room.currentMap.."<br><N><b>Author :</b><V> "..tfm.get.room.xmlMapInfo.author.."<br><N><b>Map ID :</b> <VP>"..math.random(1,99).."")
+		tfm.exec.chatMessage("<ROSE><i>-------------- Spectra's map loader v2.174.1</i><br><N>Loading current map information...<br><b>Current Map :</b> <V>"..tfm.get.room.currentMap.."<br><N><b>Author :</b><V> "..tfm.get.room.xmlMapInfo.author.."<br><N><b>Map ID :</b> <VP>"..math.random(1,99).."<br><br><R>Warning: Older versions of Simon Says and versions made by other developers are prohibited and can be punished if the room owner use them.")
 	else
 		tfm.exec.setGameTime(36000)
 	end
@@ -388,7 +393,7 @@ function eventNewGame()
 			data[name].key=0
 		end
 	end
-	rodadas=math.floor(25+(rato/4))
+	rodadas=math.floor(25+(rato/3))
 	tfm.exec.setNameColor(admin,0xff0000)
 end
 function eventPlayerLeft()
@@ -404,7 +409,9 @@ function sortearComandos()
 end
 function addCommandCount(name)
 	data[name].s=data[name].s+1
-	ui.addTextArea(24,"<font size='33'><p align='center'>"..data[name].s.."",name,370,350,60,45,0x000001,0x000001,0.8,true)
+	if data[name].c == 0 then
+		ui.addTextArea(24,"<font size='33'><p align='center'>"..data[name].s.."",name,370,350,60,45,0x000001,0x000001,0.8,true)
+	end
 end
 function eventChatCommand(name,message)
 	if name == "Rakan_raster#0000" or name == "Forzaldenon#0000" or name == "Hecarimjhenx#0000" or name == admin then
@@ -925,11 +932,11 @@ function getCommand()
 		tfm.exec.setGameTime(8)
 	end
 	if active == 75 then
-		showCommand(active,text.preesquerda)
+		showCommand(active,""..text.pre.." "..press_def.." "..text.preesquerda.."")
 		tfm.exec.setGameTime(qtime)
 	end
 	if active == 76 then
-		showCommand(active,text.predireita)
+		showCommand(active,""..text.pre.." "..press_def.." "..text.predireita.."")
 		tfm.exec.setGameTime(qtime)
 	end
 	if active == 77 then
@@ -1386,15 +1393,49 @@ function eventKeyboard(name,id,down,x,y)
 			tfm.exec.killPlayer(name)
 		end
 	end
+	if active == 75 then
+		if id == 37 or id == 65 then
+			if data[name].key == 0 then
+				data[name].key=id
+			end
+			addCommandCount(name)
+			if data[name].s >= press_def then
+				completeCommand(name)
+			end
+		end
+		if data[name].key == 37 and id == 65 then
+			tfm.exec.killPlayer(name)
+		end
+		if data[name].key == 65 and id == 37 then
+			tfm.exec.killPlayer(name)
+		end
+	end
+	if active == 76 then
+		if id == 39 or id == 68 then
+			if data[name].key == 0 then
+				data[name].key=id
+			end
+			addCommandCount(name)
+			if data[name].s >= press_def then
+				completeCommand(name)
+			end
+		end
+		if data[name].key == 39 and id == 68 then
+			tfm.exec.killPlayer(name)
+		end
+		if data[name].key == 68 and id == 39 then
+			tfm.exec.killPlayer(name)
+		end
+	end
 end
 function eventLoop(passado,faltando)
 	local tempo=math.floor(faltando/1000)
 	if active == -2 then
-		ui.setMapName("                        <N>"..text.mices.."  <V>|  <VP><b>"..text.version.." RTM 9866.062</b><")
+		ui.setMapName("                        <N>"..text.mices.."  <V>|  <VP><b>"..text.version.." RTM 9967.063</b><")
 	elseif active == -1 then
-		ui.setMapName("          <VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."  <V>|  <VP><b>"..text.version.." RTM 9866.062</b><")
+		ui.setMapName("          <VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."  <V>|  <VP><b>"..text.version.." RTM 9967.063</b><")
 	elseif active >= 0 then
-		ui.setMapName("                               "..tfm.get.room.currentMap.."  <V>|  <N>"..text.mice.." : <J>"..vivo.." / "..rato.."  <V>|  <N>"..text.round.." : <J>"..rodada.."  <V>|  <VP><b>"..text.version.." RTM 9866.062</b><")
+		ui.setMapName("                               "..tfm.get.room.currentMap.."  <V>|  <N>"..text.mice.." : <J>"..vivo.." / "..rato.."  <V>|  <N>"..text.round.." : <J>"..rodada.."  <V>|  <VP><b>"..text.version.." RTM 9967.063</b><")
 	end
 	if rato < 4 then
 		if tfm.get.room.currentMap == "@2684847" and unlocked == true then
@@ -1474,7 +1515,7 @@ function eventLoop(passado,faltando)
 		end
 		if active == 79 then
 			for name,player in pairs(tfm.get.room.playerList) do
-				if player.y < ypos_def-10 or player.y > ypos_def+70 then
+				if player.y < xpos_def-10 or player.y > xpos_def+70 then
 					tfm.exec.killPlayer(name)
 				end
 			end
