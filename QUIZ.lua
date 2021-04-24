@@ -1,9 +1,10 @@
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.0.7
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.0.8
 -- Esta nova versão possui diversos tipos de perguntas.
--- Você pode selecionar o tema editando a linha 16.
+-- Você pode selecionar o tema editando a linha 17.
 -- Temas:
 -- 0 = transformice
--- 1 = conhecimentos gerais (INCOMPLETO)
+-- 1 = conhecimentos gerais (tem mais perguntas, pode usar se quiser)
+
 -- Para adicionar novas perguntas, utilize a seguinte sintaxe na hora de inserir: "PERGUNTA","RESPOSTA 1","RESPOSTA 2",1 ou 2
 -- Para sugestões de perguntas ou correção de bugs contate Reksai_void2600#6638.
 -- Caso queira pular alguma pergunta por estar muito repetida ou algo do tipo, use o comando !random.
@@ -114,7 +115,7 @@ perguntas={
 "Qual título é desbloqueado quando você consegue 1 bootcamp?","Principiante","Recruta",2,
 "Qual foi a maior quantidade de pessoas logadas no Transformice, aproximadamente?","100000","85000",2,
 "Qual o nick dos criadores do Transformice?","Melibellule e Tigrounette","Mellibellule e Trigrounette",1,
-"Quem é o criador do module Mestre Mandou?","Xayah_raster#7598","Rakan_raster#0000",2,
+"Quem é o criador do module Mestre Mandou?","Rakan_raster#0000","Xayah_raster#0000",1,
 "Quem é o criador do module O Chão é Lava?","Miss_fortune#9548","Osicat#0000",2,
 "Qual o limite de consumíveis que podem ser armazenados no inventário?","80","200",1,
 "Qual o nome do antigo fun-site no qual você poderia acessar um Ranking dos ratos?","Cheese For Mice","Viprin Drawing Editor",1,
@@ -159,7 +160,7 @@ perguntas={
 "Qual destes modules não foi feito por um brasileiro?","#anvilwar","#freezertag",1,
 "Qual destas ratas morreu na vida real, dando origem a uma decoração do Transformice?","Elise","Papaille",1,
 "Em qual mês do ano geralmente termina o evento de Natal?","Dezembro","Janeiro",2,
-"Em qual ano foram intoduzidos os modules no Transformice?","2014","2013",2,
+"Em qual ano foram introduzidos os modules no Transformice?","2014","2013",2,
 "Qual destes comandos servem para ver os seus mapas criados?","/maps","/lsmap",2,
 "Quem é o criador e gerenciador atual do module #shamousey?","Shamousey#0015","Gmctf#0000",1,
 "Quantos queijos custa para exportar um mapa como cafofo da tribo?","5","40",1,
@@ -222,9 +223,9 @@ perguntas1={
 "Na matemática, qual o nome da sequência onde o resultado é a soma dos dois números anteriores?","Fibonacci","Overload",1,
 "A cidade do Rio de Janeiro foi capital do Brasil até que ano?","1889","1960",2,
 "A área de um círculo pode ser calculada utilizando qual fórmula?","2.πr","π.r²",2,
-"Quantos anos possui Sílvio Santos?","88","90",2,
-"Qual destes mares possui maior concentração de sal por litro de água?","Mar Morto","Mar Mediterrâneo",1
-"A Rodovia Presidente Dutra (ou Via Dutra), que liga os estados do RJ e de SP, foi construída em qual governo Brasileiro?","Getúlio Vargas","Eurico Gaspar Dutra",2,
+"Quantos anos possui Silvio Santos?","89","90",2,
+"Qual destes mares possui maior concentração de sal por litro de água?","Mar Morto","Mar Mediterrâneo",1,
+"A Rodovia Presidente Dutra, que liga os estados do RJ e SP, foi construída em qual governo Brasileiro?","Getúlio Vargas","Eurico Gaspar Dutra",2,
 "Qual é a unidade utilizada para medir a altura de sons?","decibéis","watts",1,
 "O ponto de maior altitude do Brasil fica localizado a quantos metros, aproximadamente?","2500","3000",2,
 "Qual é a fórmula para converter graus °C em graus °K?","K = C + 273","K = -40 + ((18 * C) - 40)",1,
@@ -236,6 +237,17 @@ perguntas1={
 "Qual o oceano da Terra que possui a maior profundidade média?","Oceano Pacífico","Oceano Atlântico",1,
 "As nuvens são feitas de quê?","Vapor de água","Algodão",1,
 "Qual o estado da água quando ela passa diretamente do estado sólido para o gasoso, ou vice-versa?","Condensação","Sublimação",2,
+"A chegada da Família Real Portuguesa ao Brasil ocorreu em qual ano?","1808","1822",1,
+"Qual destes é o maior deserto da Terra?","Deserto do Saara","Antártida",2,
+"Quantos anos durou o Regime Militar no Brasil?","21","25",2,
+"Qual dessas emissoras de televisão foi a primeira da América Latina?","Rede Tupi","Rede Globo",1,
+"Uma polegada equivale a quantos centímetros, aproximadamente?","2.5 cm","3.5 cm",1,
+"Em qual ano ocorreu o último Censo do IBGE?","2010","2020",1,
+"O Arco do Triunfo, localizado na França, é uma homenagem a...","Napoleão Bonaparte","George Washington",1,
+"Na matemática, qual o nome do triângulo em que a soma dos números centrais é igual à soma das coeficientes binomiais?","Triângulo de Newton","Triângulo de Pascal",2,
+"Quais os povos que dominaram a região da Islândia no século IX?","Bárbaros","Vikings",2,
+"Qual o nome da região de relevo localizada na região Nordeste do Brasil, sendo responsável pelo clima da região?","Planalto da Borborema","Pico das Agulhas Negras",1,
+"Em qual continente fica localizado o monte Everest?","Europa","Ásia",2,
 }
 mapa="@7786632"
 modo="inicial" -- não mude
@@ -252,7 +264,7 @@ end
 function reset()
 	rodada=0
 	tfm.exec.newGame(mapa)
-	tfm.exec.chatMessage("<VP>Se preparem! As perguntas começarão a ser realizadas em instantes!<br><br><R><b>ATENÇÃO: ESTOU PRECISANDO DE PERGUNTAS DE CONHECIMENTOS GERAIS, ANIMES, E GAMES, INTERESSADOS FAVOR ME CONTATAR</b>")
+	tfm.exec.chatMessage("<VP>Se preparem! As perguntas começarão a ser realizadas em instantes!<br><br><R><b>ATENÇÃO: ESTOU PRECISANDO DE PERGUNTAS DE ANIMES, GAMES E OUTROS TEMAS, INTERESSADOS FAVOR ME CONTATAR</b>")
 	ui.removeTextArea(1)
 	ui.removeTextArea(2)
 	ui.removeTextArea(0)
@@ -266,7 +278,7 @@ function eventNewPlayer(name)
 	tfm.exec.chatMessage("Aguarde a próxima rodada para jogar.",name)
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas - Versão <b>2.0.7</b> - por Reksai_void2600#6638  <BL>|  <N>Ratos vivos : <V><b>"..vivos.."</b><")
+	ui.setMapName("<N>Quiz de Perguntas - Versão <b>2.0.8</b> - por Reksai_void2600#6638  <BL>|  <N>Ratos vivos : <V><b>"..vivos.."</b><")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
@@ -329,7 +341,7 @@ function randomQuests()
 	end
 	ui.addTextArea(1,"<p align='center'><font size='16'>"..actual_question.a1.."",nil,100,120,260,24,0,0,1.0,true)
 	ui.addTextArea(2,"<p align='center'><font size='16'>"..actual_question.a2.."",nil,440,120,260,24,0,0,1.0,true)
-	ui.addTextArea(0,"<p align='center'><font size='14'>"..actual_question.quest.."",nil,10,22,780,48,0x000001,0x000001,1.0,true)
+	ui.addTextArea(0,"<p align='center'><font size='13'>"..actual_question.quest.."",nil,10,22,780,48,0x000001,0x000001,1.0,true)
 end
 function eventPlayerDied(name)
 	local i=0
