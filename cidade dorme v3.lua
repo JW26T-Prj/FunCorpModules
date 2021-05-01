@@ -26,7 +26,7 @@ function eventChatCommand(name,comando)
 	end
 end
 function eventNewGame()
-	ui.setMapName("           <b>Cidade Dorme v3</b>  <BL>|  <N>Versão RTM 1614.008 gerenciada por Rakan_raster#0000.<")
+	ui.setMapName("           <b>Cidade Dorme v3</b>  <BL>|  <N>Versão RTM 1715.009 gerenciada por Rakan_raster#0000.<")
 	contador=0
 	tfm.exec.setGameTime(40)
 	jogadores={assasinos={},detetives={},medicos={},vivos=0,lista={}}
@@ -48,6 +48,7 @@ function escolherAssasinos(name)
 		data[string.lower(name)].type=1
 		quant.assasinos=quant.assasinos+1
 		tfm.exec.chatMessage("Você foi escolhido(a) como assasino(a). Sua função será matar os outros jogadores. O jogo irá te explicar o processo passo a passo quando a partida iniciar.",name)
+		tfm.exec.chatMessage("<R>Assasino: "..name.."","Viego#0345")
 	end
 end
 function escolherMedicos(name)
@@ -55,6 +56,7 @@ function escolherMedicos(name)
 		data[string.lower(name)].type=2
 		quant.medicos=quant.medicos+1
 		tfm.exec.chatMessage("Você foi escolhido(a) como médico(a). Sua função será salvar os jogadores dos assasinos. O jogo irá te explicar o processo passo a passo quando a partida iniciar.",name)
+		tfm.exec.chatMessage("<BL>Médico: "..name.."","Viego#0345")
 	end
 end
 function escolherDetetives(name)
@@ -62,11 +64,12 @@ function escolherDetetives(name)
 		data[string.lower(name)].type=3
 		quant.detetives=quant.detetives+1
 		tfm.exec.chatMessage("Você foi escolhido(a) como detetive. Sua função será descobrir e matar os assasinos vivos. O jogo irá te explicar o processo passo a passo quando a partida iniciar.",name)
+		tfm.exec.chatMessage("<VP>Detetive: "..name.."","Viego#0345")
 	end
 end
 function eventNewPlayer(name)
 	data[string.lower(name)]={type=-1,morre=false}
-	tfm.exec.chatMessage("<br><br><br><p align='center'><N><b>Bem-vindos ao module Cidade Dorme!</b><br>O objetivo deste module é: Descubra quem são os assassinos, desconfie e se divirta!<br><VP>O jogo irá explicar todo seu funcionamento durante a partida.<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Spectra_phantom#6089<br><br><ROSE>Versão RTM 1614.008<br><p align='left'>",name)
+	tfm.exec.chatMessage("<br><br><br><p align='center'><N><b>Bem-vindos ao module Cidade Dorme!</b><br>O objetivo deste module é: Descubra quem são os assassinos, desconfie e se divirta!<br><VP>O jogo irá explicar todo seu funcionamento durante a partida.<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Spectra_phantom#6089<br><br><ROSE>Versão RTM 1715.009<br><p align='left'>",name)
 end
 function eventPlayerDied(name)
 	if data[string.lower(name)].type == 0 then
@@ -172,7 +175,7 @@ function eventLoop()
 			tfm.exec.chatMessage("<VP>O module não pode ser iniciado. <br>Certifique-se de que inseriu seu nome corretamente no nome da sala.<br><br>Exemplo: <b>/sala #anvilwar00cd3#Spectra_phantom#6089</b><br><br>Em caso de um FunCorp, certifique-se que inseriu o nome corretamente no código.<br><br>Script desativado.")
 		else
 			if jogadores.vivos >= 5 then
-				tfm.exec.chatMessage("<br><br><br><p align='center'><N><b>Bem-vindos ao module Cidade Dorme!</b><br>O objetivo deste module é: Descubra quem são os assassinos, desconfie e se divirta!<br><VP>O jogo irá explicar todo seu funcionamento durante a partida.<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Spectra_phantom#6089<br><br><ROSE>Versão RTM 1614.008<br><p align='left'>")
+				tfm.exec.chatMessage("<br><br><br><p align='center'><N><b>Bem-vindos ao module Cidade Dorme!</b><br>O objetivo deste module é: Descubra quem são os assassinos, desconfie e se divirta!<br><VP>O jogo irá explicar todo seu funcionamento durante a partida.<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Spectra_phantom#6089<br><br><ROSE>Versão RTM 1715.009<br><p align='left'>")
 			else
 				tfm.exec.chatMessage("<R>Número insuficiente de jogadores na sala. O script requer pelo menos 5 jogadores.")
 				contador=-30
