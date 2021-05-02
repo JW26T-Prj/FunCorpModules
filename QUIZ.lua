@@ -1,6 +1,11 @@
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.1.0
+-- Mudanças na Versão 2.1.1:
+-- Adicionadas 16 novas perguntas de conhecimentos gerais
+-- Corrigidas algumas perguntas do Transformice
+-- Melhorias visuais nos textos
+
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.1.1
 -- Esta nova versão possui diversos tipos de perguntas.
--- Você pode selecionar o tema editando a linha 16.
+-- Você pode selecionar o tema editando a linha 21.
 -- Temas:
 -- 0 = transformice
 -- 1 = conhecimentos gerais
@@ -9,7 +14,7 @@
 -- Para sugestões de perguntas ou correção de bugs contate Reksai_void2600#6638.
 -- Caso queira pular alguma pergunta por estar muito repetida ou algo do tipo, use o comando !random.
 piso={type = 6,width = 350,height = 30,foregound = 1,friction = 1.0,restitution = 0.0,angle = 0,color = 0,miceCollision = true,groundCollision = true,dynamic = false}
-for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand"} do
+for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand","AfkDeath"} do
 	tfm.exec["disable"..f](true)
 end
 vivos=0
@@ -92,7 +97,7 @@ perguntas={
 "Quantos queijos custa a customização de uma roupa no Transformice?","2000","4000",1,
 "Em qual ano estreou o sistema de missões no Transformice?","2019","2020",1,
 "Quem foi o primeiro gerenciador do module Mestre Mandou?","Haxhhhhhhhhh#0000","Jessiewind26#2546",2,
-"Quantos queijos custa a customização de um item de shaman no Transformice?","2000","4000",2,
+"Quantos queijos custa a customização de um item de sha	man no Transformice?","2000","4000",2,
 "Qual o nome da plataforma de execução que o Transformice utiliza?","Adobe Air","Adobe Flash Player",2,
 "É possível ganhar queijos no perfil apenas jogando modules.","Verdadeiro","Falso",2,
 "É possível comprar morangos pelo celular no Brasil.","Verdadeiro","Falso",2,
@@ -204,7 +209,7 @@ perguntas={
 "É possível mudar a gravidade do mapa no Transformice utilizando código LUA.","Verdadeiro","Falso",1,
 "Apenas membros da Module Team podem carregar modules nas salas do Transformice.","Verdadeiro","Falso",2,
 "Quantos servidores host da Atelier801 existem no Brasil?","0","1",1,
-"Qual é a margem máxima offscreen de largura e altura no qual os ratos podem permanecer vivos?","400px por lado","800px por lado",1,
+"Qual é a margem máxima offscreen de largura e altura no qual os ratos podem permanecer vivos?","400px por lado","800px por lado",1
 }
 perguntas1={
 "Vai na sorte :)","ok","ok",1,
@@ -240,8 +245,8 @@ perguntas1={
 "A chegada da Família Real Portuguesa ao Brasil ocorreu em qual ano?","1808","1822",1,
 "Qual destes é o maior deserto da Terra?","Deserto do Saara","Antártida",2,
 "Quantos anos durou o Regime Militar no Brasil?","21","25",2,
-"Qual dessas emissoras de televisão foi a primeira da América Latina?","Rede Tupi","Rede Globo",1,
-"Uma polegada equivale a quantos centímetros, aproximadamente?","2.5 cm","3.5 cm",1,
+"Qual dessas emissoras de televisão foi a primeira da América Latina?","Rede Tupi","Rede Manchete",1,
+"Uma polegada equivale a quantos centímetros, aproximadamente?","2.5 cm","3.3 cm",1,
 "Em qual ano ocorreu o último Censo do IBGE?","2010","2020",1,
 "O Arco do Triunfo, localizado na França, é uma homenagem a...","Napoleão Bonaparte","George Washington",1,
 "Na matemática, qual o nome do triângulo em que a soma dos números centrais é igual à soma das coeficientes binomiais?","Triângulo de Newton","Triângulo de Pascal",2,
@@ -258,6 +263,12 @@ perguntas1={
 "Qual destes equipamentos foi o grande carro-chefe da Primeira Revolução Industrial?","Máquina a vapor","Engrenagem",1,
 "Em qual ano ocorreu a missão da Apollo VIII?","1968","1969",1,
 "Qual destas unidades de medida é utilizada para medir a resistência de um objeto?","Ohm","Coulomb",1,
+"Em qual oceano da Terra está localizada a Fossa das Marianas?","Oceano Pacífico","Oceano Índico",1,
+"Qual foi o último período da Terra em que os dinossauros viveram?","Jurássico","Cretáceo",2,
+"Em qual cidade ocorreu a primeira edição dos Jogos Olímpicos?","Atenas","Paris",1,
+"O Rio Nilo é o maior e mais caudaloso rio da Terra.","Verdadeiro","Falso",2,
+"O Rio Amazonas é formado pelo encontro de quais rios?","Negro e Tapajós","Negro e Solimões",2,
+"A Floresta Amazônica é o lugar natural com maior geração de oxigênio do mundo.","Verdadeiro","Falso",2
 }
 mapa="@7786632"
 modo="inicial" -- não mude
@@ -267,7 +278,7 @@ actual_question={quest="",a1="",a2="",answer=nil}
 function eventNewGame()
 	vivos=0
 	tfm.exec.setGameTime(20)
-	for name,player in pairs(tfm.get.room.playerList) do
+	for name,player in next,tfm.get.room.playerList do
 		vivos=vivos+1
 	end
 end
@@ -290,13 +301,13 @@ function eventNewPlayer(name)
 	tfm.exec.chatMessage("Aguarde a próxima rodada para jogar.",name)
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas - Versão <b>2.1.0</b> - por Reksai_void2600#6638  <BL>|  <N>Ratos vivos : <V><b>"..vivos.."</b><")
+	ui.setMapName("<N>Quiz de Perguntas - Versão <b>2.1.1</b> - por Reksai_void2600#6638  <BL>|  <N>Ratos vivos : <V><b>"..vivos.."</b><")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
 	end
 	if f < 1250 and modo == "perguntar" then
-		for name,player in pairs(tfm.get.room.playerList) do
+		for name,player in next,tfm.get.room.playerList do
 			if tfm.get.room.playerList[name].x >= 395 and tfm.get.room.playerList[name].x <= 405 then
 				tfm.exec.killPlayer(name)
 			end
@@ -305,23 +316,35 @@ function eventLoop(p,f)
 		if actual_question.answer == false then
 			tfm.exec.removePhysicObject(1)
 			ui.removeTextArea(2,nil)
+			ui.addTextArea(1,"<VP><p align='center'><font size='18'>"..actual_question.a1.."",nil,100,130,260,51,0,0,1.0,true)
 			modo="intervalo"
 		elseif actual_question.answer == true then
 			tfm.exec.removePhysicObject(0)
 			ui.removeTextArea(1,nil)
+			ui.addTextArea(2,"<VP><p align='center'><font size='18'>"..actual_question.a2.."",nil,440,130,260,51,0,0,1.0,true)
 			modo="intervalo"
 		end
 	end
 	if f < 1 and modo == "intervalo" then
 		randomQuests()
 	end
-	if f < 250 and modo == "fim" then
-		modo="inicial"
-		reset()
+	if f <= 1500 and vivos == 1 and modo == "fim" then
+		for name,player in next,tfm.get.room.playerList do
+			if not tfm.get.room.playerList[name].isDead then
+				tfm.exec.chatMessage("<VP><b>"..name.."</b> venceu a partida!")
+				modo="fim2"
+			end
+		end
+	end
+	if f < 250 then
+		if modo == "fim" or modo == "fim2" then
+			modo="inicial"
+			reset()
+		end
 	end
 end
 function randomQuests()
-	for name,player in pairs(tfm.get.room.playerList) do
+	for name,player in next,tfm.get.room.playerList do
 		tfm.exec.movePlayer(name,400,145,false)
 	end
 	tfm.exec.setGameTime(15)
@@ -351,8 +374,8 @@ function randomQuests()
 		actual_question.a1=perguntas1[-2+(4*pergunta)]
 		actual_question.a2=perguntas1[-1+(4*pergunta)]
 	end
-	ui.addTextArea(1,"<p align='center'><font size='18'>"..actual_question.a1.."",nil,100,120,260,24,0,0,1.0,true)
-	ui.addTextArea(2,"<p align='center'><font size='18'>"..actual_question.a2.."",nil,440,120,260,24,0,0,1.0,true)
+	ui.addTextArea(1,"<p align='center'><font size='18'>"..actual_question.a1.."",nil,100,130,260,51,0,0,1.0,true)
+	ui.addTextArea(2,"<p align='center'><font size='18'>"..actual_question.a2.."",nil,440,130,260,51,0,0,1.0,true)
 	ui.addTextArea(0,"<p align='center'><font size='14'>"..actual_question.quest.."",nil,10,22,780,48,0x000001,0x000001,1.0,true)
 end
 function eventPlayerDied(name)
