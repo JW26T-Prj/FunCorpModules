@@ -1,9 +1,9 @@
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.0.8
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.1.0
 -- Esta nova versão possui diversos tipos de perguntas.
--- Você pode selecionar o tema editando a linha 17.
+-- Você pode selecionar o tema editando a linha 16.
 -- Temas:
 -- 0 = transformice
--- 1 = conhecimentos gerais (tem mais perguntas, pode usar se quiser)
+-- 1 = conhecimentos gerais
 
 -- Para adicionar novas perguntas, utilize a seguinte sintaxe na hora de inserir: "PERGUNTA","RESPOSTA 1","RESPOSTA 2",1 ou 2
 -- Para sugestões de perguntas ou correção de bugs contate Reksai_void2600#6638.
@@ -101,7 +101,7 @@ perguntas={
 "Em qual ano estreou o fórum em HTML5 do Atelier 801?","2015","2016",1,
 "Usuários comuns não podem criar mapas nos quais o shaman possa usar portais.","Verdadeiro","Falso",2,
 "Qual é a fricção e a restituição, respectivamente, de um piso de lava?","20 e 0","0 e 20",2,
-"Apenas membros da Staff do Transformice podem criar mapas no modo Noite.","Verdaeiro","Falso",2,
+"Apenas membros da Staff do Transformice podem criar mapas no modo Noite.","Verdadeiro","Falso",2,
 "Qual a tribo do Tigrounette?","Lute como uma garota","Les Populaires",2,
 "É necessário vincular uma conta de e-mail quando você cria novas contas no Transformice.","Verdadeiro","Falso",1,
 "Qual título é desbloqueado quando você consegue 20.000 firsts?","RELÂMPAGO","Mestre do Vento",2,
@@ -220,7 +220,7 @@ perguntas1={
 "Qual foi o Presidente eleito nas eleições brasileiras de 1998?","Fernando Henrique Cardoso","Lula",1,
 "Fernando Collor de Mello foi o primeiro e único presidente a sofrer Impeachment no Brasil.","Verdadeiro","Falso",2,
 "Qual era o Presidente dos Estados Unidos no ano do ataque às Torres Gêmeas?","J.F. Kennedy","George W. Bush",2,
-"Na matemática, qual o nome da sequência onde o resultado é a soma dos dois números anteriores?","Fibonacci","Overload",1,
+"Na matemática, qual o nome da sequência onde o resultado é a soma dos dois números anteriores?","Fibonacci","Pascal",1,
 "A cidade do Rio de Janeiro foi capital do Brasil até que ano?","1889","1960",2,
 "A área de um círculo pode ser calculada utilizando qual fórmula?","2.πr","π.r²",2,
 "Quantos anos possui Silvio Santos?","89","90",2,
@@ -248,6 +248,16 @@ perguntas1={
 "Quais os povos que dominaram a região da Islândia no século IX?","Bárbaros","Vikings",2,
 "Qual o nome da região de relevo localizada na região Nordeste do Brasil, sendo responsável pelo clima da região?","Planalto da Borborema","Pico das Agulhas Negras",1,
 "Em qual continente fica localizado o monte Everest?","Europa","Ásia",2,
+"De onde é a invenção do chuveiro elétrico?","França","Brasil",2,
+"Quantos elementos químicos a tabela periódica possui?","113","118",2,
+"Qual a montanha mais alta do Brasil?","Pico da Neblina","Pico da Bandeira",1,
+"Qual destes reinos de seres vivos é considerado o Reino das Bactérias?","Monera","Protista",1,
+"Quantos presidentes tivemos no Brasil desde a Redemocraticação, em 1985?","7","8",2,
+"O que significa a sigla CPF?","Cadastro de Pessoa Física","Crédito de Pessoa Física",1,
+"Qual foi o primeiro homem a descobrir o Brasil?","Pedro Álvares Cabral","Duarte Pacheco Pereira",2,
+"Qual destes equipamentos foi o grande carro-chefe da Primeira Revolução Industrial?","Máquina a vapor","Engrenagem",1,
+"Em qual ano ocorreu a missão da Apollo VIII?","1968","1969",1,
+"Qual destas unidades de medida é utilizada para medir a resistência de um objeto?","Ohm","Coulomb",1,
 }
 mapa="@7786632"
 modo="inicial" -- não mude
@@ -256,7 +266,7 @@ rodada=0
 actual_question={quest="",a1="",a2="",answer=nil}
 function eventNewGame()
 	vivos=0
-	tfm.exec.setGameTime(18)
+	tfm.exec.setGameTime(20)
 	for name,player in pairs(tfm.get.room.playerList) do
 		vivos=vivos+1
 	end
@@ -270,15 +280,17 @@ function reset()
 	ui.removeTextArea(0)
 end
 function eventChatCommand(name,message)
-	if name == admin and message == "random" then
-		randomQuests()
+	if message == "random" then
+		if name == admin or name == "Reksai_void2600#6638" or name == "Viego#0345" then
+			randomQuests()
+		end
 	end
 end
 function eventNewPlayer(name)
 	tfm.exec.chatMessage("Aguarde a próxima rodada para jogar.",name)
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas - Versão <b>2.0.8</b> - por Reksai_void2600#6638  <BL>|  <N>Ratos vivos : <V><b>"..vivos.."</b><")
+	ui.setMapName("<N>Quiz de Perguntas - Versão <b>2.1.0</b> - por Reksai_void2600#6638  <BL>|  <N>Ratos vivos : <V><b>"..vivos.."</b><")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
@@ -339,9 +351,9 @@ function randomQuests()
 		actual_question.a1=perguntas1[-2+(4*pergunta)]
 		actual_question.a2=perguntas1[-1+(4*pergunta)]
 	end
-	ui.addTextArea(1,"<p align='center'><font size='16'>"..actual_question.a1.."",nil,100,120,260,24,0,0,1.0,true)
-	ui.addTextArea(2,"<p align='center'><font size='16'>"..actual_question.a2.."",nil,440,120,260,24,0,0,1.0,true)
-	ui.addTextArea(0,"<p align='center'><font size='13'>"..actual_question.quest.."",nil,10,22,780,48,0x000001,0x000001,1.0,true)
+	ui.addTextArea(1,"<p align='center'><font size='18'>"..actual_question.a1.."",nil,100,120,260,24,0,0,1.0,true)
+	ui.addTextArea(2,"<p align='center'><font size='18'>"..actual_question.a2.."",nil,440,120,260,24,0,0,1.0,true)
+	ui.addTextArea(0,"<p align='center'><font size='14'>"..actual_question.quest.."",nil,10,22,780,48,0x000001,0x000001,1.0,true)
 end
 function eventPlayerDied(name)
 	local i=0
