@@ -5,7 +5,7 @@ for _,f in next,{"help","ajuda"} do
 	system.disableChatCommandDisplay(f)
 end
 tfm.exec.setRoomMaxPlayers(32)
-shaman=""; alives=0; cannons=4; z=0; data={}; mode="load"; changed=false; loop=0; timer=0; xml=''; time_passed=0; time_remain=0;
+shaman=""; alives=0; cannons=5; z=0; data={}; mode="load"; changed=false; loop=0; timer=0; xml=''; time_passed=0; time_remain=0;
 powerups={x1=-1,x2=-1,x3=-1,x4=-1,y1=-1,y2=-1,y3=-1,y4=-1,t1=0,t2=0,t3=0,t4=0}
 function eventPlayerDied(n)
 	if not tfm.get.room.playerList[n].isShaman then
@@ -48,7 +48,7 @@ end
 function resetMap()
 	if xml == '' then
 		tfm.exec.disableAutoShaman(true)
-		tfm.exec.newGame("@7802869")
+		tfm.exec.newGame("@7854060")
 		changed=false
 		mode="load"
 	else
@@ -178,7 +178,7 @@ ui.addTextArea(0,"",nil,-800,-400,2400,1200,0x6a7495,0x6a7495,1.0,true)
 if changed == true then
 ui.removeTextArea(0,nil)
 z=-1
-cannons=4
+cannons=5
 ui.removeTextArea(22,nil)
 alives=0
 mode="hide"
@@ -196,6 +196,7 @@ for n,p in pairs(tfm.get.room.playerList) do
 	data[n] = newData;	
 	tfm.exec.bindKeyboard(n,32,true,true)
 		if tfm.get.room.playerList[n].isShaman then
+		tfm.exec.movePlayer(n,-250,348,false,0,0,false)
 		ui.addTextArea(22,"",n,-800,-800,2400,2400,0x000001,0x000001,1.0,true)
 		shaman=n
 		alives=alives-1
@@ -234,12 +235,12 @@ end
 function eventLoop(p,r)
 time_passed=math.ceil(p/1000)
 time_remain=math.ceil(r/1000)
-if time_passed >= 6 and tfm.get.room.currentMap == "@7802869" then
+if time_passed >= 6 and tfm.get.room.currentMap == "@7854060" then
 	tfm.exec.disableAutoShaman(false)
 	resetMap()
 end
 if changed == true then
-ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><J> Versão v1.7.0 - criado por Morganadxana#0000<")
+ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><J> Versão v1.8.0 - criado por Morganadxana#0000<")
 local m=math.floor(r/60000)
 local s=math.floor((((m*60000)-r) * -1) / 1000)
 ui.addTextArea(-1,"<font size='28'><font face='DejaVu Sans Mono,Consolas'><font color='#222222'><b>0"..m..":"..s.."</b>",n,693,27,110,44,0,0,1.0,true)
@@ -257,7 +258,7 @@ if mode == "game" or mode == "hide" then
 	loop=loop+0.5
 	if loop == 30 then
 		for i=1,4 do
-			genPowerup(i,math.random(1,4),math.random(400,2800),math.random(250,1300))
+			genPowerup(i,math.random(1,4),math.random(800,2800),math.random(250,800))
 		end
 		loop=0
 	end
@@ -292,17 +293,17 @@ for n,q in pairs(tfm.get.room.playerList) do
 				end
 			end
 			if mode == "game" or mode == "hide" then
-			if tfm.get.room.playerList[n].y < 250 then
+			if tfm.get.room.playerList[n].y < 298 then
 				if data[n].o < 99 then
 					data[n].o=data[n].o+1
 				end
 				data[n].y=0
 			else
-				if tfm.get.room.playerList[n].y <= 920 then
+				if tfm.get.room.playerList[n].y <= 850 then
 					data[n].o=data[n].o-0.4
 					data[n].c=0
-				elseif tfm.get.room.playerList[n].y > 920 and tfm.get.room.playerList[n].y < 1380 then
-					data[n].o=data[n].o-0.7
+				elseif tfm.get.room.playerList[n].y > 850 then
+					data[n].o=data[n].o-0.8
 					data[n].c=0
 				end
 			end
@@ -312,19 +313,9 @@ for n,q in pairs(tfm.get.room.playerList) do
 				tfm.exec.chatMessage("<R>O jogador <b>"..n.."</b> morreu afogado!")
 				tfm.exec.addShamanObject(54, tfm.get.room.playerList[n].x, tfm.get.room.playerList[n].y, 0, 0.1, 0.1, false)
 			end
-			if tfm.get.room.playerList[n].x >= 1300 and tfm.get.room.playerList[n].x <= 1500 then
-				if tfm.get.room.playerList[n].y >= 690 and tfm.get.room.playerList[n].y <= 840 then
-					data[n].o=data[n].o+0.2
-				end
-			end
-			if tfm.get.room.playerList[n].x >= 3380 and tfm.get.room.playerList[n].x <= 3580 then
-				if tfm.get.room.playerList[n].y >= 1205 and tfm.get.room.playerList[n].y <= 1355 then
-					data[n].o=data[n].o+0.5
-				end
-			end
 		end
 		end
-		if data[n].o > 30 then
+		if data[n].o > 30 and mode == "game" then
 			ui.addTextArea(10,"",n,5,366-(data[n].o*1.5),16,190,0x8000ff,0x6000ff,1.0,true)
 			ui.addTextArea(0,"<font size='11'><font face='DejaVu Sans Mono,Consolas'>O² Nível",n,5,195,64,14,0,0,0.7,true)
 			ui.addTextArea(-4,"<font size='11'><font face='DejaVu Sans Mono,Consolas'>90<br>-<br>72<br>-<br>54<br>-<br>36<br>-<R><b><br>18<br>-<br>0",n,30,218,39,180,0,0,0.7,true)
@@ -349,13 +340,18 @@ if r <= 2000 and mode == "hide" then
 	mode="game"
 	tfm.exec.setGameTime(150+(alives*5))
 	ui.removeTextArea(22,nil)
-	tfm.exec.chatMessage("<J>O shaman foi liberado! Salvem-se quem puder!<br><br>As <N>zonas brancas<J> estão <VP>ATIVADAS<J>. Ratos que permanecerem nelas terão seu consumo de oxigênio reduzido quando dentro delas.<br><br>Os itens marcados com <BL>!<N> são poderes especiais, que podem trazer efeitos positivos ou negativos aos ratos.")
+	tfm.exec.chatMessage("<J>O shaman foi liberado! Salvem-se quem puder!<br><br>As <N>zonas brancas<J> estão <VP>DESATIVADAS<J>.<br><br>Os itens marcados com <BL>!<N> são poderes especiais, que podem trazer efeitos positivos ou negativos aos ratos.")
+	for n,p in pairs(tfm.get.room.playerList) do
+		if tfm.get.room.playerList[n].isShaman then
+			tfm.exec.movePlayer(n,1770,210,false,0,0,false)
+		end
+	end
 end
 if r <= 1000 and mode == "game" then
 	tfm.exec.setGameTime(15)
 	mode="end"
 	local lives=0
-for n,p in pairs(tfm.get.room.playerList) do
+	for n,p in pairs(tfm.get.room.playerList) do
 	if not tfm.get.room.playerList[n].isShaman and not tfm.get.room.playerList[n].isDead then
 		lives=lives+1
 		tfm.exec.giveCheese(n)
