@@ -4,6 +4,7 @@ end
 for _,f in next,{"help","ajuda"} do
 	system.disableChatCommandDisplay(f)
 end
+tfm.exec.newGame("@7854060")
 tfm.exec.setRoomMaxPlayers(32)
 shaman=""; alives=0; cannons=5; z=0; data={}; mode="load"; changed=false; loop=0; timer=0; xml=''; time_passed=0; time_remain=0;
 powerups={x1=-1,x2=-1,x3=-1,x4=-1,y1=-1,y2=-1,y3=-1,y4=-1,t1=0,t2=0,t3=0,t4=0}
@@ -240,7 +241,7 @@ if time_passed >= 6 and tfm.get.room.currentMap == "@7854060" then
 	resetMap()
 end
 if changed == true then
-ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><J> Versão v1.8.0 - criado por Morganadxana#0000<")
+ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><J> Versão v1.8.1 - criado por Morganadxana#0000<")
 local m=math.floor(r/60000)
 local s=math.floor((((m*60000)-r) * -1) / 1000)
 ui.addTextArea(-1,"<font size='28'><font face='DejaVu Sans Mono,Consolas'><font color='#222222'><b>0"..m..":"..s.."</b>",n,693,27,110,44,0,0,1.0,true)
