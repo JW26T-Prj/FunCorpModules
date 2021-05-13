@@ -33,7 +33,7 @@ if mode == "building" then
 mode="fly"
 end
 for n,p in pairs(tfm.get.room.playerList) do
-if p.y < 230 and f > 5000 then
+if p.y < 350 and f > 5000 then
 tfm.exec.giveCheese(n)
 tfm.exec.playerVictory(n)
 mode="ending"
@@ -56,7 +56,7 @@ end
 end
 end
 function eventNewGame()
-ui.setMapName("<N>RockerLaunch! <J>v4.1.6")
+ui.setMapName("<N>RockerLaunch! <J>v4.1.7")
 tfm.exec.setGameTime(338)
 tfm.exec.chatMessage("<VP>O shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço!")
 mode="building"
@@ -68,7 +68,7 @@ end
 end
 end
 function eventNewPlayer(n)
-ui.setMapName("<N>RockerLaunch! <J>v4.1.6")
+ui.setMapName("<N>RockerLaunch! <J>v4.1.7")
 tfm.exec.chatMessage("<VP>Bem-vindos ao RockerLaunch 4! Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço! Digite !help para saber como jogar.<br><br>Script criado por Miss_fortune#9548. Mapa criado por Morganadxana#0000. Conceito original de Nettoork#0000.",n)
 end
 function eventPlayerDied(n)
