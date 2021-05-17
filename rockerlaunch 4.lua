@@ -56,7 +56,7 @@ end
 end
 end
 function eventNewGame()
-ui.setMapName("<N>RockerLaunch! <J>v4.1.7")
+ui.setMapName("<N>RockerLaunch! <J>v4.1.8")
 tfm.exec.setGameTime(338)
 tfm.exec.chatMessage("<VP>O shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço!")
 mode="building"
@@ -68,7 +68,7 @@ end
 end
 end
 function eventNewPlayer(n)
-ui.setMapName("<N>RockerLaunch! <J>v4.1.7")
+ui.setMapName("<N>RockerLaunch! <J>v4.1.8")
 tfm.exec.chatMessage("<VP>Bem-vindos ao RockerLaunch 4! Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço! Digite !help para saber como jogar.<br><br>Script criado por Miss_fortune#9548. Mapa criado por Morganadxana#0000. Conceito original de Nettoork#0000.",n)
 end
 function eventPlayerDied(n)
@@ -90,11 +90,6 @@ if i==0 then
 	tfm.exec.setGameTime(5)
 elseif i==1 then
 	tfm.exec.setGameTime(20)
-end
-end
-function eventPlayerWon(n)
-if tfm.get.room.playerList[n].isShaman or shaman == n then
-tfm.exec.setGameTime(5)
 end
 end
 tfm.exec.newGame(map)
