@@ -1,9 +1,9 @@
--- Mudanças na Versão 2.1.1:
--- Adicionadas 16 novas perguntas de conhecimentos gerais
--- Corrigidas algumas perguntas do Transformice
--- Melhorias visuais nos textos
+-- Mudanças na Versão 2.2.0:
+-- Adicionadas 9 perguntas de conhecimentos gerais
+-- Adicionado temporizador para as perguntas
+-- Adicionado o comando !limite. Você pode alterar o limite de rodadas para evitar partidas muito longas.
 
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.1.1
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.2.0
 -- Esta nova versão possui diversos tipos de perguntas.
 -- Você pode selecionar o tema editando a linha 21.
 -- Temas:
@@ -21,6 +21,7 @@ vivos=0
 tema=0 -- Edite conforme mostrado acima!
 admin="Reksai_void2600#6638" -- COLOQUE SEU NOME!
 system.disableChatCommandDisplay("random")
+system.disableChatCommandDisplay("limite")
 perguntas={
 "Vai na sorte :)","ok","ok",1,
 "Vai na sorte :)","ok","ok",2,
@@ -268,16 +269,26 @@ perguntas1={
 "Em qual cidade ocorreu a primeira edição dos Jogos Olímpicos?","Atenas","Paris",1,
 "O Rio Nilo é o maior e mais caudaloso rio da Terra.","Verdadeiro","Falso",2,
 "O Rio Amazonas é formado pelo encontro de quais rios?","Negro e Tapajós","Negro e Solimões",2,
-"A Floresta Amazônica é o lugar natural com maior geração de oxigênio do mundo.","Verdadeiro","Falso",2
+"A Floresta Amazônica é o lugar natural com maior geração de oxigênio do mundo.","Verdadeiro","Falso",2,
+"De quem é a famosa frase 'Penso, logo existo'?","Aristóteles","René Descartes",2,
+"Qual é o nome dado para as bactérias que precisam de oxigênio para se reproduzirem?","Aeróbicas","Anaeróbias",1,
+"Qual o nome da operação inversa da raiz quadrada?","Potenciação","Subtração",1,
+"Quantas estrelas existem no Sistema Solar?","1","O número é tão grande que nem cabe",1,
+"Quando uma estrela com 10 ou menos massas solares chega no final do seu tempo de vida, ela vira um(a)...","Buraco Negro","Anã Branca",2,
+"Quantos anos durou a Guerra dos Cem Anos?","100","116",2,
+"Existem milhares de jacarés e capivaras no fundo do Rio Amazonas.","Verdadeiro","Falso",2,
+"Qual a raiz quadrada de -16?","-4","Não existe",1,
+"Qual destes elementos químicos é utilizado para produzir equipamentos eletrônicos?","Silício","Rambônio",1
 }
 mapa="@7786632"
 modo="inicial" -- não mude
 pergunta=0
 rodada=0
+limite=30
 actual_question={quest="",a1="",a2="",answer=nil}
 function eventNewGame()
 	vivos=0
-	tfm.exec.setGameTime(20)
+	tfm.exec.setGameTime(15)
 	for name,player in next,tfm.get.room.playerList do
 		vivos=vivos+1
 	end
@@ -296,12 +307,16 @@ function eventChatCommand(name,message)
 			randomQuests()
 		end
 	end
+	if (message:sub(0,6) == "limite") then
+		limite=tonumber(message:sub(8))
+		tfm.exec.chatMessage("Limite alterado para: "..message:sub(8).."")
+	end
 end
 function eventNewPlayer(name)
 	tfm.exec.chatMessage("Aguarde a próxima rodada para jogar.",name)
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas - Versão <b>2.1.1</b> - por Reksai_void2600#6638  <BL>|  <N>Ratos vivos : <V><b>"..vivos.."</b><")
+	ui.setMapName("<N>Quiz de Perguntas - <b>v2.2.0</b> - por Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V><b>"..vivos.."</b>   <BL>|   <N>Round : <V><b>"..rodada.."</b><R>/"..limite.."<")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
@@ -316,17 +331,28 @@ function eventLoop(p,f)
 		if actual_question.answer == false then
 			tfm.exec.removePhysicObject(1)
 			ui.removeTextArea(2,nil)
-			ui.addTextArea(1,"<VP><p align='center'><font size='18'>"..actual_question.a1.."",nil,100,130,260,51,0,0,1.0,true)
+			ui.addTextArea(1,"<p align='center'><font size='18'>"..actual_question.a1.."",nil,100,145,260,81,0,0,1.0,true)
 			modo="intervalo"
 		elseif actual_question.answer == true then
 			tfm.exec.removePhysicObject(0)
 			ui.removeTextArea(1,nil)
-			ui.addTextArea(2,"<VP><p align='center'><font size='18'>"..actual_question.a2.."",nil,440,130,260,51,0,0,1.0,true)
+			ui.addTextArea(2,"<p align='center'><font size='18'>"..actual_question.a2.."",nil,440,145,260,81,0,0,1.0,true)
 			modo="intervalo"
 		end
 	end
 	if f < 1 and modo == "intervalo" then
-		randomQuests()
+		if rodada < limite then
+			randomQuests()
+		else
+			tfm.exec.setGameTime(5)
+			tfm.exec.chatMessage("<R>Sem vencedores!")
+			modo="fim"
+		end
+	end
+	if modo == "perguntar" and f >= 1 then
+		ui.addTextArea(3,"<p align='center'><font size='45'>"..math.floor(f/1000).."",nil,350,235,100,60,0x000001,0x494949,1.0,true)
+	else
+		ui.removeTextArea(3,nil)
 	end
 	if f <= 1500 and vivos == 1 and modo == "fim" then
 		for name,player in next,tfm.get.room.playerList do
@@ -348,6 +374,9 @@ function randomQuests()
 		tfm.exec.movePlayer(name,400,145,false)
 	end
 	tfm.exec.setGameTime(15)
+	if rodada >= 15 then
+		tfm.exec.setGameTime(10)
+	end
 	tfm.exec.addPhysicObject(0, 225, 410, piso)
 	tfm.exec.addPhysicObject(1, 575, 410, piso)
 	modo="perguntar"
@@ -374,8 +403,19 @@ function randomQuests()
 		actual_question.a1=perguntas1[-2+(4*pergunta)]
 		actual_question.a2=perguntas1[-1+(4*pergunta)]
 	end
-	ui.addTextArea(1,"<p align='center'><font size='18'>"..actual_question.a1.."",nil,100,130,260,51,0,0,1.0,true)
-	ui.addTextArea(2,"<p align='center'><font size='18'>"..actual_question.a2.."",nil,440,130,260,51,0,0,1.0,true)
+	if tema == 2 then
+		pergunta=math.random(#perguntas2/4)
+		actual_question.quest=perguntas2[-3+(4*pergunta)]
+		if perguntas2[pergunta*4] == 2 then
+			actual_question.answer=true
+		elseif perguntas2[pergunta*4] == 1 then
+			actual_question.answer=false
+		end
+		actual_question.a1=perguntas2[-2+(4*pergunta)]
+		actual_question.a2=perguntas2[-1+(4*pergunta)]
+	end
+	ui.addTextArea(1,"<p align='center'><font size='18'>"..actual_question.a1.."",nil,100,145,260,81,0,0,1.0,true)
+	ui.addTextArea(2,"<p align='center'><font size='18'>"..actual_question.a2.."",nil,440,145,260,81,0,0,1.0,true)
 	ui.addTextArea(0,"<p align='center'><font size='14'>"..actual_question.quest.."",nil,10,22,780,48,0x000001,0x000001,1.0,true)
 end
 function eventPlayerDied(name)
