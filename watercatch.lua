@@ -384,7 +384,7 @@ for n,q in pairs(tfm.get.room.playerList) do
 					data[n].o=data[n].o-0.5
 					data[n].c=0
 				elseif tfm.get.room.playerList[n].y > 850 then
-					data[n].o=data[n].o-0.65
+					data[n].o=data[n].o-0.7
 					data[n].c=0
 				end
 			end
@@ -398,12 +398,12 @@ for n,q in pairs(tfm.get.room.playerList) do
 		end
 		if data[n].o > 22 and mode == "game" then
 			ui.addTextArea(10,"",n,56,385,(data[n].o*7.3),10,0x8000ff,0x6000ff,1.0,true)
-			ui.addTextArea(-4,"<font size='12'><font face='Consolas'><R><b>0 -------------</b>---- 20 --<J>--------------- 40 ---------<VP>-------- 60 ---------------- 80 ---------------- 100",n,55,364,740,17,0x101010,0x010101,0.9,true)
+			ui.addTextArea(-4,"<font size='12'><font face='Consolas'><R><b>0 -------------</b>---- 20 ---<J>-------------- 40 ---------<VP>-------- 60 ---------------- 80 ---------------- 100",n,55,364,740,17,0x101010,0x010101,0.9,true)
 			ui.addTextArea(-5,"<font size='30'><p align='center'><font face='DejaVu Sans Mono,Consolas'><font color='#00ff00'>"..math.floor(data[n].o).."",n,4,355,42,40,0x090909,0x000000,0.7,true)
 			data[n].d=0
 		elseif data[n].o > 0 and mode == "game" then
 			ui.addTextArea(10,"",n,56,385,(data[n].o*7.3),10,0xff3000,0xff2000,1.0,true)
-			ui.addTextArea(-4,"<font size='12'><font face='Consolas'><R><b>0 -------------</b>----- 20 --<J>---------------- 40 ---------<VP>--------- 60 ------------------ 80 ------------------ 100",n,55,364,790,17,0x101010,0x010101,0.9,true)
+			ui.addTextArea(-4,"<font size='12'><font face='Consolas'><R><b>0 -------------</b>---- 20 ---<J>-------------- 40 ---------<VP>-------- 60 ---------------- 80 ---------------- 100",n,55,364,740,17,0x101010,0x010101,0.9,true)
 			ui.addTextArea(-5,"<font size='30'><p align='center'><font face='DejaVu Sans Mono,Consolas'><font color='#00ff00'>"..math.floor(data[n].o).."",n,4,355,42,40,0x090909,0x000000,0.7,true)
 			data[n].d=data[n].d+1
 			if data[n].d == 1 and data[n].o > 0 then
