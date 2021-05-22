@@ -1,11 +1,10 @@
--- Mudanças na Versão 2.2.0:
--- Adicionadas 9 perguntas de conhecimentos gerais
--- Adicionado temporizador para as perguntas
--- Adicionado o comando !limite. Você pode alterar o limite de rodadas para evitar partidas muito longas.
+-- Mudanças na Versão 2.2.1:
+-- Adicionadas 7 perguntas de conhecimentos gerais
+-- Correções na visualização das perguntas
 
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.2.0
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.2.1
 -- Esta nova versão possui diversos tipos de perguntas.
--- Você pode selecionar o tema editando a linha 21.
+-- Você pode selecionar o tema editando a linha 20.
 -- Temas:
 -- 0 = transformice
 -- 1 = conhecimentos gerais
@@ -262,7 +261,7 @@ perguntas1={
 "O que significa a sigla CPF?","Cadastro de Pessoa Física","Crédito de Pessoa Física",1,
 "Qual foi o primeiro homem a descobrir o Brasil?","Pedro Álvares Cabral","Duarte Pacheco Pereira",2,
 "Qual destes equipamentos foi o grande carro-chefe da Primeira Revolução Industrial?","Máquina a vapor","Engrenagem",1,
-"Em qual ano ocorreu a missão da Apollo VIII?","1968","1969",1,
+"Em qual ano ocorreu a missão da Apollo 8?","1968","1969",1,
 "Qual destas unidades de medida é utilizada para medir a resistência de um objeto?","Ohm","Coulomb",1,
 "Em qual oceano da Terra está localizada a Fossa das Marianas?","Oceano Pacífico","Oceano Índico",1,
 "Qual foi o último período da Terra em que os dinossauros viveram?","Jurássico","Cretáceo",2,
@@ -278,7 +277,13 @@ perguntas1={
 "Quantos anos durou a Guerra dos Cem Anos?","100","116",2,
 "Existem milhares de jacarés e capivaras no fundo do Rio Amazonas.","Verdadeiro","Falso",2,
 "Qual a raiz quadrada de -16?","-4","Não existe",1,
-"Qual destes elementos químicos é utilizado para produzir equipamentos eletrônicos?","Silício","Rambônio",1
+"Qual destes elementos químicos é utilizado para produzir equipamentos eletrônicos?","Silício","Rambônio",1,
+"Qual destes elementos químicos fica líquido na temperatura ambiente?","Água","Mercúrio",2,
+"Qual destas categorias é necessária na carteira de habilitação para dirigir motos?","Categoria A","Categoria B",1,
+"O ano-luz é uma unidade de medida de...","Tempo","Distância",2,
+"Qual foi o cineasta que chegou no fundo da Fossa das Marianas, lugar mais profundo do oceano?","James Cameron","Jacques Piccard",1,
+"Qual é o nome dado para as bactérias que não precisam de oxigênio para se reproduzirem?","Aeróbicas","Anaeróbias",2,
+"Qual destes tipos de clima não é encontrado no Brasil?","Semiárido","Mediterrâneo",1,
 }
 mapa="@7786632"
 modo="inicial" -- não mude
@@ -316,7 +321,7 @@ function eventNewPlayer(name)
 	tfm.exec.chatMessage("Aguarde a próxima rodada para jogar.",name)
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas - <b>v2.2.0</b> - por Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V><b>"..vivos.."</b>   <BL>|   <N>Round : <V><b>"..rodada.."</b><R>/"..limite.."<")
+	ui.setMapName("<N>Quiz de Perguntas - <b>v2.2.1</b> - por Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V><b>"..vivos.."</b>   <BL>|   <N>Round : <V><b>"..rodada.."</b><R>/"..limite.."<")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
@@ -331,12 +336,12 @@ function eventLoop(p,f)
 		if actual_question.answer == false then
 			tfm.exec.removePhysicObject(1)
 			ui.removeTextArea(2,nil)
-			ui.addTextArea(1,"<p align='center'><font size='18'>"..actual_question.a1.."",nil,100,145,260,81,0,0,1.0,true)
+			ui.addTextArea(1,"<p align='center'><VP><font size='18'>"..actual_question.a1.."",nil,100,145,260,81,0,0,1.0,true)
 			modo="intervalo"
 		elseif actual_question.answer == true then
 			tfm.exec.removePhysicObject(0)
 			ui.removeTextArea(1,nil)
-			ui.addTextArea(2,"<p align='center'><font size='18'>"..actual_question.a2.."",nil,440,145,260,81,0,0,1.0,true)
+			ui.addTextArea(2,"<p align='center'><VP><font size='18'>"..actual_question.a2.."",nil,440,145,260,81,0,0,1.0,true)
 			modo="intervalo"
 		end
 	end
