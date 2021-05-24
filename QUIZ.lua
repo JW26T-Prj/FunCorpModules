@@ -1,10 +1,14 @@
--- Mudanças na Versão 2.2.1:
--- Adicionadas 7 perguntas de conhecimentos gerais
--- Correções na visualização das perguntas
+-- Mudanças na Versão 2.3.0:
+-- Correções em algumas perguntas do Transformice
+-- Redução do tamanho e alterações no cronômetro
+-- Adição da quantidade de ratos na sala, na barra de título
+-- Melhorias visuais no mapa para redução do lag
+-- Melhorias visuais nas perguntas
+-- Atualizações no código para melhor visualização das variáveis
 
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.2.1
--- Esta nova versão possui diversos tipos de perguntas.
--- Você pode selecionar o tema editando a linha 20.
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.3.0
+-- Por favor, edite a linha 20 a variável 'admin' pelo seu nome para ter acesso aos comandos.
+-- Você pode selecionar o tema editando a linha 21.
 -- Temas:
 -- 0 = transformice
 -- 1 = conhecimentos gerais
@@ -12,13 +16,16 @@
 -- Para adicionar novas perguntas, utilize a seguinte sintaxe na hora de inserir: "PERGUNTA","RESPOSTA 1","RESPOSTA 2",1 ou 2
 -- Para sugestões de perguntas ou correção de bugs contate Reksai_void2600#6638.
 -- Caso queira pular alguma pergunta por estar muito repetida ou algo do tipo, use o comando !random.
-piso={type = 6,width = 350,height = 30,foregound = 1,friction = 1.0,restitution = 0.0,angle = 0,color = 0,miceCollision = true,groundCollision = true,dynamic = false}
+
+admin="Reksai_void2600#6638" -- COLOQUE SEU NOME!
+tema=0 -- Edite conforme mostrado acima!
+
+piso={type = 6,width = 350,height = 40,foregound = 1,friction = 1.0,restitution = 0.0,angle = 0,color = 0,miceCollision = true,groundCollision = true,dynamic = false}
 for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand","AfkDeath"} do
 	tfm.exec["disable"..f](true)
 end
+ratos=0
 vivos=0
-tema=0 -- Edite conforme mostrado acima!
-admin="Reksai_void2600#6638" -- COLOQUE SEU NOME!
 system.disableChatCommandDisplay("random")
 system.disableChatCommandDisplay("limite")
 perguntas={
@@ -65,7 +72,7 @@ perguntas={
 "Qual o nome do cargo pré-definido do criador de uma tribo?","Shaman da Tribo","Líder Espiritual",2,
 "Qual o nome do título que a Melibellule usa?","La Belette","Fromadmin",2,
 "Em qual module você precisa se esconder atrás das decorações do mapa?","#prophunt","#hidenseek",2,
-"Qual o nome da equipe que é responsável pela categorização de mapas do Transformice?","Module Team","Mapcrew",2,
+"Qual o nome da equipe que é responsável pela categorização de mapas do Transformice?","Module Team","MapCrew",2,
 "Quantas vezes você precisa completar um mapa bootcamp para ele ser contabilizado no perfil?","1","2",2,
 "Usuários do servidor BR eram proibidos de falar no antigo servidor EN1.","Verdadeiro","Falso",2,
 "Usuários do servidor BR eram proibidos de falar no antigo servidor EN2.","Verdadeiro","Falso",1,
@@ -80,16 +87,16 @@ perguntas={
 "Os membros da Staff podem entrar nos cafofos das tribos, mesmo não sendo membro delas.","Verdadeiro","Falso",1,
 "Japan Expo é o nome de um evento do Transformice que acontece em qual país?","Japão","França",2,
 "Qual dessas tags é atribuída aos Funcorps do Transformice?","#0015","Não tem tag definida",2,
-"Qual dessas tags é atribuída aos Mapcrews do Transformice?","#0020","Não tem tag definida",1,
+"Qual dessas tags é atribuída aos MapCrews do Transformice?","#0020","Não tem tag definida",1,
 "Qual destes comandos é utilizado para a inserção de um script LUA?","/lua","/code",1,
 "Qual destes eventos não é mais utilizado no Transformice?","Carnaval","Natal",1,
 "Qual destes usuários nunca se tornou Funcorp?","Chavestomil#0000","Bolodefchoco#0015",1,
 "Se você ficar muito tempo dentro da água, você morre automaticamente.","Verdadeiro","Falso",2,
 "É possível ganhar queijos na loja apenas jogando modules.","Verdadeiro","Falso",1,
 "Qual categoria de mapas é atribuída aos mapas de Defilante?","P18","P19",1,
-"Qual o nome da equipe que é responsável pelos modules do Transformice?","Module Team","Mapcrew",1,
+"Qual o nome da equipe que é responsável pelos modules do Transformice?","Module Team","MapCrew",1,
 "Qual categoria de mapas é atribuída aos mapas Racing?","P7","P17",2,
-"Qual destes modules foi feito por um brasileiro?","#batata","#pictionary",1,
+"Qual destes modules foi feito por um brasileiro?","#football","#parkour",2,
 "Qual o nome do título que o Tigrounette usa?","La Belette","Les Populaires",1,
 "A habilidade 'Espírito Ancestral' faz parte de qual árvore de Habilidades?","Guia Espiritual","Mestre do Vento",1,
 "Quantos queijos custa a compra de um 2ª visual de roupas no Transformice?","100","1000",2,
@@ -97,14 +104,14 @@ perguntas={
 "Quantos queijos custa a customização de uma roupa no Transformice?","2000","4000",1,
 "Em qual ano estreou o sistema de missões no Transformice?","2019","2020",1,
 "Quem foi o primeiro gerenciador do module Mestre Mandou?","Haxhhhhhhhhh#0000","Jessiewind26#2546",2,
-"Quantos queijos custa a customização de um item de sha	man no Transformice?","2000","4000",2,
+"Quantos queijos custa a customização de um item de shaman no Transformice?","2000","4000",2,
 "Qual o nome da plataforma de execução que o Transformice utiliza?","Adobe Air","Adobe Flash Player",2,
 "É possível ganhar queijos no perfil apenas jogando modules.","Verdadeiro","Falso",2,
 "É possível comprar morangos pelo celular no Brasil.","Verdadeiro","Falso",2,
 "Em qual ano estreou o modo Defilante?","2014","2015",1,
 "Qual modo do Transformice foi desativado devido a limitação dos vídeos no Transformice?","Music","Nekodancer",1,
 "Em qual ano estreou o fórum em HTML5 do Atelier 801?","2015","2016",1,
-"Usuários comuns não podem criar mapas nos quais o shaman possa usar portais.","Verdadeiro","Falso",2,
+"Usuários comuns não podem criar mapas nos quais os shamans possam usar portais.","Verdadeiro","Falso",2,
 "Qual é a fricção e a restituição, respectivamente, de um piso de lava?","20 e 0","0 e 20",2,
 "Apenas membros da Staff do Transformice podem criar mapas no modo Noite.","Verdadeiro","Falso",2,
 "Qual a tribo do Tigrounette?","Lute como uma garota","Les Populaires",2,
@@ -120,7 +127,7 @@ perguntas={
 "Qual título é desbloqueado quando você consegue 1 bootcamp?","Principiante","Recruta",2,
 "Qual foi a maior quantidade de pessoas logadas no Transformice, aproximadamente?","100000","85000",2,
 "Qual o nick dos criadores do Transformice?","Melibellule e Tigrounette","Mellibellule e Trigrounette",1,
-"Quem é o criador do module Mestre Mandou?","Rakan_raster#0000","Xayah_raster#0000",1,
+"Quem é o gerenciador atual do module Mestre Mandou?","Rakan_raster#0000","Xayah_raster#0000",1,
 "Quem é o criador do module O Chão é Lava?","Miss_fortune#9548","Osicat#0000",2,
 "Qual o limite de consumíveis que podem ser armazenados no inventário?","80","200",1,
 "Qual o nome do antigo fun-site no qual você poderia acessar um Ranking dos ratos?","Cheese For Mice","Viprin Drawing Editor",1,
@@ -161,7 +168,7 @@ perguntas={
 "Qual destas categorias de mapas é atribuída a mapas de Survivor Vampiro?","P11","P13",1,
 "O module #freezertag antes era um submódulo de qual module?","#parkour","#circuit",1,
 "Qual o nome do código que é usado para carregar mapas do Transformice?","Lua","XML",2,
-"Qual destes usuários nunca se tornou Funcorp?","Patrick_mahomes#1795","Reksai_void2600#6638",1,
+"Qual destes usuários nunca se tornou Funcorp?","Patrick_mahomes#1795","Pamots#0095",1,
 "Qual destes modules não foi feito por um brasileiro?","#anvilwar","#freezertag",1,
 "Qual destas ratas morreu na vida real, dando origem a uma decoração do Transformice?","Elise","Papaille",1,
 "Em qual mês do ano geralmente termina o evento de Natal?","Dezembro","Janeiro",2,
@@ -318,10 +325,16 @@ function eventChatCommand(name,message)
 	end
 end
 function eventNewPlayer(name)
-	tfm.exec.chatMessage("Aguarde a próxima rodada para jogar.",name)
+	ratos=ratos+1
+end
+for name,player in next,tfm.get.room.playerList do
+	eventNewPlayer(name)
+end
+function eventPlayerLeft(name)
+	ratos=ratos-1
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas - <b>v2.2.1</b> - por Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V><b>"..vivos.."</b>   <BL>|   <N>Round : <V><b>"..rodada.."</b><R>/"..limite.."<")
+	ui.setMapName("<N>Quiz de Perguntas - <b>v2.3.0</b> - por Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V><b>"..vivos.."</b>/<J>"..ratos.."   <BL>|   <N>Round : <V><b>"..rodada.."</b><R>/"..limite.."<")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
@@ -335,12 +348,12 @@ function eventLoop(p,f)
 		tfm.exec.setGameTime(6)
 		if actual_question.answer == false then
 			tfm.exec.removePhysicObject(1)
-			ui.removeTextArea(2,nil)
+			ui.addTextArea(2,"<p align='center'><font color='#181818'><font size='18'>"..actual_question.a2.."",nil,440,145,260,81,0,0,0.1,true)
 			ui.addTextArea(1,"<p align='center'><VP><font size='18'>"..actual_question.a1.."",nil,100,145,260,81,0,0,1.0,true)
 			modo="intervalo"
 		elseif actual_question.answer == true then
 			tfm.exec.removePhysicObject(0)
-			ui.removeTextArea(1,nil)
+			ui.addTextArea(1,"<p align='center'><font color='#181818'><font size='18'>"..actual_question.a1.."",nil,100,145,260,81,0,0,0.1,true)
 			ui.addTextArea(2,"<p align='center'><VP><font size='18'>"..actual_question.a2.."",nil,440,145,260,81,0,0,1.0,true)
 			modo="intervalo"
 		end
@@ -355,7 +368,7 @@ function eventLoop(p,f)
 		end
 	end
 	if modo == "perguntar" and f >= 1 then
-		ui.addTextArea(3,"<p align='center'><font size='45'>"..math.floor(f/1000).."",nil,350,235,100,60,0x000001,0x494949,1.0,true)
+		ui.addTextArea(3,"<p align='center'><font size='45'>"..math.floor((f/1000)-1).."",nil,365,235,70,60,0x000001,0x494949,1.0,true)
 	else
 		ui.removeTextArea(3,nil)
 	end
@@ -382,8 +395,8 @@ function randomQuests()
 	if rodada >= 15 then
 		tfm.exec.setGameTime(10)
 	end
-	tfm.exec.addPhysicObject(0, 225, 410, piso)
-	tfm.exec.addPhysicObject(1, 575, 410, piso)
+	tfm.exec.addPhysicObject(0, 220, 380, piso)
+	tfm.exec.addPhysicObject(1, 580, 380, piso)
 	modo="perguntar"
 	rodada=rodada+1
 	if tema == 0 then
@@ -408,20 +421,9 @@ function randomQuests()
 		actual_question.a1=perguntas1[-2+(4*pergunta)]
 		actual_question.a2=perguntas1[-1+(4*pergunta)]
 	end
-	if tema == 2 then
-		pergunta=math.random(#perguntas2/4)
-		actual_question.quest=perguntas2[-3+(4*pergunta)]
-		if perguntas2[pergunta*4] == 2 then
-			actual_question.answer=true
-		elseif perguntas2[pergunta*4] == 1 then
-			actual_question.answer=false
-		end
-		actual_question.a1=perguntas2[-2+(4*pergunta)]
-		actual_question.a2=perguntas2[-1+(4*pergunta)]
-	end
 	ui.addTextArea(1,"<p align='center'><font size='18'>"..actual_question.a1.."",nil,100,145,260,81,0,0,1.0,true)
 	ui.addTextArea(2,"<p align='center'><font size='18'>"..actual_question.a2.."",nil,440,145,260,81,0,0,1.0,true)
-	ui.addTextArea(0,"<p align='center'><font size='14'>"..actual_question.quest.."",nil,10,22,780,48,0x000001,0x000001,1.0,true)
+	ui.addTextArea(0,"<p align='center'><font size='16'>"..actual_question.quest.."",nil,10,22,780,48,0x000001,0x000001,1.0,true)
 end
 function eventPlayerDied(name)
 	local i=0
