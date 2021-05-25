@@ -1,14 +1,9 @@
--- Mudanças na Versão 2.3.0:
--- Correções em algumas perguntas do Transformice
--- Redução do tamanho e alterações no cronômetro
--- Adição da quantidade de ratos na sala, na barra de título
--- Melhorias visuais no mapa para redução do lag
--- Melhorias visuais nas perguntas
--- Atualizações no código para melhor visualização das variáveis
+-- Mudanças na Versão 2.3.1:
+-- Adição de barreiras para evitar o famoso 'fui sozinho'
 
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.3.0
--- Por favor, edite a linha 20 a variável 'admin' pelo seu nome para ter acesso aos comandos.
--- Você pode selecionar o tema editando a linha 21.
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.3.1
+-- Por favor, edite a linha 15 a variável 'admin' pelo seu nome para ter acesso aos comandos.
+-- Você pode selecionar o tema editando a linha 16.
 -- Temas:
 -- 0 = transformice
 -- 1 = conhecimentos gerais
@@ -17,10 +12,11 @@
 -- Para sugestões de perguntas ou correção de bugs contate Reksai_void2600#6638.
 -- Caso queira pular alguma pergunta por estar muito repetida ou algo do tipo, use o comando !random.
 
-admin="Reksai_void2600#6638" -- COLOQUE SEU NOME!
+admin="Ashearcher#0000" -- COLOQUE SEU NOME!
 tema=0 -- Edite conforme mostrado acima!
 
 piso={type = 6,width = 350,height = 40,foregound = 1,friction = 1.0,restitution = 0.0,angle = 0,color = 0,miceCollision = true,groundCollision = true,dynamic = false}
+barreira={type = 12,width = 20,height = 100,foregound = 1,friction = 0.0,restitution = 0.0,angle = 0,color = 0xffffff,miceCollision = true,groundCollision = true,dynamic = false}
 for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand","AfkDeath"} do
 	tfm.exec["disable"..f](true)
 end
@@ -334,7 +330,7 @@ function eventPlayerLeft(name)
 	ratos=ratos-1
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas - <b>v2.3.0</b> - por Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V><b>"..vivos.."</b>/<J>"..ratos.."   <BL>|   <N>Round : <V><b>"..rodada.."</b><R>/"..limite.."<")
+	ui.setMapName("<N>Quiz de Perguntas - <b>v2.3.1</b> - por Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V><b>"..vivos.."</b>/<J>"..ratos.."   <BL>|   <N>Round : <V><b>"..rodada.."</b><R>/"..limite.."<")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
@@ -386,15 +382,27 @@ function eventLoop(p,f)
 			reset()
 		end
 	end
+	if f > 13000 and f < 14000 then
+		for i=2,3 do
+			tfm.exec.removePhysicObject(i)
+		end
+	end
+	if f > 10500 and f < 11500 then
+		for i=2,3 do
+			tfm.exec.removePhysicObject(i)
+		end
+	end
 end
 function randomQuests()
 	for name,player in next,tfm.get.room.playerList do
 		tfm.exec.movePlayer(name,400,145,false)
 	end
-	tfm.exec.setGameTime(15)
+	tfm.exec.setGameTime(17)
 	if rodada >= 15 then
-		tfm.exec.setGameTime(10)
+		tfm.exec.setGameTime(12)
 	end
+	tfm.exec.addPhysicObject(2, 390, 150, barreira)
+	tfm.exec.addPhysicObject(3, 410, 150, barreira)
 	tfm.exec.addPhysicObject(0, 220, 380, piso)
 	tfm.exec.addPhysicObject(1, 580, 380, piso)
 	modo="perguntar"
