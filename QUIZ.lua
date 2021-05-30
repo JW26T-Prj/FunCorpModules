@@ -1,7 +1,7 @@
--- Mudanças na Versão 2.3.1:
--- Adição de barreiras para evitar o famoso 'fui sozinho'
+-- Mudanças na Versão 2.3.2:
+-- Correção de bugs na barreira e na hora do spawn
 
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.3.1
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.3.2
 -- Por favor, edite a linha 15 a variável 'admin' pelo seu nome para ter acesso aos comandos.
 -- Você pode selecionar o tema editando a linha 16.
 -- Temas:
@@ -330,14 +330,14 @@ function eventPlayerLeft(name)
 	ratos=ratos-1
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas - <b>v2.3.1</b> - por Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V><b>"..vivos.."</b>/<J>"..ratos.."   <BL>|   <N>Round : <V><b>"..rodada.."</b><R>/"..limite.."<")
+	ui.setMapName("<N>Quiz de Perguntas - <b>v2.3.2</b> - por Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V><b>"..vivos.."</b>/<J>"..ratos.."   <BL>|   <N>Round : <V><b>"..rodada.."</b><R>/"..limite.."<")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
 	end
 	if f < 1250 and modo == "perguntar" then
 		for name,player in next,tfm.get.room.playerList do
-			if tfm.get.room.playerList[name].x >= 395 and tfm.get.room.playerList[name].x <= 405 then
+			if tfm.get.room.playerList[name].x >= 390 and tfm.get.room.playerList[name].x <= 410 then
 				tfm.exec.killPlayer(name)
 			end
 		end
@@ -401,8 +401,8 @@ function randomQuests()
 	if rodada >= 15 then
 		tfm.exec.setGameTime(12)
 	end
-	tfm.exec.addPhysicObject(2, 390, 150, barreira)
-	tfm.exec.addPhysicObject(3, 410, 150, barreira)
+	tfm.exec.addPhysicObject(2, 385, 150, barreira)
+	tfm.exec.addPhysicObject(3, 415, 150, barreira)
 	tfm.exec.addPhysicObject(0, 220, 380, piso)
 	tfm.exec.addPhysicObject(1, 580, 380, piso)
 	modo="perguntar"
