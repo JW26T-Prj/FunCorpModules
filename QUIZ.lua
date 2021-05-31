@@ -1,7 +1,7 @@
--- Mudanças na Versão 2.3.2:
--- Correção de bugs na barreira e na hora do spawn
+-- Mudanças na Versão 2.3.3:
+-- Correção em algumas perguntas
 
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.3.2
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.3.3
 -- Por favor, edite a linha 15 a variável 'admin' pelo seu nome para ter acesso aos comandos.
 -- Você pode selecionar o tema editando a linha 16.
 -- Temas:
@@ -43,7 +43,7 @@ perguntas={
 "Há quantas ações de rato no Transformice?","10","14",2,
 "Qual o nome do antigo modo do module #deathmatch?","Baffbotffa","Baffbot",1,
 "A partir de qual nível todas as habilidades de shaman são desbloqueadas?","20","30",1,
-"O que acontece se você digitar /version?","Desconecta você do jogo","Abre a versão do jogo",2,
+"O que acontece se você digitar /version?","Mostra informações do jogo","Abre a versão do jogo",2,
 "Qual título é desbloqueado quando você consegue 40.000 firsts?","RELÂMPAGO","Mestre do Vento",1,
 "Existem quantas habilidades de Shaman no Transformice?","75","65",1,
 "O jogo Transformice foi desenvolvido em qual país?","EUA","França",2,
@@ -73,7 +73,7 @@ perguntas={
 "Usuários do servidor BR eram proibidos de falar no antigo servidor EN1.","Verdadeiro","Falso",2,
 "Usuários do servidor BR eram proibidos de falar no antigo servidor EN2.","Verdadeiro","Falso",1,
 "No Transformice, os ratos que tocarem em um piso ácido...","Ficam presos nele","Morrem instantaneamente",2,
-"A habilidade 'Reparadora' faz parte de qual árvore de Habilidades?","Mecânico","Físico",1,
+"A habilidade 'Reparadora' faz parte de qual árvore de Habilidades?","Mecânico","Físico",2,
 "A mensagem de reinício do servidor do Transformice aparece em qual cor?","Rosa","Roxo",1,
 "Quantos queijos são necessários para redistribuir as habilidades de shaman?","10 queijos","Depende do nível",1,
 "Quantos ratos salvos são necessários para desbloquear o modo difícil?","1000","2000",1,
@@ -86,7 +86,7 @@ perguntas={
 "Qual dessas tags é atribuída aos MapCrews do Transformice?","#0020","Não tem tag definida",1,
 "Qual destes comandos é utilizado para a inserção de um script LUA?","/lua","/code",1,
 "Qual destes eventos não é mais utilizado no Transformice?","Carnaval","Natal",1,
-"Qual destes usuários nunca se tornou Funcorp?","Chavestomil#0000","Bolodefchoco#0015",1,
+"Qual destes usuários nunca se tornou Funcorp?","Pamotes#0001","Bolodefchoco#0015",1,
 "Se você ficar muito tempo dentro da água, você morre automaticamente.","Verdadeiro","Falso",2,
 "É possível ganhar queijos na loja apenas jogando modules.","Verdadeiro","Falso",1,
 "Qual categoria de mapas é atribuída aos mapas de Defilante?","P18","P19",1,
@@ -330,7 +330,7 @@ function eventPlayerLeft(name)
 	ratos=ratos-1
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas - <b>v2.3.2</b> - por Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V><b>"..vivos.."</b>/<J>"..ratos.."   <BL>|   <N>Round : <V><b>"..rodada.."</b><R>/"..limite.."<")
+	ui.setMapName("<N>Quiz de Perguntas - <b>v2.3.3</b> - por Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V><b>"..vivos.."</b>/<J>"..ratos.."   <BL>|   <N>Round : <V><b>"..rodada.."</b>/<R>"..limite.."<")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
