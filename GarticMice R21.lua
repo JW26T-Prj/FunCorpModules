@@ -74,7 +74,7 @@ function eventNewGame()
 			ui.addTextArea(6006, "<p align='center'><font size='12'><a href='event:Oi'><font color='#000000'><font face='Segoe UI Symbol'>✗ Apagar</a></p>", n, 10, 110, 70, 20, 0xb7b7b7, 0xb7b7b7)
 			ui.addTextArea(6007, "<p align='center'><font size='12'><a href='event:O5i'><font color='#000000'><font face='Segoe UI Symbol'>↳ Ver</a></p>", n, 10, 190, 70, 20, 0xb7b7b7, 0xb7b7b7)
 			ui.addTextArea(6013, "<p align='center'><font size='12'><a href='event:O99i'><font color='#000000'><font face='Segoe UI Symbol'>⍇ Pular</a></p>", n, 10, 270, 70, 20, 0xb7b7b7, 0xb7b7b7) end end			
-	ui.setMapName("GarticMice R20 por Rakan_raster#0000")
+	ui.setMapName("GarticMice R21 por <VP>Rakan_raster#0000")
 	ui.setShamanName("") end
 function eventSummoningEnd(name)
 	tfm.exec.chatMessage("Você não precisa invocar objetos para desenhar, basta clicar na tela.",name) end
@@ -156,7 +156,7 @@ function eventNewPlayer(n)
 	for i=65,87 do
 		tfm.exec.bindKeyboard(n,i,true)	end
 	tfm.exec.respawnPlayer(n)
-	tfm.exec.chatMessage("<br><br><br><p align='center'><N><b>Bem-vindos ao module GarticMice!</b><br>O objetivo deste module é descobrir o que o shaman está desenhando para se tornar o shaman!<br><VP>Não é necessário usar setas para desenhar.<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Chavestomil#0000<br><br><ROSE>Versão R21<br><p align='left'>",name) end
+	tfm.exec.chatMessage("<br><br><br><p align='center'><N><b>Bem-vindos ao module GarticMice!</b><br>O objetivo deste module é descobrir o que o shaman está desenhando para se tornar o shaman!<br><VP>Não é necessário usar setas para desenhar.<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Chavestomil#0000<br><br><ROSE>Versão R21<br><p align='left'>",n) end
 for name,player in pairs(tfm.get.room.playerList) do
 	eventNewPlayer(name)
 	tfm.exec.setPlayerScore(name,0,false) end
