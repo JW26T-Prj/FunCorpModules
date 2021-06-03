@@ -1,6 +1,5 @@
-# FunCorpModules
-
 -- Português --
+
 # Esta é a pasta oficial da antiga Spectra Advanced Module Group que armazena vários scripts com foco nos membros da FunCorp.
 
 Esta pasta contém todos os scripts editados para Funcorp feitos pelos nossos antigos membros e por usuários que desejarem colocá-los aqui.
@@ -16,7 +15,10 @@ POR FAVOR, NÃO BAIXEM ESTES SCRIPTS! ELES SÃO ATUALIZADOS CONSTANTEMENTE E SÓ
 Link para compartilhamento da pasta:
 https://github.com/JW26T-Prj/FunCorpModules/
 
+----------------------------------------------------------------
+
 -- English --
+
 # This is the official folder of the old Spectra Advanced Module Group team that stores various scripts with focus on FunCorp members.
 
 This folder contains all the edited scripts made by our old members and by users that wants to add them here.
