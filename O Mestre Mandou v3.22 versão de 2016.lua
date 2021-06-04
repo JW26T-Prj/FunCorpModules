@@ -1,1 +1,0 @@
--- código removido para manutenção
