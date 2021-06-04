@@ -1,4 +1,4 @@
--- Script do module Mestre Mandou, versão RTM 10270.066, desenvolvido por Rakan_raster#0000.
+-- Script do module Mestre Mandou, versão RTM 10371.067, desenvolvido por Rakan_raster#0000.
 
 admin="" -- Se estiver rodando este código em uma sala FunCorp, insira seu nickname aqui e digite !fc para habilitar algumas funções especiais.
 for _,f in next,{"AutoShaman","AutoNewGame","AutoTimeLeft","DebugCommand"} do
@@ -13,12 +13,13 @@ fc_cmds={1,2,4,5,6,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,28,30,31,32
 spiderweb={type = 15,width = 60,height = 60}
 fc_mode=false
 unlocked=true
+testmode=false
 xpos=0; xpos2=0;
 for _,f in next,{"command","mapa","pw","limit","run","fc","q","a","t","kill","pd","xd"} do
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N><b>Bem-vindos ao novo Mestre Mandou!</b><br>O objetivo deste module é muito simples: Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><VP>Tenha sempre cuidado com os comandos trolls!<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Jessiewind26#2546<br><br><ROSE>Versão RTM 10270.066",
+	welcome = "<N><b>Bem-vindos ao novo Mestre Mandou!</b><br>O objetivo deste module é muito simples: Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><VP>Tenha sempre cuidado com os comandos trolls!<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Jessiewind26#2546<br><br><ROSE>Versão RTM 10371.067",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -107,7 +108,7 @@ lang.br = {
 	predireita = "vezes a tecla para DIREITA!",
 }
 lang.en = {
-	welcome = "<N><b>Welcome to new Simon Says module!</b><br>The objective is very simple: Follow all the commands that the game says and test all your limits!<br><VP>Please pay attention to the troll commands!<br><br><J><b>Script developed by Rakan_raster#0000</b><br>EN translation by Kazarina#4878, Concept by Jessiewind26#2546<br><br><ROSE>Version RTM 10270.066",
+	welcome = "<N><b>Welcome to new Simon Says module!</b><br>The objective is very simple: Follow all the commands that the game says and test all your limits!<br><VP>Please pay attention to the troll commands!<br><br><J><b>Script developed by Rakan_raster#0000</b><br>EN translation by Kazarina#4878, Concept by Jessiewind26#2546<br><br><ROSE>Version RTM 10371.067",
 	dancar = "Dance!",
 	sentar = "Sit!",
 	confetar = "Throw 5 confetti!",
@@ -196,7 +197,7 @@ lang.en = {
 	predireita = "times the RIGHT key!",
 }
 lang.fr = {
-	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Rakan_raster#0000</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 10270.066",
+	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Rakan_raster#0000</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 10371.067",
 	dancar = "Danse !",
 	sentar = "Assis !",
 	confetar = "Lance 5 fois des confettis !",
@@ -292,6 +293,19 @@ elseif tfm.get.room.community == "fr" then
 else
 	text = lang.en
 end
+function showMessage(message,name)
+	temp_text=string.gsub(message,"<b>","")
+	temp_text=string.gsub(temp_text,"</b>","")
+	if testmode == false then
+		tfm.exec.chatMessage(message,name)
+	elseif testmode == true then
+		if name == nil then
+			print("<ROSE>[Test Mode] : <br><BL>"..temp_text.."")
+		else
+			print("<ROSE>[Test Mode] - "..name.." : <br><BL>"..temp_text.."")
+		end
+	end
+end
 function eventNewPlayer(name)
 	rato=rato+1
 	for k=32, 87 do
@@ -304,10 +318,10 @@ function eventNewPlayer(name)
 			["s"]=0;
 			};
 	data[name] = newData;
-	tfm.exec.chatMessage("<br><br><br><p align='center'>"..text.welcome.."<br><p align='left'>",name)
+	showMessage("<br><br><br><p align='center'>"..text.welcome.."<br><p align='left'>",name)
 	if string.find(tfm.get.room.name,name) then
 		admin=name
-		tfm.exec.chatMessage("You are the administrator of this room. Use !pw [password] to change the password of the room and !run [@code] to run a custom map.<br><br>If you are a FunCorp member, type !fc to enable the FunCorp mode.",admin)
+		showMessage("You are the administrator of this room. Use !pw [password] to change the password of the room and !run [@code] to run a custom map.<br><br>If you are a FunCorp member, type !fc to enable the FunCorp mode.",admin)
 	end
 end
 for name,player in next,tfm.get.room.playerList do
@@ -364,13 +378,13 @@ function completeCommand(name)
 	if not active == 56 then
 		if tfm.get.room.playerList[name].isDead == false and data[name].c == 0 then
 			if data[name].c == 0 then
-				tfm.exec.chatMessage(text.completed,name)
+				showMessage(text.completed,name)
 			end
 			data[name].c=1
 		end
 	else
 		if data[name].c == 0 then
-			tfm.exec.chatMessage(text.completed,name)
+			showMessage(text.completed,name)
 			data[name].c=1
 		end
 	end
@@ -388,7 +402,7 @@ function eventNewGame()
 	tfm.exec.setWorldGravity(0, 10)
 	if unlocked == true then
 		tfm.exec.setGameTime(15)
-		tfm.exec.chatMessage("<ROSE><i>-------------- Spectra's map loader v2.179.1</i><br><N>Loading current map information...<br><b>Current Map :</b> <V>"..tfm.get.room.currentMap.."<br><N><b>Author :</b><V> "..tfm.get.room.xmlMapInfo.author.."<br><N><b>Map ID :</b> <VP>"..math.random(1,110).."<br><br><R>Warning: Older versions of Simon Says and versions made by other developers are prohibited and can be punished if the room owner use them.")
+		showMessage("<ROSE><i>-------------- Spectra's map loader v2.182</i><br><N>Loading current map information...<br><b>Current Map :</b> <V>"..tfm.get.room.currentMap.."<br><N><b>Author :</b><V> "..tfm.get.room.xmlMapInfo.author.."<br><br><R>Warning: Older versions of Simon Says and versions made by other developers are prohibited and can be punished if the room owner use them.")
 	else
 		tfm.exec.setGameTime(36000)
 	end
@@ -460,18 +474,18 @@ function eventChatCommand(name,message)
 		if(message:sub(0,2) == "pw") then
 			tfm.exec.setRoomPassword(tostring(message:sub(4)))
 			if message:sub(4) == "" then
-				tfm.exec.chatMessage("Password cleared.",name)
+				showMessage("Password cleared.",name)
 			else
-				tfm.exec.chatMessage("Password changed to: "..message:sub(4).."",name)
+				showMessage("Password changed to: "..message:sub(4).."",name)
 			end
 		end
 		if message == "fc" then
 			if fc_mode == false then
 				fc_mode=true
-				tfm.exec.chatMessage("<R>The FunCorp mode of this module is now enabled.")
+				showMessage("<R>The FunCorp mode of this module is now enabled.")
 			else
 				fc_mode=false
-				tfm.exec.chatMessage("<R>The FunCorp mode of this module is now disabled.")
+				showMessage("<R>The FunCorp mode of this module is now disabled.")
 			end
 		end
 	end
@@ -1440,11 +1454,11 @@ end
 function eventLoop(passado,faltando)
 	local tempo=math.floor(faltando/1000)
 	if active == -2 then
-		ui.setMapName("                        <N>"..text.mices.."  <V>|  <VP><b>"..text.version.." RTM 10270.066</b><")
+		ui.setMapName("                        <N>"..text.mices.."  <V>|  <VP><b>"..text.version.." RTM 10371.067</b><")
 	elseif active == -1 then
-		ui.setMapName("          <VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."  <V>|  <VP><b>"..text.version.." RTM 10270.066</b><")
+		ui.setMapName("          <VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."  <V>|  <VP><b>"..text.version.." RTM 10371.067</b><")
 	elseif active >= 0 then
-		ui.setMapName("                               "..tfm.get.room.currentMap.."  <V>|  <N>"..text.mice.." : <J>"..vivo.." / "..rato.."  <V>|  <N>"..text.round.." : <J>"..rodada.."  <V>|  <VP><b>"..text.version.." RTM 10270.066</b><")
+		ui.setMapName("                               "..tfm.get.room.currentMap.."  <V>|  <N>"..text.mice.." : <J>"..vivo.." / "..rato.."  <V>|  <N>"..text.round.." : <J>"..rodada.."  <V>|  <VP><b>"..text.version.." RTM 10371.067</b><")
 	end
 	if rato < 4 then
 		if tfm.get.room.currentMap == "@2684847" and unlocked == true then
@@ -1454,7 +1468,7 @@ function eventLoop(passado,faltando)
 			if passado > 4000 and unlocked == true then
 				tfm.exec.newGame("@2684847")
 				tfm.exec.setGameTime(8000)
-				tfm.exec.chatMessage("<R>"..text.mices.."",nil)
+				showMessage("<R>"..text.mices.."",nil)
 			end
 		end
 	end
