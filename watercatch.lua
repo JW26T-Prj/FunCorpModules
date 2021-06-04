@@ -79,7 +79,7 @@ function eventKeyboard(name,key,down)
 				powerups.y1=-1
 				ui.removeTextArea(100,nil)
 				if powerups.t1 == 1 then
-					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup <ROSE>PRISÃO!")
+					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup <ROSE>CAIXA!")
 					dropPlayer(name)
 				elseif powerups.t1 == 2 then
 					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup <ROSE>OXIGÊNIO!")
@@ -96,17 +96,22 @@ function eventKeyboard(name,key,down)
 					end
 				elseif powerups.t1 == 4 then
 					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup <ROSE>AFUNDAR!")
-					tfm.exec.setWorldGravity(0,17.5)
-					timer=1.5
+					timer=1
 				elseif powerups.t1 == 5 then
 					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup <ROSE>MEEP!")
 					tfm.exec.giveMeep(name,true)
 				elseif powerups.t1 == 6 then
 					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup <ROSE>SUFOCO!")
-					data[name].o=data[name].o-15
+					data[name].o=data[name].o-18
 					if data[name].o < 1 then
 						data[name].o=1
 					end
+				elseif powerups.t1 == 7 then
+					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup <ROSE>CONGELAR!")
+					congelar(name)
+				elseif powerups.t1 == 8 then
+					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup <ROSE>QUEIJO!")
+					queijo(name)
 				end
 			end
 		end
@@ -116,7 +121,7 @@ function eventKeyboard(name,key,down)
 				powerups.y2=-1
 				ui.removeTextArea(101,nil)
 				if powerups.t2 == 1 then
-					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup <ROSE>PRISÃO!")
+					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup <ROSE>CAIXA!")
 					dropPlayer(name)
 				elseif powerups.t2 == 2 then
 					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup <ROSE>OXIGÊNIO!")
@@ -133,17 +138,22 @@ function eventKeyboard(name,key,down)
 					end
 				elseif powerups.t2 == 4 then
 					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup <ROSE>AFUNDAR!")
-					tfm.exec.setWorldGravity(0,17.5)
-					timer=1.5
+					timer=1
 				elseif powerups.t2 == 5 then
 					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup <ROSE>MEEP!")
 					tfm.exec.giveMeep(name,true)
 				elseif powerups.t2 == 6 then
 					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup <ROSE>SUFOCO!")
-					data[name].o=data[name].o-15
+					data[name].o=data[name].o-18
 					if data[name].o < 1 then
 						data[name].o=1
 					end
+				elseif powerups.t2 == 7 then
+					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup <ROSE>CONGELAR!")
+					congelar(name)
+				elseif powerups.t2 == 8 then
+					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup <ROSE>QUEIJO!")
+					queijo(name)
 				end
 			end
 		end
@@ -153,7 +163,7 @@ function eventKeyboard(name,key,down)
 				powerups.y3=-1
 				ui.removeTextArea(102,nil)
 				if powerups.t3 == 1 then
-					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup <ROSE>PRISÃO!")
+					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup <ROSE>CAIXA!")
 					dropPlayer(name)
 				elseif powerups.t3 == 2 then
 					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup <ROSE>OXIGÊNIO!")
@@ -170,17 +180,22 @@ function eventKeyboard(name,key,down)
 					end
 				elseif powerups.t3 == 4 then
 					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup <ROSE>AFUNDAR!")
-					tfm.exec.setWorldGravity(0,17.5)
-					timer=1.5
+					timer=1
 				elseif powerups.t3 == 5 then
 					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup <ROSE>MEEP!")
 					tfm.exec.giveMeep(name,true)
 				elseif powerups.t3 == 6 then
 					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup <ROSE>SUFOCO!")
-					data[name].o=data[name].o-15
+					data[name].o=data[name].o-18
 					if data[name].o < 1 then
 						data[name].o=1
 					end
+				elseif powerups.t3 == 7 then
+					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup <ROSE>CONGELAR!")
+					congelar(name)
+				elseif powerups.t3 == 8 then
+					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup <ROSE>QUEIJO!")
+					queijo(name)
 				end
 			end
 		end
@@ -190,7 +205,7 @@ function eventKeyboard(name,key,down)
 				powerups.y4=-1
 				ui.removeTextArea(103,nil)
 				if powerups.t4 == 1 then
-					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup <ROSE>PRISÃO!")
+					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup <ROSE>CAIXA!")
 					dropPlayer(name)
 				elseif powerups.t4 == 2 then
 					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup <ROSE>OXIGÊNIO!")
@@ -207,17 +222,22 @@ function eventKeyboard(name,key,down)
 					end
 				elseif powerups.t4 == 4 then
 					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup <ROSE>AFUNDAR!")
-					tfm.exec.setWorldGravity(0,17.5)
-					timer=1.5
+					timer=1
 				elseif powerups.t4 == 5 then
 					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup <ROSE>MEEP!")
 					tfm.exec.giveMeep(name,true)
 				elseif powerups.t4 == 6 then
 					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup <ROSE>SUFOCO!")
-					data[name].o=data[name].o-15
+					data[name].o=data[name].o-18
 					if data[name].o < 1 then
 						data[name].o=1
 					end
+				elseif powerups.t4 == 7 then
+					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup <ROSE>CONGELAR!")
+					congelar(name)
+				elseif powerups.t4 == 8 then
+					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup <ROSE>QUEIJO!")
+					queijo(name)
 				end
 			end
 		end
@@ -227,7 +247,7 @@ function eventKeyboard(name,key,down)
 				powerups.y5=-1
 				ui.removeTextArea(104,nil)
 				if powerups.t5 == 1 then
-					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup <ROSE>PRISÃO!")
+					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup <ROSE>CAIXA!")
 					dropPlayer(name)
 				elseif powerups.t5 == 2 then
 					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup <ROSE>OXIGÊNIO!")
@@ -244,17 +264,22 @@ function eventKeyboard(name,key,down)
 					end
 				elseif powerups.t5 == 4 then
 					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup <ROSE>AFUNDAR!")
-					tfm.exec.setWorldGravity(0,17.5)
-					timer=1.5
+					timer=1
 				elseif powerups.t5 == 5 then
 					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup <ROSE>MEEP!")
 					tfm.exec.giveMeep(name,true)
 				elseif powerups.t5 == 6 then
 					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup <ROSE>SUFOCO!")
-					data[name].o=data[name].o-15
+					data[name].o=data[name].o-18
 					if data[name].o < 1 then
 						data[name].o=1
 					end
+				elseif powerups.t5 == 7 then
+					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup <ROSE>CONGELAR!")
+					congelar(name)
+				elseif powerups.t5 == 8 then
+					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup <ROSE>QUEIJO!")
+					queijo(name)
 				end
 			end
 		end
@@ -262,7 +287,6 @@ function eventKeyboard(name,key,down)
 end
 function eventNewGame()
 xml=tfm.get.room.xmlMapInfo.xml
-tfm.exec.chatMessage("<font color='#0080ff'><b>Bem-vindos ao module #watercatch!</b><br><J>O objetivo é bem simples: Fugir do shaman, se escondendo dentro do profundo lago e tomando cuidado para não morrer afogado!<br><R>Shamans, não esqueçam de se mexer, ou irão morrer AFK!<br><br><N>Module e mapa criados por Morganadxana#0000. Tradução para o português feita por Rakan_raster#0000.",name)
 ui.addTextArea(0,"",nil,-800,-400,2400,1200,0x6a7495,0x6a7495,1.0,true)
 if changed == true then
 ui.removeTextArea(0,nil)
@@ -285,7 +309,8 @@ for n,p in pairs(tfm.get.room.playerList) do
 	};
 	data[n] = newData;	
 	tfm.exec.bindKeyboard(n,32,true,true)
-		if tfm.get.room.playerList[n].isShaman then
+	if tfm.get.room.playerList[n].isShaman then
+		tfm.exec.setPlayerSync(n)
 		tfm.exec.movePlayer(n,-250,348,false,0,0,false)
 		ui.addTextArea(22,"",n,-800,-800,2400,2400,0x000001,0x000001,1.0,true)
 		shaman=n
@@ -323,6 +348,14 @@ function genPowerup(pos,type,x,y)
 		powerups.t5=type
 	end
 end
+function congelar(name)
+	tfm.exec.freezePlayer(name,true)
+	data[name].t=6
+end
+function queijo(name)
+	tfm.exec.giveCheese(name)
+	data[name].t=6
+end
 function dropPlayer(name)
 	data[name].i=tfm.exec.addShamanObject(61,tfm.get.room.playerList[name].x,tfm.get.room.playerList[name].y+10,0,0,0,false)
 	data[name].t=6
@@ -335,7 +368,7 @@ if time_passed >= 6 and tfm.get.room.currentMap == "@7854060" then
 	resetMap()
 end
 if changed == true then
-ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><J> Versão v1.9.2 - criado por Morganadxana#0000<")
+ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><J> Versão v1.9.3 - criado por Morganadxana#0000<")
 local m=math.floor(r/60000)
 local s=math.floor((((m*60000)-r) * -1) / 1000)
 ui.addTextArea(-1,"<font size='28'><font face='DejaVu Sans Mono,Consolas'><font color='#222222'><b>0"..m..":"..s.."</b>",n,693,27,110,44,0,0,1.0,true)
@@ -353,13 +386,13 @@ if mode == "game" or mode == "hide" then
 	loop=loop+0.5
 	if loop == 24 then
 		for i=1,5 do
-			genPowerup(i,math.random(1,6),math.random(800,3000),math.random(200,800))
+			genPowerup(i,math.random(1,9),math.random(800,3000),math.random(200,800))
 		end
 		loop=0
 	end
 	if timer > 0 then
 		timer=timer-0.5
-		tfm.exec.setWorldGravity(0,17)
+		tfm.exec.setWorldGravity(0,22)
 	elseif timer == 0 then
 		tfm.exec.setWorldGravity(0,10.5)
 	end
@@ -384,6 +417,8 @@ for n,q in pairs(tfm.get.room.playerList) do
 				data[n].t=data[n].t-0.5
 				if data[n].t <= 0 then
 					tfm.exec.removeObject(data[n].i)
+					tfm.exec.freezePlayer(n,false)
+					tfm.exec.removeCheese(n)
 				end
 			end
 			if not tfm.get.room.playerList[n].isDead then
@@ -410,7 +445,7 @@ for n,q in pairs(tfm.get.room.playerList) do
 			end
 		end
 		end
-		if data[n].o > 23 and mode == "game" then
+		if data[n].o > 25 and mode == "game" then
 			ui.addTextArea(10,"",n,56,385,(data[n].o*7.3),10,0x8000ff,0x6000ff,1.0,true)
 			ui.addTextArea(-4,"<font size='12'><font face='Consolas'><R><b>0 -------------</b>---- 20 ---<J>-------------- 40 ---------<VP>-------- 60 ---------------- 80 ---------------- 100",n,55,364,740,17,0x101010,0x010101,0.9,true)
 			ui.addTextArea(-5,"<font size='30'><p align='center'><font face='DejaVu Sans Mono,Consolas'><font color='#00ff00'>"..math.floor(data[n].o).."",n,4,355,42,40,0x090909,0x000000,0.7,true)
