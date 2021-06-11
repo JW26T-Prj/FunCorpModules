@@ -1,3 +1,6 @@
+-- ATENÇÃO: Esta versão do Mestre Mandou é legada de 2016!!!
+-- Caso você queira fazer o FunCorp da versão mais recente, por favor volte para a raiz da pasta e escolha o script 'mestre mandou.lua'!
+
 -- Versão de 2016 do module Mestre Mandou, datada de 19 de agosto de 2016, ainda com o criador original (Jessiewind26#2546).
 -- O código foi todo revisado e mantido em sua forma original na medida do possível, mas removendo alguns comandos inadequados e arrumando alguns bugs.
 -- Código adicionado por Rakan_raster#0000.
