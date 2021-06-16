@@ -1,7 +1,7 @@
--- Mudanças na Versão 2.3.3:
--- Correção em algumas perguntas
+-- Mudanças na Versão 2.3.4:
+-- Adição de um sistema anti-bug do X
 
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.3.3
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.3.4
 -- Por favor, edite a linha 15 a variável 'admin' pelo seu nome para ter acesso aos comandos.
 -- Você pode selecionar o tema editando a linha 16.
 -- Temas:
@@ -330,7 +330,7 @@ function eventPlayerLeft(name)
 	ratos=ratos-1
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas - <b>v2.3.3</b> - por Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V><b>"..vivos.."</b>/<J>"..ratos.."   <BL>|   <N>Round : <V><b>"..rodada.."</b>/<R>"..limite.."<")
+	ui.setMapName("<N>Quiz de Perguntas - <b>v2.3.4</b> - por Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V><b>"..vivos.."</b>/<J>"..ratos.."   <BL>|   <N>Round : <V><b>"..rodada.."</b>/<R>"..limite.."<")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
@@ -352,6 +352,23 @@ function eventLoop(p,f)
 			ui.addTextArea(1,"<p align='center'><font color='#181818'><font size='18'>"..actual_question.a1.."",nil,100,145,260,81,0,0,0.1,true)
 			ui.addTextArea(2,"<p align='center'><VP><font size='18'>"..actual_question.a2.."",nil,440,145,260,81,0,0,1.0,true)
 			modo="intervalo"
+		end
+	end
+	if modo == "intervalo" then
+		if f > 2000 and f <= 3000 then
+			if actual_question.answer == false then
+				for name,player in next,tfm.get.room.playerList do
+					if tfm.get.room.playerList[name].x >= 410 then
+						tfm.exec.killPlayer(name)
+					end
+				end
+			elseif actual_question.answer == true then
+				for name,player in next,tfm.get.room.playerList do
+					if tfm.get.room.playerList[name].x <= 390 then
+						tfm.exec.killPlayer(name)
+					end
+				end
+			end
 		end
 	end
 	if f < 1 and modo == "intervalo" then
