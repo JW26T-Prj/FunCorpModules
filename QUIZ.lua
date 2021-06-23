@@ -1,9 +1,9 @@
--- Mudanças na Versão 2.3.5:
--- Adição de 13 novas perguntas de Transformice
+-- Mudanças na Versão 2.3.6:
+-- Adição de um sistema para rodar o código em cafofos da tribo
 
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.3.5
--- Por favor, edite a linha 15 a variável 'admin' pelo seu nome para ter acesso aos comandos.
--- Você pode selecionar o tema editando a linha 16.
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.3.6
+-- Por favor, edite a linha 16 a variável 'admin' pelo seu nome para ter acesso aos comandos.
+-- Você pode selecionar o tema editando a linha 17.
 -- Temas:
 -- 0 = transformice
 -- 1 = conhecimentos gerais
@@ -11,9 +11,11 @@
 -- Para adicionar novas perguntas, utilize a seguinte sintaxe na hora de inserir: "PERGUNTA","RESPOSTA 1","RESPOSTA 2",1 ou 2
 -- Para sugestões de perguntas ou correção de bugs contate Reksai_void2600#6638.
 -- Caso queira pular alguma pergunta por estar muito repetida ou algo do tipo, use o comando !random.
+-- Caso você queira usar este código em um cafofo de tribo, altere a variável TRIBEHOUSE da linha 18 para 'true'.
 
 admin="Ashearcher#0000" -- COLOQUE SEU NOME!
 tema=0 -- Edite conforme mostrado acima!
+tribehouse=false -- Altere para 'true' caso esteja rodando este código em um cafofo de tribo.
 
 piso={type = 6,width = 350,height = 40,foregound = 1,friction = 1.0,restitution = 0.0,angle = 0,color = 0,miceCollision = true,groundCollision = true,dynamic = false}
 barreira={type = 12,width = 20,height = 100,foregound = 1,friction = 0.0,restitution = 0.0,angle = 0,color = 0xffffff,miceCollision = true,groundCollision = true,dynamic = false}
@@ -307,6 +309,15 @@ pergunta=0
 rodada=0
 limite=30
 actual_question={quest="",a1="",a2="",answer=nil}
+function showMessage(message,name)
+	temp_text=string.gsub(message,"<b>","")
+	temp_text=string.gsub(temp_text,"</b>","")
+	if tribehouse == false then
+		tfm.exec.chatMessage(message,name)
+	elseif tribehouse == true then
+		ui.addTextArea(0,"<p align='center'><font size='16'>"..message.."",name,10,22,780,48,0x000001,0x000001,1.0,true)
+	end
+end
 function eventNewGame()
 	vivos=0
 	tfm.exec.setGameTime(15)
@@ -316,11 +327,11 @@ function eventNewGame()
 end
 function reset()
 	rodada=0
-	tfm.exec.newGame(mapa)
-	tfm.exec.chatMessage("<VP>Se preparem! As perguntas começarão a ser realizadas em instantes!<br><br><R><b>ATENÇÃO: ESTOU PRECISANDO DE PERGUNTAS DE ANIMES, GAMES E OUTROS TEMAS, INTERESSADOS FAVOR ME CONTATAR</b>")
 	ui.removeTextArea(1)
 	ui.removeTextArea(2)
 	ui.removeTextArea(0)
+	tfm.exec.newGame(mapa)
+	showMessage("<VP>Se preparem! As perguntas começarão a ser realizadas em instantes!<br><br><R><b>ATENÇÃO: ESTOU PRECISANDO DE PERGUNTAS DE ANIMES, GAMES E OUTROS TEMAS, INTERESSADOS FAVOR ME CONTATAR</b>")
 end
 function eventChatCommand(name,message)
 	if message == "random" then
@@ -330,7 +341,7 @@ function eventChatCommand(name,message)
 	end
 	if (message:sub(0,6) == "limite") then
 		limite=tonumber(message:sub(8))
-		tfm.exec.chatMessage("Limite alterado para: "..message:sub(8).."")
+		showMessage("Limite alterado para: "..message:sub(8).."")
 	end
 end
 function eventNewPlayer(name)
@@ -343,7 +354,7 @@ function eventPlayerLeft(name)
 	ratos=ratos-1
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas - <b>v2.3.5</b> - por Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V><b>"..vivos.."</b>/<J>"..ratos.."   <BL>|   <N>Round : <V><b>"..rodada.."</b>/<R>"..limite.."<")
+	ui.setMapName("<N>Quiz de Perguntas - <b>v2.3.6</b> - por Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V><b>"..vivos.."</b>/<J>"..ratos.."   <BL>|   <N>Round : <V><b>"..rodada.."</b>/<R>"..limite.."<")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
@@ -389,7 +400,7 @@ function eventLoop(p,f)
 			randomQuests()
 		else
 			tfm.exec.setGameTime(5)
-			tfm.exec.chatMessage("<R>Sem vencedores!")
+			showMessage("<R>Sem vencedores!")
 			modo="fim"
 		end
 	end
@@ -401,7 +412,7 @@ function eventLoop(p,f)
 	if f <= 1500 and vivos == 1 and modo == "fim" then
 		for name,player in next,tfm.get.room.playerList do
 			if not tfm.get.room.playerList[name].isDead then
-				tfm.exec.chatMessage("<VP><b>"..name.."</b> venceu a partida!")
+				showMessage("<VP><b>"..name.."</b> venceu a partida!")
 				modo="fim2"
 			end
 		end
@@ -475,7 +486,7 @@ function eventPlayerDied(name)
 	end
 	if i==0 then
 		modo="fim"
-		tfm.exec.chatMessage("<R>Sem vencedores!")
+		showMessage("<R>Sem vencedores!")
 	elseif i==1 then
 		modo="fim"
 	end
