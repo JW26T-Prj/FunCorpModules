@@ -99,7 +99,7 @@ function eventNewPlayer(name)
 		tfm.exec.bindKeyboard(name,i,true,true)
 	end
 	system.bindMouse(name,true)
-	data[name].imageid = tfm.exec.addImage("17a4e9a9cad.png","&1",238,80,nul)
+	data[name].imageid = tfm.exec.addImage("17a4e9a9cad.png","&1",238,80,name)
 	data[name].imaget=4
 	tfm.exec.chatMessage("<VP><b>Welcome to module #clickwar!</b><br><N>Use the mouse to generate explosions and kill other mices!<br><br>Module developed by Hecarimjhenx#0000. Images maked by Spectra_phantom#6089.<br><br><R>Warning: Is prohibited the copy or illegal utilization of this code (including older versions) for making parallel versions. If you discover players making these things, please report to Hecarimjhenx#0000.",name)
 end
