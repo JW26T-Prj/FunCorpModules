@@ -70,7 +70,7 @@ function eventChatCommand(n,m)
 	end
 end
 function eventNewGame()
-	ui.setMapName("<font color='#111111'>DhannyRMM Script  <N><b>Version 4.4</b>   <G>|   <N>Current Map : <V>"..level.."   <G>|   <N>Difficulty : <V>"..diff.."<")
+	ui.setMapName("<font color='#111111'>DhannyRMM Script  <N><b>Version 4.5</b>   <G>|   <N>Current Map : <V>"..level.."   <G>|   <N>Difficulty : <V>"..diff.."<")
 	reset=0;
 end
 function eventLoop(p,f)
@@ -84,7 +84,7 @@ function eventLoop(p,f)
 	tfm.exec.setGameTime(tempo)
 end
 function eventNewPlayer(name)
-	ui.setMapName("<font color='#111111'>DhannyRMM Script  <N><b>Version 4.4</b>   <G>|   <N>Current Map : <V>"..level.."   <G>|   <N>Difficulty : <V>"..diff.."<")
+	ui.setMapName("<font color='#111111'>DhannyRMM Script  <N><b>Version 4.5</b>   <G>|   <N>Current Map : <V>"..level.."   <G>|   <N>Difficulty : <V>"..diff.."<")
 	tfm.exec.respawnPlayer(name)
 	tfm.exec.chatMessage("<VP>Hello, "..name.."!<br><ROSE><b>This is the DhannyRMM (Random Maze Maps) code!</b><br><N>This script will test your Transformice techniques and abilities. Some maps are easy, but another maps are simply IMPOSSIBLE!<br>The maps are automatically changed every 5 minutes.Good luck!<br><br><V>Maps and code developed by Dhanny_mheyran#6701",name)
 end
@@ -240,7 +240,7 @@ function runmap()
 	if diff == 4 then txt = "Hard" end
 	if diff == 5 then txt = "Extreme" end
 	if diff == 6 then txt = "IMPOSSIBLE WTF" end
-	tfm.exec.chatMessage("<N>DhannyRMM Script  <N><b>Version 4.4</b><br>Playing map <V><b>"..level.."</b><br>Difficulty : <V>"..diff.." ("..txt..")<br><N>Map made by Dhanny_mheyran#6701<br><br><VP>Good luck!</b>")
+	tfm.exec.chatMessage("<N>DhannyRMM Script  <N><b>Version 4.5</b><br>Playing map <V><b>"..level.."</b><br>Difficulty : <V>"..diff.." ("..txt..")<br><N>Map made by Dhanny_mheyran#6701<br><br><VP>Good luck!</b>")
 end
 function eventPopupAnswer(id,name,answer)
 	level=tonumber(answer)
