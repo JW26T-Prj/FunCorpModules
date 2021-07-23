@@ -1,19 +1,23 @@
--- Mudanças na Versão 2.3.6:
--- Adição de um sistema para rodar o código em cafofos da tribo
+-- Mudanças na Versão 2.4.0:
+-- Adição de 3 novos temas
+-- Algumas correções simples de bugs
 
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.3.6
--- Por favor, edite a linha 16 a variável 'admin' pelo seu nome para ter acesso aos comandos.
--- Você pode selecionar o tema editando a linha 17.
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.4.0
+-- Por favor, edite a linha 20 a variável 'admin' pelo seu nome para ter acesso aos comandos.
+-- Você pode selecionar o tema editando a linha 21.
 -- Temas:
 -- 0 = transformice
 -- 1 = conhecimentos gerais
+-- 2 = futebol (incompleto)
+-- 3 = música (em breve)
+-- 4 = lolzinho (em breve)
 
 -- Para adicionar novas perguntas, utilize a seguinte sintaxe na hora de inserir: "PERGUNTA","RESPOSTA 1","RESPOSTA 2",1 ou 2
 -- Para sugestões de perguntas ou correção de bugs contate Reksai_void2600#6638.
 -- Caso queira pular alguma pergunta por estar muito repetida ou algo do tipo, use o comando !random.
--- Caso você queira usar este código em um cafofo de tribo, altere a variável TRIBEHOUSE da linha 18 para 'true'.
+-- Caso você queira usar este código em um cafofo de tribo, altere a variável TRIBEHOUSE da linha 22 para 'true'.
 
-admin="Ashearcher#0000" -- COLOQUE SEU NOME!
+admin="Reksai_void2600#6638" -- COLOQUE SEU NOME!
 tema=0 -- Edite conforme mostrado acima!
 tribehouse=false -- Altere para 'true' caso esteja rodando este código em um cafofo de tribo.
 
@@ -301,7 +305,34 @@ perguntas1={
 "O ano-luz é uma unidade de medida de...","Tempo","Distância",2,
 "Qual foi o cineasta que chegou no fundo da Fossa das Marianas, lugar mais profundo do oceano?","James Cameron","Jacques Piccard",1,
 "Qual é o nome dado para as bactérias que não precisam de oxigênio para se reproduzirem?","Aeróbicas","Anaeróbias",2,
-"Qual destes tipos de clima não é encontrado no Brasil?","Semiárido","Mediterrâneo",1,
+"Qual destes tipos de clima é encontrado no Brasil?","Semiárido","Mediterrâneo",1,
+}
+perguntas2={
+"Vai na sorte :)","ok","ok",1,
+"Vai na sorte :)","ok","ok",2,
+"Quantas Copas do Mundo Pelé jogou?","3","4",2,
+"Qual era o número da camisa de Cristiano Ronaldo na final da Eurocopa de 2004, contra a Grécia?","7","17",2,
+"O Futebol foi inventado em qual país?","Inglaterra","Brasil",1,
+"O famoso gol 'La Mano de Dios' marcado por Diego Maradona, aconteceu na Copa do Mundo de qual ano?","1986","1990",1,
+"Qual destes jogadores ficou famoso por errar o pênalti que eliminou a seleção Inglesa na Eurocopa de 1996?","Gareth Southgate","David Beckham",1,
+"Quem marcou o gol do título do Flamengo na Copa União de 1987?","Renato Gaúcho","Bebeto",2,
+"Qual foi o árbitro que ficou conhecido pelo episódio da Máfia do Apito, em 2005?","Edílson Pereira de Carvalho","Paulo César de Oliveira",1,
+"Qual o nome dado a Liga de Futebol dos Estados Unidos?","Major League Soccer","Premier League",1,
+"Quantos Mundiais de Clubes ganhou Neymar?","0","1",2,
+"Quantas Libertadores possui o Boca Juniors?","4","6",2,
+"Qual clube brasileiro venceu o primeiro Campeonato Brasileiro disputado 100% por pontos corridos?","Cruzeiro","Santos",1,
+"Qual destes jogadores fez mais gols em Copas do Mundo?","Miroslav Klose","Ronaldo Fenômeno",1,
+"Quantas pessoas morreram no acidente aéreo que matou quase toda a delegação da Chapecoense, em 2016?","64","71",2,
+"Qual destes jogadores é, atualmente, o maior artilheiro dos Campeonatos Brasileiros por pontos corridos?","Fred","Diego Souza",1,
+"Qual destes jogadores é, atualmente, o maior artilheiro dos Campeonatos Brasileiros até 2002?","Zico","Roberto Dinamite",2,
+"Quantos jogadores do Atlético-MG foram expulsos no polêmico jogo da Semifinal da Libertadores de 1981 contra o Flamengo?","5","7",2,
+"Em qual ano o Corinthians conquistou seu primeiro título do Campeonato Brasileiro?","1990","1995",1,
+"Quem perdeu a última cobrança de pênalti na Semifinal da Libertadores de 2000, defendido pelo goleiro Marcos?","Marcelinho Carioca","Luisão",1,
+"Quantas bolas de ouro Lionel Messi possui?","6","7",1,
+"Qual destas Copas do Mundo foi a primeira a ter o uso do VAR?","2014, no Brasil","2018, na Rússia",2,
+"Qual destes clubes foi Campeão Brasileiro em um ano e rebaixado no ano seguinte?","Vasco","Fluminense",2,
+"Qual destes jogadores chegou a virar político?","Romário","Ronaldinho Gaúcho",1,
+"Qual destes jogadores vestiu por mais vezes a camisa do São Paulo?","Rogério Ceni","Raí",1,
 }
 mapa="@7786632"
 modo="inicial" -- não mude
@@ -331,11 +362,11 @@ function reset()
 	ui.removeTextArea(2)
 	ui.removeTextArea(0)
 	tfm.exec.newGame(mapa)
-	showMessage("<VP>Se preparem! As perguntas começarão a ser realizadas em instantes!<br><br><R><b>ATENÇÃO: ESTOU PRECISANDO DE PERGUNTAS DE ANIMES, GAMES E OUTROS TEMAS, INTERESSADOS FAVOR ME CONTATAR</b>")
+	showMessage("<VP><b>Se preparem! As perguntas começarão a ser realizadas em instantes!")
 end
 function eventChatCommand(name,message)
 	if message == "random" then
-		if name == admin or name == "Reksai_void2600#6638" or name == "Viego#0345" then
+		if name == admin or name == "Forzaldenon#0000" or name == "Reksai_void2600#6638" or name == "Viego#0345" then
 			randomQuests()
 		end
 	end
@@ -354,7 +385,7 @@ function eventPlayerLeft(name)
 	ratos=ratos-1
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas - <b>v2.3.6</b> - por Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V><b>"..vivos.."</b>/<J>"..ratos.."   <BL>|   <N>Round : <V><b>"..rodada.."</b>/<R>"..limite.."<")
+	ui.setMapName("<N>Quiz de Perguntas - <b>v2.4.0</b> - por Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V><b>"..vivos.."</b>/<J>"..ratos.."   <BL>|   <N>Round : <V><b>"..rodada.."</b>/<R>"..limite.."<")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
@@ -469,6 +500,17 @@ function randomQuests()
 		end
 		actual_question.a1=perguntas1[-2+(4*pergunta)]
 		actual_question.a2=perguntas1[-1+(4*pergunta)]
+	end
+	if tema == 2 then
+		pergunta=math.random(#perguntas2/4)
+		actual_question.quest=perguntas2[-3+(4*pergunta)]
+		if perguntas2[pergunta*4] == 2 then
+			actual_question.answer=true
+		elseif perguntas2[pergunta*4] == 1 then
+			actual_question.answer=false
+		end
+		actual_question.a1=perguntas2[-2+(4*pergunta)]
+		actual_question.a2=perguntas2[-1+(4*pergunta)]
 	end
 	ui.addTextArea(1,"<p align='center'><font size='18'>"..actual_question.a1.."",nil,100,145,260,81,0,0,1.0,true)
 	ui.addTextArea(2,"<p align='center'><font size='18'>"..actual_question.a2.."",nil,440,145,260,81,0,0,1.0,true)
