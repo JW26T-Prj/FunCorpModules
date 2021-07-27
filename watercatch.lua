@@ -64,9 +64,9 @@ function eventNewPlayer(name)
 	data[name] = newData;
 	showMessage("<font color='#0080ff'><b>Bem-vindos ao module #watercatch!</b><br><J>Digite !help para ver a ajuda deste module.<br><br><N>Module e mapa criados por Morganadxana#0000. Tradução para o português feita por Rakan_raster#0000.",name)
 	data[name].imageid = tfm.exec.addImage("17a53e210bf.png","&1",180,90,name)
-	data[name].imageid2 = tfm.exec.addImage("17a53e1f94c.png",":1",0,345,n)
-	data[name].imageid3 = tfm.exec.addImage("17ae4e47000.png","&1",2,22,n)
-	data[name].imageid4 = tfm.exec.addImage("17ae4e48770.png","&1",670,22,n)
+	data[name].imageid2 = tfm.exec.addImage("17a53e1f94c.png",":1",0,345,name)
+	data[name].imageid3 = tfm.exec.addImage("17ae4e47000.png","&1",2,22,name)
+	data[name].imageid4 = tfm.exec.addImage("17ae4e48770.png","&1",670,22,name)
 	data[name].imaget=5
 end
 for name,player in next,tfm.get.room.playerList do
