@@ -1,8 +1,7 @@
--- Mudanças na Versão 2.4.0:
--- Adição de 3 novos temas
--- Algumas correções simples de bugs
+-- Mudanças na Versão 2.4.1:
+-- Correção de bugs na fonte
 
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.4.0
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.4.1
 -- Por favor, edite a linha 20 a variável 'admin' pelo seu nome para ter acesso aos comandos.
 -- Você pode selecionar o tema editando a linha 21.
 -- Temas:
@@ -362,7 +361,7 @@ function reset()
 	ui.removeTextArea(2)
 	ui.removeTextArea(0)
 	tfm.exec.newGame(mapa)
-	showMessage("<VP><b>Se preparem! As perguntas começarão a ser realizadas em instantes!")
+	showMessage("<VP><b>Se preparem! As perguntas começarão a ser realizadas em instantes!</b>")
 end
 function eventChatCommand(name,message)
 	if message == "random" then
@@ -385,7 +384,7 @@ function eventPlayerLeft(name)
 	ratos=ratos-1
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas - <b>v2.4.0</b> - por Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V><b>"..vivos.."</b>/<J>"..ratos.."   <BL>|   <N>Round : <V><b>"..rodada.."</b>/<R>"..limite.."<")
+	ui.setMapName("<N>Quiz de Perguntas - <b>v2.4.1</b> - por Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V><b>"..vivos.."</b>/<J>"..ratos.."   <BL>|   <N>Round : <V><b>"..rodada.."</b>/<R>"..limite.."<")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
