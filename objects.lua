@@ -1,7 +1,7 @@
 tfm.exec.disableAutoNewGame(true)
 tfm.exec.disableAutoShaman(true)
 tfm.exec.disableAutoTimeLeft(true)
-tfm.exec.setRoomMaxPlayers(22)
+tfm.exec.setRoomMaxPlayers(25)
 tfm.exec.disablePhysicalConsumables(true)
 tfm.exec.disableAutoScore(true)
 for _,f in next,{"help","kill","run","restart","shutdown"} do
@@ -11,7 +11,9 @@ mapas={"@7565678","@7358458","@7356189","@7513747","@7488224","@7434176","@75663
 map_names={"The Beginning of All","Platforms on The Heaven","Simple Circles","The Pyramid of Lava","The Damage of Fall","False Beach","Inside the Fire Cave","","","","A Simple Snow Box","The Maze of Lava","The Grasses that Disappear","Without Limits","Don't Jump!","Don't Touch on Lava","Choose Your Side","Where Are We?","The Island Forest","Black and White - Objects Edition","The Lake of Fall","On the Edge of Void - Objects Edition","White and Black","Mortal Cinema","Background Directions","Without Plans","Defilante Maze","Testing Purposes","Under the Darkness","Fallen Layers","Defilante Platform","Threshold of Boxes","Simple Black","Grassy Walls","Thickness of Clouds","Unreal Illusion","Testing Lava Cave","Ninja Directions","Limits of Tomorrow","",""}
 objects={1,2,3,6,10,17,23,33,35,39,40,45,46,54,60,61,65,68,69,85,89,90,95}
 actual_map=""
+text_difficulty="<font face='Segoe UI Symbol'>　　　　<J>　　<R><b>　　</b><font face='Verdana'>"
 remaining=0
+imageId=-1
 actual_creator=""
 bar=""
 loop=0
@@ -31,9 +33,6 @@ function eventChatCommand(name,message)
 		end
 		if message == "restart" then
 			tfm.exec.newGame(mapas[math.random(#mapas)])
-		end
-		if message == "shutdown" then
-			system.exit()
 		end
 	end
 end
@@ -57,9 +56,9 @@ function showBar()
 	for i=1,41 do
 		if mapas[i] == tfm.get.room.currentMap then
 			if map_names[i] == "" then
-				ui.setMapName("<J><b>"..tfm.get.room.currentMap.."</b>  <BL>|   <N>Difficulty : <R><b>"..functs.level.."</b>  <BL>|  <N>#objects RTM 7855.039  <BL>|  <N>Time Left : <J><b>"..remaining.."</b>s<")
+				ui.setMapName("<J><b>"..tfm.get.room.currentMap.."   </b><V>|   <N>Difficulty : "..text_difficulty.."   <V>|   <N>#objects <ROSE><b>RTM 8056.040</b><")
 			else
-				ui.setMapName("<J><b>"..map_names[i].."</b>  <BL>|   <N>Difficulty : <R><b>"..functs.level.."</b>  <BL>|  <N>#objects RTM 7855.039  <BL>|  <N>Time Left : <J><b>"..remaining.."</b>s<")
+				ui.setMapName("<J><b>"..map_names[i].."</b>   <V>|   <N>Difficulty : "..text_difficulty.."   <V>|   <N>#objects <ROSE><b>RTM 8056.040</b><")
 			end
 		end
 	end
@@ -86,6 +85,25 @@ function eventNewPlayer(name)
 	tfm.exec.chatMessage("<J><b>Welcome to #objects!</b><br><br>The objective of this module is survive! Don't hit the objects that is falling! The last alive player wins the game!<br><br><ROSE>Module made by Spectra_phantom#6089.",name)
 end
 function eventLoop(p,f)
+	if functs.level == 0 then
+		text_difficulty="<font face='Segoe UI Symbol'>　　　　<J>　　<R><b>　　</b><font face='Verdana'>"
+	elseif functs.level == 1 then
+		text_difficulty="<font face='Segoe UI Symbol'>▶　　　<J>　　<R><b>　　</b><font face='Verdana'>"
+	elseif functs.level == 2 then
+		text_difficulty="<font face='Segoe UI Symbol'>▶▶　　<J>　　<R><b>　　</b><font face='Verdana'>"
+	elseif functs.level == 3 then
+		text_difficulty="<font face='Segoe UI Symbol'>▶▶▶　<J>　　<R><b>　　</b><font face='Verdana'>"
+	elseif functs.level == 4 then
+		text_difficulty="<font face='Segoe UI Symbol'>▶▶▶▶<J>　　<R><b>　　</b><font face='Verdana'>"
+	elseif functs.level == 5 then
+		text_difficulty="<font face='Segoe UI Symbol'>▶▶▶▶<J>▶　<R><b>　　</b><font face='Verdana'>"
+	elseif functs.level == 6 then
+		text_difficulty="<font face='Segoe UI Symbol'>▶▶▶▶<J>▶▶<R><b>　　</b><font face='Verdana'>"
+	elseif functs.level == 7 then
+		text_difficulty="<font face='Segoe UI Symbol'>▶▶▶▶<J>▶▶<R><b>▶　</b><font face='Verdana'>"
+	elseif functs.level >= 8 then
+		text_difficulty="<font face='Segoe UI Symbol'>▶▶▶▶<J>▶▶<R><b>▶▶</b><font face='Verdana'>"
+	end
 	remaining=math.floor(f/1000)
 	showBar()
 	if f <= 3000 and functs.running == true and winner == false then
@@ -101,13 +119,22 @@ function eventLoop(p,f)
 	end
 	if functs.running == false and winner == false and p < 20000 then
 		functs.count=functs.count-0.5
-		if functs.count <= 3 then
-			showText(""..math.ceil(functs.count).."")
+		if functs.count == 3 then
+			imageId = tfm.exec.addImage("17a4e9afa86.png","&1",338,80,nul)
+		end
+		if functs.count == 2 then
+			tfm.exec.removeImage(imageId)
+			imageId = tfm.exec.addImage("17a4e9ae302.png","&1",338,80,nul)
+		end
+		if functs.count == 1 then
+			tfm.exec.removeImage(imageId)
+			imageId = tfm.exec.addImage("17a4e9acb8f.png","&1",338,80,nul)
 		end
 		if functs.count <= 0 and p < 20000 and winner == false then
+			tfm.exec.removeImage(imageId)
 			functs.running=true
 			functs.level=1
-			showText("Go!")
+			loop=9
 		end
 	end
 	if functs.running == true then
@@ -121,12 +148,12 @@ function eventLoop(p,f)
 				functs.level=functs.level+1
 			end
 			loop=0
-			if functs.level <= 6 then
+			if functs.level <= 7 then
 				for i=1,functs.level do
 					throw()
 				end
 			else
-				for i=1,6 do
+				for i=1,7 do
 					throw()
 				end
 			end
