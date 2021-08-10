@@ -1,13 +1,13 @@
--- Mudanças na Versão 2.4.1:
--- Correção de bugs na fonte
+-- Mudanças na Versão 2.4.2:
+-- Adição de novas perguntas
 
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.4.1
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.4.2
 -- Por favor, edite a linha 20 a variável 'admin' pelo seu nome para ter acesso aos comandos.
 -- Você pode selecionar o tema editando a linha 21.
 -- Temas:
 -- 0 = transformice
 -- 1 = conhecimentos gerais
--- 2 = futebol (incompleto)
+-- 2 = futebol
 -- 3 = música (em breve)
 -- 4 = lolzinho (em breve)
 
@@ -230,7 +230,7 @@ perguntas={
 "É possível mudar a gravidade do mapa no Transformice utilizando código LUA.","Verdadeiro","Falso",1,
 "Apenas membros da Module Team podem carregar modules nas salas do Transformice.","Verdadeiro","Falso",2,
 "Quantos servidores host da Atelier801 existem no Brasil?","0","1",1,
-"Qual é a margem máxima offscreen de largura e altura no qual os ratos podem permanecer vivos?","400px por lado","800px por lado",1
+"Qual é a margem máxima offscreen de largura e altura no qual os ratos podem permanecer vivos?","400px por lado","800px por lado",1,
 }
 perguntas1={
 "Vai na sorte :)","ok","ok",1,
@@ -332,12 +332,22 @@ perguntas2={
 "Qual destes clubes foi Campeão Brasileiro em um ano e rebaixado no ano seguinte?","Vasco","Fluminense",2,
 "Qual destes jogadores chegou a virar político?","Romário","Ronaldinho Gaúcho",1,
 "Qual destes jogadores vestiu por mais vezes a camisa do São Paulo?","Rogério Ceni","Raí",1,
+"Qual destes técnicos foi o responsável pelo tricampeonato brasileiro do São Paulo de 2006 a 2008?","Muricy Ramalho","Paulo Autuori",1,
+"Qual o nome do estádio que o Palmeiras utilizou até a construção do Allianz Parque?","Pacaembu","Parque Antártica",2,
+"Quantos times foram rebaixados no Campeonato Brasileiro de 1995?","2","4",1,
+"O Fluminense perdeu a final da Libertadores de 2008 para qual time?","Boca Juniors","LDU",2,
+"Qual destas cantoras NÃO cantou durante o show da abertura da Copa do Mundo de 2014?","Ivete Sangalo","Ariana Grande",2,
+"Todas as edições da Copa América na qual o Brasil foi o país-sede, a Seleção Brasileira venceu.","Verdadeiro","Falso",2,
+"Quem marcou o gol do título de Portugal na final da Eurocopa de 2016, contra a anfitriã França?","Cristiano Ronaldo","Éder",2,
+"Quantas medalhas de ouro possui a seleção Argentina de futebol olímpica?","2","3",1,
+"Qual foi o último time que colocou mais de 100 mil pessoas no Maracanã em 1999?","Botafogo","Flamengo",1,
+"Qual time possui mais títulos da Copa Libertadores da América?","Independiente","Boca Juniors",1,
 }
 mapa="@7786632"
 modo="inicial" -- não mude
 pergunta=0
 rodada=0
-limite=30
+limite=25
 actual_question={quest="",a1="",a2="",answer=nil}
 function showMessage(message,name)
 	temp_text=string.gsub(message,"<b>","")
@@ -384,7 +394,7 @@ function eventPlayerLeft(name)
 	ratos=ratos-1
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas - <b>v2.4.1</b> - por Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V><b>"..vivos.."</b>/<J>"..ratos.."   <BL>|   <N>Round : <V><b>"..rodada.."</b>/<R>"..limite.."<")
+	ui.setMapName("<N>Quiz de Perguntas - <b>v2.4.2</b> - por Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V><b>"..vivos.."</b>/<J>"..ratos.."   <BL>|   <N>Round : <V><b>"..rodada.."</b>/<R>"..limite.."<")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
