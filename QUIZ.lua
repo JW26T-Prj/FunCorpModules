@@ -1,7 +1,7 @@
--- Mudanças na Versão 2.4.2:
--- Adição de novas perguntas
+-- Mudanças na Versão 2.4.3:
+-- Adição de 12 novas perguntas de conhecimentos gerais
 
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.4.2
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.4.3
 -- Por favor, edite a linha 20 a variável 'admin' pelo seu nome para ter acesso aos comandos.
 -- Você pode selecionar o tema editando a linha 21.
 -- Temas:
@@ -96,7 +96,7 @@ perguntas={
 "Qual dessas tags é atribuída aos MapCrews do Transformice?","#0020","Não tem tag definida",1,
 "Qual destes comandos é utilizado para a inserção de um script LUA?","/lua","/code",1,
 "Qual destes eventos não é mais utilizado no Transformice?","Carnaval","Natal",1,
-"Qual destes usuários nunca se tornou Funcorp?","Pamotes#0000","Bolodefchoco#0015",1,
+"Qual destes usuários nunca se tornou Funcorp?","Pamots#0000","Bolodefchoco#0015",1,
 "Se você ficar muito tempo dentro da água, você morre automaticamente.","Verdadeiro","Falso",2,
 "É possível ganhar queijos na loja apenas jogando modules.","Verdadeiro","Falso",1,
 "Qual categoria de mapas é atribuída aos mapas de Defilante?","P18","P19",1,
@@ -258,7 +258,7 @@ perguntas1={
 "Qual é o nome da fórmula utilizada para calcular equações do segundo grau?","Fórmula de Bhaskara","Teorema de Pitágoras",1,
 "Quantos planetas existem no Sistema Solar?","8","9",1,
 "Qual cidade do RJ é conhecida como 'Cidade Imperial'?","Petrópolis","Angra dos Reis",1,
-"Quantas usinas nucleares o Brasil possui funcionando?","2","3",1,
+"Quantas usinas nucleares o Brasil possui funcionando?","2","5",1,
 "Qual foi o nome da pandemia que matou milhões de pessoas ao redor mundo no começo do século XX?","Covid-19","Gripe Espanhola",2,
 "Qual o oceano da Terra que possui a maior profundidade média?","Oceano Pacífico","Oceano Atlântico",1,
 "As nuvens são feitas de quê?","Vapor de água","Algodão",1,
@@ -297,7 +297,7 @@ perguntas1={
 "Quando uma estrela com 10 ou menos massas solares chega no final do seu tempo de vida, ela vira um(a)...","Buraco Negro","Anã Branca",2,
 "Quantos anos durou a Guerra dos Cem Anos?","100","116",2,
 "Existem milhares de jacarés e capivaras no fundo do Rio Amazonas.","Verdadeiro","Falso",2,
-"Qual a raiz quadrada de -16?","-4","Não existe",1,
+"Qual a raiz quadrada de -16?","-4","Não existe",2,
 "Qual destes elementos químicos é utilizado para produzir equipamentos eletrônicos?","Silício","Rambônio",1,
 "Qual destes elementos químicos fica líquido na temperatura ambiente?","Água","Mercúrio",2,
 "Qual destas categorias é necessária na carteira de habilitação para dirigir motos?","Categoria A","Categoria B",1,
@@ -305,6 +305,19 @@ perguntas1={
 "Qual foi o cineasta que chegou no fundo da Fossa das Marianas, lugar mais profundo do oceano?","James Cameron","Jacques Piccard",1,
 "Qual é o nome dado para as bactérias que não precisam de oxigênio para se reproduzirem?","Aeróbicas","Anaeróbias",2,
 "Qual destes tipos de clima é encontrado no Brasil?","Semiárido","Mediterrâneo",1,
+"Quantas capitais a África do Sul possui?","2","3",2,
+"Em 1889, qual destas cidades foi a capital do Brasil?","Rio de Janeiro","Petrópolis",2,
+"Por quantos anos durou a Era Vargas, primeiro período no qual Getúlio Vargas foi presidente do Brasil?","8","15",2,
+"Qual é o nome oficial da Ponte Rio-Niterói?","Ponte Presidente Costa e Silva","Ponte Presidente Mário Andreazza",1,
+"Por qual nome também é conhecido o Rio São Francisco?","Velho Chico","Três Corações",1,
+"Em qual cidade estão situadas as únicas usinas nucleares em funcionamento no Brasil?","Angra dos Reis","Cabo Frio",1,
+"Qual foi o último ano em que tivemos vulcões em erupção no Brasil?","65 milhões de anos A.C","3 milhões de anos A.C",1,
+"Qual o nome da cidade que fica localizada entre os rios Tigre e Eufrates?","Jerusalém","Mesopotâmia",2,
+"A partir de qual ano passou a ser utilizado o Novo Padrão Ortográfico no Brasil?","2009","2010",1,
+"Qual destes municípios faz parte da chamada Região dos Lagos do estado do Rio de Janeiro?","Angra dos Reis","Armação dos Búzios",2,
+"Quantos quilômetros a luz percorre no vácuo durante 1 mês?","777062051136000","777600000000000",1,
+"Copacabana é um bairro ou uma cidade?","Bairro","Cidade",1,
+"Qual o nome do cartunista que fez a Turma da Mônica?","Maurício de Sousa","Maurício de Souza",1,
 }
 perguntas2={
 "Vai na sorte :)","ok","ok",1,
@@ -394,7 +407,7 @@ function eventPlayerLeft(name)
 	ratos=ratos-1
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas - <b>v2.4.2</b> - por Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V><b>"..vivos.."</b>/<J>"..ratos.."   <BL>|   <N>Round : <V><b>"..rodada.."</b>/<R>"..limite.."<")
+	ui.setMapName("<N>Quiz de Perguntas - <b>v2.4.3</b> - por Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V><b>"..vivos.."</b>/<J>"..ratos.."   <BL>|   <N>Round : <V><b>"..rodada.."</b>/<R>"..limite.."<")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
