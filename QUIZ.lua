@@ -1,5 +1,6 @@
 -- Mudanças na Versão 2.4.3:
 -- Adição de 12 novas perguntas de conhecimentos gerais
+-------------------------------------------------------
 
 -- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.4.3
 -- Por favor, edite a linha 20 a variável 'admin' pelo seu nome para ter acesso aos comandos.
