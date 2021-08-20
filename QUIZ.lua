@@ -1,16 +1,16 @@
--- Mudanças na Versão 2.4.3:
--- Adição de 12 novas perguntas de conhecimentos gerais
--------------------------------------------------------
+-- Mudanças na Versão 2.5.0:
+-- Adição de novas perguntas de Transformice e de conhecimentos gerais
+-- Adição do link para o tópico no fórum
 
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.4.3
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.5.0
 -- Por favor, edite a linha 20 a variável 'admin' pelo seu nome para ter acesso aos comandos.
 -- Você pode selecionar o tema editando a linha 21.
 -- Temas:
 -- 0 = transformice
 -- 1 = conhecimentos gerais
--- 2 = futebol
+-- 2 = futebol (INCOMPLETO)
 -- 3 = música (em breve)
--- 4 = lolzinho (em breve)
+-- 4 = animes (em breve)
 
 -- Para adicionar novas perguntas, utilize a seguinte sintaxe na hora de inserir: "PERGUNTA","RESPOSTA 1","RESPOSTA 2",1 ou 2
 -- Para sugestões de perguntas ou correção de bugs contate Reksai_void2600#6638.
@@ -53,6 +53,7 @@ perguntas={
 "Qual título é desbloqueado quando você consegue 40.000 firsts?","RELÂMPAGO","Mestre do Vento",1,
 "Existem quantas habilidades de Shaman no Transformice?","75","65",1,
 "O jogo Transformice foi desenvolvido em qual país?","EUA","França",2,
+"Qual destas tags é atribuída aos Modsents do Transformice?","#0010","#0015",2,
 "Qual o nome da Deusa Shaman do Transformice?","Elise","Elisah",2,
 "Originalmente no Transformice era possível criar mapas com quantos tipos de pisos?","5","8",1,
 "Quem é o criador atual do module True or False?","Spectra_phantom#6089","Haxhhhhhhhhh#0000",1,
@@ -63,7 +64,7 @@ perguntas={
 "Quantos queijos custa a exportação de um mapa como cafofo da tribo?","5","40",1,
 "Quantos jogos a Atelier 801 tem atualmente?","5","6",2,
 "Qual é a fricção e a restituição, respectivamente, de um piso de chocolate?","20 e 0","0 e 20",1,
-"Qual destes usuários é responsável pela sala #anvilwar?","Jessiewind26#2546","Spectra_phantom#6089",2,
+"Qual destes usuários é responsável pelo module #anvilwar?","Jessiewind26#2546","Spectra_phantom#6089",2,
 "Qual destes usuários é responsável pelo module #batata?","Laagaadoo#0000","Ikke#0095",1,
 "Qual destes comandos é utilizado para a inserção de um código especial da Japan Expo?","/lua","/code",2,
 "A habilidade 'Meep!' faz parte de qual árvore de Habilidades?","Selvagem","Físico",1,
@@ -98,7 +99,7 @@ perguntas={
 "Qual destes comandos é utilizado para a inserção de um script LUA?","/lua","/code",1,
 "Qual destes eventos não é mais utilizado no Transformice?","Carnaval","Natal",1,
 "Qual destes usuários nunca se tornou Funcorp?","Pamots#0000","Bolodefchoco#0015",1,
-"Se você ficar muito tempo dentro da água, você morre automaticamente.","Verdadeiro","Falso",2,
+"Se você ficar muito tempo dentro da água no Transformice, você morre automaticamente.","Verdadeiro","Falso",2,
 "É possível ganhar queijos na loja apenas jogando modules.","Verdadeiro","Falso",1,
 "Qual categoria de mapas é atribuída aos mapas de Defilante?","P18","P19",1,
 "Qual o nome da equipe que é responsável pelos modules do Transformice?","Module Team","MapCrew",1,
@@ -110,12 +111,13 @@ perguntas={
 "Quem é o criador do module #circuit?","Bolodefchoco#0015","Ninguem#0095",2,
 "Quantos queijos custa a customização de uma roupa no Transformice?","2000","4000",1,
 "Em qual ano estreou o sistema de missões no Transformice?","2019","2020",1,
-"Em qual ano estreou o evento de Pescaria do Transformice?","2011","2012",2,
+"Em qual ano estreou o evento de Pesca do Transformice?","2011","2012",2,
 "Quem foi o primeiro gerenciador do module Mestre Mandou?","Haxhhhhhhhhh#0000","Jessiewind26#2546",2,
 "Quantos queijos custa a customização de um item de shaman no Transformice?","2000","4000",2,
 "Qual o nome da plataforma de execução que o Transformice utiliza?","Adobe Air","Adobe Flash Player",2,
 "Qual é o limite de taxa de quadros que o Transformice pode operar?","60 fps","Depende do cliente",1,
 "É possível ganhar queijos no perfil apenas jogando modules.","Verdadeiro","Falso",2,
+"É possível coletar estatísticas no perfil jogando quais modos oficiais?","Survivor e Racing","Survivor, Racing e Defilante",2,
 "É possível comprar morangos pelo celular no Brasil.","Verdadeiro","Falso",2,
 "A habilidade 'Olho de Águia' faz parte de qual árvore de Habilidades?","Mecânico","Mestre do Vento",1,
 "Em qual ano estreou o module #batata?","2013","2014",2,
@@ -142,7 +144,7 @@ perguntas={
 "Qual foi a maior quantidade de pessoas logadas no Transformice, aproximadamente?","100000","85000",2,
 "Qual o nick dos criadores do Transformice?","Melibellule e Tigrounette","Mellibellule e Trigrounette",1,
 "Quem é o gerenciador atual do module Mestre Mandou?","Rakan_raster#0000","Xayah_raster#0000",1,
-"Quem é o criador do module O Chão é Lava?","Miss_fortune#9548","Osicat#0000",2,
+"Quem é o criador do module O Chão é Lava?","Sett#6442","Osicat#0000",2,
 "Qual o limite de consumíveis que podem ser armazenados no inventário?","80","200",1,
 "Qual o nome do antigo fun-site no qual você poderia acessar um Ranking dos ratos?","Cheese For Mice","Viprin Drawing Editor",1,
 "Qual o limite de jogadores em uma tribo no Transformice?","2000","5000",2,
@@ -150,19 +152,22 @@ perguntas={
 "O dono de uma tribo pode exibir mensagens no chat utilizando o comando /lua no cafofo da tribo.","Verdadeiro","Falso",2,
 "Em qual ano estreou o evento de Natal do Transformice?","2011","2010",2,
 "Qual é o primeiro nome do Tigrounette?","Jean","Dean",1,
+"Qual destes eventos estreou primeiro no Transformice?","Halloween","Natal",1,
 "Qual destes títulos é atribuído a quantidade de ratos salvos no modo difícil?","Virtuoso","Redentor",1,
 "A partir de qual ano foi possível criar mapas com largura maior que a normal?","2012","2011",2,
 "Em qual cidade fica situada a sede da Atelier 801?","Lille","Paris",1,
-"Qual desses foi o PRIMEIRO desenvolvedor do module #perguntas?","Brenower#0000","Dhanny_mheyran#6701",2,
+"Qual desses foi o primeiro desenvolvedor do module #perguntas?","Brenower#0000","Dhanny_mheyran#6701",2,
 "Quantos firsts são necessários para desbloquear o título 'O Mito'?","1100","1000",1,
 "Qual a largura máxima que um mapa pode ter sem ter o modo defilante ativado?","1600","9830",1,
 "Qual destes objetos não pode ser utilizado no modo difícil?","Sp","Seta",1,
 "A seta é sempre o primeiro item do shaman.","Falso","Verdadeiro",1,
+"O module Mestre Mandou já foi administrado por quantas pessoas?","3","4",2,
 "Qual a idade mínima para virar moderador no Transformice?","18","16",1,
 "Qual foi a última versão do Flash Player que o Transformice deu suporte?","32.0","33.0",1,
 "Qual a idade mínima para virar FunCorp no Transformice?","16","Não tem idade mínima",2,
 "Quantos tamanhos de tela de vídeo existem no Transformice?","2","3",1,
 "É possível mudar a cor da água do Transformice utilizando somente o Editor de Mapas.","Verdadeiro","Falso",2,
+"É possível carregar imagens nos mapas utilizando apenas no Editor de Mapas.","Verdadeiro","Falso",1,
 "Em teoria, qual a largura máxima que um mapa no Transformice pode ter?","4800","9830",2,
 "Em teoria, qual a altura máxima que um mapa no Transformice pode ter?","800","9830",2,
 "Quem é o criador atual do module #unotfm?","Ninguem#0095","Spectra_phantom#6089",1,
@@ -177,6 +182,7 @@ perguntas={
 "Em qual dia do ano o Transformice foi criado?","1","2",1,
 "Qual o limite de queijos que podem ser armazenados no inventário?","80","200",2,
 "Quantos anos tem o Tigrounette?","33","35",2,
+"Qual o nome da única mulher que criou um module semi-oficial no Transformice?","Morganadxana#0000","Sorreltail#7677",1,
 "Qual o limite antigo de membros em uma tribo do Transformice?","5000","2000",2,
 "Qual o nome de um module de testes extinto em que todos viravam Pikachu e tinham que descer a ladeira?","#surble","#surbler",1,
 "No começo da vida do Defilante, quem ganhava as partidas recebia 2 firsts e quantos queijos?","0","2",1,
@@ -200,7 +206,7 @@ perguntas={
 "Qual destes comandos servem para ver informações ténicas do cliente e do sistema?","/info","/^^",2,
 "Qual o último título desbloqueável de queijos do Transformice?","MEU QUEIJO!","Alpha & Omega",1,
 "Para falar no café, você precisa de quantos queijos no perfil?","100","1000",2,
-"Qual destes modules foi dos mais acessados em 2014?","#pictionary","#minigolf",1,
+"Qual destes modules não existe mais?","#madchess","#minigolf",1,
 "Qual comando é utilizado para ver a árvore de funções e eventos LUA do Transformice?","/luahelp","/luatree",1,
 "Qual era o nome da sala que, após uma sequência de comandos, dava morangos de graça?","286637850","286657250",1,
 "Em qual ano foi lançado o primeiro servidor brasileiro do Transformice?","2010","2011",2,
@@ -225,7 +231,7 @@ perguntas={
 "Quantos ratos salvos são necessários para desbloquear o modo normal?","0","1000",1,
 "Quando você cria uma conta no Transformice, seu inventário vem vazio.","Verdadeiro","Falso",2,
 "Qual o comando que desbloqueia um item de cabeça de bolo?","/atelier801","/transformice",1,
-"O capacete de 20 queijos é o único item que pode ser customizado sem gastar queijos/morangos.","Verdadeiro","Falso",1,
+"O capacete de 20 queijos é a única roupa que pode ser customizado sem gastar queijos/morangos.","Verdadeiro","Falso",1,
 "A partir de 2021, só será possível jogar Transformice através da Steam.","Verdadeiro","Falso",2,
 "Qual o último título de ratos salvos em modo difícil pelo Shaman?","Virtuoso","Alpha & Ômega",1,
 "É possível mudar a gravidade do mapa no Transformice utilizando código LUA.","Verdadeiro","Falso",1,
@@ -240,6 +246,7 @@ perguntas1={
 "Em que ano foi derrubado o Muro de Berlim?","1989","1991",1,
 "Qual o nome da figura de linguagem que representa sons de animais e objetos, por exemplo?","Onomatopeia","Personificação",1,
 "Qual o nome do vírus transmissor da Dengue, Chikungunya e Zica?","Aedes Aegypti","Tripanossoma Cruzi",1,
+"Segundo a Mitologia Grega, qual o nome dado ao lugar localizado no Submundo?","Inferno","Tártaro",2,
 "Quantos rios conseguem cortar o Deserto do Saara sem secar?","1","Nenhum",1,
 "Quantas camadas possui a atmosfera da Terra?","4","5",2,
 "A quantos graus °C a água ferve aproximadamente, no topo do Monte Everest?","100","71",2,
@@ -266,7 +273,7 @@ perguntas1={
 "Qual o estado da água quando ela passa diretamente do estado sólido para o gasoso, ou vice-versa?","Condensação","Sublimação",2,
 "A chegada da Família Real Portuguesa ao Brasil ocorreu em qual ano?","1808","1822",1,
 "Qual destes é o maior deserto da Terra?","Deserto do Saara","Antártida",2,
-"Quantos anos durou o Regime Militar no Brasil?","21","25",2,
+"Quantos anos durou o Regime Militar no Brasil?","21","25",1,
 "Qual dessas emissoras de televisão foi a primeira da América Latina?","Rede Tupi","Rede Manchete",1,
 "Uma polegada equivale a quantos centímetros, aproximadamente?","2.5 cm","3.3 cm",1,
 "Em qual ano ocorreu o último Censo do IBGE?","2010","2020",1,
@@ -276,14 +283,17 @@ perguntas1={
 "Qual o nome da região de relevo localizada na região Nordeste do Brasil, sendo responsável pelo clima da região?","Planalto da Borborema","Pico das Agulhas Negras",1,
 "Em qual continente fica localizado o monte Everest?","Europa","Ásia",2,
 "De onde é a invenção do chuveiro elétrico?","França","Brasil",2,
+"Qual destes pontos turísticos brasileiros fica localizado no estado da Bahia?","Casa de Santos Dumont","Elevador Lacerda",2,
 "Quantos elementos químicos a tabela periódica possui?","113","118",2,
 "Qual a montanha mais alta do Brasil?","Pico da Neblina","Pico da Bandeira",1,
 "Qual destes reinos de seres vivos é considerado o Reino das Bactérias?","Monera","Protista",1,
 "Quantos presidentes tivemos no Brasil desde a Redemocraticação, em 1985?","7","8",2,
 "O que significa a sigla CPF?","Cadastro de Pessoa Física","Crédito de Pessoa Física",1,
+"Quantos livros possui a Bíblia Sagrada?","62","66",2,
 "Qual foi o primeiro homem a descobrir o Brasil?","Pedro Álvares Cabral","Duarte Pacheco Pereira",2,
 "Qual destes equipamentos foi o grande carro-chefe da Primeira Revolução Industrial?","Máquina a vapor","Engrenagem",1,
 "Em qual ano ocorreu a missão da Apollo 8?","1968","1969",1,
+"Segundo a Mitologia Grega, qual destes seres teve suas asas destruídas ao chegar perto do Sol?","Afrodite","Ícaro",2,
 "Qual destas unidades de medida é utilizada para medir a resistência de um objeto?","Ohm","Coulomb",1,
 "Em qual oceano da Terra está localizada a Fossa das Marianas?","Oceano Pacífico","Oceano Índico",1,
 "Qual foi o último período da Terra em que os dinossauros viveram?","Jurássico","Cretáceo",2,
@@ -299,6 +309,8 @@ perguntas1={
 "Quantos anos durou a Guerra dos Cem Anos?","100","116",2,
 "Existem milhares de jacarés e capivaras no fundo do Rio Amazonas.","Verdadeiro","Falso",2,
 "Qual a raiz quadrada de -16?","-4","Não existe",2,
+"Qual é o nome da maior estrela já conhecida no Universo?","Canis Majoris","UY Scuti",2,
+"Em qual ano foi lançado o primeiro Windows?","1985","1995",1,
 "Qual destes elementos químicos é utilizado para produzir equipamentos eletrônicos?","Silício","Rambônio",1,
 "Qual destes elementos químicos fica líquido na temperatura ambiente?","Água","Mercúrio",2,
 "Qual destas categorias é necessária na carteira de habilitação para dirigir motos?","Categoria A","Categoria B",1,
@@ -307,6 +319,7 @@ perguntas1={
 "Qual é o nome dado para as bactérias que não precisam de oxigênio para se reproduzirem?","Aeróbicas","Anaeróbias",2,
 "Qual destes tipos de clima é encontrado no Brasil?","Semiárido","Mediterrâneo",1,
 "Quantas capitais a África do Sul possui?","2","3",2,
+"Quem é o Deus da mitologia Nórdica?","Zeus","Odin",2,
 "Em 1889, qual destas cidades foi a capital do Brasil?","Rio de Janeiro","Petrópolis",2,
 "Por quantos anos durou a Era Vargas, primeiro período no qual Getúlio Vargas foi presidente do Brasil?","8","15",2,
 "Qual é o nome oficial da Ponte Rio-Niterói?","Ponte Presidente Costa e Silva","Ponte Presidente Mário Andreazza",1,
@@ -319,6 +332,7 @@ perguntas1={
 "Quantos quilômetros a luz percorre no vácuo durante 1 mês?","777062051136000","777600000000000",1,
 "Copacabana é um bairro ou uma cidade?","Bairro","Cidade",1,
 "Qual o nome do cartunista que fez a Turma da Mônica?","Maurício de Sousa","Maurício de Souza",1,
+"Qual o nome do cartunista que fez o Menino Maluquinho?","Ziraldo","Monteiro Lobato",1,
 }
 perguntas2={
 "Vai na sorte :)","ok","ok",1,
@@ -385,7 +399,7 @@ function reset()
 	ui.removeTextArea(2)
 	ui.removeTextArea(0)
 	tfm.exec.newGame(mapa)
-	showMessage("<VP><b>Se preparem! As perguntas começarão a ser realizadas em instantes!</b>")
+	showMessage("<VP><b>Agora você pode jogar o Quiz de Perguntas no cafofo!</b><br><N>atelier801.com/topic?f=6&t=895665")
 end
 function eventChatCommand(name,message)
 	if message == "random" then
@@ -408,7 +422,7 @@ function eventPlayerLeft(name)
 	ratos=ratos-1
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas - <b>v2.4.3</b> - por Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V><b>"..vivos.."</b>/<J>"..ratos.."   <BL>|   <N>Round : <V><b>"..rodada.."</b>/<R>"..limite.."<")
+	ui.setMapName("<N>Quiz de Perguntas - <b>v2.5.0</b> - por Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V><b>"..vivos.."</b>/<J>"..ratos.."   <BL>|   <N>Round : <V><b>"..rodada.."</b>/<R>"..limite.."<")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
