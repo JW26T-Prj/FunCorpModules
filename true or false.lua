@@ -5,7 +5,7 @@ tfm.exec.disableAutoNewGame(true)
 tfm.exec.disableAutoScore(true)
 tfm.exec.disableDebugCommand(true)
 tfm.exec.disableAfkDeath(true)
-tfm.exec.setRoomMaxPlayers(35)
+tfm.exec.setRoomMaxPlayers(40)
 tfm.exec.disableAllShamanSkills(true)
 tfm.exec.disablePhysicalConsumables(true)
 limits={questions=10,time=7,mices_alive=0}
@@ -28,10 +28,11 @@ function eventNewGame()
 			limits.mices_alive=limits.mices_alive+1
 		else
 			tfm.exec.setPlayerScore(name,-1,false)
+			tfm.exec.chatMessage("Please type <b>!per</b> to make a question.",name)
 		end
 		if name:sub(1,1) == "*" then
 			tfm.exec.killPlayer(name)
-			tfm.exec.chatMessage("<R>Souris aren't allowed to play on this module. Create an account or log in to play True or False.",name)
+			tfm.exec.chatMessage("<R>Souris cannot play this module. Create an account or log in to play True or False.",name)
 		end
 	end
 	questions.round=0
@@ -40,7 +41,7 @@ function eventNewGame()
 end
 function eventNewPlayer(name)
 	tfm.exec.setPlayerScore(name,0,false)
-	ui.setMapName("True or False II revision 4 Remaked by Spectra_phantom#6089<")
+	ui.setMapName("<N>True or False <b>II</b> - version <VP><b>RTM 2408.005</b> <N>made by <ROSE><b>Spectra_phantom#6089</b><")
 end
 for name,player in pairs(tfm.get.room.playerList) do
 	eventNewPlayer(name)
@@ -59,7 +60,7 @@ function reset()
 			tfm.exec.setPlayerScore(name,-1,false)
 		end
 	end
-	ui.setMapName("True or False II revision 4 Remaked by Spectra_phantom#6089<")
+	ui.setMapName("<N>True or False <b>II</b> - version <VP><b>RTM 2408.005</b> <N>made by <ROSE><b>Spectra_phantom#6089</b><")
 end
 function isTrue()
 	tfm.exec.chatMessage("<VP>The answer is TRUE!")
@@ -105,7 +106,7 @@ function eventPopupAnswer(id,name,answer)
 				end
 			end
 			tfm.exec.chatMessage("<N>"..questions.question.."")
-			ui.addTextArea(0,"<font size='16'><p align='center'><font face='Bahnschrift SemiLight,Segoe UI,Arial'>"..questions.question.."",nil,15,25,770,50,0x010101,0x010101,0.95,true)
+			ui.addTextArea(0,"<font size='16'><p align='center'><font face='Segoe UI,Arial'>"..questions.question.."",nil,15,25,770,50,0x010101,0x010101,0.95,true)
 			tfm.exec.chatMessage(questions.answer,"Spectra_phantom#6089")
 			tfm.exec.chatMessage(questions.answer,"Forzaldenon#0000")
 		end
@@ -118,7 +119,7 @@ function eventPopupAnswer(id,name,answer)
 	end
 end
 function eventChatCommand(name,message)
-	if name == "Spectra_phantom#6089" or name == "Forzaldenon#0000" or name == "Hecarimjhenx#0000" or name == "Aphelios#1910" then
+	if name == "Spectra_phantom#6089" or name == "Forzaldenon#0000" or name == "Viego#0345" or name == "Aphelios#1910" then
 		if message == "limits" then
 			ui.addPopup(0,2,"Type the limit of questions (min: 1, max: 15)",name,350,175,200,true)
 		end
