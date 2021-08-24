@@ -11,7 +11,7 @@ function eventNewGame()
 	loop=-20
 	for i=1,24 do
 		size=math.random(20,50)
-		tfm.exec.addPhysicObject(i,math.random(10,1590),math.random(175,375),{
+		tfm.exec.addPhysicObject(i,math.random(100,1500),math.random(150,350),{
 		type=grounds[math.random(#grounds)],
 		width=size,
 		height=size,
@@ -24,7 +24,7 @@ function eventNewGame()
 	end
 end
 function eventLoop(p,f)
-	ui.setMapName("Falling Grounds <R><b>Beta 4</b> <J>- module made by <N><b>Spectra_phantom#6089</b> <J>and <N><b>Shun_kazami#7014</b><")
+	ui.setMapName("Falling Grounds <ROSE><b>RTM 2408.001</b> <J>- made by <N><R><b>Spectra_phantom#6089</b> <J>and <N><VP><b>Shun_kazami#7014</b><")
 	loop=loop+1
 	if loop >= 4 and ground_id >= 2 then
 		tfm.exec.removePhysicObject(ground_id)
