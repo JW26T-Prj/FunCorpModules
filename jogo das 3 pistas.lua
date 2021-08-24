@@ -4,10 +4,10 @@ tfm.exec.disableAfkDeath(true)
 tfm.exec.disableAutoTimeLeft(true)
 tfm.exec.disablePhysicalConsumables(true)
 tfm.exec.disableMortCommand(true)
-tfm.exec.setRoomMaxPlayers(22)
+tfm.exec.setRoomMaxPlayers(30)
 pergunta=0
 valendo=false
-limite=6
+limite=7
 dica10=""
 dica9=""
 dica8=""
@@ -110,30 +110,30 @@ function eventLoop(p,f)
 		end
 	end
 	if valendo == true and f <= 59000 then
-		ui.addTextArea(1,"<font size='17'><p align='center'><font face='Segoe UI'><J>"..text.c10p.." <b>"..dica10.."",nil,5,30,780,32,0x000001,0x000001,0.9,true)
+		ui.addTextArea(1,"<font size='17'><p align='center'><font face='Segoe UI'><N>"..text.c10p.." <b>"..dica10.."",nil,5,30,780,32,0x000001,0x000001,0.9,true)
 	end
 	if valendo == true and f <= 49000 then
-		ui.addTextArea(2,"<font size='17'><p align='center'><font face='Segoe UI'><J>"..text.c9p.." <b>"..dica9.."",nil,5,70,780,32,0x000001,0x000001,0.9,true)
+		ui.addTextArea(2,"<font size='17'><p align='center'><font face='Segoe UI'><N>"..text.c9p.." <b>"..dica9.."",nil,5,70,780,32,0x000001,0x000001,0.9,true)
 	end
 	if valendo == true and f <= 39000 then
-		ui.addTextArea(3,"<font size='17'><p align='center'><font face='Segoe UI'><J>"..text.c8p.." <b>"..dica8.."",nil,5,110,780,32,0x000001,0x000001,0.9,true)
+		ui.addTextArea(3,"<font size='17'><p align='center'><font face='Segoe UI'><N>"..text.c8p.." <b>"..dica8.."",nil,5,110,780,32,0x000001,0x000001,0.9,true)
 	end
-	ui.setMapName("<J>"..text.module.."   <G>|   <N>Question : <V>"..pergunta.."/"..limite.."   <G>|   <N>Time : <V>"..tempo.."s   <G>|   <N>Compilation RTM 26<")
+	ui.setMapName("<J>"..text.module.."   <G>|   <N>Question : <V>"..pergunta.."/"..limite.."   <G>|   <N>Time : <V>"..tempo.."s   <G>|   <N>Version <VP><b>RTM 2308.027</b><")
 end
 function eventChatCommand(name,message)
 	if message == "skip" then
-		if name == "Spectra_phantom#6089" or name == "Shun_kazami#7014" or name == "Forzaldenon#0000" or name == admin then
+		if name == "Spectra_phantom#6089" or name == "Viego#0345" or name == "Forzaldenon#0000" or name == admin then
 			tfm.exec.chatMessage(text.cancel,nil)
 			tfm.exec.newGame(mapa)
 		end
 	end
 	if(message:sub(1,6) == "limite") then
-		if name == "Spectra_phantom#6089" or name == "Shun_kazami#7014" or name == "Forzaldenon#0000" or name == admin then
+		if name == "Spectra_phantom#6089" or name == "Viego#0345" or name == "Forzaldenon#0000" or name == admin then
 			limite=tonumber(message:sub(8))
 		end
 	end
 	if(message:sub(1,6) == "shaman") then
-		if name == "Spectra_phantom#6089" or name == "Shun_kazami#7014" or name == "Forzaldenon#0000" or name == admin then
+		if name == "Spectra_phantom#6089" or name == "Viego#0345" or name == "Forzaldenon#0000" or name == admin then
 			tfm.exec.setPlayerScore(message:sub(8),9999,false)
 			tfm.exec.newGame(mapa)
 		end
