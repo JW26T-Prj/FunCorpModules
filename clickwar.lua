@@ -6,7 +6,7 @@ system.disableChatCommandDisplay(g,true)
 end
 sudden=false; powerups=true; winner=""; data={}; players_table={}; increase=0; intensity=40; nightmode=false; night=0; mices=0; remain=10; last_win=""; times=1; imageId=-1;
 enabled=false
-tfm.exec.setRoomMaxPlayers(25)
+tfm.exec.setRoomMaxPlayers(30)
 function split(t,s)
 	local a={}
 	for i,v in string.gmatch(t,string.format("[^%s]+",s or "%s")) do
@@ -82,7 +82,7 @@ function eventChatCommand(name,message)
 		end
 	end
 	if message == "help" then
-		menuShow(name,"Help","The objetive of this module is kill the other players using the mouse to generate spirits.<br><br>At moment, 6 powerups are available:<br>F1 = Fast Spirits (700 points)<br>F2 = Double Power (350 points)<br>F3 = Box Meteor (550 points)<br>F4 = Night Mode (400 points)<br>F5 = Ultra Explosion (800 points)<br>F6 = Stone Meteor (750 points)<br><br>Module made by Hecarimjhenx#0000. Version RTM 5142.023",180)
+		menuShow(name,"Help","The objetive of this module is kill the other players using the mouse to generate spirits.<br><br>At moment, 6 powerups are available:<br>F1 = Fast Spirits (700 points)<br>F2 = Double Power (350 points)<br>F3 = Box Meteor (550 points)<br>F4 = Night Mode (400 points)<br>F5 = Ultra Explosion (800 points)<br>F6 = Stone Meteor (750 points)<br><br>Module made by Hecarimjhenx#0000. Version RTM 5243.024",180)
 	end
 	if message == "powerups" then
 		menuShow(name,"Powerups List","<b>F1 - Fast Spirits - 700 points</b><br>Allows you to use spirits without the default timeout.<br><b>F2 - Double Power - 350 points</b><br>Double the power of your anvils, independently of actual intensity.<br><b>F3 - Box Meteor - 550 points</b><br>Spawns a meteor of large box on the map.<br><b>F4 - Night Mode - 400 points</b><br>Blacks out the map for 2 seconds.<br><b>F5 - Ultra Explosion - 800 points</b><br>Spawns a huge amount of spirits around the map.<br><b>F6 - Stone Meteor - 750 points</b><br>Spawns a lot of stones falling from the top of map.",180)
@@ -150,7 +150,7 @@ function eventNewGame()
 			tfm.exec.chatMessage("<R>Souris aren't allowed to play on this module. Create an account or log in to play Clickwar.",name)
 		end
 	end
-	tfm.exec.chatMessage("<ROSE><i>Spectra's map loader v2.191</i><br><N>Loading current map information...<br>----------------------------------------<br><b>Current Map :</b> <V>"..tfm.get.room.currentMap.."<br><N><b>Author :</b><V> "..tfm.get.room.xmlMapInfo.author.."<br><N>----------------------------------------")
+	tfm.exec.chatMessage("<ROSE><i>Spectra's map loader v2.193</i><br><N>Loading current map information...<br>----------------------------------------<br><b>Current Map :</b> <V>"..tfm.get.room.currentMap.."<br><N><b>Author :</b><V> "..tfm.get.room.xmlMapInfo.author.."<br><N>----------------------------------------")
 end
 function eventLoop(pass,falt)
 	if nightmode == true then
@@ -177,7 +177,7 @@ function eventLoop(pass,falt)
 	end
 	if falt < 60000 and sudden == false and falt > 50000 then
 		tfm.exec.chatMessage("<R><b>Ultra hard mode enabled!</b>",nil)
-		imageId = tfm.exec.addImage("17a4e9a853d.png",":1",240,80,nul)
+		imageId = tfm.exec.addImage("17a4e9a853d.png",":1",240,40,nul)
 		remain=-0.5
 		ui.addTextArea(1,"",nil,-1000,-1000,3000,3000,0x000001,0x000001,0.8,false)
 		sudden=true;
@@ -192,25 +192,25 @@ function eventLoop(pass,falt)
 		tfm.exec.newGame("#10")
 	end
 	if prox == false then
-		ui.setMapName("<N>Click War RTM <b>5142.023</b>  <G>|  <N>Intensity: <b>"..intensity.."</b>  <G>|  <VP>Module made by <b>Hecarimjhenx#0000</b><")
+		ui.setMapName("<N>ClickWar RTM <b>5243.024</b>  <G>|  <N>Intensity: <b>"..intensity.."</b>  <G>|  <VP>Module made by <b>Hecarimjhenx#0000</b><")
 	else
 		ui.setMapName("<b>"..winner.."</b> <N>wons the match! Next match on "..math.floor(falt/1000).." seconds.<")
 	end
 	remain=remain-0.5
 	if remain == 3 then
-		imageId = tfm.exec.addImage("17a4e9afa86.png",":1",338,80,nul)
+		imageId = tfm.exec.addImage("17a4e9afa86.png","?1",338,80,nul)
 	end
 	if remain == 2 then
 		tfm.exec.removeImage(imageId)
-		imageId = tfm.exec.addImage("17a4e9ae302.png",":1",338,80,nul)
+		imageId = tfm.exec.addImage("17a4e9ae302.png","?1",338,80,nul)
 	end
 	if remain == 1 then
 		tfm.exec.removeImage(imageId)
-		imageId = tfm.exec.addImage("17a4e9acb8f.png",":1",338,80,nul)
+		imageId = tfm.exec.addImage("17a4e9acb8f.png","?1",338,80,nul)
 	end
 	if remain == 0 then
 		tfm.exec.removeImage(imageId)
-		imageId = tfm.exec.addImage("17a4e9ab41f.png",":1",283,80,nul)
+		imageId = tfm.exec.addImage("17a4e9ab41f.png","?1",283,80,nul)
 		remain=-2.5
 		enabled=true;
 	end
