@@ -1,9 +1,9 @@
 -- STOP
--- Escrito por Ninguem - 31/08/2015 // Atualizado por Reksai_void2600#6638 - 13/05/2021
+-- Escrito por Ninguem - 31/08/2015 // Atualizado por Reksai_void2600#6638 - 25/08/2021
 -- Limite de 15 categorias.
 -- FunCorp, caso você não queira visualizar as respostas dos jogadores (para identificar trapaças, por exemplo), altere a variável SHOW (linha 14) para false.
 
-ADM = {"Ashearcher#0000"} -- editar com seu nome aqui!
+ADM = {"Forzaldenon#0000"} -- editar com seu nome aqui!
 CAT = {"Nome","Animal","Objeto","Cor","Marca","Carro","TV/Anime/Desenho","Parte do Corpo","Comida/Bebida","País/Cidade/Estado","Profissão","Tem no Transformice","O(A) "..ADM[1].." é...","Qualquer Coisa"}
 ID = {cat=1,camada=2,add=3,msg=4,tempo=5,stop=6}
 PLAYER = {}
@@ -11,7 +11,7 @@ ESCOLHA = {}
 MODO = "inicio"
 ROUND = 1
 PALAVRA = 1
-SHOW = false
+SHOW = true
 MAXROUND = 5
 TEMAS = 14
 TEMPO = false
@@ -50,7 +50,7 @@ function atualizaPlayer()
 	if cont == total then
 		TEMPO = os.time()+5000
 	end
-	ui.addTextArea(ID.cat, txt, nil, 300, 50, 200, 325, 1, 1, 0.8, true)
+	ui.addTextArea(ID.cat, txt, nil, 300, 50, 200, 265, 1, 1, 0.8, true)
 end
 
 function split(txt)
@@ -114,12 +114,6 @@ function atualizaSeleciona(p)
 	for i, v in ipairs(ESCOLHA) do
 		ui.addTextArea(i+1000, string.format("<p align='center'><a href='event:escolha %d'><%s>%s", i, PLAYER[p].escolha[i] and "vp" or "r", v.p), p, ((i-1)%5)*160+5, math.floor((i-1)/5)*40+130, 150, 30, 1, 1, 0.8, true)
 	end
-	for i, v in pairs(PLAYER) do
-		if SHOW == true then
-			print(i.." - "..CAT[PALAVRA].." - "..v.palavra[CAT[PALAVRA]])
-		end
-		tfm.exec.chatMessage(i.." - "..CAT[PALAVRA].." - "..v.palavra[CAT[PALAVRA]],"Viego#0345")
-	end
 end
 
 function selecionaPalavra()
@@ -141,6 +135,14 @@ function selecionaPalavra()
 		v.escolha = {}
 		for j, x in pairs(ESCOLHA) do
 			table.insert(v.escolha, true)
+		end
+		if SHOW == true then
+			if string.len(v.palavra[CAT[PALAVRA]]) >= 2 then
+				print(i.." - "..CAT[PALAVRA].." - "..v.palavra[CAT[PALAVRA]])
+			end
+		end
+		if string.len(v.palavra[CAT[PALAVRA]]) >= 2 then
+			tfm.exec.chatMessage(i.." - "..CAT[PALAVRA].." - "..v.palavra[CAT[PALAVRA]],"Viego#0345")
 		end
 	end
 	ui.addTextArea(ID.cat, "<p align='center'><font size='30px'>" .. CAT[PALAVRA] .. " com " .. LETRA, nil, 5, 80, 790, 40, 1, 1, 0.8, true)
@@ -234,7 +236,7 @@ function eventPopupAnswer(id, p, resp)
 end
 
 function eventNewPlayer(p)
-	ui.setMapName("STOP! Script editado por Reksai_void2600#6638 - 13/05/2021<")
+	ui.setMapName("<R><b>STOP!</b> <N>Script editado por Reksai_void2600#6638 - 25/08/2021<")
 	PLAYER[p] = {num = 0, pontos = 0, vitoria = 0, palavra = {}}
 	for i, v in pairs(CAT) do
 		PLAYER[p].palavra[v] = ""
@@ -280,7 +282,7 @@ function eventLoop(current, remaining)
 			end
 			txt = txt .. "\n<p align='center'><rose>Soma: " .. cont
 			LETRA = string.char(cont%26 == 0 and 90 or cont%26+64)
-			ui.addTextArea(ID.cat, txt, nil, 300, 50, 200, 275, 1, 1, 0.8, true)
+			ui.addTextArea(ID.cat, txt, nil, 300, 50, 200, 240, 1, 1, 0.8, true)
 			ui.removeTextArea(ID.tempo)
 			TEMPO = os.time()+10000
 			for i=1, 10 do
@@ -291,7 +293,7 @@ function eventLoop(current, remaining)
 	elseif MODO == "letra" then
 		if os.time() > TEMPO then
 			MODO = "round"
-			TEMPO = os.time()+30000+(4500*#CAT)
+			TEMPO = os.time()+15000+(5000*#CAT)
 			ui.removeTextArea(ID.cat, nil)
 			ui.addTextArea(ID.cat, string.format("<p align='center'>A letra é:\n<font size='50px'><rose>%s</rose></font></p>", LETRA), nil, 300, 30, 200, 80, 1, 1, 0.8, true)
 			for i, v in pairs(PLAYER) do
@@ -387,5 +389,5 @@ tfm.exec.disableAutoShaman(true)
 tfm.exec.disableAutoScore(true)
 tfm.exec.disableAutoNewGame(true)
 tfm.exec.newGame("@7631682")
-ui.setMapName("STOP! Script editado por Reksai_void2600#6638 - 13/05/2021<")
+ui.setMapName("<R><b>STOP!</b> <N>Script editado por Reksai_void2600#6638 - 25/08/2021<")
 atualizaCat(true)
