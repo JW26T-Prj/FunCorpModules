@@ -1,4 +1,4 @@
--- Script do module Mestre Mandou, versão RTM 11078.074, desenvolvido por Rakan_raster#0000.
+-- Script do module Mestre Mandou, versão RTM 11179.075, desenvolvido por Rakan_raster#0000.
 
 admin="" -- Se estiver rodando este código em uma sala FunCorp, insira seu nickname aqui e digite !fc para habilitar algumas funções especiais.
 for _,f in next,{"AutoShaman","AutoNewGame","AutoTimeLeft","DebugCommand"} do
@@ -17,7 +17,7 @@ for _,f in next,{"command","mapa","pw","limit","run","fc","q","a","t","kill"} do
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N><b>Bem-vindos ao novo Mestre Mandou!</b><br>O objetivo deste module é muito simples: Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><VP>Tenha sempre cuidado com os comandos trolls!<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Jessiewind26#2546<br><br><ROSE>Versão RTM 11078.074",
+	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>O objetivo deste module é muito simples: Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><VP>Tenha sempre cuidado com os comandos trolls!<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Jessiewind26#2546<br><br><ROSE>Versão RTM 11179.075",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -110,7 +110,7 @@ lang.br = {
 	balls = "Está chovendo bolas!",
 }
 lang.en = {
-	welcome = "<N><b>Welcome to new Simon Says module!</b><br>The objective is very simple: Follow all the commands that the game says and test all your limits!<br><VP>Please pay attention to the troll commands!<br><br><J><b>Script developed by Rakan_raster#0000</b><br>EN translation by Kazarina#4878, Concept by Jessiewind26#2546<br><br><ROSE>Version RTM 11078.074",
+	welcome = "<N><b>Welcome to the Simon Says module!</b><br>The objective is very simple: Follow all the commands that the game says and test all your limits!<br><VP>Please pay attention to the troll commands!<br><br><J><b>Script developed by Rakan_raster#0000</b><br>EN translation by Kazarina#4878, Concept by Jessiewind26#2546<br><br><ROSE>Version RTM 11179.075",
 	dancar = "Dance!",
 	sentar = "Sit!",
 	confetar = "Throw 5 confetti!",
@@ -203,7 +203,7 @@ lang.en = {
 	balls = "It's raining balls!",
 }
 lang.fr = {
-	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Rakan_raster#0000</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 11078.074",
+	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Rakan_raster#0000</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 11179.075",
 	dancar = "Danse !",
 	sentar = "Assis !",
 	confetar = "Lance 5 fois des confettis !",
@@ -414,7 +414,7 @@ function eventNewGame()
 	tfm.exec.setWorldGravity(0, 10)
 	if unlocked == true then
 		tfm.exec.setGameTime(15)
-		showMessage("<ROSE><i>-------------- Spectra's map loader v2.191</i><br><N>Loading current map information...<br><b>Current Map :</b> <V>"..tfm.get.room.currentMap.."<br><N><b>Author :</b><V> "..tfm.get.room.xmlMapInfo.author.."")
+		showMessage("<ROSE><i>Spectra's map loader v2.193</i><br><N>Loading current map information...<br><b>Current Map :</b> <V>"..tfm.get.room.currentMap.."<br><N><b>Author :</b><V> "..tfm.get.room.xmlMapInfo.author.."")
 	else
 		tfm.exec.setGameTime(36000)
 	end
@@ -449,7 +449,7 @@ function addCommandCount(name)
 	end
 end
 function eventChatCommand(name,message)
-	if name == "Rakan_raster#0000" or name == "Forzaldenon#0000" or name == "Viego#0345" or name == "Ashearcher#0000" or name == admin then
+	if name == "Rakan_raster#0000" or name == "Forzaldenon#0000" or name == "Viego#0345" or name == admin then
 		if(message:sub(0,7) == "command") then
 				active=tonumber(message:sub(9))
 				getCommand()
@@ -497,7 +497,7 @@ function eventChatCommand(name,message)
 	end
 end
 function showCommand(id,text)
-	ui.addTextArea(0,"<font face='Rockwell,Arial'><font color='#202020'><font size='17'><p align='center'><b>"..text.."",nil,25,26,750,24,0x999999,0x223024,0.85,true)
+	ui.addTextArea(0,"<font face='Rockwell,Arial'><font color='#f0f0f0'><font size='17'><p align='center'><b>"..text.."",nil,25,26,750,24,0x111111,0x222222,0.9,true)
 end
 function whiteSquare(x)
 	ui.addTextArea(1,"",nil,x,320,80,65,0xffffff,0xffffff,0.68,false)
@@ -1448,13 +1448,13 @@ end
 function eventLoop(passado,faltando)
 	local tempo=math.floor(faltando/1000)
 	if active == -2 then
-		ui.setMapName("                        <N>"..text.mices.."   <G>|   <VP><b>"..text.version.." RTM 11078.074</b><")
+		ui.setMapName("                        <N>"..text.mices.."   <G>|   <VP><b>"..text.version.." RTM 11179.075</b><")
 	elseif active == -1 and vivo >= 1 then
-		ui.setMapName("          <VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <VP><b>"..text.version.." RTM 11078.074</b><")
+		ui.setMapName("          <VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <VP><b>"..text.version.." RTM 11179.075</b><")
 	elseif active == -1 and vivo <= 0 then
-		ui.setMapName("          <VP>"..text.fim1.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <VP><b>"..text.version.." RTM 11078.074</b><")
+		ui.setMapName("          <VP>"..text.fim1.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <VP><b>"..text.version.." RTM 11179.075</b><")
 	elseif active >= 0 then
-		ui.setMapName("                               "..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <J>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <J>"..rodada.."   <G>|   <VP><b>"..text.version.." RTM 11078.074</b><")
+		ui.setMapName("                               "..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <J>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <J>"..rodada.."   <G>|   <VP><b>"..text.version.." RTM 11179.075</b><")
 	end
 	if rato < 4 then
 		if tfm.get.room.currentMap == "@2684847" and unlocked == true then
@@ -1576,7 +1576,7 @@ function eventLoop(passado,faltando)
 			tfm.exec.removeBonus(i)
 		end
 		active=0
-		if rodada == 6 or rodada == 8 or rodada == 10 or rodada == 12 or rodada == 14 or rodada == 16 then
+		if rodada == 3 or rodada == 6 or rodada == 9 or rodada == 13 or rodada == 17 or rodada == 21 then
 			dificuldade=dificuldade+1
 		end
 		for name,player in next,tfm.get.room.playerList do
