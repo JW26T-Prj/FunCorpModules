@@ -1,8 +1,8 @@
--- Mudanças na Versão 2.5.0:
--- Adição de novas perguntas de Transformice e de conhecimentos gerais
--- Adição do link para o tópico no fórum
+-- Mudanças na Versão 2.6.0:
+-- Adição de 10 novas de conhecimentos gerais
+-- Adição de mensagens adicionais
 
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.5.0
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.6.0
 -- Por favor, edite a linha 20 a variável 'admin' pelo seu nome para ter acesso aos comandos.
 -- Você pode selecionar o tema editando a linha 21.
 -- Temas:
@@ -28,7 +28,9 @@ for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","Physical
 end
 ratos=0
 vivos=0
+set_q=0
 system.disableChatCommandDisplay("random")
+system.disableChatCommandDisplay("setq")
 system.disableChatCommandDisplay("limite")
 perguntas={
 "Vai na sorte :)","ok","ok",1,
@@ -333,6 +335,16 @@ perguntas1={
 "Copacabana é um bairro ou uma cidade?","Bairro","Cidade",1,
 "Qual o nome do cartunista que fez a Turma da Mônica?","Maurício de Sousa","Maurício de Souza",1,
 "Qual o nome do cartunista que fez o Menino Maluquinho?","Ziraldo","Monteiro Lobato",1,
+"Qual destes candidatos a Presidência da República em 2014 morreu em um acidente de avião?","Marina Silva","Eduardo Campos",2,
+"Quantas Constituições o Brasil teve desde seu descobrimento?","5","7",2,
+"Qual destes gases existe em maior quantidade na atmosfera da Terra?","Nitrogênio","Oxigênio",1,
+"Quantos reinos de seres vivos existem na Terra?","5","7",1,
+"Um microfone pode ser utilizado para geração de energia elétrica.","Verdadeiro","Falso",1,
+"Na matemática, qual o nome da operação inversa da Derivação?","Integração","Generalização",1,
+"Qual o nome dado a doença nos homens cujo possuem problemas onde o pênis não completa totalmente a glande?","Balanite","Fimose",2,
+"Quanto tempo leva para a Terra dar uma volta completa em torno do Sol, aproximadamente?","365 dias","365 dias e 6 horas",2,
+"Qual o nome dado para o espectro de luz que fica acima da luz visível?","Infravermelho","Ultravioleta",2,
+"Qual o nome do empresário que foi responsável pela inauguração da Televisão no Brasil?","Silvio Santos","Assis Chateaubriand",2,
 }
 perguntas2={
 "Vai na sorte :)","ok","ok",1,
@@ -399,7 +411,7 @@ function reset()
 	ui.removeTextArea(2)
 	ui.removeTextArea(0)
 	tfm.exec.newGame(mapa)
-	showMessage("<VP><b>Agora você pode jogar o Quiz de Perguntas no cafofo!</b><br><N>atelier801.com/topic?f=6&t=895665")
+	showMessage("<R>Aviso: Algumas perguntas repetidas podem ser puladas automaticamente para maior fluidez do module. Isto não é um bug ou um problema do Transformice.")
 end
 function eventChatCommand(name,message)
 	if message == "random" then
@@ -410,6 +422,9 @@ function eventChatCommand(name,message)
 	if (message:sub(0,6) == "limite") then
 		limite=tonumber(message:sub(8))
 		showMessage("Limite alterado para: "..message:sub(8).."")
+	end
+	if (message:sub(0,4) == "setq") then
+		set_q=tonumber(message:sub(6))
 	end
 end
 function eventNewPlayer(name)
@@ -422,7 +437,7 @@ function eventPlayerLeft(name)
 	ratos=ratos-1
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas - <b>v2.5.0</b> - por Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V><b>"..vivos.."</b>/<J>"..ratos.."   <BL>|   <N>Round : <V><b>"..rodada.."</b>/<R>"..limite.."<")
+	ui.setMapName("<N>Quiz de Perguntas - <b>v2.6.0</b> - por Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V><b>"..vivos.."</b>/<J>"..ratos.."   <BL>|   <N>Round : <V><b>"..rodada.."</b>/<R>"..limite.."<")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
@@ -517,7 +532,11 @@ function randomQuests()
 	modo="perguntar"
 	rodada=rodada+1
 	if tema == 0 then
-		pergunta=math.random(#perguntas/4)
+		if set_q == 0 then
+			pergunta=math.random(#perguntas/4)
+		else
+			pergunta=set_q
+		end
 		actual_question.quest=perguntas[-3+(4*pergunta)]
 		if perguntas[pergunta*4] == 2 then
 			actual_question.answer=true
@@ -528,7 +547,11 @@ function randomQuests()
 		actual_question.a2=perguntas[-1+(4*pergunta)]
 	end
 	if tema == 1 then
-		pergunta=math.random(#perguntas1/4)
+		if set_q == 0 then
+			pergunta=math.random(#perguntas1/4)
+		else
+			pergunta=set_q
+		end
 		actual_question.quest=perguntas1[-3+(4*pergunta)]
 		if perguntas1[pergunta*4] == 2 then
 			actual_question.answer=true
@@ -539,7 +562,11 @@ function randomQuests()
 		actual_question.a2=perguntas1[-1+(4*pergunta)]
 	end
 	if tema == 2 then
-		pergunta=math.random(#perguntas2/4)
+		if set_q == 0 then
+			pergunta=math.random(#perguntas2/4)
+		else
+			pergunta=set_q
+		end
 		actual_question.quest=perguntas2[-3+(4*pergunta)]
 		if perguntas2[pergunta*4] == 2 then
 			actual_question.answer=true
@@ -549,6 +576,7 @@ function randomQuests()
 		actual_question.a1=perguntas2[-2+(4*pergunta)]
 		actual_question.a2=perguntas2[-1+(4*pergunta)]
 	end
+	set_q=0
 	ui.addTextArea(1,"<p align='center'><font size='18'>"..actual_question.a1.."",nil,100,145,260,81,0,0,1.0,true)
 	ui.addTextArea(2,"<p align='center'><font size='18'>"..actual_question.a2.."",nil,440,145,260,81,0,0,1.0,true)
 	ui.addTextArea(0,"<p align='center'><font size='16'>"..actual_question.quest.."",nil,10,22,780,48,0x000001,0x000001,1.0,true)
