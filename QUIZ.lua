@@ -1,8 +1,8 @@
--- Mudanças na Versão 2.6.0:
--- Adição de 10 novas de conhecimentos gerais
--- Adição de mensagens adicionais
+-- Mudanças na Versão 2.7.0:
+-- Adição de 6 novas perguntas de Transformice
+-- Atualizações visuais
 
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.6.0
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.7.0
 -- Por favor, edite a linha 20 a variável 'admin' pelo seu nome para ter acesso aos comandos.
 -- Você pode selecionar o tema editando a linha 21.
 -- Temas:
@@ -57,6 +57,7 @@ perguntas={
 "O jogo Transformice foi desenvolvido em qual país?","EUA","França",2,
 "Qual destas tags é atribuída aos Modsents do Transformice?","#0010","#0015",2,
 "Qual o nome da Deusa Shaman do Transformice?","Elise","Elisah",2,
+"Qual destes modules foi desenvolvido por Sharpiepoops, pioneiro nos modules do Transformice?","#keyhunt","#campal",1,
 "Originalmente no Transformice era possível criar mapas com quantos tipos de pisos?","5","8",1,
 "Quem é o criador atual do module True or False?","Spectra_phantom#6089","Haxhhhhhhhhh#0000",1,
 "Qual o nome da empresa que é responsável pelo Transformice?","Atelier 801","Riot Games",1,
@@ -73,7 +74,7 @@ perguntas={
 "Qual a categoria atribuída a mapas de Cafofo da Tribo?","P22","P20",1,
 "FunCorps são capazes de rodar scripts LUA em salas que não são de modules.","Verdadeiro","Falso",1,
 "O cargo de Modsent é atribuído a jogadores que são...","Moderadores e Funcorps","Moderadores e Sentinelas",2,
-"Quem é o gerenciador atual do module #pictionary?","Shamousey#0020","Ork#0015",1,
+"Quem é o gerenciador atual do module #pictionary?","Shamousey#0015","Ork#0015",1,
 "Quantas árvores de habilidades de shaman existem no Transformice?","3","5",2,
 "Qual o nome do cargo pré-definido do criador de uma tribo?","Shaman da Tribo","Líder Espiritual",2,
 "Qual o nome do título que a Melibellule usa?","La Belette","Fromadmin",2,
@@ -85,9 +86,10 @@ perguntas={
 "Usuários do servidor BR eram proibidos de falar no antigo servidor EN2.","Verdadeiro","Falso",1,
 "O Transformice já fez, em 2019, um evento baseado em anime.","Verdadeiro","Falso",2,
 "No Transformice, os ratos que tocarem em um piso ácido...","Ficam presos nele","Morrem instantaneamente",2,
+"Qual o nome do criador do module que estamos jogando agora?","Reksai_void2600#6638","Patrick_mahomes#1795",1,
 "A habilidade 'Reparadora' faz parte de qual árvore de Habilidades?","Mecânico","Físico",2,
 "A mensagem de reinício do servidor do Transformice aparece em qual cor?","Rosa","Roxo",1,
-"Quantos queijos são necessários para redistribuir as habilidades de shaman?","10 queijos","Depende do nível",1,
+"Quantos queijos custa o pelo mais caro da loja?","10000","8000",1,
 "Quantos ratos salvos são necessários para desbloquear o modo difícil?","1000","2000",1,
 "O Transformice possui uma série animada de desenhos no YouTube.","Verdadeiro","Falso",1,
 "A técnica chamada 'time deviation' ou 'clock drift' pode deixar seu rato mais rápido ou lento sem uso de hack.","Verdadeiro","Falso",1,
@@ -100,7 +102,8 @@ perguntas={
 "Qual dessas tags é atribuída aos MapCrews do Transformice?","#0020","Não tem tag definida",1,
 "Qual destes comandos é utilizado para a inserção de um script LUA?","/lua","/code",1,
 "Qual destes eventos não é mais utilizado no Transformice?","Carnaval","Natal",1,
-"Qual destes usuários nunca se tornou Funcorp?","Pamots#0000","Bolodefchoco#0015",1,
+"A habilidade 'Superstar' faz parte de qual árvore de Habilidades?","Selvagem","Guia Espiritual",2,
+"Qual destes usuários nunca se tornou Funcorp?","Shamousey#0015","Bolodefchoco#0015",1,
 "Se você ficar muito tempo dentro da água no Transformice, você morre automaticamente.","Verdadeiro","Falso",2,
 "É possível ganhar queijos na loja apenas jogando modules.","Verdadeiro","Falso",1,
 "Qual categoria de mapas é atribuída aos mapas de Defilante?","P18","P19",1,
@@ -119,8 +122,9 @@ perguntas={
 "Qual o nome da plataforma de execução que o Transformice utiliza?","Adobe Air","Adobe Flash Player",2,
 "Qual é o limite de taxa de quadros que o Transformice pode operar?","60 fps","Depende do cliente",1,
 "É possível ganhar queijos no perfil apenas jogando modules.","Verdadeiro","Falso",2,
-"É possível coletar estatísticas no perfil jogando quais modos oficiais?","Survivor e Racing","Survivor, Racing e Defilante",2,
+"É possível coletar estatísticas no perfil jogando quais modos oficiais?","Survivor, Racing e Vanilla","Survivor, Racing e Defilante",2,
 "É possível comprar morangos pelo celular no Brasil.","Verdadeiro","Falso",2,
+"Usuários do servidor BR podem falar apenas no servidor brasileiro.","Verdadeiro","Falso",2,
 "A habilidade 'Olho de Águia' faz parte de qual árvore de Habilidades?","Mecânico","Mestre do Vento",1,
 "Em qual ano estreou o module #batata?","2013","2014",2,
 "Em qual ano estreou o modo Defilante?","2014","2015",1,
@@ -163,11 +167,11 @@ perguntas={
 "Qual a largura máxima que um mapa pode ter sem ter o modo defilante ativado?","1600","9830",1,
 "Qual destes objetos não pode ser utilizado no modo difícil?","Sp","Seta",1,
 "A seta é sempre o primeiro item do shaman.","Falso","Verdadeiro",1,
-"O module Mestre Mandou já foi administrado por quantas pessoas?","3","4",2,
+"O module Mestre Mandou já foi administrado por quantas pessoas?","4","5",1,
 "Qual a idade mínima para virar moderador no Transformice?","18","16",1,
 "Qual foi a última versão do Flash Player que o Transformice deu suporte?","32.0","33.0",1,
 "Qual a idade mínima para virar FunCorp no Transformice?","16","Não tem idade mínima",2,
-"Quantos tamanhos de tela de vídeo existem no Transformice?","2","3",1,
+"Quantos tamanhos de tela de cinema existem no Transformice?","2","3",1,
 "É possível mudar a cor da água do Transformice utilizando somente o Editor de Mapas.","Verdadeiro","Falso",2,
 "É possível carregar imagens nos mapas utilizando apenas no Editor de Mapas.","Verdadeiro","Falso",1,
 "Em teoria, qual a largura máxima que um mapa no Transformice pode ter?","4800","9830",2,
@@ -175,6 +179,7 @@ perguntas={
 "Quem é o criador atual do module #unotfm?","Ninguem#0095","Spectra_phantom#6089",1,
 "Em qual ano foi introduzido o esquema de #tags nos nomes do Transformice?","2018","2019",1,
 "Quantos bootcamps são necessários para desbloquear o título Recruta?","1","3",1,
+"Quantos firsts são necessários para desbloquear o título 'Rato Pirata'?","100","200",1,
 "Usuários podem adicionar imagens no cafofo da tribo utilizando o comando /lua.","Verdadeiro","Falso",1,
 "Quando um rato morre no Transformice, começa a sair...","Bolhas","Sangue",1,
 "Qual é o nome do primeiro module do Transformice?","sharpie debuglua","batata",1,
@@ -184,7 +189,7 @@ perguntas={
 "Em qual dia do ano o Transformice foi criado?","1","2",1,
 "Qual o limite de queijos que podem ser armazenados no inventário?","80","200",2,
 "Quantos anos tem o Tigrounette?","33","35",2,
-"Qual o nome da única mulher que criou um module semi-oficial no Transformice?","Morganadxana#0000","Sorreltail#7677",1,
+"Qual o nome da única mulher que criou um module semi-oficial no Transformice?","Morganadxana#0000","Lanadelrey#4862",1,
 "Qual o limite antigo de membros em uma tribo do Transformice?","5000","2000",2,
 "Qual o nome de um module de testes extinto em que todos viravam Pikachu e tinham que descer a ladeira?","#surble","#surbler",1,
 "No começo da vida do Defilante, quem ganhava as partidas recebia 2 firsts e quantos queijos?","0","2",1,
@@ -197,7 +202,7 @@ perguntas={
 "Em qual mês do ano geralmente termina o evento de Natal?","Dezembro","Janeiro",2,
 "Em qual ano foram introduzidos os modules no Transformice?","2014","2013",2,
 "Qual destes comandos servem para ver os seus mapas criados?","/maps","/lsmap",2,
-"Quem é o criador e gerenciador atual do module #shamousey?","Shamousey#0015","Gmctf#0000",1,
+"Quem é o criador e gerenciador atual do module #shamousey?","Shamousey#0015","Ninguem#0095",1,
 "Quantos queijos custa para exportar um mapa como cafofo da tribo?","5","40",1,
 "Quantos objetos de shaman podem ser utilizados no modo padrão?","13","14",2,
 "Em qual ano houve o desban de todas as contas banidas permanentes no Transformice?","2012","2013",2,
@@ -437,7 +442,7 @@ function eventPlayerLeft(name)
 	ratos=ratos-1
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas - <b>v2.6.0</b> - por Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V><b>"..vivos.."</b>/<J>"..ratos.."   <BL>|   <N>Round : <V><b>"..rodada.."</b>/<R>"..limite.."<")
+	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.7.0</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
@@ -488,7 +493,7 @@ function eventLoop(p,f)
 		end
 	end
 	if modo == "perguntar" and f >= 1 then
-		ui.addTextArea(3,"<p align='center'><font size='45'>"..math.floor((f/1000)-1).."",nil,365,235,70,60,0x000001,0x494949,1.0,true)
+		ui.addTextArea(3,"<p align='center'><font size='45'>"..math.floor((f/1000)-1).."",nil,360,235,80,60,0x000001,0x494949,1.0,true)
 	else
 		ui.removeTextArea(3,nil)
 	end
