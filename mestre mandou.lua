@@ -1,4 +1,4 @@
--- Script do module Mestre Mandou, versão RTM 12082.078 LTS, desenvolvido por Rakan_raster#0000.
+-- Script do module Mestre Mandou, versão RTM 12183.079, desenvolvido por Rakan_raster#0000.
 
 admin={""} -- Se estiver rodando este código em uma sala FunCorp, insira o nome dos FunCorps e digite !fc para habilitar algumas funções e comandos especiais.
 -- If you will run this module on a FunCorp session, type the nickname(s) of FunCorp(s) into 'admin' table above and type !fc to enable special functions and commands.
@@ -20,7 +20,7 @@ for _,f in next,{"command","pw","limit","run","fc","tc","q","a","t","kill"} do
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>O objetivo deste module é muito simples: Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><VP>Tenha sempre cuidado com os comandos trolls!<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Jessiewind26#2546<br><br><ROSE>Versão RTM 12082.078 LTS",
+	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>O objetivo deste module é muito simples: Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><VP>Tenha sempre cuidado com os comandos trolls!<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Jessiewind26#2546<br><br><ROSE>Versão RTM 12183.079",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -112,7 +112,7 @@ lang.br = {
 	balls = "Está chovendo bolas!",
 }
 lang.en = {
-	welcome = "<N><b>Welcome to the Simon Says module!</b><br>The objective is very simple: Follow all the commands that the game says and test all your limits!<br><VP>Please pay attention to the troll commands!<br><br><J><b>Script developed by Rakan_raster#0000</b><br>EN translation by Kazarina#4878, Concept by Jessiewind26#2546<br><br><ROSE>Version RTM 12082.078 LTS",
+	welcome = "<N><b>Welcome to the Simon Says module!</b><br>The objective is very simple: Follow all the commands that the game says and test all your limits!<br><VP>Please pay attention to the troll commands!<br><br><J><b>Script developed by Rakan_raster#0000</b><br>EN translation by Kazarina#4878, Concept by Jessiewind26#2546<br><br><ROSE>Version RTM 12183.079",
 	dancar = "Dance!",
 	sentar = "Sit!",
 	confetar = "Throw 5 confetti!",
@@ -204,7 +204,7 @@ lang.en = {
 	balls = "It's raining balls!",
 }
 lang.fr = {
-	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Rakan_raster#0000</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 12082.078 LTS",
+	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Rakan_raster#0000</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 12183.079",
 	dancar = "Danse !",
 	sentar = "Assis !",
 	confetar = "Lance 5 fois des confettis !",
@@ -323,6 +323,11 @@ function showMessage(message,name)
 		end
 	end
 end
+function setAllAlive()
+	for name,player in next,tfm.get.room.playerList do
+		data[name].c=1;
+	end
+end
 function eventNewPlayer(name)
 	rato=rato+1
 	for k=32, 87 do
@@ -421,11 +426,11 @@ function eventNewGame()
 	tfm.exec.setWorldGravity(0, 10)
 	if unlocked == true then
 		tfm.exec.setGameTime(15)
-		showMessage("<ROSE><i>Spectra's map loader v2.193.1</i><br><N>Loading current map information...<br><b>Current Map :</b> <V>"..tfm.get.room.currentMap.."")
+		showMessage("<ROSE><i>Spectra's map loader v2.194</i><br><N>Loading current map information...<br><b>Current Map :</b> <V>"..tfm.get.room.currentMap.."")
 		if fc_mode == true then
-			showMessage("<font color='#ff8000'><br>The FunCorp mode of this module is now enabled. These players have additional control of this room:<br>")
+			showMessage("<VP><br>The FunCorp mode of this module is now enabled. These players have additional control of this room:<br>")
 			for i=1,rawlen(admin) do
-				showMessage("<font color='#ff8000'>"..admin[i].."<br>")
+				showMessage("<VP>"..admin[i].."<br>")
 			end
 		end
 	else
@@ -455,8 +460,10 @@ end
 function addCommandCount(name)
 	data[name].s=data[name].s+1
 	if data[name].c == 0 then
-		if data[name].s <= 99 then
-			ui.addTextArea(24,"<font size='33'><p align='center'>"..data[name].s.."",name,370,350,60,45,0x000001,0x000001,0.8,true)
+		if tfm.get.room.playerList[name].isDead == false then
+			if data[name].s <= 99 then
+				ui.addTextArea(24,"<font size='33'><p align='center'>"..data[name].s.."",name,370,350,60,45,0x000001,0x000001,0.8,true)
+			end
 		end
 	end
 end
@@ -560,16 +567,12 @@ function getCommand()
 	if active == 9 then
 		showCommand(active,text.esquerda)
 		tfm.exec.setGameTime(6)
-		for name,player in next,tfm.get.room.playerList do
-			data[name].c=1;
-		end
+		setAllAlive()
 	end
 	if active == 10 then
 		showCommand(active,text.direita)
 		tfm.exec.setGameTime(6)
-		for name,player in next,tfm.get.room.playerList do
-			data[name].c=1;
-		end
+		setAllAlive()
 	end
 	if active == 11 then
 		showCommand(active,text.digitar)
@@ -578,23 +581,17 @@ function getCommand()
 	if active == 12 then
 		showCommand(active,text.falar)
 		tfm.exec.setGameTime(7)
-		for name,player in next,tfm.get.room.playerList do
-			data[name].c=1;
-		end
+		setAllAlive()
 	end
 	if active == 13 then
 		showCommand(active,text.pular)
 		tfm.exec.setGameTime(5)
-		for name,player in next,tfm.get.room.playerList do
-			data[name].c=1;
-		end
+		setAllAlive()
 	end
 	if active == 14 then
 		showCommand(active,text.mexer)
 		tfm.exec.setGameTime(5)
-		for name,player in next,tfm.get.room.playerList do
-			data[name].c=1;
-		end
+		setAllAlive()
 	end
 	if active == 15 then
 		showCommand(active,text.bandeira)
@@ -607,60 +604,46 @@ function getCommand()
 	if active == 17 then
 		showCommand(active,text.vesquerda)
 		tfm.exec.setGameTime(5)
-		for name,player in next,tfm.get.room.playerList do
-			data[name].c=1;
-		end
+		setAllAlive()
 	end
 	if active == 18 then
 		showCommand(active,text.vdireita)
 		tfm.exec.setGameTime(5)
-		for name,player in next,tfm.get.room.playerList do
-			data[name].c=1;
-		end
+		setAllAlive()
 	end
 	if active == 19 then
 		xpos=math.random(60,700)
 		showCommand(active,text.quadrado)
 		tfm.exec.setGameTime(6)
-		for name,player in next,tfm.get.room.playerList do
-			data[name].c=1;
-		end
+		setAllAlive()
 		whiteSquare(xpos)
 	end
 	if active == 20 then
 		xpos=math.random(60,700)
 		showCommand(active,text.retangulo)
 		tfm.exec.setGameTime(6)
-		for name,player in next,tfm.get.room.playerList do
-			data[name].c=1;
-		end
+		setAllAlive()
 		verticalRectangle(xpos)
 	end
 	if active == 21 then
 		xpos=math.random(60,700)
 		showCommand(active,text.nretangulo)
 		tfm.exec.setGameTime(6)
-		for name,player in next,tfm.get.room.playerList do
-			data[name].c=1;
-		end
+		setAllAlive()
 		verticalRectangle(xpos)
 	end
 	if active == 22 then
 		ypos=math.random(40,300)
 		showCommand(active,text.retangulo)
 		tfm.exec.setGameTime(6)
-		for name,player in next,tfm.get.room.playerList do
-			data[name].c=1;
-		end
+		setAllAlive()
 		horizontalRectangle(ypos)
 	end
 	if active == 23 then
 		ypos=math.random(40,300)
 		showCommand(active,text.nretangulo)
 		tfm.exec.setGameTime(6)
-		for name,player in next,tfm.get.room.playerList do
-			data[name].c=1;
-		end
+		setAllAlive()
 		horizontalRectangle(ypos)
 	end
 	if active == 24 then
@@ -690,18 +673,14 @@ function getCommand()
 	if active == 30 then
 		showCommand(active,text.ndance)
 		tfm.exec.setGameTime(6)
-		for name,player in next,tfm.get.room.playerList do
-			data[name].c=1;
-		end
+		setAllAlive()
 	end
 	if active == 31 then
 		xpos=math.random(60,700)
 		local xpos2=math.random(60,700)
 		showCommand(active,text.quadrado)
 		tfm.exec.setGameTime(6)
-		for name,player in next,tfm.get.room.playerList do
-			data[name].c=1;
-		end
+		setAllAlive()
 		whiteSquare(xpos)
 		ui.addTextArea(2,"",nil,xpos2,320,80,65,0xff0000,0xff0000,0.62,false)
 	end
@@ -710,9 +689,7 @@ function getCommand()
 		local xpos2=math.random(60,700)
 		showCommand(active,text.quadradov)
 		tfm.exec.setGameTime(6)
-		for name,player in next,tfm.get.room.playerList do
-			data[name].c=1;
-		end
+		setAllAlive()
 		ui.addTextArea(1,"",nil,xpos2,320,80,65,0xffffff,0xffffff,0.68,false)
 		ui.addTextArea(2,"",nil,xpos,320,80,65,0xff0000,0xff0000,0.62,false)
 	end
@@ -721,9 +698,7 @@ function getCommand()
 		local xpos2=math.random(60,700)
 		showCommand(active,text.retangulo)
 		tfm.exec.setGameTime(6)
-		for name,player in next,tfm.get.room.playerList do
-			data[name].c=1;
-		end
+		setAllAlive()
 		verticalRectangle(xpos)
 		ui.addTextArea(2,"",nil,xpos2,0,80,400,0xff0000,0xff0000,0.62,false)
 	end
@@ -732,9 +707,7 @@ function getCommand()
 		local xpos2=math.random(60,700)
 		showCommand(active,text.retangulov)
 		tfm.exec.setGameTime(6)
-		for name,player in next,tfm.get.room.playerList do
-			data[name].c=1;
-		end
+		setAllAlive()
 		ui.addTextArea(1,"",nil,xpos2,0,80,400,0xffffff,0xffffff,0.68,false)
 		ui.addTextArea(2,"",nil,xpos,0,80,400,0xff0000,0xff0000,0.62,false)
 	end
@@ -765,16 +738,12 @@ function getCommand()
 	if active == 41 then
 		showCommand(active,text.laugh2)
 		tfm.exec.setGameTime(5)
-		for name,player in next,tfm.get.room.playerList do
-			data[name].c=1;
-		end
+		setAllAlive()
 	end
 	if active == 42 then
 		showCommand(active,text.stone)
 		tfm.exec.setGameTime(6)
-		for name,player in next,tfm.get.room.playerList do
-			data[name].c=1;
-		end
+		setAllAlive()
 		for i=1,24 do
 			tfm.exec.addShamanObject(85,(i*80)-20,64,0,0,0,false)
 		end
@@ -796,9 +765,7 @@ function getCommand()
 		local xpos2=math.random(60,700)
 		showCommand(active,text.nretangulo)
 		tfm.exec.setGameTime(6)
-		for name,player in next,tfm.get.room.playerList do
-			data[name].c=1;
-		end
+		setAllAlive()
 		verticalRectangle(xpos)
 		ui.addTextArea(2,"",nil,xpos2,0,80,400,0xff0000,0xff0000,0.62,false)
 	end
@@ -826,16 +793,16 @@ function getCommand()
 	end
 	if active == 52 then
 		showCommand(active,text.dancing)
+		setAllAlive()
 		for name,player in next,tfm.get.room.playerList do
-			data[name].c=1;
 			tfm.exec.playEmote(name,0)
 		end
 		tfm.exec.setGameTime(8)
 	end
 	if active == 53 then
 		showCommand(active,text.freeze)
+		setAllAlive()
 		for name,player in next,tfm.get.room.playerList do
-			data[name].c=1;
 			tfm.exec.freezePlayer(name,true)
 		end
 		tfm.exec.setGameTime(5)
@@ -857,24 +824,18 @@ function getCommand()
 		xpos2=math.random(60,700)
 		showCommand(active,text.quadradoa)
 		tfm.exec.setGameTime(6)
-		for name,player in next,tfm.get.room.playerList do
-			data[name].c=1;
-		end
+		setAllAlive()
 		ui.addTextArea(1,"",nil,xpos2,320,80,65,0xff0000,0xff0000,0.68,false)
 		ui.addTextArea(2,"",nil,xpos,320,80,65,0x0000ff,0x0000ff,0.62,false)
 	end
 	if active == 58 then
 		showCommand(active,text.naction)
-		for name,player in next,tfm.get.room.playerList do
-			data[name].c=1;
-		end
+		setAllAlive()
 		tfm.exec.setGameTime(10)
 	end
 	if active == 59 then
 		showCommand(active,text.nchorem)
-		for name,player in next,tfm.get.room.playerList do
-			data[name].c=1;
-		end
+		setAllAlive()
 		tfm.exec.setGameTime(7)
 	end
 	if active == 60 then
@@ -887,9 +848,7 @@ function getCommand()
 	end
 	if active == 62 then
 		showCommand(active,text.spider)
-		for name,player in next,tfm.get.room.playerList do
-			data[name].c=1;
-		end
+		setAllAlive()
 		tfm.exec.setGameTime(10)
 		for i=1,8 do
 			tfm.exec.addPhysicObject(i, math.random(50,750), math.random(50,350), spiderweb)
@@ -904,9 +863,7 @@ function getCommand()
 		xpos2=math.random(60,700)
 		showCommand(active,text.quadradov)
 		tfm.exec.setGameTime(6)
-		for name,player in next,tfm.get.room.playerList do
-			data[name].c=1;
-		end
+		setAllAlive()
 		ui.addTextArea(2,"",nil,xpos,320,80,65,0xff0000,0xff0000,0.68,false)
 		ui.addTextArea(1,"",nil,xpos2,320,80,65,0x0000ff,0x0000ff,0.62,false)
 	end
@@ -925,9 +882,7 @@ function getCommand()
 	if active == 68 then
 		showCommand(active,text.rain)
 		tfm.exec.setGameTime(8)
-		for name,player in next,tfm.get.room.playerList do
-			data[name].c=1;
-		end
+		setAllAlive()
 		for i=1,24 do
 			tfm.exec.addShamanObject(40,(i*80)-20,64,0,0,0,false)
 		end
@@ -935,9 +890,7 @@ function getCommand()
 	if active == 69 then
 		showCommand(active,text.skull)
 		tfm.exec.setGameTime(6)
-		for name,player in next,tfm.get.room.playerList do
-			data[name].c=1;
-		end
+		setAllAlive()
 		for i=5,9 do
 			tfm.exec.addBonus(2, math.random(100,700), math.random(80,300), i, 0)
 		end
@@ -945,17 +898,13 @@ function getCommand()
 	if active == 70 then
 		showCommand(active,text.gravity)
 		tfm.exec.setGameTime(10)
-		for name,player in next,tfm.get.room.playerList do
-			data[name].c=1;
-		end
+		setAllAlive()
 		tfm.exec.setWorldGravity(0, math.random(-3,22))
 	end
 	if active == 71 then
 		showCommand(active,text.black)
 		tfm.exec.setGameTime(10)
-		for name,player in next,tfm.get.room.playerList do
-			data[name].c=1;
-		end
+		setAllAlive()
 		tfm.exec.setWorldGravity(math.random(-40,40), 18)
 	end
 	if active == 72 then
@@ -990,9 +939,7 @@ function getCommand()
 	if active == 79 then
 		showCommand(active,text.balls)
 		tfm.exec.setGameTime(9)
-		for name,player in next,tfm.get.room.playerList do
-			data[name].c=1;
-		end
+		setAllAlive()
 		for i=1,24 do
 			tfm.exec.addShamanObject(6,(i*80)-20,64,0,0,0,false)
 		end
@@ -1011,9 +958,7 @@ function getCommand()
 	if active == 98 then
 		showCommand(active,q)
 		tfm.exec.setGameTime(qtime)
-		for name,player in next,tfm.get.room.playerList do
-			data[name].c=1;
-		end
+		setAllAlive()
 	end
 	if active == 99 then
 		showCommand(active,q)
@@ -1411,11 +1356,6 @@ function eventKeyboard(name,id,down,x,y)
 			end
 		end
 	end
-	if active == 59 then
-		if id == 48 or id == 50 then
-			tfm.exec.killPlayer(name)
-		end
-	end
 	if active == 63 then
 		if id == 115 then
 			completeCommand(name)
@@ -1459,11 +1399,11 @@ end
 function eventLoop(passado,faltando)
 	local tempo=math.floor(faltando/1000)
 	if active == -2 then
-		ui.setMapName("                        <N>"..text.mices.."   <G>|   <VP><b>"..text.version.." RTM 12082.078 LTS</b><")
+		ui.setMapName("                        <N>"..text.mices.."   <G>|   <VP><b>"..text.version.." RTM 12183.079</b><")
 	elseif active == -1 then
-		ui.setMapName("          <VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <VP><b>"..text.version.." RTM 12082.078 LTS</b><")
+		ui.setMapName("          <VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <VP><b>"..text.version.." RTM 12183.079</b><")
 	elseif active >= 0 then
-		ui.setMapName("                               "..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <J>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <J>"..rodada.."   <G>|   <VP><b>"..text.version.." RTM 12082.078 LTS</b><")
+		ui.setMapName("                               "..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <J>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <J>"..rodada.."   <G>|   <VP><b>"..text.version.." RTM 12183.079</b><")
 	end
 	if rato < 4 then
 		if tfm.get.room.currentMap == "@2684847" and unlocked == true then
