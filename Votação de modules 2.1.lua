@@ -46,7 +46,7 @@ function eventNewPlayer(name)
 		elseif script == 5 then
 			showMessage("<br><br><br><br><br><br><br><br><ROSE><b>VOTAÇÃO INICIADA!</b><br><br><N>Digite !1 para votar no script <b>"..scripts.name1..",</b><br>!2 para votar no script <b>"..scripts.name2.."</b>,<br>!3 para votar no script <b>"..scripts.name3..",</b><br>!4 para votar no script <b>"..scripts.name4.."</b>,<br>ou !5 para votar no script <b>"..scripts.name5.."</b>.<br><br>A votação só pode ocorrer 1 vez por rato, e sua escolha pode não ser alterada.")
 		elseif script == 6 then
-			showMessage("<br><br><br><br><br><br><br><br><ROSE><b>VOTAÇÃO INICIADA!</b><br><br><N>Digite !1 para votar no script <b>"..scripts.name1..",</b><br>!2 para votar no script <b>"..scripts.name2.."</b>,<br>!3 para votar no script <b>"..scripts.name3..",</b><br>!4 para votar no script <b>"..scripts.name4.."</b>,<br>!5 para votar no script <b>"..scripts.name5.."</b><br>ou !6 para votar no script <b>"..scripts.name6.."</b>.<br><br>A votação só pode ocorrer 1 vez por rato, e sua escolha pode não ser alterada.")
+			showMessage("<br><br><br><br><br><br><br><br><ROSE><b>VOTAÇÃO INICIADA!</b><br><br><N>Digite !1 para votar no script <b>"..scripts.name1..",</b><br>!2 para votar no script <b>"..scripts.name2.."</b>,<br>!3 para votar no script <b>"..scripts.name3..",</b><br>!4 para votar no script <b>"..scripts.name4.."</b>,<br>!5 para votar no script <b>"..scripts.name5.."</b><br>!6 para votar no script <b>"..scripts.name6.."</b>.<br><br>A votação só pode ocorrer 1 vez por rato, e sua escolha pode não ser alterada.")
 		end
 	end
 end
@@ -91,7 +91,7 @@ function eventChatCommand(name,command)
 			if data[name].script == 0 then
 				data[name].script=2
 				showMessage("<VP>Você votou no script "..scripts.name2..".",name)
-				scripts.count2=scripts.count2+2
+				scripts.count2=scripts.count2+1
 			else
 				showMessage("<R>Você já votou em um script e não pode mais alterar.",name)
 			end
@@ -104,7 +104,7 @@ function eventChatCommand(name,command)
 			if data[name].script == 0 then
 				data[name].script=2
 				showMessage("<VP>Você votou no script "..scripts.name3..".",name)
-				scripts.count3=scripts.count3+3
+				scripts.count3=scripts.count3+1
 			else
 				showMessage("<R>Você já votou em um script e não pode mais alterar.",name)
 			end
@@ -117,7 +117,7 @@ function eventChatCommand(name,command)
 			if data[name].script == 0 then
 				data[name].script=4
 				showMessage("<VP>Você votou no script "..scripts.name4..".",name)
-				scripts.count4=scripts.count4+4
+				scripts.count4=scripts.count4+1
 			else
 				showMessage("<R>Você já votou em um script e não pode mais alterar.",name)
 			end
@@ -130,7 +130,7 @@ function eventChatCommand(name,command)
 			if data[name].script == 0 then
 				data[name].script=5
 				showMessage("<VP>Você votou no script "..scripts.name5..".",name)
-				scripts.count5=scripts.count5+5
+				scripts.count5=scripts.count5+1
 			else
 				showMessage("<R>Você já votou em um script e não pode mais alterar.",name)
 			end
@@ -143,7 +143,7 @@ function eventChatCommand(name,command)
 			if data[name].script == 0 then
 				data[name].script=6
 				showMessage("<VP>Você votou no script "..scripts.name6..".",name)
-				scripts.count6=scripts.count6+6
+				scripts.count6=scripts.count6+1
 			else
 				showMessage("<R>Você já votou em um script e não pode mais alterar.",name)
 			end
