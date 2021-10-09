@@ -1,5 +1,5 @@
 -- STOP
--- Escrito por Ninguem - 31/08/2015 // Atualizado por Reksai_void2600#6638 - 30/08/2021
+-- Escrito por Ninguem - 31/08/2015 // Atualizado por Reksai_void2600#6638 - 08/10/2021
 -- Limite de 15 categorias.
 -- FunCorp, caso você não queira visualizar as respostas dos jogadores (para identificar trapaças, por exemplo), altere a variável SHOW (linha 14) para false.
 
@@ -220,10 +220,6 @@ function eventTextAreaCallback(id, p, cmd)
 			if PLAYER[p].escolha then
 				ui.addTextArea(tonumber(arg[2],10)+1000, string.format("<p align='center'><a href='event:escolha %d'><%s>%s", tonumber(arg[2],10), PLAYER[p].escolha and PLAYER[p].escolha[tonumber(arg[2],10)] and "vp" or "r", ESCOLHA[tonumber(arg[2],10)] and ESCOLHA[tonumber(arg[2],10)].p or ""), p, ((tonumber(arg[2],10)-1)%5)*160+5, math.floor((tonumber(arg[2],10)-1)/5)*40+130, 150, 30, 1, 1, 0.8, true)
 			end
-			if not PLAYER[p].escolha[tonumber(arg[2],10)] then
-				tfm.exec.chatMessage("<r>"..p.." votou para negar "..ESCOLHA[tonumber(arg[2],10)].p,"Forzaldenon#0000")
-				tfm.exec.chatMessage("<r>"..p.." votou para negar "..ESCOLHA[tonumber(arg[2],10)].p,"Viego#0345")
-			end
 		end
 	end
 end
@@ -254,7 +250,7 @@ function eventNewPlayer(p)
 		atualizaPlayer(true)
 	end
 	tfm.exec.respawnPlayer(p)
-	ui.setMapName("<R><b>STOP!</b> <N>Script editado por Reksai_void2600#6638 - 30/08/2021<")
+	ui.setMapName("<R><b>STOP!</b> <N>Script editado por Reksai_void2600#6638 - 08/10/2021<")
 end
 
 function eventPlayerLeft(p)
@@ -399,5 +395,5 @@ tfm.exec.disableAutoShaman(true)
 tfm.exec.disableAutoScore(true)
 tfm.exec.disableAutoNewGame(true)
 tfm.exec.newGame("@7631682")
-ui.setMapName("<R><b>STOP!</b> <N>Script editado por Reksai_void2600#6638 - 30/08/2021<")
+ui.setMapName("<R><b>STOP!</b> <N>Script editado por Reksai_void2600#6638 - 08/10/2021<")
 atualizaCat(true)
