@@ -1,8 +1,8 @@
--- Mudanças na Versão 2.7.0:
--- Adição de 6 novas perguntas de Transformice
--- Atualizações visuais
+-- Mudanças na Versão 2.8.0:
+-- Adição de 7 novas perguntas de conhecimentos gerais
+-- Algumas correções de bugs
 
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.7.0
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.8.0
 -- Por favor, edite a linha 20 a variável 'admin' pelo seu nome para ter acesso aos comandos.
 -- Você pode selecionar o tema editando a linha 21.
 -- Temas:
@@ -350,6 +350,13 @@ perguntas1={
 "Quanto tempo leva para a Terra dar uma volta completa em torno do Sol, aproximadamente?","365 dias","365 dias e 6 horas",2,
 "Qual o nome dado para o espectro de luz que fica acima da luz visível?","Infravermelho","Ultravioleta",2,
 "Qual o nome do empresário que foi responsável pela inauguração da Televisão no Brasil?","Silvio Santos","Assis Chateaubriand",2,
+"Em qual ano foi promulgada a Constituição em vigor no Brasil?","1988","1978",1,
+"O quilograma é uma unidade de medida usada para medir...","Peso","Massa",2,
+"Qual destes lugares é maior em questão de área?","Distrito Federal","Vaticano",1,
+"Qual é a fórmula do Cloreto de Sódio, também conhecido como sal de cozinha?","NaCl","NaCO₂",1,
+"Qual destas espécies de tubarão pode viver também na água doce?","Tubarão-touro","Tubarão-baleia",1,
+"Qual o nome dado a linguagem utilizada no Egito Antigo, com 'imagens' ao invés de letras?","Ideografias","Hieróglifos",2,
+"Qual o nome do livro sagrado que é utilizado no Islamismo?","Alcorão","Tripitaka",1,
 }
 perguntas2={
 "Vai na sorte :)","ok","ok",1,
@@ -420,7 +427,7 @@ function reset()
 end
 function eventChatCommand(name,message)
 	if message == "random" then
-		if name == admin or name == "Forzaldenon#0000" or name == "Reksai_void2600#6638" or name == "Viego#0345" then
+		if name == admin or name == "Forzaldenon#0000" or name == "Reksai_void2600#6638" or name == "Aurelianlua#0000" or name == "Ashearcher#0000" then
 			randomQuests()
 		end
 	end
@@ -442,7 +449,7 @@ function eventPlayerLeft(name)
 	ratos=ratos-1
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.7.0</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
+	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.8.0</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
