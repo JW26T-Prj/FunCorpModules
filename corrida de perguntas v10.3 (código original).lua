@@ -8,9 +8,15 @@ tfm.exec.disableAllShamanSkills(true)
 tfm.exec.setRoomMaxPlayers(30)
 tfm.exec.disableAfkDeath(true)
 mapa5="@7722950"
+mapa6="@7881966"
+blackmode=true -- Altere para 'false' caso queira utilizar o mapa com fundo branco
 admin=""
 function trocarMapa()
-	tfm.exec.newGame(mapa5)
+	if blackmode == false then
+		tfm.exec.newGame(mapa5)
+	else
+		tfm.exec.newGame(mapa6)
+	end
 end
 tfm.exec.setGameTime(60)
 palavra=""
@@ -72,9 +78,9 @@ function eventPopupAnswer(id,name,answer)
 	end	
 end
 function eventNewPlayer(name)
-	ui.setMapName("Questions Race v10.2 [versão de 32-bits]. By Shun_kazami#7014. Versão original.<")
+	ui.setMapName("Questions Race v10.3 [versão de 32-bits]. By Shun_kazami#7014. Versão original.<")
 	tfm.exec.respawnPlayer(name)
-	tfm.exec.chatMessage("<N>Script de Corrida das Perguntas, importado diretamente da versão original feita por Haxhhhhhhhhh.<br><VP><b>Versão 10.2</b><br><br><N>Atualmente administrado por Shun_kazami#7014, mapa feito também por Shun_kazami#7014.<br><br><ROSE>Proibida execução ou cópia sem autorização do criador.",name)
+	tfm.exec.chatMessage("<N>Script de Corrida das Perguntas, importado diretamente da versão original feita por Haxhhhhhhhhh.<br><VP><b>Versão 10.3</b><br><br><N>Atualmente administrado por Shun_kazami#7014, mapa feito também por Shun_kazami#7014.<br><br><ROSE>Proibida execução ou cópia sem autorização do criador.",name)
 	if not data[name] then
 		table.insert(players_table,name)
 		data[name]={p=0}
@@ -106,7 +112,7 @@ end
 function eventNewGame()
 	palavra=""
 	ui.removeTextArea(2,NIL)
-	ui.setMapName("Questions Race v10.2 [versão de 32-bits]. By Shun_kazami#7014. Versão original.<")
+	ui.setMapName("Questions Race v10.3 [versão de 32-bits]. By Shun_kazami#7014. Versão original.<")
 	for id,name in pairs(players_table) do
 		data[name].p=0
 	end
