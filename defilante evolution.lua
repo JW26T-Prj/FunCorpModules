@@ -32,7 +32,7 @@ function eventNewPlayer(name)
 		firsts = 0,
 		pontos = 0
 		}
-	tfm.exec.chatMessage("<J>Module temporário: Defilante Evolution v0.9.80<br><N>Vá até o final do mapa e chegue antes de todo mundo!<br>Comandos: !help, !p e !rank.<br><ROSE>Module criado por Vaicntaefeto#0000, traduzido por Fosfus7heads#0000.",name)
+	tfm.exec.chatMessage("<J>Module temporário: Defilante Evolution v0.9.85<br><N>Vá até o final do mapa e chegue antes de todo mundo!<br>Comandos: !help, !p e !rank.<br><ROSE>Module criado e traduzido por Fosfus7heads#0000.",name)
 end
 function split(t,s)
     	local a={}
@@ -110,6 +110,7 @@ function eventLoop(p,f)
 	if disparador == true then
 		tempo=tempo-0.5
 		ui.addTextArea(1242,"<font size='16'><b><font color='#0000FF'>Se prepare! A partida vai começar em "..math.floor(tempo).." segundos.",nil,200,30,480,50,0,0,0.9,true)
+		ui.setMapName("Se prepare! A partida vai começar em "..math.floor(tempo).." segundos.<")
 		if tempo < 0.5 then
 			tfm.exec.newGame(mapas[math.random(#mapas)])
 			for name,player in pairs(tfm.get.room.playerList) do
@@ -130,7 +131,7 @@ function eventLoop(p,f)
 			tfm.exec.newGame('@6973961')
 			tfm.exec.chatMessage("<b>Parabéns!</b> <CH>"..winner.." <N>venceu a partida com "..tfm.get.room.playerList[winner].score.." pontos!                                                                  ")
 			ui.addTextArea(4785,"<font color='#000001'><font size='48'><font face='Comic Sans MS'>Defilante Evolution",nil,170,50,680,100,0,0,1.0,true)
-			ui.addTextArea(4784,"<font color='#000001'><font size='20'>Script feito por Vaicntaefeto#0000",nil,240,120,420,100,0,0,1.0,true)
+			ui.addTextArea(4784,"<font color='#000001'><font size='20'>Script feito por Fosfus7heads#0000",nil,240,120,420,100,0,0,1.0,true)
 			if p > 10000 then
 				ui.removeTextArea(100,nil)
 				ui.removeTextArea(1244,nil)
@@ -224,4 +225,4 @@ end
 
 tfm.exec.newGame('@6973961')
 ui.addTextArea(4785,"<font color='#000001'><font size='48'><font face='Comic Sans MS'>Defilante Evolution",nil,170,50,680,100,0,0,1.0,true)
-ui.addTextArea(4784,"<font color='#000001'><font size='20'>Script feito por Vaicntaefeto#0000",nil,240,120,420,100,0,0,1.0,true)
+ui.addTextArea(4784,"<font color='#000001'><font size='20'>Script feito por Fosfus7heads#0000",nil,240,120,420,100,0,0,1.0,true)
