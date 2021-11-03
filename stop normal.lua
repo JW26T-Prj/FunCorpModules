@@ -1,5 +1,5 @@
 -- STOP
--- Escrito por Ninguem - 31/08/2015 // Atualizado por Reksai_void2600#6638 - 08/10/2021
+-- Escrito por Ninguem - 31/08/2015 // Atualizado por Reksai_void2600#6638 - 03/11/2021
 -- Limite de 15 categorias.
 -- FunCorp, caso você não queira visualizar as respostas dos jogadores (para identificar trapaças, por exemplo), altere a variável SHOW (linha 14) para false.
 
@@ -124,9 +124,9 @@ function selecionaPalavra()
 	for i, v in pairs(PLAYER) do
 		if v.palavra[CAT[PALAVRA]] ~= "" then
 			if buscaPalavra(v.palavra[CAT[PALAVRA]]) then
-				ESCOLHA[buscaPalavra(v.palavra[CAT[PALAVRA]])].pontos = 1
+				ESCOLHA[buscaPalavra(v.palavra[CAT[PALAVRA]])].pontos = 5
 			else
-				table.insert(ESCOLHA, {p = v.palavra[CAT[PALAVRA]], pontos = 2})
+				table.insert(ESCOLHA, {p = v.palavra[CAT[PALAVRA]], pontos = 10})
 			end
 		end
 	end
@@ -143,7 +143,7 @@ function selecionaPalavra()
 		end
 		if string.len(v.palavra[CAT[PALAVRA]]) >= 2 then
 			tfm.exec.chatMessage(i.." - "..CAT[PALAVRA].." - "..v.palavra[CAT[PALAVRA]],"Forzaldenon#0000")
-			tfm.exec.chatMessage(i.." - "..CAT[PALAVRA].." - "..v.palavra[CAT[PALAVRA]],"Viego#0345")
+			tfm.exec.chatMessage(i.." - "..CAT[PALAVRA].." - "..v.palavra[CAT[PALAVRA]],"Aurelianlua#0000")
 		end
 	end
 	ui.addTextArea(ID.cat, "<p align='center'><font size='30px'>" .. CAT[PALAVRA] .. " com " .. LETRA, nil, 5, 80, 790, 40, 1, 1, 0.8, true)
@@ -170,6 +170,9 @@ function eventChatCommand(p, cmd)
 			selecionaPalavra()
 			for i, v in pairs(PLAYER) do
 				atualizaSeleciona(i)
+			end
+			if SHOW == true then
+				tfm.exec.chatMessage("<R>Os administradores desta sala podem ver as respostas dos usuários. Respostas inapropriadas poderão ser retiradas da sala.")
 			end
 		end
 	end
@@ -234,7 +237,7 @@ function eventPopupAnswer(id, p, resp)
 end
 
 function eventNewPlayer(p)
-	ui.setMapName("<R><b>STOP!</b> <N>Script editado por Reksai_void2600#6638 - 08/10/2021<")
+	ui.setMapName("<R><b>STOP!</b> <N>Script editado por Reksai_void2600#6638 - 03/11/2021<")
 	PLAYER[p] = {num = 0, pontos = 0, vitoria = 0, palavra = {}}
 	for i, v in pairs(CAT) do
 		PLAYER[p].palavra[v] = ""
@@ -387,5 +390,5 @@ tfm.exec.disableAutoShaman(true)
 tfm.exec.disableAutoScore(true)
 tfm.exec.disableAutoNewGame(true)
 tfm.exec.newGame("@7631682")
-ui.setMapName("<R><b>STOP!</b> <N>Script editado por Reksai_void2600#6638 - 08/10/2021<")
+ui.setMapName("<R><b>STOP!</b> <N>Script editado por Reksai_void2600#6638 - 03/11/2021<")
 atualizaCat(true)
