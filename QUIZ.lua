@@ -1,16 +1,16 @@
--- Mudanças na Versão 2.8.0:
--- Adição de 7 novas perguntas de conhecimentos gerais
--- Algumas correções de bugs
+-- Mudanças na Versão 2.9.0:
+-- Remoção das perguntas com temas de futebol (ninguém estava utilizando)
+-- Adição de 9 perguntas de conhecimentos gerais
 
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.8.0
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.9.0
 -- Por favor, edite a linha 20 a variável 'admin' pelo seu nome para ter acesso aos comandos.
 -- Você pode selecionar o tema editando a linha 21.
 -- Temas:
 -- 0 = transformice
 -- 1 = conhecimentos gerais
--- 2 = futebol (INCOMPLETO)
--- 3 = música (em breve)
--- 4 = animes (em breve)
+-- 2 = música (em breve)
+-- 3 = animes (em breve)
+
 
 -- Para adicionar novas perguntas, utilize a seguinte sintaxe na hora de inserir: "PERGUNTA","RESPOSTA 1","RESPOSTA 2",1 ou 2
 -- Para sugestões de perguntas ou correção de bugs contate Reksai_void2600#6638.
@@ -357,43 +357,15 @@ perguntas1={
 "Qual destas espécies de tubarão pode viver também na água doce?","Tubarão-touro","Tubarão-baleia",1,
 "Qual o nome dado a linguagem utilizada no Egito Antigo, com 'imagens' ao invés de letras?","Ideografias","Hieróglifos",2,
 "Qual o nome do livro sagrado que é utilizado no Islamismo?","Alcorão","Tripitaka",1,
-}
-perguntas2={
-"Vai na sorte :)","ok","ok",1,
-"Vai na sorte :)","ok","ok",2,
-"Quantas Copas do Mundo Pelé jogou?","3","4",2,
-"Qual era o número da camisa de Cristiano Ronaldo na final da Eurocopa de 2004, contra a Grécia?","7","17",2,
-"O Futebol foi inventado em qual país?","Inglaterra","Brasil",1,
-"O famoso gol 'La Mano de Dios' marcado por Diego Maradona, aconteceu na Copa do Mundo de qual ano?","1986","1990",1,
-"Qual destes jogadores ficou famoso por errar o pênalti que eliminou a seleção Inglesa na Eurocopa de 1996?","Gareth Southgate","David Beckham",1,
-"Quem marcou o gol do título do Flamengo na Copa União de 1987?","Renato Gaúcho","Bebeto",2,
-"Qual foi o árbitro que ficou conhecido pelo episódio da Máfia do Apito, em 2005?","Edílson Pereira de Carvalho","Paulo César de Oliveira",1,
-"Qual o nome dado a Liga de Futebol dos Estados Unidos?","Major League Soccer","Premier League",1,
-"Quantos Mundiais de Clubes ganhou Neymar?","0","1",2,
-"Quantas Libertadores possui o Boca Juniors?","4","6",2,
-"Qual clube brasileiro venceu o primeiro Campeonato Brasileiro disputado 100% por pontos corridos?","Cruzeiro","Santos",1,
-"Qual destes jogadores fez mais gols em Copas do Mundo?","Miroslav Klose","Ronaldo Fenômeno",1,
-"Quantas pessoas morreram no acidente aéreo que matou quase toda a delegação da Chapecoense, em 2016?","64","71",2,
-"Qual destes jogadores é, atualmente, o maior artilheiro dos Campeonatos Brasileiros por pontos corridos?","Fred","Diego Souza",1,
-"Qual destes jogadores é, atualmente, o maior artilheiro dos Campeonatos Brasileiros até 2002?","Zico","Roberto Dinamite",2,
-"Quantos jogadores do Atlético-MG foram expulsos no polêmico jogo da Semifinal da Libertadores de 1981 contra o Flamengo?","5","7",2,
-"Em qual ano o Corinthians conquistou seu primeiro título do Campeonato Brasileiro?","1990","1995",1,
-"Quem perdeu a última cobrança de pênalti na Semifinal da Libertadores de 2000, defendido pelo goleiro Marcos?","Marcelinho Carioca","Luisão",1,
-"Quantas bolas de ouro Lionel Messi possui?","6","7",1,
-"Qual destas Copas do Mundo foi a primeira a ter o uso do VAR?","2014, no Brasil","2018, na Rússia",2,
-"Qual destes clubes foi Campeão Brasileiro em um ano e rebaixado no ano seguinte?","Vasco","Fluminense",2,
-"Qual destes jogadores chegou a virar político?","Romário","Ronaldinho Gaúcho",1,
-"Qual destes jogadores vestiu por mais vezes a camisa do São Paulo?","Rogério Ceni","Raí",1,
-"Qual destes técnicos foi o responsável pelo tricampeonato brasileiro do São Paulo de 2006 a 2008?","Muricy Ramalho","Paulo Autuori",1,
-"Qual o nome do estádio que o Palmeiras utilizou até a construção do Allianz Parque?","Pacaembu","Parque Antártica",2,
-"Quantos times foram rebaixados no Campeonato Brasileiro de 1995?","2","4",1,
-"O Fluminense perdeu a final da Libertadores de 2008 para qual time?","Boca Juniors","LDU",2,
-"Qual destas cantoras NÃO cantou durante o show da abertura da Copa do Mundo de 2014?","Ivete Sangalo","Ariana Grande",2,
-"Todas as edições da Copa América na qual o Brasil foi o país-sede, a Seleção Brasileira venceu.","Verdadeiro","Falso",2,
-"Quem marcou o gol do título de Portugal na final da Eurocopa de 2016, contra a anfitriã França?","Cristiano Ronaldo","Éder",2,
-"Quantas medalhas de ouro possui a seleção Argentina de futebol olímpica?","2","3",1,
-"Qual foi o último time que colocou mais de 100 mil pessoas no Maracanã em 1999?","Botafogo","Flamengo",1,
-"Qual time possui mais títulos da Copa Libertadores da América?","Independiente","Boca Juniors",1,
+"Dos tipos de ondas a seguir, qual possui mais chance de causar câncer ao corpo humano?","Raios X","Raios Gama",2,
+"Qual o nome dado aos seres que vivos que possuem apenas 1 célula?","Unicelulares","Pluricelulares",1,
+"Qual o nome do supercontinente que existia na Terra antes deles serem divididos?","Pangeia","Pantalassa",1,
+"O Rio Nilo é o único rio que consegue atravessar o deserto do Saara sem secar.","Verdadeiro","Falso",1,
+"Em média, quantos metros de profundidade você precisa descer para chegar a uma pressão atmosférica de 2 atm?","10 metros","20 metros",1,
+"No geral, Terremotos e maremotos acontecem quando duas ou mais placas tectônicas...","Se separam uma da outra","Colidem uma com outra",2,
+"Qual o nome da tecnologia que era utilizada na maioria dos equipamentos eletrônicos, do início do século XX até o anos 70","Válvula","Transformador",1,
+"Em qual ano terminou a Segunda Guerra Mundial?","1942","1945",2,
+"Em qual ano ocorreu a Quebra da Bolsa de Nova York?","1929","1930",1,
 }
 mapa="@7786632"
 modo="inicial" -- não mude
@@ -449,7 +421,7 @@ function eventPlayerLeft(name)
 	ratos=ratos-1
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.8.0</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
+	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.9.0</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
@@ -572,21 +544,6 @@ function randomQuests()
 		end
 		actual_question.a1=perguntas1[-2+(4*pergunta)]
 		actual_question.a2=perguntas1[-1+(4*pergunta)]
-	end
-	if tema == 2 then
-		if set_q == 0 then
-			pergunta=math.random(#perguntas2/4)
-		else
-			pergunta=set_q
-		end
-		actual_question.quest=perguntas2[-3+(4*pergunta)]
-		if perguntas2[pergunta*4] == 2 then
-			actual_question.answer=true
-		elseif perguntas2[pergunta*4] == 1 then
-			actual_question.answer=false
-		end
-		actual_question.a1=perguntas2[-2+(4*pergunta)]
-		actual_question.a2=perguntas2[-1+(4*pergunta)]
 	end
 	set_q=0
 	ui.addTextArea(1,"<p align='center'><font size='18'>"..actual_question.a1.."",nil,100,145,260,81,0,0,1.0,true)
