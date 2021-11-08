@@ -1,5 +1,5 @@
--- Script de Jogo da Forca, atualizado por Skyrectarrow#0000.
--- FunCorp, se o jogo começar a sortear muita gente off/fora da sala, digite !reset para reiniciar o script.
+-- Script de Jogo da Forca, versão 2.1, atualizado por Skyrectarrow#0000.
+-- FunCorp, se o jogo começar a sortear muita gente off ou fora da sala, digite !reset para reiniciar o script.
 admin = "Skyrectarrow#0000" -- insira seu nome!
 tfm.exec.disableAfkDeath(true)
 tfm.exec.disableAutoShaman(true)
@@ -7,6 +7,7 @@ tfm.exec.disableAutoNewGame(true)
 tfm.exec.disableAutoScore(true)
 tfm.exec.disableAutoTimeLeft(true)
 system.disableChatCommandDisplay("skip")
+system.disableChatCommandDisplay("reset")
 chars = {}
 lang = {}
 lang.br = {
@@ -58,7 +59,7 @@ id["one_player"] = 9
 id["one_player_label"] = 10
 
 function eventNewGame()
-  ui.setMapName("Jogo da Forca 2.0")
+  ui.setMapName("Jogo da Forca 2.1")
   updatePlayersList()
   ui.removeTextArea(id["one_player"])
   ui.removeTextArea(id["one_player_label"])
@@ -87,7 +88,7 @@ end
 
 function eventNewPlayer(playerName)
   table.insert(players, playerName)
-  ui.setMapName("Jogo da Forca 2.0")
+  ui.setMapName("Jogo da Forca 2.1")
   if getNbPlayers() == 2 then
     tfm.exec.newGame('@7849298')
   else
@@ -244,8 +245,8 @@ function eventPopupAnswer(popupId, playerName, answer)
       hasDefinedWord = true
       askWord()
       tfm.exec.setGameTime(60)
-      tfm.exec.chatMessage("<N>A palavra é: "..word.."",admin)
-	  tfm.exec.chatMessage("<N>A palavra é: "..word.."","Viego#0345")
+	  tfm.exec.chatMessage("<N>A palavra é: "..word.."","D571#0000")
+	  tfm.exec.chatMessage("<N>A palavra é: "..word.."","Forzaldenon#0000")
       ui.removeTextArea(id["turn"])
       ui.removeTextArea(id["turn_label"])
     end
