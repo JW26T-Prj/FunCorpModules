@@ -1,6 +1,6 @@
 -- FunCorp, este script é usado para que os ratos possam votar em até 6 scripts diferentes.
 -- Substitua na linha 5 do código na variável 'admin' o meu nome pelo seu nickname com a #tag. Ao rodar o código, digite !start e escolha os scripts e aguarde a votação.
--- Caso você também queira, substitua na linha 6 do código a variável 'tempo', para definir a quantidade de tempo até o resultado final.
+-- Caso você também queira, substitua na linha 7 do código a variável 'tempo', para definir a quantidade de tempo até o resultado final.
 -- Se por algum motivo você precise reiniciar a votação, digite !reset para reiniciar tudo. Neste caso, volte a definir os scripts novamente.
 admin="Rakan_raster#0000"
 testmode=false
@@ -58,12 +58,12 @@ function eventPlayerDied(name)
 end
 function eventNewGame()
 	iniciado=false
-	ui.setMapName("<N>Votação de Modules v2.1  <b>-</b>  <VP>Script gerenciado por <b>Rakan_raster#0000</b> <")
+	ui.setMapName("<N>Votação de Modules v2.2  <b>-</b>  <VP>Script gerenciado por <b>Rakan_raster#0000</b> <")
 	scripts={name1="",name2="",name3="",name4="",name5="",name6="",count1=0,count2=0,count3=0,count4=0,count5=0,count6=0}
-	showMessage("Digite !start para escolher os scripts e !reset para reiniciar o código.",admin)
+	showMessage("FunCorp, este script é usado para que os ratos possam votar em até 6 scripts diferentes.<br><br>Digite !start, escolha os scripts e aguarde a votação.<br>Se por algum motivo você precise reiniciar a votação, digite !reset. Neste caso, volte a definir os scripts novamente.",admin)
 	for name,player in pairs(tfm.get.room.playerList) do
 		data[name].script=0
-	end
+	end	
 	tfm.exec.setGameTime(9600)
 end
 function eventChatCommand(name,command)
