@@ -1,4 +1,4 @@
--- Script do module Mestre Mandou, versão RTM 13086.082, desenvolvido por Rakan_raster#0000.
+-- Script do module Mestre Mandou, versão RTM 13187.083, desenvolvido por Rakan_raster#0000.
 
 admin={""} -- Se estiver rodando este código em uma sala FunCorp, insira o nome dos FunCorps e digite !fc para habilitar algumas funções e comandos especiais.
 -- If you will run this module on a FunCorp session, type the nickname(s) of FunCorp(s) into 'admin' table above and type !fc to enable special functions and commands.
@@ -20,7 +20,7 @@ for _,f in next,{"command","pw","limit","run","fc","tc","q","a","t","kill"} do
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>O objetivo deste module é muito simples: Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><VP>Tenha sempre cuidado com os comandos trolls!<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Jessiewind26#2546<br><br><ROSE>Versão RTM 13086.082",
+	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>O objetivo deste module é muito simples: Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><VP>Tenha sempre cuidado com os comandos trolls!<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Jessiewind26#2546<br><br><ROSE>Versão RTM 13187.083",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -114,7 +114,7 @@ lang.br = {
 	explosion = "Olha a explosão!",
 }
 lang.en = {
-	welcome = "<N><b>Welcome to the Simon Says module!</b><br>The objective is very simple: Follow all the commands that the game says and test all your limits!<br><VP>Please pay attention to the troll commands!<br><br><J><b>Script developed by Rakan_raster#0000</b><br>EN translation by Kazarina#4878, Concept by Jessiewind26#2546<br><br><ROSE>Version RTM 13086.082",
+	welcome = "<N><b>Welcome to the Simon Says module!</b><br>The objective is very simple: Follow all the commands that the game says and test all your limits!<br><VP>Please pay attention to the troll commands!<br><br><J><b>Script developed by Rakan_raster#0000</b><br>EN translation by Kazarina#4878, Concept by Jessiewind26#2546<br><br><ROSE>Version RTM 13187.083",
 	dancar = "Dance!",
 	sentar = "Sit!",
 	confetar = "Throw 5 confetti!",
@@ -208,7 +208,7 @@ lang.en = {
 	explosion = "Caution with the spirits!",
 }
 lang.fr = {
-	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Rakan_raster#0000</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 13086.082",
+	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Rakan_raster#0000</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 13187.083",
 	dancar = "Danse !",
 	sentar = "Assis !",
 	confetar = "Lance 5 fois des confettis !",
@@ -474,7 +474,7 @@ function addCommandCount(name)
 	end
 end
 function eventChatCommand(name,message)
-	if name == "Rakan_raster#0000" or name == "Forzaldenon#0000" or name == "Aurelianlua#0000" or name == "Ashearcher#0000" or verifyAdmin(name) == true then
+	if name == "Rakan_raster#0000" or name == "Xayah_raster#7598" or name == "Aurelianlua#0000" or name == "Forzaldenon#0000" or verifyAdmin(name) == true then
 		if(message:sub(0,7) == "command") then
 				active=tonumber(message:sub(9))
 				getCommand()
@@ -641,14 +641,14 @@ function getCommand()
 	if active == 22 then
 		ypos=math.random(40,300)
 		showCommand(active,text.retangulo)
-		tfm.exec.setGameTime(6)
+		tfm.exec.setGameTime(7)
 		setAllAlive()
 		horizontalRectangle(ypos)
 	end
 	if active == 23 then
 		ypos=math.random(40,300)
 		showCommand(active,text.nretangulo)
-		tfm.exec.setGameTime(6)
+		tfm.exec.setGameTime(5)
 		setAllAlive()
 		horizontalRectangle(ypos)
 	end
@@ -770,7 +770,7 @@ function getCommand()
 		xpos=math.random(60,700)
 		local xpos2=math.random(60,700)
 		showCommand(active,text.nretangulo)
-		tfm.exec.setGameTime(6)
+		tfm.exec.setGameTime(5)
 		setAllAlive()
 		verticalRectangle(xpos)
 		ui.addTextArea(2,"",nil,xpos2,0,80,400,0xff0000,0xff0000,0.62,false)
@@ -1424,11 +1424,11 @@ end
 function eventLoop(passado,faltando)
 	local tempo=math.floor(faltando/1000)
 	if active == -2 then
-		ui.setMapName("<N>"..text.mices.."   <G>|   <VP><b>"..text.version.." RTM 13086.082</b><")
+		ui.setMapName("<N>"..text.mices.."   <G>|   <VP><b>"..text.version.." RTM 13187.083</b><")
 	elseif active == -1 then
-		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <VP><b>"..text.version.." RTM 13086.082</b><")
+		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <VP><b>"..text.version.." RTM 13187.083</b><")
 	elseif active >= 0 then
-		ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <VP><b>"..text.version.." RTM 13086.082</b><")
+		ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <VP><b>"..text.version.." RTM 13187.083</b><")
 	end
 	if rato < 4 then
 		if tfm.get.room.currentMap == "@2684847" and unlocked == true then
