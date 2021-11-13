@@ -1,16 +1,16 @@
--- Mudanças na Versão 2.9.0:
--- Remoção das perguntas com temas de futebol (ninguém estava utilizando)
--- Adição de 9 perguntas de conhecimentos gerais
+-- Mudanças na Versão 2.10.0:
+-- Adição de novo tema de perguntas: música!
+-- Ajustes nos temporizadores
+-- Mudanças em algumas perguntas
 
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.9.0
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.10.0
 -- Por favor, edite a linha 20 a variável 'admin' pelo seu nome para ter acesso aos comandos.
 -- Você pode selecionar o tema editando a linha 21.
 -- Temas:
 -- 0 = transformice
 -- 1 = conhecimentos gerais
--- 2 = música (em breve)
+-- 2 = música
 -- 3 = animes (em breve)
-
 
 -- Para adicionar novas perguntas, utilize a seguinte sintaxe na hora de inserir: "PERGUNTA","RESPOSTA 1","RESPOSTA 2",1 ou 2
 -- Para sugestões de perguntas ou correção de bugs contate Reksai_void2600#6638.
@@ -42,7 +42,7 @@ perguntas={
 "Quantos queijos no perfil são necessários para rodar scripts LUA no cafofo?","100","1000",1,
 "Se você digitar /cafe, o que acontece?","Abre o café","Faz aparecer cafés voadores",2,
 "Quantos morangos custa o item mais caro da loja?","550","600",1,
-"Funcorps fazem parte da Staff BR?","Sim","Não",2,
+"Funcorps fazem parte da Staff BR.","Verdadeiro","Falso",2,
 "Qual a categoria atribuída a mapas de Survivor?","P10","P12",1,
 "Qual a função do comando /langue?","Muda a linguagem do jogo","Muda você de sala",1,
 "Qual destes jogos não foi feito pela Atelier 801?","Bombom","Fortoresse",1,
@@ -81,7 +81,7 @@ perguntas={
 "Qual a sigla dada ao 'banimento' permanente de uma conta do servidor?","BoS","Permaban",1,
 "Em qual module você precisa se esconder atrás das decorações do mapa?","#prophunt","#hidenseek",2,
 "Qual o nome da equipe que é responsável pela categorização de mapas do Transformice?","Module Team","MapCrew",2,
-"Quantas vezes você precisa completar um mapa bootcamp para ele ser contabilizado no perfil?","1","2",2,
+"Quantas vezes você precisa completar um mapa bootcamp para ele ser contabilizado no perfil, quando você acaba de entrar na sala?","1","2",2,
 "Usuários do servidor BR eram proibidos de falar no antigo servidor EN1.","Verdadeiro","Falso",2,
 "Usuários do servidor BR eram proibidos de falar no antigo servidor EN2.","Verdadeiro","Falso",1,
 "O Transformice já fez, em 2019, um evento baseado em anime.","Verdadeiro","Falso",2,
@@ -264,7 +264,7 @@ perguntas1={
 "Na matemática, qual o nome da sequência onde o resultado é a soma dos dois números anteriores?","Fibonacci","Pascal",1,
 "A cidade do Rio de Janeiro foi capital do Brasil até que ano?","1889","1960",2,
 "A área de um círculo pode ser calculada utilizando qual fórmula?","2.πr","π.r²",2,
-"Quantos anos possui Silvio Santos?","89","90",2,
+"Quantos anos possui Silvio Santos?","89","91",2,
 "Qual destes mares possui maior concentração de sal por litro de água?","Mar Morto","Mar Mediterrâneo",1,
 "A Rodovia Presidente Dutra, que liga os estados do RJ e SP, foi construída em qual governo Brasileiro?","Getúlio Vargas","Eurico Gaspar Dutra",2,
 "Qual é a unidade utilizada para medir a altura de sons?","decibéis","watts",1,
@@ -272,7 +272,7 @@ perguntas1={
 "Qual é a fórmula para converter graus °C em graus °K?","K = C + 273","K = -40 + ((18 * C) - 40)",1,
 "Qual é o nome da fórmula utilizada para calcular equações do segundo grau?","Fórmula de Bhaskara","Teorema de Pitágoras",1,
 "Quantos planetas existem no Sistema Solar?","8","9",1,
-"Qual cidade do RJ é conhecida como 'Cidade Imperial'?","Petrópolis","Angra dos Reis",1,
+"Qual cidade do Rio de Janeiro é conhecida como 'Cidade Imperial'?","Petrópolis","Angra dos Reis",1,
 "Quantas usinas nucleares o Brasil possui funcionando?","2","5",1,
 "Qual foi o nome da pandemia que matou milhões de pessoas ao redor mundo no começo do século XX?","Covid-19","Gripe Espanhola",2,
 "Qual o oceano da Terra que possui a maior profundidade média?","Oceano Pacífico","Oceano Atlântico",1,
@@ -367,6 +367,59 @@ perguntas1={
 "Em qual ano terminou a Segunda Guerra Mundial?","1942","1945",2,
 "Em qual ano ocorreu a Quebra da Bolsa de Nova York?","1929","1930",1,
 }
+perguntas2={
+"Vai na sorte :)","ok","ok",1,
+"Vai na sorte :)","ok","ok",2,
+"Em que ano morreu Chester Bennington, ex-vocalista do Linkin Park?","2017","2019",1,
+"Em qual ano ocorreu a primeira edição do Rock in Rio?","1985","1987",1,
+"Qual o nome da embalagem que é utilizada para guardar CDs?","Jensen Case","Jewel Case",2,
+"Qual é a duração média de um disco de vinil (LP)?","20 minutos por lado","30 minutos por lado",1,
+"Qual é o material utilizado nos antigos discos de 78rpm, utilizados antes do surgimento do LP?","Silicone","Goma Laca",2,
+"Qual é o nome da música utilizada na abertura do programa Big Brother Brasil?","Vida Real","A Cruz e a Espada",1,
+"Qual é o nome da música utilizada na abertura da novela O Rei do Gado?","O Rei do Gado","Orquestra da Terra",1,
+"De quem é a música 'Meu Mundo e Nada Mais'?","Antônio Fagundes","Guilherme Arantes",2,
+"Qual é a música, que quando ouvida ao contrário, há referências satânicas?","Hotel Califórnia","Empty Spaces",1,
+"Em qual ano foi introduzidos os CDs no Brasil?","1982","1984",2,
+"A música 'Festa do Apê', do cantor Latino, é uma versão brasileira adaptada de qual música?","O-Zone","Dragostea Din Tei",2,
+"Qual é o limite máximo de músicas que podem ser colocadas em um LP?","10","Não existe limite teórico",2,
+"Qual destas músicas não foi cantada pela cantora Evanescence?","Bring Me To Life","Over and Under",2,
+"Qual foi o álbum lançado pelo Nirvana que possui a famosa capa com um bebê debaixo d'água?","Nevermind","Bleach",1,
+"A banda de rock cristão Katsbarnea é de qual país?","Ucrânia","Brasil",2,
+"A banda de rock alternativo Egypt Central é de qual país?","Egito","Estados Unidos",2,
+"Qual destas músicas do Tim Maia é muito semelhante a abertura da 6ª temporada de Jojo's Bizarre Adventures?","O Descobridor dos Sete Mares","Do Leme ao Pontal",1,
+"Complete a música: Do Leme ao Pontal... [...] Sem contar com Calabouço, Flamengo, Botafogo, Urca, ...","Praia Vermelha","Praia de Ipanema",1,
+"Qual destes gravou a música 'Pra não dizer que não falei das Flores', que retrata o período de censura do AI-5 do Regime Militar?","Geraldo Vandré","Vanusa",1,
+"Qual destas músicas foi gravada no primeiro EP da banda Linkin Park, lançada em 1999?","In the End","Carousel",2,
+"Complete a música: Rimas de ventos e velas, vida que vem e que vai, a solidão que fica e entra...","Me arremessando contra o cais","Me arremessando contra o vento",1,
+"Qual destas cantoras morreu em 2021 em um acidente de avião em Minas Gerais?","Marília Mendonça","Pablo Vittar",1,
+"A cantora Shirley Carvalhaes lançou seu primeiro álbum em qual ano?","1977","1987",1,
+"O primeiro protótipo de disco de vinil foi apresentado no Brasil.","Verdadeiro","Falso",2,
+"Em qual estado do Brasil nasceu a cantora Aline Barros?","São Paulo","Rio de Janeiro",2,
+"De qual ano é a música 'Show das Poderosas', da cantora Anitta?","2012","2014",1,
+"O álbum Toxicity, do System of a Down, foi lançado uma semana antes de qual grande evento acontecer?","Ataque às Torres Gêmeas","Morte de Osama Bin Laden",1,
+"Qual destas músicas foi utilizada no filme 'Transformers: Revenge of the Fallen'?","You Make me Sick","New Divide",2,
+"Qual destes políticos já gravou um álbum musical?","Marcelo Crivella","Bruno Covas",1,
+"[...] Uma história de amor, de aventura e de magia...  Qual o nome desta música de Sandy e Júnior?","Uma História de Amor","Era uma Vez",2,
+"O single da música Razões e Emoções, do NX Zero, foi lançada em qual ano?","2006","2007",2,
+"Rádio Pirata foi o nome do primeiro álbum lançado pela banda RPM.","Verdadeiro","Falso",2,
+"Qual é o nome da música utilizada na abertura da novela Páginas da Vida?","Se Quiser","Páginas da Vida",1,
+"Qual destes foi o primeiro vocalista da banda NX Zero?","Yuri Nishida","Di Ferrero",1,
+"Complete a música: Ah, meu coração é um campo minado... Muito cuidado...","Ele pode explodir","Com a traição",1,
+"A banda Charlie Brown Jr. foi formada na cidade de Santos.","Verdadeiro","Falso",1,
+"Qual era o nome do equipamento que era utilizado para ouvir músicas por fita cassete e podia ser transportado facilmente?","Discman","Walkman",2,
+"Quais foram as empresas que foram responsáveis pelo desenvolvimento dos CDs?","Sony e Pioneer","Sony e Philips",2,
+"Qual destes funkeiros gravou a música 'Olha a Explosão'?","MC Livinho","MC Kevinho",2,
+"O cantor Renato Russo, que era do Legião Urbana, morreu de consequências do(a)...","AIDS","Câncer",1,
+"A cantora gospel Cassiane gravou seu primeiro álbum com quantos anos de idade?","8 anos","12 anos",1,
+"O cantor e compositor Marcos Witt nasceu em qual país?","México","Estados Unidos",2,
+"A música Copacabana, de Barry Manilow, fala majoritariamente sobre...","a Praia de Copacabana","um Bar americano chamado Copacabana",2,
+"Qual destas bandas de black metal possui o mesmo nome de uma criatura mitológica da Bíblia Sagrada?","Anthrax","Behemoth",2,
+"De quem é a música 'Ai se eu te Pego?","Luan Santana","Michel Teló",2,
+"Qual destas músicas foi utilizada como abertura da série Malhação, na temporada de 2004?","Te Levar","Vou Deixar",1,
+"Qual é o tamanho de um disco de vinil do tipo Single, que armazenava no máximo 2 faixas por lado?","7 polegadas","10 polegadas",1,
+"Qual destas músicas do Guilherme Arantes fala sobre a importância da água no Planeta Terra?","Planeta Água","Águas",1,
+"Qual o nome do extinto programa de televisão que era focado em tocar Funk?","Estação Funk","Furacão 2000",2,
+}
 mapa="@7786632"
 modo="inicial" -- não mude
 pergunta=0
@@ -399,7 +452,7 @@ function reset()
 end
 function eventChatCommand(name,message)
 	if message == "random" then
-		if name == admin or name == "Forzaldenon#0000" or name == "Reksai_void2600#6638" or name == "Aurelianlua#0000" or name == "Ashearcher#0000" then
+		if name == admin or name == "Forzaldenon#0000" or name == "Reksai_void2600#6638" or name == "Aurelianlua#0000" or name == "Viego#0345" then
 			randomQuests()
 		end
 	end
@@ -421,7 +474,7 @@ function eventPlayerLeft(name)
 	ratos=ratos-1
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.9.0</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
+	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.10.0</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
@@ -472,7 +525,7 @@ function eventLoop(p,f)
 		end
 	end
 	if modo == "perguntar" and f >= 1 then
-		ui.addTextArea(3,"<p align='center'><font size='45'>"..math.floor((f/1000)-1).."",nil,360,235,80,60,0x000001,0x494949,1.0,true)
+		ui.addTextArea(3,"<p align='center'><font size='45'>"..math.ceil((f/1000)-1).."",nil,360,235,80,60,0x000001,0x494949,1.0,true)
 	else
 		ui.removeTextArea(3,nil)
 	end
