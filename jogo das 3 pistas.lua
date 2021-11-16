@@ -1,29 +1,15 @@
-tfm.exec.disableAllShamanSkills(true)
-tfm.exec.disableAutoNewGame(true)
-tfm.exec.disableAfkDeath(true)
-tfm.exec.disableAutoTimeLeft(true)
-tfm.exec.disablePhysicalConsumables(true)
-tfm.exec.disableMortCommand(true)
+for _,f in next,{"AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand","AfkDeath","AllShamanSkills"} do
+	tfm.exec["disable"..f](true)
+end
 tfm.exec.setRoomMaxPlayers(30)
-pergunta=0
-valendo=false
-limite=7
-dica10=""
-dica9=""
-dica8=""
-resposta=""
-data={}
-admin=""
-tempo=999
-loop=0
-system.disableChatCommandDisplay("help")
-system.disableChatCommandDisplay("skip")
-system.disableChatCommandDisplay("shaman")
-system.disableChatCommandDisplay("limite")
+pergunta=0; valendo=false; limite=7; dica10=""; dica9=""; dica8=""; resposta=""; data={}; admin=""; tempo=999; loop=0;
+for _,f in next,{"help","skip","shaman","limite"} do
+	system.disableChatCommandDisplay(f)
+end
 mapa="@4677521"
 lang = {}
 lang.br = {
-	welcome = "<J>Bem-vindo ao module do Jogo das 3 Pistas! Não sabe como jogar? Digite !help.<br><br>Script criado por Spectra_phantom#6089. Tradução e conceito original por Hecarimjhenx#0000.",
+	welcome = "<J>Bem-vindo ao module do Jogo das 3 Pistas! Não sabe como jogar? Digite !help.<br><br>Script criado por Hecarimjhenx#0000.",
 	time = "<R>Tempo esgotado! A resposta era ",
 	fim = "<R>Partida encerrada! O jogador com melhor pontuação será o shaman!",
 	shaman = "<R>Acabou o tempo! Outro shaman será escolhido.",
@@ -36,10 +22,13 @@ lang.br = {
 	help = "<J>Como jogar:<br>Quando você tiver jogando, o shaman te dará 3 dicas. Se você acertar a pergunta, você ganha um número de pontos específico, dependendo de quanto tempo você demorou para responder. Quem tiver mais pontos no final vira o shaman do jogo.",
 	win = "acertou a resposta! A resposta era",
 	cancelled = "<R>O shaman não pode falar nada no chat durante seu turno.",
-	responder = "<ROSE>Podem responder agora!"
+	responder = "<ROSE>Podem responder agora!",
+	question = "Pergunta",
+	time = "Tempo",
+	version = "Versão"
 }
 lang.en = {
-	welcome = "<J>Welcome to 3 Tips Game! If you want help, type !help.<br><br>Script made by Spectra_phantom#6089.",
+	welcome = "<J>Welcome to 3 Tips Game! If you want help, type !help.<br><br>Script made and translated by Hecarimjhenx#0000.",
 	time = "<R>End of time! The answer was",
 	fim = "<R>The match ended! The best player will be the shaman.",
 	shaman = "<R>Time is gone! Other shaman will be selected.",
@@ -52,7 +41,10 @@ lang.en = {
 	help = "<J>How to Play:<br>When you is playing, the shaman will make 3 tips. If you discover the answer, you win points, depending of time remaining to win. At final of the match, the player that get more points will be the shaman.",
 	win = "discovered the answer! The answer was",
 	cancelled = "<R>The shaman can't type nothing on the chat.",
-	responder = "<ROSE>You can answer now!"
+	responder = "<ROSE>You can answer now!",
+	question = "Question",
+	time = "Time",
+	version = "Version"
 }
 if tfm.get.room.community == "br" then
 	text = lang.br
@@ -110,30 +102,30 @@ function eventLoop(p,f)
 		end
 	end
 	if valendo == true and f <= 59000 then
-		ui.addTextArea(1,"<font size='17'><p align='center'><font face='Segoe UI'><N>"..text.c10p.." <b>"..dica10.."",nil,5,30,780,32,0x000001,0x000001,0.9,true)
+		ui.addTextArea(1,"<font size='15'><p align='center'><font face='Consolas,Lucida Console'><N>"..text.c10p.." <b>"..dica10.."",nil,5,30,780,26,0x000001,0x000001,0.9,true)
 	end
 	if valendo == true and f <= 49000 then
-		ui.addTextArea(2,"<font size='17'><p align='center'><font face='Segoe UI'><N>"..text.c9p.." <b>"..dica9.."",nil,5,70,780,32,0x000001,0x000001,0.9,true)
+		ui.addTextArea(2,"<font size='15'><p align='center'><font face='Consolas,Lucida Console'><N>"..text.c9p.." <b>"..dica9.."",nil,5,64,780,26,0x000001,0x000001,0.9,true)
 	end
 	if valendo == true and f <= 39000 then
-		ui.addTextArea(3,"<font size='17'><p align='center'><font face='Segoe UI'><N>"..text.c8p.." <b>"..dica8.."",nil,5,110,780,32,0x000001,0x000001,0.9,true)
+		ui.addTextArea(3,"<font size='15'><p align='center'><font face='Consolas,Lucida Console'><N>"..text.c8p.." <b>"..dica8.."",nil,5,98,780,26,0x000001,0x000001,0.9,true)
 	end
-	ui.setMapName("<J>"..text.module.."   <G>|   <N>Question : <V>"..pergunta.."/"..limite.."   <G>|   <N>Time : <V>"..tempo.."s   <G>|   <N>Version <VP><b>RTM 2308.027</b><")
+	ui.setMapName("<J>"..text.module.."   <G>|   <N>"..text.question.." : <V>"..pergunta.."/"..limite.."   <G>|   <N>"..text.time.." : <V>"..tempo.."s   <G>|   <N>"..text.version.." <VP><b>RTM 3009.028</b><")
 end
 function eventChatCommand(name,message)
 	if message == "skip" then
-		if name == "Spectra_phantom#6089" or name == "Viego#0345" or name == "Forzaldenon#0000" or name == admin then
+		if name == "Hecarimjhenx#0000" or name == "Jannawindmax#0000" or name == "Forzaldenon#0000" or name == admin then
 			tfm.exec.chatMessage(text.cancel,nil)
 			tfm.exec.newGame(mapa)
 		end
 	end
 	if(message:sub(1,6) == "limite") then
-		if name == "Spectra_phantom#6089" or name == "Viego#0345" or name == "Forzaldenon#0000" or name == admin then
+		if name == "Hecarimjhenx#0000" or name == "Jannawindmax#0000" or name == "Forzaldenon#0000" or name == admin then
 			limite=tonumber(message:sub(8))
 		end
 	end
 	if(message:sub(1,6) == "shaman") then
-		if name == "Spectra_phantom#6089" or name == "Viego#0345" or name == "Forzaldenon#0000" or name == admin then
+		if name == "Hecarimjhenx#0000" or name == "Jannawindmax#0000" or name == "Forzaldenon#0000" or name == admin then
 			tfm.exec.setPlayerScore(message:sub(8),9999,false)
 			tfm.exec.newGame(mapa)
 		end
@@ -199,20 +191,20 @@ function eventKeyboard(name,key)
 end
 function eventPopupAnswer(id,name,answer)
 	if tfm.get.room.playerList[name].isShaman then
-	if id == 0 then
+	if id == 0 and string.len(answer) <= 80 and string.len(answer) >= 3 then
 		dica10=answer
 		ui.addPopup(1,2,text.c9p,name,350,125,200,true)
 	end
-	if id == 1 then
+	if id == 1 and string.len(answer) <= 80 and string.len(answer) >= 3 then
 		dica9=answer
 		ui.addPopup(2,2,text.c8p,name,350,125,200,true)
 	end
-	if id == 2 then
+	if id == 2 and string.len(answer) <= 80 and string.len(answer) >= 3 then
 		dica8=answer
 		ui.addPopup(3,2,"Insert the ANSWER:",name,350,125,200,true)
 	end
 	if id == 3 then
-		if string.len(answer) >= 2 and string.len(answer) <= 80 then
+		if string.len(answer) >= 2 and string.len(answer) <= 60 and string.len(answer) >= 3 then
 			pergunta=pergunta+1
 			resposta=string.upper(answer)
 			tfm.exec.setGameTime(64)
