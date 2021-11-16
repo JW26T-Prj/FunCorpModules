@@ -1,16 +1,16 @@
--- Mudanças na Versão 2.10.0:
--- Adição de novo tema de perguntas: música!
--- Ajustes nos temporizadores
--- Mudanças em algumas perguntas
+-- Mudanças na Versão 2.11.0:
+-- Adição de novo tema de perguntas (ver abaixo)
+-- Adição de 3 novas perguntas de música
 
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.10.0
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.11.0
 -- Por favor, edite a linha 20 a variável 'admin' pelo seu nome para ter acesso aos comandos.
 -- Você pode selecionar o tema editando a linha 21.
 -- Temas:
 -- 0 = transformice
 -- 1 = conhecimentos gerais
 -- 2 = música
--- 3 = animes (em breve)
+-- 3 = lolzinho (em breve)
+-- 4 = animes (em breve)
 
 -- Para adicionar novas perguntas, utilize a seguinte sintaxe na hora de inserir: "PERGUNTA","RESPOSTA 1","RESPOSTA 2",1 ou 2
 -- Para sugestões de perguntas ou correção de bugs contate Reksai_void2600#6638.
@@ -419,6 +419,8 @@ perguntas2={
 "Qual é o tamanho de um disco de vinil do tipo Single, que armazenava no máximo 2 faixas por lado?","7 polegadas","10 polegadas",1,
 "Qual destas músicas do Guilherme Arantes fala sobre a importância da água no Planeta Terra?","Planeta Água","Águas",1,
 "Qual o nome do extinto programa de televisão que era focado em tocar Funk?","Estação Funk","Furacão 2000",2,
+"Qual o nome do integrante do Roupa Nova que faleceu na metade de 2021?","Ricardo","Paulinho",2,
+"Complete a música: I know you're somewhere out there...","Somewhere far away","I sit by myself",1,
 }
 mapa="@7786632"
 modo="inicial" -- não mude
@@ -448,7 +450,6 @@ function reset()
 	ui.removeTextArea(2)
 	ui.removeTextArea(0)
 	tfm.exec.newGame(mapa)
-	showMessage("<R>Aviso: Algumas perguntas repetidas podem ser puladas automaticamente para maior fluidez do module. Isto não é um bug ou um problema do Transformice.")
 end
 function eventChatCommand(name,message)
 	if message == "random" then
@@ -474,7 +475,7 @@ function eventPlayerLeft(name)
 	ratos=ratos-1
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.10.0</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
+	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.11.0</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
@@ -529,7 +530,7 @@ function eventLoop(p,f)
 	else
 		ui.removeTextArea(3,nil)
 	end
-	if f <= 1500 and vivos == 1 and modo == "fim" then
+	if f <= 3000 and vivos == 1 and modo == "fim" then
 		for name,player in next,tfm.get.room.playerList do
 			if not tfm.get.room.playerList[name].isDead then
 				showMessage("<VP><b>"..name.."</b> venceu a partida!")
@@ -597,6 +598,36 @@ function randomQuests()
 		end
 		actual_question.a1=perguntas1[-2+(4*pergunta)]
 		actual_question.a2=perguntas1[-1+(4*pergunta)]
+	end
+	if tema == 2 then
+		if set_q == 0 then
+			pergunta=math.random(#perguntas2/4)
+		else
+			pergunta=set_q
+		end
+		actual_question.quest=perguntas2[-3+(4*pergunta)]
+		if perguntas2[pergunta*4] == 2 then
+			actual_question.answer=true
+		elseif perguntas2[pergunta*4] == 1 then
+			actual_question.answer=false
+		end
+		actual_question.a1=perguntas2[-2+(4*pergunta)]
+		actual_question.a2=perguntas2[-1+(4*pergunta)]
+	end
+	if tema == 3 then
+		if set_q == 0 then
+			pergunta=math.random(#perguntas3/4)
+		else
+			pergunta=set_q
+		end
+		actual_question.quest=perguntas3[-3+(4*pergunta)]
+		if perguntas3[pergunta*4] == 2 then
+			actual_question.answer=true
+		elseif perguntas3[pergunta*4] == 1 then
+			actual_question.answer=false
+		end
+		actual_question.a1=perguntas3[-2+(4*pergunta)]
+		actual_question.a2=perguntas3[-1+(4*pergunta)]
 	end
 	set_q=0
 	ui.addTextArea(1,"<p align='center'><font size='18'>"..actual_question.a1.."",nil,100,145,260,81,0,0,1.0,true)
