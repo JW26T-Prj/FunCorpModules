@@ -1,16 +1,15 @@
--- Mudanças na Versão 2.11.0:
--- Adição de novo tema de perguntas (ver abaixo)
--- Adição de 3 novas perguntas de música
+-- Mudanças na Versão 2.11.1:
+-- Correção de bugs
+-- Adição de comando para mudar o tema (!tema [0,1,2])
 
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.11.0
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.11.1
 -- Por favor, edite a linha 20 a variável 'admin' pelo seu nome para ter acesso aos comandos.
 -- Você pode selecionar o tema editando a linha 21.
 -- Temas:
 -- 0 = transformice
 -- 1 = conhecimentos gerais
 -- 2 = música
--- 3 = lolzinho (em breve)
--- 4 = animes (em breve)
+-- 3 = animes (em breve)
 
 -- Para adicionar novas perguntas, utilize a seguinte sintaxe na hora de inserir: "PERGUNTA","RESPOSTA 1","RESPOSTA 2",1 ou 2
 -- Para sugestões de perguntas ou correção de bugs contate Reksai_void2600#6638.
@@ -32,6 +31,7 @@ set_q=0
 system.disableChatCommandDisplay("random")
 system.disableChatCommandDisplay("setq")
 system.disableChatCommandDisplay("limite")
+system.disableChatCommandDisplay("tema")
 perguntas={
 "Vai na sorte :)","ok","ok",1,
 "Vai na sorte :)","ok","ok",2,
@@ -448,7 +448,9 @@ function reset()
 	rodada=0
 	ui.removeTextArea(1)
 	ui.removeTextArea(2)
+	ui.removeTextArea(3)
 	ui.removeTextArea(0)
+	modo="inicial"
 	tfm.exec.newGame(mapa)
 end
 function eventChatCommand(name,message)
@@ -459,10 +461,16 @@ function eventChatCommand(name,message)
 	end
 	if (message:sub(0,6) == "limite") then
 		limite=tonumber(message:sub(8))
-		showMessage("Limite alterado para: "..message:sub(8).."")
+		showMessage("Limite de rodadas alterado para: "..message:sub(8).."")
 	end
 	if (message:sub(0,4) == "setq") then
 		set_q=tonumber(message:sub(6))
+	end
+	if (message:sub(0,4) == "tema") then
+		if message:sub(6) == "0" or message:sub(6) == "1" or message:sub(6) == "2" then
+			tema=tonumber(message:sub(6))
+			reset()
+		end
 	end
 end
 function eventNewPlayer(name)
@@ -475,7 +483,7 @@ function eventPlayerLeft(name)
 	ratos=ratos-1
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.11.0</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
+	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.11.1</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
@@ -613,21 +621,6 @@ function randomQuests()
 		end
 		actual_question.a1=perguntas2[-2+(4*pergunta)]
 		actual_question.a2=perguntas2[-1+(4*pergunta)]
-	end
-	if tema == 3 then
-		if set_q == 0 then
-			pergunta=math.random(#perguntas3/4)
-		else
-			pergunta=set_q
-		end
-		actual_question.quest=perguntas3[-3+(4*pergunta)]
-		if perguntas3[pergunta*4] == 2 then
-			actual_question.answer=true
-		elseif perguntas3[pergunta*4] == 1 then
-			actual_question.answer=false
-		end
-		actual_question.a1=perguntas3[-2+(4*pergunta)]
-		actual_question.a2=perguntas3[-1+(4*pergunta)]
 	end
 	set_q=0
 	ui.addTextArea(1,"<p align='center'><font size='18'>"..actual_question.a1.."",nil,100,145,260,81,0,0,1.0,true)
