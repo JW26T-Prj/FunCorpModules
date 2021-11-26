@@ -1,5 +1,5 @@
-tfm.exec.disableAutoNewGame(true)
 dados2={type = 12,width = 10,height = 3000,foregound = 0,friction = 0.0,restitution = 0.0,angle = 0,color = 0x6a7495,miceCollision = true,groundCollision = true,dynamic = false}
+tfm.exec.disableAutoNewGame(true)
 tfm.exec.disableAutoShaman(true)
 tfm.exec.disableAutoTimeLeft(true)
 tfm.exec.disableAutoScore(true)
@@ -8,15 +8,7 @@ tfm.exec.disableMortCommand(true)
 tfm.exec.disableMinimalistMode(true)
 tfm.exec.disableDebugCommand(true)
 tfm.exec.setRoomMaxPlayers(30)
-loop=0
-pos=0
-first=""
-objetivo=300
-disparador=true
-bonus=true
-valendo=false
-tempo=60
-lvexp=0
+loop=0; pos=0; first=""; objetivo=300; disparador=true; bonus=true; valendo=false; tempo=60; lvexp=0;
 mapas={3600369,3618133,3777799,3842712,3880734,3973560,4079653,6974226,4289602,4459045,5013105,5032380}
 system.disableChatCommandDisplay("obj")
 system.disableChatCommandDisplay("bonus")
@@ -32,7 +24,7 @@ function eventNewPlayer(name)
 		firsts = 0,
 		pontos = 0
 		}
-	tfm.exec.chatMessage("<J>Module temporário: Defilante Evolution v0.9.85<br><N>Vá até o final do mapa e chegue antes de todo mundo!<br>Comandos: !help, !p e !rank.<br><ROSE>Module criado e traduzido por Fosfus7heads#0000.",name)
+	tfm.exec.chatMessage("<J>Module temporário: Defilante Evolution v0.9.95<br><N>Vá até o final do mapa e chegue antes de todo mundo!<br>Comandos: !help, !p e !rank.<br><ROSE>Module criado e traduzido por Fosfus7heads#0000.",name)
 end
 function split(t,s)
     	local a={}
@@ -80,7 +72,7 @@ function eventChatCommand(name,message)
 		end
 	end
 	if message == "help" then
-		ui.addPopup(0,0,"<font size='20'><p align='center'>Defilante Evolution<p align='left'><font size='13'><br><br>Neste minigame você deverá ir o mais rápido possível até o final do mapa para ir obtendo pontos. Quanto mais rápido você for, mais pontos você vai ganhar. <br>O primeiro que chegar a uma determinada pontuação ganha a partida.",name,140,180,580,true)
+		ui.addPopup(0,0,"<font size='20'><p align='center'>Defilante Evolution<p align='left'><font size='13'><br><br>Neste minigame você deverá ir o mais rápido possível até o final do mapa para ir obtendo pontos. Quanto mais rápido você for, mais pontos você vai ganhar.<br><BR>O primeiro colocado ganha 50 pontos, o segundo colocado ganha 40 pontos, e assim por diante.<br>O primeiro que chegar a uma determinada pontuação ganha a partida.",name,140,180,580,true)
 	end
 end
 function eventRanking(name)
@@ -122,6 +114,7 @@ function eventLoop(p,f)
 		end
 	end
 	if valendo == true then
+	ui.setMapName("Limite: "..objetivo.."")
 	for name,player in pairs(tfm.get.room.playerList) do
 		ui.removeTextArea(4783,true)
 		if tfm.get.room.playerList[name].score >= objetivo and pos == 1 then
@@ -129,7 +122,7 @@ function eventLoop(p,f)
 			winner=name
 			valendo=false
 			tfm.exec.newGame('@6973961')
-			tfm.exec.chatMessage("<b>Parabéns!</b> <CH>"..winner.." <N>venceu a partida com "..tfm.get.room.playerList[winner].score.." pontos!                                                                  ")
+			tfm.exec.chatMessage("<b>Parabéns!</b> <CH>"..winner.." <N>venceu a partida com "..tfm.get.room.playerList[winner].score.." pontos!")
 			ui.addTextArea(4785,"<font color='#000001'><font size='48'><font face='Comic Sans MS'>Defilante Evolution",nil,170,50,680,100,0,0,1.0,true)
 			ui.addTextArea(4784,"<font color='#000001'><font size='20'>Script feito por Fosfus7heads#0000",nil,240,120,420,100,0,0,1.0,true)
 			if p > 10000 then
