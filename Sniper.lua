@@ -2,7 +2,7 @@ tfm.exec.disableAutoNewGame(true)
 tfm.exec.disablePhysicalConsumables(true)
 tfm.exec.disableAllShamanSkills(true)
 enabled=true; vivo=0; vivos=0; loop=0; prox=false; shaman=""; remain=10; players={}; p={};
-mapas={"@7284500","@7282115","@7282073","@7284814","@6958866","@7177229","@3859389","@7285283","@7287230"}
+mapas={"@7284500","@7282115","@7282073","@7284814","@6958866","@7177229","@3859389","@7285283"}
 system.disableChatCommandDisplay("cmd",true)
 system.disableChatCommandDisplay("p",true)
 system.disableChatCommandDisplay("rank",true)
@@ -119,7 +119,7 @@ function eventNewGame()
 		end
 		vivo=vivo+1
 	end
-	tfm.exec.setGameTime(105)
+	tfm.exec.setGameTime(90)
 end
 function eventNewPlayer(name)
 			p[name] = {
@@ -130,7 +130,7 @@ function eventNewPlayer(name)
 			}
 			tfm.exec.bindKeyboard(name,40,true,true)
 		tfm.exec.bindKeyboard(name,83,true,true)
-		tfm.exec.chatMessage("<VP><b>Sniper!</b><br><N>Sobreviva às bigornas do shaman! Criado por Fosfus7heads#0000.<br><br>versão 1.4.1: remoção de mapas defeituosos",name)
+		tfm.exec.chatMessage("<VP><b>Sniper!</b><br><N>Sobreviva às bigornas do shaman! Criado por Fosfus7heads#0000.<br><br>versão 1.4.2: correção de bugs",name)
 end
 function split(t,s)
 local a={}
