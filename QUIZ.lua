@@ -1,8 +1,9 @@
--- Mudanças na Versão 2.11.1:
--- Correção de bugs
--- Adição de comando para mudar o tema (!tema [0,1,2])
+-- Mudanças na Versão 2.12.0:
+-- Adição de um mostrador de quantidade de perguntas no chat
+-- Otimizações no código
 
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.11.1
+
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.12.0
 -- Por favor, edite a linha 20 a variável 'admin' pelo seu nome para ter acesso aos comandos.
 -- Você pode selecionar o tema editando a linha 21.
 -- Temas:
@@ -443,13 +444,20 @@ function eventNewGame()
 	for name,player in next,tfm.get.room.playerList do
 		vivos=vivos+1
 	end
+	if tema == 0 then
+		count=rawlen(perguntas)/4
+	elseif tema == 1 then
+		count=rawlen(perguntas1)/4
+	elseif tema == 2 then	
+		count=rawlen(perguntas2)/4
+	end
+	showMessage("Esta é a versão oficial do Quiz de Perguntas.<br>Os temas das perguntas foram todos feitos por Reksai_void2600#6638.<br><br><N><b>Quantidade de pergunta presentes: "..count.."</b>")
 end
 function reset()
 	rodada=0
-	ui.removeTextArea(1)
-	ui.removeTextArea(2)
-	ui.removeTextArea(3)
-	ui.removeTextArea(0)
+	for i=0,3 do
+		ui.removeTextArea(i)
+	end
 	modo="inicial"
 	tfm.exec.newGame(mapa)
 end
@@ -483,7 +491,7 @@ function eventPlayerLeft(name)
 	ratos=ratos-1
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.11.1</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
+	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.12.0</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
