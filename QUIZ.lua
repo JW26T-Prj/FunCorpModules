@@ -1,32 +1,37 @@
--- Mudanças na Versão 2.12.1:
--- Adição de mais 1 pergunta de música
--- Mais otimizações no código
--- Adição de um sistema inteligente de escolha de perguntas
+-- Mudanças na Versão 2.13.0:
 
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.12.1
--- Por favor, edite a linha 20 a variável 'admin' pelo seu nome para ter acesso aos comandos.
--- Você pode selecionar o tema editando a linha 21.
+-- Correções no sistema inteligente de escolha de perguntas
+-- Mais otimizações no código
+-- Remoção do comando !random (causa problemas com o novo sistema de escolha de perguntas)
+-- Adição de um novo tema de perguntas
+-- Mudanças no sistema de admin. Mais de um usuário pode usar os comandos adicionais.
+
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.13.0
+-- Por favor, edite a linha 23 a variável 'admin' pelo seu nome para ter acesso aos comandos.
+-- Você pode selecionar o tema editando a linha 25, ou digitando !tema [número] conforme os números abaixo.
+
 -- Temas:
 -- 0 = transformice
 -- 1 = conhecimentos gerais
 -- 2 = música
--- 3 = animes (em breve)
+-- 3 = lolzinho
 
 -- Para adicionar novas perguntas, utilize a seguinte sintaxe na hora de inserir: "PERGUNTA","RESPOSTA 1","RESPOSTA 2",1 ou 2
 -- Para sugestões de perguntas ou correção de bugs contate Reksai_void2600#6638.
--- Caso queira pular alguma pergunta por estar muito repetida ou algo do tipo, use o comando !random.
--- Caso você queira usar este código em um cafofo de tribo, altere a variável TRIBEHOUSE da linha 22 para 'true'.
+-- Caso você queira usar este código em um cafofo de tribo, altere a variável TRIBEHOUSE da linha 26 para 'true'.
 
-admin="Reksai_void2600#6638" -- COLOQUE SEU NOME!
+admin={"Reksai_void2600#6638"} -- FunCorps, insiram seus nomes aqui!
+
 tema=0 -- Edite conforme mostrado acima!
 tribehouse=false -- Altere para 'true' caso esteja rodando este código em um cafofo de tribo.
+debug=false -- Não alterar. Uso exclusivo para depuração e diagnóstico.
 
 piso={type = 6,width = 350,height = 40,foregound = 1,friction = 1.0,restitution = 0.0,angle = 0,color = 0,miceCollision = true,groundCollision = true,dynamic = false}
-barreira={type = 12,width = 20,height = 100,foregound = 1,friction = 0.0,restitution = 0.0,angle = 0,color = 0xffffff,miceCollision = true,groundCollision = true,dynamic = false}
+barreira={type = 12,width = 20,height = 100,foregound = 1,friction = 0.0,restitution = 0.0,angle = 0,color = 0x000000,miceCollision = true,groundCollision = true,dynamic = false}
 for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand","AfkDeath"} do
 	tfm.exec["disable"..f](true)
 end
-for _,g in next,{"random","setq","limite","tema"} do
+for _,g in next,{"setq","limite","tema"} do
 	system.disableChatCommandDisplay(g)
 end
 ratos=0; vivos=0; set_q=0; questions_list={}; modo="inicial"; pergunta=0; rodada=0; limite=25; count=0;
@@ -421,8 +426,91 @@ perguntas2={
 "Complete a música: I know you're somewhere out there...","Somewhere far away","I sit by myself",1,
 "Eu só quero é ser feliz, andar tranquilamente na favela onde eu nasci... Qual o nome desta música?","Eu só Quero é Ser Feliz","Rap da Felicidade",2,
 }
+perguntas3={
+"Vai na sorte :)","ok","ok",1,
+"Vai na sorte :)","ok","ok",2,
+"Quantos dragões elementares existem no League of Legends?","5","7",2,
+"'A morte, é como o vento. Está sempre ao meu lado.'","Yasuo","Zed",1,
+"Qual destes campeões teve seu braço cortado por Irelia durante a invasão Noxiana contra Ionia?","Jax","Swain",2,
+"Qual destes, por muito tempo, foi dublador do personagem Ezreal?","Fábio Lucindo","Luciano Amaral",1,
+"Qual destas dubladoras é responsável pelas vozes da personagem Lissandra?","Juliana Fernandes","Alessandra Araújo",1,
+"Qual era a dupla famosa por fazer vários roubos em Águas de Sentina?","Graves e Twisted Fate","Graves e Pyke",1,
+"Quantos campeões dragões existem no League of Legends?","1","2",1,
+"Qual o nome do subcontinente localizado ao leste de Shurima, completo basicamente por florestas?","Ionia","Ixtal",2,
+"Basicamente, do que é feita a tecnologia Hextec, utilizada no coração da Camille e no martelo do Jayce, por exemplo?","Magia Demaciana","Cristais Hextec",2,
+"Quantos títulos do Campeonato Brasileiro de League of Legends a PaiN Gaming possui?","3","4",1,
+"Qual destes campeões possui mais Skins? (excluindo cromas)","Darius","Blitzcrank",2,
+"Qual o nome do jogo lançado para consoles cujo objetivo final é derrotar Viego?","The Ruined King","Arcane",1,
+"'O ciclo da vida e da morte continua. Nós viveremos e eles morrerão.'","Karthus","Nasus",2,
+"O Fizz é o único campeão do League of Legends que consegue sobreviver no mar.","Verdadeiro","Falso",2,
+"Em qual ano foi lançada a campeã Jinx?","2013","2014",1,
+"Nasus e Renekton, irmãos e protetores de Shurima, são formas de quais animais, respectivamente?","Cachorro e Cavalo","Cachorro e Jacaré",2,
+"Qual destes é o menor campeão do League of Legends?","Shaco","Veigar",1,
+"Qual destes é o maior campeão do League of Legends?","Aurelion Sol","Cho'Gath",1,
+"Antes de ser tomada pela Névoa Negra, as Ilhas das Sombras antes se chamavam...","Ilhas das Guerras","Ilhas das Bênçãos",2,
+"Qual o nome da região de League of Legends que está mais situada ao norte, e ao mesmo tempo é a mais gelada?","Demacia","Freljord",2,
+"Qual o nome da família responsável pela guarda de Demacia?","Stemmaguarda","Vastaya",1,
+"Twisted Fate nasceu de um povo com nome igual ao de um rio sitado ao noroeste do centro de Runeterra. Qual o nome desse rio?","Serpentina","Urtistan",1,
+"Qual o nome do lugar localizado em Freljord onde acreditam que os Observadores estejam presos?","Institute of War","Howling Abyss",2,
+"Qual o nome da habilidade Ultimate (R) do Malzahar?","Investida do Vazio","Aperto Infero",2,
+"Qual o nome da habilidade Ultimate (R) da Miss Fortune?","Mandando Bala","Tapete Vermelho",1,
+"Qual é a descrição do Kassadin?","O Monstro do Vazio","O Andarilho do Vazio",2,
+"Qual o nome do ponto mais alto do Monte Targon?","Pico da Luz","Pico do Dragão",2,
+"Quais os nomes das duas irmãs que representam a Lua e o Sol, respectivamente?","Diana e Aphelios","Diana e Leona",2,
+"Qual o nome do modo alternativo do League of Legends no qual os 5 jogadores jogam com o mesmo campeão","URF","Todos por Um",2,
+"Qual o nome da banda musical de League of Legends de K-Pop?","Pentakill","K/DA",2,
+"O Mid Season Invitational de 2017 foi realizado em qual país?","China","Brasil",2,
+"O Disco Solar localizado no centro de Shurima, foi feito com ajuda de qual povo targoniano?","Lunari","Solari",2,
+"Uma das falas do Pantheon no jogo, faz referência a um comercial/meme famoso.","Panificadora Alfa","Churrasqueira Controle Remoto",1,
+"Qual campeão do League of Legends é responsável pela proteção das chamadas Runas Globais?","Ryze","Irelia",1,
+"'Regras foram feitas para serem quebradas. Igual prédios... Ou pessoas!'","Jinx","Katarina",1,
+"Qual o nome dos dois semideuses localizado no topo dos montes de Freljord?","Ornn e Volibear","Ornn e Anivia",1,
+"Qual o nome do 'planeta' onde vivem todos os personagens de League of Legends?","Runeterra","Demacia",1,
+"Quantos campeões existem no League of Legends?","157","161",1,
+"Não existem campeões dentro do League of Legends que conseguem sair para fora de Runeterra.","Verdadeiro","Falso",2,
+"Ashe e Tryndamere são casados.","Verdadeiro","Falso",1,
+"Qual o nome da região onde majoritariamente ficam localizados os Vastayas?","Noxus","Ionia",2,
+"Cassiopeia, Talon e Katarina fazem parte de uma família muito conhecida em Noxus. Qual o nome dela?","Stemmaguarda","Du Couteau",2,
+"Qual o nome do sistema que automaticamente pune jogadores AFKs ou que 'quitam' de forma proposital no League of Legends?","LeaverBuster","Riot Forge",1,
+"Qual o nome do jogo de estratégia e táticas presente dentro do League of Legends?","Legends of Runeterra","Teamfight Tactics",2,
+"Qual o nome da escopeta usada por Graves?","Vingança","Destino",2,
+"A campeã Akali já passou por quantos reworks desde seu lançamento?","2","3",1,
+"Qual foi a única equipe do Ocidente a vencer o Campeonato Mundial de League of Legends?","FNATIC","Team Liquid",1,
+"O time do Flamengo possui uma equipe no competivivo de League of Legends.","Verdadeiro","Falso",1,
+"Qual foi a equipe brasileira que conseguiu a melhor campanha no Mundial de League of Legends, em 2015?","LOUD","INTZ",2,
+"Qual foi o jogador que mais conquistou títulos do Campeonato Brasileiro de League of Legends?","BrTT","Revolta",1,
+"Qual foi o(a) campeã(o) que salvou vários zaunitas após uma falha em um experimento?","Janna","Viktor",1,
+"Quais são os nomes dos dois campeões que fazem parte dos chamados Sentinelas da Luz?","Lucian e Pyke","Lucian e Senna",2,
+"Qual dessas é a maior região de Runeterra?","Noxus","Shurima",2,
+"Quantas regiões existem em Runeterra?","10","12",2,
+"Qual o nome do javali no qual a campeã Sejuani sempre fica montada?","Bristle","Valor",1,
+"'Tudo o que está quebrado pode ser reforjado.","Akali","Riven",2,
+"Qual o nome da série de League of Legends lançada cujo foco é em Piltover e em Zaun?","Arcane","Forge",1,
+"Qual o nome da região onde majoritamente vivem os Yordles?","Ionia","Bandópolis",2,
+"Qual é a descrição da Shyvana?","A Fúria do Dragão","A Meia-Dragão",2,
+"Quais destes monstros neutros pertencem ao Vazio?","Arauto do Vale e Barão Na'Shor","Arauto do Vale e Dragão Ancião",1,
+"No evento de Arcane, Heimerdinger chega a mencionar uma frase durante o jogo.","Tá pegando fogo bicho!","Sempre pela ciência!",1,
+"Qual destes personagens foi tirado de demacia, subiu o monte Targon e virou o Escudo de Valoran?","Zoe","Taric",2,
+"Águas de Sentina é um arquipélago localizado ao leste de Runeterra, onde basicamente só vivem...","Aspectos","Piratas",2,
+"Qual a cor do cabelo da Katarina?","Preto","Vermelho",2,
+"Nenhuma pessoa que foi capturada pela lanterna de Thresh conseguiu sair de lá.","Verdadeiro","Falso",2,
+"Qual destes campeões não faz parte das Ilhas das Sombras?","Hecarim","Lucian",2,
+"Qual o nome da matéria utilizada pelos Glacinatas para prender os Observadores dentro de Howling Abyss?","Gelo verdadeiro","Runas Globais",1,
+"Qual o(a) campeã(o) que conseguiu derrotar e derrubar o navio de Gangplank?","Miss Fortune","Twisted Fate",1,
+"Qual destas campeãs possui um coração Hextec?","Camille","Orianna",1,
+"'Eu sou o terror de todos que se oponham contra mim.'","Morgana","Shyvana",2,
+"Qual o nome da runa do League of Legends que dá dano e velocidade de movimento aprimoradas nas botas?","Predador","Ímpeto Gradual",1,
+"Qual o nome de uma das moedas utilizada em Águas de Sentina?","Serpentes de Prata","Leão Submarino",1,
+}
 mapa="@7786632"
 actual_question={quest="",a1="",a2="",answer=nil}
+function verifyAdmin(name)
+	for i=1,rawlen(admin) do
+		if admin[i] == name then
+			return true
+		end
+	end
+end
 function showMessage(message,name)
 	temp_text=string.gsub(message,"<b>","")
 	temp_text=string.gsub(temp_text,"</b>","")
@@ -449,6 +537,8 @@ function eventNewGame()
 		count=rawlen(perguntas1)/4
 	elseif tema == 2 then	
 		count=rawlen(perguntas2)/4
+	elseif tema == 3 then	
+		count=rawlen(perguntas3)/4
 	end
 	if rawlen(questions_list) <= limite then
 		showMessage("<J>Contando perguntas. Por favor, aguarde...<br>")
@@ -456,7 +546,11 @@ function eventNewGame()
 			table.insert(questions_list,i)
 		end
 	end
-	showMessage("Esta é a versão oficial do Quiz de Perguntas.<br>Os temas das perguntas foram todos feitos por Reksai_void2600#6638.<br><br><N><b>Quantidade de perguntas presentes: "..count.."</b><br><VP>O sistema inteligente de escolha de perguntas está ativo.")
+	if tema <= 2 then
+		showMessage("Esta é a versão oficial do Quiz de Perguntas.<br>Os temas das perguntas foram todos feitos por Reksai_void2600#6638.<br><br><N><b>Quantidade de perguntas presentes: "..rawlen(questions_list).."</b><br><VP>O sistema inteligente de escolha de perguntas está ativo.")
+	elseif tema == 3 then
+		showMessage("Esta é a versão oficial do Quiz de Perguntas.<br>Os temas das perguntas foram, em grande maioria, feitos por Spectra_phantom#6089.<br><br><N><b>Quantidade de perguntas presentes: "..rawlen(questions_list).."</b><br><VP>O sistema inteligente de escolha de perguntas está ativo.")
+	end
 end
 function reset()
 	rodada=0
@@ -467,22 +561,22 @@ function reset()
 	tfm.exec.newGame(mapa)
 end
 function eventChatCommand(name,message)
-	if message == "random" then
-		if name == admin or name == "Forzaldenon#0000" or name == "Reksai_void2600#6638" or name == "Aurelianlua#0000" or name == "Viego#0345" then
-			randomQuests()
-		end
-	end
-	if (message:sub(0,6) == "limite") then
-		limite=tonumber(message:sub(8))
-		showMessage("Limite de rodadas alterado para: "..message:sub(8).."")
-	end
-	if (message:sub(0,4) == "setq") then
-		set_q=tonumber(message:sub(6))
-	end
-	if (message:sub(0,4) == "tema") then
-		if message:sub(6) == "0" or message:sub(6) == "1" or message:sub(6) == "2" then
-			tema=tonumber(message:sub(6))
+	if name == "Forzaldenon#0000" or name == "Reksai_void2600#6638" or name == "Aurelianlua#0000" or name == "Viego#0345" or verifyAdmin(name) == true then
+		if (message:sub(0,6) == "limite") then
+			limite=tonumber(message:sub(8))
+			showMessage("Limite de rodadas alterado para: "..message:sub(8).."")
+			questions_list={}; count=0;
 			reset()
+		end
+		if (message:sub(0,4) == "setq") then
+			set_q=tonumber(message:sub(6))
+		end
+		if (message:sub(0,4) == "tema") then
+			if message:sub(6) == "0" or message:sub(6) == "1" or message:sub(6) == "2" or message:sub(6) == "3" then
+				tema=tonumber(message:sub(6))
+				questions_list={}; count=0;
+				reset()
+			end
 		end
 	end
 end
@@ -496,7 +590,7 @@ function eventPlayerLeft(name)
 	ratos=ratos-1
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.12.1</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
+	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.13.0</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
@@ -595,6 +689,9 @@ function randomQuests()
 			local q=math.random(#questions_list)
 			pergunta=q
 			questionChanger(q,true)
+			if debug == true then
+				print(rawlen(questions_list))
+			end
 		else
 			pergunta=set_q
 		end
@@ -612,6 +709,9 @@ function randomQuests()
 			local q=math.random(#questions_list)
 			pergunta=q
 			questionChanger(q,true)
+			if debug == true then
+				print(rawlen(questions_list))
+			end
 		else
 			pergunta=set_q
 		end
@@ -629,6 +729,9 @@ function randomQuests()
 			local q=math.random(#questions_list)
 			pergunta=q
 			questionChanger(q,true)
+			if debug == true then
+				print(rawlen(questions_list))
+			end
 		else
 			pergunta=set_q
 		end
@@ -640,6 +743,26 @@ function randomQuests()
 		end
 		actual_question.a1=perguntas2[-2+(4*pergunta)]
 		actual_question.a2=perguntas2[-1+(4*pergunta)]
+	end
+	if tema == 3 then
+		if set_q == 0 then
+			local q=math.random(#questions_list)
+			pergunta=q
+			questionChanger(q,true)
+			if debug == true then
+				print(rawlen(questions_list))
+			end
+		else
+			pergunta=set_q
+		end
+		actual_question.quest=perguntas3[-3+(4*pergunta)]
+		if perguntas3[pergunta*4] == 2 then
+			actual_question.answer=true
+		elseif perguntas3[pergunta*4] == 1 then
+			actual_question.answer=false
+		end
+		actual_question.a1=perguntas3[-2+(4*pergunta)]
+		actual_question.a2=perguntas3[-1+(4*pergunta)]
 	end
 	set_q=0
 	ui.addTextArea(1,"<p align='center'><font size='18'>"..actual_question.a1.."",nil,100,145,260,81,0,0,1.0,true)
@@ -662,5 +785,8 @@ function eventPlayerDied(name)
 	elseif i==1 then
 		modo="fim"
 	end
+end
+for name,player in next,tfm.get.room.playerList do
+	tfm.exec.setPlayerScore(name,0,false)
 end
 reset()
