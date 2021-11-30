@@ -1,9 +1,9 @@
--- Mudanças na Versão 2.12.0:
--- Adição de um mostrador de quantidade de perguntas no chat
--- Otimizações no código
+-- Mudanças na Versão 2.12.1:
+-- Adição de mais 1 pergunta de música
+-- Mais otimizações no código
+-- Adição de um sistema inteligente de escolha de perguntas
 
-
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.12.0
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.12.1
 -- Por favor, edite a linha 20 a variável 'admin' pelo seu nome para ter acesso aos comandos.
 -- Você pode selecionar o tema editando a linha 21.
 -- Temas:
@@ -26,13 +26,10 @@ barreira={type = 12,width = 20,height = 100,foregound = 1,friction = 0.0,restitu
 for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand","AfkDeath"} do
 	tfm.exec["disable"..f](true)
 end
-ratos=0
-vivos=0
-set_q=0
-system.disableChatCommandDisplay("random")
-system.disableChatCommandDisplay("setq")
-system.disableChatCommandDisplay("limite")
-system.disableChatCommandDisplay("tema")
+for _,g in next,{"random","setq","limite","tema"} do
+	system.disableChatCommandDisplay(g)
+end
+ratos=0; vivos=0; set_q=0; questions_list={}; modo="inicial"; pergunta=0; rodada=0; limite=25; count=0;
 perguntas={
 "Vai na sorte :)","ok","ok",1,
 "Vai na sorte :)","ok","ok",2,
@@ -422,12 +419,9 @@ perguntas2={
 "Qual o nome do extinto programa de televisão que era focado em tocar Funk?","Estação Funk","Furacão 2000",2,
 "Qual o nome do integrante do Roupa Nova que faleceu na metade de 2021?","Ricardo","Paulinho",2,
 "Complete a música: I know you're somewhere out there...","Somewhere far away","I sit by myself",1,
+"Eu só quero é ser feliz, andar tranquilamente na favela onde eu nasci... Qual o nome desta música?","Eu só Quero é Ser Feliz","Rap da Felicidade",2,
 }
 mapa="@7786632"
-modo="inicial" -- não mude
-pergunta=0
-rodada=0
-limite=25
 actual_question={quest="",a1="",a2="",answer=nil}
 function showMessage(message,name)
 	temp_text=string.gsub(message,"<b>","")
@@ -436,6 +430,11 @@ function showMessage(message,name)
 		tfm.exec.chatMessage(message,name)
 	elseif tribehouse == true then
 		ui.addTextArea(0,"<p align='center'><font size='16'>"..message.."",name,10,22,780,48,0x000001,0x000001,1.0,true)
+	end
+end
+function questionChanger(id,remove)
+	if remove == true then
+		table.remove(questions_list,id)
 	end
 end
 function eventNewGame()
@@ -451,7 +450,13 @@ function eventNewGame()
 	elseif tema == 2 then	
 		count=rawlen(perguntas2)/4
 	end
-	showMessage("Esta é a versão oficial do Quiz de Perguntas.<br>Os temas das perguntas foram todos feitos por Reksai_void2600#6638.<br><br><N><b>Quantidade de pergunta presentes: "..count.."</b>")
+	if rawlen(questions_list) <= limite then
+		showMessage("<J>Contando perguntas. Por favor, aguarde...<br>")
+		for i=1,count do
+			table.insert(questions_list,i)
+		end
+	end
+	showMessage("Esta é a versão oficial do Quiz de Perguntas.<br>Os temas das perguntas foram todos feitos por Reksai_void2600#6638.<br><br><N><b>Quantidade de perguntas presentes: "..count.."</b><br><VP>O sistema inteligente de escolha de perguntas está ativo.")
 end
 function reset()
 	rodada=0
@@ -491,7 +496,7 @@ function eventPlayerLeft(name)
 	ratos=ratos-1
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.12.0</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
+	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.12.1</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
@@ -587,7 +592,9 @@ function randomQuests()
 	rodada=rodada+1
 	if tema == 0 then
 		if set_q == 0 then
-			pergunta=math.random(#perguntas/4)
+			local q=math.random(#questions_list)
+			pergunta=q
+			questionChanger(q,true)
 		else
 			pergunta=set_q
 		end
@@ -602,7 +609,9 @@ function randomQuests()
 	end
 	if tema == 1 then
 		if set_q == 0 then
-			pergunta=math.random(#perguntas1/4)
+			local q=math.random(#questions_list)
+			pergunta=q
+			questionChanger(q,true)
 		else
 			pergunta=set_q
 		end
@@ -617,7 +626,9 @@ function randomQuests()
 	end
 	if tema == 2 then
 		if set_q == 0 then
-			pergunta=math.random(#perguntas2/4)
+			local q=math.random(#questions_list)
+			pergunta=q
+			questionChanger(q,true)
 		else
 			pergunta=set_q
 		end
