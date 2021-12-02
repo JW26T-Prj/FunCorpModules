@@ -1,509 +1,316 @@
--- Mudanças na Versão 2.13.0:
+-- Script do module Mestre Mandou, versão RTM 14189.085, desenvolvido por Rakan_raster#0000.
 
--- Correções no sistema inteligente de escolha de perguntas
--- Mais otimizações no código
--- Remoção do comando !random (causa problemas com o novo sistema de escolha de perguntas)
--- Adição de um novo tema de perguntas
--- Mudanças no sistema de admin. Mais de um usuário pode usar os comandos adicionais.
+admin={""} -- Se estiver rodando este código em uma sala FunCorp, insira o nome dos FunCorps e digite !fc para habilitar algumas funções e comandos especiais.
+-- If you will run this module on a FunCorp session, type the nickname(s) of FunCorp(s) into 'admin' table above and type !fc to enable special functions and commands.
+-- FunCorp Comandos/Commands: !run [@code], !limit [number], !tc [message], !kill [player#tag], !pw [password].
 
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.13.0
--- Por favor, edite a linha 23 a variável 'admin' pelo seu nome para ter acesso aos comandos.
--- Você pode selecionar o tema editando a linha 25, ou digitando !tema [número] conforme os números abaixo.
-
--- Temas:
--- 0 = transformice
--- 1 = conhecimentos gerais
--- 2 = música
--- 3 = lolzinho
-
--- Para adicionar novas perguntas, utilize a seguinte sintaxe na hora de inserir: "PERGUNTA","RESPOSTA 1","RESPOSTA 2",1 ou 2
--- Para sugestões de perguntas ou correção de bugs contate Reksai_void2600#6638.
--- Caso você queira usar este código em um cafofo de tribo, altere a variável TRIBEHOUSE da linha 26 para 'true'.
-
-admin={"Reksai_void2600#6638"} -- FunCorps, insiram seus nomes aqui!
-
-tema=0 -- Edite conforme mostrado acima!
-tribehouse=false -- Altere para 'true' caso esteja rodando este código em um cafofo de tribo.
-debug=false -- Não alterar. Uso exclusivo para depuração e diagnóstico.
-
-piso={type = 6,width = 350,height = 40,foregound = 1,friction = 1.0,restitution = 0.0,angle = 0,color = 0,miceCollision = true,groundCollision = true,dynamic = false}
-barreira={type = 12,width = 20,height = 100,foregound = 1,friction = 0.0,restitution = 0.0,angle = 0,color = 0x000000,miceCollision = true,groundCollision = true,dynamic = false}
-for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand","AfkDeath"} do
+for _,f in next,{"AutoShaman","AutoNewGame","AutoTimeLeft","DebugCommand"} do
 	tfm.exec["disable"..f](true)
 end
-for _,g in next,{"setq","limite","tema"} do
-	system.disableChatCommandDisplay(g)
+tfm.exec.setAutoMapFlipMode(nil)
+debug.disableEventLog(true)
+tfm.exec.setRoomMaxPlayers(35)
+mapas={"@6788085","@6788174","@6788154","@6788715","@6788728","@6789271","@6790527","@6791838","@6789356","@6822331","@7290275","@6754319","@7686598","@7750148","@7688066","@6790295","@6788183","@6784965","@6789235","@6789853","@6790385","@6791944","@6801706","@6792470","@6806109","@6821950","@6866406","@6866437","@6885971","@5328362","@5957905","@7055459","@7525277","@2684847","@7214363","@6792516","@6825340","@6838871","@6788693","@6789272","@6799996","@6799998","@6808957","@6803018","@6809464","@6859175","@6907177","@7404327","@7382263","@6885799","@6790912","@6833993","@7721192","@7309605","@6532621","@6788861","@6789249","@6790484","@6792518","@6794050","@6830799","@6866549","@6834529","@6876563","@6888512","@6893463","@7431981","@7146925","@6937148","@6356881","@6789280","@6790895","@6799997","@6789324","@6803128","@6900149","@3832586","@6791871","@6811934","@7631682","@6876638","@6892608","@6982387","@7404106","@7405103","@7400694","@7400678","@7412412","@7412422","@7491944","@7755685","@6843950","@6810292","@3110915","@6789263","@4411212","@7354947","@3398791","@7201360","@6897042","@7748874","@5549586","@6809461"}
+active=0; vivo=0; rato=0; dificuldade=1; rodadas=0; rodada=0; number=0; xpos=0; ypos=0; data={}; lang={}; tempo=10; counter=0; q=""; a=""; qtime=10; creator="";
+fc_cmds={1,2,4,5,6,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,28,30,31,32,33,34,35,36,40,41,42,43,45,46,47,48,49,50,51,53,57,58,59,61,62,65,66,67,69,71,75,76,77,78,79,80,81}
+spiderweb={type = 15,width = 60,height = 60}
+fc_mode=false; xpos=0; xpos2=0; unlocked=true;
+for _,f in next,{"command","pw","limit","run","fc","tc","q","a","t","kill"} do
+	system.disableChatCommandDisplay(f)
 end
-ratos=0; vivos=0; set_q=0; questions_list={}; modo="inicial"; pergunta=0; rodada=0; limite=25; count=0;
-perguntas={
-"Vai na sorte :)","ok","ok",1,
-"Vai na sorte :)","ok","ok",2,
-"Em que ano o Transformice foi criado?","2009","2010",2,
-"Qual dessas categorias de mapa representa um mapa excluído?","P43","P44",2,
-"Qual destas tags é atribuída aos administradores do Transformice?","#0000","#0001",2,
-"Quantos morangos são necessários para trocar de nickname no Transformice","1500","2500",1,
-"Quantos queijos no perfil são necessários para rodar scripts LUA no cafofo?","100","1000",1,
-"Se você digitar /cafe, o que acontece?","Abre o café","Faz aparecer cafés voadores",2,
-"Quantos morangos custa o item mais caro da loja?","550","600",1,
-"Funcorps fazem parte da Staff BR.","Verdadeiro","Falso",2,
-"Qual a categoria atribuída a mapas de Survivor?","P10","P12",1,
-"Qual a função do comando /langue?","Muda a linguagem do jogo","Muda você de sala",1,
-"Qual destes jogos não foi feito pela Atelier 801?","Bombom","Fortoresse",1,
-"Qual o limite máximo de amigos do Transformice?","500","1000",1,
-"Há quantos emoticons no Transformice?","10","14",1,
-"Há quantas ações de rato no Transformice?","10","14",2,
-"Qual o nome do antigo modo do module #deathmatch?","Baffbotffa","Baffbot",1,
-"A partir de qual nível todas as habilidades de shaman são desbloqueadas?","20","30",1,
-"O que acontece se você digitar /version?","Mostra informações do jogo","Abre a versão do jogo",2,
-"Qual título é desbloqueado quando você consegue 40.000 firsts?","RELÂMPAGO","Mestre do Vento",1,
-"Existem quantas habilidades de Shaman no Transformice?","75","65",1,
-"O jogo Transformice foi desenvolvido em qual país?","EUA","França",2,
-"Qual destas tags é atribuída aos Modsents do Transformice?","#0010","#0015",2,
-"Qual o nome da Deusa Shaman do Transformice?","Elise","Elisah",2,
-"Qual destes modules foi desenvolvido por Sharpiepoops, pioneiro nos modules do Transformice?","#keyhunt","#campal",1,
-"Originalmente no Transformice era possível criar mapas com quantos tipos de pisos?","5","8",1,
-"Quem é o criador atual do module True or False?","Spectra_phantom#6089","Haxhhhhhhhhh#0000",1,
-"Qual o nome da empresa que é responsável pelo Transformice?","Atelier 801","Riot Games",1,
-"Qual destes pregos não pode ser utilizado no modo difícil?","Vermelho","Amarelo",1,
-"Há quantas categorias de itens na loja?","16","17",2,
-"Em que ano o Transformice atingiu seu número máximo de jogadores ativos?","2012","2013",1,
-"Quantos queijos custa a exportação de um mapa como cafofo da tribo?","5","40",1,
-"Quantos jogos a Atelier 801 tem atualmente?","5","6",2,
-"Qual é a fricção e a restituição, respectivamente, de um piso de chocolate?","20 e 0","0 e 20",1,
-"Qual destes usuários é responsável pelo module #anvilwar?","Jessiewind26#2546","Spectra_phantom#6089",2,
-"Qual destes usuários é responsável pelo module #batata?","Laagaadoo#0000","Ikke#0095",1,
-"Qual destes comandos é utilizado para a inserção de um código especial da Japan Expo?","/lua","/code",2,
-"A habilidade 'Meep!' faz parte de qual árvore de Habilidades?","Selvagem","Físico",1,
-"Qual a categoria atribuída a mapas de Cafofo da Tribo?","P22","P20",1,
-"FunCorps são capazes de rodar scripts LUA em salas que não são de modules.","Verdadeiro","Falso",1,
-"O cargo de Modsent é atribuído a jogadores que são...","Moderadores e Funcorps","Moderadores e Sentinelas",2,
-"Quem é o gerenciador atual do module #pictionary?","Shamousey#0015","Ork#0015",1,
-"Quantas árvores de habilidades de shaman existem no Transformice?","3","5",2,
-"Qual o nome do cargo pré-definido do criador de uma tribo?","Shaman da Tribo","Líder Espiritual",2,
-"Qual o nome do título que a Melibellule usa?","La Belette","Fromadmin",2,
-"Qual a sigla dada ao 'banimento' permanente de uma conta do servidor?","BoS","Permaban",1,
-"Em qual module você precisa se esconder atrás das decorações do mapa?","#prophunt","#hidenseek",2,
-"Qual o nome da equipe que é responsável pela categorização de mapas do Transformice?","Module Team","MapCrew",2,
-"Quantas vezes você precisa completar um mapa bootcamp para ele ser contabilizado no perfil, quando você acaba de entrar na sala?","1","2",2,
-"Usuários do servidor BR eram proibidos de falar no antigo servidor EN1.","Verdadeiro","Falso",2,
-"Usuários do servidor BR eram proibidos de falar no antigo servidor EN2.","Verdadeiro","Falso",1,
-"O Transformice já fez, em 2019, um evento baseado em anime.","Verdadeiro","Falso",2,
-"No Transformice, os ratos que tocarem em um piso ácido...","Ficam presos nele","Morrem instantaneamente",2,
-"Qual o nome do criador do module que estamos jogando agora?","Reksai_void2600#6638","Patrick_mahomes#1795",1,
-"A habilidade 'Reparadora' faz parte de qual árvore de Habilidades?","Mecânico","Físico",2,
-"A mensagem de reinício do servidor do Transformice aparece em qual cor?","Rosa","Roxo",1,
-"Quantos queijos custa o pelo mais caro da loja?","10000","8000",1,
-"Quantos ratos salvos são necessários para desbloquear o modo difícil?","1000","2000",1,
-"O Transformice possui uma série animada de desenhos no YouTube.","Verdadeiro","Falso",1,
-"A técnica chamada 'time deviation' ou 'clock drift' pode deixar seu rato mais rápido ou lento sem uso de hack.","Verdadeiro","Falso",1,
-"A habilidade 'Anjo' faz parte de qual árvore de Habilidades?","Mecânico","Mestre do Vento",2,
-"Vanilla, Survivor e Defilante são modules do Transformice.","Verdadeiro","Falso",2,
-"Quantos ratos salvos são necessários para desbloquear o modo divino?","5000","10000",1,
-"Os membros da Staff podem entrar nos cafofos das tribos, mesmo não sendo membro delas.","Verdadeiro","Falso",1,
-"Japan Expo é o nome de um evento do Transformice que acontece em qual país?","Japão","França",2,
-"Qual dessas tags é atribuída aos Funcorps do Transformice?","#0015","Não tem tag definida",2,
-"Qual dessas tags é atribuída aos MapCrews do Transformice?","#0020","Não tem tag definida",1,
-"Qual destes comandos é utilizado para a inserção de um script LUA?","/lua","/code",1,
-"Qual destes eventos não é mais utilizado no Transformice?","Carnaval","Natal",1,
-"A habilidade 'Superstar' faz parte de qual árvore de Habilidades?","Selvagem","Guia Espiritual",2,
-"Qual destes usuários nunca se tornou Funcorp?","Shamousey#0015","Bolodefchoco#0015",1,
-"Se você ficar muito tempo dentro da água no Transformice, você morre automaticamente.","Verdadeiro","Falso",2,
-"É possível ganhar queijos na loja apenas jogando modules.","Verdadeiro","Falso",1,
-"Qual categoria de mapas é atribuída aos mapas de Defilante?","P18","P19",1,
-"Qual o nome da equipe que é responsável pelos modules do Transformice?","Module Team","MapCrew",1,
-"Qual categoria de mapas é atribuída aos mapas Racing?","P7","P17",2,
-"Qual destes modules foi feito por um brasileiro?","#football","#parkour",2,
-"Qual o nome do título que o Tigrounette usa?","La Belette","Les Populaires",1,
-"A habilidade 'Espírito Ancestral' faz parte de qual árvore de Habilidades?","Guia Espiritual","Mestre do Vento",1,
-"Quantos queijos custa a compra de um 2ª visual de roupas no Transformice?","100","1000",2,
-"Quem é o criador do module #circuit?","Bolodefchoco#0015","Ninguem#0095",2,
-"Quantos queijos custa a customização de uma roupa no Transformice?","2000","4000",1,
-"Em qual ano estreou o sistema de missões no Transformice?","2019","2020",1,
-"Em qual ano estreou o evento de Pesca do Transformice?","2011","2012",2,
-"Quem foi o primeiro gerenciador do module Mestre Mandou?","Haxhhhhhhhhh#0000","Jessiewind26#2546",2,
-"Quantos queijos custa a customização de um item de shaman no Transformice?","2000","4000",2,
-"Qual o nome da plataforma de execução que o Transformice utiliza?","Adobe Air","Adobe Flash Player",2,
-"Qual é o limite de taxa de quadros que o Transformice pode operar?","60 fps","Depende do cliente",1,
-"É possível ganhar queijos no perfil apenas jogando modules.","Verdadeiro","Falso",2,
-"É possível coletar estatísticas no perfil jogando quais modos oficiais?","Survivor, Racing e Vanilla","Survivor, Racing e Defilante",2,
-"É possível comprar morangos pelo celular no Brasil.","Verdadeiro","Falso",2,
-"Usuários do servidor BR podem falar apenas no servidor brasileiro.","Verdadeiro","Falso",2,
-"A habilidade 'Olho de Águia' faz parte de qual árvore de Habilidades?","Mecânico","Mestre do Vento",1,
-"Em qual ano estreou o module #batata?","2013","2014",2,
-"Em qual ano estreou o modo Defilante?","2014","2015",1,
-"Qual modo do Transformice foi desativado devido a limitação dos vídeos no Transformice?","Music","Nekodancer",1,
-"Em qual ano estreou o fórum em HTML5 do Atelier 801?","2015","2016",1,
-"Usuários comuns não podem criar mapas nos quais os shamans possam usar portais.","Verdadeiro","Falso",2,
-"Qual é a fricção e a restituição, respectivamente, de um piso de lava?","20 e 0","0 e 20",2,
-"Apenas membros da Staff do Transformice podem criar mapas no modo Noite.","Verdadeiro","Falso",2,
-"Qual a tribo do Tigrounette?","Lute como uma garota","Les Populaires",2,
-"É necessário vincular uma conta de e-mail quando você cria novas contas no Transformice.","Verdadeiro","Falso",1,
-"Qual título é desbloqueado quando você consegue 20.000 firsts?","RELÂMPAGO","Mestre do Vento",2,
-"Qual título é desbloqueado quando você cria uma conta no Transformice?","Alpha & Ômega","Ratinho",2,
-"É possível ganhar uma medalha exclusiva quando você entra no Transformice pela Steam.","Verdadeiro","Falso",1,
-"Há quantos tipos de piso no Transformice?","16","18",2,
-"Quantos pregos para o Shaman existem no Transformice?","3","5",2,
-"Qual desses objetos de shaman é maior em altura?","Tábua gigante","Caixa grande",2,
-"Quantos tamanhos de tábua existem no Transformice?","4","3",1,
-"Em qual ano estreou o evento de Halloween do Transformice?","2011","2010",2,
-"Para se usar o comando /lua no cafofo da tribo, você precisa ter a permissão de...","Usar o /np no cafofo","Mudar o cafofo da tribo",1,
-"É possível deixar os pisos invisíveis no Transformice","Verdadeiro","Falso",1,
-"Qual a idade mínima para virar MapCrew no Transformice?","18","Não tem idade mínima",2,
-"Qual título é desbloqueado quando você consegue 1 bootcamp?","Principiante","Recruta",2,
-"Qual foi a maior quantidade de pessoas logadas no Transformice, aproximadamente?","100000","85000",2,
-"Qual o nick dos criadores do Transformice?","Melibellule e Tigrounette","Mellibellule e Trigrounette",1,
-"Quem é o gerenciador atual do module Mestre Mandou?","Rakan_raster#0000","Xayah_raster#0000",1,
-"Quem é o criador do module O Chão é Lava?","Sett#6442","Osicat#0000",2,
-"Qual o limite de consumíveis que podem ser armazenados no inventário?","80","200",1,
-"Qual o nome do antigo fun-site no qual você poderia acessar um Ranking dos ratos?","Cheese For Mice","Viprin Drawing Editor",1,
-"Qual o limite de jogadores em uma tribo no Transformice?","2000","5000",2,
-"Qual o comando que serve para ver as combinações de roupa do jogo?","/dressing","/shop",1,
-"O dono de uma tribo pode exibir mensagens no chat utilizando o comando /lua no cafofo da tribo.","Verdadeiro","Falso",2,
-"Em qual ano estreou o evento de Natal do Transformice?","2011","2010",2,
-"Qual é o primeiro nome do Tigrounette?","Jean","Dean",1,
-"Qual destes eventos estreou primeiro no Transformice?","Halloween","Natal",1,
-"Qual destes títulos é atribuído a quantidade de ratos salvos no modo difícil?","Virtuoso","Redentor",1,
-"A partir de qual ano foi possível criar mapas com largura maior que a normal?","2012","2011",2,
-"Em qual cidade fica situada a sede da Atelier 801?","Lille","Paris",1,
-"Qual desses foi o primeiro desenvolvedor do module #perguntas?","Brenower#0000","Dhanny_mheyran#6701",2,
-"Quantos firsts são necessários para desbloquear o título 'O Mito'?","1100","1000",1,
-"Qual a largura máxima que um mapa pode ter sem ter o modo defilante ativado?","1600","9830",1,
-"Qual destes objetos não pode ser utilizado no modo difícil?","Sp","Seta",1,
-"A seta é sempre o primeiro item do shaman.","Falso","Verdadeiro",1,
-"O module Mestre Mandou já foi administrado por quantas pessoas?","4","5",1,
-"Qual a idade mínima para virar moderador no Transformice?","18","16",1,
-"Qual foi a última versão do Flash Player que o Transformice deu suporte?","32.0","33.0",1,
-"Qual a idade mínima para virar FunCorp no Transformice?","16","Não tem idade mínima",2,
-"Quantos tamanhos de tela de cinema existem no Transformice?","2","3",1,
-"É possível mudar a cor da água do Transformice utilizando somente o Editor de Mapas.","Verdadeiro","Falso",2,
-"É possível carregar imagens nos mapas utilizando apenas no Editor de Mapas.","Verdadeiro","Falso",1,
-"Em teoria, qual a largura máxima que um mapa no Transformice pode ter?","4800","9830",2,
-"Em teoria, qual a altura máxima que um mapa no Transformice pode ter?","800","9830",2,
-"Quem é o criador atual do module #unotfm?","Ninguem#0095","Spectra_phantom#6089",1,
-"Em qual ano foi introduzido o esquema de #tags nos nomes do Transformice?","2018","2019",1,
-"Quantos bootcamps são necessários para desbloquear o título Recruta?","1","3",1,
-"Quantos firsts são necessários para desbloquear o título 'Rato Pirata'?","100","200",1,
-"Usuários podem adicionar imagens no cafofo da tribo utilizando o comando /lua.","Verdadeiro","Falso",1,
-"Quando um rato morre no Transformice, começa a sair...","Bolhas","Sangue",1,
-"Qual é o nome do primeiro module do Transformice?","sharpie debuglua","batata",1,
-"O dia de lançamento do Transformice é também um feriado nacional no Brasil. Qual é esse feriado?","Dia das Mães","Dia do Trabalho",2,
-"Qual destes comandos servem para ver informações do mapa atual?","/map","/info",2,
-"Para usar o café, você precisa estar com quantos dias jogados de conta?","30","10",1,
-"Em qual dia do ano o Transformice foi criado?","1","2",1,
-"Qual o limite de queijos que podem ser armazenados no inventário?","80","200",2,
-"Quantos anos tem o Tigrounette?","33","35",2,
-"Qual o nome da única mulher que criou um module semi-oficial no Transformice?","Morganadxana#0000","Lanadelrey#4862",1,
-"Qual o limite antigo de membros em uma tribo do Transformice?","5000","2000",2,
-"Qual o nome de um module de testes extinto em que todos viravam Pikachu e tinham que descer a ladeira?","#surble","#surbler",1,
-"No começo da vida do Defilante, quem ganhava as partidas recebia 2 firsts e quantos queijos?","0","2",1,
-"Qual destas categorias de mapas é atribuída a mapas de Survivor Vampiro?","P11","P13",1,
-"O module #freezertag antes era um submódulo de qual module?","#parkour","#circuit",1,
-"Qual o nome do código que é usado para carregar mapas do Transformice?","Lua","XML",2,
-"Qual destes usuários nunca se tornou Funcorp?","Patrick_mahomes#1795","Pamots#0095",1,
-"Qual destes modules não foi feito por um brasileiro?","#anvilwar","#freezertag",1,
-"Qual destas ratas morreu na vida real, dando origem a uma decoração do Transformice?","Elise","Papaille",1,
-"Em qual mês do ano geralmente termina o evento de Natal?","Dezembro","Janeiro",2,
-"Em qual ano foram introduzidos os modules no Transformice?","2014","2013",2,
-"Qual destes comandos servem para ver os seus mapas criados?","/maps","/lsmap",2,
-"Quem é o criador e gerenciador atual do module #shamousey?","Shamousey#0015","Ninguem#0095",1,
-"Quantos queijos custa para exportar um mapa como cafofo da tribo?","5","40",1,
-"Quantos objetos de shaman podem ser utilizados no modo padrão?","13","14",2,
-"Em qual ano houve o desban de todas as contas banidas permanentes no Transformice?","2012","2013",2,
-"Em qual país está situado o host de baixo ping disponível no Brasil?","Canadá","México",1,
-"Qual categoria de mapas é atribuída aos mapas permanentes de modules?","P41","P43",1,
-"Em qual ano surgiu o sistema de missões diárias no Transformice?","2018","2019",2,
-"Qual a idade mínima para virar membro da Module Team no Transformice?","16","Não tem idade mínima",2,
-"Qual destes comandos servem para ver informações ténicas do cliente e do sistema?","/info","/^^",2,
-"Qual o último título desbloqueável de queijos do Transformice?","MEU QUEIJO!","Alpha & Omega",1,
-"Para falar no café, você precisa de quantos queijos no perfil?","100","1000",2,
-"Qual destes modules não existe mais?","#madchess","#minigolf",1,
-"Qual comando é utilizado para ver a árvore de funções e eventos LUA do Transformice?","/luahelp","/luatree",1,
-"Qual era o nome da sala que, após uma sequência de comandos, dava morangos de graça?","286637850","286657250",1,
-"Em qual ano foi lançado o primeiro servidor brasileiro do Transformice?","2010","2011",2,
-"Em qual ano foi lançada a Plataforma Comunitária do Transformice?","2013","2014",1,
-"O que acontece quando você digita /zimmer 5?","Te dá 5 queijos de graça","Leva você para a sala 5",2,
-"Em qual mês do ano o Transformice foi criado?","Maio","Junho",1,
-"Qual comando serve para ver a versão do Transformice?","/version","/transformice",1,
-"Qual a tag atribuída a ex-membros da equipe do Transformice?","#0020","#0095",2,
-"Tigrounette é homem ou mulher?","Homem","Mulher",1,
-"É possível presentear outros ratos com itens da loja utilizando somente queijos.","Verdadeiro","Falso",2,
-"Qual a função da habilidade de shaman 'Superstar'?","Os ratos ao redor dançam","Os ratos ao redor beijam",1,
-"Qual o último título de ratos salvos pelo Shaman?","Virtuoso","Alpha & Ômega",2,
-"Qual o nome do jogo de Zumbis lançado pela Atelier 801?","League of Legends","Dead Maze",2,
-"Quantas medalhas comemorativas de aniversário existem no Transformice?","2","10",1,
-"Em qual árvore de habilidades está presente a habilidade 'Desintegração controlada'?","Físico","Mecânico",1,
-"Em qual ano foi lançado o Poisson, antigo jogo que depois tornou o Transformice?","2010","2008",2,
-"Por quantas horas você é banido por Hack no Transformice, por padrão?","360","168",1,
-"Qual o nome do antigo jogo do Transformice para celular?","Dead Maze","Run For Cheese",2,
-"Os donos da Atelier 801 e da Ubisoft já se encontraram pessoalmente.","Não","Sim",1,
-"Em qual árvore de habilidades está presente a habilidade 'Volta da natureza'?","Físico","Selvagem",2,
-"Qual o nome atual da ex-modsent Racola?","Alriy#0095","Keith#0095",1,
-"Quantos ratos salvos são necessários para desbloquear o modo normal?","0","1000",1,
-"Quando você cria uma conta no Transformice, seu inventário vem vazio.","Verdadeiro","Falso",2,
-"Qual o comando que desbloqueia um item de cabeça de bolo?","/atelier801","/transformice",1,
-"O capacete de 20 queijos é a única roupa que pode ser customizado sem gastar queijos/morangos.","Verdadeiro","Falso",1,
-"A partir de 2021, só será possível jogar Transformice através da Steam.","Verdadeiro","Falso",2,
-"Qual o último título de ratos salvos em modo difícil pelo Shaman?","Virtuoso","Alpha & Ômega",1,
-"É possível mudar a gravidade do mapa no Transformice utilizando código LUA.","Verdadeiro","Falso",1,
-"Apenas membros da Module Team podem carregar modules nas salas do Transformice.","Verdadeiro","Falso",2,
-"Quantos servidores host da Atelier801 existem no Brasil?","0","1",1,
-"Qual é a margem máxima offscreen de largura e altura no qual os ratos podem permanecer vivos?","400px por lado","800px por lado",1,
+lang.br = {
+	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>O objetivo deste module é muito simples: Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><VP>Tenha sempre cuidado com os comandos trolls!<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Jessiewind26#2546<br><br><ROSE>Versão RTM 14189.085",
+	dancar = "Dance!",
+	sentar = "Sente!",
+	confetar = "Atire 5 confetes!",
+	mouse = "Clique na tela 10 vezes!",
+	beijos = "Dê 10 beijos!",
+	dormir = "Vocês estão com sono. Durmam para descansar.",
+	raiva = "Tigrounette é do mal! Fiquem com raiva dele!",
+	chorem = "Vocês não ganharam queijo :( Chorem!",
+	nchorem = "Não chorem!",
+	esquerda = "Não vá para a esquerda!",
+	direita = "Não vá para a direita!",
+	numero = "Digite o seguinte número: ",
+	digitar = "Digite qualquer coisa e mande para mim.",
+	falar = "Não falem nada!",
+	pular = "Não pulem!",
+	mexer = "Não se mexam!",
+	bandeira = "Balance a bandeira de qualquer país!",
+	ano = "Em que ano estamos?",
+	vesquerda = "Fique virado para a esquerda!",
+	vdireita = "Fique virado para a direita!",
+	quadradoa = "Fique no quadrado azul!",
+	quadradov = "Fique no quadrado vermelho!",
+	quadrado = "Fique no quadrado branco!",
+	nquadrado = "Não fique no quadrado branco!",
+	retangulo = "Fique dentro do retângulo branco!",
+	retangulov = "Fique dentro do retângulo vermelho!",
+	nretangulo = "Não fique dentro do retângulo branco!",
+	nretangulov = "Não fique dentro do retângulo vermelho!",
+	preesquerda15 = "Pressione 15 vezes a tecla para ESQUERDA!",
+	predireita15 = "Pressione 15 vezes a tecla para DIREITA!",
+	preesquerda30 = "Pressione 30 vezes a tecla para ESQUERDA!",
+	predireita30 = "Pressione 30 vezes a tecla para DIREITA!",
+	preesquerda60 = "Pressione 60 vezes a tecla para ESQUERDA!",
+	predireita60 = "Pressione 60 vezes a tecla para DIREITA!",
+	espaco = "Pressione a barra de espaço 20 vezes!",
+	nome = "Digite o seu nome no jogo (com #número).",
+	ndance = "Não dance!",
+	key1 = "Pressione a tecla Delete!",
+	action1 = "Dance, sente e durma!",
+	laugh = "Agora RIAM!",
+	laugh2 = "Quem rir agora vai morrer.",
+	stone = "Olha a pedra!",
+	noob = "Digite: EU SOU NOOB",
+	action2 = "Chore depois ria!",
+	jump = "Pulem!",
+	number = "Digite o seguinte número: ",
+	key = "Pressione qualquer tecla!",
+	jump2 = "Pulem 5 vezes!",
+	action3 = "Dê um beijo depois chore!",
+	area = "Descubra onde está o texto escondido e clique nele!",
+	dancing = "É hora da festa!",
+	freeze = "Todo mundo parado!",
+	transform = "Dance e durma!",
+	down1 = "Abaixem 3 vezes!",
+	kill = "Se matem!",
+	mestre = "Mestre Mandou",
+	map = "Mapa",
+	time = "Tempo",
+	mice = "Ratos",
+	round = "Rodada",
+	mices = "Esta sala requer pelo menos 4 ratos.",
+	difficulty = "Dificuldade",
+	segundos = "segundos.",
+	fim = "Partida encerrada! Próxima partida iniciando em ",
+	playingmap = "Rodando mapa",
+	created = "criado por",
+	abaixar = "Abaixem e se levantem!",
+	action = "Façam qualquer ação!",
+	naction = "Não façam nenhuma ação!",
+	math = "Quanto é 1+1?",
+	math1 = "Quanto é 2+2?",
+	ds = "Dance e sente!",
+	seq4 = "Dance, sente, durma e bata palmas!",
+	seq5 = "Dance, bata palmas e ria!",
+	spider = "Cuidado com as teias de aranha!",
+	key2 = "Pressione F4!",
+	clap = "Bata palmas 5 vezes!",
+	completed = "Você completou o comando com sucesso!",
+	rain = "Chuva de ovelhas!",
+	skull = "Cuidado com as caveiras!",
+	gravity = "A gravidade foi alterada!",
+	version = "Versão",
+	black = "Um buraco negro surgiu e está puxando todos vocês!",
+	creator = "Quem é o criador deste module?",
+	counts = "Há quantos ratos nesta sala?",
+	counts_alive = "Há quantos ratos vivos nesta sala?",
+	facepalm = "Coloque a mão no rosto 5 vezes!",
+	enterprise = "Qual é a empresa que criou o Transformice?",
+	collect = "Colete todos os '+1' do mapa!",
+	balls = "Está chovendo bolas!",
+	explosion = "Olha a explosão!",
 }
-perguntas1={
-"Vai na sorte :)","ok","ok",1,
-"Vai na sorte :)","ok","ok",2,
-"Qual a fórmula da água?","H20","H2O",2,
-"Em que ano foi derrubado o Muro de Berlim?","1989","1991",1,
-"Qual o nome da figura de linguagem que representa sons de animais e objetos, por exemplo?","Onomatopeia","Personificação",1,
-"Qual o nome do vírus transmissor da Dengue, Chikungunya e Zica?","Aedes Aegypti","Tripanossoma Cruzi",1,
-"Segundo a Mitologia Grega, qual o nome dado ao lugar localizado no Submundo?","Inferno","Tártaro",2,
-"Quantos rios conseguem cortar o Deserto do Saara sem secar?","1","Nenhum",1,
-"Quantas camadas possui a atmosfera da Terra?","4","5",2,
-"A quantos graus °C a água ferve aproximadamente, no topo do Monte Everest?","100","71",2,
-"O clima Subtropical é o predominante na região Nordeste do Brasil.","Verdadeiro","Falso",2,
-"Qual foi o Presidente eleito nas eleições brasileiras de 1998?","Fernando Henrique Cardoso","Lula",1,
-"Fernando Collor de Mello foi o primeiro e único presidente a sofrer Impeachment no Brasil.","Verdadeiro","Falso",2,
-"Qual era o Presidente dos Estados Unidos no ano do ataque às Torres Gêmeas?","J.F. Kennedy","George W. Bush",2,
-"Na matemática, qual o nome da sequência onde o resultado é a soma dos dois números anteriores?","Fibonacci","Pascal",1,
-"A cidade do Rio de Janeiro foi capital do Brasil até que ano?","1889","1960",2,
-"A área de um círculo pode ser calculada utilizando qual fórmula?","2.πr","π.r²",2,
-"Quantos anos possui Silvio Santos?","89","91",2,
-"Qual destes mares possui maior concentração de sal por litro de água?","Mar Morto","Mar Mediterrâneo",1,
-"A Rodovia Presidente Dutra, que liga os estados do RJ e SP, foi construída em qual governo Brasileiro?","Getúlio Vargas","Eurico Gaspar Dutra",2,
-"Qual é a unidade utilizada para medir a altura de sons?","decibéis","watts",1,
-"O ponto de maior altitude do Brasil fica localizado a quantos metros, aproximadamente?","2500","3000",2,
-"Qual é a fórmula para converter graus °C em graus °K?","K = C + 273","K = -40 + ((18 * C) - 40)",1,
-"Qual é o nome da fórmula utilizada para calcular equações do segundo grau?","Fórmula de Bhaskara","Teorema de Pitágoras",1,
-"Quantos planetas existem no Sistema Solar?","8","9",1,
-"Qual cidade do Rio de Janeiro é conhecida como 'Cidade Imperial'?","Petrópolis","Angra dos Reis",1,
-"Quantas usinas nucleares o Brasil possui funcionando?","2","5",1,
-"Qual foi o nome da pandemia que matou milhões de pessoas ao redor mundo no começo do século XX?","Covid-19","Gripe Espanhola",2,
-"Qual o oceano da Terra que possui a maior profundidade média?","Oceano Pacífico","Oceano Atlântico",1,
-"As nuvens são feitas de quê?","Vapor de água","Algodão",1,
-"Qual o estado da água quando ela passa diretamente do estado sólido para o gasoso, ou vice-versa?","Condensação","Sublimação",2,
-"A chegada da Família Real Portuguesa ao Brasil ocorreu em qual ano?","1808","1822",1,
-"Qual destes é o maior deserto da Terra?","Deserto do Saara","Antártida",2,
-"Quantos anos durou o Regime Militar no Brasil?","21","25",1,
-"Qual dessas emissoras de televisão foi a primeira da América Latina?","Rede Tupi","Rede Manchete",1,
-"Uma polegada equivale a quantos centímetros, aproximadamente?","2.5 cm","3.3 cm",1,
-"Em qual ano ocorreu o último Censo do IBGE?","2010","2020",1,
-"O Arco do Triunfo, localizado na França, é uma homenagem a...","Napoleão Bonaparte","George Washington",1,
-"Na matemática, qual o nome do triângulo em que a soma dos números centrais é igual à soma das coeficientes binomiais?","Triângulo de Newton","Triângulo de Pascal",2,
-"Quais os povos que dominaram a região da Islândia no século IX?","Bárbaros","Vikings",2,
-"Qual o nome da região de relevo localizada na região Nordeste do Brasil, sendo responsável pelo clima da região?","Planalto da Borborema","Pico das Agulhas Negras",1,
-"Em qual continente fica localizado o monte Everest?","Europa","Ásia",2,
-"De onde é a invenção do chuveiro elétrico?","França","Brasil",2,
-"Qual destes pontos turísticos brasileiros fica localizado no estado da Bahia?","Casa de Santos Dumont","Elevador Lacerda",2,
-"Quantos elementos químicos a tabela periódica possui?","113","118",2,
-"Qual a montanha mais alta do Brasil?","Pico da Neblina","Pico da Bandeira",1,
-"Qual destes reinos de seres vivos é considerado o Reino das Bactérias?","Monera","Protista",1,
-"Quantos presidentes tivemos no Brasil desde a Redemocraticação, em 1985?","7","8",2,
-"O que significa a sigla CPF?","Cadastro de Pessoa Física","Crédito de Pessoa Física",1,
-"Quantos livros possui a Bíblia Sagrada?","62","66",2,
-"Qual foi o primeiro homem a descobrir o Brasil?","Pedro Álvares Cabral","Duarte Pacheco Pereira",2,
-"Qual destes equipamentos foi o grande carro-chefe da Primeira Revolução Industrial?","Máquina a vapor","Engrenagem",1,
-"Em qual ano ocorreu a missão da Apollo 8?","1968","1969",1,
-"Segundo a Mitologia Grega, qual destes seres teve suas asas destruídas ao chegar perto do Sol?","Afrodite","Ícaro",2,
-"Qual destas unidades de medida é utilizada para medir a resistência de um objeto?","Ohm","Coulomb",1,
-"Em qual oceano da Terra está localizada a Fossa das Marianas?","Oceano Pacífico","Oceano Índico",1,
-"Qual foi o último período da Terra em que os dinossauros viveram?","Jurássico","Cretáceo",2,
-"Em qual cidade ocorreu a primeira edição dos Jogos Olímpicos?","Atenas","Paris",1,
-"O Rio Nilo é o maior e mais caudaloso rio da Terra.","Verdadeiro","Falso",2,
-"O Rio Amazonas é formado pelo encontro de quais rios?","Negro e Tapajós","Negro e Solimões",2,
-"A Floresta Amazônica é o lugar natural com maior geração de oxigênio do mundo.","Verdadeiro","Falso",2,
-"De quem é a famosa frase 'Penso, logo existo'?","Aristóteles","René Descartes",2,
-"Qual é o nome dado para as bactérias que precisam de oxigênio para se reproduzirem?","Aeróbicas","Anaeróbias",1,
-"Qual o nome da operação inversa da raiz quadrada?","Potenciação","Subtração",1,
-"Quantas estrelas existem no Sistema Solar?","1","O número é tão grande que nem cabe",1,
-"Quando uma estrela com 10 ou menos massas solares chega no final do seu tempo de vida, ela vira um(a)...","Buraco Negro","Anã Branca",2,
-"Quantos anos durou a Guerra dos Cem Anos?","100","116",2,
-"Existem milhares de jacarés e capivaras no fundo do Rio Amazonas.","Verdadeiro","Falso",2,
-"Qual a raiz quadrada de -16?","-4","Não existe",2,
-"Qual é o nome da maior estrela já conhecida no Universo?","Canis Majoris","UY Scuti",2,
-"Em qual ano foi lançado o primeiro Windows?","1985","1995",1,
-"Qual destes elementos químicos é utilizado para produzir equipamentos eletrônicos?","Silício","Rambônio",1,
-"Qual destes elementos químicos fica líquido na temperatura ambiente?","Água","Mercúrio",2,
-"Qual destas categorias é necessária na carteira de habilitação para dirigir motos?","Categoria A","Categoria B",1,
-"O ano-luz é uma unidade de medida de...","Tempo","Distância",2,
-"Qual foi o cineasta que chegou no fundo da Fossa das Marianas, lugar mais profundo do oceano?","James Cameron","Jacques Piccard",1,
-"Qual é o nome dado para as bactérias que não precisam de oxigênio para se reproduzirem?","Aeróbicas","Anaeróbias",2,
-"Qual destes tipos de clima é encontrado no Brasil?","Semiárido","Mediterrâneo",1,
-"Quantas capitais a África do Sul possui?","2","3",2,
-"Quem é o Deus da mitologia Nórdica?","Zeus","Odin",2,
-"Em 1889, qual destas cidades foi a capital do Brasil?","Rio de Janeiro","Petrópolis",2,
-"Por quantos anos durou a Era Vargas, primeiro período no qual Getúlio Vargas foi presidente do Brasil?","8","15",2,
-"Qual é o nome oficial da Ponte Rio-Niterói?","Ponte Presidente Costa e Silva","Ponte Presidente Mário Andreazza",1,
-"Por qual nome também é conhecido o Rio São Francisco?","Velho Chico","Três Corações",1,
-"Em qual cidade estão situadas as únicas usinas nucleares em funcionamento no Brasil?","Angra dos Reis","Cabo Frio",1,
-"Qual foi o último ano em que tivemos vulcões em erupção no Brasil?","65 milhões de anos A.C","3 milhões de anos A.C",1,
-"Qual o nome da cidade que fica localizada entre os rios Tigre e Eufrates?","Jerusalém","Mesopotâmia",2,
-"A partir de qual ano passou a ser utilizado o Novo Padrão Ortográfico no Brasil?","2009","2010",1,
-"Qual destes municípios faz parte da chamada Região dos Lagos do estado do Rio de Janeiro?","Angra dos Reis","Armação dos Búzios",2,
-"Quantos quilômetros a luz percorre no vácuo durante 1 mês?","777062051136000","777600000000000",1,
-"Copacabana é um bairro ou uma cidade?","Bairro","Cidade",1,
-"Qual o nome do cartunista que fez a Turma da Mônica?","Maurício de Sousa","Maurício de Souza",1,
-"Qual o nome do cartunista que fez o Menino Maluquinho?","Ziraldo","Monteiro Lobato",1,
-"Qual destes candidatos a Presidência da República em 2014 morreu em um acidente de avião?","Marina Silva","Eduardo Campos",2,
-"Quantas Constituições o Brasil teve desde seu descobrimento?","5","7",2,
-"Qual destes gases existe em maior quantidade na atmosfera da Terra?","Nitrogênio","Oxigênio",1,
-"Quantos reinos de seres vivos existem na Terra?","5","7",1,
-"Um microfone pode ser utilizado para geração de energia elétrica.","Verdadeiro","Falso",1,
-"Na matemática, qual o nome da operação inversa da Derivação?","Integração","Generalização",1,
-"Qual o nome dado a doença nos homens cujo possuem problemas onde o pênis não completa totalmente a glande?","Balanite","Fimose",2,
-"Quanto tempo leva para a Terra dar uma volta completa em torno do Sol, aproximadamente?","365 dias","365 dias e 6 horas",2,
-"Qual o nome dado para o espectro de luz que fica acima da luz visível?","Infravermelho","Ultravioleta",2,
-"Qual o nome do empresário que foi responsável pela inauguração da Televisão no Brasil?","Silvio Santos","Assis Chateaubriand",2,
-"Em qual ano foi promulgada a Constituição em vigor no Brasil?","1988","1978",1,
-"O quilograma é uma unidade de medida usada para medir...","Peso","Massa",2,
-"Qual destes lugares é maior em questão de área?","Distrito Federal","Vaticano",1,
-"Qual é a fórmula do Cloreto de Sódio, também conhecido como sal de cozinha?","NaCl","NaCO₂",1,
-"Qual destas espécies de tubarão pode viver também na água doce?","Tubarão-touro","Tubarão-baleia",1,
-"Qual o nome dado a linguagem utilizada no Egito Antigo, com 'imagens' ao invés de letras?","Ideografias","Hieróglifos",2,
-"Qual o nome do livro sagrado que é utilizado no Islamismo?","Alcorão","Tripitaka",1,
-"Dos tipos de ondas a seguir, qual possui mais chance de causar câncer ao corpo humano?","Raios X","Raios Gama",2,
-"Qual o nome dado aos seres que vivos que possuem apenas 1 célula?","Unicelulares","Pluricelulares",1,
-"Qual o nome do supercontinente que existia na Terra antes deles serem divididos?","Pangeia","Pantalassa",1,
-"O Rio Nilo é o único rio que consegue atravessar o deserto do Saara sem secar.","Verdadeiro","Falso",1,
-"Em média, quantos metros de profundidade você precisa descer para chegar a uma pressão atmosférica de 2 atm?","10 metros","20 metros",1,
-"No geral, Terremotos e maremotos acontecem quando duas ou mais placas tectônicas...","Se separam uma da outra","Colidem uma com outra",2,
-"Qual o nome da tecnologia que era utilizada na maioria dos equipamentos eletrônicos, do início do século XX até o anos 70","Válvula","Transformador",1,
-"Em qual ano terminou a Segunda Guerra Mundial?","1942","1945",2,
-"Em qual ano ocorreu a Quebra da Bolsa de Nova York?","1929","1930",1,
+lang.en = {
+	welcome = "<N><b>Welcome to the Simon Says module!</b><br>The objective is very simple: Follow all the commands that the game says and test all your limits!<br><VP>Please pay attention to the troll commands!<br><br><J><b>Script developed by Rakan_raster#0000</b><br>EN translation by Kazarina#4878, Concept by Jessiewind26#2546<br><br><ROSE>Version RTM 14189.085",
+	dancar = "Dance!",
+	sentar = "Sit!",
+	confetar = "Throw 5 confetti!",
+	mouse = "Click on screen 10 times!",
+	beijos = "Give 10 kisses!",
+	dormir = "They are sleepy. Sleep to rest.",
+	raiva = "Tigrounette is evil! Get angry with him!",
+	chorem = "No cheese for you. Cry!",
+	nchorem = "Don't cry!",
+	esquerda = "Don't go to the LEFT!",
+	direita = "Don't go to the RIGHT!",
+	numero = "Type this number: ",
+	digitar = "Type anything and send to me.",
+	falar = "Don't speak nothing!",
+	pular = "Don't jump!",
+	mexer = "Don't move!",
+	bandeira = "Balance the flag of any country!",
+	ano = "What year are we?",
+	vesquerda = "Stay facing LEFT!",
+	vdireita = "Stay facing RIGHT!",
+	quadradoa = "Stay on the blue square!",
+	quadradov = "Stay on the red square!",
+	quadrado = "Stay on the white square!",
+	nquadrado = "Don't stay on the white square!",
+	retangulo = "Stay on the white rectangle!",
+	retangulov = "Stay on the red rectangle!",
+	nretangulo = "Don't stay on the white rectangle!",
+	nretangulov = "Don't stay on the red rectangle!",
+	preesquerda15 = "Press 15 times the LEFT key!",
+	predireita15 = "Press 15 times the RIGHT key!",
+	preesquerda30 = "Press 30 times the LEFT key!",
+	predireita30 = "Press 30 times the RIGHT key!",
+	preesquerda60 = "Press 60 times the LEFT key!",
+	predireita60 = "Press 60 times the RIGHT key!",
+	espaco = "Press 20 times the SPACEBAR!",
+	nome = "Type your nickname (with #number)!",
+	ndance = "Don't dance!",
+	key1 = "Press the DELETE key!",
+	action1 = "Dance, sit and sleep!",
+	laugh = "Laugh!",
+	laugh2 = "Don't laugh!",
+	stone = "Caution with the stones!",
+	noob = "Type: I AM NOOB",
+	action2 = "Cry and laugh!",
+	jump = "Jump!",
+	number = "Type the following number: ",
+	key = "Press any key!",
+	jump2 = "Jump 5 times!",
+	action3 = "Give a kiss and cry!",
+	area = "Discover where is the hidden text and click!",
+	dancing = "Time of party!",
+	freeze = "Stop!",
+	transform = "Dance and sleep!",
+	down1 = "Turn down 3 times!",
+	kill = "Kill yourselves!",
+	mestre = "Master Says",
+	map = "Map",
+	time = "Time",
+	mice = "Mice",
+	round = "Round",
+	mices = "This room requires at least 4 players.",
+	difficulty = "Difficulty",
+	segundos = "seconds.",
+	fim = "End of match! The next match will start on ",
+	playingmap = "Playing map",
+	created = "created by",
+	abaixar = "Turn down and get up!",
+	action = "Do any action!",
+	naction = "Don't do any action!",
+	math = "How much is 1+1?",
+	math1 = "How much is 2+2?",
+	ds = "Dance and sit!",
+	seq4 = "Dance, sit, sleep and clap!",
+	seq5 = "Dance, clap and laugh!",
+	spider = "Caution with the spider webs!",
+	key2 = "Press F4!",
+	clap = "Clap 5 times!",
+	completed = "You completed the command!",
+	rain = "Caution with the sheeps!",
+	skull = "Caution with the skull badges!",
+	gravity = "The gravity was changed!",
+	version = "Version",
+	black = "A black hole emerged and is pushing all mices!",
+	creator = "Who is the creator of this module?",
+	counts = "How many mices are on this room?",
+	counts_alive = "How many alive mices are on this room?",
+	facepalm = "Facepalm 5 times!",
+	enterprise = "Which is the company that created Transformice?",
+	collect = "Collect all '+1' badges!",
+	balls = "It's raining balls!",
+	explosion = "Caution with the spirits!",
 }
-perguntas2={
-"Vai na sorte :)","ok","ok",1,
-"Vai na sorte :)","ok","ok",2,
-"Em que ano morreu Chester Bennington, ex-vocalista do Linkin Park?","2017","2019",1,
-"Em qual ano ocorreu a primeira edição do Rock in Rio?","1985","1987",1,
-"Qual o nome da embalagem que é utilizada para guardar CDs?","Jensen Case","Jewel Case",2,
-"Qual é a duração média de um disco de vinil (LP)?","20 minutos por lado","30 minutos por lado",1,
-"Qual é o material utilizado nos antigos discos de 78rpm, utilizados antes do surgimento do LP?","Silicone","Goma Laca",2,
-"Qual é o nome da música utilizada na abertura do programa Big Brother Brasil?","Vida Real","A Cruz e a Espada",1,
-"Qual é o nome da música utilizada na abertura da novela O Rei do Gado?","O Rei do Gado","Orquestra da Terra",1,
-"De quem é a música 'Meu Mundo e Nada Mais'?","Antônio Fagundes","Guilherme Arantes",2,
-"Qual é a música, que quando ouvida ao contrário, há referências satânicas?","Hotel Califórnia","Empty Spaces",1,
-"Em qual ano foi introduzidos os CDs no Brasil?","1982","1984",2,
-"A música 'Festa do Apê', do cantor Latino, é uma versão brasileira adaptada de qual música?","O-Zone","Dragostea Din Tei",2,
-"Qual é o limite máximo de músicas que podem ser colocadas em um LP?","10","Não existe limite teórico",2,
-"Qual destas músicas não foi cantada pela cantora Evanescence?","Bring Me To Life","Over and Under",2,
-"Qual foi o álbum lançado pelo Nirvana que possui a famosa capa com um bebê debaixo d'água?","Nevermind","Bleach",1,
-"A banda de rock cristão Katsbarnea é de qual país?","Ucrânia","Brasil",2,
-"A banda de rock alternativo Egypt Central é de qual país?","Egito","Estados Unidos",2,
-"Qual destas músicas do Tim Maia é muito semelhante a abertura da 6ª temporada de Jojo's Bizarre Adventures?","O Descobridor dos Sete Mares","Do Leme ao Pontal",1,
-"Complete a música: Do Leme ao Pontal... [...] Sem contar com Calabouço, Flamengo, Botafogo, Urca, ...","Praia Vermelha","Praia de Ipanema",1,
-"Qual destes gravou a música 'Pra não dizer que não falei das Flores', que retrata o período de censura do AI-5 do Regime Militar?","Geraldo Vandré","Vanusa",1,
-"Qual destas músicas foi gravada no primeiro EP da banda Linkin Park, lançada em 1999?","In the End","Carousel",2,
-"Complete a música: Rimas de ventos e velas, vida que vem e que vai, a solidão que fica e entra...","Me arremessando contra o cais","Me arremessando contra o vento",1,
-"Qual destas cantoras morreu em 2021 em um acidente de avião em Minas Gerais?","Marília Mendonça","Pablo Vittar",1,
-"A cantora Shirley Carvalhaes lançou seu primeiro álbum em qual ano?","1977","1987",1,
-"O primeiro protótipo de disco de vinil foi apresentado no Brasil.","Verdadeiro","Falso",2,
-"Em qual estado do Brasil nasceu a cantora Aline Barros?","São Paulo","Rio de Janeiro",2,
-"De qual ano é a música 'Show das Poderosas', da cantora Anitta?","2012","2014",1,
-"O álbum Toxicity, do System of a Down, foi lançado uma semana antes de qual grande evento acontecer?","Ataque às Torres Gêmeas","Morte de Osama Bin Laden",1,
-"Qual destas músicas foi utilizada no filme 'Transformers: Revenge of the Fallen'?","You Make me Sick","New Divide",2,
-"Qual destes políticos já gravou um álbum musical?","Marcelo Crivella","Bruno Covas",1,
-"[...] Uma história de amor, de aventura e de magia...  Qual o nome desta música de Sandy e Júnior?","Uma História de Amor","Era uma Vez",2,
-"O single da música Razões e Emoções, do NX Zero, foi lançada em qual ano?","2006","2007",2,
-"Rádio Pirata foi o nome do primeiro álbum lançado pela banda RPM.","Verdadeiro","Falso",2,
-"Qual é o nome da música utilizada na abertura da novela Páginas da Vida?","Se Quiser","Páginas da Vida",1,
-"Qual destes foi o primeiro vocalista da banda NX Zero?","Yuri Nishida","Di Ferrero",1,
-"Complete a música: Ah, meu coração é um campo minado... Muito cuidado...","Ele pode explodir","Com a traição",1,
-"A banda Charlie Brown Jr. foi formada na cidade de Santos.","Verdadeiro","Falso",1,
-"Qual era o nome do equipamento que era utilizado para ouvir músicas por fita cassete e podia ser transportado facilmente?","Discman","Walkman",2,
-"Quais foram as empresas que foram responsáveis pelo desenvolvimento dos CDs?","Sony e Pioneer","Sony e Philips",2,
-"Qual destes funkeiros gravou a música 'Olha a Explosão'?","MC Livinho","MC Kevinho",2,
-"O cantor Renato Russo, que era do Legião Urbana, morreu de consequências do(a)...","AIDS","Câncer",1,
-"A cantora gospel Cassiane gravou seu primeiro álbum com quantos anos de idade?","8 anos","12 anos",1,
-"O cantor e compositor Marcos Witt nasceu em qual país?","México","Estados Unidos",2,
-"A música Copacabana, de Barry Manilow, fala majoritariamente sobre...","a Praia de Copacabana","um Bar americano chamado Copacabana",2,
-"Qual destas bandas de black metal possui o mesmo nome de uma criatura mitológica da Bíblia Sagrada?","Anthrax","Behemoth",2,
-"De quem é a música 'Ai se eu te Pego?","Luan Santana","Michel Teló",2,
-"Qual destas músicas foi utilizada como abertura da série Malhação, na temporada de 2004?","Te Levar","Vou Deixar",1,
-"Qual é o tamanho de um disco de vinil do tipo Single, que armazenava no máximo 2 faixas por lado?","7 polegadas","10 polegadas",1,
-"Qual destas músicas do Guilherme Arantes fala sobre a importância da água no Planeta Terra?","Planeta Água","Águas",1,
-"Qual o nome do extinto programa de televisão que era focado em tocar Funk?","Estação Funk","Furacão 2000",2,
-"Qual o nome do integrante do Roupa Nova que faleceu na metade de 2021?","Ricardo","Paulinho",2,
-"Complete a música: I know you're somewhere out there...","Somewhere far away","I sit by myself",1,
-"Eu só quero é ser feliz, andar tranquilamente na favela onde eu nasci... Qual o nome desta música?","Eu só Quero é Ser Feliz","Rap da Felicidade",2,
+lang.fr = {
+	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Rakan_raster#0000</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 14189.085",
+	dancar = "Danse !",
+	sentar = "Assis !",
+	confetar = "Lance 5 fois des confettis !",
+	mouse = "Clique sur l'écran 10 fois !",
+	beijos = "Fais 10 bisous !",
+	dormir = "Tu es fatigué. Dors pour te reposer.",
+	raiva = "Tigrounette est méchant ! Mets-toi en colère contre lui !",
+	chorem = "Pas de fromage pour toi. Pleure !",
+	nchorem = "Ne pleure pas !",
+	esquerda = "Ne va pas vers la GAUCHE !",
+	direita = "Ne va pas vers la DROITE !",
+	numero = "Écris ce nombre : ",
+	digitar = "Écris n'importe quoi et envoie-le.",
+	falar = "Ne parle pas !",
+	pular = "Ne saute pas !",
+	mexer = "Ne bouge pas!",
+	bandeira = "Agite le drapeau de n'importe quel pays !",
+	ano = "En quelle année sommes-nous ?",
+	vesquerda = "Positionne-toi vers la GAUCHE !",
+	vdireita = "Positionne-toi vers la DROITE !",
+	quadradoa = "Reste dans le carré bleu !",
+	quadradov = "Reste dans le carré rouge !",
+	quadrado = "Reste dans le carré blanc !",
+	nquadrado = "Ne reste dans le carré blanc !",
+	retangulo = "Reste dans le rectangle blanc !",
+	retangulov = "Reste dans le rectangle rouge !",
+	nretangulo = "Ne reste pas sur le rectangle blanc !",
+	nretangulov = "Ne reste pas sur le rectangle rouge !",
+	preesquerda15 = "Appuie 15 fois sur la flèche GAUCHE !",
+	predireita15 = "Appuie 15 fois sur la flèche DROITE !",
+	preesquerda30 = "Appuie 30 fois sur la flèche GAUCHE !",
+	predireita30 = "Appuie 30 fois sur la flèche DROITE !",
+	preesquerda60 = "Appuie 60 fois sur la flèche GAUCHE !",
+	predireita60 = "Appuie 60 fois sur la flèche DROITE !",
+	espaco = "Appuie 20 fois sur la BARRE D'ESPACE !",
+	nome = "Écrit ton pseudo (avec le #tag) !",
+	ndance = "Ne dance pas !",
+	key1 = "Appuie sur la touche SUPPR !",
+	action1 = "Dance, assis-toi et dors !",
+	laugh = "Rigole !",
+	laugh2 = "Ne rigole pas !",
+	stone = "Attention aux pierres !",
+	noob = "Écris : I AM NOOB",
+	action2 = "Pleure et rigole !",
+	jump = "Saute !",
+	number = "Appuie sur le nombre suivant: ",
+	key = "Appuie sur n'importe quelle touche !",
+	jump2 = "Saute 5 fois !",
+	action3 = "Fais un bisou et pleure !",
+	area = "Cherche où se trouve le texte caché et clique dessus !",
+	dancing = "C'est l'heure de faire la fête !",
+	freeze = "Stop !",
+	transform = "Danse et dors !",
+	down1 = "Retourne-toi 3 fois !",
+	kill = "Tuez-vous !",
+	mestre = "Jacques à dit",
+	map = "Carte",
+	time = "Temps",
+	mice = "Souris",
+	round = "Tour",
+	mices = "Ce salon a besoin d'au moins 4 joueurs.",
+	difficulty = "Difficulté",
+	segundos = "secondes.",
+	fim = "Fin du match ! Le prochain match va commencer dans ",
+	playingmap = "Map chargé ",
+	created = "créée par",
+	abaixar = "Retourne-toi et lève-toi !",
+	naction = "Ne fais rien !",
+	action = "Faites n'importe quelle action !",
+	math = "Combien vaut 1 + 1?",
+	math1 = "Combien vaut 2 + 2?",
+	ds = "Danse et assis !",
+	seq4 = "Dance, assis-toi, dors et applaudir!",
+	seq5 = "Dance, tape dans tes mains et rigole !",
+	spider = "Attention aux toiles d'araignées!",
+	key2 = "Appuie sur la touche F4!",
+	clap = "Tape dans tes mains 5 fois!",
+	completed = "Vous avez terminé la commande !",
+	rain = "Attention aux moutons !",
+	skull = "Attention aux crânes!",
+	gravity = "La gravité a été changée!",
+	version = "Version",
+	black = "Un trou noir émerge et pousse toutes les souris!",
+	creator = "Qui est le créateur de cette module?",
+	counts = "How many mices are on this room?",
+	counts_alive = "How many alive mices are on this room?",
+	facepalm = "Mets ta main sur ton visage 5 fois !",
+	enterprise = "Quelle est la société qui a créé Transformice?",
+	collect = "Récupérer tous les '+1' badges !",
+	rain = "Attention aux balles !",
+	explosion = "Attention aux spirits !",
 }
-perguntas3={
-"Vai na sorte :)","ok","ok",1,
-"Vai na sorte :)","ok","ok",2,
-"Quantos dragões elementares existem no League of Legends?","5","7",2,
-"'A morte, é como o vento. Está sempre ao meu lado.'","Yasuo","Zed",1,
-"Qual destes campeões teve seu braço cortado por Irelia durante a invasão Noxiana contra Ionia?","Jax","Swain",2,
-"Qual destes, por muito tempo, foi dublador do personagem Ezreal?","Fábio Lucindo","Luciano Amaral",1,
-"Qual destas dubladoras é responsável pelas vozes da personagem Lissandra?","Juliana Fernandes","Alessandra Araújo",1,
-"Qual era a dupla famosa por fazer vários roubos em Águas de Sentina?","Graves e Twisted Fate","Graves e Pyke",1,
-"Quantos campeões dragões existem no League of Legends?","1","2",1,
-"Qual o nome do subcontinente localizado ao leste de Shurima, completo basicamente por florestas?","Ionia","Ixtal",2,
-"Basicamente, do que é feita a tecnologia Hextec, utilizada no coração da Camille e no martelo do Jayce, por exemplo?","Magia Demaciana","Cristais Hextec",2,
-"Quantos títulos do Campeonato Brasileiro de League of Legends a PaiN Gaming possui?","3","4",1,
-"Qual destes campeões possui mais Skins? (excluindo cromas)","Darius","Blitzcrank",2,
-"Qual o nome do jogo lançado para consoles cujo objetivo final é derrotar Viego?","The Ruined King","Arcane",1,
-"'O ciclo da vida e da morte continua. Nós viveremos e eles morrerão.'","Karthus","Nasus",2,
-"O Fizz é o único campeão do League of Legends que consegue sobreviver no mar.","Verdadeiro","Falso",2,
-"Em qual ano foi lançada a campeã Jinx?","2013","2014",1,
-"Nasus e Renekton, irmãos e protetores de Shurima, são formas de quais animais, respectivamente?","Cachorro e Cavalo","Cachorro e Jacaré",2,
-"Qual destes é o menor campeão do League of Legends?","Shaco","Veigar",1,
-"Qual destes é o maior campeão do League of Legends?","Aurelion Sol","Cho'Gath",1,
-"Antes de ser tomada pela Névoa Negra, as Ilhas das Sombras antes se chamavam...","Ilhas das Guerras","Ilhas das Bênçãos",2,
-"Qual o nome da região de League of Legends que está mais situada ao norte, e ao mesmo tempo é a mais gelada?","Demacia","Freljord",2,
-"Qual o nome da família responsável pela guarda de Demacia?","Stemmaguarda","Vastaya",1,
-"Twisted Fate nasceu de um povo com nome igual ao de um rio sitado ao noroeste do centro de Runeterra. Qual o nome desse rio?","Serpentina","Urtistan",1,
-"Qual o nome do lugar localizado em Freljord onde acreditam que os Observadores estejam presos?","Institute of War","Howling Abyss",2,
-"Qual o nome da habilidade Ultimate (R) do Malzahar?","Investida do Vazio","Aperto Infero",2,
-"Qual o nome da habilidade Ultimate (R) da Miss Fortune?","Mandando Bala","Tapete Vermelho",1,
-"Qual é a descrição do Kassadin?","O Monstro do Vazio","O Andarilho do Vazio",2,
-"Qual o nome do ponto mais alto do Monte Targon?","Pico da Luz","Pico do Dragão",2,
-"Quais os nomes das duas irmãs que representam a Lua e o Sol, respectivamente?","Diana e Aphelios","Diana e Leona",2,
-"Qual o nome do modo alternativo do League of Legends no qual os 5 jogadores jogam com o mesmo campeão","URF","Todos por Um",2,
-"Qual o nome da banda musical de League of Legends de K-Pop?","Pentakill","K/DA",2,
-"O Mid Season Invitational de 2017 foi realizado em qual país?","China","Brasil",2,
-"O Disco Solar localizado no centro de Shurima, foi feito com ajuda de qual povo targoniano?","Lunari","Solari",2,
-"Uma das falas do Pantheon no jogo, faz referência a um comercial/meme famoso.","Panificadora Alfa","Churrasqueira Controle Remoto",1,
-"Qual campeão do League of Legends é responsável pela proteção das chamadas Runas Globais?","Ryze","Irelia",1,
-"'Regras foram feitas para serem quebradas. Igual prédios... Ou pessoas!'","Jinx","Katarina",1,
-"Qual o nome dos dois semideuses localizado no topo dos montes de Freljord?","Ornn e Volibear","Ornn e Anivia",1,
-"Qual o nome do 'planeta' onde vivem todos os personagens de League of Legends?","Runeterra","Demacia",1,
-"Quantos campeões existem no League of Legends?","157","161",1,
-"Não existem campeões dentro do League of Legends que conseguem sair para fora de Runeterra.","Verdadeiro","Falso",2,
-"Ashe e Tryndamere são casados.","Verdadeiro","Falso",1,
-"Qual o nome da região onde majoritariamente ficam localizados os Vastayas?","Noxus","Ionia",2,
-"Cassiopeia, Talon e Katarina fazem parte de uma família muito conhecida em Noxus. Qual o nome dela?","Stemmaguarda","Du Couteau",2,
-"Qual o nome do sistema que automaticamente pune jogadores AFKs ou que 'quitam' de forma proposital no League of Legends?","LeaverBuster","Riot Forge",1,
-"Qual o nome do jogo de estratégia e táticas presente dentro do League of Legends?","Legends of Runeterra","Teamfight Tactics",2,
-"Qual o nome da escopeta usada por Graves?","Vingança","Destino",2,
-"A campeã Akali já passou por quantos reworks desde seu lançamento?","2","3",1,
-"Qual foi a única equipe do Ocidente a vencer o Campeonato Mundial de League of Legends?","FNATIC","Team Liquid",1,
-"O time do Flamengo possui uma equipe no competivivo de League of Legends.","Verdadeiro","Falso",1,
-"Qual foi a equipe brasileira que conseguiu a melhor campanha no Mundial de League of Legends, em 2015?","LOUD","INTZ",2,
-"Qual foi o jogador que mais conquistou títulos do Campeonato Brasileiro de League of Legends?","BrTT","Revolta",1,
-"Qual foi o(a) campeã(o) que salvou vários zaunitas após uma falha em um experimento?","Janna","Viktor",1,
-"Quais são os nomes dos dois campeões que fazem parte dos chamados Sentinelas da Luz?","Lucian e Pyke","Lucian e Senna",2,
-"Qual dessas é a maior região de Runeterra?","Noxus","Shurima",2,
-"Quantas regiões existem em Runeterra?","10","12",2,
-"Qual o nome do javali no qual a campeã Sejuani sempre fica montada?","Bristle","Valor",1,
-"'Tudo o que está quebrado pode ser reforjado.","Akali","Riven",2,
-"Qual o nome da série de League of Legends lançada cujo foco é em Piltover e em Zaun?","Arcane","Forge",1,
-"Qual o nome da região onde majoritamente vivem os Yordles?","Ionia","Bandópolis",2,
-"Qual é a descrição da Shyvana?","A Fúria do Dragão","A Meia-Dragão",2,
-"Quais destes monstros neutros pertencem ao Vazio?","Arauto do Vale e Barão Na'Shor","Arauto do Vale e Dragão Ancião",1,
-"No evento de Arcane, Heimerdinger chega a mencionar uma frase durante o jogo.","Tá pegando fogo bicho!","Sempre pela ciência!",1,
-"Qual destes personagens foi tirado de demacia, subiu o monte Targon e virou o Escudo de Valoran?","Zoe","Taric",2,
-"Águas de Sentina é um arquipélago localizado ao leste de Runeterra, onde basicamente só vivem...","Aspectos","Piratas",2,
-"Qual a cor do cabelo da Katarina?","Preto","Vermelho",2,
-"Nenhuma pessoa que foi capturada pela lanterna de Thresh conseguiu sair de lá.","Verdadeiro","Falso",2,
-"Qual destes campeões não faz parte das Ilhas das Sombras?","Hecarim","Lucian",2,
-"Qual o nome da matéria utilizada pelos Glacinatas para prender os Observadores dentro de Howling Abyss?","Gelo verdadeiro","Runas Globais",1,
-"Qual o(a) campeã(o) que conseguiu derrotar e derrubar o navio de Gangplank?","Miss Fortune","Twisted Fate",1,
-"Qual destas campeãs possui um coração Hextec?","Camille","Orianna",1,
-"'Eu sou o terror de todos que se oponham contra mim.'","Morgana","Shyvana",2,
-"Qual o nome da runa do League of Legends que dá dano e velocidade de movimento aprimoradas nas botas?","Predador","Ímpeto Gradual",1,
-"Qual o nome de uma das moedas utilizada em Águas de Sentina?","Serpentes de Prata","Leão Submarino",1,
-}
-mapa="@7786632"
-actual_question={quest="",a1="",a2="",answer=nil}
+
+for name,player in next,tfm.get.room.playerList do
+	if tfm.get.room.playerList[name].language == "br" or tfm.get.room.playerList[name].language == "pt" then
+		text = lang.br
+	elseif tfm.get.room.playerList[name].language == "fr" then
+		text = lang.fr
+	else
+		text = lang.en
+	end
+end
+
 function verifyAdmin(name)
 	for i=1,rawlen(admin) do
 		if admin[i] == name then
@@ -514,277 +321,1268 @@ end
 function showMessage(message,name)
 	temp_text=string.gsub(message,"<b>","")
 	temp_text=string.gsub(temp_text,"</b>","")
-	if tribehouse == false then
+	if tfm.get.room.isTribeHouse == false then
 		tfm.exec.chatMessage(message,name)
-	elseif tribehouse == true then
-		ui.addTextArea(0,"<p align='center'><font size='16'>"..message.."",name,10,22,780,48,0x000001,0x000001,1.0,true)
+	elseif tfm.get.room.isTribeHouse == true then
+		if name == nil then
+			print("<ROSE>[Test Mode] : <br><BL>"..temp_text.."")
+		else
+			print("<ROSE>[Test Mode] - "..name.." : <br><BL>"..temp_text.."")
+		end
 	end
 end
-function questionChanger(id,remove)
-	if remove == true then
-		table.remove(questions_list,id)
-	end
-end
-function eventNewGame()
-	vivos=0
-	tfm.exec.setGameTime(15)
+function setAllAlive()
 	for name,player in next,tfm.get.room.playerList do
-		vivos=vivos+1
-	end
-	if tema == 0 then
-		count=rawlen(perguntas)/4
-	elseif tema == 1 then
-		count=rawlen(perguntas1)/4
-	elseif tema == 2 then	
-		count=rawlen(perguntas2)/4
-	elseif tema == 3 then	
-		count=rawlen(perguntas3)/4
-	end
-	if rawlen(questions_list) <= limite then
-		showMessage("<J>Contando perguntas. Por favor, aguarde...<br>")
-		for i=1,count do
-			table.insert(questions_list,i)
-		end
-	end
-	if tema <= 2 then
-		showMessage("Esta é a versão oficial do Quiz de Perguntas.<br>As perguntas foram todas feitas por Reksai_void2600#6638.<br><br><N><b>Quantidade de perguntas presentes: "..rawlen(questions_list).."</b><br><VP>O sistema inteligente de escolha de perguntas está ativo.")
-	elseif tema == 3 then
-		showMessage("Esta é a versão oficial do Quiz de Perguntas.<br>As perguntas foram, em grande maioria, feitas por Spectra_phantom#6089.<br><br><N><b>Quantidade de perguntas presentes: "..rawlen(questions_list).."</b><br><VP>O sistema inteligente de escolha de perguntas está ativo.")
-	end
-end
-function reset()
-	rodada=0
-	for i=0,3 do
-		ui.removeTextArea(i)
-	end
-	modo="inicial"
-	tfm.exec.newGame(mapa)
-end
-function eventChatCommand(name,message)
-	if name == "Forzaldenon#0000" or name == "Reksai_void2600#6638" or name == "Aurelianlua#0000" or name == "Viego#0345" or verifyAdmin(name) == true then
-		if (message:sub(0,6) == "limite") then
-			limite=tonumber(message:sub(8))
-			showMessage("Limite de rodadas alterado para: "..message:sub(8).."")
-		end
-		if (message:sub(0,4) == "setq") then
-			set_q=tonumber(message:sub(6))
-		end
-		if (message:sub(0,4) == "tema") then
-			if message:sub(6) == "0" or message:sub(6) == "1" or message:sub(6) == "2" or message:sub(6) == "3" then
-				tema=tonumber(message:sub(6))
-				questions_list={}; count=0;
-				reset()
-			end
-		end
+		data[name].c=1;
 	end
 end
 function eventNewPlayer(name)
-	ratos=ratos+1
+	rato=rato+1
+	for k=32, 87 do
+		tfm.exec.bindKeyboard(name,k,false,true)
+	end
+	tfm.exec.bindKeyboard(name,115,false,true)
+	system.bindMouse(name,true)
+	newData={
+			["c"]=0;
+			["s"]=0;
+			};
+	data[name] = newData;
+	showMessage("<br><br><br><p align='center'>"..text.welcome.."<br><p align='left'>",name)
+	if string.find(tfm.get.room.name,name) then
+		table.insert(admin,name)
+		showMessage("You are the administrator of this room.<br><br>If you are a FunCorp member, type !fc to enable the FunCorp mode.",name)
+	end
 end
 for name,player in next,tfm.get.room.playerList do
 	eventNewPlayer(name)
 end
-function eventPlayerLeft(name)
-	ratos=ratos-1
-end
-function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.13.0</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
-	if f < 2000 and modo == "inicial" then
-		modo="perguntar"
-		randomQuests()
+function eventPlayerDied(name)
+	if active >= 0 and active <= 55 then
+		vivo=vivo-1
+		local i=0
+		local name
+		for pname,player in pairs(tfm.get.room.playerList) do
+			if not player.isDead then
+				i=i+1
+				name=pname
+			end
+		end
+		if i==0 then
+			vivo=0
+			active=-1
+		elseif i==1 then
+			active=-1
+			tfm.exec.giveCheese(name)
+			tfm.exec.playerVictory(name)
+			tfm.exec.setGameTime(10)
+		end
 	end
-	if f < 1250 and modo == "perguntar" then
+	if active == 56 then
+		completeCommand(name)
+		tfm.exec.respawnPlayer(name)
+	end
+	if active >= 57 then
+		vivo=vivo-1
+		local i=0
+		local name
+		for pname,player in pairs(tfm.get.room.playerList) do
+			if not player.isDead then
+				i=i+1
+				name=pname
+			end
+		end
+		if i==0 then
+			vivo=0
+			active=-1
+		elseif i==1 then
+			active=-1
+			tfm.exec.giveCheese(name)
+			tfm.exec.playerVictory(name)
+			tfm.exec.setGameTime(10)
+		end
+	end
+end
+function selectMap()
+	tfm.exec.newGame(mapas[math.random(#mapas)])
+end
+function completeCommand(name)
+	if not active == 56 then
+		if tfm.get.room.playerList[name].isDead == false and data[name].c == 0 then
+			if data[name].c == 0 then
+				showMessage(text.completed,name)
+			end
+			data[name].c=1
+		end
+	else
+		if data[name].c == 0 then
+			showMessage(text.completed,name)
+			data[name].c=1
+		end
+	end
+end
+function eventNewGame()
+	ui.removeTextArea(0,nil)
+	ui.removeTextArea(1,nil)
+	ui.removeTextArea(2,nil)
+	ui.removeTextArea(250,nil)
+	rodada=0
+	active=0
+	vivo=0
+	rato=0
+	dificuldade=1
+	tfm.exec.setWorldGravity(0, 10)
+	if unlocked == true then
+		tfm.exec.setGameTime(15)
+		showMessage("<R><i>Spectra's map loader v2.198</i><br><N>Loading current map information...<br><b>Current Map :</b> <V>"..tfm.get.room.currentMap.."")
+		if fc_mode == true then
+			showMessage("<VP><br>The FunCorp mode of this module is now enabled. These players have additional control of this room:<br>")
+			for i=1,rawlen(admin) do
+				showMessage("<VP>"..admin[i].."<br>")
+			end
+		end
+	else
+		tfm.exec.setGameTime(36000)
+	end
+	for name,player in next,tfm.get.room.playerList do
+		vivo=vivo+1
+		rato=rato+1
+		if data[name] then
+			data[name].c=0
+			data[name].key=0
+		end
+	end
+	rodadas=math.floor(20+(rato/5))
+end
+function eventPlayerLeft()
+	rato=rato-1
+end
+function sortearComandos()
+	if fc_mode == false then
+		active=math.random(1,81)
+	else
+		active=tonumber(fc_cmds[math.random(#fc_cmds)])
+	end
+	getCommand()
+end
+function addCommandCount(name)
+	data[name].s=data[name].s+1
+	if data[name].c == 0 then
+		if tfm.get.room.playerList[name].isDead == false then
+			if data[name].s <= 99 then
+				ui.addTextArea(24,"<font size='33'><p align='center'>"..data[name].s.."",name,370,350,60,45,0x000001,0x000001,0.8,true)
+			end
+		end
+	end
+end
+function eventChatCommand(name,message)
+	if name == "Rakan_raster#0000" or name == "Xayah_raster#7598" or name == "Aurelianlua#0000" or name == "Forzaldenon#0000" or verifyAdmin(name) == true then
+		if(message:sub(0,7) == "command") then
+				active=tonumber(message:sub(9))
+				getCommand()
+		end
+		if(message:sub(0,1) == "q") then
+			q=message:sub(3)
+		end
+		if(message:sub(0,2) == "tc") then
+			showMessage("<VP>• [FunCorp - "..name.."] "..message:sub(4).."")
+		end
+		if(message:sub(0,1) == "a") then
+			a=message:sub(3)
+		end
+		if(message:sub(0,4) == "kill") then
+			tfm.exec.killPlayer(message:sub(6))
+		end
+		if(message:sub(0,1) == "t") then
+			qtime=tonumber(message:sub(3))
+		end
+		if(message:sub(0,3) == "run") then
+			tfm.exec.newGame(message:sub(5))
+			active=0
+		end
+		if(message:sub(0,5) == "limit") then
+			tfm.exec.setRoomMaxPlayers(tonumber(message:sub(7)))
+		end
+		if(message:sub(0,2) == "pw") then
+			tfm.exec.setRoomPassword(tostring(message:sub(4)))
+			if message:sub(4) == "" then
+				showMessage("Password cleared.",name)
+			else
+				showMessage("Password changed to: "..message:sub(4).."",name)
+			end
+		end
+		if message == "fc" then
+			if fc_mode == false then
+				fc_mode=true
+				showMessage("<R>The FunCorp mode of this module is now enabled.<br><br>Available commands: !tc [message], !run [@code], !kill [player#tag], !limit [number], !pw [password].")
+			else
+				fc_mode=false
+				showMessage("<R>The FunCorp mode of this module is now disabled.")
+			end
+		end
+	end
+end
+function showCommand(id,text)
+	ui.addTextArea(0,"<font face='Rockwell,Arial'><font color='#ffffff'><font size='17'><p align='center'><b>"..text.."",nil,25,26,750,24,0x111111,0x222222,0.9,true)
+end
+function whiteSquare(x)
+	ui.addTextArea(1,"",nil,x,320,80,65,0xffffff,0xffffff,0.68,false)
+end
+function verticalRectangle(x)
+	ui.addTextArea(1,"",nil,x,0,80,400,0xffffff,0xffffff,0.68,false)
+end
+function horizontalRectangle(y)
+	ui.addTextArea(1,"",nil,0,y,1600,60,0xffffff,0xffffff,0.68,false)
+end
+function getCommand()
+	rodada=rodada+1
+	for name,player in next,tfm.get.room.playerList do
+		data[name].c=0
+		data[name].s=0
+	end
+	if active == 1 then
+		showCommand(active,text.dancar)
+		tfm.exec.setGameTime(5)
+	end
+	if active == 2 then
+		showCommand(active,text.sentar)
+		tfm.exec.setGameTime(5)
+	end
+	if active == 3 then
+		showCommand(active,text.confetar)
+		tfm.exec.setGameTime(6)
+	end
+	if active == 4 then
+		showCommand(active,text.mouse)
+		tfm.exec.setGameTime(5)
+	end
+	if active == 5 then
+		showCommand(active,text.beijos)
+		tfm.exec.setGameTime(15)
+	end
+	if active == 6 then
+		showCommand(active,text.dormir)
+		tfm.exec.setGameTime(5)
+	end
+	if active == 7 then
+		showCommand(active,text.raiva)
+		tfm.exec.setGameTime(5)
+	end
+	if active == 8 then
+		showCommand(active,text.chorem)
+		tfm.exec.setGameTime(5)
+	end
+	if active == 9 then
+		showCommand(active,text.esquerda)
+		tfm.exec.setGameTime(6)
+		setAllAlive()
+	end
+	if active == 10 then
+		showCommand(active,text.direita)
+		tfm.exec.setGameTime(6)
+		setAllAlive()
+	end
+	if active == 11 then
+		showCommand(active,text.digitar)
+		tfm.exec.setGameTime(8)
+	end
+	if active == 12 then
+		showCommand(active,text.falar)
+		tfm.exec.setGameTime(7)
+		setAllAlive()
+	end
+	if active == 13 then
+		showCommand(active,text.pular)
+		tfm.exec.setGameTime(5)
+		setAllAlive()
+	end
+	if active == 14 then
+		showCommand(active,text.mexer)
+		tfm.exec.setGameTime(5)
+		setAllAlive()
+	end
+	if active == 15 then
+		showCommand(active,text.bandeira)
+		tfm.exec.setGameTime(8)
+	end
+	if active == 16 then
+		showCommand(active,text.ano)
+		tfm.exec.setGameTime(5)
+	end
+	if active == 17 then
+		showCommand(active,text.vesquerda)
+		tfm.exec.setGameTime(5)
+		setAllAlive()
+	end
+	if active == 18 then
+		showCommand(active,text.vdireita)
+		tfm.exec.setGameTime(5)
+		setAllAlive()
+	end
+	if active == 19 then
+		xpos=math.random(60,700)
+		showCommand(active,text.quadrado)
+		tfm.exec.setGameTime(6)
+		setAllAlive()
+		whiteSquare(xpos)
+	end
+	if active == 20 then
+		xpos=math.random(60,700)
+		showCommand(active,text.retangulo)
+		tfm.exec.setGameTime(6)
+		setAllAlive()
+		verticalRectangle(xpos)
+	end
+	if active == 21 then
+		xpos=math.random(60,700)
+		showCommand(active,text.nretangulo)
+		tfm.exec.setGameTime(6)
+		setAllAlive()
+		verticalRectangle(xpos)
+	end
+	if active == 22 then
+		ypos=math.random(40,300)
+		showCommand(active,text.retangulo)
+		tfm.exec.setGameTime(7)
+		setAllAlive()
+		horizontalRectangle(ypos)
+	end
+	if active == 23 then
+		ypos=math.random(40,300)
+		showCommand(active,text.nretangulo)
+		tfm.exec.setGameTime(5)
+		setAllAlive()
+		horizontalRectangle(ypos)
+	end
+	if active == 24 then
+		showCommand(active,text.preesquerda30)
+		tfm.exec.setGameTime(10)
+	end
+	if active == 25 then
+		showCommand(active,text.predireita30)
+		tfm.exec.setGameTime(10)
+	end
+	if active == 26 then
+		showCommand(active,text.preesquerda60)
+		tfm.exec.setGameTime(13)
+	end
+	if active == 27 then
+		showCommand(active,text.predireita60)
+		tfm.exec.setGameTime(13)
+	end
+	if active == 28 then
+		showCommand(active,text.espaco)
+		tfm.exec.setGameTime(8)
+	end
+	if active == 29 then
+		showCommand(active,text.nome)
+		tfm.exec.setGameTime(10)
+	end
+	if active == 30 then
+		showCommand(active,text.ndance)
+		tfm.exec.setGameTime(6)
+		setAllAlive()
+	end
+	if active == 31 then
+		xpos=math.random(60,700)
+		local xpos2=math.random(60,700)
+		showCommand(active,text.quadrado)
+		tfm.exec.setGameTime(6)
+		setAllAlive()
+		whiteSquare(xpos)
+		ui.addTextArea(2,"",nil,xpos2,320,80,65,0xff0000,0xff0000,0.62,false)
+	end
+	if active == 32 then
+		xpos=math.random(60,700)
+		local xpos2=math.random(60,700)
+		showCommand(active,text.quadradov)
+		tfm.exec.setGameTime(6)
+		setAllAlive()
+		ui.addTextArea(1,"",nil,xpos2,320,80,65,0xffffff,0xffffff,0.68,false)
+		ui.addTextArea(2,"",nil,xpos,320,80,65,0xff0000,0xff0000,0.62,false)
+	end
+	if active == 33 then
+		xpos=math.random(60,700)
+		local xpos2=math.random(60,700)
+		showCommand(active,text.retangulo)
+		tfm.exec.setGameTime(6)
+		setAllAlive()
+		verticalRectangle(xpos)
+		ui.addTextArea(2,"",nil,xpos2,0,80,400,0xff0000,0xff0000,0.62,false)
+	end
+	if active == 34 then
+		xpos=math.random(60,700)
+		local xpos2=math.random(60,700)
+		showCommand(active,text.retangulov)
+		tfm.exec.setGameTime(6)
+		setAllAlive()
+		ui.addTextArea(1,"",nil,xpos2,0,80,400,0xffffff,0xffffff,0.68,false)
+		ui.addTextArea(2,"",nil,xpos,0,80,400,0xff0000,0xff0000,0.62,false)
+	end
+	if active == 35 then
+		showCommand(active,text.abaixar)
+		tfm.exec.setGameTime(7)
+	end
+	if active == 36 then
+		showCommand(active,text.action)
+		tfm.exec.setGameTime(8)
+	end
+	if active == 37 then
+		showCommand(active,text.ds)
+		tfm.exec.setGameTime(10)
+	end
+	if active == 38 then
+		showCommand(active,text.key1)
+		tfm.exec.setGameTime(8)
+	end
+	if active == 39 then
+		showCommand(active,text.action1)
+		tfm.exec.setGameTime(10)
+	end
+	if active == 40 then
+		showCommand(active,text.laugh)
+		tfm.exec.setGameTime(5)
+	end
+	if active == 41 then
+		showCommand(active,text.laugh2)
+		tfm.exec.setGameTime(5)
+		setAllAlive()
+	end
+	if active == 42 then
+		showCommand(active,text.stone)
+		tfm.exec.setGameTime(6)
+		setAllAlive()
+		for i=1,24 do
+			tfm.exec.addShamanObject(85,(i*80)-20,64,0,0,0,false)
+		end
+	end
+	if active == 43 then
+		showCommand(active,text.noob)
+		tfm.exec.setGameTime(10)
+	end
+	if active == 44 then
+		showCommand(active,text.action2)
+		tfm.exec.setGameTime(9)
+	end
+	if active == 45 then
+		showCommand(active,text.jump)
+		tfm.exec.setGameTime(5)
+	end
+	if active == 46 then
+		xpos=math.random(60,700)
+		local xpos2=math.random(60,700)
+		showCommand(active,text.nretangulo)
+		tfm.exec.setGameTime(5)
+		setAllAlive()
+		verticalRectangle(xpos)
+		ui.addTextArea(2,"",nil,xpos2,0,80,400,0xff0000,0xff0000,0.62,false)
+	end
+	if active == 47 then
+		number=math.random(1000000,9999999)
+		showCommand(active,text.number..number)
+		tfm.exec.setGameTime(7)
+	end
+	if active == 48 then
+		showCommand(active,text.key)
+		tfm.exec.setGameTime(5)
+	end
+	if active == 49 then
+		showCommand(active,text.jump2)
+		tfm.exec.setGameTime(9)
+	end
+	if active == 50 then
+		showCommand(active,text.action3)
+		tfm.exec.setGameTime(8)
+	end
+	if active == 51 then
+		showCommand(active,text.area)
+		ui.addTextArea(250,"<a href='event:command51'>CLICK HERE",nil,math.random(100,700),math.random(50,350),100,25,0,0,1.0,true)
+		tfm.exec.setGameTime(10)
+	end
+	if active == 52 then
+		showCommand(active,text.dancing)
+		setAllAlive()
 		for name,player in next,tfm.get.room.playerList do
-			if tfm.get.room.playerList[name].x >= 390 and tfm.get.room.playerList[name].x <= 410 then
+			tfm.exec.playEmote(name,0)
+		end
+		tfm.exec.setGameTime(8)
+	end
+	if active == 53 then
+		showCommand(active,text.freeze)
+		setAllAlive()
+		for name,player in next,tfm.get.room.playerList do
+			tfm.exec.freezePlayer(name,true)
+		end
+		tfm.exec.setGameTime(5)
+	end
+	if active == 54 then
+		showCommand(active,text.transform)
+		tfm.exec.setGameTime(10)
+	end
+	if active == 55 then
+		showCommand(active,text.down1)
+		tfm.exec.setGameTime(9)
+	end
+	if active == 56 then
+		showCommand(active,text.kill)
+		tfm.exec.setGameTime(10)
+	end
+	if active == 57 then
+		xpos=math.random(60,700)
+		xpos2=math.random(60,700)
+		showCommand(active,text.quadradoa)
+		tfm.exec.setGameTime(6)
+		setAllAlive()
+		ui.addTextArea(1,"",nil,xpos2,320,80,65,0xff0000,0xff0000,0.68,false)
+		ui.addTextArea(2,"",nil,xpos,320,80,65,0x0000ff,0x0000ff,0.62,false)
+	end
+	if active == 58 then
+		showCommand(active,text.naction)
+		setAllAlive()
+		tfm.exec.setGameTime(10)
+	end
+	if active == 59 then
+		showCommand(active,text.nchorem)
+		setAllAlive()
+		tfm.exec.setGameTime(7)
+	end
+	if active == 60 then
+		showCommand(active,text.math)
+		tfm.exec.setGameTime(8)
+	end
+	if active == 61 then
+		showCommand(active,text.seq4)
+		tfm.exec.setGameTime(13)
+	end
+	if active == 62 then
+		showCommand(active,text.spider)
+		setAllAlive()
+		tfm.exec.setGameTime(10)
+		for i=1,8 do
+			tfm.exec.addPhysicObject(i, math.random(50,750), math.random(50,350), spiderweb)
+		end
+	end
+	if active == 63 then
+		showCommand(active,text.key2)
+		tfm.exec.setGameTime(10)
+	end
+	if active == 64 then
+		xpos=math.random(60,700)
+		xpos2=math.random(60,700)
+		showCommand(active,text.quadradov)
+		tfm.exec.setGameTime(6)
+		setAllAlive()
+		ui.addTextArea(2,"",nil,xpos,320,80,65,0xff0000,0xff0000,0.68,false)
+		ui.addTextArea(1,"",nil,xpos2,320,80,65,0x0000ff,0x0000ff,0.62,false)
+	end
+	if active == 65 then
+		showCommand(active,text.preesquerda15)
+		tfm.exec.setGameTime(8)
+	end
+	if active == 66 then
+		showCommand(active,text.predireita15)
+		tfm.exec.setGameTime(8)
+	end
+	if active == 67 then
+		showCommand(active,text.clap)
+		tfm.exec.setGameTime(9)
+	end
+	if active == 68 then
+		showCommand(active,text.rain)
+		tfm.exec.setGameTime(8)
+		setAllAlive()
+		for i=1,24 do
+			tfm.exec.addShamanObject(40,(i*80)-20,64,0,0,0,false)
+		end
+	end
+	if active == 69 then
+		showCommand(active,text.skull)
+		tfm.exec.setGameTime(6)
+		setAllAlive()
+		for i=5,9 do
+			tfm.exec.addBonus(2, math.random(100,700), math.random(80,300), i, 0)
+		end
+	end
+	if active == 70 then
+		showCommand(active,text.gravity)
+		tfm.exec.setGameTime(10)
+		setAllAlive()
+		tfm.exec.setWorldGravity(0, math.random(-3,22))
+	end
+	if active == 71 then
+		showCommand(active,text.black)
+		tfm.exec.setGameTime(10)
+		setAllAlive()
+		tfm.exec.setWorldGravity(math.random(-50,50), 20)
+	end
+	if active == 72 then
+		number=math.random(100000000,999999999)
+		showCommand(active,text.number..number)
+		tfm.exec.setGameTime(11)
+	end
+	if active == 73 then
+		showCommand(active,text.counts)
+		tfm.exec.setGameTime(8)
+	end
+	if active == 74 then
+		showCommand(active,text.counts_alive)
+		tfm.exec.setGameTime(8)
+	end
+	if active == 75 then
+		showCommand(active,text.facepalm)
+		tfm.exec.setGameTime(9)
+	end
+	if active == 76 then
+		showCommand(active,text.enterprise)
+		tfm.exec.setGameTime(10)
+	end
+	if active == 77 then
+		showCommand(active,text.math1)
+		tfm.exec.setGameTime(6)
+	end
+	if active == 78 then
+		showCommand(active,text.seq5)
+		tfm.exec.setGameTime(10)
+	end
+	if active == 79 then
+		showCommand(active,text.balls)
+		tfm.exec.setGameTime(9)
+		setAllAlive()
+		for i=1,24 do
+			tfm.exec.addShamanObject(6,(i*80)-20,64,0,0,0,false)
+		end
+	end
+	if active == 80 then
+		xpos=math.random(60,700)
+		local xpos2=math.random(60,700)
+		showCommand(active,text.nretangulov)
+		tfm.exec.setGameTime(6)
+		setAllAlive()
+		ui.addTextArea(1,"",nil,xpos2,0,80,400,0xffffff,0xffffff,0.68,false)
+		ui.addTextArea(2,"",nil,xpos,0,80,400,0xff0000,0xff0000,0.62,false)
+	end
+	if active == 81 then
+		showCommand(active,text.explosion)
+		tfm.exec.setGameTime(8)
+		setAllAlive()
+		for i=1,12 do
+			x=math.random(50,750)
+			y=math.random(50,350)
+			tfm.exec.addShamanObject(24,x,y,0,0,0,false)
+		end
+	end
+	if active == 96 then
+		showCommand(active,text.creator)
+		tfm.exec.setGameTime(13)
+	end
+	if active == 97 then
+		showCommand(active,text.collect)
+		tfm.exec.setGameTime(14)
+		for i=10,13 do
+			tfm.exec.addBonus(0, math.random(100,700), math.random(80,300), i, 0)
+		end
+	end
+	if active == 98 then
+		showCommand(active,q)
+		tfm.exec.setGameTime(qtime)
+		setAllAlive()
+	end
+	if active == 99 then
+		showCommand(active,q)
+		tfm.exec.setGameTime(qtime)
+	end
+end
+function eventPlayerBonusGrabbed(name, id)
+	if active == 97 then
+		addCommandCount(name)
+		if data[name].s >= 4 then
+			completeCommand(name)
+		end
+	end
+end		
+function eventTextAreaCallback(id,name,callback)
+	if callback == "command51" then
+		completeCommand(name)
+		ui.removeTextArea(250,name)
+	end
+end
+function eventChatMessage(name,message)
+	if active == 11 then
+		if string.len(message) >= 2 then
+			completeCommand(name)
+		end
+	end
+	if active == 12 then
+		tfm.exec.killPlayer(name)
+	end
+	if active == 16 then
+		if message == "2021" then
+			completeCommand(name)
+		end
+	end
+	if active == 29 then
+		if string.upper(message) == string.upper(name) then
+			completeCommand(name)
+		end
+	end
+	if active == 41 then
+		if string.find(message,"k") or string.find(message,"K") or string.find(message,"ha") or string.find(message,"HA") or string.find(message,"lmao") or string.find(message,"LMAO") then
+			tfm.exec.killPlayer(name)
+		end
+	end
+	if active == 43 then
+		if string.upper(message) == "EU SOU NOOB" or string.upper(message) == "I AM NOOB" or string.upper(message) == "BEN NOOB" then
+			completeCommand(name)
+		end
+		if string.find(string.upper(message),string.upper("PRO")) then
+			tfm.exec.killPlayer(name)
+		end
+	end
+	if active == 47 or active == 72 then
+		if message == tostring(number) then
+			completeCommand(name)
+		end
+	end
+	if active == 60 then
+		if message == "2" then
+			completeCommand(name)
+		elseif message == "3" then
+			tfm.exec.killPlayer(name)
+		elseif message == "11" then
+			tfm.exec.killPlayer(name)
+		end
+	end
+	if active == 73 then
+		if tostring(message) == tostring(rato) then
+			completeCommand(name)
+		end
+	end
+	if active == 74 then
+		if tostring(message) == tostring(vivo) then
+			completeCommand(name)
+		end
+	end
+	if active == 76 then
+		if string.upper(message) == "ATELIER801" or string.upper(message) == "ATELIER 801" then
+			completeCommand(name)
+		end
+	end
+	if active == 77 then
+		if message == "4" then
+			completeCommand(name)
+		elseif message == "22" then
+			tfm.exec.killPlayer(name)
+		elseif message == "3" then
+			tfm.exec.killPlayer(name)
+		end
+	end
+	if active == 96 then
+		if message == "Rakan_raster#0000" then
+			completeCommand(name)
+		end
+	end
+	if active == 99 then
+		if string.upper(message) == string.upper(a) then
+			completeCommand(name)
+		end
+	end
+end
+function eventEmotePlayed(name,id)
+	if active == 1 then
+		if id == 0 or id == 10 then
+			completeCommand(name)
+		end
+	end
+	if active == 2 then
+		if id == 8 then
+			completeCommand(name)
+		end
+	end
+	if active == 3 then
+		if id == 9 then
+			addCommandCount(name)
+			if data[name].s >= 5 then
+				completeCommand(name)
+			end
+		end
+	end
+	if active == 5 then
+		if id == 3 then
+			addCommandCount(name)
+			if data[name].s >= 10 then
+				completeCommand(name)
+			end
+		end
+	end
+	if active == 6 then
+		if id == 6 then
+			completeCommand(name)
+		end
+	end
+	if active == 7 then
+		if id == 4 then
+			completeCommand(name)
+		end
+	end
+	if active == 8 then
+		if id == 2 then
+			completeCommand(name)
+		end
+	end
+	if active == 14 or active == 53 or active == 58 then
+		tfm.exec.killPlayer(name)
+	end
+	if active == 15 then
+		if id == 10 then
+			completeCommand(name)
+		end
+	end
+	if active == 30 then
+		if id == 0 or id == 10 then
+			tfm.exec.killPlayer(name)
+		end
+	end
+	if active == 36 then
+		completeCommand(name)
+	end
+	if active == 37 then
+		if id == 0 and data[name].s == 0 then
+			data[name].s=1
+		end
+		if id == 8 and data[name].s == 1 then
+			completeCommand(name)
+		end
+	end
+	if active == 39 then
+		if id == 0 and data[name].s == 0 then
+			data[name].s=1
+		end
+		if id == 8 and data[name].s == 1 then
+			data[name].s=2
+		end
+		if id == 6 and data[name].s == 2 then
+			completeCommand(name)
+		end
+	end
+	if active == 40 then
+		if id == 1 then
+			completeCommand(name)
+		end
+	end
+	if active == 41 then
+		if id == 1 then
+			tfm.exec.killPlayer(name)
+		end
+	end
+	if active == 44 then
+		if id == 2 and data[name].s == 0 then
+			data[name].s=1
+		end
+		if id == 1 and data[name].s == 1 then
+			completeCommand(name)
+		end
+	end
+	if active == 50 then
+		if id == 3 and data[name].s == 0 then
+			data[name].s=1
+		end
+		if id == 2 and data[name].s == 1 then
+			completeCommand(name)
+		end
+	end
+	if active == 54 then
+		if id == 0 and data[name].s == 0 then
+			data[name].s=1
+		end
+		if id == 6 and data[name].s == 1 then
+			completeCommand(name)
+		end
+	end
+	if active == 59 then
+		if id == 2 then
+			tfm.exec.killPlayer(name)
+		end
+	end
+	if active == 61 then
+		if id == 0 and data[name].s == 0 then
+			data[name].s=1
+		end
+		if id == 8 and data[name].s == 1 then
+			data[name].s=2
+		end
+		if id == 6 and data[name].s == 2 then
+			data[name].s=3
+		end
+		if id == 5 and data[name].s == 3 then
+			completeCommand(name)
+		end
+	end
+	if active == 67 then
+		if id == 5 then
+			addCommandCount(name)
+			if data[name].s >= 5 then
+				completeCommand(name)
+			end
+		end
+	end
+	if active == 75 then
+		if id == 7 then
+			addCommandCount(name)
+			if data[name].s >= 5 then
+				completeCommand(name)
+			end
+		end
+	end
+	if active == 78 then
+		if id == 0 and data[name].s == 0 then
+			data[name].s=1
+		end
+		if id == 5 and data[name].s == 1 then
+			data[name].s=2
+		end
+		if id == 1 and data[name].s == 2 then
+			completeCommand(name)
+		end
+	end
+end
+function eventMouse(name,x,y)
+	if active == 4 then
+		addCommandCount(name)
+		if data[name].s >= 10 then
+			completeCommand(name)
+		end
+	end
+end
+function eventKeyboard(name,id,down,x,y)
+	if active == 9 then
+		if id == 37 or id == 65 then
+			tfm.exec.killPlayer(name)
+		end
+	end
+	if active == 10 then
+		if id == 39 or id == 68 then
+			tfm.exec.killPlayer(name)
+		end
+	end
+	if active == 13 then
+		if id == 38 or id == 87 then
+			tfm.exec.killPlayer(name)
+		end
+	end
+	if active == 14 then
+		tfm.exec.killPlayer(name)
+	end
+	if active == 24 then
+		if id == 37 or id == 65 then
+			if data[name].key == 0 then
+				data[name].key=id
+			end
+			addCommandCount(name)
+			if data[name].s >= 30 then
+				completeCommand(name)
+			end
+		end
+		if data[name].key == 37 and id == 65 then
+			tfm.exec.killPlayer(name)
+		end
+		if data[name].key == 65 and id == 37 then
+			tfm.exec.killPlayer(name)
+		end
+	end
+	if active == 25 then
+		if id == 39 or id == 68 then
+			if data[name].key == 0 then
+				data[name].key=id
+			end
+			addCommandCount(name)
+			if data[name].s >= 30 then
+				completeCommand(name)
+			end
+		end
+		if data[name].key == 39 and id == 68 then
+			tfm.exec.killPlayer(name)
+		end
+		if data[name].key == 68 and id == 39 then
+			tfm.exec.killPlayer(name)
+		end
+	end
+	if active == 26 then
+		if id == 37 or id == 65 then
+			if data[name].key == 0 then
+				data[name].key=id
+			end
+			addCommandCount(name)
+			if data[name].s >= 60 then
+				completeCommand(name)
+			end
+		end
+		if data[name].key == 37 and id == 65 then
+			tfm.exec.killPlayer(name)
+		end
+		if data[name].key == 65 and id == 37 then
+			tfm.exec.killPlayer(name)
+		end
+	end
+	if active == 27 then
+		if id == 39 or id == 68 then
+			if data[name].key == 0 then
+				data[name].key=id
+			end
+			addCommandCount(name)
+			if data[name].s >= 60 then
+				completeCommand(name)
+			end
+		end
+		if data[name].key == 39 and id == 68 then
+			tfm.exec.killPlayer(name)
+		end
+		if data[name].key == 68 and id == 39 then
+			tfm.exec.killPlayer(name)
+		end
+	end
+	if active == 28 then
+		if id == 32 then
+			addCommandCount(name)
+			if data[name].s >= 20 then
+				completeCommand(name)
+			end
+		end
+	end
+	if active == 35 then
+		if id == 40 or id == 83 then
+			completeCommand(name)
+		end
+	end
+	if active == 38 then
+		if id == 46 then
+			completeCommand(name)
+		end
+	end
+	if active == 45 then
+		if id == 38 or id == 87 then
+			completeCommand(name)
+		end
+	end
+	if active == 48 then
+		completeCommand(name)
+	end
+	if active == 49 then
+		if id == 38 or id == 87 then
+			addCommandCount(name)
+			if data[name].s >= 5 then
+				completeCommand(name)
+				
+			end
+		end
+	end
+	if active == 55 then
+		if id == 40 or id == 83 then
+			addCommandCount(name)
+			if data[name].s >= 3 then
+				completeCommand(name)
+			end
+		end
+	end
+	if active == 63 then
+		if id == 115 then
+			completeCommand(name)
+		end
+	end
+	if active == 65 then
+		if id == 37 or id == 65 then
+			if data[name].key == 0 then
+				data[name].key=id
+			end
+			addCommandCount(name)
+			if data[name].s >= 15 then
+				completeCommand(name)
+			end
+		end
+		if data[name].key == 37 and id == 65 then
+			tfm.exec.killPlayer(name)
+		end
+		if data[name].key == 65 and id == 37 then
+			tfm.exec.killPlayer(name)
+		end
+	end
+	if active == 66 then
+		if id == 39 or id == 68 then
+			if data[name].key == 0 then
+				data[name].key=id
+			end
+			addCommandCount(name)
+			if data[name].s >= 15 then
+				completeCommand(name)
+			end
+		end
+		if data[name].key == 39 and id == 68 then
+			tfm.exec.killPlayer(name)
+		end
+		if data[name].key == 68 and id == 39 then
+			tfm.exec.killPlayer(name)
+		end
+	end
+end
+function eventLoop(passado,faltando)
+	local tempo=math.floor(faltando/1000)
+	if active == -2 then
+		ui.setMapName("<N>"..text.mices.."   <G>|   <VP><b>"..text.version.." RTM 14189.085</b><")
+	elseif active == -1 then
+		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <VP><b>"..text.version.." RTM 14189.085</b><")
+	elseif active >= 0 then
+		ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <VP><b>"..text.version.." RTM 14189.085</b><")
+	end
+	if rato < 4 then
+		if tfm.get.room.currentMap == "@2684847" and unlocked == true then
+			active=-2
+			tfm.exec.setGameTime(8000)
+		else
+			if passado > 4000 and unlocked == true then
+				tfm.exec.newGame("@2684847")
+				tfm.exec.setGameTime(8000)
+				showMessage("<R>"..text.mices.."",nil)
+			end
+		end
+	end
+	if rato >= 4 and passado >= 4000 then
+		if tfm.get.room.currentMap == "@2684847" and unlocked == true then
+			selectMap()
+		end
+	end
+	if active < 0 and faltando < 1 and unlocked == true then
+		selectMap()
+	end
+	if active == 0 and faltando < 1000 then
+		if rodada < rodadas then
+			sortearComandos()
+		else
+			active=-1
+			tfm.exec.setGameTime(10)
+			for name,player in next,tfm.get.room.playerList do
+				tfm.exec.giveCheese(true)
+				tfm.exec.playerVictory(true)
+			end
+		end
+	end
+	if active > 0 and faltando < 1 and rato >= 2 then
+		if active == 17 then
+			for name,player in next,tfm.get.room.playerList do
+				if tfm.get.room.playerList[name].isFacingRight == true then
+					tfm.exec.killPlayer(name)
+				end
+			end
+		end
+		if active == 18 then
+			for name,player in next,tfm.get.room.playerList do
+				if tfm.get.room.playerList[name].isFacingRight == false then
+					tfm.exec.killPlayer(name)
+				end
+			end
+		end
+		if active == 19 or active == 31 or active == 32 or active == 57 or active == 64 then
+			for name,player in next,tfm.get.room.playerList do
+				if player.y < 300 then
+					tfm.exec.killPlayer(name)
+				else
+					if player.x < xpos-10 or player.x > xpos+90 then
+						tfm.exec.killPlayer(name)
+					end
+				end
+			end
+		end
+		if active == 32 then
+			for name,player in next,tfm.get.room.playerList do
+				if player.y < 300 then
+					tfm.exec.killPlayer(name)
+				else
+					if player.x < xpos-10 or player.x > xpos+90 then
+						tfm.exec.killPlayer(name)
+					end
+				end
+			end
+		end
+		if active == 20 or active == 33 or active == 34 then
+			for name,player in next,tfm.get.room.playerList do
+				if player.x < xpos or player.x > xpos+80 then
+					tfm.exec.killPlayer(name)
+				end
+			end
+		end
+		if active == 21 or active == 46 or active == 80 then
+			for name,player in next,tfm.get.room.playerList do
+				if player.x > xpos and player.x < xpos+80 then
+					tfm.exec.killPlayer(name)
+				end
+			end
+		end
+		if active == 22 then
+			for name,player in next,tfm.get.room.playerList do
+				if player.y < ypos-10 or player.y > ypos+70 then
+					tfm.exec.killPlayer(name)
+				end
+			end
+		end
+		if active == 23 then
+			for name,player in next,tfm.get.room.playerList do
+				if player.y > ypos-10 and player.y < ypos+70 then
+					tfm.exec.killPlayer(name)
+				end
+			end
+		end
+		if active == 53 then
+			for name,player in next,tfm.get.room.playerList do
+				tfm.exec.freezePlayer(name,false)
+			end
+		end
+		ui.removeTextArea(0,nil)
+		ui.removeTextArea(1,nil)
+		ui.removeTextArea(2,nil)
+		ui.removeTextArea(250,nil)
+		tfm.exec.setWorldGravity(0, 10)
+		for i=1,8 do
+			tfm.exec.removePhysicObject(i)
+		end
+		for i=1,4 do
+			tfm.exec.removeBonus(i)
+		end
+		for i=5,9 do
+			tfm.exec.removeBonus(i)
+		end
+		for i=10,13 do
+			tfm.exec.removeBonus(i)
+		end
+		active=0
+		if rodada == 3 or rodada == 6 or rodada == 9 or rodada == 13 or rodada == 17 or rodada == 21 then
+			dificuldade=dificuldade+1
+		end
+		for name,player in next,tfm.get.room.playerList do
+			data[name].key=0
+			ui.removeTextArea(24,nil)
+			if data[name].c == 0 then
 				tfm.exec.killPlayer(name)
 			end
 		end
-		tfm.exec.setGameTime(6)
-		if actual_question.answer == false then
-			tfm.exec.removePhysicObject(1)
-			ui.addTextArea(2,"<p align='center'><font color='#181818'><font size='18'>"..actual_question.a2.."",nil,440,145,260,81,0,0,0.1,true)
-			ui.addTextArea(1,"<p align='center'><VP><font size='18'>"..actual_question.a1.."",nil,100,145,260,81,0,0,1.0,true)
-			modo="intervalo"
-		elseif actual_question.answer == true then
-			tfm.exec.removePhysicObject(0)
-			ui.addTextArea(1,"<p align='center'><font color='#181818'><font size='18'>"..actual_question.a1.."",nil,100,145,260,81,0,0,0.1,true)
-			ui.addTextArea(2,"<p align='center'><VP><font size='18'>"..actual_question.a2.."",nil,440,145,260,81,0,0,1.0,true)
-			modo="intervalo"
-		end
-	end
-	if modo == "intervalo" then
-		if f > 2000 and f <= 3000 then
-			if actual_question.answer == false then
-				for name,player in next,tfm.get.room.playerList do
-					if tfm.get.room.playerList[name].x >= 410 then
-						tfm.exec.killPlayer(name)
-					end
-				end
-			elseif actual_question.answer == true then
-				for name,player in next,tfm.get.room.playerList do
-					if tfm.get.room.playerList[name].x <= 390 then
-						tfm.exec.killPlayer(name)
-					end
-				end
+		if fc_mode == false then
+			if vivo > 4 then
+				tfm.exec.setGameTime(6-dificuldade)
+			else
+				tfm.exec.setGameTime(9-dificuldade)
 			end
-		end
-	end
-	if f < 1 and modo == "intervalo" then
-		if rodada < limite then
-			randomQuests()
 		else
-			tfm.exec.setGameTime(5)
-			showMessage("<R>Sem vencedores!")
-			modo="fim"
+			tfm.exec.setGameTime(6)
 		end
 	end
-	if modo == "perguntar" and f >= 1 then
-		ui.addTextArea(3,"<p align='center'><font size='45'>"..math.ceil((f/1000)-1).."",nil,360,235,80,60,0x000001,0x494949,1.0,true)
-	else
-		ui.removeTextArea(3,nil)
-	end
-	if f <= 3000 and vivos == 1 and modo == "fim" then
-		for name,player in next,tfm.get.room.playerList do
-			if not tfm.get.room.playerList[name].isDead then
-				showMessage("<VP><b>"..name.."</b> venceu a partida!")
-				modo="fim2"
-			end
-		end
-	end
-	if f < 250 then
-		if modo == "fim" or modo == "fim2" then
-			modo="inicial"
-			reset()
-		end
-	end
-	if f > 13000 and f < 14000 then
-		for i=2,3 do
-			tfm.exec.removePhysicObject(i)
-		end
-	end
-	if f > 10500 and f < 11500 then
-		for i=2,3 do
-			tfm.exec.removePhysicObject(i)
-		end
-	end
-end
-function randomQuests()
 	for name,player in next,tfm.get.room.playerList do
-		tfm.exec.movePlayer(name,400,145,false)
-	end
-	tfm.exec.setGameTime(17)
-	if rodada >= 15 then
-		tfm.exec.setGameTime(12)
-	end
-	tfm.exec.addPhysicObject(2, 385, 150, barreira)
-	tfm.exec.addPhysicObject(3, 415, 150, barreira)
-	tfm.exec.addPhysicObject(0, 220, 380, piso)
-	tfm.exec.addPhysicObject(1, 580, 380, piso)
-	modo="perguntar"
-	rodada=rodada+1
-	if tema == 0 then
-		if set_q == 0 then
-			local q=math.random(#questions_list)
-			pergunta=q
-			questionChanger(q,true)
-			if debug == true then
-				print(rawlen(questions_list))
+		if data[name] then
+			if data[name].c == 1 then
+				tfm.exec.setNameColor(name,0x00ff00)
+				if completed == false then
+					completed=true
+				end
+			else
+				tfm.exec.setNameColor(name,0xc2c2da)
 			end
-		else
-			pergunta=set_q
 		end
-		actual_question.quest=perguntas[-3+(4*pergunta)]
-		if perguntas[pergunta*4] == 2 then
-			actual_question.answer=true
-		elseif perguntas[pergunta*4] == 1 then
-			actual_question.answer=false
-		end
-		actual_question.a1=perguntas[-2+(4*pergunta)]
-		actual_question.a2=perguntas[-1+(4*pergunta)]
-	end
-	if tema == 1 then
-		if set_q == 0 then
-			local q=math.random(#questions_list)
-			pergunta=q
-			questionChanger(q,true)
-			if debug == true then
-				print(rawlen(questions_list))
-			end
-		else
-			pergunta=set_q
-		end
-		actual_question.quest=perguntas1[-3+(4*pergunta)]
-		if perguntas1[pergunta*4] == 2 then
-			actual_question.answer=true
-		elseif perguntas1[pergunta*4] == 1 then
-			actual_question.answer=false
-		end
-		actual_question.a1=perguntas1[-2+(4*pergunta)]
-		actual_question.a2=perguntas1[-1+(4*pergunta)]
-	end
-	if tema == 2 then
-		if set_q == 0 then
-			local q=math.random(#questions_list)
-			pergunta=q
-			questionChanger(q,true)
-			if debug == true then
-				print(rawlen(questions_list))
-			end
-		else
-			pergunta=set_q
-		end
-		actual_question.quest=perguntas2[-3+(4*pergunta)]
-		if perguntas2[pergunta*4] == 2 then
-			actual_question.answer=true
-		elseif perguntas2[pergunta*4] == 1 then
-			actual_question.answer=false
-		end
-		actual_question.a1=perguntas2[-2+(4*pergunta)]
-		actual_question.a2=perguntas2[-1+(4*pergunta)]
-	end
-	if tema == 3 then
-		if set_q == 0 then
-			local q=math.random(#questions_list)
-			pergunta=q
-			questionChanger(q,true)
-			if debug == true then
-				print(rawlen(questions_list))
-			end
-		else
-			pergunta=set_q
-		end
-		actual_question.quest=perguntas3[-3+(4*pergunta)]
-		if perguntas3[pergunta*4] == 2 then
-			actual_question.answer=true
-		elseif perguntas3[pergunta*4] == 1 then
-			actual_question.answer=false
-		end
-		actual_question.a1=perguntas3[-2+(4*pergunta)]
-		actual_question.a2=perguntas3[-1+(4*pergunta)]
-	end
-	set_q=0
-	ui.addTextArea(1,"<p align='center'><font size='18'>"..actual_question.a1.."",nil,100,145,260,81,0,0,1.0,true)
-	ui.addTextArea(2,"<p align='center'><font size='18'>"..actual_question.a2.."",nil,440,145,260,81,0,0,1.0,true)
-	ui.addTextArea(0,"<p align='center'><font size='16'>"..actual_question.quest.."",nil,10,22,780,48,0x000001,0x000001,1.0,true)
-end
-function eventPlayerDied(name)
-	local i=0
-	local n
-	vivos=vivos-1
-	for pname,player in pairs(tfm.get.room.playerList) do
-		if not player.isDead then
-			i=i+1
-			n=pname
-		end
-	end
-	if i==0 then
-		modo="fim"
-		showMessage("<R>Sem vencedores!")
-	elseif i==1 then
-		modo="fim"
 	end
 end
-for name,player in next,tfm.get.room.playerList do
-	tfm.exec.setPlayerScore(name,0,false)
-end
-reset()
+tfm.exec.newGame("@2684847")
