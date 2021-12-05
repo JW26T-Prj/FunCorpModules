@@ -1,2 +1,0 @@
--- The developer of this module leaved Transformice. It will be passed to another player soon.
--- Thanks, Azirdeathray
