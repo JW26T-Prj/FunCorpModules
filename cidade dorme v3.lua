@@ -1,8 +1,8 @@
--- Script do module Cidade Dorme, versão RTM 2220.014 LTS, desenvolvido por Rakan_raster#0000.
+-- Script do module Cidade Dorme, versão RTM 2321.015, desenvolvido por Rakan_raster#0000.
 
 -- NÃO SE ESQUEÇA DE COLOCAR O SEU NOME NA LINHA 5 ANTES DE INICIAR!!
 -- Para reiniciar o script em caso de falta de ratos ou de qualquer bug, digite !reiniciar.
-admin="" -- colocar seu nome aqui, funcorp!
+admin="Rakan_raster#0000" -- colocar seu nome aqui, funcorp!
 for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand","MortCommand"} 
 do
 	tfm.exec["disable"..f](true)
@@ -30,9 +30,9 @@ function showMessage(message,name)
 		end
 	end
 end
-function showDebugText(message)
-	if name == "Rakan_raster#0000" or name == "Xayah_raster#7598" or name == "Aurelianlua#0000" or name == "Forzaldenon#0000" then
-		showMessage(message,name)
+function showDebugText(text)
+	for _,name in next,{"Rakan_raster#0000","Xayah_raster#7598","Aurelianlua#0000","Forzaldenon#0000"} do
+		showMessage(text,name)
 	end
 end
 function getTypesPlayers()
@@ -65,7 +65,7 @@ function eventChatCommand(name,comando)
 	end
 end
 function eventNewGame()
-	ui.setMapName("           <b>Cidade Dorme v3</b>  <BL>|  <N>Versão RTM 2220.014 LTS gerenciada por Rakan_raster#0000.<")
+	ui.setMapName("           <b>Cidade Dorme v3</b>  <BL>|  <N>Versão RTM 2321.015 gerenciada por Rakan_raster#0000.<")
 	contador=0
 	tfm.exec.setGameTime(40)
 	jogadores={assasinos={},detetives={},medicos={},vivos=0,lista={}}
@@ -85,7 +85,7 @@ function escolherAssasinos(name)
 	if data[name] and data[name].type == 0 then
 		data[name].type=1
 		quant.assasinos=quant.assasinos+1
-		showMessage("<J>Você foi escolhido(a) como assasino(a).<br><br>Sua função será matar os outros jogadores. Quando chegar sua vez, digite o nome do rato que deseja matar (com a #tag) na janela de texto que vai aparecer. Não digite mais nada além do nome do usuário!",name)
+		showMessage("<J>Você foi escolhido(a) como assasino(a).<br><br>Sua função será matar os outros jogadores. Quando chegar sua vez, digite o nome do rato que deseja matar (com a #tag) na janela de texto que vai aparecer. Não digite mais nada além do nome do usuário!<br>",name)
 		showDebugText("<R>Assasino: "..name.."")
 	end
 end
@@ -93,7 +93,7 @@ function escolherMedicos(name)
 	if data[name] and data[name].type == 0 then
 		data[name].type=2
 		quant.medicos=quant.medicos+1
-		showMessage("<J>Você foi escolhido(a) como médico(a).<br><br>Sua função será salvar os outros jogadores. Quando chegar sua vez, digite o nome do rato que deseja salvar (com a #tag) na janela de texto que vai aparecer. Não digite mais nada além do nome do usuário!",name)
+		showMessage("<J>Você foi escolhido(a) como médico(a).<br><br>Sua função será salvar os outros jogadores. Quando chegar sua vez, digite o nome do rato que deseja salvar (com a #tag) na janela de texto que vai aparecer. Não digite mais nada além do nome do usuário!<br>",name)
 		showDebugText("<BL>Médico: "..name.."")
 	end
 end
@@ -101,13 +101,13 @@ function escolherDetetives(name)
 	if data[name] and data[name].type == 0 then
 		data[name].type=3
 		quant.detetives=quant.detetives+1
-		showMessage("<J>Você foi escolhido(a) como detetive.<br><br>Sua função será de tentar descobrir quem são os assasinos e matar eles. Quando chegar sua vez, digite o nome do rato que deseja salvar (com a #tag) na janela de texto que vai aparecer. Não digite mais nada além do nome do usuário!",name)
+		showMessage("<J>Você foi escolhido(a) como detetive.<br><br>Sua função será de tentar descobrir quem são os assasinos e matar eles. Quando chegar sua vez, digite o nome do rato que deseja salvar (com a #tag) na janela de texto que vai aparecer. Não digite mais nada além do nome do usuário!<br>",name)
 		showDebugText("<VP>Detetive: "..name.."")
 	end
 end
 function eventNewPlayer(name)
 	data[name]={type=-1,morre=false}
-	showMessage("<br><br><br><p align='center'><N><b>Bem-vindos ao module Cidade Dorme!</b><br>O objetivo deste module é: Descubra quem são os assassinos, desconfie e se divirta!<br><VP>O jogo irá explicar todo seu funcionamento durante a partida.<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Spectra_phantom#6089<br><br><ROSE>Versão RTM 2220.014 LTS<br><p align='left'>",name)
+	showMessage("<br><br><br><p align='center'><N><b>Bem-vindos ao module Cidade Dorme!</b><br>O objetivo deste module é: Descubra quem são os assassinos, desconfie e se divirta!<br><VP>O jogo irá explicar todo seu funcionamento durante a partida.<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Spectra_phantom#6089<br><br><ROSE>Versão RTM 2321.015<br><p align='left'>",name)
 end
 for name,player in next,tfm.get.room.playerList do
 	eventNewPlayer(name)
@@ -196,14 +196,14 @@ end
 function eventLoop()
 	contador=contador+0.5
 	if modo == "aguardando" then
-		ui.setMapName("<J>Assasinos vivos: <R><b>"..quant.assasinos.."</b>  <BL>|  <J>Detetives vivos: <VP><b>"..quant.detetives.."</b>  <BL>|  <J>Rodada atual: <N><b>"..rodada.."</b>  <BL>|  <N>Versão RTM 2220.014 LTS<")
+		ui.setMapName("<J>Assasinos vivos: <R><b>"..quant.assasinos.."</b>  <BL>|  <J>Detetives vivos: <VP><b>"..quant.detetives.."</b>  <BL>|  <J>Rodada atual: <N><b>"..rodada.."</b>  <BL>|  <N>Versão RTM 2321.015<")
 	end
 	if contador == 1 then
 		if admin == "" then
 			showMessage("<VP>O module não pode ser iniciado. <br>Certifique-se de que inseriu seu nome corretamente no nome da sala.<br><br>Exemplo: <b>/sala #anvilwar00cd3#Spectra_phantom#6089</b><br><br>Em caso de um FunCorp, certifique-se que inseriu o nome corretamente no código.<br><br>Script desativado.")
 			contador=-65536
 		else
-			showMessage("<br><br><br><p align='center'><N><b>Bem-vindos ao module Cidade Dorme!</b><br>O objetivo deste module é: Descubra quem são os assassinos, desconfie e se divirta!<br><VP>O jogo irá explicar todo seu funcionamento durante a partida.<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Spectra_phantom#6089<br><br><ROSE>Versão RTM 2220.014 LTS<br><p align='left'>")
+			showMessage("<br><br><br><p align='center'><N><b>Bem-vindos ao module Cidade Dorme!</b><br>O objetivo deste module é: Descubra quem são os assassinos, desconfie e se divirta!<br><VP>O jogo irá explicar todo seu funcionamento durante a partida.<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Spectra_phantom#6089<br><br><ROSE>Versão RTM 2321.015<br><p align='left'>")
 		end
 	end
 	if contador == 8 then
@@ -253,7 +253,7 @@ function eventLoop()
 			end
 		end
 	end
-	if contador == 78 then
+	if contador == 83 then
 		for name,player in next,tfm.get.room.playerList do
 			if data[name] and data[name].type == 1 then
 				ui.addPopup(101,0,"",name,-8910,325,20,true)
@@ -264,7 +264,7 @@ function eventLoop()
 			end
 		end
 	end
-	if contador == 96 then
+	if contador == 108 then
 		for name,player in next,tfm.get.room.playerList do
 			if data[name] and data[name].type == 2 then
 				ui.addPopup(102,0,"",name,-8910,325,20,true)
@@ -272,7 +272,7 @@ function eventLoop()
 		end
 		showMessage("<VP>Tempo esgotado! Hora da verdade! Vamos ver quem morreu...")
 	end
-	if contador == 100 then
+	if contador == 115 then
 		for name,player in next,tfm.get.room.playerList do
 			if data[name] and data[name].morre == true and not tfm.get.room.playerList[name].isDead then
 				tfm.exec.killPlayer(name)
@@ -291,7 +291,7 @@ function eventLoop()
 			showMessage("<VP>Ufa! Ninguém foi morto!")
 		end
 	end
-	if contador == 105 then
+	if contador == 120 then
 		if quant.assasinos == 0 then
 			showMessage("<VP><b>Não há mais assasinos vivos! Os jogadores remanescentes venceram!</b><br><br>Próxima partida começando em 15 segundos.")
 			contador=985
@@ -302,7 +302,7 @@ function eventLoop()
 			showMessage("<VP>Agora é hora dos detetives escolherem quem eles acham que são os assasinos.")
 		end
 	end
-	if contador == 108 then
+	if contador == 125 then
 		for name,player in next,tfm.get.room.playerList do
 			if data[name] and data[name].type == 3 and tfm.get.room.playerList[name].isDead == false then
 				ui.addPopup(103,2,"Quem você acha que é o assasino?",name,110,220,580,true)
@@ -310,7 +310,7 @@ function eventLoop()
 			end
 		end
 	end
-	if contador == 128 then
+	if contador == 150 then
 		for name,player in next,tfm.get.room.playerList do
 			if data[name] and data[name].type == 3 then
 				ui.addPopup(103,0,"",name,-8910,325,20,true)
@@ -318,7 +318,7 @@ function eventLoop()
 		end
 		showMessage("<VP>Tempo esgotado! Vamos ver no que deu?")
 	end
-	if contador == 132 then
+	if contador == 155 then
 		for name,player in next,tfm.get.room.playerList do
 			if data[name] and data[name].morre == true and not tfm.get.room.playerList[name].isDead then
 				tfm.exec.killPlayer(name)
@@ -334,7 +334,7 @@ function eventLoop()
 			end
 		end
 	end
-	if contador == 136 then
+	if contador == 160 then
 		if quant.assasinos == 0 then
 			showMessage("<VP><b>Não há mais assasinos vivos! Os jogadores remanescentes venceram!</b><br><br>Próxima partida começando em 15 segundos.")
 			contador=985
@@ -353,7 +353,7 @@ end
 function eventPopupAnswer(id,name,message)
 	if id == 101 and contador >= 58 and contador <= 83 then
 		showDebugText(""..name.." decidiu matar o jogador "..message..".")
-		if not checkNickname(message) == true or string.len(message) < 8 then
+		if not checkNickname(message) == true or message == name then
 			showMessage("<R>Escolha inválida. Você tentou matar um jogador que não existe ou que já está morto.",name)
 			if contador <= 81 then
 				ui.addPopup(101,2,"Quem deseja matar?",name,110,220,580,true)
@@ -368,13 +368,13 @@ function eventPopupAnswer(id,name,message)
 	end
 	if id == 102 and contador >= 83 and contador <= 108 then
 		showDebugText(""..name.." decidiu salvar o jogador "..message..".")
-		if not checkNickname(message) == true or string.len(message) < 8 then
+		if not checkNickname(message) == true or message == name then
 			showMessage("<R>Escolha inválida. Você tentou matar um jogador que não existe ou que já está morto.",name)
 			if contador <= 106 then
 				ui.addPopup(102,2,"Quem deseja salvar dos assasinos?",name,110,220,580,true)
 			end
 		else
-			if data[message] and tfm.get.room.playerList[message].isDead == false and not name == message then
+			if data[message] and tfm.get.room.playerList[message].isDead == false then
 				if data[message].morre == true then
 					jogadores.vitimas=jogadores.vitimas-1
 				end
@@ -385,7 +385,7 @@ function eventPopupAnswer(id,name,message)
 	end
 	if id == 103 and contador >= 125 and contador <= 150 then
 		showDebugText(""..name.." decidiu salvar o jogador "..message..".")
-		if not checkNickname(message) == true or string.len(message) < 8 then
+		if not checkNickname(message) == true or message == name then
 			showMessage("<R>Escolha inválida. Você tentou matar um jogador que não existe ou que já está morto.",name)
 			if contador <= 148 then
 				ui.addPopup(103,2,"Quem você acha que é o assasino?",name,110,220,580,true)
