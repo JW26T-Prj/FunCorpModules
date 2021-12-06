@@ -78,6 +78,9 @@ function eventNewGame()
 			admin=name
 			showMessage("<ROSE>Digite !reiniciar quando a sala tiver com 5 ratos ou mais para começar ou reiniciar a partida.")
 		end
+		if name:sub(1,1) == "*" then
+			tfm.exec.killPlayer(name)
+		end
 	end
 	rodada=0
 end
