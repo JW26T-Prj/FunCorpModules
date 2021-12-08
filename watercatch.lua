@@ -4,7 +4,7 @@ end
 for _,f in next,{"help","ajuda","tc","kill","powerups","creditos"} do
 	system.disableChatCommandDisplay(f)
 end
-tfm.exec.newGame("@7763582")
+tfm.exec.newGame("@7887657")
 tfm.exec.setRoomMaxPlayers(30)
 shaman=""; alives=0; cannons=5; z=0; data={}; mode="load"; changed=false; loop=0; timer=0; xml=''; time_passed=0; time_remain=0;
 powerups={x1=-1,x2=-1,x3=-1,x4=-1,x5=-1,y1=-1,y2=-1,y3=-1,y4=-1,y5=-1,t1=0,t2=0,t3=0,t4=0,t5=0}
@@ -24,8 +24,8 @@ function showMessage(message,name)
 end
 function showWater(name)
 	tfm.exec.addImage("17be1035ba0.png","!1",-720,580,name,1.2,0.5,0,0.5)
-	tfm.exec.addImage("17be536e980.png","!1",-200,2920,name,0.5,0.5,0,0.5)
-	tfm.exec.addImage("17be536e980.png","!1",2400,2920,name,0.5,0.5,0,0.5)
+	tfm.exec.addImage("17be536e980.png","!1",-200,2120,name,0.5,0.5,0,0.5)
+	tfm.exec.addImage("17be536e980.png","!1",2400,2120,name,0.5,0.5,0,0.5)
 	tfm.exec.addImage("17be10346e1.jpg","?1",-200,600,name)
 	tfm.exec.addImage("17be536ff6c.png","!1",-720,580,name,12,1,0,1)
 end
@@ -56,7 +56,7 @@ function eventPlayerDied(n)
 end
 function eventNewPlayer(name)
 	showWater(name)
-	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v2.0.0</b><N> - criado por <ROSE><b>Morganadxana#0000</b> <N>e <R><b>Spectra_phantom#6089</b><")
+	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v2.1.0</b><N> - criado por <ROSE><b>Morganadxana#0000</b> <N>e <R><b>Spectra_phantom#6089</b><")
 	newData={
 	["o"]=99;
 	["i"]=0;
@@ -70,7 +70,7 @@ function eventNewPlayer(name)
 	["imaget"]=5;
 	};
 	data[name] = newData;
-	showMessage("<font color='#0080ff'><b>Bem-vindos ao module #watercatch 2.0!</b><br><J>Digite !help para ver a ajuda deste module.<br><br><N>Module criado por Morganadxana#0000. Mapa feito por Spectra_phantom#6089.<br><br><BL>Atenção: Conexões lentas com a Internet podem fazer com que as artes da água demorem para carregar.",name)
+	showMessage("<font color='#0080ff'><b>Bem-vindos ao module #watercatch!</b><br><J>Digite !help para ver a ajuda deste module.<br><br><N>Module criado por Morganadxana#0000. Mapa feito por Spectra_phantom#6089.<br><br><BL>Atenção: Conexões lentas com a Internet podem fazer com que as artes da água demorem para carregar.",name)
 	data[name].imageid = tfm.exec.addImage("17a53e210bf.png","&1",180,90,name)
 	data[name].imageid2 = tfm.exec.addImage("17a53e1f94c.png",":1",0,345,name)
 	data[name].imageid3 = tfm.exec.addImage("17ae4e47000.png","&1",2,22,name)
@@ -368,6 +368,7 @@ function eventKeyboard(name,key,down)
 	end		
 end
 function eventNewGame()
+ui.setBackgroundColor("#020F14")
 xml=tfm.get.room.xmlMapInfo.xml
 ui.addTextArea(0,"",nil,-800,-400,2400,1200,0x6a7495,0x6a7495,1.0,true)
 if changed == true then
@@ -469,7 +470,7 @@ if time_passed >= 6 and tfm.get.room.currentMap == "@7763582" then
 	resetMap()
 end
 if changed == true then
-ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v2.0.0</b><N> - criado por <ROSE><b>Morganadxana#0000</b> <N>e <R><b>Spectra_phantom#6089</b><")
+ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v2.1.0</b><N> - criado por <ROSE><b>Morganadxana#0000</b> <N>e <R><b>Spectra_phantom#6089</b><")
 local m=math.floor(r/60000)
 local s=math.floor((((m*60000)-r) * -1) / 1000)
 ui.addTextArea(-1,"<font size='45'><font color='#222222'><font face='Trebuchet MS'><b><i>"..m..":"..s.."</b>",n,569,22,110,54,0,0,1.0,true)
