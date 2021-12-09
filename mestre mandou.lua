@@ -1,4 +1,4 @@
--- Script do module Mestre Mandou, versão RTM 14189.085, desenvolvido por Rakan_raster#0000.
+-- Script do module Mestre Mandou, versão RTM 14290.086, desenvolvido por Rakan_raster#0000.
 
 admin={""} -- Se estiver rodando este código em uma sala FunCorp, insira o nome dos FunCorps e digite !fc para habilitar algumas funções e comandos especiais.
 -- If you will run this module on a FunCorp session, type the nickname(s) of FunCorp(s) into 'admin' table above and type !fc to enable special functions and commands.
@@ -14,12 +14,13 @@ mapas={"@6788085","@6788174","@6788154","@6788715","@6788728","@6789271","@67905
 active=0; vivo=0; rato=0; dificuldade=1; rodadas=0; rodada=0; number=0; xpos=0; ypos=0; data={}; lang={}; tempo=10; counter=0; q=""; a=""; qtime=10; creator="";
 fc_cmds={1,2,4,5,6,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,28,30,31,32,33,34,35,36,40,41,42,43,45,46,47,48,49,50,51,53,57,58,59,61,62,65,66,67,69,71,75,76,77,78,79,80,81}
 spiderweb={type = 15,width = 60,height = 60}
+map_det={creator="",code=""}
 fc_mode=false; xpos=0; xpos2=0; unlocked=true;
 for _,f in next,{"command","pw","limit","run","fc","tc","q","a","t","kill"} do
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>O objetivo deste module é muito simples: Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><VP>Tenha sempre cuidado com os comandos trolls!<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Jessiewind26#2546<br><br><ROSE>Versão RTM 14189.085",
+	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>O objetivo deste module é muito simples: Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><VP>Tenha sempre cuidado com os comandos trolls!<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Jessiewind26#2546<br><br><ROSE>Versão RTM 14290.086",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -113,7 +114,7 @@ lang.br = {
 	explosion = "Olha a explosão!",
 }
 lang.en = {
-	welcome = "<N><b>Welcome to the Simon Says module!</b><br>The objective is very simple: Follow all the commands that the game says and test all your limits!<br><VP>Please pay attention to the troll commands!<br><br><J><b>Script developed by Rakan_raster#0000</b><br>EN translation by Kazarina#4878, Concept by Jessiewind26#2546<br><br><ROSE>Version RTM 14189.085",
+	welcome = "<N><b>Welcome to the Simon Says module!</b><br>The objective is very simple: Follow all the commands that the game says and test all your limits!<br><VP>Please pay attention to the troll commands!<br><br><J><b>Script developed by Rakan_raster#0000</b><br>EN translation by Kazarina#4878, Concept by Jessiewind26#2546<br><br><ROSE>Version RTM 14290.086",
 	dancar = "Dance!",
 	sentar = "Sit!",
 	confetar = "Throw 5 confetti!",
@@ -207,7 +208,7 @@ lang.en = {
 	explosion = "Caution with the spirits!",
 }
 lang.fr = {
-	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Rakan_raster#0000</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 14189.085",
+	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Rakan_raster#0000</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 14290.086",
 	dancar = "Danse !",
 	sentar = "Assis !",
 	confetar = "Lance 5 fois des confettis !",
@@ -422,19 +423,18 @@ function completeCommand(name)
 	end
 end
 function eventNewGame()
-	ui.removeTextArea(0,nil)
-	ui.removeTextArea(1,nil)
-	ui.removeTextArea(2,nil)
+	map_det.code=tfm.get.room.currentMap
+	map_det.creator=tfm.get.room.xmlMapInfo.author
+	for i=0,2 do
+		ui.removeTextArea(i,nil)
+	end
 	ui.removeTextArea(250,nil)
-	rodada=0
-	active=0
-	vivo=0
-	rato=0
+	rodada=0; active=0; vivo=0; rato=0;
 	dificuldade=1
 	tfm.exec.setWorldGravity(0, 10)
 	if unlocked == true then
 		tfm.exec.setGameTime(15)
-		showMessage("<R><i>Spectra's map loader v2.198</i><br><N>Loading current map information...<br><b>Current Map :</b> <V>"..tfm.get.room.currentMap.."")
+		showMessage("<R><i>Spectra's map loader v2.201</i><br><N>Loading current map information...<br><b>Current Map :</b> <V>"..map_det.code.."<br><b><N>Author :</b> <V>"..map_det.creator.."")
 		if fc_mode == true then
 			showMessage("<VP><br>The FunCorp mode of this module is now enabled. These players have additional control of this room:<br>")
 			for i=1,rawlen(admin) do
@@ -1426,11 +1426,11 @@ end
 function eventLoop(passado,faltando)
 	local tempo=math.floor(faltando/1000)
 	if active == -2 then
-		ui.setMapName("<N>"..text.mices.."   <G>|   <VP><b>"..text.version.." RTM 14189.085</b><")
+		ui.setMapName("<N>"..text.mices.."   <G>|   <VP><b>"..text.version.." RTM 14290.086</b><")
 	elseif active == -1 then
-		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <VP><b>"..text.version.." RTM 14189.085</b><")
+		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <VP><b>"..text.version.." RTM 14290.086</b><")
 	elseif active >= 0 then
-		ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <VP><b>"..text.version.." RTM 14189.085</b><")
+		ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <VP><b>"..text.version.." RTM 14290.086</b><")
 	end
 	if rato < 4 then
 		if tfm.get.room.currentMap == "@2684847" and unlocked == true then
@@ -1534,9 +1534,9 @@ function eventLoop(passado,faltando)
 				tfm.exec.freezePlayer(name,false)
 			end
 		end
-		ui.removeTextArea(0,nil)
-		ui.removeTextArea(1,nil)
-		ui.removeTextArea(2,nil)
+		for i=0,2 do
+			ui.removeTextArea(i,nil)
+		end
 		ui.removeTextArea(250,nil)
 		tfm.exec.setWorldGravity(0, 10)
 		for i=1,8 do
