@@ -12,7 +12,7 @@ jogadores={assasinos={},detetives={},medicos={},vivos=0,lista={}}
 quant={assasinos=0,detetives=0,medicos=0,vitimas=0,vivos=0}
 limites={assasinos=0,detetives=0,medicos=0}
 map_det={creator="",code=""}
-testmode=true
+testmode=false
 modo="inicial"; contador=0; rodada=0; data={}; templist={};
 mapas={"@2684847","@3110915","@3148619","@3398791","@3793051","@4411212","@4477478","@5832272","@4677521","@6390711","@6907177","@3203198","@5113656","@6380942","@1389773","@2048617","@2637755","@7833508","@7730312","@7712670","@7631682","@7607195","@6958855","@6958861"}
 tfm.exec.setRoomMaxPlayers(40)
