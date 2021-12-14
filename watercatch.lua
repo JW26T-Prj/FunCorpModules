@@ -56,7 +56,7 @@ function eventPlayerDied(n)
 end
 function eventNewPlayer(name)
 	showWater(name)
-	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v2.1.0</b><N> - criado por <ROSE><b>Morganadxana#0000</b> <N>e <R><b>Spectra_phantom#6089</b><")
+	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v2.1.1</b><N> - criado por <ROSE><b>Morganadxana#0000</b> <N>e <R><b>Spectra_phantom#6089</b><")
 	newData={
 	["o"]=99;
 	["i"]=0;
@@ -70,7 +70,7 @@ function eventNewPlayer(name)
 	["imaget"]=5;
 	};
 	data[name] = newData;
-	showMessage("<font color='#0080ff'><b>Bem-vindos ao module #watercatch!</b><br><J>Digite !help para ver a ajuda deste module.<br><br><N>Module criado por Morganadxana#0000. Mapa feito por Spectra_phantom#6089.<br><br><BL>Atenção: Conexões lentas com a Internet podem fazer com que as artes da água demorem para carregar.",name)
+	showMessage("<font color='#0080ff'><b>Bem-vindos ao module #watercatch!</b><br><J>Digite !help para ver a ajuda deste module.<br><br><N>Module criado por Morganadxana#0000. Mapa feito por Spectra_phantom#6089.<br><br><BL>Atenção: Conexões lentas com a Internet podem fazer com que as artes da água demorem para carregar.<br><br>Caso o mapa não carregue, saia do jogo e entre novamente.",name)
 	data[name].imageid = tfm.exec.addImage("17a53e210bf.png","&1",180,90,name)
 	data[name].imageid2 = tfm.exec.addImage("17a53e1f94c.png",":1",0,345,name)
 	data[name].imageid3 = tfm.exec.addImage("17ae4e47000.png","&1",2,22,name)
@@ -86,15 +86,17 @@ function eventChatCommand(name,message)
 		showMenu(name,0xf0f0f0,140,90,520,220,"Ajuda do Module #watercatch","O objetivo é bem simples: <b>Fugir do shaman</b>, se escondendo dentro do profundo lago e tomando cuidado para não morrer afogado!<br><R><b>Shamans, não esqueçam de se mexer, ou irão morrer AFK!</b><br><br><VP>Os quadrados marcados por <ROSE>'!'<VP> são powerups, que geram efeitos aleatórios nos ratos. Você pode ver os possíveis efeitos dos powerups indo no Menu e clicando em Powerups. Vale ressaltar que eles funcionam apenas depois que o shaman for liberado.<br><br><N>Caso você seja shaman, você tem um limite de <b>5</b> objetos que podem ser utilizados. Exceder este limite fará com que a partida acabe.")
 	end
 	if message == "powerups" then
-		showMenu(name,0xf0f0f0,140,59,520,340,"Powerups do Module #watercatch","<font size='11'>Os seguintes powerups estão disponíveis no momento:<br><ROSE><b>• CAIXA</b><N><br>Faz aparecer uma caixa de acompanhamento em cima de você.<br><ROSE><b>• OXIGÊNIO</b><N><br>Aumenta o seu nível de oxigênio em 40%.<br><ROSE><b>• VELOCIDADE</b><N><br>Te dá um grande impulso de velocidade.<br><ROSE><b>• AFUNDAR</b><N><br>Cria uma anomalia temporária que leva todos os ratos em direção ao fundo do lago.<br><ROSE><b>• MEEP</b><N><br>Te dá o poder de usar o Meep!<br><ROSE><b>• SUFOCO</b><N><br>Diminui o seu nível de oxigênio em 18%. Caso seu nível esteja abaixo disso e você pegue este powerup, você morrerá afogado.<br><ROSE><b>• CONGELAR</b><N><br>Congela o seu rato.<br><ROSE><b>• QUEIJO</b><N><br>Dá queijo para o seu rato. Caso você esteja dentro do lago, você provavelmente será levado para o fundo dele.<br><ROSE><b>• BALÃO</b><N><br>Te coloca em um balão. Pode ser útil para sair da água...<br><ROSE><b>• REDUZIR</b><N><br>Reduz temporariamente o tamanho do seu rato.")
+		showMenu(name,0xf0f0f0,140,61,520,330,"Powerups do Module #watercatch","<font size='11'>Os seguintes powerups estão disponíveis no momento:<br><ROSE><b>• CAIXA</b><N><br>Faz aparecer uma caixa de acompanhamento em cima de você.<br><ROSE><b>• OXIGÊNIO</b><N><br>Aumenta o seu nível de oxigênio em 40%.<br><ROSE><b>• VELOCIDADE</b><N><br>Te dá um grande impulso de velocidade.<br><ROSE><b>• AFUNDAR</b><N><br>Cria uma anomalia temporária que leva todos os ratos em direção ao fundo do lago.<br><ROSE><b>• MEEP</b><N><br>Te dá o poder de usar o Meep!<br><ROSE><b>• SUFOCO</b><N><br>Diminui o seu nível de oxigênio em 18%. Caso seu nível esteja abaixo disso e você pegue este powerup, você morrerá afogado.<br><ROSE><b>• CONGELAR</b><N><br>Congela o seu rato.<br><ROSE><b>• QUEIJO</b><N><br>Dá queijo para o seu rato. Caso você esteja dentro do lago, você provavelmente será levado para o fundo dele.<br><ROSE><b>• REDUZIR</b><N><br>Reduz temporariamente o tamanho do seu rato.")
 	end
 	if message == "creditos" then
 		showMenu(name,0xf0f0f0,140,90,520,130,"Créditos","As seguintes pessoas ajudaram no desenvolvimento deste module:<br><br><ROSE><b>• Morganadxana#0000</b><N> - Desenvolvedora do código<br><ROSE><b>• Rakan_raster#0000</b><N> - Tradução do código original para o Português<br><ROSE><b>• Spectra_phantom#6089</b><N> - Ideia original e criação do mapa e das artes")
 	end
 	if (message:sub(0,2)== "tc") then
-		for n,_ in next,tfm.get.room.playerList do
-			if tfm.get.room.playerList[n].isShaman == false then
-				showMessage("<R>• ["..name.."]</b> <N>"..message:sub(4).."",n)
+		if tfm.get.room.playerList[name].isShaman == false then
+			for n,_ in next,tfm.get.room.playerList do
+				if tfm.get.room.playerList[n].isShaman == false then
+					showMessage("<R>• ["..name.."]</b> <N>"..message:sub(4).."",n)
+				end
 			end
 		end
 	end
@@ -165,9 +167,6 @@ function eventKeyboard(name,key,down)
 					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>QUEIJO!</b>")
 					queijo(name)
 				elseif powerups.t1 == 9 then
-					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>BALÃO!</b>")
-					balao(name)
-				elseif powerups.t1 == 10 then
 					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>REDUZIR!</b>")
 					reduzir(name)
 				end
@@ -213,9 +212,6 @@ function eventKeyboard(name,key,down)
 					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>QUEIJO!</b>")
 					queijo(name)
 				elseif powerups.t2 == 9 then
-					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>BALÃO!</b>")
-					balao(name)
-				elseif powerups.t2 == 10 then
 					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>REDUZIR!</b>")
 					reduzir(name)
 				end
@@ -261,9 +257,6 @@ function eventKeyboard(name,key,down)
 					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>QUEIJO!</b>")
 					queijo(name)
 				elseif powerups.t3 == 9 then
-					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>BALÃO!</b>")
-					balao(name)
-				elseif powerups.t3 == 10 then
 					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>REDUZIR!</b>")
 					reduzir(name)
 				end
@@ -309,9 +302,6 @@ function eventKeyboard(name,key,down)
 					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>QUEIJO!</b>")
 					queijo(name)
 				elseif powerups.t4 == 9 then
-					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>BALÃO!</b>")
-					balao(name)
-				elseif powerups.t4 == 10 then
 					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>REDUZIR!</b>")
 					reduzir(name)
 				end
@@ -357,9 +347,6 @@ function eventKeyboard(name,key,down)
 					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>QUEIJO!</b>")
 					queijo(name)
 				elseif powerups.t5 == 9 then
-					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>BALÃO!</b>")
-					balao(name)
-				elseif powerups.t5 == 10 then
 					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>REDUZIR!</b>")
 					reduzir(name)
 				end
@@ -454,10 +441,6 @@ function dropPlayer(name)
 	data[name].i=tfm.exec.addShamanObject(61,tfm.get.room.playerList[name].x,tfm.get.room.playerList[name].y+10,0,0,0,false)
 	data[name].t=6
 end
-function balao(name)
-	tfm.exec.attachBalloon(name, true, 0, true)
-	data[name].t=6
-end
 function reduzir(name)
 	tfm.exec.changePlayerSize(name,0.5)
 	data[name].t=6
@@ -470,7 +453,7 @@ if time_passed >= 6 and tfm.get.room.currentMap == "@7763582" then
 	resetMap()
 end
 if changed == true then
-ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v2.1.0</b><N> - criado por <ROSE><b>Morganadxana#0000</b> <N>e <R><b>Spectra_phantom#6089</b><")
+ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v2.1.1</b><N> - criado por <ROSE><b>Morganadxana#0000</b> <N>e <R><b>Spectra_phantom#6089</b><")
 local m=math.floor(r/60000)
 local s=math.floor((((m*60000)-r) * -1) / 1000)
 ui.addTextArea(-1,"<font size='45'><font color='#222222'><font face='Trebuchet MS'><b><i>"..m..":"..s.."</b>",n,569,22,110,54,0,0,1.0,true)
@@ -524,7 +507,6 @@ for n,q in next,tfm.get.room.playerList do
 					tfm.exec.removeObject(data[n].i)
 					tfm.exec.freezePlayer(n,false)
 					tfm.exec.removeCheese(n)
-					tfm.exec.attachBalloon(n,false)
 					tfm.exec.changePlayerSize(n,1)
 				end
 			end
