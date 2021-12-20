@@ -1,14 +1,11 @@
--- Mudanças na Versão 2.13.0:
+-- Mudanças na Versão 2.13.1:
 
--- Correções no sistema inteligente de escolha de perguntas
--- Mais otimizações no código
--- Remoção do comando !random (causa problemas com o novo sistema de escolha de perguntas)
--- Adição de um novo tema de perguntas
--- Mudanças no sistema de admin. Mais de um usuário pode usar os comandos adicionais.
+-- Adição de 9 perguntas de música
+-- Adição de 14 perguntas de lolzinho (hehe)
 
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.13.0
--- Por favor, edite a linha 23 a variável 'admin' pelo seu nome para ter acesso aos comandos.
--- Você pode selecionar o tema editando a linha 25, ou digitando !tema [número] conforme os números abaixo.
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.13.1
+-- Por favor, edite a linha 20 a variável 'admin' pelo seu nome para ter acesso aos comandos.
+-- Você pode selecionar o tema editando a linha 22, ou digitando !tema [número] conforme os números abaixo.
 
 -- Temas:
 -- 0 = transformice
@@ -18,7 +15,7 @@
 
 -- Para adicionar novas perguntas, utilize a seguinte sintaxe na hora de inserir: "PERGUNTA","RESPOSTA 1","RESPOSTA 2",1 ou 2
 -- Para sugestões de perguntas ou correção de bugs contate Reksai_void2600#6638.
--- Caso você queira usar este código em um cafofo de tribo, altere a variável TRIBEHOUSE da linha 26 para 'true'.
+-- Caso você queira usar este código em um cafofo de tribo, altere a variável TRIBEHOUSE da linha 23 para 'true'.
 
 admin={"Reksai_void2600#6638"} -- FunCorps, insiram seus nomes aqui!
 
@@ -34,7 +31,7 @@ end
 for _,g in next,{"setq","limite","tema"} do
 	system.disableChatCommandDisplay(g)
 end
-ratos=0; vivos=0; set_q=0; questions_list={}; modo="inicial"; pergunta=0; rodada=0; limite=25; count=0;
+ratos=0; vivos=0; set_q=0; questions_list={}; modo="inicial"; pergunta=0; rodada=0; limite=25; count=0; fixed_cnt=0;
 perguntas={
 "Vai na sorte :)","ok","ok",1,
 "Vai na sorte :)","ok","ok",2,
@@ -417,7 +414,7 @@ perguntas2={
 "O cantor e compositor Marcos Witt nasceu em qual país?","México","Estados Unidos",2,
 "A música Copacabana, de Barry Manilow, fala majoritariamente sobre...","a Praia de Copacabana","um Bar americano chamado Copacabana",2,
 "Qual destas bandas de black metal possui o mesmo nome de uma criatura mitológica da Bíblia Sagrada?","Anthrax","Behemoth",2,
-"De quem é a música 'Ai se eu te Pego?","Luan Santana","Michel Teló",2,
+"De quem é a música 'Ai se eu te Pego'?","Luan Santana","Michel Teló",2,
 "Qual destas músicas foi utilizada como abertura da série Malhação, na temporada de 2004?","Te Levar","Vou Deixar",1,
 "Qual é o tamanho de um disco de vinil do tipo Single, que armazenava no máximo 2 faixas por lado?","7 polegadas","10 polegadas",1,
 "Qual destas músicas do Guilherme Arantes fala sobre a importância da água no Planeta Terra?","Planeta Água","Águas",1,
@@ -425,6 +422,15 @@ perguntas2={
 "Qual o nome do integrante do Roupa Nova que faleceu na metade de 2021?","Ricardo","Paulinho",2,
 "Complete a música: I know you're somewhere out there...","Somewhere far away","I sit by myself",1,
 "Eu só quero é ser feliz, andar tranquilamente na favela onde eu nasci... Qual o nome desta música?","Eu só Quero é Ser Feliz","Rap da Felicidade",2,
+"A música Master of Puppets do Metallica foi gravada em que ano?","1985","1986",2,
+"A partir de qual ano os discos de vinil (LP) pararam de ser fabricados no Brasil?","1997","2000",2,
+"Em qual ano começaram as transmissões de rádio FM no Brasil?","1955","1962",1,
+"A música Admirável Chip Novo, da cantora Pitty, faz referência a qual livro famoso?","Admirável Mundo Novo","Admirável Tempo Novo",1,
+"De quem é a música 'Deixa a Vida me Levar?","Zeca Pagodinho","Rodrigo Abrantes",1,
+"Quantas sinfonias Beethoven compôs?","9","11",1,
+"Complete a música: Cheiro de pneu queimado, carburador furado, o x9 foi...","Torrado","Morto",1,
+"Bob Marley nasceu em qual país?","África do Sul","Jamaica",2,
+"Qual o nome da música que foi utilizada no encerramento das programações diárias do SBT, da metade dos anos 80 a metade dos anos 90?","The Fight","Over the Top",1,
 }
 perguntas3={
 "Vai na sorte :)","ok","ok",1,
@@ -467,11 +473,11 @@ perguntas3={
 "Qual o nome dos dois semideuses localizado no topo dos montes de Freljord?","Ornn e Volibear","Ornn e Anivia",1,
 "Qual o nome do 'planeta' onde vivem todos os personagens de League of Legends?","Runeterra","Demacia",1,
 "Quantos campeões existem no League of Legends?","157","161",1,
-"Não existem campeões dentro do League of Legends que conseguem sair para fora de Runeterra.","Verdadeiro","Falso",2,
+"O time do Cruzeiro já chegou a ter uma equipe competitiva de League of Legends.","Verdadeiro","Falso",1,
 "Ashe e Tryndamere são casados.","Verdadeiro","Falso",1,
 "Qual o nome da região onde majoritariamente ficam localizados os Vastayas?","Noxus","Ionia",2,
 "Cassiopeia, Talon e Katarina fazem parte de uma família muito conhecida em Noxus. Qual o nome dela?","Stemmaguarda","Du Couteau",2,
-"Qual o nome do sistema que automaticamente pune jogadores AFKs ou que 'quitam' de forma proposital no League of Legends?","LeaverBuster","Riot Forge",1,
+"Qual o nome do sistema que automaticamente pune jogadores AFKs ou que 'quitam' de forma proposital no League of Legends?","Leaver Buster","Riot Forge",1,
 "Qual o nome do jogo de estratégia e táticas presente dentro do League of Legends?","Legends of Runeterra","Teamfight Tactics",2,
 "Qual o nome da escopeta usada por Graves?","Vingança","Destino",2,
 "A campeã Akali já passou por quantos reworks desde seu lançamento?","2","3",1,
@@ -480,7 +486,7 @@ perguntas3={
 "Qual foi a equipe brasileira que conseguiu a melhor campanha no Mundial de League of Legends, em 2015?","LOUD","INTZ",2,
 "Qual foi o jogador que mais conquistou títulos do Campeonato Brasileiro de League of Legends?","BrTT","Revolta",1,
 "Qual foi o(a) campeã(o) que salvou vários zaunitas após uma falha em um experimento?","Janna","Viktor",1,
-"Quais são os nomes dos dois campeões que fazem parte dos chamados Sentinelas da Luz?","Lucian e Pyke","Lucian e Senna",2,
+"Quais são os nomes dos dois campeões que fazem parte dos chamados Sentinelas da Luz?","Lucian e Hecarim","Lucian e Senna",2,
 "Qual dessas é a maior região de Runeterra?","Noxus","Shurima",2,
 "Quantas regiões existem em Runeterra?","10","12",2,
 "Qual o nome do javali no qual a campeã Sejuani sempre fica montada?","Bristle","Valor",1,
@@ -490,7 +496,7 @@ perguntas3={
 "Qual é a descrição da Shyvana?","A Fúria do Dragão","A Meia-Dragão",2,
 "Quais destes monstros neutros pertencem ao Vazio?","Arauto do Vale e Barão Na'Shor","Arauto do Vale e Dragão Ancião",1,
 "No evento de Arcane, Heimerdinger chega a mencionar uma frase durante o jogo.","Tá pegando fogo bicho!","Sempre pela ciência!",1,
-"Qual destes personagens foi tirado de demacia, subiu o monte Targon e virou o Escudo de Valoran?","Zoe","Taric",2,
+"Qual destes personagens foi tirado de Demacia, subiu o monte Targon e virou o Escudo de Valoran?","Zoe","Taric",2,
 "Águas de Sentina é um arquipélago localizado ao leste de Runeterra, onde basicamente só vivem...","Aspectos","Piratas",2,
 "Qual a cor do cabelo da Katarina?","Preto","Vermelho",2,
 "Nenhuma pessoa que foi capturada pela lanterna de Thresh conseguiu sair de lá.","Verdadeiro","Falso",2,
@@ -501,6 +507,20 @@ perguntas3={
 "'Eu sou o terror de todos que se oponham contra mim.'","Morgana","Shyvana",2,
 "Qual o nome da runa do League of Legends que dá dano e velocidade de movimento aprimoradas nas botas?","Predador","Ímpeto Gradual",1,
 "Qual o nome de uma das moedas utilizada em Águas de Sentina?","Serpentes de Prata","Leão Submarino",1,
+"A campeã Cassiopeia é um misto de uma mulher com uma...","Serpente","Víbora",1,
+"Qual a fruta preferida da campeã Kai'Sa?","Pêra","Pêssego",2,
+"Quais os nomes das três tribos que formam Freljord?","Avarosa, Garras do Inverno e Serylda","Avarosa, Garras do Inverno e Praeglacius",2,
+"Qual o nome do modelo de governo utilizado em Noxus, onde basicamente há três comandantes?","Trifarix","Quinlon",1,
+"Qual o nome da música tema do Campeonato Mundial de League of Legends de 2018?","Legends Never Die","Rise",2,
+"O Monte Targon é a única montanha existente em Runeterra.","Verdadeiro","Falso",2,
+"Quantos campeões do League of Legends conseguem voar por conta própria (sem ajuda de animais ou veículos adicionais)?","5","10",1,
+"Quantos campeões do League of Legends conseguem viver no mar?","3","4",2,
+"Quantas skins possui o campeão Yasuo? (excluindo cromas)","11","13",1,
+"Qual o nome do local onde Zilean nasceu, e que posteriormente foi tomado pelo Vazio?","Bandópolis","Icathia",2,
+"Basicamente, qual é a única fala do Rammus no jogo?","Ok","Falou",1,
+"O campeão Ryze já passou por quantos Reworks desde seu lançamento?","2","3",1,
+"Não existem campeões dentro do League of Legends que sejam maiores que a própria Runeterra.","Verdadeiro","Falso",2,
+"Quantos continentes existem em Runeterra?","2","3",1,
 }
 mapa="@7786632"
 actual_question={quest="",a1="",a2="",answer=nil}
@@ -540,6 +560,7 @@ function eventNewGame()
 	elseif tema == 3 then	
 		count=rawlen(perguntas3)/4
 	end
+	fixed_cnt=count
 	if rawlen(questions_list) <= limite then
 		showMessage("<J>Contando perguntas. Por favor, aguarde...<br>")
 		for i=1,count do
@@ -547,9 +568,9 @@ function eventNewGame()
 		end
 	end
 	if tema <= 2 then
-		showMessage("Esta é a versão oficial do Quiz de Perguntas.<br>Os temas das perguntas foram todos feitos por Reksai_void2600#6638.<br><br><N><b>Quantidade de perguntas presentes: "..rawlen(questions_list).."</b><br><VP>O sistema inteligente de escolha de perguntas está ativo.")
+		showMessage("Esta é a versão oficial do Quiz de Perguntas.<br>Os temas das perguntas foram todos feitos por Reksai_void2600#6638.<br><br><N><b>Quantidade de perguntas presentes: "..fixed_cnt.."</b><br><VP>O sistema inteligente de escolha de perguntas está ativo.")
 	elseif tema == 3 then
-		showMessage("Esta é a versão oficial do Quiz de Perguntas.<br>Os temas das perguntas foram, em grande maioria, feitos por Spectra_phantom#6089.<br><br><N><b>Quantidade de perguntas presentes: "..rawlen(questions_list).."</b><br><VP>O sistema inteligente de escolha de perguntas está ativo.")
+		showMessage("Esta é a versão oficial do Quiz de Perguntas.<br>Os temas das perguntas foram, em grande maioria, feitos por Spectra_phantom#6089.<br><br><N><b>Quantidade de perguntas presentes: "..fixed_cnt.."</b><br><VP>O sistema inteligente de escolha de perguntas está ativo.")
 	end
 end
 function reset()
@@ -590,7 +611,7 @@ function eventPlayerLeft(name)
 	ratos=ratos-1
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.13.0</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
+	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.13.1</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
