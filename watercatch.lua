@@ -1,12 +1,12 @@
 for _,f in next,{"AutoShaman","AutoNewGame","AutoTimeLeft","DebugCommand","AllShamanSkills","PhysicalConsumables"} do
 	tfm.exec["disable"..f](true)
 end
-for _,f in next,{"help","ajuda","tc","kill","powerups","creditos"} do
+for _,f in next,{"help","ajuda","tc","kill","powerups","creditos","changelog"} do
 	system.disableChatCommandDisplay(f)
 end
-tfm.exec.newGame("@7887657")
-tfm.exec.setRoomMaxPlayers(30)
-shaman=""; alives=0; cannons=5; z=0; data={}; mode="load"; changed=false; loop=0; timer=0; xml=''; time_passed=0; time_remain=0;
+tfm.exec.newGame("@7889701")
+tfm.exec.setRoomMaxPlayers(35)
+shaman=""; alives=0; cannons=10; z=0; data={}; mode="load"; changed=false; loop=0; timer=0; xml=''; time_passed=0; time_remain=0;
 powerups={x1=-1,x2=-1,x3=-1,x4=-1,x5=-1,y1=-1,y2=-1,y3=-1,y4=-1,y5=-1,t1=0,t2=0,t3=0,t4=0,t5=0}
 testmode=false;
 function showMessage(message,name)
@@ -23,11 +23,12 @@ function showMessage(message,name)
 	end
 end
 function showWater(name)
-	tfm.exec.addImage("17be1035ba0.png","!1",-720,580,name,1.2,0.5,0,0.5)
-	tfm.exec.addImage("17be536e980.png","!1",-200,2120,name,0.5,0.5,0,0.5)
-	tfm.exec.addImage("17be536e980.png","!1",2400,2120,name,0.5,0.5,0,0.5)
-	tfm.exec.addImage("17be10346e1.jpg","?1",-200,600,name)
-	tfm.exec.addImage("17be536ff6c.png","!1",-720,580,name,12,1,0,1)
+	tfm.exec.addImage("17df24985c5.png","?1",40,580,name)
+	-- tfm.exec.addImage("17be536e980.png","!1",-200,2120,name,0.5,0.5,0,0.5)
+	-- tfm.exec.addImage("17be536e980.png","!1",2400,2120,name,0.5,0.5,0,0.5)
+	tfm.exec.addImage("17def3df6c5.jpg","?1",-300,590,name,1,1.3)
+	tfm.exec.addImage("17def3e4466.png","!1",-300,570,name,12,1.3,0,0.9)
+	tfm.exec.addImage("17def3da8f8.png","!1",-300,587,name,1,1,0,0.675)
 end
 function eventPlayerDied(n)
 	if not tfm.get.room.playerList[n].isShaman then
@@ -56,18 +57,9 @@ function eventPlayerDied(n)
 end
 function eventNewPlayer(name)
 	showWater(name)
-	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v2.1.1</b><N> - criado por <ROSE><b>Morganadxana#0000</b> <N>e <R><b>Spectra_phantom#6089</b><")
+	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v2.2.0</b><N> - criado por <ROSE><b>Morganadxana#0000</b> <N>e <R><b>Spectra_phantom#6089</b><")
 	newData={
-	["o"]=99;
-	["i"]=0;
-	["t"]=0;
-	["c"]=0;
-	["opened"]=false;
-	["imageid"]=-1;
-	["imageid2"]=-1;
-	["imageid3"]=-1;
-	["imageid4"]=-1;
-	["imaget"]=5;
+	["o"]=99; ["i"]=0; ["t"]=0; ["c"]=0; ["opened"]=false; ["imageid"]=-1; ["imageid2"]=-1; ["imageid3"]=-1; ["imageid4"]=-1; ["imaget"]=5;
 	};
 	data[name] = newData;
 	showMessage("<font color='#0080ff'><b>Bem-vindos ao module #watercatch!</b><br><J>Digite !help para ver a ajuda deste module.<br><br><N>Module criado por Morganadxana#0000. Mapa feito por Spectra_phantom#6089.<br><br><BL>Atenção: Conexões lentas com a Internet podem fazer com que as artes da água demorem para carregar.<br><br>Caso o mapa não carregue, saia do jogo e entre novamente.",name)
@@ -83,13 +75,16 @@ for name,player in next,tfm.get.room.playerList do
 end
 function eventChatCommand(name,message)
 	if message == "help" or message == "ajuda" then
-		showMenu(name,0xf0f0f0,140,90,520,220,"Ajuda do Module #watercatch","O objetivo é bem simples: <b>Fugir do shaman</b>, se escondendo dentro do profundo lago e tomando cuidado para não morrer afogado!<br><R><b>Shamans, não esqueçam de se mexer, ou irão morrer AFK!</b><br><br><VP>Os quadrados marcados por <ROSE>'!'<VP> são powerups, que geram efeitos aleatórios nos ratos. Você pode ver os possíveis efeitos dos powerups indo no Menu e clicando em Powerups. Vale ressaltar que eles funcionam apenas depois que o shaman for liberado.<br><br><N>Caso você seja shaman, você tem um limite de <b>5</b> objetos que podem ser utilizados. Exceder este limite fará com que a partida acabe.")
+		showMenu(name,0xf0f0f0,140,90,520,220,"Ajuda do Module #watercatch","O objetivo é bem simples: <b>Fugir do shaman</b>, se escondendo dentro do profundo lago e tomando cuidado para não morrer afogado!<br><R><b>Shamans, não esqueçam de se mexer, ou irão morrer AFK!</b><br><br><VP>Os quadrados marcados por <ROSE>'!'<VP> são powerups, que geram efeitos aleatórios nos ratos. Você pode ver os possíveis efeitos dos powerups indo no Menu e clicando em Powerups. Vale ressaltar que eles funcionam apenas depois que o shaman for liberado.<br><br><N>Caso você seja shaman, você tem um limite de <b>10</b> objetos que podem ser utilizados. Exceder este limite fará com que a partida acabe.")
 	end
 	if message == "powerups" then
-		showMenu(name,0xf0f0f0,140,61,520,330,"Powerups do Module #watercatch","<font size='11'>Os seguintes powerups estão disponíveis no momento:<br><ROSE><b>• CAIXA</b><N><br>Faz aparecer uma caixa de acompanhamento em cima de você.<br><ROSE><b>• OXIGÊNIO</b><N><br>Aumenta o seu nível de oxigênio em 40%.<br><ROSE><b>• VELOCIDADE</b><N><br>Te dá um grande impulso de velocidade.<br><ROSE><b>• AFUNDAR</b><N><br>Cria uma anomalia temporária que leva todos os ratos em direção ao fundo do lago.<br><ROSE><b>• MEEP</b><N><br>Te dá o poder de usar o Meep!<br><ROSE><b>• SUFOCO</b><N><br>Diminui o seu nível de oxigênio em 18%. Caso seu nível esteja abaixo disso e você pegue este powerup, você morrerá afogado.<br><ROSE><b>• CONGELAR</b><N><br>Congela o seu rato.<br><ROSE><b>• QUEIJO</b><N><br>Dá queijo para o seu rato. Caso você esteja dentro do lago, você provavelmente será levado para o fundo dele.<br><ROSE><b>• REDUZIR</b><N><br>Reduz temporariamente o tamanho do seu rato.")
+		showMenu(name,0xf0f0f0,140,76,520,315,"Powerups do Module #watercatch","<font size='11'>Os seguintes powerups estão disponíveis no momento:<br><ROSE><b>• CAIXA</b><N><br>Faz aparecer uma caixa de acompanhamento em cima de você.<br><ROSE><b>• OXIGÊNIO</b><N><br>Aumenta o seu nível de oxigênio em 40%.<br><ROSE><b>• VELOCIDADE</b><N><br>Te dá um grande impulso de velocidade.<br><ROSE><b>• AFUNDAR</b><N><br>Cria uma anomalia temporária que leva todos os ratos em direção ao fundo do lago.<br><ROSE><b>• MEEP</b><N><br>Te dá o poder de usar o Meep!<br><ROSE><b>• SUFOCO</b><N><br>Diminui o seu nível de oxigênio em 18%. Caso seu nível esteja abaixo disso e você pegue este powerup, você morrerá afogado.<br><ROSE><b>• CONGELAR</b><N><br>Congela o seu rato.<br><ROSE><b>• QUEIJO</b><N><br>Dá queijo para o seu rato. Caso você esteja dentro do lago, você provavelmente será levado para o fundo dele.<br><ROSE><b>• REDUZIR</b><N><br>Reduz temporariamente o tamanho do seu rato.")
 	end
 	if message == "creditos" then
 		showMenu(name,0xf0f0f0,140,90,520,130,"Créditos","As seguintes pessoas ajudaram no desenvolvimento deste module:<br><br><ROSE><b>• Morganadxana#0000</b><N> - Desenvolvedora do código<br><ROSE><b>• Rakan_raster#0000</b><N> - Tradução do código original para o Português<br><ROSE><b>• Spectra_phantom#6089</b><N> - Ideia original e criação do mapa e das artes")
+	end
+	if message == "changelog" then
+		showMenu(name,0xf0f0f0,140,90,520,130,"Changelog da Versão 2.2.0","• Novo tema de mapa: Floresta!<br>• Aumento do limite de objetos de 5 para 10<br>• Mudança nas cores dos powerups<br>• Mudanças no cálculo do tempo das pertidas")
 	end
 	if (message:sub(0,2)== "tc") then
 		if tfm.get.room.playerList[name].isShaman == false then
@@ -105,14 +100,21 @@ function eventChatCommand(name,message)
 	end
 end
 function eventSummoningEnd(name,id,x,y)
-	cannons=cannons-1
-	if cannons >= 1 then
-		showMessage("<VP>O shaman agora pode usar <b>"..cannons.."</b> objetos.")
-	elseif cannons == 0 then
-		showMessage("<VP>O shaman não pode mais usar objetos!")
-	else
-		showMessage("<R>O shaman excedeu o limite de objetos utilizáveis!")
-		tfm.exec.killPlayer(shaman)
+	if id > 0 then
+		cannons=cannons-1
+		if cannons >= 1 then
+			showMessage("<VP>O shaman agora pode usar <b>"..cannons.."</b> objetos.")
+		elseif cannons == 0 then
+			showMessage("<VP>O shaman não pode mais usar objetos!")
+		else
+			showMessage("<R>O shaman excedeu o limite de objetos utilizáveis!")
+			tfm.exec.killPlayer(shaman)
+		end
+	end
+end
+function eventSummoningStart(name,id,x,y)
+	if cannons == 0 then
+		showMessage("<R>Você não pode mais usar objetos! Invocar um objeto fará com que você morra e a partida termine!",name)
 	end
 end
 function resetMap()
@@ -355,13 +357,13 @@ function eventKeyboard(name,key,down)
 	end		
 end
 function eventNewGame()
-ui.setBackgroundColor("#020F14")
+ui.setBackgroundColor("#375B38")
 xml=tfm.get.room.xmlMapInfo.xml
 ui.addTextArea(0,"",nil,-800,-400,2400,1200,0x6a7495,0x6a7495,1.0,true)
 if changed == true then
 ui.removeTextArea(0,nil)
 z=-1
-cannons=5
+cannons=10
 ui.removeTextArea(22,nil)
 alives=0
 mode="hide"
@@ -371,13 +373,10 @@ for n,p in next,tfm.get.room.playerList do
 		tfm.exec.killPlayer(n)
 	end
 	alives=alives+1
-	data[n].o=99;
-	data[n].i=0;
-	data[n].t=0;
-	data[n].c=0;
-	data[n].opened=false;
+	data[n].o=99; data[n].i=0; data[n].t=0; data[n].c=0; data[n].opened=false;
 	tfm.exec.bindKeyboard(n,32,true,true)
 	if tfm.get.room.playerList[n].isShaman then
+		tfm.exec.setShamanMode(n,1)
 		tfm.exec.setPlayerSync(n)
 		ui.addTextArea(22,"",n,-800,-800,2400,2400,0x000001,0x000001,1.0,true)
 		shaman=n
@@ -403,27 +402,27 @@ function showMenu(name,color,x,y,width,height,title,content)
 end
 function genPowerup(pos,type,x,y)
 	if pos == 1 then
-		ui.addTextArea(100,"<font size='18'><p align='center'>!",nil,x,y,24,24,0x161636,0x121224,1.0,false)
+		ui.addTextArea(100,"<font size='18'><p align='center'>!",nil,x,y,24,24,0x163616,0x122412,1.0,false)
 		powerups.x1=x
 		powerups.y1=y
 		powerups.t1=type
 	elseif pos == 2 then
-		ui.addTextArea(101,"<font size='18'><p align='center'>!",nil,x,y,24,24,0x161636,0x121224,1.0,false)
+		ui.addTextArea(101,"<font size='18'><p align='center'>!",nil,x,y,24,24,0x163616,0x122412,1.0,false)
 		powerups.x2=x
 		powerups.y2=y
 		powerups.t2=type
 	elseif pos == 3 then
-		ui.addTextArea(102,"<font size='18'><p align='center'>!",nil,x,y,24,24,0x161636,0x121224,1.0,false)
+		ui.addTextArea(102,"<font size='18'><p align='center'>!",nil,x,y,24,24,0x163616,0x122412,1.0,false)
 		powerups.x3=x
 		powerups.y3=y
 		powerups.t3=type
 	elseif pos == 4 then
-		ui.addTextArea(103,"<font size='18'><p align='center'>!",nil,x,y,24,24,0x161636,0x121224,1.0,false)
+		ui.addTextArea(103,"<font size='18'><p align='center'>!",nil,x,y,24,24,0x163616,0x122412,1.0,false)
 		powerups.x4=x
 		powerups.y4=y
 		powerups.t4=type
 	elseif pos == 5 then
-		ui.addTextArea(104,"<font size='18'><p align='center'>!",nil,x,y,24,24,0x161636,0x121224,1.0,false)
+		ui.addTextArea(104,"<font size='18'><p align='center'>!",nil,x,y,24,24,0x163616,0x122412,1.0,false)
 		powerups.x5=x
 		powerups.y5=y
 		powerups.t5=type
@@ -453,18 +452,18 @@ if time_passed >= 6 and tfm.get.room.currentMap == "@7763582" then
 	resetMap()
 end
 if changed == true then
-ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v2.1.1</b><N> - criado por <ROSE><b>Morganadxana#0000</b> <N>e <R><b>Spectra_phantom#6089</b><")
+ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v2.2.0</b><N> - criado por <ROSE><b>Morganadxana#0000</b> <N>e <R><b>Spectra_phantom#6089</b><")
 local m=math.floor(r/60000)
 local s=math.floor((((m*60000)-r) * -1) / 1000)
 ui.addTextArea(-1,"<font size='45'><font color='#222222'><font face='Trebuchet MS'><b><i>"..m..":"..s.."</b>",n,569,22,110,54,0,0,1.0,true)
-ui.addTextArea(-2,"<font size='45'><font color='#939393'><font face='Trebuchet MS'><b><i>"..m..":"..s.."</b>",n,566,19,110,54,0,0,1.0,true)
+ui.addTextArea(-2,"<font size='45'><font color='#d0d0d0'><font face='Trebuchet MS'><b><i>"..m..":"..s.."</b>",n,566,19,110,54,0,0,1.0,true)
 if s < 10 then
 	ui.addTextArea(-1,"<font size='45'><font face='Trebuchet MS'><font color='#222222'><b><i>"..m..":0"..s.."</b>",n,569,22,110,54,0,0,1.0,true)
-	ui.addTextArea(-2,"<font size='45'><font color='#939393'><font face='Trebuchet MS'><b><i>"..m..":0"..s.."</b>",n,566,19,110,54,0,0,1.0,true)
+	ui.addTextArea(-2,"<font size='45'><font color='#d0d0d0'><font face='Trebuchet MS'><b><i>"..m..":0"..s.."</b>",n,566,19,110,54,0,0,1.0,true)
 end
 if mode == "game" or mode == "hide" then
 	ui.addTextArea(31,"<font size='45'><font color='#222222'><font face='Trebuchet MS'><b><i>"..alives.."</b>",n,135,22,70,54,0,0,1.0,true)
-	ui.addTextArea(30,"<font size='45'><font color='#939393'><font face='Trebuchet MS'><b><i>"..alives.."</b>",n,132,19,70,54,0,0,1.0,true)
+	ui.addTextArea(30,"<font size='45'><font color='#d0d0d0'><font face='Trebuchet MS'><b><i>"..alives.."</b>",n,132,19,70,54,0,0,1.0,true)
 	loop=loop+0.5
 	if loop == 24 then
 		for i=1,5 do
@@ -557,7 +556,7 @@ for n,q in next,tfm.get.room.playerList do
 end
 if r <= 2000 and mode == "hide" then
 	mode="game"
-	tfm.exec.setGameTime(205+math.ceil(alives*2))
+	tfm.exec.setGameTime(165+math.ceil(alives*3))
 	ui.removeTextArea(22,nil)
 	showMessage("<J><b>O shaman foi liberado! Salvem-se quem puder!</b><br><N>Os itens marcados com <BL>!<N> são poderes especiais, que podem trazer efeitos positivos ou negativos aos ratos. Aperte ESPAÇO para usá-los.<br><br><ROSE>Use o comando !tc [mensagem] para falar no chat sem que o shaman saiba.")
 	for n,p in next,tfm.get.room.playerList do
@@ -596,7 +595,7 @@ end
 function eventTextAreaCallback(id,name,callback)
 	if callback == "show_menu" then
 		ui.addTextArea(299,"<p align='center'><a href='event:hide_menu'><font size='18'>Menu",name,365,25,70,24,0x000001,0x000001,0.75,true)
-		ui.addTextArea(298,"<p align='center'><a href='event:help'>Ajuda</a><br><a href='event:powerups'>Powerups</a><br><a href='event:cred'>Créditos</a>",name,355,55,90,48,0x000001,0x000001,0.80,true)
+		ui.addTextArea(298,"<p align='center'><a href='event:help'>Ajuda</a><br><a href='event:powerups'>Powerups</a><br><a href='event:cred'>Créditos</a><br><a href='event:change'>Changelog</a>",name,355,55,90,60,0x000001,0x000001,0.80,true)
 	end
 	if callback == "hide_menu" then
 		ui.addTextArea(299,"<p align='center'><a href='event:show_menu'><font size='18'>Menu",name,365,25,70,24,0x000001,0x000001,0.75,true)
@@ -616,5 +615,8 @@ function eventTextAreaCallback(id,name,callback)
 	end
 	if callback == "cred" then
 		eventChatCommand(name,"creditos")
+	end
+	if callback == "change" then
+		eventChatCommand(name,"changelog")
 	end
 end
