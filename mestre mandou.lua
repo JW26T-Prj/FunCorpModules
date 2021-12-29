@@ -1,4 +1,4 @@
--- Script do module Mestre Mandou, versão RTM 15394.090 LTS, desenvolvido por Rakan_raster#0000.
+-- Script do module Mestre Mandou, versão RTM 15495.091 LTS, desenvolvido por Rakan_raster#0000.
 -- Versão atualizada já com suporte ao ano de 2022.
 
 admin={""} -- Se estiver rodando este código em uma sala FunCorp, insira o nome dos FunCorps e digite !fc para habilitar algumas funções e comandos especiais.
@@ -20,7 +20,7 @@ for _,f in next,{"command","pw","limit","run","fc","tc","q","a","t","kill"} do
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>O objetivo deste module é muito simples: Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><VP>Tenha sempre cuidado com os comandos trolls!<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Jessiewind26#2546<br><br><ROSE>Versão RTM 15394.090 LTS",
+	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>O objetivo deste module é muito simples: Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><VP>Tenha sempre cuidado com os comandos trolls!<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Jessiewind26#2546<br><br><ROSE>Versão RTM 15495.091 LTS",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -116,7 +116,7 @@ lang.br = {
 	caps = "Pressione a tecla CAPS LOCK 10 vezes",
 }
 lang.en = {
-	welcome = "<N><b>Welcome to Simon Says module!</b><br>This module's goal is easy: Follow everything the game told and test your limits until the end!<br><VP>Be always aware to troll commands!<br><br><J><b>Script developed by Rakan_raster#0000</b><br>Original concept by Jessiewind26#2546<br>Translation by Draw#6691<br><br><ROSE>Version RTM 15394.090 LTS",
+	welcome = "<N><b>Welcome to Simon Says module!</b><br>This module's goal is easy: Follow everything the game told and test your limits until the end!<br><VP>Be always aware to troll commands!<br><br><J><b>Script developed by Rakan_raster#0000</b><br>Original concept by Jessiewind26#2546<br>Translation by Draw#6691<br><br><ROSE>Version RTM 15495.091 LTS",
 	dancar = "Dance!",
 	sentar = "Sit down!",
 	confetar = "Throw 5 confetti!",
@@ -212,7 +212,7 @@ lang.en = {
 	caps = "Press the CAPS LOCK key 10 times!",
 }
 lang.fr = {
-	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Rakan_raster#0000</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 15394.090 LTS",
+	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Rakan_raster#0000</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 15495.091 LTS",
 	dancar = "Danse !",
 	sentar = "Assis !",
 	confetar = "Lance 5 fois des confettis !",
@@ -1002,11 +1002,11 @@ function getCommand()
 	end
 	if active == 96 then
 		showCommand(active,text.creator)
-		tfm.exec.setGameTime(15)
+		tfm.exec.setGameTime(12)
 	end
 	if active == 97 then
 		showCommand(active,text.collect)
-		tfm.exec.setGameTime(18)
+		tfm.exec.setGameTime(22)
 		for i=10,13 do
 			tfm.exec.addBonus(0, math.random(100,700), math.random(80,300), i, 0)
 		end
@@ -1060,7 +1060,7 @@ function eventChatMessage(name,message)
 		end
 	end
 	if active == 43 then
-		if string.upper(message) == "EU SOU NOOB" or string.upper(message) == "I AM NOOB" or string.upper(message) == "BEN NOOB" then
+		if string.upper(message) == "EU SOU NOOB" or string.upper(message) == "I AM NOOB" or string.upper(message) == "I AM A NOOB" or string.upper(message) == "BEN NOOB" then
 			completeCommand(name)
 		end
 		if string.find(string.upper(message),string.upper("PRO")) then
@@ -1463,11 +1463,11 @@ end
 function eventLoop(passado,faltando)
 	local tempo=math.floor(faltando/1000)
 	if active == -2 then
-		ui.setMapName("<N>"..text.mices.."   <G>|   <VP><b>"..text.version.." RTM 15394.090 LTS</b><")
+		ui.setMapName("<N>"..text.mices.."   <G>|   <VP><b>"..text.version.." RTM 15495.091 LTS</b><")
 	elseif active == -1 then
-		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <VP><b>"..text.version.." RTM 15394.090 LTS</b><")
+		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <VP><b>"..text.version.." RTM 15495.091 LTS</b><")
 	elseif active >= 0 then
-		ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <VP><b>"..text.version.." RTM 15394.090 LTS</b><")
+		ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <VP><b>"..text.version.." RTM 15495.091 LTS</b><")
 	end
 	if rato < 4 then
 		if tfm.get.room.currentMap == "@2684847" and unlocked == true then
