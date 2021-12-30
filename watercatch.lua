@@ -4,7 +4,7 @@ end
 for _,f in next,{"help","ajuda","tc","kill","powerups","creditos","changelog"} do
 	system.disableChatCommandDisplay(f)
 end
-tfm.exec.newGame("@7889701")
+tfm.exec.newGame("@7890357")
 tfm.exec.setRoomMaxPlayers(35)
 shaman=""; alives=0; cannons=10; z=0; data={}; mode="load"; changed=false; loop=0; timer=0; xml=''; time_passed=0; time_remain=0;
 powerups={x1=-1,x2=-1,x3=-1,x4=-1,x5=-1,y1=-1,y2=-1,y3=-1,y4=-1,y5=-1,t1=0,t2=0,t3=0,t4=0,t5=0}
@@ -23,12 +23,10 @@ function showMessage(message,name)
 	end
 end
 function showWater(name)
-	tfm.exec.addImage("17df24985c5.png","?1",40,580,name)
-	-- tfm.exec.addImage("17be536e980.png","!1",-200,2120,name,0.5,0.5,0,0.5)
-	-- tfm.exec.addImage("17be536e980.png","!1",2400,2120,name,0.5,0.5,0,0.5)
-	tfm.exec.addImage("17def3df6c5.jpg","?1",-300,590,name,1,1.3)
-	tfm.exec.addImage("17def3e4466.png","!1",-300,570,name,12,1.3,0,0.9)
-	tfm.exec.addImage("17def3da8f8.png","!1",-300,587,name,1,1,0,0.675)
+	tfm.exec.addImage("17df24985c5.png","?1",40,330,name)
+	tfm.exec.addImage("17def3df6c5.jpg","?1",-300,340,name,1,1.3)
+	tfm.exec.addImage("17def3e4466.png","!1",-300,320,name,12,1.3,0,0.9)
+	tfm.exec.addImage("17def3da8f8.png","!1",-300,337,name,1,1,0,0.675)
 end
 function eventPlayerDied(n)
 	if not tfm.get.room.playerList[n].isShaman then
@@ -57,7 +55,7 @@ function eventPlayerDied(n)
 end
 function eventNewPlayer(name)
 	showWater(name)
-	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v2.2.0</b><N> - criado por <ROSE><b>Morganadxana#0000</b> <N>e <R><b>Spectra_phantom#6089</b><")
+	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v2.2.1</b><N> - criado por <ROSE><b>Morganadxana#0000</b> <N>e <R><b>Spectra_phantom#6089</b><")
 	newData={
 	["o"]=99; ["i"]=0; ["t"]=0; ["c"]=0; ["opened"]=false; ["imageid"]=-1; ["imageid2"]=-1; ["imageid3"]=-1; ["imageid4"]=-1; ["imaget"]=5;
 	};
@@ -84,7 +82,7 @@ function eventChatCommand(name,message)
 		showMenu(name,0xf0f0f0,140,90,520,130,"Créditos","As seguintes pessoas ajudaram no desenvolvimento deste module:<br><br><ROSE><b>• Morganadxana#0000</b><N> - Desenvolvedora do código<br><ROSE><b>• Rakan_raster#0000</b><N> - Tradução do código original para o Português<br><ROSE><b>• Spectra_phantom#6089</b><N> - Ideia original e criação do mapa e das artes")
 	end
 	if message == "changelog" then
-		showMenu(name,0xf0f0f0,140,90,520,130,"Changelog da Versão 2.2.0","• Novo tema de mapa: Floresta!<br>• Aumento do limite de objetos de 5 para 10<br>• Mudança nas cores dos powerups<br>• Mudanças no cálculo do tempo das pertidas")
+		showMenu(name,0xf0f0f0,140,90,520,130,"Changelog da Versão 2.2.1","• Pequenas alterações no mapa")
 	end
 	if (message:sub(0,2)== "tc") then
 		if tfm.get.room.playerList[name].isShaman == false then
@@ -452,7 +450,7 @@ if time_passed >= 6 and tfm.get.room.currentMap == "@7763582" then
 	resetMap()
 end
 if changed == true then
-ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v2.2.0</b><N> - criado por <ROSE><b>Morganadxana#0000</b> <N>e <R><b>Spectra_phantom#6089</b><")
+ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v2.2.1</b><N> - criado por <ROSE><b>Morganadxana#0000</b> <N>e <R><b>Spectra_phantom#6089</b><")
 local m=math.floor(r/60000)
 local s=math.floor((((m*60000)-r) * -1) / 1000)
 ui.addTextArea(-1,"<font size='45'><font color='#222222'><font face='Trebuchet MS'><b><i>"..m..":"..s.."</b>",n,569,22,110,54,0,0,1.0,true)
@@ -511,16 +509,16 @@ for n,q in next,tfm.get.room.playerList do
 			end
 			if not tfm.get.room.playerList[n].isDead then
 			if mode == "game" then
-			if tfm.get.room.playerList[n].y < 598 then
+			if tfm.get.room.playerList[n].y < 348 then
 				if data[n].o < 99 then
 					data[n].o=data[n].o+1
 				end
 				data[n].y=0
 			else
-				if tfm.get.room.playerList[n].y <= 1400 then
+				if tfm.get.room.playerList[n].y <= 1150 then
 					data[n].o=data[n].o-0.4
 					data[n].c=0
-				elseif tfm.get.room.playerList[n].y > 1400 then
+				elseif tfm.get.room.playerList[n].y > 1150 then
 					data[n].o=data[n].o-0.6
 					data[n].c=0
 				end
@@ -562,7 +560,7 @@ if r <= 2000 and mode == "hide" then
 	for n,p in next,tfm.get.room.playerList do
 		ui.addTextArea(300,"",n,8,386,782,8,0x202020,0x121212,1.0,true)
 		if tfm.get.room.playerList[n].isShaman then
-			tfm.exec.movePlayer(n,2450,410,false,0,0,false)
+			tfm.exec.movePlayer(n,2450,160,false,0,0,false)
 		end
 	end
 end
