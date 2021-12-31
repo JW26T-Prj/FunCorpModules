@@ -1,21 +1,22 @@
--- Mudanças na Versão 2.13.1:
+-- Mudanças na Versão 2.14.0:
 
--- Adição de 9 perguntas de música
--- Adição de 14 perguntas de lolzinho (hehe)
+-- Adição de 10 perguntas de conhecimentos gerais
+-- Adição de novo tema incompleto
 
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.13.1
--- Por favor, edite a linha 20 a variável 'admin' pelo seu nome para ter acesso aos comandos.
--- Você pode selecionar o tema editando a linha 22, ou digitando !tema [número] conforme os números abaixo.
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.14.0
+-- Por favor, edite a linha 21 a variável 'admin' pelo seu nome para ter acesso aos comandos.
+-- Você pode selecionar o tema editando a linha 23, ou digitando !tema [número] conforme os números abaixo.
 
 -- Temas:
 -- 0 = transformice
 -- 1 = conhecimentos gerais
 -- 2 = música
 -- 3 = lolzinho
+-- 4 = futebol (TEM POUCAS PERGUNTAS AINDA)
 
 -- Para adicionar novas perguntas, utilize a seguinte sintaxe na hora de inserir: "PERGUNTA","RESPOSTA 1","RESPOSTA 2",1 ou 2
 -- Para sugestões de perguntas ou correção de bugs contate Reksai_void2600#6638.
--- Caso você queira usar este código em um cafofo de tribo, altere a variável TRIBEHOUSE da linha 23 para 'true'.
+-- Caso você queira usar este código em um cafofo de tribo, altere a variável TRIBEHOUSE da linha 24 para 'true'.
 
 admin={"Reksai_void2600#6638"} -- FunCorps, insiram seus nomes aqui!
 
@@ -360,12 +361,22 @@ perguntas1={
 "Dos tipos de ondas a seguir, qual possui mais chance de causar câncer ao corpo humano?","Raios X","Raios Gama",2,
 "Qual o nome dado aos seres que vivos que possuem apenas 1 célula?","Unicelulares","Pluricelulares",1,
 "Qual o nome do supercontinente que existia na Terra antes deles serem divididos?","Pangeia","Pantalassa",1,
-"O Rio Nilo é o único rio que consegue atravessar o deserto do Saara sem secar.","Verdadeiro","Falso",1,
+"A Bolívia é o único país da América do Sul localizado próximo da Cordilheira dos Andes.","Verdadeiro","Falso",2,
 "Em média, quantos metros de profundidade você precisa descer para chegar a uma pressão atmosférica de 2 atm?","10 metros","20 metros",1,
 "No geral, Terremotos e maremotos acontecem quando duas ou mais placas tectônicas...","Se separam uma da outra","Colidem uma com outra",2,
 "Qual o nome da tecnologia que era utilizada na maioria dos equipamentos eletrônicos, do início do século XX até o anos 70","Válvula","Transformador",1,
 "Em qual ano terminou a Segunda Guerra Mundial?","1942","1945",2,
 "Em qual ano ocorreu a Quebra da Bolsa de Nova York?","1929","1930",1,
+"Qual destes gases geralmente é presente dentro dos túneis de trânsito, e que podem causar problemas ao sistema respiratório?","CO","CO₂",1,
+"De 1994 a 2016, dois partidos estiveram na presidência do Brasil. Quais são esses partidos?","PT e PSDB","PT e PMDB",1,
+"Em que ano foi desenvolvido o Windows 2000?","1999","2000",1,
+"Quantos anos têm a Rainha Elizabeth?","93","95",2,
+"A partir de que ano Plutão deixou de ser considerado Planeta e foi considerado Planeta Anão?","2005","2006",2,
+"O seriado Chaves foi produzido em qual país?","México","Argentina",1,
+"A primeira emissora da Rede Globo foi lançado em qual estado do Brasil?","São Paulo","Rio de Janeiro",1,
+"Quantos continentes tem o Planeta Terra?","5","6",2,
+"É possível atirar com uma arma no espaço.","Verdadeiro","Falso",1,
+"Qual o nome do lugar mais quente do Planeta Terra?","Rio de Janeiro","Núcleo",2,
 }
 perguntas2={
 "Vai na sorte :)","ok","ok",1,
@@ -431,6 +442,7 @@ perguntas2={
 "Complete a música: Cheiro de pneu queimado, carburador furado, o x9 foi...","Torrado","Morto",1,
 "Bob Marley nasceu em qual país?","África do Sul","Jamaica",2,
 "Qual o nome da música que foi utilizada no encerramento das programações diárias do SBT, da metade dos anos 80 a metade dos anos 90?","The Fight","Over the Top",1,
+"Em qual ano ocorreu o acidente aéreo que vitimou todos os integrantes da banda Mamonas Assasinas?","1996","1997",1,
 }
 perguntas3={
 "Vai na sorte :)","ok","ok",1,
@@ -522,6 +534,43 @@ perguntas3={
 "Não existem campeões dentro do League of Legends que sejam maiores que a própria Runeterra.","Verdadeiro","Falso",2,
 "Quantos continentes existem em Runeterra?","2","3",1,
 }
+perguntas4={
+"Vai na sorte :)","ok","ok",1,
+"Vai na sorte :)","ok","ok",2,
+"Quantas Copas do Mundo Pelé jogou?","3","4",2,
+"Qual era o número da camisa de Cristiano Ronaldo na final da Eurocopa de 2004, contra a Grécia?","7","17",2,
+"O Futebol foi inventado em qual país?","Inglaterra","Brasil",1,
+"O famoso gol 'La Mano de Dios' marcado por Diego Maradona, aconteceu na Copa do Mundo de qual ano?","1986","1990",1,
+"Qual destes jogadores ficou famoso por errar o pênalti que eliminou a seleção Inglesa na Eurocopa de 1996?","Gareth Southgate","David Beckham",1,
+"Quem marcou o gol do título do Flamengo na Copa União de 1987?","Renato Gaúcho","Bebeto",2,
+"Qual foi o árbitro que ficou conhecido pelo episódio da Máfia do Apito, em 2005?","Edílson Pereira de Carvalho","Paulo César de Oliveira",1,
+"Qual o nome dado a Liga de Futebol dos Estados Unidos?","Major League Soccer","Premier League",1,
+"Quantos Mundiais de Clubes ganhou Neymar?","0","1",2,
+"Quantas Libertadores possui o Boca Juniors?","4","6",2,
+"Qual clube brasileiro venceu o primeiro Campeonato Brasileiro disputado 100% por pontos corridos?","Cruzeiro","Santos",1,
+"Qual destes jogadores fez mais gols em Copas do Mundo?","Miroslav Klose","Ronaldo Fenômeno",1,
+"Quantas pessoas morreram no acidente aéreo que matou quase toda a delegação da Chapecoense, em 2016?","64","71",2,
+"Qual destes jogadores é, atualmente, o maior artilheiro dos Campeonatos Brasileiros por pontos corridos?","Fred","Diego Souza",1,
+"Qual destes jogadores é, atualmente, o maior artilheiro dos Campeonatos Brasileiros até 2002?","Zico","Roberto Dinamite",2,
+"Quantos jogadores do Atlético-MG foram expulsos no polêmico jogo da Semifinal da Libertadores de 1981 contra o Flamengo?","5","7",2,
+"Em qual ano o Corinthians conquistou seu primeiro título do Campeonato Brasileiro?","1990","1995",1,
+"Quem perdeu a última cobrança de pênalti na Semifinal da Libertadores de 2000, defendido pelo goleiro Marcos?","Marcelinho Carioca","Luisão",1,
+"Quantas bolas de ouro Lionel Messi possui?","6","7",1,
+"Qual destas Copas do Mundo foi a primeira a ter o uso do VAR?","2014, no Brasil","2018, na Rússia",2,
+"Qual destes clubes foi Campeão Brasileiro em um ano e rebaixado no ano seguinte?","Vasco","Fluminense",2,
+"Qual destes jogadores chegou a virar político?","Romário","Ronaldinho Gaúcho",1,
+"Qual destes jogadores vestiu por mais vezes a camisa do São Paulo?","Rogério Ceni","Raí",1,
+"Qual destes técnicos foi o responsável pelo tricampeonato brasileiro do São Paulo de 2006 a 2008?","Muricy Ramalho","Paulo Autuori",1,
+"Qual o nome do estádio que o Palmeiras utilizou até a construção do Allianz Parque?","Pacaembu","Parque Antártica",2,
+"Quantos times foram rebaixados no Campeonato Brasileiro de 1995?","2","4",1,
+"O Fluminense perdeu a final da Libertadores de 2008 para qual time?","Boca Juniors","LDU",2,
+"Qual destas cantoras NÃO cantou durante o show da abertura da Copa do Mundo de 2014?","Ivete Sangalo","Ariana Grande",2,
+"Todas as edições da Copa América na qual o Brasil foi o país-sede, a Seleção Brasileira venceu.","Verdadeiro","Falso",2,
+"Quem marcou o gol do título de Portugal na final da Eurocopa de 2016, contra a anfitriã França?","Cristiano Ronaldo","Éder",2,
+"Quantas medalhas de ouro possui a seleção Argentina de futebol olímpica?","2","3",1,
+"Qual foi o último time que colocou mais de 100 mil pessoas no Maracanã em 1999?","Botafogo","Flamengo",1,
+"Qual time possui mais títulos da Copa Libertadores da América?","Independiente","Boca Juniors",1,
+}
 mapa="@7786632"
 actual_question={quest="",a1="",a2="",answer=nil}
 function verifyAdmin(name)
@@ -559,6 +608,8 @@ function eventNewGame()
 		count=rawlen(perguntas2)/4
 	elseif tema == 3 then	
 		count=rawlen(perguntas3)/4
+	elseif tema == 4 then	
+		count=rawlen(perguntas4)/4
 	end
 	fixed_cnt=count
 	if rawlen(questions_list) <= limite then
@@ -571,6 +622,8 @@ function eventNewGame()
 		showMessage("Esta é a versão oficial do Quiz de Perguntas.<br>Os temas das perguntas foram todos feitos por Reksai_void2600#6638.<br><br><N><b>Quantidade de perguntas presentes: "..fixed_cnt.."</b><br><VP>O sistema inteligente de escolha de perguntas está ativo.")
 	elseif tema == 3 then
 		showMessage("Esta é a versão oficial do Quiz de Perguntas.<br>Os temas das perguntas foram, em grande maioria, feitos por Spectra_phantom#6089.<br><br><N><b>Quantidade de perguntas presentes: "..fixed_cnt.."</b><br><VP>O sistema inteligente de escolha de perguntas está ativo.")
+	elseif tema == 4 then
+		showMessage("Esta é a versão oficial do Quiz de Perguntas.<br>Os temas das perguntas foram, em grande maioria, feitos por Lucianattack#0000.<br><br><N><b>Quantidade de perguntas presentes: "..fixed_cnt.."</b><br><VP>O sistema inteligente de escolha de perguntas está ativo.")
 	end
 end
 function reset()
@@ -593,7 +646,7 @@ function eventChatCommand(name,message)
 			set_q=tonumber(message:sub(6))
 		end
 		if (message:sub(0,4) == "tema") then
-			if message:sub(6) == "0" or message:sub(6) == "1" or message:sub(6) == "2" or message:sub(6) == "3" then
+			if message:sub(6) == "0" or message:sub(6) == "1" or message:sub(6) == "2" or message:sub(6) == "3" or message:sub(6) == "4" then
 				tema=tonumber(message:sub(6))
 				questions_list={}; count=0;
 				reset()
@@ -611,7 +664,7 @@ function eventPlayerLeft(name)
 	ratos=ratos-1
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.13.1</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
+	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.14.0</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
@@ -784,6 +837,26 @@ function randomQuests()
 		end
 		actual_question.a1=perguntas3[-2+(4*pergunta)]
 		actual_question.a2=perguntas3[-1+(4*pergunta)]
+	end
+	if tema == 4 then
+		if set_q == 0 then
+			local q=math.random(#questions_list)
+			pergunta=q
+			questionChanger(q,true)
+			if debug == true then
+				print(rawlen(questions_list))
+			end
+		else
+			pergunta=set_q
+		end
+		actual_question.quest=perguntas4[-3+(4*pergunta)]
+		if perguntas4[pergunta*4] == 2 then
+			actual_question.answer=true
+		elseif perguntas3[pergunta*4] == 1 then
+			actual_question.answer=false
+		end
+		actual_question.a1=perguntas4[-2+(4*pergunta)]
+		actual_question.a2=perguntas4[-1+(4*pergunta)]
 	end
 	set_q=0
 	ui.addTextArea(1,"<p align='center'><font size='18'>"..actual_question.a1.."",nil,100,145,260,81,0,0,1.0,true)
