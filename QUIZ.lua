@@ -1,11 +1,12 @@
--- Mudanças na Versão 2.14.0:
+-- Mudanças na Versão 2.15.0:
 
--- Adição de 10 perguntas de conhecimentos gerais
--- Adição de novo tema incompleto
+-- Adição de 8 perguntas de Transformice
+-- Adição de 8 perguntas de música
+-- Adição de 7 perguntas de lolzinho
 
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.14.0
--- Por favor, edite a linha 21 a variável 'admin' pelo seu nome para ter acesso aos comandos.
--- Você pode selecionar o tema editando a linha 23, ou digitando !tema [número] conforme os números abaixo.
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.15.0
+-- Por favor, edite a linha 22 a variável 'admin' pelo seu nome para ter acesso aos comandos.
+-- Você pode selecionar o tema editando a linha 24, ou digitando !tema [número] conforme os números abaixo.
 
 -- Temas:
 -- 0 = transformice
@@ -16,7 +17,7 @@
 
 -- Para adicionar novas perguntas, utilize a seguinte sintaxe na hora de inserir: "PERGUNTA","RESPOSTA 1","RESPOSTA 2",1 ou 2
 -- Para sugestões de perguntas ou correção de bugs contate Reksai_void2600#6638.
--- Caso você queira usar este código em um cafofo de tribo, altere a variável TRIBEHOUSE da linha 24 para 'true'.
+-- Caso você queira usar este código em um cafofo de tribo, altere a variável TRIBEHOUSE da linha 25 para 'true'.
 
 admin={"Reksai_void2600#6638"} -- FunCorps, insiram seus nomes aqui!
 
@@ -246,6 +247,14 @@ perguntas={
 "Apenas membros da Module Team podem carregar modules nas salas do Transformice.","Verdadeiro","Falso",2,
 "Quantos servidores host da Atelier801 existem no Brasil?","0","1",1,
 "Qual é a margem máxima offscreen de largura e altura no qual os ratos podem permanecer vivos?","400px por lado","800px por lado",1,
+"Quantos modules oficiais existem no Transformice?","37","43",2,
+"Qual é a resolução de tela padrão na qual o Transformice funciona?","800x600","1024x768",1,
+"Qual a função da habilidade de shaman 'Arquiteto'?","Remover um objeto invocado","Alterar a transparência de um objeto invocado",2,
+"Quanto tempo dura um mapa normal no Transformice, sem o uso de powerups?","2 minutos","2 minutos e 30 segundos",1,
+"A primeira compra de um visual no Transformice é gratuita.","Verdadeiro","Falso",2,
+"É possível esconder todos os pregos em um mapa do Transformice.","Verdadeiro","Falso",1,
+"Quais são os valores padrões de gravidade e vento no Transformice, respectivamente?","0 e 1","0 e 10",2,
+"Quantos queijos no perfil são necessários para entrar no Editor de Mapas?","0","1000",1,
 }
 perguntas1={
 "Vai na sorte :)","ok","ok",1,
@@ -437,12 +446,20 @@ perguntas2={
 "A partir de qual ano os discos de vinil (LP) pararam de ser fabricados no Brasil?","1997","2000",2,
 "Em qual ano começaram as transmissões de rádio FM no Brasil?","1955","1962",1,
 "A música Admirável Chip Novo, da cantora Pitty, faz referência a qual livro famoso?","Admirável Mundo Novo","Admirável Tempo Novo",1,
-"De quem é a música 'Deixa a Vida me Levar?","Zeca Pagodinho","Rodrigo Abrantes",1,
+"De quem é a música 'Deixa a Vida me Levar'?","Zeca Pagodinho","Rodrigo Abrantes",1,
 "Quantas sinfonias Beethoven compôs?","9","11",1,
 "Complete a música: Cheiro de pneu queimado, carburador furado, o x9 foi...","Torrado","Morto",1,
 "Bob Marley nasceu em qual país?","África do Sul","Jamaica",2,
 "Qual o nome da música que foi utilizada no encerramento das programações diárias do SBT, da metade dos anos 80 a metade dos anos 90?","The Fight","Over the Top",1,
 "Em qual ano ocorreu o acidente aéreo que vitimou todos os integrantes da banda Mamonas Assasinas?","1996","1997",1,
+"Bruno Mars nasceu em qual país?","Estados Unidos","Inglaterra",1,
+"Qual o nome original da Lana Del Rey?","Elizabeth Woolridge Grant","Elizabeth Cambridge Grant",1,
+"A famosa música 'Faz Um Milagre em Mim' do cantor Régis Danese, foi lançada em qual ano?","2008","2009",1,
+"A música 'Because of You' foi originalmente gravada por qual cantora em 2004?","Kelly Clarkson","Lana del Rey",1,
+"A música 'Caneta Azul', que fez muito sucesso em 2019, foi gravada por quem?","Manuel Elias","Emanuel Gomes",2,
+"O CD foi o primeiro formato de mídia digital que existiu.","Verdadeiro","Falso",2,
+"Quantos álbuns a cantora Vanusa gravou?","20","22",1,
+"Antes de entrar na carreira solo, a cantora Ivete Sangalo fazia parte de qual grupo?","Banda Eva","Banda Canal",1,
 }
 perguntas3={
 "Vai na sorte :)","ok","ok",1,
@@ -482,7 +499,7 @@ perguntas3={
 "Uma das falas do Pantheon no jogo, faz referência a um comercial/meme famoso.","Panificadora Alfa","Churrasqueira Controle Remoto",1,
 "Qual campeão do League of Legends é responsável pela proteção das chamadas Runas Globais?","Ryze","Irelia",1,
 "'Regras foram feitas para serem quebradas. Igual prédios... Ou pessoas!'","Jinx","Katarina",1,
-"Qual o nome dos dois semideuses localizado no topo dos montes de Freljord?","Ornn e Volibear","Ornn e Anivia",1,
+"Qual o nome de dois dos três semideuses localizado no topo dos montes de Freljord?","Ornn e Volibear","Ornn e Sejuani",1,
 "Qual o nome do 'planeta' onde vivem todos os personagens de League of Legends?","Runeterra","Demacia",1,
 "Quantos campeões existem no League of Legends?","157","161",1,
 "O time do Cruzeiro já chegou a ter uma equipe competitiva de League of Legends.","Verdadeiro","Falso",1,
@@ -533,6 +550,14 @@ perguntas3={
 "O campeão Ryze já passou por quantos Reworks desde seu lançamento?","2","3",1,
 "Não existem campeões dentro do League of Legends que sejam maiores que a própria Runeterra.","Verdadeiro","Falso",2,
 "Quantos continentes existem em Runeterra?","2","3",1,
+"Qual o nome da música tema do Campeonato Mundial de League of Legends de 2020?","Warriors","Take Over",2,
+"Quantos elos existem no League of Legends?","8","9",2,
+"Katarina e Cassiopeia são irmãs.","Verdadeiro","Falso",1,
+"Xayah e Rakan são da mesma raça.","Verdadeiro","Falso",1,
+"O Campeonato Mundial de League of Legends já foi realizado no Brasil.","Verdadeiro","Falso",2,
+"Em qual ano o campeão Zed foi lançado?","2014","2015",1,
+"Quais destes três campeões são Darkins?","Aatrox, Varus e Ryze","Aatrox, Varus e Rhaast",2,
+"A campeã Quinn consegue voar até o espaço.","Verdadeiro","Falso",2,
 }
 perguntas4={
 "Vai na sorte :)","ok","ok",1,
@@ -664,7 +689,7 @@ function eventPlayerLeft(name)
 	ratos=ratos-1
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.14.0</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
+	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.15.0</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
