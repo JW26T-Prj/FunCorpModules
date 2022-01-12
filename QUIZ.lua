@@ -1,23 +1,22 @@
--- Mudanças na Versão 2.15.0:
+-- Mudanças na Versão 2.15.1:
 
--- Adição de 8 perguntas de Transformice
--- Adição de 8 perguntas de música
--- Adição de 7 perguntas de lolzinho
+-- Adição de 15 perguntas de futebol
+-- Correção em algumas perguntas
 
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.15.0
--- Por favor, edite a linha 22 a variável 'admin' pelo seu nome para ter acesso aos comandos.
--- Você pode selecionar o tema editando a linha 24, ou digitando !tema [número] conforme os números abaixo.
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.15.1
+-- Por favor, edite a linha 21 a variável 'admin' pelo seu nome para ter acesso aos comandos.
+-- Você pode selecionar o tema editando a linha 23, ou digitando !tema [número] conforme os números abaixo.
 
 -- Temas:
 -- 0 = transformice
 -- 1 = conhecimentos gerais
 -- 2 = música
 -- 3 = lolzinho
--- 4 = futebol (TEM POUCAS PERGUNTAS AINDA)
+-- 4 = futebol
 
 -- Para adicionar novas perguntas, utilize a seguinte sintaxe na hora de inserir: "PERGUNTA","RESPOSTA 1","RESPOSTA 2",1 ou 2
 -- Para sugestões de perguntas ou correção de bugs contate Reksai_void2600#6638.
--- Caso você queira usar este código em um cafofo de tribo, altere a variável TRIBEHOUSE da linha 25 para 'true'.
+-- Caso você queira usar este código em um cafofo de tribo, altere a variável TRIBEHOUSE da linha 24 para 'true'.
 
 admin={"Reksai_void2600#6638"} -- FunCorps, insiram seus nomes aqui!
 
@@ -580,7 +579,7 @@ perguntas4={
 "Quantos jogadores do Atlético-MG foram expulsos no polêmico jogo da Semifinal da Libertadores de 1981 contra o Flamengo?","5","7",2,
 "Em qual ano o Corinthians conquistou seu primeiro título do Campeonato Brasileiro?","1990","1995",1,
 "Quem perdeu a última cobrança de pênalti na Semifinal da Libertadores de 2000, defendido pelo goleiro Marcos?","Marcelinho Carioca","Luisão",1,
-"Quantas bolas de ouro Lionel Messi possui?","6","7",1,
+"Quantas bolas de ouro Lionel Messi possui?","6","7",2,
 "Qual destas Copas do Mundo foi a primeira a ter o uso do VAR?","2014, no Brasil","2018, na Rússia",2,
 "Qual destes clubes foi Campeão Brasileiro em um ano e rebaixado no ano seguinte?","Vasco","Fluminense",2,
 "Qual destes jogadores chegou a virar político?","Romário","Ronaldinho Gaúcho",1,
@@ -595,6 +594,21 @@ perguntas4={
 "Quantas medalhas de ouro possui a seleção Argentina de futebol olímpica?","2","3",1,
 "Qual foi o último time que colocou mais de 100 mil pessoas no Maracanã em 1999?","Botafogo","Flamengo",1,
 "Qual time possui mais títulos da Copa Libertadores da América?","Independiente","Boca Juniors",1,
+"Qual foi o único time do Nordeste a conquistar a Copa do Brasil?","Sport","Fortaleza",1,
+"A final da Libertadores da América de 2018 foi disputada em qual estádio?","Defensores del Chaco","Santiago Bernabéu",2,
+"Quem fez o único gol do título do Mundial Interclubes do Manchester United em 1999, contra o Palmeiras?","David Beckham","Roy Keane",2,
+"Quais desses times conseguiu vencer o Boca Juniors jogando no estádio da Bombonera?","Palmeiras e Corinthians","Palmeiras e Paysandu",2,
+"Qual é o jogador que mais marcou gols na história da Liga dos Campeões da Europa?","Cristiano Ronaldo","Ronaldo Fenômeno",1,
+"Em que ano começou a ser disputada a Copa do Brasil?","1989","1990",1,
+"Real Madrid e Milan são os clubes que mais venceram a Liga dos Campeões da Europa.","Verdadeiro","Falso",1,
+"Qual foi o técnico do Flamengo na conquista do Mundial Interclubes em 1981?","Cláudio Coutinho","Paulo César Carpegiani",2,
+"A seleção da Bolívia já chegou em uma final de Copa América.","Verdadeiro","Falso",1,
+"Qual era a competição organizada pela FIFA que ocorria um ano antes da Copa do Mundo?","Copa das Confederações","Copa América",1,
+"Qual desses times do interior de São Paulo já chegou em uma final de Libertadores?","Santo André","São Caetano",2,
+"O time do Vasco já caiu quantas vezes para a série B?","3","4",2,
+"Qual foi o nome do episódio de virada de mesa que ocasionou na realização da Copa João Havelange, em 2000?","Caso Sandro Hiroshi","Caso Milton Mendes",1,
+"Qual foi o jogador que foi escalado irregularmente na última rodada no Brasileirão de 2013, causando o rebaixamento da Portuguesa?","Héverton","Éderson",1,
+"Qual o nome do estádio conhecido como Engenhão?","Estádio João Havelange","Estádio Nilton Santos",2,
 }
 mapa="@7786632"
 actual_question={quest="",a1="",a2="",answer=nil}
@@ -689,7 +703,7 @@ function eventPlayerLeft(name)
 	ratos=ratos-1
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.15.0</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
+	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.15.1</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
