@@ -1,12 +1,13 @@
 -- STOP
--- Escrito por Ninguem - 31/08/2015 // Atualizado por Reksai_void2600#6638 - 03/11/2021
+-- Escrito por Ninguem - 31/08/2015 // Atualizado por Reksai_void2600#6638 - 24/01/2022
 -- Limite de 15 categorias.
--- FunCorp, caso você não queira visualizar as respostas dos jogadores (para identificar trapaças, por exemplo), altere a variável SHOW (linha 14) para false.
+-- FunCorp, caso você não queira visualizar as respostas dos jogadores (para identificar trapaças, por exemplo), altere a variável SHOW (linha 15) para false.
 
-ADM = {"Forzaldenon#0000"} -- editar com seu nome aqui!
+ADM = {"Reksai_void2600#6638"} -- editar com seu nome aqui!
 CAT = {"Nome","Animal","Objeto","Cor","Marca","Carro","TV/Anime/Desenho","Parte do Corpo","Comida/Bebida","País/Cidade/Estado","Profissão","Tem no Transformice","O(A) "..ADM[1].." é...","Qualquer Coisa"}
 ID = {cat=1,camada=2,add=3,msg=4,tempo=5,stop=6}
 PLAYER = {}
+MAPA = false -- altere para 'true' caso queira usar o mapa do twisted fate descolorido
 ESCOLHA = {}
 MODO = "inicio"
 ROUND = 1
@@ -16,6 +17,14 @@ MAXROUND = 5
 TEMAS = 14
 TEMPO = false
 LETRA = ""
+
+function carregaMapa()
+	if MAPA == true then
+		tfm.exec.newGame("@7631682")
+	elseif MAPA == false then
+		tfm.exec.newGame("@4677521")
+	end
+end
 
 function atualizaCat(first)
 	local txt = "<p align='center'><font size='14px'>Selecione as categorias.</font></p>\n\n"
@@ -142,8 +151,8 @@ function selecionaPalavra()
 			end
 		end
 		if string.len(v.palavra[CAT[PALAVRA]]) >= 2 then
-			tfm.exec.chatMessage(i.." - "..CAT[PALAVRA].." - "..v.palavra[CAT[PALAVRA]],"Forzaldenon#0000")
-			tfm.exec.chatMessage(i.." - "..CAT[PALAVRA].." - "..v.palavra[CAT[PALAVRA]],"Aurelianlua#0000")
+			tfm.exec.chatMessage(i.." - "..CAT[PALAVRA].." - "..v.palavra[CAT[PALAVRA]],"Viego#0345")
+			tfm.exec.chatMessage(i.." - "..CAT[PALAVRA].." - "..v.palavra[CAT[PALAVRA]],"Varusofeyzan#0000")
 		end
 	end
 	ui.addTextArea(ID.cat, "<p align='center'><font size='30px'>" .. CAT[PALAVRA] .. " com " .. LETRA, nil, 5, 80, 790, 40, 1, 1, 0.8, true)
@@ -237,7 +246,7 @@ function eventPopupAnswer(id, p, resp)
 end
 
 function eventNewPlayer(p)
-	ui.setMapName("<R><b>STOP!</b> <N>Script editado por Reksai_void2600#6638 - 03/11/2021<")
+	ui.setMapName("<R><b>STOP!</b> <N>Script editado por Reksai_void2600#6638 - 24/01/2022<")
 	PLAYER[p] = {num = 0, pontos = 0, vitoria = 0, palavra = {}}
 	for i, v in pairs(CAT) do
 		PLAYER[p].palavra[v] = ""
@@ -389,6 +398,6 @@ tfm.exec.disableAfkDeath(true)
 tfm.exec.disableAutoShaman(true)
 tfm.exec.disableAutoScore(true)
 tfm.exec.disableAutoNewGame(true)
-tfm.exec.newGame("@7631682")
-ui.setMapName("<R><b>STOP!</b> <N>Script editado por Reksai_void2600#6638 - 03/11/2021<")
+carregaMapa()
+ui.setMapName("<R><b>STOP!</b> <N>Script editado por Reksai_void2600#6638 - 24/01/2022<")
 atualizaCat(true)
