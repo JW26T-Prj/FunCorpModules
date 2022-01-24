@@ -1,10 +1,10 @@
 -- STOP
 -- Escrito por Ninguem - 31/08/2015 // Atualizado por Reksai_void2600#6638 - 24/01/2022
 -- Limite de 15 categorias.
--- FunCorp, caso você não queira visualizar as respostas dos jogadores (para identificar trapaças, por exemplo), altere a variável SHOW (linha 14) para false.
+-- FunCorp, caso você não queira visualizar as respostas dos jogadores (para identificar trapaças, por exemplo), altere a variável SHOW (linha 15) para false.
 
 ADM = {"Reksai_void2600#6638"} -- editar com seu nome aqui!
-CAT = {"Nome","Animal","Objeto","Cor","Marca","Carro","TV/Anime/Desenho","Parte do Corpo","Comida/Bebida","País/Cidade/Estado","Profissão","Tem no Transformice","O(A) "..ADM[1].." é..."}
+CAT = {"Nome","Animal","Objeto","Cor","Marca","Carro","TV/Anime/Desenho","Parte do Corpo","Comida/Bebida","País/Cidade/Estado","Profissão","Tem no Transformice","O(A) "..ADM[1].." é...","Qualquer Coisa"}
 ID = {cat=1,camada=2,add=3,msg=4,tempo=5,stop=6}
 PLAYER = {}
 MAPA = false -- altere para 'true' caso queira usar o mapa do twisted fate descolorido
