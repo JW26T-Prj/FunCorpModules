@@ -25,6 +25,7 @@ pergunta=""
 data={}
 players_table={}
 system.disableChatCommandDisplay("def")
+system.disableChatCommandDisplay("skip")
 for name,player in pairs(tfm.get.room.playerList) do
 	newData={
 	["p"]=0;
@@ -35,6 +36,12 @@ function eventChatCommand(name,message)
 	if message == "q" then
 		if tfm.get.room.playerList[name].isShaman then
 			ui.addPopup(0,2,"Digite a sua pergunta:",name,350,175,200,true)
+		end
+	end
+	if message == "skip" then
+		if tfm.get.room.playerList[name].isShaman then
+			tfm.exec.chatMessage("<ROSE>O shaman pulou sua vez.",nil)
+			trocarMapa()
 		end
 	end
 	if name == "Shun_kazami#7014" or name == "Spectra_phantom#6089" or name == admin then
@@ -68,20 +75,24 @@ function eventChatMessage(name,message)
 end
 function eventPopupAnswer(id,name,answer)
 	if id == 0 then
-		pergunta=answer;
-		ui.addPopup(1,2,"Digite a sua resposta:",name,350,275,200,true)
-		ui.addTextArea(2,"<font size='13'><N><p align='center'>"..pergunta.."",NIL,5,30,790,35,0x141414,0x313131,1.0,true)
+		if tfm.get.room.playerList[name].isShaman then
+			pergunta=answer;
+			ui.addPopup(1,2,"Digite a sua resposta:",name,350,275,200,true)
+			ui.addTextArea(2,"<font size='13'><N><p align='center'>"..pergunta.."",NIL,5,30,790,35,0x141414,0x313131,1.0,true)
+		end
 	end
 	if id == 1 then
-		tfm.exec.chatMessage("<ROSE>Podem responder agora!")
-		tfm.exec.setGameTime(60)
-		palavra=answer;
+		if tfm.get.room.playerList[name].isShaman then
+			tfm.exec.chatMessage("<ROSE>Podem responder agora!")
+			tfm.exec.setGameTime(60)
+			palavra=answer;
+		end
 	end	
 end
 function eventNewPlayer(name)
-	ui.setMapName("Questions Race v10.4 [versão de 32-bits]. By Shun_kazami#7014. Versão original.<")
+	ui.setMapName("Questions Race v10.5 [versão de 32-bits]. By Shun_kazami#7014. Versão original.<")
 	tfm.exec.respawnPlayer(name)
-	tfm.exec.chatMessage("<N>Script de Corrida das Perguntas, importado diretamente da versão original feita por Haxhhhhhhhhh.<br><VP><b>Versão 10.4</b><br><br><N>Atualmente administrado por Shun_kazami#7014, mapa feito também por Shun_kazami#7014.<br><br><ROSE>Proibida execução ou cópia sem autorização do criador.",name)
+	tfm.exec.chatMessage("<N>Script de Corrida das Perguntas, importado diretamente da versão original feita por Haxhhhhhhhhh.<br><VP><b>Versão 10.5</b><br><br><N>Atualmente administrado por Shun_kazami#7014, mapa feito também por Shun_kazami#7014.<br><br><ROSE>Proibida execução ou cópia sem autorização do criador.",name)
 	if not data[name] then
 		table.insert(players_table,name)
 		data[name]={p=0}
@@ -105,6 +116,9 @@ function eventNewPlayer(name)
 		tfm.exec.setPlayerScore(name,1,true)
 	end
 end
+for name,player in pairs(tfm.get.room.playerList) do
+	eventNewPlayer(name)
+end
 function eventLoop(p,f)
 	if f <= 1 then
 		trocarMapa()
@@ -113,7 +127,7 @@ end
 function eventNewGame()
 	palavra=""
 	ui.removeTextArea(2,NIL)
-	ui.setMapName("Questions Race v10.4 [versão de 32-bits]. By Shun_kazami#7014. Versão original.<")
+	ui.setMapName("Questions Race v10.5 [versão de 32-bits]. By Shun_kazami#7014. Versão original.<")
 	for id,name in pairs(players_table) do
 		data[name].p=0
 	end
