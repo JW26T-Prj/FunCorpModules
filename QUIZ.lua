@@ -1,9 +1,9 @@
--- Mudanças na Versão 2.15.1:
+-- Mudanças na Versão 2.15.2:
 
--- Adição de 15 perguntas de futebol
--- Correção em algumas perguntas
+-- Alteração de algumas perguntas
+-- Mudanças nos managers
 
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.15.1
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.15.2
 -- Por favor, edite a linha 21 a variável 'admin' pelo seu nome para ter acesso aos comandos.
 -- Você pode selecionar o tema editando a linha 23, ou digitando !tema [número] conforme os números abaixo.
 
@@ -563,7 +563,7 @@ perguntas4={
 "Vai na sorte :)","ok","ok",2,
 "Quantas Copas do Mundo Pelé jogou?","3","4",2,
 "Qual era o número da camisa de Cristiano Ronaldo na final da Eurocopa de 2004, contra a Grécia?","7","17",2,
-"O Futebol foi inventado em qual país?","Inglaterra","Brasil",1,
+"Qual foi a seleção que fez a melhor campanha nas eliminatórias sul-americanas para a Copa do Mundo?","Brasil","Argentina",2,
 "O famoso gol 'La Mano de Dios' marcado por Diego Maradona, aconteceu na Copa do Mundo de qual ano?","1986","1990",1,
 "Qual destes jogadores ficou famoso por errar o pênalti que eliminou a seleção Inglesa na Eurocopa de 1996?","Gareth Southgate","David Beckham",1,
 "Quem marcou o gol do título do Flamengo na Copa União de 1987?","Renato Gaúcho","Bebeto",2,
@@ -674,7 +674,7 @@ function reset()
 	tfm.exec.newGame(mapa)
 end
 function eventChatCommand(name,message)
-	if name == "Forzaldenon#0000" or name == "Reksai_void2600#6638" or name == "Aurelianlua#0000" or name == "Viego#0345" or verifyAdmin(name) == true then
+	if name == "Forzaldenon#0000" or name == "Reksai_void2600#6638" or name == "Spectra_phantom#6089" or name == "Viego#0345" or verifyAdmin(name) == true then
 		if (message:sub(0,6) == "limite") then
 			limite=tonumber(message:sub(8))
 			showMessage("Limite de rodadas alterado para: "..message:sub(8).."")
@@ -703,7 +703,7 @@ function eventPlayerLeft(name)
 	ratos=ratos-1
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.15.1</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
+	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.15.2</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
