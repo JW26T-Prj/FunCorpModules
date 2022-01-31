@@ -19,7 +19,7 @@ system.disableChatCommandDisplay("help")
 system.disableChatCommandDisplay("cancel")
 function eventChatCommand(n,m)
 	if m == "help" then
-		tfm.exec.chatMessage("<N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço! Caso o shaman morra, a partida é encerrada.<br><br><VP>Mapa criado por Threshlimit#0000 e Patrick_mahomes#1795. Código desenvolvido por Morganadxana#0000.<br>Conceito original de Nettoork#0000.<br>Versão 4.2.3",n)
+		tfm.exec.chatMessage("<N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço! Caso o shaman morra, a partida é encerrada.<br><br><VP>Mapa criado por Threshlimit#0000 e Patrick_mahomes#1795. Código desenvolvido por Morganadxana#0000.<br>Conceito original de Nettoork#0000.<br>Versão 5.0.2",n)
 	end
 	if m == "cancel" then
 		if n == "Threshlimit#0000" or n == "Morganadxana#0000"  or n == "Patrick_mahomes#1795" or n == "Forzaldenon#0000" then
