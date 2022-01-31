@@ -23,11 +23,6 @@ function eventPlayerDied(n)
 	tfm.exec.giveCheese(n)
 end
 function eventNewPlayer(n)
-	for i=0,3 do
-	tfm.exec.addImage("17def3da8f8.png","!1",-1400+(5194*i),903,name,1,1,0,0.75)
-	tfm.exec.addImage("17def3df6c5.jpg","?1",-1400+(5200*i),910,name,1,0.425,0,0.75)
-	tfm.exec.addImage("17def3e4466.png","!1",-1400+(5200*i),918,name,10,0.425)
-end
 	newData={
 		["x"]=0;
 		["position"]=0;
@@ -47,7 +42,7 @@ for name,player in pairs(tfm.get.room.playerList) do
 	eventNewPlayer(name)
 end
 function eventLoop()
-	ui.setMapName("<D>Long Jump script v1.18 by <ROSE>Patrick_mahomes#1795   <V>|   <N>Higher score : <VP><b>"..recorde.."</b> <N>- <VP><b>"..recorder.."</b><")
+	ui.setMapName("<D>Long Jump script v1.19 by <ROSE>Patrick_mahomes#1795   <V>|   <N>Higher score : <VP><b>"..recorde.."</b> <N>- <VP><b>"..recorder.."</b><")
 	for name,player in pairs(tfm.get.room.playerList) do
 		ui.addTextArea(1,"<font size='18'><b><font face='Courier New'>0 |||||||||| 3000 |||||||||| 6000 |||||||||| 9000 |||||||||>",nil,20,20,670,20,0x000001,0x000001,0.8,true)
 		ui.addTextArea(2,"<p align='center'><font size='20'><b><font color='#800000'><font face='Courier New'>"..data[name].x.."",name,700,18,80,22,0xff0000,0x800000,0.9,true)
