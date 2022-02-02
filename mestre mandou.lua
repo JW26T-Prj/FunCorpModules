@@ -1537,13 +1537,6 @@ function eventKeyboard(name,id,down,x,y)
 			end
 		end
 	end
-	if active == 93 then
-		for name,player in next,tfm.get.room.playerList do
-			if tfm.get.room.playerList[name].isVampire then
-				tfm.exec.killPlayer(name)
-			end
-		end
-	end
 	if active == 94 then
 		if id == 37 or id == 65 then
 			if data[name].key == 0 then
@@ -1693,6 +1686,13 @@ function eventLoop(passado,faltando)
 		if active == 82 then
 			for name,player in next,tfm.get.room.playerList do
 				if tfm.get.room.playerList[name].cheeses == 1 then
+					tfm.exec.killPlayer(name)
+				end
+			end
+		end
+		if active == 93 then
+			for name,player in next,tfm.get.room.playerList do
+				if tfm.get.room.playerList[name].isVampire then
 					tfm.exec.killPlayer(name)
 				end
 			end
