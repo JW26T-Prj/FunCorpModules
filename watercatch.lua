@@ -55,7 +55,7 @@ function eventPlayerDied(n)
 end
 function eventNewPlayer(name)
 	showWater(name)
-	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v2.2.2</b><N> - criado por <ROSE><b>Morganadxana#0000</b> <N>e <R><b>Spectra_phantom#6089</b><")
+	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v2.2.3</b><N> - criado por <ROSE><b>Morganadxana#0000</b> <N>e <R><b>Spectra_phantom#6089</b><")
 	newData={
 	["o"]=99; ["i"]=0; ["t"]=0; ["c"]=0; ["opened"]=false; ["imageid"]=-1; ["imageid2"]=-1; ["imageid3"]=-1; ["imageid4"]=-1; ["imaget"]=5;
 	};
@@ -73,7 +73,7 @@ for name,player in next,tfm.get.room.playerList do
 end
 function eventChatCommand(name,message)
 	if message == "help" or message == "ajuda" then
-		showMenu(name,0xf0f0f0,140,90,520,220,"Ajuda do Module #watercatch","O objetivo é bem simples: <b>Fugir do shaman</b>, se escondendo dentro do profundo lago e tomando cuidado para não morrer afogado!<br><R><b>Shamans, não esqueçam de se mexer, ou irão morrer AFK!</b><br><br><VP>Os quadrados marcados por <ROSE>'!'<VP> são powerups, que geram efeitos aleatórios nos ratos. Você pode ver os possíveis efeitos dos powerups indo no Menu e clicando em Powerups. Vale ressaltar que eles funcionam apenas depois que o shaman for liberado.<br><br><N>Caso você seja shaman, você tem um limite de <b>10</b> objetos que podem ser utilizados. Exceder este limite fará com que a partida acabe.")
+		showMenu(name,0xf0f0f0,140,90,520,265,"Ajuda do Module #watercatch","O objetivo é bem simples: <b>Fugir do shaman</b>, se escondendo dentro do profundo lago e tomando cuidado para não morrer afogado!<br><R><b>Shamans, não esqueçam de se mexer, ou irão morrer AFK!</b><br><br><VP>Os quadrados marcados por <ROSE>'!'<VP> são powerups, que geram efeitos aleatórios nos ratos.<J><br>Estes powerups podem ser acionados pressionando ESPAÇO em cima deles.<br><N>Você pode ver os possíveis efeitos dos powerups indo no Menu e clicando em Powerups. Vale ressaltar que eles funcionam apenas depois que o shaman for liberado.<br><br><N>Caso você seja shaman, você tem um limite de <b>10</b> objetos que podem ser utilizados. Exceder este limite fará com que a partida acabe.")
 	end
 	if message == "powerups" then
 		showMenu(name,0xf0f0f0,140,76,520,315,"Powerups do Module #watercatch","<font size='11'>Os seguintes powerups estão disponíveis no momento:<br><ROSE><b>• CAIXA</b><N><br>Faz aparecer uma caixa de acompanhamento em cima de você.<br><ROSE><b>• OXIGÊNIO</b><N><br>Aumenta o seu nível de oxigênio em 40%.<br><ROSE><b>• VELOCIDADE</b><N><br>Te dá um grande impulso de velocidade.<br><ROSE><b>• AFUNDAR</b><N><br>Cria uma anomalia temporária que leva todos os ratos em direção ao fundo do lago.<br><ROSE><b>• MEEP</b><N><br>Te dá o poder de usar o Meep!<br><ROSE><b>• SUFOCO</b><N><br>Diminui o seu nível de oxigênio em 18%. Caso seu nível esteja abaixo disso e você pegue este powerup, você morrerá afogado.<br><ROSE><b>• CONGELAR</b><N><br>Congela o seu rato.<br><ROSE><b>• QUEIJO</b><N><br>Dá queijo para o seu rato. Caso você esteja dentro do lago, você provavelmente será levado para o fundo dele.<br><ROSE><b>• REDUZIR</b><N><br>Reduz temporariamente o tamanho do seu rato.")
@@ -82,7 +82,7 @@ function eventChatCommand(name,message)
 		showMenu(name,0xf0f0f0,140,90,520,130,"Créditos","As seguintes pessoas ajudaram no desenvolvimento deste module:<br><br><ROSE><b>• Morganadxana#0000</b><N> - Desenvolvedora do código<br><ROSE><b>• Rakan_raster#0000</b><N> - Tradução do código original para o Português<br><ROSE><b>• Spectra_phantom#6089</b><N> - Ideia original e criação do mapa e das artes")
 	end
 	if message == "changelog" then
-		showMenu(name,0xf0f0f0,140,90,520,130,"Changelog da Versão 2.2.2","• Pequenas correções de bugs")
+		showMenu(name,0xf0f0f0,140,90,520,130,"Changelog da Versão 2.2.3","• Ratos que estiverem com pouco oxigênio terão cor de nome vermelha<br>• Pequenas alterações no oxigêrnio")
 	end
 	if (message:sub(0,2)== "tc") then
 		if tfm.get.room.playerList[name].isShaman == false then
@@ -450,7 +450,7 @@ if time_passed >= 6 and tfm.get.room.currentMap == "@7763582" then
 	resetMap()
 end
 if changed == true then
-ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v2.2.2</b><N> - criado por <ROSE><b>Morganadxana#0000</b> <N>e <R><b>Spectra_phantom#6089</b><")
+ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v2.2.3</b><N> - criado por <ROSE><b>Morganadxana#0000</b> <N>e <R><b>Spectra_phantom#6089</b><")
 local m=math.floor(r/60000)
 local s=math.floor((((m*60000)-r) * -1) / 1000)
 ui.addTextArea(-1,"<font size='45'><font color='#222222'><font face='Trebuchet MS'><b><i>"..m..":"..s.."</b>",n,569,22,110,54,0,0,1.0,true)
@@ -519,7 +519,7 @@ for n,q in next,tfm.get.room.playerList do
 					data[n].o=data[n].o-0.4
 					data[n].c=0
 				elseif tfm.get.room.playerList[n].y > 1150 then
-					data[n].o=data[n].o-0.6
+					data[n].o=data[n].o-0.7
 					data[n].c=0
 				end
 			end
@@ -536,9 +536,11 @@ for n,q in next,tfm.get.room.playerList do
 				if mode == "game" or mode == "hide" then
 				ui.addTextArea(10,"",n,8,386,(data[n].o*7.9),8,0xf0f0f0,0x808080,1.0,true)
 				data[n].d=0 end
+				tfm.exec.setNameColor(n,0xc2c2da)
 			elseif data[n].o > 0 then
 				ui.addTextArea(10,"",n,8,386,(data[n].o*7.9),8,0x801500,0xa01000,1.0,true)
 				data[n].d=data[n].d+1
+				tfm.exec.setNameColor(n,0xff4500)
 				if data[n].d == 1 and data[n].o > 0 and tfm.get.room.playerList[n].y >= 598 then
 					showMessage("<R>Você está ficando sem oxigênio! Saia da água o mais rápido possível ou você morrerá afogado!",n)
 				end
