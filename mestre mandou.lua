@@ -1,6 +1,18 @@
--- Script do module Mestre Mandou, versão RTM 15697.093, desenvolvido por Rakan_raster#0000.
+-- Código do module Mestre Mandou, versão RTM 15798.094, desenvolvido por Rakan_raster#0000.
+-- Code of Simon Says module, version RTM 15798.094, developed by Rakan_raster#0000.
 
-admin={""} -- Se estiver rodando este código em uma sala FunCorp, insira o nome dos FunCorps e digite !fc para habilitar algumas funções e comandos especiais.
+-- Atenção: Antes de rodar este código em uma sala, verifique se esta versão coincide com a versão mais recente presente abaixo:
+-- https://raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/mestre%20mandou.lua
+-- Isto vai garantir que você receba sempre as últimas atualizações e correções de bugs.
+
+-- Warning: Before running this code into a room, check if this version is the same than the latest version located here:
+-- https://raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/mestre%20mandou.lua
+-- This is a guarantee that you will receive all the latest updates and bugfixes.
+
+admin={""} -- Leia abaixo / Read below!
+-- Se estiver rodando este código em uma sala FunCorp, insira o nome dos FunCorps acima e digite !fc para habilitar algumas funções e comandos especiais.
+-- If you are running this code into a FunCorp room, insert the FunCorp names above and type !tc to enable some additional commands and functions.
+
 -- If you will run this module on a FunCorp session, type the nickname(s) of FunCorp(s) into 'admin' table above and type !fc to enable special functions and commands.
 -- FunCorp Comandos/Commands: !run [@code], !limit [number], !tc [message], !kill [player#tag], !pw [password].
 
@@ -8,7 +20,7 @@ for _,f in next,{"AutoShaman","AutoNewGame","AutoTimeLeft","DebugCommand"} do
 	tfm.exec["disable"..f](true)
 end
 mapas={"@6788085","@6788174","@6788154","@6788715","@6788728","@6789271","@6790527","@6791838","@6789356","@6822331","@7290275","@6754319","@7686598","@7750148","@7688066","@6790295","@6788183","@6784965","@6789235","@6789853","@6790385","@6791944","@6801706","@6792470","@6806109","@6821950","@6866406","@6866437","@6885971","@5328362","@5957905","@7055459","@7525277","@2684847","@7214363","@6792516","@6825340","@6838871","@6788693","@6789272","@6799996","@6799998","@6808957","@6803018","@6809464","@6859175","@6907177","@7404327","@7382263","@6885799","@6790912","@6833993","@7721192","@7309605","@6532621","@6788861","@6789249","@6790484","@6792518","@6794050","@6830799","@6866549","@6834529","@6876563","@6888512","@6893463","@7431981","@7146925","@6937148","@6356881","@6789280","@6790895","@6799997","@6789324","@6803128","@6900149","@3832586","@6791871","@6811934","@7631682","@6876638","@6892608","@6982387","@7404106","@7405103","@7400694","@7400678","@7412412","@7412422","@7491944","@7755685","@6843950","@6810292","@3110915","@6789263","@4411212","@7354947","@3398791","@7201360","@6897042","@5549586","@6809461","@7242361","@7697974","@1966987","@7224471","@6932585","@6888879","@6781398","@5113656"}
-active=0; vivo=0; rato=0; dificuldade=1; rodadas=0; rodada=0; number=0; xpos=0; ypos=0; data={}; lang={}; tempo=10; counter=0; q=""; a=""; qtime=10; creator="";
+active=0; vivo=0; rato=0; dificuldade=1; rodadas=0; rodada=0; number=0; xpos=0; ypos=0; data={}; lang={}; alives={}; tempo=10; counter=0; q=""; a=""; qtime=10; creator="";
 fc_cmds={1,2,4,5,6,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,28,30,31,32,33,34,35,36,40,41,42,43,45,46,47,48,49,50,51,53,57,58,59,61,62,65,66,67,69,71,75,76,77,78,79,80,81,82,83}
 spiderweb={type = 15,width = 60,height = 60}
 map_det={creator="",code=""}
@@ -18,7 +30,7 @@ for _,f in next,{"command","pw","limit","run","fc","tc","q","a","t","kill"} do
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>O objetivo deste module é muito simples: Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><VP>Tenha sempre cuidado com os comandos trolls!<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Jessiewind26#2546<br><br><ROSE>Versão RTM 15697.093",
+	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>O objetivo deste module é muito simples: Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><VP>Tenha sempre cuidado com os comandos trolls!<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Jessiewind26#2546<br><br><ROSE>Versão RTM 15798.094",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -114,9 +126,12 @@ lang.br = {
 	explosion = "Olha a explosão!",
 	queijo = "Todos os ratos que estiverem com queijo vão morrer!",
 	caps = "Pressione a tecla CAPS LOCK 10 vezes",
+	vampire = "Fujam dos vampiros!",
+	soulmate = "Digite o nome da sua alma-gêmea! (caso houver uma)",
+	tribe = "Digite o nome da sua tribo! (caso estiver em uma)",
 }
 lang.en = {
-	welcome = "<N><b>Welcome to Simon Says module!</b><br>This module's goal is easy: Follow everything the game told and test your limits until the end!<br><VP>Be always aware to troll commands!<br><br><J><b>Script developed by Rakan_raster#0000</b><br>Original concept by Jessiewind26#2546<br>Translation by Draw#6691<br><br><ROSE>Version RTM 15697.093",
+	welcome = "<N><b>Welcome to Simon Says module!</b><br>This module's goal is easy: Follow everything the game told and test your limits until the end!<br><VP>Be always aware to troll commands!<br><br><J><b>Script developed by Rakan_raster#0000</b><br>Original concept by Jessiewind26#2546<br>Translation by Draw#6691<br><br><ROSE>Version RTM 15798.094",
 	dancar = "Dance!",
 	sentar = "Sit down!",
 	confetar = "Throw 5 confetti!",
@@ -175,12 +190,12 @@ lang.en = {
 	down1 = "Get down 3 times!",
 	kill = "Kill yourselves!",
 	mestre = "Simon Says",
-	map = "map",
-	time = "time",
-	mice = "mouses",
-	round = "round",
+	map = "Map",
+	time = "Time",
+	mice = "Mouses",
+	round = "Round",
 	mices = "This room request at least 4 mice.",
-	difficulty = "difficulty",
+	difficulty = "Difficulty",
 	segundos = "seconds.",
 	fim = "The match is over! next starting in ",
 	playingmap = "Running map",
@@ -212,9 +227,12 @@ lang.en = {
 	explosion = "Look the explosion!",
 	queijo = "All mices that catched the cheese will die!",
 	caps = "Press the CAPS LOCK key 10 times!",
+	vampire = "Don't get infected!",
+	soulmate = "Type the nickname of your soulmate! (if you have)",
+	tribe = "Type the name of your tribe! (if you have)",
 }
 lang.fr = {
-	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Rakan_raster#0000</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 15697.093",
+	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Rakan_raster#0000</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 15798.094",
 	dancar = "Danse !",
 	sentar = "Assis !",
 	confetar = "Lance 5 fois des confettis !",
@@ -310,6 +328,9 @@ lang.fr = {
 	explosion = "Attention aux spirits !",
 	queijo = "Tous les souris qui attrapent le fromage mourront ! ",
 	caps = "Appuie 10 fois sur la CAPS LOCK !",
+	vampire = "Ne vous infectez pas ! ",
+	soulmate = "Tapez le nom de votre âme sœur ! (si tu as)",
+	tribe = "Tapez le nom de votre tribu ! (si tu as)",
 }
 
 for name,player in next,tfm.get.room.playerList do
@@ -346,6 +367,14 @@ function showMessage(message,name)
 			print("<ROSE>[Test Mode] : <br><BL>"..temp_text.."")
 		else
 			print("<ROSE>[Test Mode] - "..name.." : <br><BL>"..temp_text.."")
+		end
+	end
+end
+function getAlives()
+	alives={}
+	for name,player in next,tfm.get.room.playerList do
+		if not tfm.get.room.playerList[name].isDead then
+			table.insert(alives,name)
 		end
 	end
 end
@@ -453,7 +482,7 @@ function eventNewGame()
 	tfm.exec.setWorldGravity(0, 10)
 	if unlocked == true then
 		tfm.exec.setGameTime(15)
-		showMessage("<J><i>Spectra's map loader v2.208.2</i><br><N>Loading current map information...<br><b>Current Map :</b> <V>"..map_det.code.."<br><N><b>Author :</b> <V>"..map_det.creator.."")
+		showMessage("<J><i>Spectra's map loader v2.209</i><br><N>Loading current map information...<br><b>Current Map :</b> <V>"..map_det.code.."<br><N><b>Author :</b> <V>"..map_det.creator.."")
 		if tfm.get.room.community == "br" then
 			showMessage("<VP><br><i>Em Maio de 2022, o module Mestre Mandou completará 8 anos de vida! Faremos no mês de Maio um evento super especial com todos os antigos criadores com comandos exclusivos e vários prêmios. Aguardem!</i>")
 		end
@@ -505,7 +534,7 @@ function eventChatCommand(name,message)
 		end
 		if(message:sub(0,2) == "tc") then
 			if fc_mode == true then
-				showMessage("<VP>• [FunCorp - "..name.."] "..message:sub(4).."")
+				showMessage("<VP>• [FunCorp - <b>"..name.."</b>] "..message:sub(4).."")
 			end
 		end
 		if(message:sub(0,1) == "a") then
@@ -923,7 +952,7 @@ function getCommand()
 		showCommand(active,text.skull)
 		tfm.exec.setGameTime(9)
 		setAllAlive()
-		for i=5,9 do
+		for i=5,11 do
 			tfm.exec.addBonus(2, math.random(100,700), math.random(80,300), i, 0)
 		end
 	end
@@ -1004,6 +1033,30 @@ function getCommand()
 		showCommand(active,text.caps)
 		tfm.exec.setGameTime(10)
 	end
+	if active == 91 then
+		showCommand(active,text.tribe)
+		tfm.exec.setGameTime(13)
+		for name,player in next,tfm.get.room.playerList do
+			if tfm.get.room.playerList[name].tribeName == nil then
+				completeCommand(name)
+			end
+		end
+	end
+	if active == 92 then
+		showCommand(active,text.soulmate)
+		tfm.exec.setGameTime(11)
+		for name,player in next,tfm.get.room.playerList do
+			if tfm.get.room.playerList[name].spouseName == nil then
+				completeCommand(name)
+			end
+		end
+	end
+	if active == 93 then
+		showCommand(active,text.vampire)
+		tfm.exec.setGameTime(24)
+		setAllAlive()
+		tfm.exec.setVampirePlayer(alives[math.random(#alives)],true)
+	end
 	if active == 94 then
 		showCommand(active,text.preesquerda100)
 		tfm.exec.setGameTime(17)
@@ -1018,9 +1071,9 @@ function getCommand()
 	end
 	if active == 97 then
 		showCommand(active,text.collect)
-		tfm.exec.setGameTime(22)
-		for i=10,13 do
-			tfm.exec.addBonus(0, math.random(100,700), math.random(80,300), i, 0)
+		tfm.exec.setGameTime(19)
+		for i=12,15 do
+			tfm.exec.addBonus(0, math.random(150,650), math.random(60,250), i, 0)
 		end
 	end
 	if active == 98 then
@@ -1118,6 +1171,16 @@ function eventChatMessage(name,message)
 			tfm.exec.killPlayer(name)
 		elseif message == "3" then
 			tfm.exec.killPlayer(name)
+		end
+	end
+	if active == 91 then
+		if string.upper(message) == string.upper(tfm.get.room.playerList[name].tribeName) then
+			completeCommand(name)
+		end
+	end
+	if active == 92 then
+		if string.upper(message) == string.upper(tfm.get.room.playerList[name].spouseName) then
+			completeCommand(name)
 		end
 	end
 	if active == 96 then
@@ -1474,6 +1537,13 @@ function eventKeyboard(name,id,down,x,y)
 			end
 		end
 	end
+	if active == 93 then
+		for name,player in next,tfm.get.room.playerList do
+			if tfm.get.room.playerList[name].isVampire then
+				tfm.exec.killPlayer(name)
+			end
+		end
+	end
 	if active == 94 then
 		if id == 37 or id == 65 then
 			if data[name].key == 0 then
@@ -1512,11 +1582,11 @@ end
 function eventLoop(passado,faltando)
 	local tempo=math.floor(faltando/1000)
 	if active == -2 then
-		ui.setMapName("<N>"..text.mices.."   <G>|   <VP><b>"..text.version.." RTM 15697.093</b><")
+		ui.setMapName("<N>"..text.mices.."   <G>|   <VP><b>"..text.version.." RTM 15798.094</b><")
 	elseif active == -1 then
-		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <VP><b>"..text.version.." RTM 15697.093</b><")
+		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <VP><b>"..text.version.." RTM 15798.094</b><")
 	elseif active >= 0 then
-		ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <VP><b>"..text.version.." RTM 15697.093</b><")
+		ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <VP><b>"..text.version.." RTM 15798.094</b><")
 	end
 	if rato < 4 then
 		if tfm.get.room.currentMap == "@2684847" and unlocked == true then
@@ -1635,13 +1705,7 @@ function eventLoop(passado,faltando)
 		for i=1,8 do
 			tfm.exec.removePhysicObject(i)
 		end
-		for i=1,4 do
-			tfm.exec.removeBonus(i)
-		end
-		for i=5,9 do
-			tfm.exec.removeBonus(i)
-		end
-		for i=10,13 do
+		for i=1,15 do
 			tfm.exec.removeBonus(i)
 		end
 		active=0
@@ -1656,6 +1720,7 @@ function eventLoop(passado,faltando)
 			end
 			tfm.exec.setNameColor(name,0xc2c2da)
 		end
+		getAlives()
 		if fc_mode == false then
 			if vivo > 4 then
 				tfm.exec.setGameTime(6-dificuldade)
