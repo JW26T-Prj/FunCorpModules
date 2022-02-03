@@ -24,9 +24,9 @@ function showMessage(message,name)
 end
 function showWater(name)
 	tfm.exec.addImage("17df24985c5.png","?1",40,330,name)
-	tfm.exec.addImage("17def3df6c5.jpg","?1",-300,340,name,1,1.3)
-	tfm.exec.addImage("17def3e4466.png","!1",-300,320,name,12,1.3,0,0.9)
-	tfm.exec.addImage("17def3da8f8.png","!1",-300,337,name,1,1,0,0.675)
+	tfm.exec.addImage("17def3df6c5.jpg","?1",-300,347,name,1,1.1)
+	tfm.exec.addImage("17def3e4466.png","!1",-300,306,name,12,1.7,0,0.95)
+	tfm.exec.addImage("17def3da8f8.png","!1",-225,337,name,1,1,0,0.7125)
 end
 function eventPlayerDied(n)
 	if not tfm.get.room.playerList[n].isShaman then
@@ -55,7 +55,7 @@ function eventPlayerDied(n)
 end
 function eventNewPlayer(name)
 	showWater(name)
-	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v2.2.3</b><N> - criado por <ROSE><b>Morganadxana#0000</b> <N>e <R><b>Spectra_phantom#6089</b><")
+	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v2.2.4</b><N> - criado por <ROSE><b>Morganadxana#0000</b> <N>e <R><b>Spectra_phantom#6089</b><")
 	newData={
 	["o"]=99; ["i"]=0; ["t"]=0; ["c"]=0; ["opened"]=false; ["imageid"]=-1; ["imageid2"]=-1; ["imageid3"]=-1; ["imageid4"]=-1; ["imaget"]=5;
 	};
@@ -82,7 +82,7 @@ function eventChatCommand(name,message)
 		showMenu(name,0xf0f0f0,140,90,520,130,"Créditos","As seguintes pessoas ajudaram no desenvolvimento deste module:<br><br><ROSE><b>• Morganadxana#0000</b><N> - Desenvolvedora do código<br><ROSE><b>• Rakan_raster#0000</b><N> - Tradução do código original para o Português<br><ROSE><b>• Spectra_phantom#6089</b><N> - Ideia original e criação do mapa e das artes")
 	end
 	if message == "changelog" then
-		showMenu(name,0xf0f0f0,140,90,520,130,"Changelog da Versão 2.2.3","• Ratos que estiverem com pouco oxigênio terão cor de nome vermelha<br>• Pequenas alterações no oxigêrnio")
+		showMenu(name,0xf0f0f0,140,90,520,130,"Changelog da Versão 2.2.4","• Pequenas alterações na água<br>• Os powerups não surgirão até o momento em que o shaman se libertar")
 	end
 	if (message:sub(0,2)== "tc") then
 		if tfm.get.room.playerList[name].isShaman == false then
@@ -366,6 +366,7 @@ ui.removeTextArea(22,nil)
 alives=0
 mode="hide"
 for n,p in next,tfm.get.room.playerList do
+	showMessage("<J>Caso o mapa do jogo não esteja aparecendo, saia do jogo e entre novamente.<br>Isto é um problema de memória do Transformice e não do module.")
 	tfm.exec.giveMeep(n,false)
 	if n:sub(1,1) == "*" then
 		tfm.exec.killPlayer(n)
@@ -377,6 +378,7 @@ for n,p in next,tfm.get.room.playerList do
 		tfm.exec.setShamanMode(n,1)
 		tfm.exec.setPlayerSync(n)
 		ui.addTextArea(22,"",n,-800,-800,2400,2400,0x000001,0x000001,1.0,true)
+		showMessage("<ROSE>Não esqueça de se mover, ou você perderá sua vez como shaman!",n)
 		shaman=n
 		alives=alives-1
 		showWater(name)
@@ -443,6 +445,7 @@ function reduzir(name)
 	data[name].t=6
 end
 function eventLoop(p,r)
+loop=loop+0.5
 time_passed=math.ceil(p/1000)
 time_remain=math.ceil(r/1000)
 if time_passed >= 6 and tfm.get.room.currentMap == "@7763582" then
@@ -450,7 +453,7 @@ if time_passed >= 6 and tfm.get.room.currentMap == "@7763582" then
 	resetMap()
 end
 if changed == true then
-ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v2.2.3</b><N> - criado por <ROSE><b>Morganadxana#0000</b> <N>e <R><b>Spectra_phantom#6089</b><")
+ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v2.2.4</b><N> - criado por <ROSE><b>Morganadxana#0000</b> <N>e <R><b>Spectra_phantom#6089</b><")
 local m=math.floor(r/60000)
 local s=math.floor((((m*60000)-r) * -1) / 1000)
 ui.addTextArea(-1,"<font size='45'><font color='#222222'><font face='Trebuchet MS'><b><i>"..m..":"..s.."</b>",n,569,22,110,54,0,0,1.0,true)
@@ -459,16 +462,19 @@ if s < 10 then
 	ui.addTextArea(-1,"<font size='45'><font face='Trebuchet MS'><font color='#222222'><b><i>"..m..":0"..s.."</b>",n,569,22,110,54,0,0,1.0,true)
 	ui.addTextArea(-2,"<font size='45'><font color='#d0d0d0'><font face='Trebuchet MS'><b><i>"..m..":0"..s.."</b>",n,566,19,110,54,0,0,1.0,true)
 end
+if mode == "game" then
+	if loop >= 24 then
+		if time_passed >= 60 then
+			for i=1,5 do
+				genPowerup(i,math.random(1,11),math.random(1000,4000),math.random(500,1100))
+			end
+			loop=0
+		end
+	end
+end
 if mode == "game" or mode == "hide" then
 	ui.addTextArea(31,"<font size='45'><font color='#222222'><font face='Trebuchet MS'><b><i>"..alives.."</b>",n,135,22,70,54,0,0,1.0,true)
 	ui.addTextArea(30,"<font size='45'><font color='#d0d0d0'><font face='Trebuchet MS'><b><i>"..alives.."</b>",n,132,19,70,54,0,0,1.0,true)
-	loop=loop+0.5
-	if loop == 24 then
-		for i=1,5 do
-			genPowerup(i,math.random(1,11),math.random(1000,4000),math.random(500,1100))
-		end
-		loop=0
-	end
 	if timer > 0 then
 		timer=timer-0.5
 		tfm.exec.setWorldGravity(0,22)
