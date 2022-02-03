@@ -23,6 +23,8 @@ function showMessage(message,name)
 	end
 end
 function showWater(name)
+	tfm.exec.addImage("17be536e980.png","?1",-200,1820,name,0.5,0.5,0,1)
+	tfm.exec.addImage("17be536e980.png","?1",2400,1820,name,0.5,0.5,0,1)
 	tfm.exec.addImage("17df24985c5.png","?1",40,330,name)
 	tfm.exec.addImage("17def3df6c5.jpg","?1",-300,347,name,1,1.1)
 	tfm.exec.addImage("17def3e4466.png","!1",-300,306,name,12,1.7,0,0.95)
@@ -55,14 +57,14 @@ function eventPlayerDied(n)
 end
 function eventNewPlayer(name)
 	showWater(name)
-	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v2.2.4</b><N> - criado por <ROSE><b>Morganadxana#0000</b> <N>e <R><b>Spectra_phantom#6089</b><")
+	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v2.2.5</b><N> - criado por <ROSE><b>Morganadxana#0000</b> <N>e <R><b>Spectra_phantom#6089</b><")
 	newData={
 	["o"]=99; ["i"]=0; ["t"]=0; ["c"]=0; ["opened"]=false; ["imageid"]=-1; ["imageid2"]=-1; ["imageid3"]=-1; ["imageid4"]=-1; ["imaget"]=5;
 	};
 	data[name] = newData;
 	showMessage("<font color='#0080ff'><b>Bem-vindos ao module #watercatch!</b><br><J>Digite !help para ver a ajuda deste module.<br><br><N>Module criado por Morganadxana#0000. Mapa feito por Spectra_phantom#6089.<br><br><BL>Atenção: Conexões lentas com a Internet podem fazer com que as artes da água demorem para carregar.<br><br>Caso o mapa não carregue, saia do jogo e entre novamente.",name)
 	data[name].imageid = tfm.exec.addImage("17a53e210bf.png","&1",180,90,name)
-	data[name].imageid2 = tfm.exec.addImage("17a53e1f94c.png",":1",0,345,name)
+	data[name].imageid2 = tfm.exec.addImage("17a53e1f94c.png",":1",0,350,name)
 	data[name].imageid3 = tfm.exec.addImage("17ae4e47000.png","&1",2,22,name)
 	data[name].imageid4 = tfm.exec.addImage("17ae4e48770.png","&1",670,22,name)
 	data[name].imaget=5
@@ -82,7 +84,7 @@ function eventChatCommand(name,message)
 		showMenu(name,0xf0f0f0,140,90,520,130,"Créditos","As seguintes pessoas ajudaram no desenvolvimento deste module:<br><br><ROSE><b>• Morganadxana#0000</b><N> - Desenvolvedora do código<br><ROSE><b>• Rakan_raster#0000</b><N> - Tradução do código original para o Português<br><ROSE><b>• Spectra_phantom#6089</b><N> - Ideia original e criação do mapa e das artes")
 	end
 	if message == "changelog" then
-		showMenu(name,0xf0f0f0,140,90,520,130,"Changelog da Versão 2.2.4","• Pequenas alterações na água<br>• Os powerups não surgirão até o momento em que o shaman se libertar")
+		showMenu(name,0xf0f0f0,140,90,520,130,"Changelog da Versão 2.2.5","• Adição de algumas decorações na água<br>• Pequenas mudanças na barra de oxigênio<br>• Aumento na duração das rodadas")
 	end
 	if (message:sub(0,2)== "tc") then
 		if tfm.get.room.playerList[name].isShaman == false then
@@ -453,7 +455,7 @@ if time_passed >= 6 and tfm.get.room.currentMap == "@7763582" then
 	resetMap()
 end
 if changed == true then
-ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v2.2.4</b><N> - criado por <ROSE><b>Morganadxana#0000</b> <N>e <R><b>Spectra_phantom#6089</b><")
+ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v2.2.5</b><N> - criado por <ROSE><b>Morganadxana#0000</b> <N>e <R><b>Spectra_phantom#6089</b><")
 local m=math.floor(r/60000)
 local s=math.floor((((m*60000)-r) * -1) / 1000)
 ui.addTextArea(-1,"<font size='45'><font color='#222222'><font face='Trebuchet MS'><b><i>"..m..":"..s.."</b>",n,569,22,110,54,0,0,1.0,true)
@@ -540,11 +542,11 @@ for n,q in next,tfm.get.room.playerList do
 		if mode == "game" then
 			if data[n].o > 30 then
 				if mode == "game" or mode == "hide" then
-				ui.addTextArea(10,"",n,8,386,(data[n].o*7.9),8,0xf0f0f0,0x808080,1.0,true)
+				ui.addTextArea(10,"",n,8,390,(data[n].o*7.9),3,0xf0f0f0,0x808080,1.0,true)
 				data[n].d=0 end
 				tfm.exec.setNameColor(n,0xc2c2da)
 			elseif data[n].o > 0 then
-				ui.addTextArea(10,"",n,8,386,(data[n].o*7.9),8,0x801500,0xa01000,1.0,true)
+				ui.addTextArea(10,"",n,8,390,(data[n].o*7.9),3,0x801500,0xa01000,1.0,true)
 				data[n].d=data[n].d+1
 				tfm.exec.setNameColor(n,0xff4500)
 				if data[n].d == 1 and data[n].o > 0 and tfm.get.room.playerList[n].y >= 598 then
@@ -562,11 +564,11 @@ for n,q in next,tfm.get.room.playerList do
 end
 if r <= 2000 and mode == "hide" then
 	mode="game"
-	tfm.exec.setGameTime(165+math.ceil(alives*3))
+	tfm.exec.setGameTime(180+math.ceil(alives*3.2))
 	ui.removeTextArea(22,nil)
 	showMessage("<J><b>O shaman foi liberado! Salvem-se quem puder!</b><br><N>Os itens marcados com <BL>!<N> são poderes especiais, que podem trazer efeitos positivos ou negativos aos ratos. Aperte ESPAÇO para usá-los.<br><br><ROSE>Use o comando !tc [mensagem] para falar no chat sem que o shaman saiba.")
 	for n,p in next,tfm.get.room.playerList do
-		ui.addTextArea(300,"",n,8,386,782,8,0x202020,0x121212,1.0,true)
+		ui.addTextArea(300,"",n,8,390,782,3,0x202020,0x121212,1.0,true)
 		if tfm.get.room.playerList[n].isShaman then
 			tfm.exec.movePlayer(n,2450,160,false,0,0,false)
 		end
