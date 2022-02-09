@@ -13,7 +13,7 @@ actual_map=""; remaining=0; imageId=-1; actual_creator=""; bar=""; loop=0; winne
 functs={running=false,level=0,count=8}
 function eventChatCommand(name,message)
 	if message == "help" then
-		tfm.exec.chatMessage("<J><b>Welcome to #objects!</b><br><br>The objective of this module is survive! Don't hit the objects that is falling! The last alive player wins the game!<br><br><ROSE>Module made by Spectra_phantom#6089.",name)
+		tfm.exec.chatMessage("<J>The objective of this module is survive! Don't hit the objects that are falling! The last alive player wins the game!<br><br><ROSE>Module made by Spectra_phantom#6089.",name)
 	end
 	if name == "Spectra_phantom#6089" or name == "Forzaldenon#0000" or name == "Viego#0345" then
 		if (message:sub(0,4) == "kill") then
@@ -28,10 +28,7 @@ function eventChatCommand(name,message)
 	end
 end
 function eventNewGame()
-	functs.running=false
-	functs.level=0
-	functs.count=8
-	times=0
+	functs.running=false; functs.level=0; functs.count=8; times=0;
 	tfm.exec.setGameTime(100)
 	removeText()
 	winner=false
@@ -47,9 +44,9 @@ function showBar()
 	for i=1,41 do
 		if mapas[i] == tfm.get.room.currentMap then
 			if map_names[i] == "" then
-				ui.setMapName("<J><b>"..tfm.get.room.currentMap.."   </b><V>|   <N>Difficulty : "..text_difficulty.."   <V>|   <N>#objects <ROSE>RTM 8157.041<")
+				ui.setMapName("<J><b>"..tfm.get.room.currentMap.."   </b><V>|   <N>Difficulty : "..text_difficulty.."   <V>|   <N>#objects <ROSE>RTM 8258.042<")
 			else
-				ui.setMapName("<J><b>"..map_names[i].."</b> <BL>- "..tfm.get.room.currentMap.."   <V>|   <N>Difficulty : "..text_difficulty.."   <V>|   <N>#objects <ROSE>RTM 8157.041<")
+				ui.setMapName("<J><b>"..map_names[i].."</b> <BL>- "..tfm.get.room.currentMap.."   <V>|   <N>Difficulty : "..text_difficulty.."   <V>|   <N>#objects <ROSE>RTM 8258.042<")
 			end
 		end
 	end
