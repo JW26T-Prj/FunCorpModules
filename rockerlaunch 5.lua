@@ -115,7 +115,7 @@ function eventNewPlayer(n)
 	ui.setMapName("<font color='#1288e8'><b>RockerLaunch 5</b> <N>Project by <VP>Threshlimit#0000, <ROSE>Morganadxana#0000<N> and <R>Patrick_mahomes#1795<")
 	tfm.exec.chatMessage("<VP>Bem-vindos ao RockerLaunch 5! Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço! Digite !help para saber como jogar.<br><br><N>Créditos para Threshlimit#0000, Morganadxana#0000 and Patrick_mahomes#1795. Conceito original de Nettoork#0000.<br>Versão 5.1.0",n)
 	newData={
-		["message"]=0
+		["message"]=0,
 		["reached"]=false
 	}
 	data[n]=newData;
