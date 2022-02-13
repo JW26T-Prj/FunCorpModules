@@ -1,9 +1,9 @@
--- Mudanças na Versão 2.15.2:
+-- Mudanças na Versão 2.16.0:
 
--- Alteração de algumas perguntas
--- Mudanças nos managers
+-- Adição de 13 perguntas de conhecimentos gerais
+-- Adição de 6 perguntas de música
 
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.15.2
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.16.0
 -- Por favor, edite a linha 21 a variável 'admin' pelo seu nome para ter acesso aos comandos.
 -- Você pode selecionar o tema editando a linha 23, ou digitando !tema [número] conforme os números abaixo.
 
@@ -385,6 +385,20 @@ perguntas1={
 "Quantos continentes tem o Planeta Terra?","5","6",2,
 "É possível atirar com uma arma no espaço.","Verdadeiro","Falso",1,
 "Qual o nome do lugar mais quente do Planeta Terra?","Rio de Janeiro","Núcleo",2,
+"A partir de qual ano o Real passou a ser a moeda oficial do Brasil?","1994","1995",1,
+"Em qual estado fica localizada a Casa da Moeda do Brasil?","Rio de Janeiro","Distrito Federal",1,
+"Em que ano Vladimir Putin foi eleito pela primeira vez presidente da Rússia?","2000","2004",2,
+"Durante o período do Regime Militar, existiram basicamente dois partidos políticos. Quais eram eles?","ARENA e PT","ARENA e MDB",2,
+"Nenhum elemento conhecido da tabela periódica consegue se manter sólido na superfície do Sol.","Verdadeiro","Falso",1,
+"Qual foi a menor temperatura registrada no Planeta Terra, aproximadamente?","-84.5°C","-89.2°C",2,
+"Qual é a capital da Austrália?","Sydney","Camberra",2,
+"Em que ano foi inaugurada a Televisão no Brasil?","1950","1960",1,
+"O Canguru é um animal nativo de qual país?","Madagascar","Austrália",2,
+"Qual é a única capital de estado do Brasil que é banhada pelo Rio Amazonas?","Belém","Rio Branco",1,
+"Em que ano o YouTube foi inaugurado?","2005","2007",1,
+"Os Estados Unidos são formados por quantos estados?","44","50",2,
+"A atriz e humorista Dercy Gonçalves morreu com quantos anos?","94","101",2,
+
 }
 perguntas2={
 "Vai na sorte :)","ok","ok",1,
@@ -421,7 +435,7 @@ perguntas2={
 "[...] Uma história de amor, de aventura e de magia...  Qual o nome desta música de Sandy e Júnior?","Uma História de Amor","Era uma Vez",2,
 "O single da música Razões e Emoções, do NX Zero, foi lançada em qual ano?","2006","2007",2,
 "Rádio Pirata foi o nome do primeiro álbum lançado pela banda RPM.","Verdadeiro","Falso",2,
-"Qual é o nome da música utilizada na abertura da novela Páginas da Vida?","Se Quiser","Páginas da Vida",1,
+"Qual destas músicas foi utilizada na novela Páginas da Vida?","Se Quiser","Páginas da Vida",1,
 "Qual destes foi o primeiro vocalista da banda NX Zero?","Yuri Nishida","Di Ferrero",1,
 "Complete a música: Ah, meu coração é um campo minado... Muito cuidado...","Ele pode explodir","Com a traição",1,
 "A banda Charlie Brown Jr. foi formada na cidade de Santos.","Verdadeiro","Falso",1,
@@ -459,6 +473,12 @@ perguntas2={
 "O CD foi o primeiro formato de mídia digital que existiu.","Verdadeiro","Falso",2,
 "Quantos álbuns a cantora Vanusa gravou?","20","22",1,
 "Antes de entrar na carreira solo, a cantora Ivete Sangalo fazia parte de qual grupo?","Banda Eva","Banda Canal",1,
+"A nota 'Lá' representa uma frequência de quantos Hz, aproximadamente?","400 Hz","440 Hz",2,
+"Qual destas músicas foi tema da novela Anjo Mau, na versão de 1976?","Meu Mundo e Nada Mais","Sonho de Ícaro",1,
+"Complete a música: Quando a chuva passar, quando o tempo abrir... Abra a janela e...","Veja a luz do Sol","Veja, eu sou o Sol",2,
+"Qual o nome da música do Mamonas Assassinas que é uma sátira a um grupo que vendia produtos diferenciados na década de 90?","1406","Consumismo",1,
+"Celso Portiolli já chegou a gravar um álbum musical.","Verdadeiro","Falso",1,
+"Em qual ano o cantor Cristiano Araújo morreu em um acidente aéreo?","2015","2016",1,
 }
 perguntas3={
 "Vai na sorte :)","ok","ok",1,
@@ -703,7 +723,7 @@ function eventPlayerLeft(name)
 	ratos=ratos-1
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.15.2</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
+	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.16.0</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
