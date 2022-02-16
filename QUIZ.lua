@@ -1,11 +1,14 @@
--- Mudanças na Versão 2.16.0:
+-- Mudanças na Versão 2.17.0:
 
--- Adição de 13 perguntas de conhecimentos gerais
+-- Adição de um sistema para evitar passagens de lado
+-- Adição de 10 perguntas de futebol
 -- Adição de 6 perguntas de música
+-- Adição de 4 perguntas de lolzinho
+-- Alteração do limite máximo de rodadas de 25 para 20
 
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.16.0
--- Por favor, edite a linha 21 a variável 'admin' pelo seu nome para ter acesso aos comandos.
--- Você pode selecionar o tema editando a linha 23, ou digitando !tema [número] conforme os números abaixo.
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.17.0
+-- Por favor, edite a linha 25 a variável 'admin' pelo seu nome para ter acesso aos comandos.
+-- Você pode selecionar o tema editando a linha 27, ou digitando !tema [número] conforme os números abaixo.
 
 -- Temas:
 -- 0 = transformice
@@ -13,10 +16,11 @@
 -- 2 = música
 -- 3 = lolzinho
 -- 4 = futebol
+-- 5 = animes (em breve)
 
--- Para adicionar novas perguntas, utilize a seguinte sintaxe na hora de inserir: "PERGUNTA","RESPOSTA 1","RESPOSTA 2",1 ou 2
+-- Esta é uma versão bloqueada. As perguntas não podem ser alteradas. Consulte o criador para obter a versão desbloqueada.
 -- Para sugestões de perguntas ou correção de bugs contate Reksai_void2600#6638.
--- Caso você queira usar este código em um cafofo de tribo, altere a variável TRIBEHOUSE da linha 24 para 'true'.
+-- Caso você queira usar este código em um cafofo de tribo, altere a variável TRIBEHOUSE da linha 28 para 'true'.
 
 admin={"Reksai_void2600#6638"} -- FunCorps, insiram seus nomes aqui!
 
@@ -32,7 +36,7 @@ end
 for _,g in next,{"setq","limite","tema"} do
 	system.disableChatCommandDisplay(g)
 end
-ratos=0; vivos=0; set_q=0; questions_list={}; modo="inicial"; pergunta=0; rodada=0; limite=25; count=0; fixed_cnt=0;
+ratos=0; vivos=0; set_q=0; questions_list={}; modo="inicial"; pergunta=0; rodada=0; limite=20; count=0; fixed_cnt=0;
 perguntas={
 "Vai na sorte :)","ok","ok",1,
 "Vai na sorte :)","ok","ok",2,
@@ -398,7 +402,6 @@ perguntas1={
 "Em que ano o YouTube foi inaugurado?","2005","2007",1,
 "Os Estados Unidos são formados por quantos estados?","44","50",2,
 "A atriz e humorista Dercy Gonçalves morreu com quantos anos?","94","101",2,
-
 }
 perguntas2={
 "Vai na sorte :)","ok","ok",1,
@@ -454,14 +457,14 @@ perguntas2={
 "Qual o nome do extinto programa de televisão que era focado em tocar Funk?","Estação Funk","Furacão 2000",2,
 "Qual o nome do integrante do Roupa Nova que faleceu na metade de 2021?","Ricardo","Paulinho",2,
 "Complete a música: I know you're somewhere out there...","Somewhere far away","I sit by myself",1,
-"Eu só quero é ser feliz, andar tranquilamente na favela onde eu nasci... Qual o nome desta música?","Eu só Quero é Ser Feliz","Rap da Felicidade",2,
+"'Eu só quero é ser feliz, andar tranquilamente na favela onde eu nasci...' Qual o nome desta música?","Eu só Quero é Ser Feliz","Rap da Felicidade",2,
 "A música Master of Puppets do Metallica foi gravada em que ano?","1985","1986",2,
 "A partir de qual ano os discos de vinil (LP) pararam de ser fabricados no Brasil?","1997","2000",2,
 "Em qual ano começaram as transmissões de rádio FM no Brasil?","1955","1962",1,
 "A música Admirável Chip Novo, da cantora Pitty, faz referência a qual livro famoso?","Admirável Mundo Novo","Admirável Tempo Novo",1,
 "De quem é a música 'Deixa a Vida me Levar'?","Zeca Pagodinho","Rodrigo Abrantes",1,
 "Quantas sinfonias Beethoven compôs?","9","11",1,
-"Complete a música: Cheiro de pneu queimado, carburador furado, o x9 foi...","Torrado","Morto",1,
+"Complete a música: Cheiro de pneu queimado, carburador furado, o X9 foi...","Torrado","Morto",1,
 "Bob Marley nasceu em qual país?","África do Sul","Jamaica",2,
 "Qual o nome da música que foi utilizada no encerramento das programações diárias do SBT, da metade dos anos 80 a metade dos anos 90?","The Fight","Over the Top",1,
 "Em qual ano ocorreu o acidente aéreo que vitimou todos os integrantes da banda Mamonas Assasinas?","1996","1997",1,
@@ -469,7 +472,7 @@ perguntas2={
 "Qual o nome original da Lana Del Rey?","Elizabeth Woolridge Grant","Elizabeth Cambridge Grant",1,
 "A famosa música 'Faz Um Milagre em Mim' do cantor Régis Danese, foi lançada em qual ano?","2008","2009",1,
 "A música 'Because of You' foi originalmente gravada por qual cantora em 2004?","Kelly Clarkson","Lana del Rey",1,
-"A música 'Caneta Azul', que fez muito sucesso em 2019, foi gravada por quem?","Manuel Elias","Emanuel Gomes",2,
+"A música 'Caneta Azul', que fez muito sucesso em 2019, foi gravada por quem?","Manoel Elias","Manoel Gomes",2,
 "O CD foi o primeiro formato de mídia digital que existiu.","Verdadeiro","Falso",2,
 "Quantos álbuns a cantora Vanusa gravou?","20","22",1,
 "Antes de entrar na carreira solo, a cantora Ivete Sangalo fazia parte de qual grupo?","Banda Eva","Banda Canal",1,
@@ -479,6 +482,12 @@ perguntas2={
 "Qual o nome da música do Mamonas Assassinas que é uma sátira a um grupo que vendia produtos diferenciados na década de 90?","1406","Consumismo",1,
 "Celso Portiolli já chegou a gravar um álbum musical.","Verdadeiro","Falso",1,
 "Em qual ano o cantor Cristiano Araújo morreu em um acidente aéreo?","2015","2016",1,
+"A banda de pop rock Heróis do Mar é de qual país?","Brasil","Portugal",2,
+"Em que país nasceu Bob Marley?","Estados Unidos","Jamaica",2,
+"Qual destas músicas foi o primeiro sucesso do cantor Sidney Magal, lançada em 1977?","Sandra Rosa Madalena","O Meu Sangue ferve por Você",2,
+"Qual o nome do vocalista do grupo Novo Som, que é um dos únicos remanescentes do grupo formado em 1988?","Alex Gonzaga","Ademílson Fernandes",1,
+"Qual o nome do estilo musical muito utilizado em discotecas e que teve seu auge nos anos 90?","Eurodance","Europop",1,
+"Qual o nome do vocalista do grupo U2?","Bono Vox","Serj Tankian",1,
 }
 perguntas3={
 "Vai na sorte :)","ok","ok",1,
@@ -577,6 +586,10 @@ perguntas3={
 "Em qual ano o campeão Zed foi lançado?","2014","2015",1,
 "Quais destes três campeões são Darkins?","Aatrox, Varus e Ryze","Aatrox, Varus e Rhaast",2,
 "A campeã Quinn consegue voar até o espaço.","Verdadeiro","Falso",2,
+"Os seres da raça Vastaya são encontrados apenas em Ionia.","Verdadeiro","Falso",2,
+"Qual o nome da taça dada aos campeões mundiais de League of Legends?","Taça do Invocador","Taça do Campeão",1,
+"A campeã Fiora possui um sotaque de fala...","Francês","Alemão",1,
+"Qual destes campeões não participa da série Arcane?","Jinx","Diana",2,
 }
 perguntas4={
 "Vai na sorte :)","ok","ok",1,
@@ -629,6 +642,16 @@ perguntas4={
 "Qual foi o nome do episódio de virada de mesa que ocasionou na realização da Copa João Havelange, em 2000?","Caso Sandro Hiroshi","Caso Milton Mendes",1,
 "Qual foi o jogador que foi escalado irregularmente na última rodada no Brasileirão de 2013, causando o rebaixamento da Portuguesa?","Héverton","Éderson",1,
 "Qual o nome do estádio conhecido como Engenhão?","Estádio João Havelange","Estádio Nilton Santos",2,
+"Quantas vezes o time do Palmeiras venceu o Mundial de Clubes?","0","1",1,
+"Qual o nome do jogador formado no Santos que foi preso acusado de assédio sexual?","Robinho","Adriano",1,
+"Qual o nome original de Pelé?","Édson Arantes do Nascimento","Robson Arantes do Nascimento",1,
+"Qual foi o jogador que cobrou o último pênalti que deu ao Brasil sua primeira medalha de ouro olímpica?","Gabriel Jesus","Neymar",2,
+"Qual foi a primeira Copa do Mundo que foi decidida na disputa de pênaltis?","1994, nos Estados Unidos","1998, na França",1,
+"Qual foi o primeiro clube brasileiro a representar o Brasil na Copa Libertadores da América?","Bahia","Atlético-MG",1,
+"O Palmeiras é o único clube brasileiro que venceu duas edições seguidas da Libertadores.","Verdadeiro","Falso",2,
+"Qual foi o primeiro clube brasileiro a ser campeão da Copa Libertadores da América?","Santos","Botafogo",1,
+"Qual destes funkeiros já chegou a virar jogador de futebol?","MC Livinho","MC Kevinho",1,
+"Qual foi o jogador que errou o último pênalti na história final da Liga dos Campeões da Europa de 2004-2005?","Shevchenko","Maldini",1,
 }
 mapa="@7786632"
 actual_question={quest="",a1="",a2="",answer=nil}
@@ -723,7 +746,7 @@ function eventPlayerLeft(name)
 	ratos=ratos-1
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.16.0</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
+	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.17.0</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
@@ -735,6 +758,8 @@ function eventLoop(p,f)
 			end
 		end
 		tfm.exec.setGameTime(6)
+		tfm.exec.addPhysicObject(4, 390, 140, barreira)
+		tfm.exec.addPhysicObject(5, 410, 140, barreira)
 		if actual_question.answer == false then
 			tfm.exec.removePhysicObject(1)
 			ui.addTextArea(2,"<p align='center'><font color='#181818'><font size='18'>"..actual_question.a2.."",nil,440,145,260,81,0,0,0.1,true)
@@ -808,11 +833,13 @@ function randomQuests()
 		tfm.exec.movePlayer(name,400,145,false)
 	end
 	tfm.exec.setGameTime(17)
-	if rodada >= 15 then
-		tfm.exec.setGameTime(12)
+	if rodada >= 13 then
+		tfm.exec.setGameTime(13)
 	end
-	tfm.exec.addPhysicObject(2, 385, 150, barreira)
-	tfm.exec.addPhysicObject(3, 415, 150, barreira)
+	tfm.exec.removePhysicObject(4)
+	tfm.exec.removePhysicObject(5)
+	tfm.exec.addPhysicObject(2, 385, 140, barreira)
+	tfm.exec.addPhysicObject(3, 415, 140, barreira)
 	tfm.exec.addPhysicObject(0, 220, 380, piso)
 	tfm.exec.addPhysicObject(1, 580, 380, piso)
 	modo="perguntar"
