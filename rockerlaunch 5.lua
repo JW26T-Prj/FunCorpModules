@@ -2,7 +2,7 @@ for _,f in next,{"PhysicalConsumables","AutoNewGame","AutoTimeLeft","AllShamanSk
 	tfm.exec["disable"..f](true)
 end
 dragon=true -- troque para 'false' para desativar o dragão que aparece no topo do mapa
-mode=""; shaman=""; loop=0; data={};
+mode=""; shaman=""; loop=0; data={}; testmode=false;
 objects1={1,3,6,7,35,39,60,89,95}
 objects2={1,2,3,6,7,35,39,45,46,54,60,85,89,90,95}
 objects3={1,2,3,4,6,7,10,23,35,39,40,45,46,54,60,61,68,69,85,89,90,95}
@@ -17,14 +17,27 @@ part7='5094A,2,0.9,0"/><VC P1="1193,274"P2="1212,294"C1="1193,274"C2="1212,287"C
 part0='</L></Z></C>'
 system.disableChatCommandDisplay("help")
 system.disableChatCommandDisplay("cancel")
+function showMessage(message,name)
+	temp_text=string.gsub(message,"<b>","")
+	temp_text=string.gsub(temp_text,"</b>","")
+	if tfm.get.room.isTribeHouse == false then
+		tfm.exec.chatMessage(message,name)
+	elseif tfm.get.room.isTribeHouse == true then
+		if name == nil then
+			print("<ROSE>[Test Mode] : <br><BL>"..temp_text.."")
+		else
+			print("<ROSE>[Test Mode] - "..name.." : <br><BL>"..temp_text.."")
+		end
+	end
+end
 function eventChatCommand(n,m)
 	if m == "help" then
-		tfm.exec.chatMessage("<N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço! Caso o shaman morra, a partida é encerrada.<br><br><VP>Mapa criado por Threshlimit#0000 e Patrick_mahomes#1795. Código desenvolvido por Morganadxana#0000.<br>Conceito original de Nettoork#0000.<br>Versão 5.1.1",n)
+		showMessage("<N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço! Caso o shaman morra, a partida é encerrada.<br><br><VP>Mapa criado por Threshlimit#0000 e Patrick_mahomes#1795. Código desenvolvido por Morganadxana#0000.<br>Conceito original de Nettoork#0000.<br>Versão 5.1.2",n)
 	end
 	if m == "cancel" then
 		if n == "Threshlimit#0000" or n == "Morganadxana#0000"  or n == "Patrick_mahomes#1795" or n == "Forzaldenon#0000" then
 			tfm.exec.setGameTime(5)
-			tfm.exec.chatMessage("<R>Rodada cancelada! Iniciando uma nova rodada...")
+			showMessage("<R>Rodada cancelada! Iniciando uma nova rodada...")
 		end
 	end
 end
@@ -57,18 +70,18 @@ function eventLoop(p,f)
 				tfm.exec.playerVictory(n)
 				mode="ending"
 			end
-			if player.y < 375 and data[n].reached == false then
+			if dragon == true and player.y < 350 and data[n].reached == false and not tfm.get.room.playerList[n].isDead then
 				data[n].reached=true
 				data[n].message=data[n].message+1
 				if data[n].message == 1 then
-					tfm.exec.chatMessage("<VP>Nada causa tanta admiração quanto a beleza das estrelas...<br><ROSE>— Aurelion Sol",n)
+					showMessage("<VP>Nada causa tanta admiração quanto a beleza das estrelas...<br><ROSE>— Aurelion Sol",n)
 					data[n].message=-10
 				end
 			end
 		end
 	end
 	if p > 123000 and p < 123650 then
-		tfm.exec.chatMessage("<R>Tempo esgotado! Está na hora de voar!<br><ROSE><b>Atenção! Objetos voadores estão caindo do céu!</b>")
+		showMessage("<R>Tempo esgotado! Está na hora de voar!<br><ROSE><b>Atenção! Objetos voadores estão caindo do céu!</b>")
 		for n,player in pairs(tfm.get.room.playerList) do
 			tfm.exec.attachBalloon(n,false)
 			if tfm.get.room.playerList[n].isShaman then
@@ -101,8 +114,8 @@ function eventLoop(p,f)
 end
 function eventNewGame()
 	ui.setMapName("<font color='#1288e8'><b>RockerLaunch 5</b> <N>Project by <VP>Threshlimit#0000, <ROSE>Morganadxana#0000<N> and <R>Patrick_mahomes#1795<")
-	tfm.exec.setGameTime(375)
-	tfm.exec.chatMessage("<VP>O shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço!")
+	tfm.exec.setGameTime(400)
+	showMessage("<VP>O shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço!")
 	mode="building"
 	for n,p in pairs(tfm.get.room.playerList) do
 		if tfm.get.room.playerList[n].isShaman then
@@ -113,7 +126,7 @@ function eventNewGame()
 end
 function eventNewPlayer(n)
 	ui.setMapName("<font color='#1288e8'><b>RockerLaunch 5</b> <N>Project by <VP>Threshlimit#0000, <ROSE>Morganadxana#0000<N> and <R>Patrick_mahomes#1795<")
-	tfm.exec.chatMessage("<VP>Bem-vindos ao RockerLaunch 5! <N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço! Digite !help para saber como jogar.<br><br><ROSE>Créditos para Threshlimit#0000, Morganadxana#0000 and Patrick_mahomes#1795. Conceito original de Nettoork#0000.<br>Versão 5.1.1",n)
+	showMessage("<VP>Bem-vindos ao RockerLaunch 5!<br><N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço! Digite !help para saber como jogar.<br><br><ROSE>Créditos para Threshlimit#0000, Morganadxana#0000 and Patrick_mahomes#1795. Conceito original de Nettoork#0000.<br>Versão 5.1.2",n)
 	newData={
 		["message"]=0,
 		["reached"]=false
@@ -130,7 +143,7 @@ function eventPlayerDied(n)
 	if tfm.get.room.playerList[n].isShaman or shaman == n then
 		tfm.exec.setGameTime(5)
 		tfm.exec.setPlayerScore(n,-1,false)
-		tfm.exec.chatMessage("<R>O shaman morreu! Iniciando uma nova rodada...")
+		showMessage("<R>O shaman morreu! Iniciando uma nova rodada...")
 	end
 	local i=0
 	local n
