@@ -1,4 +1,4 @@
--- Script do module Jogo da Forca, versão RTM 0202.000 Beta, desenvolvido por Rakan_raster#0000 e Xayah_raster#7598.
+-- Script do module Jogo da Forca, versão RTM 0203.001 Beta, desenvolvido por Rakan_raster#0000 e Xayah_raster#7598.
 
 for _,f in next,{"AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand","AllShamanSkills"} do
 	tfm.exec["disable"..f](true)
@@ -10,16 +10,10 @@ end
 tempo_def=90
 
 letras={"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"}
-letters={}; letters_d={}; selec={}; palavra=""; modo="aguardar"; testmode=true; acctd=0; acctf=0; erros=0; accerted="";
+letters={}; letters_d={}; selec={}; palavra=""; modo="aguardar"; acctd=0; acctf=0; erros=0; accerted="";
 
 function resetWord()
-	letters={};
-	letters_d={};
-	acctd=0;
-	acctf=0;
-	erros=0;
-	selec={}; 
-	palavra=""
+	letters={}; letters_d={}; accerted=""; acctd=0; acctf=0; erros=0; selec={}; palavra="";
 	ui.removeTextArea(6150,nil)
 	for i=1000,1052 do
 		ui.removeTextArea(i,nil)
@@ -35,15 +29,15 @@ end
 function showMessage(message,name)
 	temp_text=string.gsub(message,"<b>","")
 	temp_text=string.gsub(temp_text,"</b>","")
-	if testmode == false then
+	if tfm.get.room.isTribeHouse == false then
 		tfm.exec.chatMessage(message,name)
-	elseif testmode == true then
+	elseif tfm.get.room.isTribeHouse == true then
 		if name == nil then
 			print("<ROSE>[Test Mode] : <br><BL>"..temp_text.."")
 		else
 			print("<ROSE>[Test Mode] - "..name.." : <br><BL>"..temp_text.."")
 		end
- end
+	end
 end
 
 resetAll()
@@ -150,8 +144,9 @@ function eventChatCommand(name,message)
 end
 
 function eventNewGame()
+	resetWord()
 	modo="aguardar"
-	ui.setMapName("<N>Jogo da Forca <J><b>RTM 0202.000</b> <R>Beta <N>- Script criado por <VP>Rakan_raster#0000<N> e <ROSE>Xayah_raster#7598<")
+	ui.setMapName("<N>Jogo da Forca <J><b>RTM 0203.001</b> <R>Beta <N>- Script criado por <VP>Rakan_raster#0000<N> e <ROSE>Xayah_raster#7598<")
 	for name,player in next,tfm.get.room.playerList do
 		if tfm.get.room.playerList[name].isShaman then
 			tfm.exec.setPlayerScore(name,-1,false)
@@ -163,9 +158,9 @@ function eventNewGame()
 end
 
 function eventNewPlayer(name)
-	ui.setMapName("<N>Jogo da Forca <J><b>RTM 0202.000</b> <R>Beta <N>- Script criado por <VP>Rakan_raster#0000<N> e <ROSE>Xayah_raster#7598<")
+	ui.setMapName("<N>Jogo da Forca <J><b>RTM 0203.001</b> <R>Beta <N>- Script criado por <VP>Rakan_raster#0000<N> e <ROSE>Xayah_raster#7598<")
 	tfm.exec.setPlayerScore(name,0,false)
-	showMessage("<br><br><br><p align='center'><N><b>Bem-vindos ao module Jogo da Forca!</b><br>O objetivo deste module é: Tentar descobrir a palavra definida pelo shaman errando o mínimo possível!<br><VP>Digite ! e uma letra do alfabeto para chutar.<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br><br><ROSE>Versão RTM 0202.000 <R>Beta<br><br><p align='left'>",name)
+	showMessage("<br><br><br><p align='center'><N><b>Bem-vindos ao module Jogo da Forca!</b><br>O objetivo deste module é: Tentar descobrir a palavra definida pelo shaman errando o mínimo possível!<br><VP>Digite ! e uma letra do alfabeto para chutar.<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br><br><ROSE>Versão RTM 0203.001 <R>Beta<br><br><p align='left'>",name)
 end
 
 for name,player in next,tfm.get.room.playerList do
