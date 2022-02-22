@@ -1,4 +1,4 @@
--- Script do module Cidade Dorme, versão RTM 2826.020, desenvolvido por Rakan_raster#0000.
+-- Script do module Cidade Dorme, versão RTM 2927.021 LTS, desenvolvido por Rakan_raster#0000.
 -- NÃO SE ESQUEÇA DE COLOCAR O SEU NOME NA LINHA 5 ANTES DE INICIAR!!
 -- Para reiniciar o script em caso de falta de ratos ou de qualquer bug, digite !reiniciar.
 
@@ -11,19 +11,17 @@ tfm.exec.disableAfkDeath(false)
 jogadores={assasinos={},detetives={},medicos={},vivos=0,lista={}}
 quant={assasinos=0,detetives=0,medicos=0,vitimas=0,vivos=0}
 limites={assasinos=0,detetives=0,medicos=0}
-map_det={creator="",code=""}
-testmode=false
 modo="inicial"; contador=0; rodada=0; data={}; templist={};
-mapas={"@3110915","@3148619","@3398791","@3793051","@4411212","@4477478","@5832272","@4677521","@6390711","@6907177","@3203198","@5113656","@6380942","@7833508","@7730312","@7712670","@7631682","@7607195","@6958855","@6958861","@7896560"}
+mapas={"@3110915","@3148619","@4411212","@4477478","@5832272","@3203198","@5113656","@6380942","@7730312","@7712670","@7896560"}
 tfm.exec.setRoomMaxPlayers(40)
 system.disableChatCommandDisplay("reiniciar")
 system.disableChatCommandDisplay("help")
 function showMessage(message,name)
 	temp_text=string.gsub(message,"<b>","")
 	temp_text=string.gsub(temp_text,"</b>","")
-	if testmode == false then
+	if tfm.get.room.isTribeHouse == false then
 		tfm.exec.chatMessage(message,name)
-	elseif testmode == true then
+	elseif tfm.get.room.isTribeHouse == true then
 		if name == nil then
 			print("<ROSE>[Test Mode] : <br><BL>"..temp_text.."")
 		else
@@ -84,11 +82,8 @@ function eventNewGame()
 			tfm.exec.killPlayer(name)
 		end
 	end
-	map_det.code=tfm.get.room.currentMap
-	map_det.creator=tfm.get.room.xmlMapInfo.author
-	showMessage("<R><i>Spectra's map loader v2.210</i><br><N>Loading current map information...<br><b>Current Map :</b> <V>"..map_det.code.."<br><N><b>Author :</b> <V>"..map_det.creator.."")
 	rodada=0
-	ui.setMapName("<J>"..map_det.creator.." <BL>- "..map_det.code.."   <V>|   <N><b>Cidade Dorme v3</b> <VP>RTM 2826.020<")
+	ui.setMapName("<N><b>Cidade Dorme v3</b> <VP>RTM 2927.021 LTS <N>- por <J>Rakan_raster#0000<")
 end
 function escolherAssasinos(name)
 	if data[name] and data[name].type == 0 then
@@ -116,7 +111,7 @@ function escolherDetetives(name)
 end
 function eventNewPlayer(name)
 	if not data[name] then
-		showMessage("<br><br><br><p align='center'><N><b>Bem-vindos ao module Cidade Dorme!</b><br>O objetivo deste module é: Descubra quem são os assassinos, desconfie e se divirta!<br><VP>O jogo irá explicar todo seu funcionamento durante a partida.<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Spectra_phantom#6089<br><br><ROSE>Versão RTM 2826.020<br><p align='left'>",name)
+		showMessage("<br><br><br><p align='center'><N><b>Bem-vindos ao module Cidade Dorme!</b><br>O objetivo deste module é: Descubra quem são os assassinos, desconfie e se divirta!<br><VP>O jogo irá explicar todo seu funcionamento durante a partida.<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Spectra_phantom#6089<br><br><ROSE>Versão RTM 2927.021 LTS<br><p align='left'>",name)
 	end
 	data[name]={type=-1,morre=false}
 end
@@ -207,14 +202,14 @@ end
 function eventLoop()
 	contador=contador+0.5
 	if modo == "aguardando" then
-		ui.setMapName("<J>Assasinos: <R><b>"..quant.assasinos.."</b>  <V>|  <J>Detetives: <VP><b>"..quant.detetives.."</b>  <V>|  <J>Médicos: <N><b>"..quant.medicos.."</b>  <V>|  <N>Rodada: <J><b>"..rodada.."</b>  <BL>|  <N><b>Cidade Dorme v3</b> <VP>RTM 2826.020<")
+		ui.setMapName("<J>Assasinos: <R><b>"..quant.assasinos.."</b>  <V>|  <J>Detetives: <VP><b>"..quant.detetives.."</b>  <V>|  <J>Médicos: <N><b>"..quant.medicos.."</b>  <V>|  <N>Rodada: <J><b>"..rodada.."</b>  <BL>|  <N><b>Cidade Dorme v3</b> <VP>RTM 2927.021 LTS<")
 	end
 	if contador == 3 then
 		if admin == "" then
 			showMessage("<VP>O module não pode ser iniciado. <br>Certifique-se de que inseriu seu nome corretamente no nome da sala.<br><br>Exemplo: <b>/sala #anvilwar00cd3#Spectra_phantom#6089</b><br><br>Em caso de um FunCorp, certifique-se que inseriu o nome corretamente no código.<br><br>Script desativado.")
 			contador=-65536
 		else
-			showMessage("<br><br><br><p align='center'><N><b>Bem-vindos ao module Cidade Dorme!</b><br>O objetivo deste module é: Descubra quem são os assassinos, desconfie e se divirta!<br><VP>O jogo irá explicar todo seu funcionamento durante a partida.<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Spectra_phantom#6089<br><br><ROSE>Versão RTM 2826.020<br><p align='left'>")
+			showMessage("<br><br><br><p align='center'><N><b>Bem-vindos ao module Cidade Dorme!</b><br>O objetivo deste module é: Descubra quem são os assassinos, desconfie e se divirta!<br><VP>O jogo irá explicar todo seu funcionamento durante a partida.<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Spectra_phantom#6089<br><br><ROSE>Versão RTM 2927.021 LTS<br><p align='left'>")
 		end
 	end
 	if contador == 10 then
