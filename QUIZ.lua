@@ -1,14 +1,11 @@
--- Mudanças na Versão 2.17.0:
+-- Mudanças na Versão 2.17.1:
 
--- Adição de um sistema para evitar passagens de lado
--- Adição de 10 perguntas de futebol
--- Adição de 6 perguntas de música
--- Adição de 4 perguntas de lolzinho
--- Alteração do limite máximo de rodadas de 25 para 20
+-- Correção de algumas perguntas
+-- Adição de um comando novo para desenvolvedores
 
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.17.0
--- Por favor, edite a linha 25 a variável 'admin' pelo seu nome para ter acesso aos comandos.
--- Você pode selecionar o tema editando a linha 27, ou digitando !tema [número] conforme os números abaixo.
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.17.1
+-- Por favor, edite a linha 22 a variável 'admin' pelo seu nome para ter acesso aos comandos.
+-- Você pode selecionar o tema editando a linha 24, ou digitando !tema [número] conforme os números abaixo.
 
 -- Temas:
 -- 0 = transformice
@@ -20,7 +17,7 @@
 
 -- Esta é uma versão bloqueada. As perguntas não podem ser alteradas. Consulte o criador para obter a versão desbloqueada.
 -- Para sugestões de perguntas ou correção de bugs contate Reksai_void2600#6638.
--- Caso você queira usar este código em um cafofo de tribo, altere a variável TRIBEHOUSE da linha 28 para 'true'.
+-- Caso você queira usar este código em um cafofo de tribo, altere a variável TRIBEHOUSE da linha 25 para 'true'.
 
 admin={"Reksai_void2600#6638"} -- FunCorps, insiram seus nomes aqui!
 
@@ -33,7 +30,7 @@ barreira={type = 12,width = 20,height = 100,foregound = 1,friction = 0.0,restitu
 for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand","AfkDeath"} do
 	tfm.exec["disable"..f](true)
 end
-for _,g in next,{"setq","limite","tema"} do
+for _,g in next,{"setq","limite","tema","get"} do
 	system.disableChatCommandDisplay(g)
 end
 ratos=0; vivos=0; set_q=0; questions_list={}; modo="inicial"; pergunta=0; rodada=0; limite=20; count=0; fixed_cnt=0;
@@ -55,7 +52,7 @@ perguntas={
 "Há quantos emoticons no Transformice?","10","14",1,
 "Há quantas ações de rato no Transformice?","10","14",2,
 "Qual o nome do antigo modo do module #deathmatch?","Baffbotffa","Baffbot",1,
-"A partir de qual nível todas as habilidades de shaman são desbloqueadas?","20","30",1,
+"A partir de qual nível todas as árvores de habilidades de shaman são desbloqueadas?","20","30",1,
 "O que acontece se você digitar /version?","Mostra informações do jogo","Abre a versão do jogo",2,
 "Qual título é desbloqueado quando você consegue 40.000 firsts?","RELÂMPAGO","Mestre do Vento",1,
 "Existem quantas habilidades de Shaman no Transformice?","75","65",1,
@@ -173,7 +170,7 @@ perguntas={
 "Qual destes objetos não pode ser utilizado no modo difícil?","Sp","Seta",1,
 "A seta é sempre o primeiro item do shaman.","Falso","Verdadeiro",1,
 "O module Mestre Mandou já foi administrado por quantas pessoas?","4","5",1,
-"Qual a idade mínima para virar moderador no Transformice?","18","16",1,
+"Qual a idade mínima para virar moderador no Transformice?","18","Não tem idade mínima",1,
 "Qual foi a última versão do Flash Player que o Transformice deu suporte?","32.0","33.0",1,
 "Qual a idade mínima para virar FunCorp no Transformice?","16","Não tem idade mínima",2,
 "Quantos tamanhos de tela de cinema existem no Transformice?","2","3",1,
@@ -192,7 +189,7 @@ perguntas={
 "Qual destes comandos servem para ver informações do mapa atual?","/map","/info",2,
 "Para usar o café, você precisa estar com quantos dias jogados de conta?","30","10",1,
 "Em qual dia do ano o Transformice foi criado?","1","2",1,
-"Qual o limite de queijos que podem ser armazenados no inventário?","80","200",2,
+"Qual o limite de queijos que podem ser armazenados no inventário?","200","250",2,
 "Quantos anos tem o Tigrounette?","33","35",2,
 "Qual o nome da única mulher que criou um module semi-oficial no Transformice?","Morganadxana#0000","Lanadelrey#4862",1,
 "Qual o limite antigo de membros em uma tribo do Transformice?","5000","2000",2,
@@ -208,7 +205,7 @@ perguntas={
 "Em qual ano foram introduzidos os modules no Transformice?","2014","2013",2,
 "Qual destes comandos servem para ver os seus mapas criados?","/maps","/lsmap",2,
 "Quem é o criador e gerenciador atual do module #shamousey?","Shamousey#0015","Ninguem#0095",1,
-"Quantos queijos custa para exportar um mapa como cafofo da tribo?","5","40",1,
+"Quantos queijos são necessários para exportar um mapa como cafofo da tribo?","5","40",1,
 "Quantos objetos de shaman podem ser utilizados no modo padrão?","13","14",2,
 "Em qual ano houve o desban de todas as contas banidas permanentes no Transformice?","2012","2013",2,
 "Em qual país está situado o host de baixo ping disponível no Brasil?","Canadá","México",1,
@@ -256,7 +253,7 @@ perguntas={
 "Quanto tempo dura um mapa normal no Transformice, sem o uso de powerups?","2 minutos","2 minutos e 30 segundos",1,
 "A primeira compra de um visual no Transformice é gratuita.","Verdadeiro","Falso",2,
 "É possível esconder todos os pregos em um mapa do Transformice.","Verdadeiro","Falso",1,
-"Quais são os valores padrões de gravidade e vento no Transformice, respectivamente?","0 e 1","0 e 10",2,
+"Quais são os valores padrões de vento e gravidade no Transformice, respectivamente?","0 e 1","0 e 10",2,
 "Quantos queijos no perfil são necessários para entrar no Editor de Mapas?","0","1000",1,
 }
 perguntas1={
@@ -376,7 +373,7 @@ perguntas1={
 "A Bolívia é o único país da América do Sul localizado próximo da Cordilheira dos Andes.","Verdadeiro","Falso",2,
 "Em média, quantos metros de profundidade você precisa descer para chegar a uma pressão atmosférica de 2 atm?","10 metros","20 metros",1,
 "No geral, Terremotos e maremotos acontecem quando duas ou mais placas tectônicas...","Se separam uma da outra","Colidem uma com outra",2,
-"Qual o nome da tecnologia que era utilizada na maioria dos equipamentos eletrônicos, do início do século XX até o anos 70","Válvula","Transformador",1,
+"Qual o nome da tecnologia que era utilizada na maioria dos equipamentos eletrônicos, do início do século XX até o anos 70?","Válvula","Transformador",1,
 "Em qual ano terminou a Segunda Guerra Mundial?","1942","1945",2,
 "Em qual ano ocorreu a Quebra da Bolsa de Nova York?","1929","1930",1,
 "Qual destes gases geralmente é presente dentro dos túneis de trânsito, e que podem causar problemas ao sistema respiratório?","CO","CO₂",1,
@@ -391,14 +388,14 @@ perguntas1={
 "Qual o nome do lugar mais quente do Planeta Terra?","Rio de Janeiro","Núcleo",2,
 "A partir de qual ano o Real passou a ser a moeda oficial do Brasil?","1994","1995",1,
 "Em qual estado fica localizada a Casa da Moeda do Brasil?","Rio de Janeiro","Distrito Federal",1,
-"Em que ano Vladimir Putin foi eleito pela primeira vez presidente da Rússia?","2000","2004",2,
+"Em que ano Lula foi eleito pela primeira vez presidente do Brasil?","2000","2002",2,
 "Durante o período do Regime Militar, existiram basicamente dois partidos políticos. Quais eram eles?","ARENA e PT","ARENA e MDB",2,
 "Nenhum elemento conhecido da tabela periódica consegue se manter sólido na superfície do Sol.","Verdadeiro","Falso",1,
 "Qual foi a menor temperatura registrada no Planeta Terra, aproximadamente?","-84.5°C","-89.2°C",2,
 "Qual é a capital da Austrália?","Sydney","Camberra",2,
 "Em que ano foi inaugurada a Televisão no Brasil?","1950","1960",1,
 "O Canguru é um animal nativo de qual país?","Madagascar","Austrália",2,
-"Qual é a única capital de estado do Brasil que é banhada pelo Rio Amazonas?","Belém","Rio Branco",1,
+"Qual destas ilhas é banhada pelo Rio Amazonas?","Fernando de Noronha","Ilha de Marajó",2,
 "Em que ano o YouTube foi inaugurado?","2005","2007",1,
 "Os Estados Unidos são formados por quantos estados?","44","50",2,
 "A atriz e humorista Dercy Gonçalves morreu com quantos anos?","94","101",2,
@@ -466,15 +463,15 @@ perguntas2={
 "Quantas sinfonias Beethoven compôs?","9","11",1,
 "Complete a música: Cheiro de pneu queimado, carburador furado, o X9 foi...","Torrado","Morto",1,
 "Bob Marley nasceu em qual país?","África do Sul","Jamaica",2,
-"Qual o nome da música que foi utilizada no encerramento das programações diárias do SBT, da metade dos anos 80 a metade dos anos 90?","The Fight","Over the Top",1,
+"Qual o nome da música que foi utilizada no encerramento das programações diárias do SBT, da metade dos anos 80 até a metade dos anos 90?","The Fight","Over the Top",1,
 "Em qual ano ocorreu o acidente aéreo que vitimou todos os integrantes da banda Mamonas Assasinas?","1996","1997",1,
 "Bruno Mars nasceu em qual país?","Estados Unidos","Inglaterra",1,
-"Qual o nome original da Lana Del Rey?","Elizabeth Woolridge Grant","Elizabeth Cambridge Grant",1,
+"Qual o nome original da cantora Lana Del Rey?","Elizabeth Woolridge Grant","Elizabeth Cambridge Grant",1,
 "A famosa música 'Faz Um Milagre em Mim' do cantor Régis Danese, foi lançada em qual ano?","2008","2009",1,
 "A música 'Because of You' foi originalmente gravada por qual cantora em 2004?","Kelly Clarkson","Lana del Rey",1,
 "A música 'Caneta Azul', que fez muito sucesso em 2019, foi gravada por quem?","Manoel Elias","Manoel Gomes",2,
 "O CD foi o primeiro formato de mídia digital que existiu.","Verdadeiro","Falso",2,
-"Quantos álbuns a cantora Vanusa gravou?","20","22",1,
+"Quantos álbuns a cantora Vanusa gravou?","20","22",2,
 "Antes de entrar na carreira solo, a cantora Ivete Sangalo fazia parte de qual grupo?","Banda Eva","Banda Canal",1,
 "A nota 'Lá' representa uma frequência de quantos Hz, aproximadamente?","400 Hz","440 Hz",2,
 "Qual destas músicas foi tema da novela Anjo Mau, na versão de 1976?","Meu Mundo e Nada Mais","Sonho de Ícaro",1,
@@ -529,7 +526,7 @@ perguntas3={
 "'Regras foram feitas para serem quebradas. Igual prédios... Ou pessoas!'","Jinx","Katarina",1,
 "Qual o nome de dois dos três semideuses localizado no topo dos montes de Freljord?","Ornn e Volibear","Ornn e Sejuani",1,
 "Qual o nome do 'planeta' onde vivem todos os personagens de League of Legends?","Runeterra","Demacia",1,
-"Quantos campeões existem no League of Legends?","157","161",1,
+"Quantos campeões existem no League of Legends?","159","162",1,
 "O time do Cruzeiro já chegou a ter uma equipe competitiva de League of Legends.","Verdadeiro","Falso",1,
 "Ashe e Tryndamere são casados.","Verdadeiro","Falso",1,
 "Qual o nome da região onde majoritariamente ficam localizados os Vastayas?","Noxus","Ionia",2,
@@ -727,11 +724,18 @@ function eventChatCommand(name,message)
 		if (message:sub(0,4) == "setq") then
 			set_q=tonumber(message:sub(6))
 		end
-		if (message:sub(0,4) == "tema") then
-			if message:sub(6) == "0" or message:sub(6) == "1" or message:sub(6) == "2" or message:sub(6) == "3" or message:sub(6) == "4" then
-				tema=tonumber(message:sub(6))
-				questions_list={}; count=0;
-				reset()
+		if (message:sub(0,4) == "get") and tribehouse == false then
+			local sn=((tonumber(message:sub(5))-1)*4)+1
+			if tema == 0 then
+				showMessage(perguntas[sn],name)
+			elseif tema == 1 then
+				showMessage(perguntas1[sn],name)
+			elseif tema == 2 then
+				showMessage(perguntas2[sn],name)
+			elseif tema == 3 then
+				showMessage(perguntas3[sn],name)
+			elseif tema == 4 then
+				showMessage(perguntas4[sn],name)
 			end
 		end
 	end
@@ -746,7 +750,7 @@ function eventPlayerLeft(name)
 	ratos=ratos-1
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.17.0</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
+	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.17.1</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
