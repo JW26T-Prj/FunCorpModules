@@ -1,11 +1,12 @@
--- Mudanças na Versão 2.17.1:
+-- Mudanças na Versão 2.17.2:
 
--- Correção de algumas perguntas
--- Adição de um comando novo para desenvolvedores
+-- Adição de 3 perguntas de música
+-- Adição de 3 perguntas de futebol
+-- Mudanças nos moderadores do module
 
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.17.1
--- Por favor, edite a linha 22 a variável 'admin' pelo seu nome para ter acesso aos comandos.
--- Você pode selecionar o tema editando a linha 24, ou digitando !tema [número] conforme os números abaixo.
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.17.2
+-- Por favor, edite a linha 23 a variável 'admin' pelo seu nome para ter acesso aos comandos.
+-- Você pode selecionar o tema editando a linha 25, ou digitando !tema [número] conforme os números abaixo.
 
 -- Temas:
 -- 0 = transformice
@@ -17,7 +18,7 @@
 
 -- Esta é uma versão bloqueada. As perguntas não podem ser alteradas. Consulte o criador para obter a versão desbloqueada.
 -- Para sugestões de perguntas ou correção de bugs contate Reksai_void2600#6638.
--- Caso você queira usar este código em um cafofo de tribo, altere a variável TRIBEHOUSE da linha 25 para 'true'.
+-- Caso você queira usar este código em um cafofo de tribo, altere a variável TRIBEHOUSE da linha 26 para 'true'.
 
 admin={"Reksai_void2600#6638"} -- FunCorps, insiram seus nomes aqui!
 
@@ -485,6 +486,9 @@ perguntas2={
 "Qual o nome do vocalista do grupo Novo Som, que é um dos únicos remanescentes do grupo formado em 1988?","Alex Gonzaga","Ademílson Fernandes",1,
 "Qual o nome do estilo musical muito utilizado em discotecas e que teve seu auge nos anos 90?","Eurodance","Europop",1,
 "Qual o nome do vocalista do grupo U2?","Bono Vox","Serj Tankian",1,
+"Complete a música: Meu amor! Quando palavras não conseguem expressar...","Veja o brilho em meu olhar","Veja o brilho em meu rosto",1,
+"Qual destas músicas foi tema da novela Duas Caras, exibida pela Globo em 2007?","Quando a Chuva Passar","O Poder do Teu Amor",2,
+"O álbum 'As Quatro Estações', de Sahdy e Júnior, foi vendido tanto em CD quanto em LP.","Verdadeiro","Falso",1,
 }
 perguntas3={
 "Vai na sorte :)","ok","ok",1,
@@ -510,7 +514,7 @@ perguntas3={
 "Antes de ser tomada pela Névoa Negra, as Ilhas das Sombras antes se chamavam...","Ilhas das Guerras","Ilhas das Bênçãos",2,
 "Qual o nome da região de League of Legends que está mais situada ao norte, e ao mesmo tempo é a mais gelada?","Demacia","Freljord",2,
 "Qual o nome da família responsável pela guarda de Demacia?","Stemmaguarda","Vastaya",1,
-"Twisted Fate nasceu de um povo com nome igual ao de um rio sitado ao noroeste do centro de Runeterra. Qual o nome desse rio?","Serpentina","Urtistan",1,
+"Twisted Fate nasceu de um povo com nome igual ao de um rio sitado ao noroeste do centro de Runeterra. Qual o nome desse rio?","Serpentina","Amazonas",1,
 "Qual o nome do lugar localizado em Freljord onde acreditam que os Observadores estejam presos?","Institute of War","Howling Abyss",2,
 "Qual o nome da habilidade Ultimate (R) do Malzahar?","Investida do Vazio","Aperto Infero",2,
 "Qual o nome da habilidade Ultimate (R) da Miss Fortune?","Mandando Bala","Tapete Vermelho",1,
@@ -649,6 +653,9 @@ perguntas4={
 "Qual foi o primeiro clube brasileiro a ser campeão da Copa Libertadores da América?","Santos","Botafogo",1,
 "Qual destes funkeiros já chegou a virar jogador de futebol?","MC Livinho","MC Kevinho",1,
 "Qual foi o jogador que errou o último pênalti na história final da Liga dos Campeões da Europa de 2004-2005?","Shevchenko","Maldini",1,
+"A Copa do Mundo nunca foi realizada no continente africano.","Verdadeiro","Falso",2,
+"Em qual cidade Pelé nasceu?","Santos","Três Corações",2,
+"Em qual ano foi realizado o primeiro Mundial de Clubes organizado pela FIFA?","1960","2000",2,
 }
 mapa="@7786632"
 actual_question={quest="",a1="",a2="",answer=nil}
@@ -714,7 +721,7 @@ function reset()
 	tfm.exec.newGame(mapa)
 end
 function eventChatCommand(name,message)
-	if name == "Forzaldenon#0000" or name == "Reksai_void2600#6638" or name == "Spectra_phantom#6089" or name == "Viego#0345" or verifyAdmin(name) == true then
+	if name == "Forzaldenon#0000" or name == "Reksai_void2600#6638" or name == "Spectra_phantom#6089" or name == "Fosfus7heads#0000" or verifyAdmin(name) == true then
 		if (message:sub(0,6) == "limite") then
 			limite=tonumber(message:sub(8))
 			showMessage("Limite de rodadas alterado para: "..message:sub(8).."")
@@ -750,7 +757,7 @@ function eventPlayerLeft(name)
 	ratos=ratos-1
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.17.1</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
+	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.17.2</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
