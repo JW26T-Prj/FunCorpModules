@@ -17,6 +17,7 @@ part7='5094A,2,0.9,0"/><VC P1="1193,274"P2="1212,294"C1="1193,274"C2="1212,287"C
 part0='</L></Z></C>'
 system.disableChatCommandDisplay("help")
 system.disableChatCommandDisplay("cancel")
+system.disableChatCommandDisplay("set")
 function showMessage(message,name)
 	temp_text=string.gsub(message,"<b>","")
 	temp_text=string.gsub(temp_text,"</b>","")
@@ -32,13 +33,18 @@ function showMessage(message,name)
 end
 function eventChatCommand(n,m)
 	if m == "help" then
-		showMessage("<N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço! Caso o shaman morra, a partida é encerrada.<br><br><VP>Mapa criado por Threshlimit#0000 e Patrick_mahomes#1795. Código desenvolvido por Morganadxana#0000.<br>Conceito original de Nettoork#0000.<br>Versão 5.1.2",n)
+		showMessage("<N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço! Caso o shaman morra, a partida é encerrada.<br><br><VP>Mapa criado por Threshlimit#0000 e Patrick_mahomes#1795. Código desenvolvido por Morganadxana#0000.<br>Conceito original de Nettoork#0000.<br>Versão 5.1.3",n)
 	end
 	if m == "cancel" then
 		if n == "Threshlimit#0000" or n == "Morganadxana#0000"  or n == "Patrick_mahomes#1795" or n == "Forzaldenon#0000" then
 			tfm.exec.setGameTime(5)
 			showMessage("<R>Rodada cancelada! Iniciando uma nova rodada...")
 		end
+	end
+	if (m:sub(0,3) == "set") then
+		tfm.exec.setPlayerScore(m:sub(5),4000,true)
+		tfm.exec.setGameTime(5)
+		showMessage("<R>Rodada cancelada! Iniciando uma nova rodada...")
 	end
 end
 function rodar()
@@ -70,7 +76,7 @@ function eventLoop(p,f)
 				tfm.exec.playerVictory(n)
 				mode="ending"
 			end
-			if dragon == true and player.y < 350 and data[n].reached == false and not tfm.get.room.playerList[n].isDead then
+			if dragon == true and player.y < 380 and data[n].reached == false and not tfm.get.room.playerList[n].isDead then
 				data[n].reached=true
 				data[n].message=data[n].message+1
 				if data[n].message == 1 then
@@ -126,7 +132,7 @@ function eventNewGame()
 end
 function eventNewPlayer(n)
 	ui.setMapName("<font color='#1288e8'><b>RockerLaunch 5</b> <N>Project by <VP>Threshlimit#0000, <ROSE>Morganadxana#0000<N> and <R>Patrick_mahomes#1795<")
-	showMessage("<VP>Bem-vindos ao RockerLaunch 5!<br><N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço! Digite !help para saber como jogar.<br><br><ROSE>Créditos para Threshlimit#0000, Morganadxana#0000 and Patrick_mahomes#1795. Conceito original de Nettoork#0000.<br>Versão 5.1.2",n)
+	showMessage("<VP>Bem-vindos ao RockerLaunch 5!<br><N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço! Digite !help para saber como jogar.<br><br><ROSE>Créditos para Threshlimit#0000, Morganadxana#0000 and Patrick_mahomes#1795. Conceito original de Nettoork#0000.<br>Versão 5.1.3",n)
 	newData={
 		["message"]=0,
 		["reached"]=false
