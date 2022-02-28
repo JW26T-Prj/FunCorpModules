@@ -1,12 +1,10 @@
--- Mudanças na Versão 2.17.2:
+-- Mudanças na Versão 2.17.3:
 
--- Adição de 3 perguntas de música
--- Adição de 3 perguntas de futebol
--- Mudanças nos moderadores do module
+-- Correção de bugs no comando !tema
 
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.17.2
--- Por favor, edite a linha 23 a variável 'admin' pelo seu nome para ter acesso aos comandos.
--- Você pode selecionar o tema editando a linha 25, ou digitando !tema [número] conforme os números abaixo.
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.17.3
+-- Por favor, edite a linha 21 a variável 'admin' pelo seu nome para ter acesso aos comandos.
+-- Você pode selecionar o tema editando a linha 23, ou digitando !tema [número] conforme os números abaixo.
 
 -- Temas:
 -- 0 = transformice
@@ -18,7 +16,7 @@
 
 -- Esta é uma versão bloqueada. As perguntas não podem ser alteradas. Consulte o criador para obter a versão desbloqueada.
 -- Para sugestões de perguntas ou correção de bugs contate Reksai_void2600#6638.
--- Caso você queira usar este código em um cafofo de tribo, altere a variável TRIBEHOUSE da linha 26 para 'true'.
+-- Caso você queira usar este código em um cafofo de tribo, altere a variável TRIBEHOUSE da linha 24 para 'true'.
 
 admin={"Reksai_void2600#6638"} -- FunCorps, insiram seus nomes aqui!
 
@@ -731,7 +729,7 @@ function eventChatCommand(name,message)
 		if (message:sub(0,4) == "setq") then
 			set_q=tonumber(message:sub(6))
 		end
-		if (message:sub(0,4) == "get") and tribehouse == false then
+		if (message:sub(0,3) == "get") and tribehouse == false then
 			local sn=((tonumber(message:sub(5))-1)*4)+1
 			if tema == 0 then
 				showMessage(perguntas[sn],name)
@@ -743,6 +741,13 @@ function eventChatCommand(name,message)
 				showMessage(perguntas3[sn],name)
 			elseif tema == 4 then
 				showMessage(perguntas4[sn],name)
+			end
+		end
+		if (message:sub(0,4) == "tema") then
+			if message:sub(6) == "0" or message:sub(6) == "1" or message:sub(6) == "2" or message:sub(6) == "3" or message:sub(6) == "4" then
+				tema=tonumber(message:sub(6))
+				questions_list={}; count=0;
+				reset()
 			end
 		end
 	end
@@ -757,7 +762,7 @@ function eventPlayerLeft(name)
 	ratos=ratos-1
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.17.2</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
+	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.17.3</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
