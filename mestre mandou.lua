@@ -1,5 +1,5 @@
--- Código do module Mestre Mandou, versão RTM 15901.097, desenvolvido por Rakan_raster#0000.
--- Code of Simon Says module, version RTM 15901.097, developed by Rakan_raster#0000.
+-- Código do module Mestre Mandou, versão RTM 16002.098 LTS, desenvolvido por Rakan_raster#0000.
+-- Code of Simon Says module, version RTM 16002.098 LTS, developed by Rakan_raster#0000.
 
 -- Atenção: Antes de rodar este código em uma sala, verifique se esta versão coincide com a versão mais recente presente abaixo:
 -- https://raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/mestre%20mandou.lua
@@ -30,7 +30,7 @@ for _,f in next,{"command","pw","limit","run","fc","tc","q","a","t","kill"} do
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>O objetivo deste module é muito simples: Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><VP>Tenha sempre cuidado com os comandos trolls!<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Jessiewind26#2546<br><br><ROSE>Versão RTM 15901.097",
+	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>O objetivo deste module é muito simples: Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><VP>Tenha sempre cuidado com os comandos trolls!<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Jessiewind26#2546<br><br><ROSE>Versão RTM 16002.098 LTS",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -130,7 +130,7 @@ lang.br = {
 	sudden = "Morte súbita habilitada!",
 }
 lang.en = {
-	welcome = "<N><b>Welcome to Simon Says module!</b><br>This module's goal is easy: Follow everything the game told and test your limits until the end!<br><VP>Be always aware to troll commands!<br><br><J><b>Script developed by Rakan_raster#0000</b><br>Original concept by Jessiewind26#2546<br>Translation by Draw#6691<br><br><ROSE>Version RTM 15901.097",
+	welcome = "<N><b>Welcome to Simon Says module!</b><br>This module's goal is easy: Follow everything the game told and test your limits until the end!<br><VP>Be always aware to troll commands!<br><br><J><b>Script developed by Rakan_raster#0000</b><br>Original concept by Jessiewind26#2546<br>Translation by Draw#6691<br><br><ROSE>Version RTM 16002.098 LTS",
 	dancar = "Dance!",
 	sentar = "Sit down!",
 	confetar = "Throw 5 confetti!",
@@ -230,7 +230,7 @@ lang.en = {
 	sudden = "Sudden death enabled!",
 }
 lang.fr = {
-	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Rakan_raster#0000</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 15901.097",
+	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Rakan_raster#0000</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 16002.098 LTS",
 	dancar = "Danse !",
 	sentar = "Assis !",
 	confetar = "Lance 5 fois des confettis !",
@@ -452,7 +452,7 @@ function eventNewGame()
 	tfm.exec.setWorldGravity(0, 10)
 	if unlocked == true then
 		tfm.exec.setGameTime(15)
-		showMessage("<J><i>Spectra's map loader v2.209.2</i><br><N>Loading current map information...<br><b>Current Map :</b> <V>"..map_det.code.."<br><N><b>Author :</b> <V>"..map_det.creator.."")
+		showMessage("<J><i>Spectra's map loader v2.210.2</i><br><N>Loading current map information...<br><b>Current Map :</b> <V>"..map_det.code.."<br><N><b>Author :</b> <V>"..map_det.creator.."")
 		if tfm.get.room.community == "br" then
 			showMessage("<VP><br><i>Em Maio de 2022, o module Mestre Mandou completará 8 anos de vida! Faremos no mês de Maio um evento super especial com todos os antigos criadores com comandos exclusivos e vários prêmios. Aguardem!</i>")
 		end
@@ -500,33 +500,44 @@ function addCommandCount(name)
 end
 function eventChatCommand(name,message)
 	if verifyNinjas(name) == true or verifyAdmin(name) == true then
-		if(message:sub(0,7) == "command") and active == 0 then
+		if active <= 0 then
+			if(message:sub(0,3) == "run") then
+				tfm.exec.newGame(message:sub(5))
+				active=0
+			end
+			if(message:sub(0,5) == "limit") then
+				tfm.exec.setRoomMaxPlayers(tonumber(message:sub(7)))
+			end
+			if message == "fc" then
+				if fc_mode == false then
+					fc_mode=true
+					showMessage("<R>The FunCorp mode of this module is now enabled.<br><br>Available commands: !tc [message], !run [@code], !kill [player#tag], !limit [number], !pw [password].")
+				else
+					fc_mode=false
+					showMessage("<R>The FunCorp mode of this module is now disabled.")
+				end
+			end
+		end
+		if(message:sub(0,7) == "command") then
 				active=tonumber(message:sub(9))
 				getCommand()
-		end
-		if(message:sub(0,1) == "q") then
-			q=message:sub(3)
 		end
 		if(message:sub(0,2) == "tc") then
 			if fc_mode == true then
 				showMessage("<VP>• [FunCorp - <b>"..name.."</b>] "..message:sub(4).."")
 			end
 		end
+		if(message:sub(0,1) == "q") then
+			q=message:sub(3)
+		end
 		if(message:sub(0,1) == "a") then
 			a=message:sub(3)
-		end
-		if(message:sub(0,4) == "kill") then
-			tfm.exec.killPlayer(message:sub(6))
 		end
 		if(message:sub(0,1) == "t") then
 			qtime=tonumber(message:sub(3))
 		end
-		if(message:sub(0,3) == "run") and active <= 0 then
-			tfm.exec.newGame(message:sub(5))
-			active=0
-		end
-		if(message:sub(0,5) == "limit") then
-			tfm.exec.setRoomMaxPlayers(tonumber(message:sub(7)))
+		if(message:sub(0,4) == "kill") then
+			tfm.exec.killPlayer(message:sub(6))
 		end
 		if(message:sub(0,2) == "pw") then
 			tfm.exec.setRoomPassword(tostring(message:sub(4)))
@@ -534,15 +545,6 @@ function eventChatCommand(name,message)
 				showMessage("Password cleared.",name)
 			else
 				showMessage("Password changed to: "..message:sub(4).."",name)
-			end
-		end
-		if message == "fc" then
-			if fc_mode == false then
-				fc_mode=true
-				showMessage("<R>The FunCorp mode of this module is now enabled.<br><br>Available commands: !tc [message], !run [@code], !kill [player#tag], !limit [number], !pw [password].")
-			else
-				fc_mode=false
-				showMessage("<R>The FunCorp mode of this module is now disabled.")
 			end
 		end
 	end
@@ -1538,11 +1540,11 @@ end
 function eventLoop(passado,faltando)
 	local tempo=math.floor(faltando/1000)
 	if active == -2 then
-		ui.setMapName("<N>"..text.mices.."   <G>|   <VP><b>"..text.version.." RTM 15901.097</b><")
+		ui.setMapName("<N>"..text.mices.."   <G>|   <VP><b>"..text.version.." RTM 16002.098 LTS</b><")
 	elseif active == -1 then
-		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <VP><b>"..text.version.." RTM 15901.097</b><")
+		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <VP><b>"..text.version.." RTM 16002.098 LTS</b><")
 	elseif active >= 0 then
-		ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <VP><b>"..text.version.." RTM 15901.097</b><")
+		ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <VP><b>"..text.version.." RTM 16002.098 LTS</b><")
 	end
 	if rato < 4 then
 		if tfm.get.room.currentMap == "@2684847" and unlocked == true then
@@ -1678,7 +1680,7 @@ function eventLoop(passado,faltando)
 		if rodada >= 18 then
 			dificuldade=7
 		end
-		if rodada % 2 == 0 and rodada >= 18 and dificuldade == 7 and vivo >= 2 then
+		if rodada % 2 == 0 and rodada >= 18 and dificuldade == 7 and vivo == 2 then
 			showMessage("<R>"..text.sudden.."")
 		end
 		for name,player in next,tfm.get.room.playerList do
