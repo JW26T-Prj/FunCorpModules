@@ -4,14 +4,14 @@ tfm.exec.disableAutoShaman(true)
 tfm.exec.disableAutoTimeLeft(true)
 tfm.exec.disableAutoScore(true)
 tfm.exec.disableAfkDeath(true)
-tfm.exec.setRoomMaxPlayers(25)
+tfm.exec.setRoomMaxPlayers(20)
 id=0; round=1; tempo=800; faltando=0; data={}; valendo=false;
 chars={"←","↑","→","↓"}
 caracteres={c1="",c2="",c3="",c4="",c5="",c6="",c7="",c8="",c9="",c10="",c11="",c12=""}
 setas={c1={0,0},c2={0,0},c3={0,0},c4={0,0},c5={0,0},c6={0,0},c7={0,0},c8={0,0},c9={0,0},c10={0,0},c11={0,0},c12={0,0}}
-mapa='<C><P DS="m;200,340,600,340" F="0" /><Z><S><S L="40" X="780" H="80" Y="350" T="6" P="0,0,0.3,0.2,0,0,0,0" /><S L="40" X="20" H="80" Y="354" T="6" P="0,0,0.3,0.2,0,0,0,0" /><S P="0,0,0.3,0.2,0,0,0,0" L="800" H="20" Y="390" T="6" X="400" /><S L="800" X="400" H="20" Y="320" T="6" P="0,0,0.3,0.2,0,0,0,0" /><S L="40" X="80" H="80" Y="250" T="6" P="0,0,0.3,0.2,0,0,0,0" /><S L="40" X="720" H="80" Y="250" T="6" P="0,0,0.3,0.2,0,0,0,0" /><S L="680" X="400" H="20" Y="201" T="6" P="0,0,0.3,0.2,0,0,0,0" /></S><D><DS Y="377" X="401" /></D><O /></Z></C>'
+mapa='<C><P F="0" DS="m;400,375" MEDATA=";;;;-0;0:::1-"/><Z><S><S T="6" X="480" Y="350" L="40" H="80" P="0,0,0.3,0.2,0,0,0,0"/><S T="6" X="320" Y="354" L="40" H="80" P="0,0,0.3,0.2,0,0,0,0"/><S T="6" X="400" Y="390" L="200" H="20" P="0,0,0.3,0.2,0,0,0,0"/><S T="6" X="400" Y="320" L="400" H="20" P="0,0,0.3,0.2,0,0,0,0"/><S T="6" X="220" Y="270" L="40" H="80" P="0,0,0.3,0.2,0,0,0,0"/><S T="6" X="580" Y="271" L="40" H="80" P="0,0,0.3,0.2,0,0,0,0"/><S T="6" X="400" Y="221" L="400" H="20" P="0,0,0.3,0.2,0,0,0,0"/></S><D/><O/><L/></Z></C>'
 function eventNewGame()
-	tfm.exec.chatMessage("<ROSE><b>Bem-vindo ao module #arrows!</b><br><J>O objetivo da sala é simples. Você deve fazer a sequência de setas conforme pede o jogo antes que a barra vermelha termine.<br><br>Module criado originalmente por <N><b>Shun_kazami#7014</b> e <J>atualizado por <N><b>Patrick_mahomes#1795 e Yone#5530</b><J>.<br><R>Versão 2.1.0",name)
+	tfm.exec.chatMessage("<ROSE><b>Bem-vindo ao module #arrows!</b><br><J>O objetivo da sala é simples. Você deve fazer a sequência de setas conforme pede o jogo antes que a barra vermelha termine.<br><br>Module criado originalmente por <N><b>Shun_kazami#7014</b> e <J>atualizado por <N><b>Patrick_mahomes#1795 e Yone#5530</b><J>.<br><R>Versão 2.2.0",name)
 	for i=0, 15 do
 			ui.removeTextArea(i,nil)
 		end
@@ -28,6 +28,18 @@ function eventNewGame()
 	end
 	valendo=false;
 	tfm.exec.setGameTime(15)
+end
+function enterPlayer(name)
+	data[name].step=1
+	data[name].c=0
+	tfm.exec.movePlayer(name,400,260,false,0,0,false)
+	tfm.exec.freezePlayer(name,false)
+end
+function completeCommand(name)
+	tfm.exec.movePlayer(name,400,350,false,0,0,false)
+	data[name].step=0
+	data[name].c=1
+	tfm.exec.freezePlayer(name,true)
 end
 function eventKeyboard(name,id)
 	if valendo == true then
@@ -54,9 +66,7 @@ function eventKeyboard(name,id)
 			elseif data[name].step == 4 then
 				if id == setas.c4[1] or id == setas.c4[2] then
 					if round <= 10 then
-						tfm.exec.movePlayer(name,400,350,false,0,0,false)
-						data[name].step=0
-						data[name].c=1
+						completeCommand(name)
 					else
 						data[name].step=5
 					end
@@ -84,9 +94,7 @@ function eventKeyboard(name,id)
 			elseif data[name].step == 8 then
 				if id == setas.c8[1] or id == setas.c8[2] then
 					if round > 10 and round <= 20 then
-						tfm.exec.movePlayer(name,400,350,false,0,0,false)
-						data[name].step=0
-						data[name].c=1
+						completeCommand(name)
 					else
 						data[name].step=9
 					end
@@ -113,9 +121,7 @@ function eventKeyboard(name,id)
 				end
 			elseif data[name].step == 12 then
 				if id == setas.c12[1] or id == setas.c12[2] then
-					tfm.exec.movePlayer(name,400,350,false,0,0,false)
-					data[name].step=0
-					data[name].c=1
+					completeCommand(name)
 				else
 					tfm.exec.killPlayer(name)
 				end
@@ -159,7 +165,7 @@ function eventNewPlayer(name)
 	end
 end
 function eventLoop(p,f)
-	ui.setMapName("Arrows! <N><b>v2.1.0</b>  <G>|   <N>Round : <V>"..round.."  <G>|  <N>Desenvolvido por <VP><b>Patrick_mahomes#1795 e Yone#5530</b><")
+	ui.setMapName("Arrows! <N><b>v2.2.0</b>  <G>|   <N>Round : <V>"..round.."  <G>|  <N>Desenvolvido por <VP><b>Patrick_mahomes#1795 e Yone#5530</b><")
 	faltando=f;
 	if f < 1 then
 		if valendo == false then
@@ -179,9 +185,7 @@ function eventLoop(p,f)
 				setChars1()
 				tfm.exec.setGameTime(36000)
 				for name,player in pairs(tfm.get.room.playerList) do
-					data[name].step=1
-					data[name].c=0
-					tfm.exec.movePlayer(name,400,260,false,0,0,false)
+					enterPlayer(name)
 				end
 			end
 			tempo=tempo-80
@@ -192,9 +196,7 @@ function eventLoop(p,f)
 				setChars1()
 				tfm.exec.setGameTime(36000)
 				for name,player in pairs(tfm.get.room.playerList) do
-					data[name].step=1
-					data[name].c=0
-					tfm.exec.movePlayer(name,400,260,false,0,0,false)
+					enterPlayer(name)
 				end
 			end
 			tempo=tempo-100
@@ -205,9 +207,7 @@ function eventLoop(p,f)
 				setChars2()
 				tfm.exec.setGameTime(36000)
 				for name,player in pairs(tfm.get.room.playerList) do
-					data[name].step=1
-					data[name].c=0
-					tfm.exec.movePlayer(name,400,260,false,0,0,false)
+					enterPlayer(name)
 				end
 			end
 			tempo=tempo-80
@@ -218,9 +218,7 @@ function eventLoop(p,f)
 				setChars2()
 				tfm.exec.setGameTime(36000)
 				for name,player in pairs(tfm.get.room.playerList) do
-					data[name].step=1
-					data[name].c=0
-					tfm.exec.movePlayer(name,400,260,false,0,0,false)
+					enterPlayer(name)
 				end
 			end
 			tempo=tempo-100
@@ -231,9 +229,7 @@ function eventLoop(p,f)
 				setChars3()
 				tfm.exec.setGameTime(36000)
 				for name,player in pairs(tfm.get.room.playerList) do
-					data[name].step=1
-					data[name].c=0
-					tfm.exec.movePlayer(name,400,260,false,0,0,false)
+					enterPlayer(name)
 				end
 			end
 			tempo=tempo-100
@@ -244,9 +240,7 @@ function eventLoop(p,f)
 				setChars3()
 				tfm.exec.setGameTime(36000)
 				for name,player in pairs(tfm.get.room.playerList) do
-					data[name].step=1
-					data[name].c=0
-					tfm.exec.movePlayer(name,400,260,false,0,0,false)
+					enterPlayer(name)
 				end
 			end
 			tempo=tempo-160
