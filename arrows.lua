@@ -1,17 +1,15 @@
--- Module Arrows originalmente criado por Linkventusx5 (atual Shun_kazami#7014) e atualizado por Patrick_mahomes#1795 e Yone#5530.
 tfm.exec.disableAutoNewGame(true)
 tfm.exec.disableAutoShaman(true)
 tfm.exec.disableAutoTimeLeft(true)
 tfm.exec.disableAutoScore(true)
 tfm.exec.disableAfkDeath(true)
-tfm.exec.setRoomMaxPlayers(25)
+tfm.exec.setRoomMaxPlayers(20)
 id=0; round=1; tempo=800; faltando=0; data={}; valendo=false;
 chars={"←","↑","→","↓"}
 caracteres={c1="",c2="",c3="",c4="",c5="",c6="",c7="",c8="",c9="",c10="",c11="",c12=""}
 setas={c1={0,0},c2={0,0},c3={0,0},c4={0,0},c5={0,0},c6={0,0},c7={0,0},c8={0,0},c9={0,0},c10={0,0},c11={0,0},c12={0,0}}
 mapa='<C><P F="0" DS="m;400,375" MEDATA=";;;;-0;0:::1-"/><Z><S><S T="6" X="480" Y="350" L="40" H="80" P="0,0,0.3,0.2,0,0,0,0"/><S T="6" X="320" Y="354" L="40" H="80" P="0,0,0.3,0.2,0,0,0,0"/><S T="6" X="400" Y="390" L="200" H="20" P="0,0,0.3,0.2,0,0,0,0"/><S T="6" X="400" Y="320" L="400" H="20" P="0,0,0.3,0.2,0,0,0,0"/><S T="6" X="220" Y="270" L="40" H="80" P="0,0,0.3,0.2,0,0,0,0"/><S T="6" X="580" Y="271" L="40" H="80" P="0,0,0.3,0.2,0,0,0,0"/><S T="6" X="400" Y="221" L="400" H="20" P="0,0,0.3,0.2,0,0,0,0"/></S><D/><O/><L/></Z></C>'
 function eventNewGame()
-	tfm.exec.chatMessage("<ROSE><b>Bem-vindo ao module #arrows!</b><br><J>O objetivo da sala é simples. Você deve fazer a sequência de setas conforme pede o jogo antes que a barra vermelha termine.<br><br>Module criado originalmente por <N><b>Shun_kazami#7014</b> e <J>atualizado por <N><b>Patrick_mahomes#1795 e Yone#5530</b><J>.<br><R>Versão 2.2.0",name)
 	for i=0, 15 do
 			ui.removeTextArea(i,nil)
 		end
@@ -22,8 +20,8 @@ function eventNewGame()
 			["c"]=0;
 			}
 		data[name]=newData;
-		for i=30,87 do
-			tfm.exec.bindKeyboard(name,i,false,false)
+		for i=37,87 do
+			tfm.exec.bindKeyboard(name,i,false,true)
 		end
 	end
 	valendo=false;
@@ -138,21 +136,24 @@ function eventPlayerDied(name)
 	for pname,player in pairs(tfm.get.room.playerList) do
 		if not player.isDead then
 			i=i+1
-			n=pname end	end
+			n=pname
+		end
+	end
 	if i==0 then
 		tfm.exec.chatMessage("<R>Não tivemos vencedores!")
 		tfm.exec.newGame(mapa)
 		valendo=false
 		tempo=999
 	elseif i==1 then
-		tfm.exec.chatMessage("<J>"..n.." foi o vencedor!")
-		tfm.exec.giveCheese(n)
-		tfm.exec.playerVictory(n)
-		tfm.exec.setPlayerScore(n,10,true)
+		tfm.exec.chatMessage("<J>"..name.." foi o vencedor!")
+		tfm.exec.giveCheese(name)
+		tfm.exec.playerVictory(name)
+		tfm.exec.setPlayerScore(name,10,true)
 		tfm.exec.newGame(mapa)
 		valendo=false
 		tempo=999
- end end
+	end
+end
 function eventNewPlayer(name)
 	for name,player in pairs(tfm.get.room.playerList) do
 	newData={
@@ -163,9 +164,10 @@ function eventNewPlayer(name)
 		tfm.exec.bindKeyboard(name,i,false,false)
 	end
 	end
+	tfm.exec.chatMessage("<ROSE><b>Bem-vindo ao module #arrows!</b><br><J>O objetivo da sala é simples. Você deve fazer a sequência de setas conforme pede o jogo antes que a barra vermelha termine.<br><br>Module criado originalmente por <N><b>Shun_kazami#7014</b> e <J>atualizado por <N><b>Patrick_mahomes#1795 e Yone#5530</b><J>.<br><R>Versão 2.2.1",name)
 end
 function eventLoop(p,f)
-	ui.setMapName("Arrows! <N><b>v2.2.0</b>  <G>|   <N>Round : <V>"..round.."  <G>|  <N>Desenvolvido por <VP><b>Patrick_mahomes#1795 e Yone#5530</b><")
+	ui.setMapName("Arrows! <N><b>v2.2.1</b>  <G>|   <N>Round : <V>"..round.."   <G>|   <N>Desenvolvido por <VP><b>Patrick_mahomes#1795 e Yone#5530</b><")
 	faltando=f;
 	if f < 1 then
 		if valendo == false then
@@ -420,18 +422,18 @@ function setChars3()
 	caracteres.c10=chars[math.random(#chars)]
 	caracteres.c11=chars[math.random(#chars)]
 	caracteres.c12=chars[math.random(#chars)]
-	ui.addTextArea(1,"<font size='60'>"..caracteres.c1.."",nil,20,50,70,80,0x000001,0x000001,1.0,true)
-	ui.addTextArea(2,"<font size='60'>"..caracteres.c2.."",nil,90,50,70,80,0x000001,0x000001,1.0,true)
-	ui.addTextArea(3,"<font size='60'>"..caracteres.c3.."",nil,160,50,70,80,0x000001,0x000001,1.0,true)
-	ui.addTextArea(4,"<font size='60'>"..caracteres.c4.."",nil,230,50,70,80,0x000001,0x000001,1.0,true)
-	ui.addTextArea(5,"<font size='60'>"..caracteres.c5.."",nil,300,50,70,80,0x000001,0x000001,1.0,true)
-	ui.addTextArea(6,"<font size='60'>"..caracteres.c6.."",nil,370,50,70,80,0x000001,0x000001,1.0,true)
-	ui.addTextArea(7,"<font size='60'>"..caracteres.c7.."",nil,440,50,70,80,0x000001,0x000001,1.0,true)
-	ui.addTextArea(8,"<font size='60'>"..caracteres.c8.."",nil,510,50,70,80,0x000001,0x000001,1.0,true)
-	ui.addTextArea(9,"<font size='60'>"..caracteres.c9.."",nil,580,50,70,80,0x000001,0x000001,1.0,true)
-	ui.addTextArea(10,"<font size='60'>"..caracteres.c10.."",nil,650,50,70,80,0x000001,0x000001,1.0,true)
-	ui.addTextArea(11,"<font size='60'>"..caracteres.c11.."",nil,720,50,70,80,0x000001,0x000001,1.0,true)
-	ui.addTextArea(12,"<font size='60'>"..caracteres.c12.."",nil,790,50,70,80,0x000001,0x000001,1.0,true)
+	ui.addTextArea(1,"<font size='60'>"..caracteres.c1.."",nil,-10,50,70,80,0x000001,0x000001,1.0,true)
+	ui.addTextArea(2,"<font size='60'>"..caracteres.c2.."",nil,60,50,70,80,0x000001,0x000001,1.0,true)
+	ui.addTextArea(3,"<font size='60'>"..caracteres.c3.."",nil,130,50,70,80,0x000001,0x000001,1.0,true)
+	ui.addTextArea(4,"<font size='60'>"..caracteres.c4.."",nil,200,50,70,80,0x000001,0x000001,1.0,true)
+	ui.addTextArea(5,"<font size='60'>"..caracteres.c5.."",nil,270,50,70,80,0x000001,0x000001,1.0,true)
+	ui.addTextArea(6,"<font size='60'>"..caracteres.c6.."",nil,340,50,70,80,0x000001,0x000001,1.0,true)
+	ui.addTextArea(7,"<font size='60'>"..caracteres.c7.."",nil,410,50,70,80,0x000001,0x000001,1.0,true)
+	ui.addTextArea(8,"<font size='60'>"..caracteres.c8.."",nil,480,50,70,80,0x000001,0x000001,1.0,true)
+	ui.addTextArea(9,"<font size='60'>"..caracteres.c9.."",nil,550,50,70,80,0x000001,0x000001,1.0,true)
+	ui.addTextArea(10,"<font size='60'>"..caracteres.c10.."",nil,620,50,70,80,0x000001,0x000001,1.0,true)
+	ui.addTextArea(11,"<font size='60'>"..caracteres.c11.."",nil,690,50,70,80,0x000001,0x000001,1.0,true)
+	ui.addTextArea(12,"<font size='60'>"..caracteres.c12.."",nil,760,50,70,80,0x000001,0x000001,1.0,true)
 	setKeys()
 end
 tfm.exec.newGame(mapa)
