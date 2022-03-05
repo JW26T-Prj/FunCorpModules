@@ -4,7 +4,7 @@ tfm.exec.disableAutoShaman(true)
 tfm.exec.disableAutoTimeLeft(true)
 tfm.exec.disableAutoScore(true)
 tfm.exec.disableAfkDeath(true)
-tfm.exec.setRoomMaxPlayers(20)
+tfm.exec.setRoomMaxPlayers(25)
 id=0; round=1; tempo=800; faltando=0; data={}; valendo=false;
 chars={"←","↑","→","↓"}
 caracteres={c1="",c2="",c3="",c4="",c5="",c6="",c7="",c8="",c9="",c10="",c11="",c12=""}
@@ -22,7 +22,7 @@ function eventNewGame()
 			["c"]=0;
 			}
 		data[name]=newData;
-		for i=30, 87 do
+		for i=30,87 do
 			tfm.exec.bindKeyboard(name,i,false,false)
 		end
 	end
@@ -155,11 +155,11 @@ function eventPlayerDied(name)
  end end
 function eventNewPlayer(name)
 	for name,player in pairs(tfm.get.room.playerList) do
-		newData={
-			["step"]=1;
-			}
-		data[name]=newData;
-	for i={37,65}, 87 do
+	newData={
+		["step"]=1;
+		}
+	data[name]=newData;
+	for i=37,87 do
 		tfm.exec.bindKeyboard(name,i,false,false)
 	end
 	end
@@ -171,9 +171,6 @@ function eventLoop(p,f)
 		if valendo == false then
 			for name,player in pairs(tfm.get.room.playerList) do
 				data[name].step=0
-				for i=30, 87 do
-					tfm.exec.bindKeyboard(name,i,true,true)
-				end
 			end
 			valendo=true
 		end
