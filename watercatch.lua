@@ -7,14 +7,13 @@ end
 tfm.exec.newGame("@7890357")
 tfm.exec.setRoomMaxPlayers(35)
 shaman=""; alives=0; cannons=10; z=0; data={}; mode="load"; changed=false; loop=0; timer=0; xml=''; time_passed=0; time_remain=0;
-powerups={x1=-1,x2=-1,x3=-1,x4=-1,x5=-1,y1=-1,y2=-1,y3=-1,y4=-1,y5=-1,t1=0,t2=0,t3=0,t4=0,t5=0}
-testmode=false;
+powerups={x1=-1,x2=-1,x3=-1,x4=-1,y1=-1,y2=-1,y3=-1,y4=-1,t1=0,t2=0,t3=0,t4=0}
 function showMessage(message,name)
 	temp_text=string.gsub(message,"<b>","")
 	temp_text=string.gsub(temp_text,"</b>","")
-	if testmode == false then
+	if tfm.get.room.isTribeHouse == false then
 		tfm.exec.chatMessage(message,name)
-	elseif testmode == true then
+	elseif tfm.get.room.isTribeHouse == true then
 		if name == nil then
 			print("<ROSE>[Test Mode] : <br><BL>"..temp_text.."")
 		else
@@ -23,8 +22,6 @@ function showMessage(message,name)
 	end
 end
 function showWater(name)
-	tfm.exec.addImage("17be536e980.png","?1",-200,1820,name,0.5,0.5,0,1)
-	tfm.exec.addImage("17be536e980.png","?1",2400,1820,name,0.5,0.5,0,1)
 	tfm.exec.addImage("17df24985c5.png","?1",40,330,name)
 	tfm.exec.addImage("17def3df6c5.jpg","?1",-300,347,name,1,1.1)
 	tfm.exec.addImage("17def3e4466.png","!1",-300,306,name,12,1.7,0,0.95)
@@ -57,7 +54,7 @@ function eventPlayerDied(n)
 end
 function eventNewPlayer(name)
 	showWater(name)
-	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v2.2.5</b><N> - criado por <ROSE><b>Morganadxana#0000</b> <N>e <R><b>Spectra_phantom#6089</b><")
+	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v2.2.6</b><N> - criado por <ROSE><b>Morganadxana#0000</b> <N>e <R><b>Spectra_phantom#6089</b><")
 	newData={
 	["o"]=99; ["i"]=0; ["t"]=0; ["c"]=0; ["opened"]=false; ["imageid"]=-1; ["imageid2"]=-1; ["imageid3"]=-1; ["imageid4"]=-1; ["imaget"]=5;
 	};
@@ -78,13 +75,13 @@ function eventChatCommand(name,message)
 		showMenu(name,0xf0f0f0,140,90,520,265,"Ajuda do Module #watercatch","O objetivo é bem simples: <b>Fugir do shaman</b>, se escondendo dentro do profundo lago e tomando cuidado para não morrer afogado!<br><R><b>Shamans, não esqueçam de se mexer, ou irão morrer AFK!</b><br><br><VP>Os quadrados marcados por <ROSE>'!'<VP> são powerups, que geram efeitos aleatórios nos ratos.<J><br>Estes powerups podem ser acionados pressionando ESPAÇO em cima deles.<br><N>Você pode ver os possíveis efeitos dos powerups indo no Menu e clicando em Powerups. Vale ressaltar que eles funcionam apenas depois que o shaman for liberado.<br><br><N>Caso você seja shaman, você tem um limite de <b>10</b> objetos que podem ser utilizados. Exceder este limite fará com que a partida acabe.")
 	end
 	if message == "powerups" then
-		showMenu(name,0xf0f0f0,140,76,520,315,"Powerups do Module #watercatch","<font size='11'>Os seguintes powerups estão disponíveis no momento:<br><ROSE><b>• CAIXA</b><N><br>Faz aparecer uma caixa de acompanhamento em cima de você.<br><ROSE><b>• OXIGÊNIO</b><N><br>Aumenta o seu nível de oxigênio em 40%.<br><ROSE><b>• VELOCIDADE</b><N><br>Te dá um grande impulso de velocidade.<br><ROSE><b>• AFUNDAR</b><N><br>Cria uma anomalia temporária que leva todos os ratos em direção ao fundo do lago.<br><ROSE><b>• MEEP</b><N><br>Te dá o poder de usar o Meep!<br><ROSE><b>• SUFOCO</b><N><br>Diminui o seu nível de oxigênio em 18%. Caso seu nível esteja abaixo disso e você pegue este powerup, você morrerá afogado.<br><ROSE><b>• CONGELAR</b><N><br>Congela o seu rato.<br><ROSE><b>• QUEIJO</b><N><br>Dá queijo para o seu rato. Caso você esteja dentro do lago, você provavelmente será levado para o fundo dele.<br><ROSE><b>• REDUZIR</b><N><br>Reduz temporariamente o tamanho do seu rato.")
+		showMenu(name,0xf0f0f0,140,76,520,315,"Powerups do Module #watercatch","<font size='11'>Os seguintes powerups estão disponíveis no momento:<br><ROSE><b>• CAIXA</b><N><br>Faz aparecer uma caixa de acompanhamento em cima de você.<br><ROSE><b>• OXIGÊNIO</b><N><br>Aumenta o seu nível de oxigênio em 40%.<br><ROSE><b>• VELOCIDADE</b><N><br>Te dá um grande impulso de velocidade.<br><ROSE><b>• AFUNDAR</b><N><br>Cria uma anomalia temporária que leva todos os ratos em direção ao fundo do lago.<br><ROSE><b>• MEEP</b><N><br>Te dá o poder de usar o Meep!<br><ROSE><b>• SUFOCO</b><N><br>Diminui o seu nível de oxigênio em 25%. Caso seu nível esteja abaixo disso e você pegue este powerup, você morrerá afogado.<br><ROSE><b>• CONGELAR</b><N><br>Congela o seu rato.<br><ROSE><b>• QUEIJO</b><N><br>Dá queijo para o seu rato. Caso você esteja dentro do lago, você provavelmente será levado para o fundo dele.<br><ROSE><b>• REDUZIR</b><N><br>Reduz temporariamente o tamanho do seu rato.")
 	end
 	if message == "creditos" then
 		showMenu(name,0xf0f0f0,140,90,520,130,"Créditos","As seguintes pessoas ajudaram no desenvolvimento deste module:<br><br><ROSE><b>• Morganadxana#0000</b><N> - Desenvolvedora do código<br><ROSE><b>• Rakan_raster#0000</b><N> - Tradução do código original para o Português<br><ROSE><b>• Spectra_phantom#6089</b><N> - Ideia original e criação do mapa e das artes")
 	end
 	if message == "changelog" then
-		showMenu(name,0xf0f0f0,140,90,520,130,"Changelog da Versão 2.2.5","• Adição de algumas decorações na água<br>• Pequenas mudanças na barra de oxigênio<br>• Aumento na duração das rodadas")
+		showMenu(name,0xf0f0f0,140,90,520,130,"Changelog da Versão 2.2.6","• Mudanças no powerup SUFOCO<br>• Correção de pequenos bugs<br>• Redução dos quadrados de powerups de 5 para 4")
 	end
 	if (message:sub(0,2)== "tc") then
 		if tfm.get.room.playerList[name].isShaman == false then
@@ -120,7 +117,7 @@ end
 function resetMap()
 	if xml == '' then
 		tfm.exec.disableAutoShaman(true)
-		tfm.exec.newGame("@7763582")
+		tfm.exec.newGame("@7890357")
 		changed=false
 		mode="load"
 	else
@@ -158,7 +155,7 @@ function eventKeyboard(name,key,down)
 					tfm.exec.giveMeep(name,true)
 				elseif powerups.t1 == 6 then
 					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>SUFOCO!</b>")
-					data[name].o=data[name].o-18
+					data[name].o=data[name].o-25
 					if data[name].o < 1 then
 						data[name].o=1
 					end
@@ -309,51 +306,6 @@ function eventKeyboard(name,key,down)
 				end
 			end
 		end
-		if tfm.get.room.playerList[name].x > powerups.x5-10 and tfm.get.room.playerList[name].x < powerups.x5+34 then
-			if tfm.get.room.playerList[name].y > powerups.y5-10 and tfm.get.room.playerList[name].y < powerups.y5+34 then
-				powerups.x5=-1
-				powerups.y5=-1
-				ui.removeTextArea(104,nil)
-				if powerups.t5 == 1 then
-					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>CAIXA!</b>")
-					dropPlayer(name)
-				elseif powerups.t5 == 2 then
-					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>OXIGÊNIO!</b>")
-					data[name].o=data[name].o+40
-					if data[name].o > 100 then
-						data[name].o=100
-					end
-				elseif powerups.t5 == 3 then
-					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>VELOCIDADE!</b>")
-					if tfm.get.room.playerList[name].isFacingRight == true then
-						tfm.exec.movePlayer(name,0,0,true,120,0,false)
-					else
-						tfm.exec.movePlayer(name,0,0,true,-120,0,false)
-					end
-				elseif powerups.t5 == 4 then
-					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>AFUNDAR!</b>")
-					timer=1
-				elseif powerups.t5 == 5 then
-					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>MEEP!</b>")
-					tfm.exec.giveMeep(name,true)
-				elseif powerups.t5 == 6 then
-					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>SUFOCO!</b>")
-					data[name].o=data[name].o-18
-					if data[name].o < 1 then
-						data[name].o=1
-					end
-				elseif powerups.t5 == 7 then
-					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>CONGELAR!</b>")
-					congelar(name)
-				elseif powerups.t5 == 8 then
-					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>QUEIJO!</b>")
-					queijo(name)
-				elseif powerups.t5 == 9 then
-					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>REDUZIR!</b>")
-					reduzir(name)
-				end
-			end
-		end
 	end		
 end
 function eventNewGame()
@@ -367,8 +319,8 @@ cannons=10
 ui.removeTextArea(22,nil)
 alives=0
 mode="hide"
+showMessage("<J>Caso o mapa do jogo não esteja aparecendo, saia do jogo e entre novamente.<br>Isto é um problema de memória do Transformice e não do module.")
 for n,p in next,tfm.get.room.playerList do
-	showMessage("<J>Caso o mapa do jogo não esteja aparecendo, saia do jogo e entre novamente.<br>Isto é um problema de memória do Transformice e não do module.")
 	tfm.exec.giveMeep(n,false)
 	if n:sub(1,1) == "*" then
 		tfm.exec.killPlayer(n)
@@ -423,20 +375,15 @@ function genPowerup(pos,type,x,y)
 		powerups.x4=x
 		powerups.y4=y
 		powerups.t4=type
-	elseif pos == 5 then
-		ui.addTextArea(104,"<font size='18'><p align='center'>!",nil,x,y,24,24,0x163616,0x122412,1.0,false)
-		powerups.x5=x
-		powerups.y5=y
-		powerups.t5=type
 	end
 end
 function congelar(name)
 	tfm.exec.freezePlayer(name,true)
-	data[name].t=6
+	data[name].t=8
 end
 function queijo(name)
 	tfm.exec.giveCheese(name)
-	data[name].t=6
+	data[name].t=12
 end
 function dropPlayer(name)
 	data[name].i=tfm.exec.addShamanObject(61,tfm.get.room.playerList[name].x,tfm.get.room.playerList[name].y+10,0,0,0,false)
@@ -444,7 +391,7 @@ function dropPlayer(name)
 end
 function reduzir(name)
 	tfm.exec.changePlayerSize(name,0.5)
-	data[name].t=6
+	data[name].t=14
 end
 function eventLoop(p,r)
 loop=loop+0.5
@@ -455,7 +402,7 @@ if time_passed >= 6 and tfm.get.room.currentMap == "@7763582" then
 	resetMap()
 end
 if changed == true then
-ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v2.2.5</b><N> - criado por <ROSE><b>Morganadxana#0000</b> <N>e <R><b>Spectra_phantom#6089</b><")
+ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v2.2.6</b><N> - criado por <ROSE><b>Morganadxana#0000</b> <N>e <R><b>Spectra_phantom#6089</b><")
 local m=math.floor(r/60000)
 local s=math.floor((((m*60000)-r) * -1) / 1000)
 ui.addTextArea(-1,"<font size='45'><font color='#222222'><font face='Trebuchet MS'><b><i>"..m..":"..s.."</b>",n,569,22,110,54,0,0,1.0,true)
@@ -465,10 +412,10 @@ if s < 10 then
 	ui.addTextArea(-2,"<font size='45'><font color='#d0d0d0'><font face='Trebuchet MS'><b><i>"..m..":0"..s.."</b>",n,566,19,110,54,0,0,1.0,true)
 end
 if mode == "game" then
-	if loop >= 24 then
+	if loop >= 16 then
 		if time_passed >= 60 then
-			for i=1,5 do
-				genPowerup(i,math.random(1,11),math.random(1000,4000),math.random(500,1100))
+			for i=1,4 do
+				genPowerup(i,math.random(1,11),math.random(1000,3000),math.random(500,1100))
 			end
 			loop=0
 		end
