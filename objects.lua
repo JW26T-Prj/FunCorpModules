@@ -11,9 +11,22 @@ objects={1,2,3,6,10,17,23,33,35,39,40,45,46,54,60,61,65,68,69,85,89,90,95}
 text_difficulty="<font face='Segoe UI Symbol'>　　　　<J>　　<R><b>　　</b><font face='Verdana'>"
 actual_map=""; remaining=0; imageId=-1; actual_creator=""; bar=""; loop=0; winner=false; times=0;
 functs={running=false,level=0,count=8}
+function showMessage(message,name)
+	temp_text=string.gsub(message,"<b>","")
+	temp_text=string.gsub(temp_text,"</b>","")
+	if tfm.get.room.isTribeHouse == false then
+		tfm.exec.chatMessage(message,name)
+	elseif tfm.get.room.isTribeHouse == true then
+		if name == nil then
+			print("<ROSE>[Test Mode] : <br><BL>"..temp_text.."")
+		else
+			print("<ROSE>[Test Mode] - "..name.." : <br><BL>"..temp_text.."")
+		end
+	end
+end
 function eventChatCommand(name,message)
 	if message == "help" then
-		tfm.exec.chatMessage("<J>The objective of this module is survive! Don't hit the objects that are falling! The last alive player wins the game!<br><br><ROSE>Module made by Spectra_phantom#6089.",name)
+		showMessage("<J>The objective of this module is survive! Don't hit the objects that are falling! The last alive player wins the game!<br><br><ROSE>Module made by Spectra_phantom#6089<br><VP>Splash arts made by Hecarimjhenx#0000",name)
 	end
 	if name == "Spectra_phantom#6089" or name == "Forzaldenon#0000" or name == "Viego#0345" then
 		if (message:sub(0,4) == "kill") then
@@ -36,7 +49,7 @@ function eventNewGame()
 	for name,player in pairs(tfm.get.room.playerList) do
 		if name:sub(1,1) == "*" then
 		   	tfm.exec.killPlayer(name)
-		   	tfm.exec.chatMessage("<R>Souris aren't allowed to play on this module. Create an account or log in to play Objects.",name)
+		   	showMessage("<R>Souris aren't allowed to play on this module. Create an account or log in to play Objects.",name)
 		end
 	end
 end
@@ -44,9 +57,9 @@ function showBar()
 	for i=1,41 do
 		if mapas[i] == tfm.get.room.currentMap then
 			if map_names[i] == "" then
-				ui.setMapName("<J><b>"..tfm.get.room.currentMap.."   </b><V>|   <N>Difficulty : "..text_difficulty.."   <V>|   <N>#objects <ROSE>RTM 8258.042<")
+				ui.setMapName("<J><b>"..tfm.get.room.currentMap.."   </b><V>|   <N>Difficulty : "..text_difficulty.."   <V>|   <N>#objects <ROSE>RTM 8359.043<")
 			else
-				ui.setMapName("<J><b>"..map_names[i].."</b> <BL>- "..tfm.get.room.currentMap.."   <V>|   <N>Difficulty : "..text_difficulty.."   <V>|   <N>#objects <ROSE>RTM 8258.042<")
+				ui.setMapName("<J><b>"..map_names[i].."</b> <BL>- "..tfm.get.room.currentMap.."   <V>|   <N>Difficulty : "..text_difficulty.."   <V>|   <N>#objects <ROSE>RTM 8359.043<")
 			end
 		end
 	end
@@ -70,7 +83,10 @@ function throw()
 	tfm.exec.addShamanObject(0,position,100,0,0,1,false)
 end
 function eventNewPlayer(name)
-	tfm.exec.chatMessage("<J><b>Welcome to #objects!</b><br><br>The objective of this module is survive! Don't hit the objects that is falling! The last alive player wins the game!<br><br><ROSE>Module made by Spectra_phantom#6089.",name)
+	showMessage("<J><b>Welcome to #objects!</b><br><br>The objective of this module is survive! Don't hit the objects that is falling! The last alive player wins the game!<br><br><ROSE>Module made by Spectra_phantom#6089<br><VP>Splash arts made by Hecarimjhenx#0000",name)
+end
+for name,player in pairs(tfm.get.room.playerList) do
+	eventNewPlayer(name)
 end
 function eventLoop(p,f)
 	if functs.level == 0 then
