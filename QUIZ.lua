@@ -1,10 +1,11 @@
--- Mudanças na Versão 2.17.3:
+-- Mudanças na Versão 2.18.0:
 
--- Correção de bugs no comando !tema
+-- Adição de 5 perguntas de música
+-- Pequenas alterações de funcionamento
 
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.17.3
--- Por favor, edite a linha 21 a variável 'admin' pelo seu nome para ter acesso aos comandos.
--- Você pode selecionar o tema editando a linha 23, ou digitando !tema [número] conforme os números abaixo.
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.18.0
+-- Por favor, edite a linha 22 a variável 'admin' pelo seu nome para ter acesso aos comandos.
+-- Você pode selecionar o tema editando a linha 24, ou digitando !tema [número] conforme os números abaixo.
 
 -- Temas:
 -- 0 = transformice
@@ -16,7 +17,7 @@
 
 -- Esta é uma versão bloqueada. As perguntas não podem ser alteradas. Consulte o criador para obter a versão desbloqueada.
 -- Para sugestões de perguntas ou correção de bugs contate Reksai_void2600#6638.
--- Caso você queira usar este código em um cafofo de tribo, altere a variável TRIBEHOUSE da linha 24 para 'true'.
+-- Caso você queira usar este código em um cafofo de tribo, altere a variável TRIBEHOUSE da linha 25 para 'true'.
 
 admin={"Reksai_void2600#6638"} -- FunCorps, insiram seus nomes aqui!
 
@@ -486,7 +487,12 @@ perguntas2={
 "Qual o nome do vocalista do grupo U2?","Bono Vox","Serj Tankian",1,
 "Complete a música: Meu amor! Quando palavras não conseguem expressar...","Veja o brilho em meu olhar","Veja o brilho em meu rosto",1,
 "Qual destas músicas foi tema da novela Duas Caras, exibida pela Globo em 2007?","Quando a Chuva Passar","O Poder do Teu Amor",2,
-"O álbum 'As Quatro Estações', de Sahdy e Júnior, foi vendido tanto em CD quanto em LP.","Verdadeiro","Falso",1,
+"O álbum 'As Quatro Estações', de Sandy e Júnior, foi vendido tanto em CD quanto em LP.","Verdadeiro","Falso",1,
+"Qual o nome do vocalista da banda Skank?","Samuel Rosa","Chico Amaral",1,
+"A banda de rock The Beatles é de qual país?","Inglaterra","Estados Unidos",1,
+"A banda de rock System of a Down é de qual país?","Inglaterra","Estados Unidos",2,
+"O grupo de louvor evangélico Diante do Trono foi formado em qual estado do Brasil?","São Paulo","Minas Gerais",2,
+"Complete a música: Entra na minha casa, entra na minha vida, mexe com minha estrutura...","Sara todas as feridas","Cura todas as feridas",1,
 }
 perguntas3={
 "Vai na sorte :)","ok","ok",1,
@@ -762,7 +768,7 @@ function eventPlayerLeft(name)
 	ratos=ratos-1
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.17.3</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
+	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.18.0</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
@@ -815,7 +821,7 @@ function eventLoop(p,f)
 		end
 	end
 	if modo == "perguntar" and f >= 1 then
-		ui.addTextArea(3,"<p align='center'><font size='45'>"..math.ceil((f/1000)-1).."",nil,360,235,80,60,0x000001,0x494949,1.0,true)
+		ui.addTextArea(3,"<p align='center'><font size='45'>"..math.floor((f/1000)-1).."",nil,360,235,80,60,0x000001,0x494949,1.0,true)
 	else
 		ui.removeTextArea(3,nil)
 	end
