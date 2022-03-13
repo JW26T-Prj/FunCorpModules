@@ -32,7 +32,7 @@ function showMessage(message,name)
 end
 function eventChatCommand(n,m)
 	if m == "help" then
-		showMessage("<N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço! Caso o shaman morra, a partida é encerrada.<br><br><VP>Mapa criado por Threshlimit#0000 e Patrick_mahomes#1795. Código desenvolvido por Morganadxana#0000.<br>Conceito original de Nettoork#0000.<br>Versão 5.3.0",n)
+		showMessage("<N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço! Caso o shaman morra, a partida é encerrada.<br><br><VP>Mapa criado por Threshlimit#0000 e Patrick_mahomes#1795. Código desenvolvido por Morganadxana#0000.<br>Conceito original de Nettoork#0000.<br>Versão 5.3.1",n)
 	end
 	if m == "cancel" then
 		if n == "Threshlimit#0000" or n == "Morganadxana#0000"  or n == "Patrick_mahomes#1795" or n == "Forzaldenon#0000" then
@@ -131,12 +131,13 @@ function eventNewGame()
 end
 function eventNewPlayer(n)
 	ui.setMapName("<font color='#1288e8'><b>RockerLaunch 5</b> <N>Project by <VP>Threshlimit#0000, <ROSE>Morganadxana#0000<N> and <R>Patrick_mahomes#1795<")
-	showMessage("<VP>Bem-vindos ao RockerLaunch 5!<br><N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço! Digite !help para saber como jogar.<br><br><ROSE>Créditos para Threshlimit#0000, Morganadxana#0000 and Patrick_mahomes#1795. Conceito original de Nettoork#0000.<br>Versão 5.3.0",n)
+	showMessage("<VP>Bem-vindos ao RockerLaunch 5!<br><N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço! Digite !help para saber como jogar.<br><br><ROSE>Créditos para Threshlimit#0000, Morganadxana#0000 and Patrick_mahomes#1795. Conceito original de Nettoork#0000.<br>Versão 5.3.1",n)
 	newData={
 		["message"]=0,
 		["reached"]=false
 	}
 	data[n]=newData;
+	tfm.exec.setPlayerScore(n,0,false)
 end
 for n,player in pairs(tfm.get.room.playerList) do
 	eventNewPlayer(n)
