@@ -1,9 +1,9 @@
--- Mudanças na Versão 2.18.0:
+-- Mudanças na Versão 2.18.1:
 
--- Adição de 5 perguntas de música
+-- Correções em algumas perguntas
 -- Pequenas alterações de funcionamento
 
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.18.0
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.18.1
 -- Por favor, edite a linha 22 a variável 'admin' pelo seu nome para ter acesso aos comandos.
 -- Você pode selecionar o tema editando a linha 24, ou digitando !tema [número] conforme os números abaixo.
 
@@ -486,7 +486,7 @@ perguntas2={
 "Qual o nome do estilo musical muito utilizado em discotecas e que teve seu auge nos anos 90?","Eurodance","Europop",1,
 "Qual o nome do vocalista do grupo U2?","Bono Vox","Serj Tankian",1,
 "Complete a música: Meu amor! Quando palavras não conseguem expressar...","Veja o brilho em meu olhar","Veja o brilho em meu rosto",1,
-"Qual destas músicas foi tema da novela Duas Caras, exibida pela Globo em 2007?","Quando a Chuva Passar","O Poder do Teu Amor",2,
+"Qual destas músicas foi tema da novela Duas Caras, exibida pela Globo em 2007?","Recomeçar","O Poder do Teu Amor",1,
 "O álbum 'As Quatro Estações', de Sandy e Júnior, foi vendido tanto em CD quanto em LP.","Verdadeiro","Falso",1,
 "Qual o nome do vocalista da banda Skank?","Samuel Rosa","Chico Amaral",1,
 "A banda de rock The Beatles é de qual país?","Inglaterra","Estados Unidos",1,
@@ -648,7 +648,7 @@ perguntas4={
 "Qual foi o jogador que foi escalado irregularmente na última rodada no Brasileirão de 2013, causando o rebaixamento da Portuguesa?","Héverton","Éderson",1,
 "Qual o nome do estádio conhecido como Engenhão?","Estádio João Havelange","Estádio Nilton Santos",2,
 "Quantas vezes o time do Palmeiras venceu o Mundial de Clubes?","0","1",1,
-"Qual o nome do jogador formado no Santos que foi preso acusado de assédio sexual?","Robinho","Adriano",1,
+"Qual o nome do jogador formado no Santos que foi condenado acusado de assédio sexual?","Robinho","Adriano",1,
 "Qual o nome original de Pelé?","Édson Arantes do Nascimento","Robson Arantes do Nascimento",1,
 "Qual foi o jogador que cobrou o último pênalti que deu ao Brasil sua primeira medalha de ouro olímpica?","Gabriel Jesus","Neymar",2,
 "Qual foi a primeira Copa do Mundo que foi decidida na disputa de pênaltis?","1994, nos Estados Unidos","1998, na França",1,
@@ -768,7 +768,7 @@ function eventPlayerLeft(name)
 	ratos=ratos-1
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.18.0</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
+	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.18.1</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
