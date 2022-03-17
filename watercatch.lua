@@ -61,11 +61,11 @@ function verifyAdmin(name)
 	end
 end
 function showWater(name)
-	tfm.exec.addImage("17f74387366.png","!1",-600,513,name,20,2,0,1)
+	tfm.exec.addImage("17f74387366.png","!1",-600,513,name,20,2.75,0,1)
 	tfm.exec.addImage("17f74378b9a.png","?1",-600,471,name,1,1,0,1)
 	tfm.exec.addImage("17f7437d864.png","?1",-600,471,name,1,1,0,1)
 	tfm.exec.addImage("17f74378b9a.png","!1",-600,471,name,1,1,0,0.44)
-	tfm.exec.addImage("17f74382569.jpg","?1",-600,513,name,2,1,0,1)
+	tfm.exec.addImage("17f74382569.jpg","?1",-600,513,name,2,1.375,0,1)
 end
 function eventTalkToNPC(name, npc)
 	if npc == "Rheylean Darther" then
