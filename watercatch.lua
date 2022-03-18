@@ -152,7 +152,6 @@ function eventNewPlayer(name)
 	tfm.exec.setPlayerScore(name,1,false)
 	ui.setBackgroundColor("#5FA9D4")
 	showWater(name)
-	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v3.0.2</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
 	newData={
 	["o"]=99; ["i"]=0; ["t"]=0; ["c"]=0; ["opened"]=false; ["moved"]=0; ["imageid"]=-1; ["imageid2"]=-1; ["imageid3"]=-1; ["imageid4"]=-1; ["imaget"]=5;
 	};
@@ -170,7 +169,7 @@ for name,player in next,tfm.get.room.playerList do
 end
 function eventChatCommand(name,message)
 	if message == "help" or message == "ajuda" then
-		showMenu(name,0xf0f0f0,140,90,520,265,"Ajuda do Module #watercatch","O objetivo é bem simples: <b>Fugir do shaman</b>, se escondendo dentro do profundo lago e tomando cuidado para não morrer afogado!<br><R><b>Shamans, não esqueçam de se mexer, ou irão morrer AFK!</b><br><br><VP>Os quadrados marcados por <ROSE>'!'<VP> são powerups, que geram efeitos aleatórios nos ratos.<J><br>Estes powerups podem ser acionados pressionando ESPAÇO em cima deles.<br><N>Você pode ver os possíveis efeitos dos powerups indo no Menu e clicando em Powerups. Vale ressaltar que eles funcionam apenas depois que o shaman for liberado.<br><br><N>Caso você seja shaman, você tem um limite de <b>10</b> objetos que podem ser utilizados. Exceder este limite fará com que a partida acabe.")
+		showMenu(name,0xf0f0f0,140,90,520,265,"Ajuda do Module #watercatch","O objetivo é bem simples: <b>Fugir do shaman</b>, se escondendo dentro do profundo lago e tomando cuidado para não morrer afogado!<br><R><b>Shamans, não esqueçam de se mexer, ou irão morrer AFK!</b><br><br><VP>Os quadrados marcados por <ROSE>'!'<VP> são powerups, que geram efeitos aleatórios nos ratos.<J><br>Estes powerups podem ser acionados pressionando ESPAÇO em cima deles.<br><N>Você pode ver os possíveis efeitos dos powerups indo no Menu e clicando em Powerups. Vale ressaltar que eles funcionam apenas depois que o shaman for liberado.<br><br><N>Caso você seja shaman, você tem um limite de <b>6</b> objetos que podem ser utilizados. Exceder este limite fará com que a partida acabe.")
 	end
 	if message == "powerups" then
 		showMenu(name,0xf0f0f0,140,76,520,315,"Powerups do Module #watercatch","<font size='11'>Os seguintes powerups estão disponíveis no momento:<br><ROSE><b>• CAIXA</b><N><br>Faz aparecer uma caixa de acompanhamento em cima de você.<br><ROSE><b>• OXIGÊNIO</b><N><br>Aumenta o seu nível de oxigênio em 40%.<br><ROSE><b>• VELOCIDADE</b><N><br>Te dá um grande impulso de velocidade.<br><ROSE><b>• AFUNDAR</b><N><br>Cria uma anomalia temporária que leva todos os ratos em direção ao fundo do lago.<br><ROSE><b>• MEEP</b><N><br>Te dá o poder de usar o Meep!<br><ROSE><b>• SUFOCO</b><N><br>Diminui o seu nível de oxigênio em 25%. Caso seu nível esteja abaixo disso e você pegue este powerup, você morrerá afogado.<br><ROSE><b>• CONGELAR</b><N><br>Congela o seu rato.<br><ROSE><b>• QUEIJO</b><N><br>Dá queijo para o seu rato. Caso você esteja dentro do lago, você provavelmente será levado para o fundo dele.<br><ROSE><b>• REDUZIR</b><N><br>Reduz temporariamente o tamanho do seu rato.")
@@ -179,7 +178,7 @@ function eventChatCommand(name,message)
 		showMenu(name,0xf0f0f0,140,90,520,130,"Créditos","As seguintes pessoas ajudaram no desenvolvimento deste module:<br><br><ROSE><b>• Morganadxana#0000</b><N> - Desenvolvedora do código<br><ROSE><b>• Rakan_raster#0000</b><N> - Tradução do código original para o Português<br><ROSE><b>• Spectra_phantom#6089</b><N> - Ideia original e criação do mapa e das artes")
 	end
 	if message == "changelog" then
-		showMenu(name,0xf0f0f0,140,90,520,90,"Changelog da Versão 3.0.2","• Várias mudanças no mapa")
+		showMenu(name,0xf0f0f0,140,90,520,90,"Changelog da Versão 3.0.3","• Correções de bugs")
 	end
 	if (message:sub(0,2) == "tc") then
 		if tfm.get.room.playerList[name].isShaman == false then
@@ -498,7 +497,7 @@ function eventLoop(p,r)
 	loop=loop+0.5
 	time_passed=math.ceil(p/1000)
 	time_remain=math.ceil(r/1000)
-	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v3.0.2</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
+	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v3.0.3</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
 	local m=math.floor(r/60000)
 	local s=math.floor((((m*60000)-r) * -1) / 1000)
 	ui.addTextArea(-1,"<font size='45'><font color='#222222'><font face='Trebuchet MS'><b><i>"..m..":"..s.."</b>",n,569,22,110,54,0,0,1.0,true)
