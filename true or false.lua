@@ -29,11 +29,14 @@ function eventNewGame()
 	ui.removeTextArea(0,nil)
 	limits.mices_alive=0
 	for name,player in next,tfm.get.room.playerList do
+		ui.addPopup(10,0,"",name,-1000,-1000,128,false)
+		ui.addPopup(11,0,"",name,-1100,-1000,128,false)
+		ui.addPopup(20,0,"",name,-1100,-1000,128,false)
 		if not tfm.get.room.playerList[name].isShaman then
 			limits.mices_alive=limits.mices_alive+1
 		else
 			tfm.exec.setPlayerScore(name,-1,false)
-			showMessage("Please type <b>!per</b> to make a question.",name)
+			showMessage("<VP>Please type <b>!per</b> to make a question. Type <b>!skip</b> to skip your turn.",name)
 		end
 		if name:sub(1,1) == "*" then
 			tfm.exec.killPlayer(name)
@@ -41,12 +44,10 @@ function eventNewGame()
 		end
 	end
 	questions.round=0
-	ui.addPopup(10,0,"",nil,-1000,-1000,128,false)
-	ui.addPopup(11,0,"",nil,-1100,-1000,128,false)
 end
 function eventNewPlayer(name)
 	tfm.exec.setPlayerScore(name,0,false)
-	ui.setMapName("<N>True or False <b>II</b> - version <VP><b>RTM 2509.006</b> <N>made by <ROSE><b>Spectra_phantom#6089</b><")
+	ui.setMapName("<N>True or False <b>II</b> - version <VP><b>RTM 2610.007</b> <N>made by <ROSE><b>Spectra_phantom#6089</b><")
 end
 for name,player in next,tfm.get.room.playerList do
 	eventNewPlayer(name)
@@ -65,7 +66,7 @@ function reset()
 			tfm.exec.setPlayerScore(name,-1,false)
 		end
 	end
-	ui.setMapName("<N>True or False <b>II</b> - version <VP><b>RTM 2509.006</b> <N>made by <ROSE><b>Spectra_phantom#6089</b><")
+	ui.setMapName("<N>True or False <b>II</b> - version <VP><b>RTM 2610.007</b> <N>made by <ROSE><b>Spectra_phantom#6089</b><")
 end
 function isTrue()
 	showMessage("<VP>The answer is TRUE!")
@@ -94,7 +95,7 @@ function eventPopupAnswer(id,name,answer)
 			ui.addPopup(11,1,"Click YES if your answer is TRUE<br>Click NO if your answer is FALSE",name,350,175,200,true)
 		else
 			ui.addPopup(10,2,"Type your question:",name,350,175,200,true)
-			showMessage("<R>Your question is too large or too short. Please type other question.",name)
+			showMessage("<R>Your question is too large or too short. Please make a new question.",name)
 		end
 	end
 	if id == 11 then
@@ -111,15 +112,15 @@ function eventPopupAnswer(id,name,answer)
 				end
 			end
 			showMessage("<N>"..questions.question.."")
-			ui.addTextArea(0,"<font size='16'><p align='center'><font face='Segoe UI,Arial'>"..questions.question.."",nil,15,25,770,50,0x010101,0x010101,0.95,true)
+			ui.addTextArea(0,"<font size='18'><p align='center'><font face='Segoe UI,Arial'>"..questions.question.."",nil,15,25,770,50,0x010101,0x010101,0.95,true)
 			showMessage(questions.answer,"Spectra_phantom#6089")
 			showMessage(questions.answer,"Forzaldenon#0000")
 		end
 	end
 	if id == 20 then
 		if answer == "yes" then
-			reset()
 			showMessage("<R>"..name.." skipped your turn.")
+			reset()
 		end
 	end
 end
@@ -158,8 +159,8 @@ function eventChatCommand(name,message)
 				for name,player in next,tfm.get.room.playerList do
 					tfm.exec.killPlayer(name)
 				end
-				reset()
 				showMessage("<R>This shaman has been skipped.")
+				reset()
 			end
 		end
 	end
