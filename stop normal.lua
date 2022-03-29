@@ -1,9 +1,9 @@
 -- STOP
--- Escrito por Ninguem - 31/08/2015 // Atualizado por Reksai_void2600#6638 - 24/01/2022
--- Limite de 15 categorias.
+-- Escrito por Ninguem - 31/08/2015 // Atualizado por Reksai_void2600#6638 - 29/03/2022
+-- Limite de 20 categorias.
 -- FunCorp, caso você não queira visualizar as respostas dos jogadores (para identificar trapaças, por exemplo), altere a variável SHOW (linha 15) para false.
 
-ADM = {"Reksai_void2600#6638"} -- editar com seu nome aqui!
+ADM = {"Forzaldenon#0000"} -- editar com seu nome aqui!
 CAT = {"Nome","Animal","Objeto","Cor","Marca","Carro","TV/Anime/Desenho","Parte do Corpo","Comida/Bebida","País/Cidade/Estado","Profissão","Tem no Transformice","O(A) "..ADM[1].." é...","Qualquer Coisa"}
 ID = {cat=1,camada=2,add=3,msg=4,tempo=5,stop=6}
 PLAYER = {}
@@ -29,16 +29,16 @@ end
 function atualizaCat(first)
 	local txt = "<p align='center'><font size='14px'>Selecione as categorias.</font></p>\n\n"
 	for i, v in pairs(CAT) do
-		txt = txt .. string.format("<j>- %s <r><a href='event:del %s'>[remover]</a>\n", v, v)
+		txt = txt .. string.format("<j>"..i.." - %s <r><a href='event:del %s'>[remover]</a>\n", v, v)
 	end
-	txt = txt .. "\n<vp>- <a href='event:add'>Adicionar</a>\n\n<rose><p align='center'><font size='16px'><a href='event:start'>Começar</a></p></font>"
+	txt = txt .. "<vp>- <a href='event:add'>Adicionar</a>\n\n<rose><p align='center'><font size='16px'><a href='event:start'>Começar</a></p></font>"
 	for i, v in pairs(ADM) do
-		ui.addTextArea(ID.cat, txt, v, 300, 50, 200, 330, 1, 1, 0.8, true)
+		ui.addTextArea(ID.cat, txt, v, 250, 30, 300, 360, 1, 1, 0.8, true)
 	end
 end
 
 function atualizaPlayer()
-	local txt = ROUND <= MAXROUND and string.format("<p align='center'><font size='14px'>Round %d/%d\n</font></p><font size='9px'>", ROUND, MAXROUND) or "<p align='center'><font size='14px'>Placar final\n\n</font></p>"
+	local txt = ROUND <= MAXROUND and string.format("<p align='center'><font size='16px'>Round %d/%d\n</font></p><font size='9px'>", ROUND, MAXROUND) or "<p align='center'><font size='14px'>Placar final\n\n</font><font size='9px'></p>"
 	local cont = 0
 	local total = 0
 	local player = {}
@@ -59,7 +59,7 @@ function atualizaPlayer()
 	if cont == total then
 		TEMPO = os.time()+5000
 	end
-	ui.addTextArea(ID.cat, txt, nil, 300, 50, 200, 265, 1, 1, 0.8, true)
+	ui.addTextArea(ID.cat, txt, nil, 300, 25, 200, 285, 1, 1, 0.8, true)
 end
 
 function split(txt)
@@ -109,7 +109,7 @@ end
 function atualizaPalavras(p)
 	local cont = 0
 	for i, v in pairs(CAT) do
-		ui.addTextArea(i+1000, string.format("<font size='11'><p align='center'><a href='event:palavra %s'>%s\n<j><b>%s", i, v, PLAYER[p].palavra[v]), p, ((i-1)%5)*160+5, math.floor((i-1)/5)*70+130, 150, 60, 1, 1, 0.8, true)
+		ui.addTextArea(i+1000, string.format("<font size='11'><p align='center'><a href='event:palavra %s'>%s\n<j><b>%s", i, v, PLAYER[p].palavra[v]), p, ((i-1)%5)*160+5, math.floor((i-1)/5)*62+120, 150, 57, 1, 1, 0.8, true)
 		if PLAYER[p].palavra[v] ~= "" then
 			cont = cont + 1
 		end
@@ -169,6 +169,8 @@ function eventChatCommand(p, cmd)
 		if cont == #CAT then
 			ui.removeTextArea(ID.stop, nil)
 			ui.removeTextArea(ID.cat, nil)
+			ui.removeTextArea(1246, nil)
+			ui.removeTextArea(1247, nil)
 			for i=1, #CAT do
 				ui.removeTextArea(i+1000, nil)
 			end
@@ -231,8 +233,8 @@ end
 function eventPopupAnswer(id, p, resp)
 	if id == ID.add and resp ~= "" and MODO == "inicio" then
 		if not buscaItem(CAT, resp) then
-			if TEMAS >= 15 then
-				tfm.exec.chatMessage("<R>Limite máximo de 15 temas atingido!",p)
+			if TEMAS >= 20 then
+				tfm.exec.chatMessage("<R>Limite máximo de 20 temas atingido!",p)
 			else
 				table.insert(CAT, resp)
 				atualizaCat(false)
@@ -246,7 +248,7 @@ function eventPopupAnswer(id, p, resp)
 end
 
 function eventNewPlayer(p)
-	ui.setMapName("<R><b>STOP!</b> <N>Script editado por Reksai_void2600#6638 - 24/01/2022<")
+	ui.setMapName("<J><b>STOP!</b> <N>Script editado por Reksai_void2600#6638 - 29/03/2022<")
 	PLAYER[p] = {num = 0, pontos = 0, vitoria = 0, palavra = {}}
 	for i, v in pairs(CAT) do
 		PLAYER[p].palavra[v] = ""
@@ -279,7 +281,7 @@ function eventLoop(current, remaining)
 		ui.updateTextArea(ID.tempo, string.format("<r><p align='center'><font size='25px'>%d</font></p>", t), nil)
 		if os.time() > TEMPO then
 			MODO = "letra"
-			local txt = string.format("<p align='center'><font size='14px'>Round %d/%d\n</font></p><j><font size='9px'>", ROUND, MAXROUND)
+			local txt = string.format("<p align='center'><font size='16px'>Round %d/%d\n</font></p><j><font size='9px'>", ROUND, MAXROUND)
 			local cont = 0
 			local player = {}
 			for i, v in pairs(PLAYER) do
@@ -292,7 +294,7 @@ function eventLoop(current, remaining)
 			end
 			txt = txt .. "\n<p align='center'><rose>Soma: " .. cont
 			LETRA = string.char(cont%26 == 0 and 90 or cont%26+64)
-			ui.addTextArea(ID.cat, txt, nil, 300, 50, 200, 240, 1, 1, 0.8, true)
+			ui.addTextArea(ID.cat, txt, nil, 300, 25, 200, 285, 1, 1, 0.8, true)
 			ui.removeTextArea(ID.tempo)
 			TEMPO = os.time()+10000
 			for i=1, 10 do
@@ -303,7 +305,7 @@ function eventLoop(current, remaining)
 	elseif MODO == "letra" then
 		if os.time() > TEMPO then
 			MODO = "round"
-			TEMPO = os.time()+15000+(5000*#CAT)
+			TEMPO = os.time()+15000+(6000*#CAT)
 			ui.removeTextArea(ID.cat, nil)
 			ui.addTextArea(ID.cat, string.format("<p align='center'>A letra é:\n<font size='50px'><rose>%s</rose></font></p>", LETRA), nil, 300, 30, 200, 80, 1, 1, 0.8, true)
 			for i, v in pairs(PLAYER) do
@@ -399,5 +401,5 @@ tfm.exec.disableAutoShaman(true)
 tfm.exec.disableAutoScore(true)
 tfm.exec.disableAutoNewGame(true)
 carregaMapa()
-ui.setMapName("<R><b>STOP!</b> <N>Script editado por Reksai_void2600#6638 - 24/01/2022<")
+ui.setMapName("<J><b>STOP!</b> <N>Script editado por Reksai_void2600#6638 - 29/03/2022<")
 atualizaCat(true)
