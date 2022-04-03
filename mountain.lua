@@ -256,16 +256,6 @@ function eventLoop(passado,faltando)
 				showMessage(text.reached5,name)
 				data[name].a=5
 			end
-			if data[name].x >= 28000 and data[name].a == 5 then
-				showMessage(text.reached6,name)
-				tfm.exec.giveCheese(name)
-				tfm.exec.playerVictory(name)
-				data[name].a=10
-				tfm.exec.setPlayerScore(name,data[name].a,true)
-				showMessage("<VP><V><b>"..name.."</b>"..text.reached7.."")
-				tfm.exec.setGameTime(15)
-				endgame=true
-			end
 		end
 		if wind == true then
 			for i=1,18 do
