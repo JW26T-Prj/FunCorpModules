@@ -1,7 +1,10 @@
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.17.0 - Desbloqueada
--- Por favor, edite a linha 6 a variável 'admin' pelo seu nome para ter acesso aos comandos.
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.19.0
+-- Por favor, edite a linha 9 a variável 'admin' pelo seu nome para ter acesso aos comandos.
 -- Para adicionar novas perguntas, utilize a seguinte sintaxe na hora de inserir: "PERGUNTA","RESPOSTA 1","RESPOSTA 2",1 ou 2
--- Caso você queira usar este código em um cafofo de tribo, altere a variável TRIBEHOUSE da linha 7 para 'true'.
+-- Caso você queira usar este código em um cafofo de tribo, altere a variável TRIBEHOUSE da linha 10 para 'true'.
+
+-- Esta é a versão desbloqueada do module. Use esta versão para usar as perguntas pré-definidas:
+-- https://github.com/JW26T-Prj/FunCorpModules/blob/master/QUIZ.lua
 
 admin={"Reksai_void2600#6638"} -- Insiram seus nomes aqui!
 tribehouse=false -- Altere para 'true' caso esteja rodando este código em um cafofo de tribo.
@@ -90,7 +93,7 @@ function eventPlayerLeft(name)
 	ratos=ratos-1
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.17.0</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
+	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.19.0</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
