@@ -13,6 +13,7 @@
 -- 1 = conhecimentos gerais
 -- 2 = música
 -- 3 = lolzinho
+-- 4 = animes (em breve)
 
 -- Esta é uma versão bloqueada. As perguntas não podem ser alteradas.
 -- Para fazer um quiz utilizando suas próprias perguntas, utilize a versão desbloqueada:
@@ -880,7 +881,7 @@ function randomQuests()
 	set_q=0
 	ui.addTextArea(1,"<p align='center'><font size='18'>"..actual_question.a1.."",nil,100,145,260,81,0,0,1.0,true)
 	ui.addTextArea(2,"<p align='center'><font size='18'>"..actual_question.a2.."",nil,440,145,260,81,0,0,1.0,true)
-	ui.addTextArea(0,"<p align='center'><font size='15'>"..actual_question.quest.."",nil,10,32,780,48,0,0,1.0,true)
+	ui.addTextArea(0,"<p align='center'><font size='15'>"..actual_question.quest.."",nil,40,32,720,48,0,0,1.0,true)
 end
 function eventPlayerDied(name)
 	local i=0
