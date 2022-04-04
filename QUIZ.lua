@@ -1,23 +1,25 @@
--- Mudanças na Versão 2.18.1:
+-- Mudanças na Versão 2.19.0:
 
--- Correções em algumas perguntas
--- Pequenas alterações de funcionamento
+-- Correções e alterações em várias perguntas
+-- Adição do link para a versão desbloqueada
+-- Remoção das perguntas de futebol (para correção)
 
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.18.1
--- Por favor, edite a linha 22 a variável 'admin' pelo seu nome para ter acesso aos comandos.
--- Você pode selecionar o tema editando a linha 24, ou digitando !tema [número] conforme os números abaixo.
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.19.0
+-- Por favor, edite a linha 25 a variável 'admin' pelo seu nome para ter acesso aos comandos.
+-- Você pode selecionar o tema editando a linha 27, ou digitando !tema [número] conforme os números abaixo.
 
 -- Temas:
 -- 0 = transformice
 -- 1 = conhecimentos gerais
 -- 2 = música
 -- 3 = lolzinho
--- 4 = futebol
--- 5 = animes (em breve)
 
--- Esta é uma versão bloqueada. As perguntas não podem ser alteradas. Consulte o criador para obter a versão desbloqueada.
+-- Esta é uma versão bloqueada. As perguntas não podem ser alteradas.
+-- Para fazer um quiz utilizando suas próprias perguntas, utilize a versão desbloqueada:
+-- https://github.com/JW26T-Prj/FunCorpModules/blob/master/QUIZ%20desbloqueado.lua
+
 -- Para sugestões de perguntas ou correção de bugs contate Reksai_void2600#6638.
--- Caso você queira usar este código em um cafofo de tribo, altere a variável TRIBEHOUSE da linha 25 para 'true'.
+-- Caso você queira usar este código em um cafofo de tribo, altere a variável TRIBEHOUSE da linha 28 para 'true'.
 
 admin={"Reksai_void2600#6638"} -- FunCorps, insiram seus nomes aqui!
 
@@ -44,7 +46,7 @@ perguntas={
 "Quantos queijos no perfil são necessários para rodar scripts LUA no cafofo?","100","1000",1,
 "Se você digitar /cafe, o que acontece?","Abre o café","Faz aparecer cafés voadores",2,
 "Quantos morangos custa o item mais caro da loja?","550","600",1,
-"Funcorps fazem parte da Staff BR.","Verdadeiro","Falso",2,
+"FunCorps fazem parte da Staff BR.","Verdadeiro","Falso",2,
 "Qual a categoria atribuída a mapas de Survivor?","P10","P12",1,
 "Qual a função do comando /langue?","Muda a linguagem do jogo","Muda você de sala",1,
 "Qual destes jogos não foi feito pela Atelier 801?","Bombom","Fortoresse",1,
@@ -52,11 +54,11 @@ perguntas={
 "Há quantos emoticons no Transformice?","10","14",1,
 "Há quantas ações de rato no Transformice?","10","14",2,
 "Qual o nome do antigo modo do module #deathmatch?","Baffbotffa","Baffbot",1,
-"A partir de qual nível todas as árvores de habilidades de shaman são desbloqueadas?","20","30",1,
+"A partir de qual nível todas as árvores de habilidades de shaman são exibidas?","20","30",1,
 "O que acontece se você digitar /version?","Mostra informações do jogo","Abre a versão do jogo",2,
 "Qual título é desbloqueado quando você consegue 40.000 firsts?","RELÂMPAGO","Mestre do Vento",1,
 "Existem quantas habilidades de Shaman no Transformice?","75","65",1,
-"O jogo Transformice foi desenvolvido em qual país?","EUA","França",2,
+"O jogo Transformice foi desenvolvido em qual país?","Estados Unidos","França",2,
 "Qual destas tags é atribuída aos Modsents do Transformice?","#0010","#0015",2,
 "Qual o nome da Deusa Shaman do Transformice?","Elise","Elisah",2,
 "Qual destes modules foi desenvolvido por Sharpiepoops, pioneiro nos modules do Transformice?","#keyhunt","#campal",1,
@@ -75,7 +77,7 @@ perguntas={
 "A habilidade 'Meep!' faz parte de qual árvore de Habilidades?","Selvagem","Físico",1,
 "Qual a categoria atribuída a mapas de Cafofo da Tribo?","P22","P20",1,
 "FunCorps são capazes de rodar scripts LUA em salas que não são de modules.","Verdadeiro","Falso",1,
-"O cargo de Modsent é atribuído a jogadores que são...","Moderadores e Funcorps","Moderadores e Sentinelas",2,
+"O cargo de Modsent é atribuído a jogadores que são...","Moderadores e FunCorps","Moderadores e Sentinelas",2,
 "Quem é o gerenciador atual do module #pictionary?","Shamousey#0015","Ork#0015",1,
 "Quantas árvores de habilidades de shaman existem no Transformice?","3","5",2,
 "Qual o nome do cargo pré-definido do criador de uma tribo?","Shaman da Tribo","Líder Espiritual",2,
@@ -100,12 +102,12 @@ perguntas={
 "Quantos ratos salvos são necessários para desbloquear o modo divino?","5000","10000",1,
 "Os membros da Staff podem entrar nos cafofos das tribos, mesmo não sendo membro delas.","Verdadeiro","Falso",1,
 "Japan Expo é o nome de um evento do Transformice que acontece em qual país?","Japão","França",2,
-"Qual dessas tags é atribuída aos Funcorps do Transformice?","#0015","Não tem tag definida",2,
+"Qual dessas tags é atribuída aos FunCorps do Transformice?","#0015","Não tem tag definida",2,
 "Qual dessas tags é atribuída aos MapCrews do Transformice?","#0020","Não tem tag definida",1,
 "Qual destes comandos é utilizado para a inserção de um script LUA?","/lua","/code",1,
 "Qual destes eventos não é mais utilizado no Transformice?","Carnaval","Natal",1,
 "A habilidade 'Superstar' faz parte de qual árvore de Habilidades?","Selvagem","Guia Espiritual",2,
-"Qual destes usuários nunca se tornou Funcorp?","Shamousey#0015","Bolodefchoco#0015",1,
+"Qual destes usuários nunca se tornou FunCorp?","Shamousey#0015","Bolodefchoco#0015",1,
 "Se você ficar muito tempo dentro da água no Transformice, você morre automaticamente.","Verdadeiro","Falso",2,
 "É possível ganhar queijos na loja apenas jogando modules.","Verdadeiro","Falso",1,
 "Qual categoria de mapas é atribuída aos mapas de Defilante?","P18","P19",1,
@@ -128,7 +130,7 @@ perguntas={
 "É possível comprar morangos pelo celular no Brasil.","Verdadeiro","Falso",2,
 "Usuários do servidor BR podem falar apenas no servidor brasileiro.","Verdadeiro","Falso",2,
 "A habilidade 'Olho de Águia' faz parte de qual árvore de Habilidades?","Mecânico","Mestre do Vento",1,
-"Em qual ano estreou o module #batata?","2013","2014",2,
+"Em qual ano estreou o module #batata?","2014","2016",2,
 "Em qual ano estreou o modo Defilante?","2014","2015",1,
 "Qual modo do Transformice foi desativado devido a limitação dos vídeos no Transformice?","Music","Nekodancer",1,
 "Em qual ano estreou o fórum em HTML5 do Atelier 801?","2015","2016",1,
@@ -143,18 +145,18 @@ perguntas={
 "Há quantos tipos de piso no Transformice?","16","18",2,
 "Quantos pregos para o Shaman existem no Transformice?","3","5",2,
 "Qual desses objetos de shaman é maior em altura?","Tábua gigante","Caixa grande",2,
-"Quantos tamanhos de tábua existem no Transformice?","4","3",1,
+"Quantos tamanhos de tábua existem no Transformice?","2","4",2,
 "Em qual ano estreou o evento de Halloween do Transformice?","2011","2010",2,
 "Para se usar o comando /lua no cafofo da tribo, você precisa ter a permissão de...","Usar o /np no cafofo","Mudar o cafofo da tribo",1,
-"É possível deixar os pisos invisíveis no Transformice","Verdadeiro","Falso",1,
+"É possível deixar os pisos invisíveis no Transformice.","Verdadeiro","Falso",1,
 "Qual a idade mínima para virar MapCrew no Transformice?","18","Não tem idade mínima",2,
 "Qual título é desbloqueado quando você consegue 1 bootcamp?","Principiante","Recruta",2,
 "Qual foi a maior quantidade de pessoas logadas no Transformice, aproximadamente?","100000","85000",2,
-"Qual o nick dos criadores do Transformice?","Melibellule e Tigrounette","Mellibellule e Trigrounette",1,
+"Qual os nicks dos criadores do Transformice?","Melibellule e Tigrounette","Mellibellule e Galaktine",1,
 "Quem é o gerenciador atual do module Mestre Mandou?","Rakan_raster#0000","Xayah_raster#0000",1,
 "Quem é o criador do module O Chão é Lava?","Sett#6442","Osicat#0000",2,
 "Qual o limite de consumíveis que podem ser armazenados no inventário?","80","200",1,
-"Qual o nome do antigo fun-site no qual você poderia acessar um Ranking dos ratos?","Cheese For Mice","Viprin Drawing Editor",1,
+"Qual o nome do fun-site no qual você pode acessar um Ranking dos ratos?","Cheese For Mice","Viprin Drawing Editor",1,
 "Qual o limite de jogadores em uma tribo no Transformice?","2000","5000",2,
 "Qual o comando que serve para ver as combinações de roupa do jogo?","/dressing","/shop",1,
 "O dono de uma tribo pode exibir mensagens no chat utilizando o comando /lua no cafofo da tribo.","Verdadeiro","Falso",2,
@@ -165,19 +167,19 @@ perguntas={
 "A partir de qual ano foi possível criar mapas com largura maior que a normal?","2012","2011",2,
 "Em qual cidade fica situada a sede da Atelier 801?","Lille","Paris",1,
 "Qual desses foi o primeiro desenvolvedor do module #perguntas?","Brenower#0000","Dhanny_mheyran#6701",2,
-"Quantos firsts são necessários para desbloquear o título 'O Mito'?","1100","1000",1,
-"Qual a largura máxima que um mapa pode ter sem ter o modo defilante ativado?","1600","9830",1,
+"Quantos firsts são necessários para desbloquear o título 'O Mito'?","1000","1100",2,
+"Qual a largura máxima que um mapa pode ter sem ter o modo defilante ativado?","1600","4800",1,
 "Qual destes objetos não pode ser utilizado no modo difícil?","Sp","Seta",1,
 "A seta é sempre o primeiro item do shaman.","Falso","Verdadeiro",1,
-"O module Mestre Mandou já foi administrado por quantas pessoas?","4","5",1,
+"É possível se casar com mais de um jogador no Transformice em determinados servidores.","Verdadeiro","Falso",2,
 "Qual a idade mínima para virar moderador no Transformice?","18","Não tem idade mínima",1,
 "Qual foi a última versão do Flash Player que o Transformice deu suporte?","32.0","33.0",1,
 "Qual a idade mínima para virar FunCorp no Transformice?","16","Não tem idade mínima",2,
 "Quantos tamanhos de tela de cinema existem no Transformice?","2","3",1,
 "É possível mudar a cor da água do Transformice utilizando somente o Editor de Mapas.","Verdadeiro","Falso",2,
 "É possível carregar imagens nos mapas utilizando apenas no Editor de Mapas.","Verdadeiro","Falso",1,
-"Em teoria, qual a largura máxima que um mapa no Transformice pode ter?","4800","9830",2,
-"Em teoria, qual a altura máxima que um mapa no Transformice pode ter?","800","9830",2,
+"Em teoria, qual a largura máxima que um mapa no Transformice pode ter?","9830","Não há limite teórico",2,
+"Em teoria, qual a altura máxima que um mapa no Transformice pode ter?","9830","Não há limite teórico",2,
 "Quem é o criador atual do module #unotfm?","Ninguem#0095","Spectra_phantom#6089",1,
 "Em qual ano foi introduzido o esquema de #tags nos nomes do Transformice?","2018","2019",1,
 "Quantos bootcamps são necessários para desbloquear o título Recruta?","1","3",1,
@@ -185,20 +187,20 @@ perguntas={
 "Usuários podem adicionar imagens no cafofo da tribo utilizando o comando /lua.","Verdadeiro","Falso",1,
 "Quando um rato morre no Transformice, começa a sair...","Bolhas","Sangue",1,
 "Qual é o nome do primeiro module do Transformice?","sharpie debuglua","batata",1,
-"O dia de lançamento do Transformice é também um feriado nacional no Brasil. Qual é esse feriado?","Dia das Mães","Dia do Trabalho",2,
+"Quantos ratos salvos são necessários para desbloquear o título 'Shaman'?","1000","2000",1,
 "Qual destes comandos servem para ver informações do mapa atual?","/map","/info",2,
-"Para usar o café, você precisa estar com quantos dias jogados de conta?","30","10",1,
+"Para usar o café, você precisa estar com quantos dias jogados de conta?","10","30",2,
 "Em qual dia do ano o Transformice foi criado?","1","2",1,
 "Qual o limite de queijos que podem ser armazenados no inventário?","200","250",2,
 "Quantos anos tem o Tigrounette?","33","35",2,
 "Qual o nome da única mulher que criou um module semi-oficial no Transformice?","Morganadxana#0000","Lanadelrey#4862",1,
-"Qual o limite antigo de membros em uma tribo do Transformice?","5000","2000",2,
+"Ainda é possível colocar músicas no cafofo da tribo do Transformice, mesmo sem o plug-in do YouTube.","Verdadeiro","Falso",1,
 "Qual o nome de um module de testes extinto em que todos viravam Pikachu e tinham que descer a ladeira?","#surble","#surbler",1,
 "No começo da vida do Defilante, quem ganhava as partidas recebia 2 firsts e quantos queijos?","0","2",1,
 "Qual destas categorias de mapas é atribuída a mapas de Survivor Vampiro?","P11","P13",1,
 "O module #freezertag antes era um submódulo de qual module?","#parkour","#circuit",1,
 "Qual o nome do código que é usado para carregar mapas do Transformice?","Lua","XML",2,
-"Qual destes usuários nunca se tornou Funcorp?","Patrick_mahomes#1795","Pamots#0095",1,
+"Qual destes usuários nunca se tornou FunCorp?","Patrick_mahomes#1795","Pamots#0095",1,
 "Qual destes modules não foi feito por um brasileiro?","#anvilwar","#freezertag",1,
 "Qual destas ratas morreu na vida real, dando origem a uma decoração do Transformice?","Elise","Papaille",1,
 "Em qual mês do ano geralmente termina o evento de Natal?","Dezembro","Janeiro",2,
@@ -596,71 +598,6 @@ perguntas3={
 "A campeã Fiora possui um sotaque de fala...","Francês","Alemão",1,
 "Qual destes campeões não participa da série Arcane?","Jinx","Diana",2,
 }
-perguntas4={
-"Vai na sorte :)","ok","ok",1,
-"Vai na sorte :)","ok","ok",2,
-"Quantas Copas do Mundo Pelé jogou?","3","4",2,
-"Qual era o número da camisa de Cristiano Ronaldo na final da Eurocopa de 2004, contra a Grécia?","7","17",2,
-"Qual foi a seleção que fez a melhor campanha nas eliminatórias sul-americanas para a Copa do Mundo?","Brasil","Argentina",2,
-"O famoso gol 'La Mano de Dios' marcado por Diego Maradona, aconteceu na Copa do Mundo de qual ano?","1986","1990",1,
-"Qual destes jogadores ficou famoso por errar o pênalti que eliminou a seleção Inglesa na Eurocopa de 1996?","Gareth Southgate","David Beckham",1,
-"Quem marcou o gol do título do Flamengo na Copa União de 1987?","Renato Gaúcho","Bebeto",2,
-"Qual foi o árbitro que ficou conhecido pelo episódio da Máfia do Apito, em 2005?","Edílson Pereira de Carvalho","Paulo César de Oliveira",1,
-"Qual o nome dado a Liga de Futebol dos Estados Unidos?","Major League Soccer","Premier League",1,
-"Quantos Mundiais de Clubes ganhou Neymar?","0","1",2,
-"Quantas Libertadores possui o Boca Juniors?","4","6",2,
-"Qual clube brasileiro venceu o primeiro Campeonato Brasileiro disputado 100% por pontos corridos?","Cruzeiro","Santos",1,
-"Qual destes jogadores fez mais gols em Copas do Mundo?","Miroslav Klose","Ronaldo Fenômeno",1,
-"Quantas pessoas morreram no acidente aéreo que matou quase toda a delegação da Chapecoense, em 2016?","64","71",2,
-"Qual destes jogadores é, atualmente, o maior artilheiro dos Campeonatos Brasileiros por pontos corridos?","Fred","Diego Souza",1,
-"Qual destes jogadores é, atualmente, o maior artilheiro dos Campeonatos Brasileiros até 2002?","Zico","Roberto Dinamite",2,
-"Quantos jogadores do Atlético-MG foram expulsos no polêmico jogo da Semifinal da Libertadores de 1981 contra o Flamengo?","5","7",2,
-"Em qual ano o Corinthians conquistou seu primeiro título do Campeonato Brasileiro?","1990","1995",1,
-"Quem perdeu a última cobrança de pênalti na Semifinal da Libertadores de 2000, defendido pelo goleiro Marcos?","Marcelinho Carioca","Luisão",1,
-"Quantas bolas de ouro Lionel Messi possui?","6","7",2,
-"Qual destas Copas do Mundo foi a primeira a ter o uso do VAR?","2014, no Brasil","2018, na Rússia",2,
-"Qual destes clubes foi Campeão Brasileiro em um ano e rebaixado no ano seguinte?","Vasco","Fluminense",2,
-"Qual destes jogadores chegou a virar político?","Romário","Ronaldinho Gaúcho",1,
-"Qual destes jogadores vestiu por mais vezes a camisa do São Paulo?","Rogério Ceni","Raí",1,
-"Qual destes técnicos foi o responsável pelo tricampeonato brasileiro do São Paulo de 2006 a 2008?","Muricy Ramalho","Paulo Autuori",1,
-"Qual o nome do estádio que o Palmeiras utilizou até a construção do Allianz Parque?","Pacaembu","Parque Antártica",2,
-"Quantos times foram rebaixados no Campeonato Brasileiro de 1995?","2","4",1,
-"O Fluminense perdeu a final da Libertadores de 2008 para qual time?","Boca Juniors","LDU",2,
-"Qual destas cantoras NÃO cantou durante o show da abertura da Copa do Mundo de 2014?","Ivete Sangalo","Ariana Grande",2,
-"Todas as edições da Copa América na qual o Brasil foi o país-sede, a Seleção Brasileira venceu.","Verdadeiro","Falso",2,
-"Quem marcou o gol do título de Portugal na final da Eurocopa de 2016, contra a anfitriã França?","Cristiano Ronaldo","Éder",2,
-"Quantas medalhas de ouro possui a seleção Argentina de futebol olímpica?","2","3",1,
-"Qual foi o último time que colocou mais de 100 mil pessoas no Maracanã em 1999?","Botafogo","Flamengo",1,
-"Qual time possui mais títulos da Copa Libertadores da América?","Independiente","Boca Juniors",1,
-"Qual foi o único time do Nordeste a conquistar a Copa do Brasil?","Sport","Fortaleza",1,
-"A final da Libertadores da América de 2018 foi disputada em qual estádio?","Defensores del Chaco","Santiago Bernabéu",2,
-"Quem fez o único gol do título do Mundial Interclubes do Manchester United em 1999, contra o Palmeiras?","David Beckham","Roy Keane",2,
-"Quais desses times conseguiu vencer o Boca Juniors jogando no estádio da Bombonera?","Palmeiras e Corinthians","Palmeiras e Paysandu",2,
-"Qual é o jogador que mais marcou gols na história da Liga dos Campeões da Europa?","Cristiano Ronaldo","Ronaldo Fenômeno",1,
-"Em que ano começou a ser disputada a Copa do Brasil?","1989","1990",1,
-"Real Madrid e Milan são os clubes que mais venceram a Liga dos Campeões da Europa.","Verdadeiro","Falso",1,
-"Qual foi o técnico do Flamengo na conquista do Mundial Interclubes em 1981?","Cláudio Coutinho","Paulo César Carpegiani",2,
-"A seleção da Bolívia já chegou em uma final de Copa América.","Verdadeiro","Falso",1,
-"Qual era a competição organizada pela FIFA que ocorria um ano antes da Copa do Mundo?","Copa das Confederações","Copa América",1,
-"Qual desses times do interior de São Paulo já chegou em uma final de Libertadores?","Santo André","São Caetano",2,
-"O time do Vasco já caiu quantas vezes para a série B?","3","4",2,
-"Qual foi o nome do episódio de virada de mesa que ocasionou na realização da Copa João Havelange, em 2000?","Caso Sandro Hiroshi","Caso Milton Mendes",1,
-"Qual foi o jogador que foi escalado irregularmente na última rodada no Brasileirão de 2013, causando o rebaixamento da Portuguesa?","Héverton","Éderson",1,
-"Qual o nome do estádio conhecido como Engenhão?","Estádio João Havelange","Estádio Nilton Santos",2,
-"Quantas vezes o time do Palmeiras venceu o Mundial de Clubes?","0","1",1,
-"Qual o nome do jogador formado no Santos que foi condenado acusado de assédio sexual?","Robinho","Adriano",1,
-"Qual o nome original de Pelé?","Édson Arantes do Nascimento","Robson Arantes do Nascimento",1,
-"Qual foi o jogador que cobrou o último pênalti que deu ao Brasil sua primeira medalha de ouro olímpica?","Gabriel Jesus","Neymar",2,
-"Qual foi a primeira Copa do Mundo que foi decidida na disputa de pênaltis?","1994, nos Estados Unidos","1998, na França",1,
-"Qual foi o primeiro clube brasileiro a representar o Brasil na Copa Libertadores da América?","Bahia","Atlético-MG",1,
-"O Palmeiras é o único clube brasileiro que venceu duas edições seguidas da Libertadores.","Verdadeiro","Falso",2,
-"Qual foi o primeiro clube brasileiro a ser campeão da Copa Libertadores da América?","Santos","Botafogo",1,
-"Qual destes funkeiros já chegou a virar jogador de futebol?","MC Livinho","MC Kevinho",1,
-"Qual foi o jogador que errou o último pênalti na história final da Liga dos Campeões da Europa de 2004-2005?","Shevchenko","Maldini",1,
-"A Copa do Mundo nunca foi realizada no continente africano.","Verdadeiro","Falso",2,
-"Em qual cidade Pelé nasceu?","Santos","Três Corações",2,
-"Em qual ano foi realizado o primeiro Mundial de Clubes organizado pela FIFA?","1960","2000",2,
-}
 mapa="@7786632"
 actual_question={quest="",a1="",a2="",answer=nil}
 function verifyAdmin(name)
@@ -698,8 +635,6 @@ function eventNewGame()
 		count=rawlen(perguntas2)/4
 	elseif tema == 3 then	
 		count=rawlen(perguntas3)/4
-	elseif tema == 4 then	
-		count=rawlen(perguntas4)/4
 	end
 	fixed_cnt=count
 	if rawlen(questions_list) <= limite then
@@ -712,8 +647,6 @@ function eventNewGame()
 		showMessage("Esta é a versão oficial do Quiz de Perguntas.<br>Os temas das perguntas foram todos feitos por Reksai_void2600#6638.<br><br><N><b>Quantidade de perguntas presentes: "..fixed_cnt.."</b><br><VP>O sistema inteligente de escolha de perguntas está ativo.")
 	elseif tema == 3 then
 		showMessage("Esta é a versão oficial do Quiz de Perguntas.<br>Os temas das perguntas foram, em grande maioria, feitos por Spectra_phantom#6089.<br><br><N><b>Quantidade de perguntas presentes: "..fixed_cnt.."</b><br><VP>O sistema inteligente de escolha de perguntas está ativo.")
-	elseif tema == 4 then
-		showMessage("Esta é a versão oficial do Quiz de Perguntas.<br>Os temas das perguntas foram, em grande maioria, feitos por Lucianattack#0000.<br><br><N><b>Quantidade de perguntas presentes: "..fixed_cnt.."</b><br><VP>O sistema inteligente de escolha de perguntas está ativo.")
 	end
 end
 function reset()
@@ -725,7 +658,7 @@ function reset()
 	tfm.exec.newGame(mapa)
 end
 function eventChatCommand(name,message)
-	if name == "Forzaldenon#0000" or name == "Reksai_void2600#6638" or name == "Spectra_phantom#6089" or name == "Fosfus7heads#0000" or verifyAdmin(name) == true then
+	if name == "Forzaldenon#0000" or name == "Reksai_void2600#6638" or name == "Spectra_phantom#6089" or name == "Morganadxana#0000" or verifyAdmin(name) == true then
 		if (message:sub(0,6) == "limite") then
 			limite=tonumber(message:sub(8))
 			showMessage("Limite de rodadas alterado para: "..message:sub(8).."")
@@ -745,12 +678,10 @@ function eventChatCommand(name,message)
 				showMessage(perguntas2[sn],name)
 			elseif tema == 3 then
 				showMessage(perguntas3[sn],name)
-			elseif tema == 4 then
-				showMessage(perguntas4[sn],name)
 			end
 		end
 		if (message:sub(0,4) == "tema") then
-			if message:sub(6) == "0" or message:sub(6) == "1" or message:sub(6) == "2" or message:sub(6) == "3" or message:sub(6) == "4" then
+			if message:sub(6) == "0" or message:sub(6) == "1" or message:sub(6) == "2" or message:sub(6) == "3" then
 				tema=tonumber(message:sub(6))
 				questions_list={}; count=0;
 				reset()
@@ -768,7 +699,7 @@ function eventPlayerLeft(name)
 	ratos=ratos-1
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.18.1</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
+	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.19.0</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
@@ -817,7 +748,7 @@ function eventLoop(p,f)
 		else
 			tfm.exec.setGameTime(5)
 			showMessage("<R>Sem vencedores!")
-			modo="fim"
+			modo="fim2"
 		end
 	end
 	if modo == "perguntar" and f >= 1 then
@@ -825,7 +756,7 @@ function eventLoop(p,f)
 	else
 		ui.removeTextArea(3,nil)
 	end
-	if f <= 3000 and vivos == 1 and modo == "fim" then
+	if f <= 1500 and vivos == 1 and modo == "fim" then
 		for name,player in next,tfm.get.room.playerList do
 			if not tfm.get.room.playerList[name].isDead then
 				showMessage("<VP><b>"..name.."</b> venceu a partida!")
@@ -833,7 +764,7 @@ function eventLoop(p,f)
 			end
 		end
 	end
-	if f < 250 then
+	if f < 50 then
 		if modo == "fim" or modo == "fim2" then
 			modo="inicial"
 			reset()
@@ -946,30 +877,10 @@ function randomQuests()
 		actual_question.a1=perguntas3[-2+(4*pergunta)]
 		actual_question.a2=perguntas3[-1+(4*pergunta)]
 	end
-	if tema == 4 then
-		if set_q == 0 then
-			local q=math.random(#questions_list)
-			pergunta=q
-			questionChanger(q,true)
-			if debug == true then
-				print(rawlen(questions_list))
-			end
-		else
-			pergunta=set_q
-		end
-		actual_question.quest=perguntas4[-3+(4*pergunta)]
-		if perguntas4[pergunta*4] == 2 then
-			actual_question.answer=true
-		elseif perguntas3[pergunta*4] == 1 then
-			actual_question.answer=false
-		end
-		actual_question.a1=perguntas4[-2+(4*pergunta)]
-		actual_question.a2=perguntas4[-1+(4*pergunta)]
-	end
 	set_q=0
 	ui.addTextArea(1,"<p align='center'><font size='18'>"..actual_question.a1.."",nil,100,145,260,81,0,0,1.0,true)
 	ui.addTextArea(2,"<p align='center'><font size='18'>"..actual_question.a2.."",nil,440,145,260,81,0,0,1.0,true)
-	ui.addTextArea(0,"<p align='center'><font size='16'>"..actual_question.quest.."",nil,10,22,780,48,0x000001,0x000001,1.0,true)
+	ui.addTextArea(0,"<p align='center'><font size='15'>"..actual_question.quest.."",nil,10,32,780,48,0,0,1.0,true)
 end
 function eventPlayerDied(name)
 	local i=0
