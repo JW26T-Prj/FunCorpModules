@@ -1,12 +1,15 @@
--- Mudanças na Versão 2.19.0:
+-- Mudanças na Versão 2.20.0:
 
--- Correções e alterações em várias perguntas
--- Adição do link para a versão desbloqueada
--- Remoção das perguntas de futebol (para correção)
+-- Adição de 10 perguntas de conhecimentos gerais
+-- Adição de 6 perguntas de música
+-- Adição de 5 perguntas de lolzinho
+-- Pequenas alterações visuais
+-- Correções em algumas perguntas
+-- Adição de texto para envio de perguntas
 
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.19.0
--- Por favor, edite a linha 25 a variável 'admin' pelo seu nome para ter acesso aos comandos.
--- Você pode selecionar o tema editando a linha 27, ou digitando !tema [número] conforme os números abaixo.
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.20.0
+-- Por favor, edite a linha 28 a variável 'admin' pelo seu nome para ter acesso aos comandos.
+-- Você pode selecionar o tema editando a linha 30, ou digitando !tema [número] conforme os números abaixo.
 
 -- Temas:
 -- 0 = transformice
@@ -20,7 +23,7 @@
 -- https://github.com/JW26T-Prj/FunCorpModules/blob/master/QUIZ%20desbloqueado.lua
 
 -- Para sugestões de perguntas ou correção de bugs contate Reksai_void2600#6638.
--- Caso você queira usar este código em um cafofo de tribo, altere a variável TRIBEHOUSE da linha 28 para 'true'.
+-- Caso você queira usar este código em um cafofo de tribo, altere a variável TRIBEHOUSE da linha 31 para 'true'.
 
 admin={"Reksai_void2600#6638"} -- FunCorps, insiram seus nomes aqui!
 
@@ -385,7 +388,7 @@ perguntas1={
 "Quantos anos têm a Rainha Elizabeth?","93","95",2,
 "A partir de que ano Plutão deixou de ser considerado Planeta e foi considerado Planeta Anão?","2005","2006",2,
 "O seriado Chaves foi produzido em qual país?","México","Argentina",1,
-"A primeira emissora da Rede Globo foi lançado em qual estado do Brasil?","São Paulo","Rio de Janeiro",1,
+"A primeira emissora da Rede Globo foi lançado em qual estado do Brasil?","São Paulo","Rio de Janeiro",2,
 "Quantos continentes tem o Planeta Terra?","5","6",2,
 "É possível atirar com uma arma no espaço.","Verdadeiro","Falso",1,
 "Qual o nome do lugar mais quente do Planeta Terra?","Rio de Janeiro","Núcleo",2,
@@ -394,7 +397,7 @@ perguntas1={
 "Em que ano Lula foi eleito pela primeira vez presidente do Brasil?","2000","2002",2,
 "Durante o período do Regime Militar, existiram basicamente dois partidos políticos. Quais eram eles?","ARENA e PT","ARENA e MDB",2,
 "Nenhum elemento conhecido da tabela periódica consegue se manter sólido na superfície do Sol.","Verdadeiro","Falso",1,
-"Qual foi a menor temperatura registrada no Planeta Terra, aproximadamente?","-84.5°C","-89.2°C",2,
+"Qual foi a menor temperatura registrada no Planeta Terra, aproximadamente?","-88.5°C","-89.2°C",2,
 "Qual é a capital da Austrália?","Sydney","Camberra",2,
 "Em que ano foi inaugurada a Televisão no Brasil?","1950","1960",1,
 "O Canguru é um animal nativo de qual país?","Madagascar","Austrália",2,
@@ -402,6 +405,16 @@ perguntas1={
 "Em que ano o YouTube foi inaugurado?","2005","2007",1,
 "Os Estados Unidos são formados por quantos estados?","44","50",2,
 "A atriz e humorista Dercy Gonçalves morreu com quantos anos?","94","101",2,
+"Qual destes é o computador pessoal mais vendido de todos os tempos?","Commodore 64","Apple II",1,
+"Qual destes pontos turísticos fica localizado na cidade de Lisboa, em Portugal?","Castelo de Itaipava","Castelo de São Jorge",2,
+"Qual destas novelas da Globo não foi produzida no Brasil?","Salve Jorge","Terra Nostra",2,
+"Qual o nome da linha imaginária onde é considerado o limite entre a atmosfera da Terra e o espaço?","Linha de Kárman","Linha de Rochê",1,
+"A empresa Sony, famosa por diversos tipos de aparelhos musicais, foi fundada antes ou depois da Segunda Guerra Mundial?","Antes","Depois",2,
+"Em que ano começou oficialmente a operação da Usina de Itaipu?","1984","1985",1,
+"Em que ano começaram as transmissões de TV Digital no Brasil?","2007","2010",1,
+"Qual é a língua mais falada no mundo atualmente?","Inglês","Mandarim",2,
+"Qual o nome da extinta fabricante brasileira de carros, cujo grande sucesso foi o Corcel?","Tupi","Gurgel",2,
+"Quantos oceanos existem no Planeta Terra?","3","5",2,
 }
 perguntas2={
 "Vai na sorte :)","ok","ok",1,
@@ -496,6 +509,12 @@ perguntas2={
 "A banda de rock System of a Down é de qual país?","Inglaterra","Estados Unidos",2,
 "O grupo de louvor evangélico Diante do Trono foi formado em qual estado do Brasil?","São Paulo","Minas Gerais",2,
 "Complete a música: Entra na minha casa, entra na minha vida, mexe com minha estrutura...","Sara todas as feridas","Cura todas as feridas",1,
+"Qual foi o primeiro álbum gravado pela banda NX Zero?","Diálogo?","Meu Coração Desconfia Que Ainda Há Mais do Que Meus Olhos Possam Ver",2,
+"Qual foi o nome da banda que ficou famosa no início da década de 2010, principalmente pelo hit 'Levo Comigo'?","Restart","CPM 22",1,
+"O grupo de rock brasileiro Blitz foi formado em qual cidade?","Saquarema","Rio de Janeiro",2,
+"Complete a música: Because of you, I never stray too far from the...","Sidewalk","Weakness",1,
+"Qual é o nome do vocalista do grupo Capital Inicial?","Dinho Ouro Preto","Dinho Olho Preto",1,
+"Qual é o nome do primeiro single lançado pela banda Charlie Brown Jr.?","O Coro Vai Comê!","Tudo que Ela Gosta de Escutar",1,
 }
 perguntas3={
 "Vai na sorte :)","ok","ok",1,
@@ -504,7 +523,7 @@ perguntas3={
 "'A morte, é como o vento. Está sempre ao meu lado.'","Yasuo","Zed",1,
 "Qual destes campeões teve seu braço cortado por Irelia durante a invasão Noxiana contra Ionia?","Jax","Swain",2,
 "Qual destes, por muito tempo, foi dublador do personagem Ezreal?","Fábio Lucindo","Luciano Amaral",1,
-"Qual destas dubladoras é responsável pelas vozes da personagem Lissandra?","Juliana Fernandes","Alessandra Araújo",1,
+"Qual destas dubladoras é responsável pelas vozes da personagem Lissandra?","Juliana Fernandes","Alessandra Araújo",2,
 "Qual era a dupla famosa por fazer vários roubos em Águas de Sentina?","Graves e Twisted Fate","Graves e Pyke",1,
 "Quantos campeões dragões existem no League of Legends?","1","2",1,
 "Qual o nome do subcontinente localizado ao leste de Shurima, completo basicamente por florestas?","Ionia","Ixtal",2,
@@ -598,6 +617,11 @@ perguntas3={
 "Qual o nome da taça dada aos campeões mundiais de League of Legends?","Taça do Invocador","Taça do Campeão",1,
 "A campeã Fiora possui um sotaque de fala...","Francês","Alemão",1,
 "Qual destes campeões não participa da série Arcane?","Jinx","Diana",2,
+"Uma das falas do campeão Kha'Zix faz referência a uma música muito famosa de Raul Seixas. Qual é essa música?","Metamorfose Ambulante","Gita",1,
+"A campeã Irelia já passou por quantos reworks visuais?","2","3",1,
+"Não existem campeões do vazio que são humanos.","Verdadeiro","Falso",2,
+"Qual o nome do torneio de meio de temporada do League of Legends?","Worlds","Mid-Season Invitacional",2,
+"Quais os nomes das duas principals religiões existentes no Monte Targon?","Lunari e Solari","Lunari e Soraka",1,
 }
 mapa="@7786632"
 actual_question={quest="",a1="",a2="",answer=nil}
@@ -614,7 +638,7 @@ function showMessage(message,name)
 	if tribehouse == false then
 		tfm.exec.chatMessage(message,name)
 	elseif tribehouse == true then
-		ui.addTextArea(0,"<p align='center'><font size='16'>"..message.."",name,10,22,780,48,0x000001,0x000001,1.0,true)
+		ui.addTextArea(0,"<p align='center'><font size='15'>"..message.."",nil,40,32,720,48,0,0,1.0,true)
 	end
 end
 function questionChanger(id,remove)
@@ -645,9 +669,9 @@ function eventNewGame()
 		end
 	end
 	if tema <= 2 then
-		showMessage("Esta é a versão oficial do Quiz de Perguntas.<br>Os temas das perguntas foram todos feitos por Reksai_void2600#6638.<br><br><N><b>Quantidade de perguntas presentes: "..fixed_cnt.."</b><br><VP>O sistema inteligente de escolha de perguntas está ativo.")
+		showMessage("<N><b>Quantidade de perguntas presentes: "..fixed_cnt.."</b><br><VP>O sistema inteligente de escolha de perguntas está ativo.<br><br><G>Agora vocês podem sugerir temas e perguntas para este script! Entre em contato com Reksai_void2600#6638 por mensagem privada no fórum e envie suas perguntas.")
 	elseif tema == 3 then
-		showMessage("Esta é a versão oficial do Quiz de Perguntas.<br>Os temas das perguntas foram, em grande maioria, feitos por Spectra_phantom#6089.<br><br><N><b>Quantidade de perguntas presentes: "..fixed_cnt.."</b><br><VP>O sistema inteligente de escolha de perguntas está ativo.")
+		showMessage("<N><b>Quantidade de perguntas presentes: "..fixed_cnt.."</b><br><VP>O sistema inteligente de escolha de perguntas está ativo.<br><br><G>Agora vocês podem sugerir temas e perguntas para este script! Entre em contato com Reksai_void2600#6638 por mensagem privada no fórum e envie suas perguntas.")
 	end
 end
 function reset()
@@ -700,7 +724,7 @@ function eventPlayerLeft(name)
 	ratos=ratos-1
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.19.0</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
+	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.20.0</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
@@ -716,13 +740,13 @@ function eventLoop(p,f)
 		tfm.exec.addPhysicObject(5, 410, 140, barreira)
 		if actual_question.answer == false then
 			tfm.exec.removePhysicObject(1)
-			ui.addTextArea(2,"<p align='center'><font color='#181818'><font size='18'>"..actual_question.a2.."",nil,440,145,260,81,0,0,0.1,true)
-			ui.addTextArea(1,"<p align='center'><VP><font size='18'>"..actual_question.a1.."",nil,100,145,260,81,0,0,1.0,true)
+			ui.addTextArea(2,"<p align='center'><font color='#181818'><font size='18'>"..actual_question.a2.."",nil,440,145,260,141,0,0,0.1,true)
+			ui.addTextArea(1,"<p align='center'><VP><font size='18'>"..actual_question.a1.."",nil,100,145,260,141,0,0,1.0,true)
 			modo="intervalo"
 		elseif actual_question.answer == true then
 			tfm.exec.removePhysicObject(0)
-			ui.addTextArea(1,"<p align='center'><font color='#181818'><font size='18'>"..actual_question.a1.."",nil,100,145,260,81,0,0,0.1,true)
-			ui.addTextArea(2,"<p align='center'><VP><font size='18'>"..actual_question.a2.."",nil,440,145,260,81,0,0,1.0,true)
+			ui.addTextArea(1,"<p align='center'><font color='#181818'><font size='18'>"..actual_question.a1.."",nil,100,145,260,141,0,0,0.1,true)
+			ui.addTextArea(2,"<p align='center'><VP><font size='18'>"..actual_question.a2.."",nil,440,145,260,141,0,0,1.0,true)
 			modo="intervalo"
 		end
 	end
@@ -879,8 +903,8 @@ function randomQuests()
 		actual_question.a2=perguntas3[-1+(4*pergunta)]
 	end
 	set_q=0
-	ui.addTextArea(1,"<p align='center'><font size='18'>"..actual_question.a1.."",nil,100,145,260,81,0,0,1.0,true)
-	ui.addTextArea(2,"<p align='center'><font size='18'>"..actual_question.a2.."",nil,440,145,260,81,0,0,1.0,true)
+	ui.addTextArea(1,"<p align='center'><font size='18'>"..actual_question.a1.."",nil,100,145,260,141,0,0,1.0,true)
+	ui.addTextArea(2,"<p align='center'><font size='18'>"..actual_question.a2.."",nil,440,145,260,141,0,0,1.0,true)
 	ui.addTextArea(0,"<p align='center'><font size='15'>"..actual_question.quest.."",nil,40,32,720,48,0,0,1.0,true)
 end
 function eventPlayerDied(name)
