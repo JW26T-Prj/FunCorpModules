@@ -1,4 +1,4 @@
-﻿for _,f in next,{"AutoNewGame","AutoTimeLeft","AutoShaman","AutoScore","DebugCommand","PhysicalConsumables"} do
+for _,f in next,{"AutoNewGame","AutoTimeLeft","AutoShaman","AutoScore","DebugCommand","PhysicalConsumables"} do
 	tfm.exec["disable"..f](true)
 end
 system.disableChatCommandDisplay("help")
@@ -8,10 +8,10 @@ ground={type = 12,width = 10,height = 210,foregound = 1,friction = 0.0,restituti
 powerups={wind=false,meteor=false,gravity=false,cheese=false}
 events_pt={"Fúria da Tormenta","Chuva de Meteoros","Anomalia Gravitacional","Queijo para Todos"}
 events_en={"Wind Fury","Meteor Rain","Gravity Anomaly","Cheese for All"}
-power_d={p2={8,12,16,20,24},p3={14,16,18,20,22,24}}
+power_d={p2={6,8,10,12,14,16},p3={12,14,16,18,20,22}}
 lang.br = {
-	mapname = "<N><b>#mountain</b>  <V>-  <N>versão <ROSE>v1.0.0   <G>|   <N>Desenvolvido por <J>Morganadxana#0000<",
-	enter = "<N>Bem-vindo ao module <J><b>#mountain!</b><br><N>Você tem 3 minutos para escalar a grande montanha que há pelo caminho!<br><br><VP>Tenha cuidado, pois os deuses da montanha estão furiosos e irão causar grandes contratempos para quem tentar subir!<br><br><ROSE>Versão v1.0.0 - desenvolvido por Morganadxana#0000<br><VP>Agradecimentos especiais a Spectra_phantom#6089, Draw#6691 e Forzaldenon#0000",
+	mapname = "<N><b>#mountain</b>  <V>-  <N>versão <ROSE>v1.0.1   <G>|   <N>Desenvolvido por <J>Morganadxana#0000<",
+	enter = "<N>Bem-vindo ao module <J><b>#mountain!</b><br><N>Você tem 3 minutos para escalar a grande montanha que há pelo caminho!<br><br><VP>Tenha cuidado, pois os deuses da montanha estão furiosos e irão causar grandes contratempos para quem tentar subir!<br><br><ROSE>Versão v1.0.1 - desenvolvido por Morganadxana#0000<br><VP>Agradecimentos especiais a Spectra_phantom#6089, Draw#6691 e Forzaldenon#0000<br><br><R>MODULE NÃO RECOMENDADO PARA JOGADORES COM PC DA XUXA",
 	newgame = "<N>Caso não saiba o que fazer neste module, digite <b>!help</b>.",
 	getready = "<J>Se prepare! A estrada para a montanha será liberada em breve!",
 	start = "<VP><b>E que comece a batalha!</b>",
@@ -34,8 +34,8 @@ lang.br = {
 	help = "<p align='center'><VP><b>Bem-vindo ao module #mountain.</b><br><br><p align='left'><N>Este modo é bem simples. O objetivo é subir o máximo possível a grande montanha que há pela frente.<br><br>No entanto, os deuses da montanha estão furiosos, e podem atacar com os seguintes contratempos:<br><G>• Fúria da Tormenta: <N>Correntes de vento começam a pairar em volta da montanha.<br><G>• Chuva de Meteoros: <N>Meteoros começam a cair do céu, fazendo com que você caia.<br><G>• Anomalia Gravitacional: <N>Um campo gravítico intenso aparece na montanha, alterando de forma aleatória a gravidade do mapa.<br><G>• Queijo para Todos: <N>Todos os jogadores recebem queijo.<br><br>A partida acaba depois de 3 minutos, quanto todos os ratos morrem ou quando alguém chega no pico da montanha.<br><br><ROSE>Quaisquer bugs ou problemas reporte para Morganadxana#0000."
 }
 lang.en = {
-	mapname = "<N><b>#mountain</b>  <V>-  <N>version <ROSE>v1.0.0   <G>|   <N>Developed by <J>Morganadxana#0000<",
-	enter = "<N>Welcome to the <J><b>#mountain</b> module!<br><N>You have 3 minutes to scale the big mountain that is on your way!<br><br><VP>Be careful, because the mountain gods are furious and will cause huge troubles for those who try to scale!<br><br><ROSE>Version v1.0.0 - developed by Morganadxana#0000<br><VP>Translation by Rakan_raster#0000",
+	mapname = "<N><b>#mountain</b>  <V>-  <N>version <ROSE>v1.0.1   <G>|   <N>Developed by <J>Morganadxana#0000<",
+	enter = "<N>Welcome to the <J><b>#mountain</b> module!<br><N>You have 3 minutes to scale the big mountain that is on your way!<br><br><VP>Be careful, because the mountain gods are furious and will cause huge troubles for those who try to scale!<br><br><ROSE>Version v1.0.1 - developed by Morganadxana#0000<br><VP>Translation by Rakan_raster#0000",
 	newgame = "<N>If you don't know about this module, please type <b>!help</b>.",
 	getready = "<J>Get ready! The road to the mountain will be opened!",
 	start = "<VP><b>Go!</b>",
@@ -105,7 +105,7 @@ function eventNewPlayer(name)
 	showMessage(text.enter,name)
 	ui.setMapName(text.mapname)
 	newData={
-		["x"]=0; ["a"]=0; }
+		["x"]=0; ["a"]=0; ["enabled"]=false; }
 	data[name]=newData;
 	showImages(name)
 end
@@ -114,6 +114,7 @@ for name,player in next,tfm.get.room.playerList do
 	tfm.exec.setPlayerScore(name,0,false)
 end
 function eventPlayerDied(name)
+	data[name].enabled=false
 	if changed == true then
 	local i=0
 	local n
@@ -127,7 +128,7 @@ function eventPlayerDied(name)
 		showMessage(text.nowinners)
 		tfm.exec.setGameTime(15)
 		endgame=true; running=false;
-		tfm.exec.newGame(xml2)
+		tfm.exec.newGame(xml2,false)
 	end
 	end
 end
@@ -142,6 +143,7 @@ function eventNewGame()
 		end
 		for name,player in next,tfm.get.room.playerList do
 			data[name].a=0;
+			data[name].enabled=true;
 			showImages(name)
 			ui.setMapName(text.mapname)
 		end
@@ -229,7 +231,7 @@ function eventLoop(passado,faltando)
 			end
 		end
 		if falt_int <= 1 and endgame == true then
-			tfm.exec.newGame(xml2)
+			tfm.exec.newGame(xml2,false)
 		end
 		if wind == true or meteor == true or gravity == true or cheese == true then
 			event_int=event_int-0.5
@@ -245,6 +247,7 @@ function eventLoop(passado,faltando)
 		end
 	end
 	for name,player in next,tfm.get.room.playerList do
+		if data[name].enabled == true then
 		if running == true then
 			data[name].x=math.floor(math.pow((tfm.get.room.playerList[name].y/-1+10565)/100,2.2))
 			if data[name].x >= 1000 and data[name].a == 0 then
@@ -280,9 +283,11 @@ function eventLoop(passado,faltando)
 						tfm.exec.setGameTime(15)
 						falt_int=15
 						endgame=true
+						data[name].enabled=false
 					end
 				end
 			end
+		end
 		end
 		if wind == true then
 			for i=1,18 do
@@ -297,7 +302,7 @@ function eventLoop(passado,faltando)
 			if loop == 4 then
 				for i=1,2 do
 					x=math.random(2700,3300)
-					tfm.exec.addShamanObject(85, x, 0, 0, 0, math.random(0,10), false)
+					tfm.exec.addShamanObject(85, x, 0, 0, 0, 0, false)
 				end
 				loop=0
 			end
@@ -318,7 +323,7 @@ function eventLoop(passado,faltando)
 	else
 		if faltando <= 1 then
 			changed=true
-			tfm.exec.newGame(xml2)
+			tfm.exec.newGame(xml2,false)
 			ui.removeTextArea(0,nil)
 		end
 	end
