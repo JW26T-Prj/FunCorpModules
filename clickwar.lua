@@ -8,6 +8,19 @@ sudden=false; powerups=true; winner=""; data={}; players_table={}; increase=0; i
 map_det={creator="",code=""}
 enabled=false
 tfm.exec.setRoomMaxPlayers(30)
+function showMessage(message,name)
+	temp_text=string.gsub(message,"<b>","")
+	temp_text=string.gsub(temp_text,"</b>","")
+	if tfm.get.room.isTribeHouse == false then
+		tfm.exec.chatMessage(message,name)
+	elseif tfm.get.room.isTribeHouse == true then
+		if name == nil then
+			print("<ROSE>[Test Mode] : <br><BL>"..temp_text.."")
+		else
+			print("<ROSE>[Test Mode] - "..name.." : <br><BL>"..temp_text.."")
+		end
+	end
+end
 function split(t,s)
 	local a={}
 	for i,v in string.gmatch(t,string.format("[^%s]+",s or "%s")) do
@@ -66,12 +79,12 @@ function eventChatCommand(name,message)
 		if tfm.get.room.playerList[nome] then
 			menuShow2(nome,nome,"<font size='12'><b>Score: "..data[nome].score.."</b><br><br>Wins: "..data[nome].wins.."<br>Matches: "..data[nome].matches.."",75)
 		else
-			tfm.exec.chatMessage("Function not allowed",name)
+			showMessage("Function not allowed",name)
 		end
 	end
 	if message == "rank" then
 		eventRanking(name)
-		tfm.exec.chatMessage("The data on the ranking is temporary and will be erased when the room is finished or rebooted.",name)
+		showMessage("The data on the ranking is temporary and will be erased when the room is finished or rebooted.",name)
 	end
 	if message == "pw" then
 		if name == "Hecarimjhenx#0000" then
@@ -83,7 +96,7 @@ function eventChatCommand(name,message)
 		end
 	end
 	if message == "help" then
-		menuShow(name,"Help","The objetive of this module is kill the other players using the mouse to generate spirits.<br><br>At moment, 6 powerups are available:<br>F1 = Fast Spirits (700 points)<br>F2 = Double Power (350 points)<br>F3 = Box Meteor (550 points)<br>F4 = Night Mode (400 points)<br>F5 = Ultra Explosion (800 points)<br>F6 = Stone Meteor (750 points)<br><br>Module made by Hecarimjhenx#0000. Version RTM 5445.026",180)
+		menuShow(name,"Help","The objetive of this module is kill the other players using the mouse to generate spirits.<br><br>At moment, 6 powerups are available:<br>F1 = Fast Spirits (700 points)<br>F2 = Double Power (350 points)<br>F3 = Box Meteor (550 points)<br>F4 = Night Mode (400 points)<br>F5 = Ultra Explosion (800 points)<br>F6 = Stone Meteor (750 points)<br><br>Module made by Hecarimjhenx#0000. Version RTM 5546.027",180)
 	end
 	if message == "powerups" then
 		menuShow(name,"Powerups List","<b>F1 - Fast Spirits - 700 points</b><br>Allows you to use spirits without the default timeout.<br><b>F2 - Double Power - 350 points</b><br>Double the power of your anvils, independently of actual intensity.<br><b>F3 - Box Meteor - 550 points</b><br>Spawns a meteor of large box on the map.<br><b>F4 - Night Mode - 400 points</b><br>Blacks out the map for 2 seconds.<br><b>F5 - Ultra Explosion - 800 points</b><br>Spawns a huge amount of spirits around the map.<br><b>F6 - Stone Meteor - 750 points</b><br>Spawns a lot of stones falling from the top of map.",180)
@@ -102,7 +115,7 @@ function eventNewPlayer(name)
 	system.bindMouse(name,true)
 	data[name].imageid = tfm.exec.addImage("17a4e9a9cad.png",":1",238,80,name)
 	data[name].imaget=4
-	tfm.exec.chatMessage("<VP><b>Welcome to module #clickwar!</b><br><N>Use the mouse to generate explosions and kill other mices!<br><br>Module developed by Hecarimjhenx#0000. Arts made by Spectra_phantom#6089.<br><br><R>Warning: Is prohibited the copy or illegal utilization of this code (including older versions) for making parallel versions. If you discover players making these things, please report to Hecarimjhenx#0000.",name)
+	showMessage("<VP><b>Welcome to module #clickwar!</b><br><N>Use the mouse to generate explosions and kill other mices!<br><br>Module developed by Hecarimjhenx#0000. Arts made by Spectra_phantom#6089.<br><br><R>Warning: Is prohibited the copy or illegal utilization of this code (including older versions) for making parallel versions. If you discover players making these things, please report to Hecarimjhenx#0000.",name)
 end
 for name,player in pairs(tfm.get.room.playerList) do
 	eventNewPlayer(name)
@@ -150,10 +163,10 @@ function eventNewGame()
 		data[name].pcount=0
 		if name:sub(1,1) == "*" then
 			tfm.exec.killPlayer(name)
-			tfm.exec.chatMessage("<R>Souris aren't allowed to play on this module. Create an account or log in to play Clickwar.",name)
+			showMessage("<R>Souris aren't allowed to play on this module. Create an account or log in to play Clickwar.",name)
 		end
 	end
-	tfm.exec.chatMessage("<VP><i>Spectra's map loader v2.208.2</i><br><N>Loading current map information...<br><b>Current Map :</b> <V>"..map_det.code.."<br><N><b>Author :</b> <V>"..map_det.creator.."")
+	showMessage("<G><i>Spectra's map loader v2.214</i><br><N>Loading current map information...<br><b>Current Map :</b> <V>"..map_det.code.."<br><N><b>Author :</b> <V>"..map_det.creator.."")
 end
 function eventLoop(pass,falt)
 	if nightmode == true then
@@ -176,10 +189,10 @@ function eventLoop(pass,falt)
 		end
 	end
 	if falt < 70000 and falt > 69375 then
-		tfm.exec.chatMessage("<ROSE>The ultra hard mode will be enabled in 10 seconds!",nil)
+		showMessage("<ROSE>The ultra hard mode will be enabled in 10 seconds!",nil)
 	end
 	if falt < 60000 and sudden == false and falt > 50000 then
-		tfm.exec.chatMessage("<R><b>Ultra hard mode enabled!</b>",nil)
+		showMessage("<R><b>Ultra hard mode enabled!</b>",nil)
 		imageId = tfm.exec.addImage("17a4e9a853d.png",":1",240,40,nul)
 		remain=-0.5
 		ui.addTextArea(1,"",nil,-1000,-1000,3000,3000,0x000001,0x000001,0.8,false)
@@ -195,7 +208,7 @@ function eventLoop(pass,falt)
 		tfm.exec.newGame("#10")
 	end
 	if prox == false then
-		ui.setMapName("<N>ClickWar RTM <b>5445.026</b>   <G>|   <N>Intensity: <b>"..intensity.."</b>   <G>|   <VP>Module made by <b>Hecarimjhenx#0000</b><")
+		ui.setMapName("<N>ClickWar RTM <b>5546.027</b>   <G>|   <N>Intensity: <b>"..intensity.."</b>   <G>|   <VP>Module made by <b>Hecarimjhenx#0000</b><")
 	else
 		ui.setMapName("<b>"..winner.."</b> <N>wons the match! Next match on "..math.floor(falt/1000).." seconds.<")
 	end
@@ -262,7 +275,7 @@ function eventLoop(pass,falt)
 end
 function eventPlayerDied(name)
 	if name == last_win and times >= 2 then
-		tfm.exec.chatMessage("<J>The victory sequence of <R>"..last_win.."<J> has been ended!")
+		showMessage("<J>The victory sequence of <R>"..last_win.."<J> has been ended!")
 		times=1
 	end
 	local i=0
@@ -288,10 +301,10 @@ function eventPlayerDied(name)
 			data[n].score=data[n].score+100
 			times=times+1
 			if times == 2 or times == 3 then
-				tfm.exec.chatMessage("<J>"..last_win.." wons <b>"..times.."</b> times in a row!")
+				showMessage("<J>"..last_win.." wons <b>"..times.."</b> times in a row!")
 			end
 			if times >= 4 then
-				tfm.exec.chatMessage("<R><b>Legendary!</b><J> "..last_win.." wons <b>"..times.."</b> times in a row!")
+				showMessage("<R><b>Legendary!</b><J> "..last_win.." wons <b>"..times.."</b> times in a row!")
 			end
 		end
 		last_win=n
@@ -310,7 +323,7 @@ function eventTextAreaCallback(id,name,callback)
 		eventChatCommand(name,"rank")
 	end
 	if callback == "profile" then
-		tfm.exec.chatMessage("Use the !p command to view your profile and !p [user] to view the profile of specified user.",name)
+		showMessage("Use the !p command to view your profile and !p [user] to view the profile of specified user.",name)
 	end
 	if callback == "fechar" then
 		for id=8000,8010 do
@@ -352,30 +365,30 @@ function eventKeyboard(name,key,down,x,y)
 				data[name].p1=true
 				data[name].score=data[name].score-700
 				data[name].pcount=16
-				tfm.exec.chatMessage("<J>"..name.." used the powerup <ROSE><b>Fast Spirits!</b>")
+				showMessage("<J>"..name.." used the powerup <ROSE><b>Fast Spirits!</b>")
 			end
 			if key == 113 and data[name].score >= 350 then
 				data[name].p2=true
 				data[name].score=data[name].score-350
 				data[name].pcount=20
-				tfm.exec.chatMessage("<J>"..name.." used the powerup <ROSE><b>Double Power!</b>")
+				showMessage("<J>"..name.." used the powerup <ROSE><b>Double Power!</b>")
 			end
 			if key == 114 and data[name].score >= 550 then
 				data[name].score=data[name].score-550
-				tfm.exec.chatMessage("<J>"..name.." used the powerup <ROSE><b>Box Meteor!</b>")
+				showMessage("<J>"..name.." used the powerup <ROSE><b>Box Meteor!</b>")
 				for i=-6,19 do
 					tfm.exec.addShamanObject(2,i*60,-1,0,0,0,false)
 				end
 			end
 			if key == 115 and data[name].score >= 400 then
 				data[name].score=data[name].score-400
-				tfm.exec.chatMessage("<J>"..name.." used the powerup <ROSE><b>Night Mode!</b>")
+				showMessage("<J>"..name.." used the powerup <ROSE><b>Night Mode!</b>")
 				ui.addTextArea(2571,"",nil,-800,-600,3000,3000,0x010101,0x010101,0.99,true)
 				nightmode=true
 			end
 			if key == 116 and data[name].score >= 800 then
 				data[name].score=data[name].score-800
-				tfm.exec.chatMessage("<J>"..name.." used the powerup <ROSE><b>Mega Explosion!</b>")
+				showMessage("<J>"..name.." used the powerup <ROSE><b>Mega Explosion!</b>")
 				for i=-4,12 do
 					for j=-2,6 do
 						tfm.exec.explosion(i*100,j*100,intensity,intensity*1.5,false)
@@ -385,7 +398,7 @@ function eventKeyboard(name,key,down,x,y)
 			end
 			if key == 117 and data[name].score >= 750 then
 				data[name].score=data[name].score-750
-				tfm.exec.chatMessage("<J>"..name.." used the powerup <ROSE><b>Stone Meteor!</b>")
+				showMessage("<J>"..name.." used the powerup <ROSE><b>Stone Meteor!</b>")
 				for i=-12,38 do
 					tfm.exec.addShamanObject(85,i*30,-1,0,0,0,false)
 				end
