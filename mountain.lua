@@ -10,8 +10,8 @@ events_pt={"Fúria da Tormenta","Chuva de Meteoros","Anomalia Gravitacional","Qu
 events_en={"Wind Fury","Meteor Rain","Gravity Anomaly","Cheese for All"}
 power_d={p2={6,8,10,12,14,16},p3={12,14,16,18,20,22}}
 lang.br = {
-	mapname = "<N><b>#mountain</b>  <V>-  <N>versão <ROSE>v1.0.1   <G>|   <N>Desenvolvido por <J>Morganadxana#0000<",
-	enter = "<N>Bem-vindo ao module <J><b>#mountain!</b><br><N>Você tem 3 minutos para escalar a grande montanha que há pelo caminho!<br><br><VP>Tenha cuidado, pois os deuses da montanha estão furiosos e irão causar grandes contratempos para quem tentar subir!<br><br><ROSE>Versão v1.0.1 - desenvolvido por Morganadxana#0000<br><VP>Agradecimentos especiais a Spectra_phantom#6089, Draw#6691 e Forzaldenon#0000<br><br><R>MODULE NÃO RECOMENDADO PARA JOGADORES COM PC DA XUXA",
+	mapname = "<N><b>#mountain</b>  <V>-  <N>versão <ROSE>v1.0.2   <G>|   <N>Desenvolvido por <J>Morganadxana#0000<",
+	enter = "<N>Bem-vindo ao module <J><b>#mountain!</b><br><N>Você tem 3 minutos para escalar a grande montanha que há pelo caminho!<br><br><VP>Tenha cuidado, pois os deuses da montanha estão furiosos e irão causar grandes contratempos para quem tentar subir!<br><br><ROSE>Versão v1.0.2 - desenvolvido por Morganadxana#0000<br><VP>Agradecimentos especiais a Spectra_phantom#6089, Draw#6691 e Forzaldenon#0000<br><br><R>MODULE NÃO RECOMENDADO PARA JOGADORES COM PC DA XUXA",
 	newgame = "<N>Caso não saiba o que fazer neste module, digite <b>!help</b>.",
 	getready = "<J>Se prepare! A estrada para a montanha será liberada em breve!",
 	start = "<VP><b>E que comece a batalha!</b>",
@@ -31,11 +31,11 @@ lang.br = {
 	reached6 = "<VP>Você chegou no pico da montanha! Os deuses reconheceram sua bravura e coragem e te acolheram para o céu!",
 	reached7 = " <VP>chegou até o topo da montanha!<br><N>Ele(a) agora se integra nas estrelas e passa a brilhar como nunca!",
 	nowinners = "<R>Não há vencedores!",
-	help = "<p align='center'><VP><b>Bem-vindo ao module #mountain.</b><br><br><p align='left'><N>Este modo é bem simples. O objetivo é subir o máximo possível a grande montanha que há pela frente.<br><br>No entanto, os deuses da montanha estão furiosos, e podem atacar com os seguintes contratempos:<br><G>• Fúria da Tormenta: <N>Correntes de vento começam a pairar em volta da montanha.<br><G>• Chuva de Meteoros: <N>Meteoros começam a cair do céu, fazendo com que você caia.<br><G>• Anomalia Gravitacional: <N>Um campo gravítico intenso aparece na montanha, alterando de forma aleatória a gravidade do mapa.<br><G>• Queijo para Todos: <N>Todos os jogadores recebem queijo.<br><br>A partida acaba depois de 3 minutos, quanto todos os ratos morrem ou quando alguém chega no pico da montanha.<br><br><ROSE>Quaisquer bugs ou problemas reporte para Morganadxana#0000."
+	help = "<p align='center'><VP><b>Bem-vindo ao module #mountain.</b><br><br><p align='left'><N>Este modo é bem simples. O objetivo é subir o máximo possível a grande montanha que há pela frente.<br><br>No entanto, os deuses da montanha estão furiosos, e podem atacar com os seguintes contratempos:<br><G>• Fúria da Tormenta: <N>Correntes de vento começam a pairar em volta da montanha.<br><G>• Chuva de Meteoros: <N>Meteoros começam a cair do céu, fazendo com que você caia.<br><G>• Anomalia Gravitacional: <N>Um campo gravítico intenso aparece na montanha, alterando de forma aleatória a gravidade do mapa.<br><G>• Queijo para Todos: <N>Todos os jogadores recebem queijo.<br><br>A partida acaba depois de 3 minutos, quando todos os ratos morrem ou quando alguém chega no pico da montanha.<br><br><ROSE>Quaisquer bugs ou problemas reporte para Morganadxana#0000."
 }
 lang.en = {
-	mapname = "<N><b>#mountain</b>  <V>-  <N>version <ROSE>v1.0.1   <G>|   <N>Developed by <J>Morganadxana#0000<",
-	enter = "<N>Welcome to the <J><b>#mountain</b> module!<br><N>You have 3 minutes to scale the big mountain that is on your way!<br><br><VP>Be careful, because the mountain gods are furious and will cause huge troubles for those who try to scale!<br><br><ROSE>Version v1.0.1 - developed by Morganadxana#0000<br><VP>Translation by Rakan_raster#0000",
+	mapname = "<N><b>#mountain</b>  <V>-  <N>version <ROSE>v1.0.2   <G>|   <N>Developed by <J>Morganadxana#0000<",
+	enter = "<N>Welcome to the <J><b>#mountain</b> module!<br><N>You have 3 minutes to scale the big mountain that is on your way!<br><br><VP>Be careful, because the mountain gods are furious and will cause huge troubles for those who try to scale!<br><br><ROSE>Version v1.0.2 - developed by Morganadxana#0000<br><VP>Translation by Rakan_raster#0000",
 	newgame = "<N>If you don't know about this module, please type <b>!help</b>.",
 	getready = "<J>Get ready! The road to the mountain will be opened!",
 	start = "<VP><b>Go!</b>",
@@ -269,7 +269,7 @@ function eventLoop(passado,faltando)
 				showMessage(text.reached5,name)
 				data[name].a=5
 			end
-			if data[name].x >= 24321 and data[name].a == 5 then
+			if data[name].x >= 24650 and data[name].a == 5 then
 				showMessage(text.reached6,name)
 				data[name].a=10
 				for n,player in next,tfm.get.room.playerList do
