@@ -1,7 +1,9 @@
 for _,f in next,{"AutoNewGame","AutoTimeLeft","AfkDeath","AutoShaman","AutoScore","DebugCommand","PhysicalConsumables"} do
 	tfm.exec["disable"..f](true)
 end
-system.disableChatCommandDisplay("help")
+for _,g in next,{"help","powerups","creditos","changelog"} do
+	system.disableChatCommandDisplay(g)
+end
 number_scale={8240,7400,6760,6230,5760,5350,4970,4620,4260,4000,3693,3417,3175,2900,2650,2390,2180,1950,1750,1550,1360,1150,935,770}
 data={}; lang={}; loop=0; map_count=0; event_selected=0; running=false; pass_int=0; falt_int=0; run_int=0; event_int=0; endgame=false; changed=false; vencedor="";
 map="@7901662"; xml2=''
@@ -11,8 +13,8 @@ events_pt={"Fúria da Tormenta","Chuva de Meteoros","Anomalia Gravitacional","Qu
 events_en={"Wind Fury","Meteor Rain","Gravity Anomaly","Cheese for All"}
 power_d={p2={6,8,10,12},p3={12,14,16,18,20,22}}
 lang.br = {
-	mapname = "<N><b>#mountain</b>  <V>-  <N>versão <ROSE>v1.0.5   <G>|   <N>Desenvolvido por <J>Morganadxana#0000<",
-	enter = "<N>Bem-vindo ao module <J><b>#mountain!</b><br><N>Você tem 3 minutos para escalar a grande montanha que há pelo caminho!<br><br><ROSE>Versão v1.0.5 - desenvolvido por Morganadxana#0000<br><VP>Agradecimentos especiais a Spectra_phantom#6089, Draw#6691 e Forzaldenon#0000",
+	mapname = "<N><b>#mountain</b>  <V>-  <N>versão <ROSE>v1.0.6   <G>|   <N>Desenvolvido por <J>Morganadxana#0000<",
+	enter = "<N>Bem-vindo ao module <J><b>#mountain!</b><br><N>Você tem 3 minutos para escalar a grande montanha que há pelo caminho!<br><br><ROSE>Versão v1.0.6 - desenvolvido por Morganadxana#0000<br><VP>O module foi atualizado! Para descobrir as novidades, digite !changelog.",
 	newgame = "<N>Caso não saiba o que fazer neste module, digite <b>!help</b>.",
 	getready = "<J>Se prepare! A estrada para a montanha será liberada em breve!",
 	start = "<VP><b>E que comece a batalha!</b>",
@@ -42,8 +44,8 @@ lang.br = {
 	lyncdowryammer = "Sinto na pele a desgraça que ela passou. Perdeu todos os seus amigos durante uma chuva de meteoros...<br><br>Agora falando sério, os deuses escondem um segredo gigante nesta montanha. Poderes extremamente fortes estão presentes no topo dela.<br><br>No entanto, não se empolgue. Os mesmos deuses estão muito furiosos ultimamente, e não querem que ninguém suba..."
 }
 lang.en = {
-	mapname = "<N><b>#mountain</b>  <V>-  <N>version <ROSE>v1.0.5   <G>|   <N>Developed by <J>Morganadxana#0000<",
-	enter = "<N>Welcome to the <J><b>#mountain</b> module!<br><N>You have 3 minutes to scale the big mountain that is on your way!<br><ROSE>Version v1.0.5 - developed by Morganadxana#0000<br><VP>Translation by Rakan_raster#0000",
+	mapname = "<N><b>#mountain</b>  <V>-  <N>version <ROSE>v1.0.6   <G>|   <N>Developed by <J>Morganadxana#0000<",
+	enter = "<N>Welcome to the <J><b>#mountain</b> module!<br><N>You have 3 minutes to scale the big mountain that is on your way!<br><ROSE>Version v1.0.6 - developed by Morganadxana#0000<br><V>Translation by Rakan_raster#0000<br><VP>If you want to see the latest updates, type !changelog.",
 	newgame = "<N>If you don't know about this module, please type <b>!help</b>.",
 	getready = "<J>Get ready! The road to the mountain will be opened!",
 	start = "<VP><b>Go!</b>",
@@ -92,7 +94,7 @@ function showMenu(name,color,x,y,width,height,title,content)
 		ui.addTextArea(1004,"",name,-1000,-600,2800,1600,0x000001,0x000001,0.65,true)
 		ui.addTextArea(1001,"",name,x+5,y+5,width,height,color,color,0.95,true)
 		ui.addTextArea(1000,"<font size='13'><i><br><br>"..content.."",name,x,y,width,height,0x151515,color,0.95,true)
-		ui.addTextArea(1002,"<font color='#f8d802'><font size='14'><p align='center'><i><b>"..title.."",name,x+5,y+5,width-10,20,0x101010,0x101010,0.95,true)
+		ui.addTextArea(1002,"<font color='#f8d802'><font size='14'><p align='center'><i><b>"..title.."",name,x+5,y+5,width-10,22,0x101010,0x101010,0.95,true)
 		ui.addTextArea(1003,"<font color='#ff2300'><font size='14'><b><a href='event:close'>X</a>",name,x+width-25,y+5,width-10,20,0,0,0.95,true)
 	end
 end
@@ -132,7 +134,7 @@ function eventChatCommand(name,command)
 		showMenu(name,0xb6e980,140,90,520,130,"Credits",text.credits)
 	end
 	if command == "changelog" then
-		showMenu(name,0x2578f6,140,100,520,170,"Changelog","<font size='11'>[v1.0.5]:<br>• More fixes on winner selection<br>• Added the Universal Menu scheme<br>• Added a protection for avoiding bugs with low memory client players<br><br>[v1.0.4]:<br>• Bug fixes on Meteor Rain<br>• Bug fixes on winner selection<br>• Added an altitude marker<br>• English translation for NPCs")
+		showMenu(name,0x2578f6,140,100,520,240,"Changelog","<font size='11'>[v1.0.6]:<br>• Fixed some issues with the end of game<br>• Added command hiding for !powerups, !changelog and !creditos<br>• Slight changes on the Universal Menu scheme<br><br>[v1.0.5]:<br>• More fixes on winner selection<br>• Added the Universal Menu scheme<br>• Added a protection for avoiding bugs with low memory client players<br><br>[v1.0.4]:<br>• Bug fixes on Meteor Rain<br>• Bug fixes on winner selection<br>• Added an altitude marker<br>• English translation for NPCs")
 	end
 end
 function eventNewPlayer(name)
@@ -332,7 +334,7 @@ function eventLoop(passado,faltando)
 		if falt_int == 20 and endgame == false then
 			showMessage(text.t10secs)
 		end
-		if falt_int == 0 and endgame == false then
+		if falt_int <= 2 and endgame == false then
 			while vencedor == "" do
 				vencedor = defineVencedor()
 			end
