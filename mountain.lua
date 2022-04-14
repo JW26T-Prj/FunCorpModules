@@ -1,17 +1,18 @@
-for _,f in next,{"AutoNewGame","AutoTimeLeft","AutoShaman","AutoScore","DebugCommand","PhysicalConsumables"} do
+for _,f in next,{"AutoNewGame","AutoTimeLeft","AfkDeath","AutoShaman","AutoScore","DebugCommand","PhysicalConsumables"} do
 	tfm.exec["disable"..f](true)
 end
 system.disableChatCommandDisplay("help")
+number_scale={8240,7400,6760,6230,5760,5350,4970,4620,4260,4000,3693,3417,3175,2900,2650,2390,2180,1950,1750,1550,1360,1150,935,770}
 data={}; lang={}; loop=0; map_count=0; event_selected=0; running=false; pass_int=0; falt_int=0; run_int=0; event_int=0; endgame=false; changed=false;
 map="@7901662"; xml2=''
 ground={type = 12,width = 10,height = 210,foregound = 1,friction = 0.0,restitution = 1.0,angle = 0,color = 0xffffff,miceCollision = true,groundCollision = true,dynamic = false}
 powerups={wind=false,meteor=false,gravity=false,cheese=false}
 events_pt={"Fúria da Tormenta","Chuva de Meteoros","Anomalia Gravitacional","Queijo para Todos"}
 events_en={"Wind Fury","Meteor Rain","Gravity Anomaly","Cheese for All"}
-power_d={p2={6,8,10,12,14,16},p3={12,14,16,18,20,22}}
+power_d={p2={6,8,10,12},p3={12,14,16,18,20,22}}
 lang.br = {
-	mapname = "<N><b>#mountain</b>  <V>-  <N>versão <ROSE>v1.0.3   <G>|   <N>Desenvolvido por <J>Morganadxana#0000<",
-	enter = "<N>Bem-vindo ao module <J><b>#mountain!</b><br><N>Você tem 3 minutos para escalar a grande montanha que há pelo caminho!<br><br><VP>Tenha cuidado, pois os deuses da montanha estão furiosos e irão causar grandes contratempos para quem tentar subir!<br><br><ROSE>Versão v1.0.3 - desenvolvido por Morganadxana#0000<br><VP>Agradecimentos especiais a Spectra_phantom#6089, Draw#6691 e Forzaldenon#0000<br><br><R>MODULE NÃO RECOMENDADO PARA JOGADORES COM PC DA XUXA",
+	mapname = "<N><b>#mountain</b>  <V>-  <N>versão <ROSE>v1.0.4   <G>|   <N>Desenvolvido por <J>Morganadxana#0000<",
+	enter = "<N>Bem-vindo ao module <J><b>#mountain!</b><br><N>Você tem 3 minutos para escalar a grande montanha que há pelo caminho!<br><br><ROSE>Versão v1.0.4 - desenvolvido por Morganadxana#0000<br><VP>Agradecimentos especiais a Spectra_phantom#6089, Draw#6691 e Forzaldenon#0000<br><br><N>Changelog da versão v1.0.4:<br>• Correção de bugs na Chuva de Meteoros<br>• Correções de bugs na escolha dos vencedores<br>• Adição de um marcador de altitude<br>• Tradução dos NPCs para o inglês",
 	newgame = "<N>Caso não saiba o que fazer neste module, digite <b>!help</b>.",
 	getready = "<J>Se prepare! A estrada para a montanha será liberada em breve!",
 	start = "<VP><b>E que comece a batalha!</b>",
@@ -31,11 +32,15 @@ lang.br = {
 	reached6 = "<VP>Você chegou no pico da montanha! Os deuses reconheceram sua bravura e coragem e te acolheram para o céu!",
 	reached7 = " <VP>chegou até o topo da montanha!<br><N>Ele(a) agora se integra nas estrelas e passa a brilhar como nunca!",
 	nowinners = "<R>Não há vencedores!",
-	help = "<p align='center'><VP><b>Bem-vindo ao module #mountain.</b><br><br><p align='left'><N>Este modo é bem simples. O objetivo é subir o máximo possível a grande montanha que há pela frente.<br><br>No entanto, os deuses da montanha estão furiosos, e podem atacar com os seguintes contratempos:<br><G>• Fúria da Tormenta: <N>Correntes de vento começam a pairar em volta da montanha.<br><G>• Chuva de Meteoros: <N>Meteoros começam a cair do céu, fazendo com que você caia.<br><G>• Anomalia Gravitacional: <N>Um campo gravítico intenso aparece na montanha, alterando de forma aleatória a gravidade do mapa.<br><G>• Queijo para Todos: <N>Todos os jogadores recebem queijo.<br><br>A partida acaba depois de 3 minutos, quando todos os ratos morrem ou quando alguém chega no pico da montanha.<br><br><ROSE>Quaisquer bugs ou problemas reporte para Morganadxana#0000."
+	help = "<p align='center'><VP><b>Bem-vindo ao module #mountain.</b><br><br><p align='left'><N>Este modo é bem simples. O objetivo é subir o máximo possível a grande montanha que há pela frente.<br><br>No entanto, os deuses da montanha estão furiosos, e podem atacar com os seguintes contratempos:<br><G>• Fúria da Tormenta: <N>Correntes de vento começam a pairar em volta da montanha.<br><G>• Chuva de Meteoros: <N>Meteoros começam a cair do céu, fazendo com que você caia.<br><G>• Anomalia Gravitacional: <N>Um campo gravítico intenso aparece na montanha, alterando de forma aleatória a gravidade do mapa.<br><G>• Queijo para Todos: <N>Todos os jogadores recebem queijo.<br><br>A partida acaba depois de 3 minutos, quando todos os ratos morrem ou quando alguém chega no pico da montanha.<br><br><ROSE>Quaisquer bugs ou problemas reporte para Morganadxana#0000.",
+	juliahenderson = "Você não me acha linda?",
+	andersondarther = "Não ligue para ela. Sempre gosta de se exibir com seus visuais...<br><br>Agora falando sério, os deuses escondem um segredo gigante nesta montanha. Poderes extremamente fortes estão presentes no topo dela.<br><br>No entanto, não se empolgue. Os mesmos deuses estão muito furiosos ultimamente, e não querem que ninguém suba...",
+	mylenneganditz = "Ei, você! Fique comigo, preciso de amigos!",
+	lyncdowryammer = "Sinto na pele a desgraça que ela passou. Perdeu todos os seus amigos durante uma chuva de meteoros...<br><br>Agora falando sério, os deuses escondem um segredo gigante nesta montanha. Poderes extremamente fortes estão presentes no topo dela.<br><br>No entanto, não se empolgue. Os mesmos deuses estão muito furiosos ultimamente, e não querem que ninguém suba..."
 }
 lang.en = {
-	mapname = "<N><b>#mountain</b>  <V>-  <N>version <ROSE>v1.0.3   <G>|   <N>Developed by <J>Morganadxana#0000<",
-	enter = "<N>Welcome to the <J><b>#mountain</b> module!<br><N>You have 3 minutes to scale the big mountain that is on your way!<br><br><VP>Be careful, because the mountain gods are furious and will cause huge troubles for those who try to scale!<br><br><ROSE>Version v1.0.3 - developed by Morganadxana#0000<br><VP>Translation by Rakan_raster#0000",
+	mapname = "<N><b>#mountain</b>  <V>-  <N>version <ROSE>v1.0.4   <G>|   <N>Developed by <J>Morganadxana#0000<",
+	enter = "<N>Welcome to the <J><b>#mountain</b> module!<br><N>You have 3 minutes to scale the big mountain that is on your way!<br><ROSE>Version v1.0.4 - developed by Morganadxana#0000<br><VP>Translation by Rakan_raster#0000",
 	newgame = "<N>If you don't know about this module, please type <b>!help</b>.",
 	getready = "<J>Get ready! The road to the mountain will be opened!",
 	start = "<VP><b>Go!</b>",
@@ -55,7 +60,11 @@ lang.en = {
 	reached6 = "<VP>You reached the peak of the mountain! The gods recognized your bravery and courage. Now, you is part of the heaven!",
 	reached7 = " <VP>reached the top of the mountain!<br><N>(S)he now is part of the stars and will bright many more!",
 	nowinners = "<R>No winners!",
-	help = "<p align='center'><VP><b>Welcome to the #mountain module.</b><br><br><p align='left'><N>This game is very simple. The objective is scale the big mountain that is in front of you.<br><br>However, the mountain gods are furious, and can attack you with the following events:<br><G>• Wind Fury: <N>Strong winds hover around the mountain.<br><G>• Meteor Rain: <N>Some meteors will fall from the heaven, making you go down.<br><G>• Gravity Anomaly: <N>A strong gravitational field appears on the mountain, randomly changing the gravity of the map.<br><G>• Cheese For All: <N>All the players will have cheese.<br><br>The match will end after 3 minutes, when there is no more alive mices or when someone reaches the top of the mountain.<br><br><ROSE>Bugs and problems? Report to Morganadxana#0000."
+	help = "<p align='center'><VP><b>Welcome to the #mountain module.</b><br><br><p align='left'><N>This game is very simple. The objective is scale the big mountain that is in front of you.<br><br>However, the mountain gods are furious, and can attack you with the following events:<br><G>• Wind Fury: <N>Strong winds hover around the mountain.<br><G>• Meteor Rain: <N>Some meteors will fall from the heaven, making you go down.<br><G>• Gravity Anomaly: <N>A strong gravitational field appears on the mountain, randomly changing the gravity of the map.<br><G>• Cheese For All: <N>All the players will have cheese.<br><br>The match will end after 3 minutes, when there is no more alive mices or when someone reaches the top of the mountain.<br><br><ROSE>Bugs and problems? Report to Morganadxana#0000.",
+	juliahenderson = "You don't think that I'm beautiful?",
+	andersondarther = "Don't be fooled by her. She always likes to show off...<br><br>Talking serious, the mountain gods are hiding a very powerful secret. Extremely powerful things are present on the peak of the mountain.<br><br>However, don't get carried. The same gods are very furious recently. They like that nobody scale the mountain...",
+	mylenneganditz = "Hey! Stay with me! I need of friends!",
+	lyncdowryammer = "I'm sorry about what happened. She lost all of your friends during a meteor rain...<br><br>However, don't get carried. The same gods are very furious recently. They like that nobody scale the mountain..."
 }
 if tfm.get.room.community == "br" or tfm.get.room.community == "pt" then
 	text = lang.br
@@ -75,7 +84,7 @@ function defineVencedor()
 	max_score=10800
 	winner=""
 	for name,player in next,tfm.get.room.playerList do
-		if tfm.get.room.playerList[name].y <= max_score then
+		if tfm.get.room.playerList[name].y < max_score and data[name].enabled == true then
 			winner=name
 			max_score=tfm.get.room.playerList[name].y
 		end
@@ -134,13 +143,13 @@ function eventPlayerDied(name)
 end
 function eventTalkToNPC(name, npc)
 	if npc == "Julia Henderson" then
-		showMessage("<V>[Julia Henderson] <N>Você não me acha linda?",name)
+		showMessage("<V>[Julia Henderson] <N>"..text.juliahenderson.."",name)
 	elseif npc == "Anderson Darther" then
-		showMessage("<V>[Anderson Darther] <N>Não ligue para ela. Sempre gosta de se exibir com seus visuais...<br><br>Agora falando sério, os deuses escondem um segredo gigante nesta montanha. Poderes extremamente fortes estão presentes no topo dela.<br><br>No entanto, não se empolgue. Os mesmos deuses estão muito furiosos ultimamente, e não querem que ninguém suba...",name)
+		showMessage("<V>[Anderson Darther] <N>"..text.andersondarther.."",name)
 	elseif npc == "Mylenne Ganditz" then
-		showMessage("<V>[Mylenne Ganditz] <N>Ei, você! Fique comigo, preciso de amigos!",name)
+		showMessage("<V>[Mylenne Ganditz] <N>"..text.mylenneganditz.."",name)
 	elseif npc == "Lync Dowryammer" then
-		showMessage("<V>[Lync Dowryammer] <N>Sinto na pele a desgraça que ela passou. Perdeu todos os seus amigos durante uma chuva de meteoros...<br><br>Agora falando sério, os deuses escondem um segredo gigante nesta montanha. Poderes extremamente fortes estão presentes no topo dela.<br><br>No entanto, não se empolgue. Os mesmos deuses estão muito furiosos ultimamente, e não querem que ninguém suba...",name)
+		showMessage("<V>[Lync Dowryammer] <N>"..text.lyncdowryammer.."",name)
 	end
 end
 function eventNewGame()
@@ -159,6 +168,9 @@ function eventNewGame()
 			ui.setMapName(text.mapname)
 		end
 		showMessage(text.newgame)
+		for i=1,24 do
+			ui.addTextArea(i,"<p align='center'>"..tostring(i*1000).."",nil,2980,number_scale[i],40,16,0x010101,0x010101,1.0,false)
+		end
 		tfm.exec.addNPC("Anderson Darther",{title = 298, look = "1;123_125508,0,0,4,60_324716+316441+4b926d+900f31+20310+ece674+e47c39+8d2637+900f31+900f31,40_256c23+717a30,31_ef4a6+f3f9bc,0,47",x = 4680,y = 10550,female = false,lookLeft = false,lookAtPlayer = true,interactive = true})
 		tfm.exec.addNPC("Lync Dowryammer",{title = 253, look = "176;40_7b00c8+70335,0,20_9d00ff,43_290448,29_729be0+1d0241,0,1_5c00cb+211ce0,0,0",x = 1700,y = 10320,female = false,lookLeft = true,lookAtPlayer = true,interactive = true})
 		tfm.exec.addNPC("Mylenne Ganditz",{title = 244, look = "161;212,38,57,66,62,0,33,0,0",x = 2430,y = 9368,female = true,lookLeft = true,lookAtPlayer = true,interactive = true})
@@ -194,6 +206,36 @@ function eventLoop(passado,faltando)
 		running=true
 	end
 	if running == true then
+		if wind == true then
+			for i=1,24 do
+				x=math.random(2800,3200)
+				y=math.random(2000,10000)
+				tfm.exec.explosion(x, y, -8, 100, true)
+				tfm.exec.displayParticle(math.random(26,27), x, y, 1, 1, 1, 1)
+			end
+		end
+		if meteor == true then
+			loop=loop+1
+			if loop == 4 then
+				for i=1,2 do
+					x=math.random(2600,3400)
+					tfm.exec.addShamanObject(85, x, 0, 0, 0, 0, false)
+				end
+				loop=0
+			end
+		end
+		if gravity == true then
+			loop=loop+1
+			if loop == 4 then
+				tfm.exec.setWorldGravity(0,math.random(10,15))
+				loop=0
+			end
+		end
+		if cheese == true then
+			for name,player in next,tfm.get.room.playerList do
+				tfm.exec.giveCheese(name)
+			end
+		end
 		run_int=run_int+0.5
 		if run_int == 28 and falt_int >= 48 then
 			event_selected=math.random(1,4)
@@ -303,36 +345,6 @@ function eventLoop(passado,faltando)
 				end
 			end
 		end
-		end
-		if wind == true then
-			for i=1,18 do
-				x=math.random(2800,3200)
-				y=math.random(2000,10000)
-				tfm.exec.explosion(x, y, -8, 100, true)
-				tfm.exec.displayParticle(math.random(26,27), x, y, 1, 1, 1, 1)
-			end
-		end
-		if meteor == true then
-			loop=loop+1
-			if loop == 4 then
-				for i=1,2 do
-					x=math.random(2600,3400)
-					tfm.exec.addShamanObject(85, x, 0, 0, 0, 0, false)
-				end
-				loop=0
-			end
-		end
-		if gravity == true then
-			loop=loop+1
-			if loop == 4 then
-				tfm.exec.setWorldGravity(0,math.random(10,15))
-				loop=0
-			end
-		end
-		if cheese == true then
-			for name,player in next,tfm.get.room.playerList do
-				tfm.exec.giveCheese(name)
-			end
 		end
 	end
 	else
