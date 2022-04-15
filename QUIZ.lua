@@ -1,29 +1,27 @@
--- Mudanças na Versão 2.20.0:
+-- Mudanças na Versão 2.20.1:
 
--- Adição de 10 perguntas de conhecimentos gerais
--- Adição de 6 perguntas de música
--- Adição de 5 perguntas de lolzinho
--- Pequenas alterações visuais
--- Correções em algumas perguntas
--- Adição de texto para envio de perguntas
+-- Re-adição das perguntas de futebol
+-- Adição de 3 perguntas de música
+-- Pequenas alterações no código
 
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.20.0
--- Por favor, edite a linha 28 a variável 'admin' pelo seu nome para ter acesso aos comandos.
--- Você pode selecionar o tema editando a linha 30, ou digitando !tema [número] conforme os números abaixo.
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.20.1
+-- Por favor, edite a linha 26 a variável 'admin' pelo seu nome para ter acesso aos comandos.
+-- Você pode selecionar o tema editando a linha 28, ou digitando !tema [número] conforme os números abaixo.
 
 -- Temas:
 -- 0 = transformice
 -- 1 = conhecimentos gerais
 -- 2 = música
 -- 3 = lolzinho
--- 4 = animes (em breve)
+-- 4 = futebol
+-- 5 = animes (em breve)
 
 -- Esta é uma versão bloqueada. As perguntas não podem ser alteradas.
 -- Para fazer um quiz utilizando suas próprias perguntas, utilize a versão desbloqueada:
 -- https://github.com/JW26T-Prj/FunCorpModules/blob/master/QUIZ%20desbloqueado.lua
 
 -- Para sugestões de perguntas ou correção de bugs contate Reksai_void2600#6638.
--- Caso você queira usar este código em um cafofo de tribo, altere a variável TRIBEHOUSE da linha 31 para 'true'.
+-- Caso você queira usar este código em um cafofo de tribo, altere a variável TRIBEHOUSE da linha 29 para 'true'.
 
 admin={"Reksai_void2600#6638"} -- FunCorps, insiram seus nomes aqui!
 
@@ -413,7 +411,7 @@ perguntas1={
 "Em que ano começou oficialmente a operação da Usina de Itaipu?","1984","1985",1,
 "Em que ano começaram as transmissões de TV Digital no Brasil?","2007","2010",1,
 "Qual é a língua mais falada no mundo atualmente?","Inglês","Mandarim",2,
-"Qual o nome da extinta fabricante brasileira de carros, cujo grande sucesso foi o Corcel?","Tupi","Gurgel",2,
+"Qual o nome da extinta fabricante brasileira de carros?","Tupi","Gurgel",2,
 "Quantos oceanos existem no Planeta Terra?","3","5",2,
 }
 perguntas2={
@@ -515,6 +513,9 @@ perguntas2={
 "Complete a música: Because of you, I never stray too far from the...","Sidewalk","Weakness",1,
 "Qual é o nome do vocalista do grupo Capital Inicial?","Dinho Ouro Preto","Dinho Olho Preto",1,
 "Qual é o nome do primeiro single lançado pela banda Charlie Brown Jr.?","O Coro Vai Comê!","Tudo que Ela Gosta de Escutar",1,
+"Qual destas músicas do Linkin Park foi a primeira a ser gravada com Chester Bennington no vocal?","Numb","And One",2,
+"Em que ano foi lançada a famosa música Brincadeira de Criança, do grupo Molejo, junto com o álbum de mesmo nome?","1997","2000",1,
+"A banda de power metal Angra foi formada em qual cidade?","Angra dos Reis","São Paulo",2,
 }
 perguntas3={
 "Vai na sorte :)","ok","ok",1,
@@ -623,6 +624,71 @@ perguntas3={
 "Qual o nome do torneio de meio de temporada do League of Legends?","Worlds","Mid-Season Invitacional",2,
 "Quais os nomes das duas principals religiões existentes no Monte Targon?","Lunari e Solari","Lunari e Soraka",1,
 }
+perguntas4={
+"Vai na sorte :)","ok","ok",1,
+"Vai na sorte :)","ok","ok",2,
+"Quantas Copas do Mundo Pelé jogou?","3","4",2,
+"Qual era o número da camisa de Cristiano Ronaldo na final da Eurocopa de 2004, contra a Grécia?","7","17",2,
+"Qual foi a seleção que fez a melhor campanha nas eliminatórias sul-americanas para a Copa do Mundo?","Brasil","Argentina",2,
+"O famoso gol 'La Mano de Dios' marcado por Diego Maradona, aconteceu na Copa do Mundo de qual ano?","1986","1990",1,
+"Qual destes jogadores ficou famoso por errar o pênalti que eliminou a seleção Inglesa na Eurocopa de 1996?","Gareth Southgate","David Beckham",1,
+"Quem marcou o gol do título do Flamengo na Copa União de 1987?","Renato Gaúcho","Bebeto",2,
+"Qual foi o árbitro que ficou conhecido pelo episódio da Máfia do Apito, em 2005?","Edílson Pereira de Carvalho","Paulo César de Oliveira",1,
+"Qual o nome dado a Liga de Futebol dos Estados Unidos?","Major League Soccer","Premier League",1,
+"Quantos Mundiais de Clubes ganhou Neymar?","0","1",2,
+"Quantas Libertadores possui o Boca Juniors?","4","6",2,
+"Qual clube brasileiro venceu o primeiro Campeonato Brasileiro disputado 100% por pontos corridos?","Cruzeiro","Santos",1,
+"Qual destes jogadores fez mais gols em Copas do Mundo?","Miroslav Klose","Ronaldo Fenômeno",1,
+"Quantas pessoas morreram no acidente aéreo que matou quase toda a delegação da Chapecoense, em 2016?","64","71",2,
+"Qual destes jogadores é, atualmente, o maior artilheiro dos Campeonatos Brasileiros por pontos corridos?","Fred","Diego Souza",1,
+"Qual destes jogadores é, atualmente, o maior artilheiro dos Campeonatos Brasileiros até 2002?","Zico","Roberto Dinamite",2,
+"Quantos jogadores do Atlético-MG foram expulsos no polêmico jogo da Semifinal da Libertadores de 1981 contra o Flamengo?","5","7",2,
+"Em qual ano o Corinthians conquistou seu primeiro título do Campeonato Brasileiro?","1990","1995",1,
+"Quem perdeu a última cobrança de pênalti na Semifinal da Libertadores de 2000, defendido pelo goleiro Marcos?","Marcelinho Carioca","Luisão",1,
+"Quantas bolas de ouro Lionel Messi possui?","6","7",2,
+"Qual destas Copas do Mundo foi a primeira a ter o uso do VAR?","2014, no Brasil","2018, na Rússia",2,
+"Qual destes clubes foi Campeão Brasileiro em um ano e rebaixado no ano seguinte?","Vasco","Fluminense",2,
+"Qual destes jogadores chegou a virar político?","Romário","Ronaldinho Gaúcho",1,
+"Qual destes jogadores vestiu por mais vezes a camisa do São Paulo?","Rogério Ceni","Raí",1,
+"Qual destes técnicos foi o responsável pelo tricampeonato brasileiro do São Paulo de 2006 a 2008?","Muricy Ramalho","Paulo Autuori",1,
+"Qual o nome do estádio que o Palmeiras utilizou até a construção do Allianz Parque?","Pacaembu","Parque Antártica",2,
+"Quantos times foram rebaixados no Campeonato Brasileiro de 1995?","2","4",1,
+"O Fluminense perdeu a final da Libertadores de 2008 para qual time?","Boca Juniors","LDU",2,
+"Qual destas cantoras NÃO cantou durante o show da abertura da Copa do Mundo de 2014?","Ivete Sangalo","Ariana Grande",2,
+"Todas as edições da Copa América na qual o Brasil foi o país-sede, a Seleção Brasileira venceu.","Verdadeiro","Falso",2,
+"Quem marcou o gol do título de Portugal na final da Eurocopa de 2016, contra a anfitriã França?","Cristiano Ronaldo","Éder",2,
+"Quantas medalhas de ouro possui a seleção Argentina de futebol olímpica?","2","3",1,
+"Qual foi o último time que colocou mais de 100 mil pessoas no Maracanã em 1999?","Botafogo","Flamengo",1,
+"Qual time possui mais títulos da Copa Libertadores da América?","Independiente","Boca Juniors",1,
+"Qual foi o único time do Nordeste a conquistar a Copa do Brasil?","Sport","Fortaleza",1,
+"A final da Libertadores da América de 2018 foi disputada em qual estádio?","Defensores del Chaco","Santiago Bernabéu",2,
+"Quem fez o único gol do título do Mundial Interclubes do Manchester United em 1999, contra o Palmeiras?","David Beckham","Roy Keane",2,
+"Quais desses times conseguiu vencer o Boca Juniors jogando no estádio da Bombonera?","Palmeiras e Corinthians","Palmeiras e Paysandu",2,
+"Qual é o jogador que mais marcou gols na história da Liga dos Campeões da Europa?","Cristiano Ronaldo","Ronaldo Fenômeno",1,
+"Em que ano começou a ser disputada a Copa do Brasil?","1989","1990",1,
+"Real Madrid e Milan são os clubes que mais venceram a Liga dos Campeões da Europa.","Verdadeiro","Falso",1,
+"Qual foi o técnico do Flamengo na conquista do Mundial Interclubes em 1981?","Cláudio Coutinho","Paulo César Carpegiani",2,
+"A seleção da Bolívia já chegou em uma final de Copa América.","Verdadeiro","Falso",1,
+"Qual era a competição organizada pela FIFA que ocorria um ano antes da Copa do Mundo?","Copa das Confederações","Copa América",1,
+"Qual desses times do interior de São Paulo já chegou em uma final de Libertadores?","Santo André","São Caetano",2,
+"O time do Vasco já caiu quantas vezes para a série B?","3","4",2,
+"Qual foi o nome do episódio de virada de mesa que ocasionou na realização da Copa João Havelange, em 2000?","Caso Sandro Hiroshi","Caso Milton Mendes",1,
+"Qual foi o jogador que foi escalado irregularmente na última rodada no Brasileirão de 2013, causando o rebaixamento da Portuguesa?","Héverton","Éderson",1,
+"Qual o nome do estádio conhecido como Engenhão?","Estádio João Havelange","Estádio Nilton Santos",2,
+"Quantas vezes o time do Palmeiras venceu o Mundial de Clubes?","0","1",1,
+"Qual o nome do jogador formado no Santos que foi condenado acusado de assédio sexual?","Robinho","Adriano",1,
+"Qual o nome original de Pelé?","Édson Arantes do Nascimento","Robson Arantes do Nascimento",1,
+"Qual foi o jogador que cobrou o último pênalti que deu ao Brasil sua primeira medalha de ouro olímpica?","Gabriel Jesus","Neymar",2,
+"Qual foi a primeira Copa do Mundo que foi decidida na disputa de pênaltis?","1994, nos Estados Unidos","1998, na França",1,
+"Qual foi o primeiro clube brasileiro a representar o Brasil na Copa Libertadores da América?","Bahia","Atlético-MG",1,
+"O Palmeiras é o único clube brasileiro que venceu duas edições seguidas da Libertadores.","Verdadeiro","Falso",2,
+"Qual foi o primeiro clube brasileiro a ser campeão da Copa Libertadores da América?","Santos","Botafogo",1,
+"Qual destes funkeiros já chegou a virar jogador de futebol?","MC Livinho","MC Kevinho",1,
+"Qual foi o jogador que errou o último pênalti na história final da Liga dos Campeões da Europa de 2004-2005?","Shevchenko","Maldini",1,
+"A Copa do Mundo nunca foi realizada no continente africano.","Verdadeiro","Falso",2,
+"Em qual cidade Pelé nasceu?","Santos","Três Corações",2,
+"Em qual ano foi realizado o primeiro Mundial de Clubes organizado pela FIFA?","1960","2000",2,
+}
 mapa="@7786632"
 actual_question={quest="",a1="",a2="",answer=nil}
 function verifyAdmin(name)
@@ -660,6 +726,8 @@ function eventNewGame()
 		count=rawlen(perguntas2)/4
 	elseif tema == 3 then	
 		count=rawlen(perguntas3)/4
+	elseif tema == 4 then	
+		count=rawlen(perguntas4)/4
 	end
 	fixed_cnt=count
 	if rawlen(questions_list) <= limite then
@@ -668,11 +736,7 @@ function eventNewGame()
 			table.insert(questions_list,i)
 		end
 	end
-	if tema <= 2 then
-		showMessage("<N><b>Quantidade de perguntas presentes: "..fixed_cnt.."</b><br><VP>O sistema inteligente de escolha de perguntas está ativo.<br><br><G>Agora vocês podem sugerir temas e perguntas para este script! Entre em contato com Reksai_void2600#6638 por mensagem privada no fórum e envie suas perguntas.")
-	elseif tema == 3 then
-		showMessage("<N><b>Quantidade de perguntas presentes: "..fixed_cnt.."</b><br><VP>O sistema inteligente de escolha de perguntas está ativo.<br><br><G>Agora vocês podem sugerir temas e perguntas para este script! Entre em contato com Reksai_void2600#6638 por mensagem privada no fórum e envie suas perguntas.")
-	end
+	showMessage("<N><b>Quantidade de perguntas presentes: "..fixed_cnt.."</b><br><VP>O sistema inteligente de escolha de perguntas está ativo.<br><br><G>Agora vocês podem sugerir temas e perguntas para este script! Entre em contato com Reksai_void2600#6638 por mensagem privada no fórum e envie suas perguntas.")
 end
 function reset()
 	rodada=0
@@ -703,10 +767,12 @@ function eventChatCommand(name,message)
 				showMessage(perguntas2[sn],name)
 			elseif tema == 3 then
 				showMessage(perguntas3[sn],name)
+			elseif tema == 4 then
+				showMessage(perguntas4[sn],name)
 			end
 		end
 		if (message:sub(0,4) == "tema") then
-			if message:sub(6) == "0" or message:sub(6) == "1" or message:sub(6) == "2" or message:sub(6) == "3" then
+			if message:sub(6) == "0" or message:sub(6) == "1" or message:sub(6) == "2" or message:sub(6) == "3" or message:sub(6) == "4" then
 				tema=tonumber(message:sub(6))
 				questions_list={}; count=0;
 				reset()
@@ -724,7 +790,7 @@ function eventPlayerLeft(name)
 	ratos=ratos-1
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.20.0</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
+	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.20.1</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
@@ -882,7 +948,7 @@ function randomQuests()
 		actual_question.a1=perguntas2[-2+(4*pergunta)]
 		actual_question.a2=perguntas2[-1+(4*pergunta)]
 	end
-	if tema == 3 then
+	if tema == 4 then
 		if set_q == 0 then
 			local q=math.random(#questions_list)
 			pergunta=q
@@ -893,14 +959,14 @@ function randomQuests()
 		else
 			pergunta=set_q
 		end
-		actual_question.quest=perguntas3[-3+(4*pergunta)]
-		if perguntas3[pergunta*4] == 2 then
+		actual_question.quest=perguntas4[-3+(4*pergunta)]
+		if perguntas4[pergunta*4] == 2 then
 			actual_question.answer=true
-		elseif perguntas3[pergunta*4] == 1 then
+		elseif perguntas4[pergunta*4] == 1 then
 			actual_question.answer=false
 		end
-		actual_question.a1=perguntas3[-2+(4*pergunta)]
-		actual_question.a2=perguntas3[-1+(4*pergunta)]
+		actual_question.a1=perguntas4[-2+(4*pergunta)]
+		actual_question.a2=perguntas4[-1+(4*pergunta)]
 	end
 	set_q=0
 	ui.addTextArea(1,"<p align='center'><font size='18'>"..actual_question.a1.."",nil,100,145,260,141,0,0,1.0,true)
