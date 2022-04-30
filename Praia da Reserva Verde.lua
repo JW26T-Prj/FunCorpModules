@@ -11,8 +11,6 @@ function showMessage(message,name)
 	temp_text=string.gsub(temp_text,"</b>","")
 	if tfm.get.room.isTribeHouse == false then
 		tfm.exec.chatMessage(message,name)
-	else
-		print(temp_text)
 	end
 end
 function showNPCs()
