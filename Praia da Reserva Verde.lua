@@ -105,14 +105,14 @@ function eventLoop(p,f)
 	if changed == true then
 		for name,player in next,tfm.get.room.playerList do
 			if tfm.get.room.playerList[name].y >= 1399 then
-				if data[name].z <= 1.45 then
-					data[name].z=data[name].z+0.01
+				if data[name].z <= 1.53 then
+					data[name].z=data[name].z+0.005
 				end
 			else
 				data[name].z=1
 			end
 			tfm.exec.setPlayerGravityScale(name,data[name].z)
-			if p >= 2000 and p <= 10000 then
+			if p >= 6000 then
 				if tfm.get.room.playerList[name].y <= 400 and tfm.get.room.playerList[name].x <= 800 and not tfm.get.room.playerList[name].isDead then
 					showMessage("<R>Aviso: Não há mais memória disponível para o Transformice. Para poder entrar neste mapa, saia do jogo e entre novamente.",name)
 				end
