@@ -1,7 +1,7 @@
 -- WARNING: THIS VERSION IS AVAILABLE ONLY IN PORTUGUESE!! Use the previous version for international rooms.
 -- Previous version: https://raw.githubusercontent.com/JW26T-Prj/FunCorpModules/8012e32bf0df0b43efc1161da6b1ce718a8b2e99/mestre%20mandou.lua
 
--- Edição de aniversário do module Mestre Mandou, versão RTM 16305.100 Anniversary Edition, desenvolvida por Rakan_raster#0000.
+-- Edição de aniversário do module Mestre Mandou, versão RTM 17006.100 Anniversary Edition, desenvolvida por Rakan_raster#0000.
 
 admin={""} -- Leia abaixo / Read below!
 -- Se estiver rodando este código em uma sala FunCorp, insira o nome dos FunCorps acima e digite !fc para habilitar algumas funções e comandos especiais.
@@ -15,13 +15,13 @@ active=0; vivo=0; rato=0; dificuldade=1; rodadas=0; rodada=0; number=0; xpos=0; 
 fc_cmds={1,2,4,5,6,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,28,30,31,32,33,34,35,36,40,41,42,43,45,46,47,48,49,50,51,53,56,57,58,59,61,62,65,66,67,69,71,75,76,77,78,79,80,81,82,83,91,92}
 spiderweb={type = 15,width = 60,height = 60}
 map_det={creator="",code=""}
-ninjas={"Rakan_raster#0000","Xayah_raster#7598","Aurelianlua#0000","Forzaldenon#0000","Skyymellu#0000","Inthevayron#0000","Jessiewind26#2546","Nasus_assassin#1534"}
+ninjas={"Rakan_raster#0000","Xayah_raster#7598","Morganadxana#0000","Forzaldenon#0000","Skyymellu#0000","Inthevayron#0000","Jessiewind26#2546","Nasus_assassin#1534","Ashearcher#0000"}
 fc_mode=false; xpos=0; xpos2=0; unlocked=true;
 for _,f in next,{"command","pw","limit","run","fc","tc","q","a","t","kill"} do
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>O objetivo deste module é muito simples: Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><VP>Tenha sempre cuidado com os comandos trolls!<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Jessiewind26#2546<br><br><ROSE>Versão RTM 16305.100 Anniversary Edition",
+	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>O objetivo deste module é muito simples: Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><VP>Tenha sempre cuidado com os comandos trolls!<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Jessiewind26#2546<br><br><ROSE>Versão RTM 17006.100 Anniversary Edition",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -128,7 +128,8 @@ lang.br = {
 	jogar = "Quem aqui joga LOL?",
 	capital = "Qual a capital da Rússia?",
 	mundial = "Qual é o time que não tem mundial?",
-	fosfus = "Qual o nome do personagem do perfil da Lena_isis386#0000?"
+	fosfus = "Qual o nome do personagem do perfil da Lena_isis386#0000?",
+	description = "Qual a descrição da Ashe?",
 }
 
 text = lang.br
@@ -877,8 +878,12 @@ function getCommand()
 		tfm.exec.setGameTime(qtime)
 	end
 	if active == 100 then
-		showCommand(active,fosfus)
-		tfm.exec.setGameTime(10)
+		showCommand(active,text.fosfus)
+		tfm.exec.setGameTime(12)
+	end
+	if active == 101 then
+		showCommand(active,text.description)
+		tfm.exec.setGameTime(12)
 	end
 end
 function eventPlayerBonusGrabbed(name, id)
@@ -1018,6 +1023,11 @@ function eventChatMessage(name,message)
 	end
 	if active == 100 then
 		if message == "Lena Isis" then
+			completeCommand(name)
+		end
+	end
+	if active == 101 then
+		if string.upper(message) == "A ARQUEIRA DO GELO" then
 			completeCommand(name)
 		end
 	end
@@ -1419,11 +1429,11 @@ end
 function eventLoop(passado,faltando)
 	local tempo=math.floor(faltando/1000)
 	if active == -2 then
-		ui.setMapName("<N>"..text.mices.."   <G>|   <VP><b>"..text.version.." RTM 16305.100 Anniversary Edition</b><")
+		ui.setMapName("<N>"..text.mices.."   <G>|   <VP><b>"..text.version.." RTM 17006.100 Anniversary Edition</b><")
 	elseif active == -1 then
-		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <VP><b>"..text.version.." RTM 16305.100 Anniversary Edition</b><")
+		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <VP><b>"..text.version.." RTM 17006.100 Anniversary Edition</b><")
 	elseif active >= 0 then
-		ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <VP><b>"..text.version.." RTM 16305.100 Anniversary Edition</b><")
+		ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <VP><b>"..text.version.." RTM 17006.100 Anniversary Edition</b><")
 	end
 	if rato < 4 then
 		if tfm.get.room.currentMap == "@2684847" and unlocked == true then
