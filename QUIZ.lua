@@ -1,12 +1,11 @@
--- Mudanças na Versão 2.20.1:
+-- Mudanças na Versão 2.21.0:
 
--- Re-adição das perguntas de futebol
--- Adição de 3 perguntas de música
--- Pequenas alterações no código
+-- Adição de 7 perguntas de música
+-- Correções de bugs no tema 3
 
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.20.1
--- Por favor, edite a linha 26 a variável 'admin' pelo seu nome para ter acesso aos comandos.
--- Você pode selecionar o tema editando a linha 28, ou digitando !tema [número] conforme os números abaixo.
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.21.0
+-- Por favor, edite a linha 25 a variável 'admin' pelo seu nome para ter acesso aos comandos.
+-- Você pode selecionar o tema editando a linha 27, ou digitando !tema [número] conforme os números abaixo.
 
 -- Temas:
 -- 0 = transformice
@@ -21,7 +20,7 @@
 -- https://github.com/JW26T-Prj/FunCorpModules/blob/master/QUIZ%20desbloqueado.lua
 
 -- Para sugestões de perguntas ou correção de bugs contate Reksai_void2600#6638.
--- Caso você queira usar este código em um cafofo de tribo, altere a variável TRIBEHOUSE da linha 29 para 'true'.
+-- Caso você queira usar este código em um cafofo de tribo, altere a variável TRIBEHOUSE da linha 28 para 'true'.
 
 admin={"Reksai_void2600#6638"} -- FunCorps, insiram seus nomes aqui!
 
@@ -516,6 +515,13 @@ perguntas2={
 "Qual destas músicas do Linkin Park foi a primeira a ser gravada com Chester Bennington no vocal?","Numb","And One",2,
 "Em que ano foi lançada a famosa música Brincadeira de Criança, do grupo Molejo, junto com o álbum de mesmo nome?","1997","2000",1,
 "A banda de power metal Angra foi formada em qual cidade?","Angra dos Reis","São Paulo",2,
+"Qual o nome da rádio fundada por Assis Chateaubriand em 1935, empresário que depois seria responsável pela inauguração da TV no Brasil?","Rádio Jovem Pan","Super Rádio Tupi",2,
+"A cantora Shakira nasceu em qual país?","Colômbia","Estados Unidos",1,
+"Qual o nome do terceiro álbum lançado pela banda Oficina G3?","Indiferença","Além do Que os Olhos Podem Ver",1,
+"O formato de música MP3 foi oficializado em qual ano?","1992","1998",1,
+"Qual o nome da cantora que gravou a famosa música Wrecking Ball?","Miley Cyrus","Ariana Grande",1,
+"Em que estado brasileiro surgiu o famoso grupo musical brasileiro Olodum?","Pernambuco","Bahia",2,
+"Qual destes cantores é participa da banda brasileira CPM 22?","Paulo Sousa","Rodrigo Koala",2,
 }
 perguntas3={
 "Vai na sorte :)","ok","ok",1,
@@ -790,7 +796,7 @@ function eventPlayerLeft(name)
 	ratos=ratos-1
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.20.1</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
+	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.21.0</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
@@ -947,6 +953,26 @@ function randomQuests()
 		end
 		actual_question.a1=perguntas2[-2+(4*pergunta)]
 		actual_question.a2=perguntas2[-1+(4*pergunta)]
+	end
+	if tema == 3 then
+		if set_q == 0 then
+			local q=math.random(#questions_list)
+			pergunta=q
+			questionChanger(q,true)
+			if debug == true then
+				print(rawlen(questions_list))
+			end
+		else
+			pergunta=set_q
+		end
+		actual_question.quest=perguntas3[-3+(4*pergunta)]
+		if perguntas3[pergunta*4] == 2 then
+			actual_question.answer=true
+		elseif perguntas3[pergunta*4] == 1 then
+			actual_question.answer=false
+		end
+		actual_question.a1=perguntas3[-2+(4*pergunta)]
+		actual_question.a2=perguntas3[-1+(4*pergunta)]
 	end
 	if tema == 4 then
 		if set_q == 0 then
