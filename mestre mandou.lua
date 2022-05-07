@@ -1,6 +1,7 @@
 -- WARNING: THIS VERSION IS AVAILABLE ONLY IN PORTUGUESE!! Use the previous version for international rooms.
 -- Previous version: https://raw.githubusercontent.com/JW26T-Prj/FunCorpModules/8012e32bf0df0b43efc1161da6b1ce718a8b2e99/mestre%20mandou.lua
--- Edição de aniversário do module Mestre Mandou, versão RTM 16204.100 Anniversary Edition, desenvolvida por Rakan_raster#0000.
+
+-- Edição de aniversário do module Mestre Mandou, versão RTM 16305.100 Anniversary Edition, desenvolvida por Rakan_raster#0000.
 
 admin={""} -- Leia abaixo / Read below!
 -- Se estiver rodando este código em uma sala FunCorp, insira o nome dos FunCorps acima e digite !fc para habilitar algumas funções e comandos especiais.
@@ -20,7 +21,7 @@ for _,f in next,{"command","pw","limit","run","fc","tc","q","a","t","kill"} do
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>O objetivo deste module é muito simples: Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><VP>Tenha sempre cuidado com os comandos trolls!<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Jessiewind26#2546<br><br><ROSE>Versão RTM 16204.100 Anniversary Edition",
+	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>O objetivo deste module é muito simples: Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><VP>Tenha sempre cuidado com os comandos trolls!<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Jessiewind26#2546<br><br><ROSE>Versão RTM 16305.100 Anniversary Edition",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -246,7 +247,7 @@ function eventNewGame()
 	tfm.exec.setWorldGravity(0, 10)
 	if unlocked == true then
 		tfm.exec.setGameTime(15)
-		showMessage("<V><i>Spectra's map loader v2.217</i><br><N>Loading current map information...<br><b>Current Map :</b> <V>"..map_det.code.."<br><N><b>Author :</b> <V>"..map_det.creator.."")
+		showMessage("<R><i>Spectra's map loader v2.218</i><br><N>Loading current map information...<br><b>Current Map :</b> <V>"..map_det.code.."<br><N><b>Author :</b> <V>"..map_det.creator.."")
 		if fc_mode == true then
 			showMessage("<VP><br>The FunCorp mode of this module is now enabled.")
 		end
@@ -810,31 +811,31 @@ function getCommand()
 		tfm.exec.setGameTime(10)
 	end
 	if active == 85 then
-		showCommand(active,eq1)
+		showCommand(active,text.eq1)
 		tfm.exec.setGameTime(10)
 	end
 	if active == 86 then
-		showCommand(active,ld)
+		showCommand(active,text.ld)
 		tfm.exec.setGameTime(11)
 	end
 	if active == 87 then
-		showCommand(active,crt)
+		showCommand(active,text.crt)
 		tfm.exec.setGameTime(10)
 	end
 	if active == 88 then
-		showCommand(active,altf4)
+		showCommand(active,text.altf4)
 		tfm.exec.setGameTime(8)
 	end
 	if active == 89 then
-		showCommand(active,jogar)
+		showCommand(active,text.jogar)
 		tfm.exec.setGameTime(7)
 	end
 	if active == 90 then
-		showCommand(active,capital)
+		showCommand(active,text.capital)
 		tfm.exec.setGameTime(11)
 	end
 	if active == 91 then
-		showCommand(active,mundial)
+		showCommand(active,text.mundial)
 		tfm.exec.setGameTime(11)
 	end
 	if active == 92 then
@@ -1418,11 +1419,11 @@ end
 function eventLoop(passado,faltando)
 	local tempo=math.floor(faltando/1000)
 	if active == -2 then
-		ui.setMapName("<N>"..text.mices.."   <G>|   <VP><b>"..text.version.." RTM 16204.100 Anniversary Edition</b><")
+		ui.setMapName("<N>"..text.mices.."   <G>|   <VP><b>"..text.version.." RTM 16305.100 Anniversary Edition</b><")
 	elseif active == -1 then
-		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <VP><b>"..text.version.." RTM 16204.100 Anniversary Edition</b><")
+		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <VP><b>"..text.version.." RTM 16305.100 Anniversary Edition</b><")
 	elseif active >= 0 then
-		ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <VP><b>"..text.version.." RTM 16204.100 Anniversary Edition</b><")
+		ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <VP><b>"..text.version.." RTM 16305.100 Anniversary Edition</b><")
 	end
 	if rato < 4 then
 		if tfm.get.room.currentMap == "@2684847" and unlocked == true then
