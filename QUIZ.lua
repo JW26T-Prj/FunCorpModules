@@ -1,11 +1,13 @@
--- Mudanças na Versão 2.21.0:
+-- Mudanças na Versão 2.22.0:
 
--- Adição de 7 perguntas de música
--- Correções de bugs no tema 3
+-- Adição de 4 perguntas de Transformice
+-- Adição de comando de chat !tc para FunCorps (favor colocar nomes na variável admin para funcionar!)
+-- Correção de várias perguntas
+-- Correção de bugs no sistema de seleção de perguntas
 
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.21.0
--- Por favor, edite a linha 25 a variável 'admin' pelo seu nome para ter acesso aos comandos.
--- Você pode selecionar o tema editando a linha 27, ou digitando !tema [número] conforme os números abaixo.
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.22.0
+-- Por favor, edite a linha 26 a variável 'admin' pelo seu nome para ter acesso aos comandos.
+-- Você pode selecionar o tema editando a linha 28, ou digitando !tema [número] conforme os números abaixo.
 
 -- Temas:
 -- 0 = transformice
@@ -13,20 +15,18 @@
 -- 2 = música
 -- 3 = lolzinho
 -- 4 = futebol
--- 5 = animes (em breve)
 
 -- Esta é uma versão bloqueada. As perguntas não podem ser alteradas.
 -- Para fazer um quiz utilizando suas próprias perguntas, utilize a versão desbloqueada:
 -- https://github.com/JW26T-Prj/FunCorpModules/blob/master/QUIZ%20desbloqueado.lua
 
 -- Para sugestões de perguntas ou correção de bugs contate Reksai_void2600#6638.
--- Caso você queira usar este código em um cafofo de tribo, altere a variável TRIBEHOUSE da linha 28 para 'true'.
+-- Caso você queira usar este código em um cafofo de tribo, altere a variável TRIBEHOUSE da linha 29 para 'true'.
 
 admin={"Reksai_void2600#6638"} -- FunCorps, insiram seus nomes aqui!
 
 tema=0 -- Edite conforme mostrado acima!
 tribehouse=false -- Altere para 'true' caso esteja rodando este código em um cafofo de tribo.
-debug=false -- Não alterar. Uso exclusivo para depuração e diagnóstico.
 
 piso={type = 6,width = 350,height = 40,foregound = 1,friction = 1.0,restitution = 0.0,angle = 0,color = 0,miceCollision = true,groundCollision = true,dynamic = false}
 barreira={type = 12,width = 20,height = 100,foregound = 1,friction = 0.0,restitution = 0.0,angle = 0,color = 0x000000,miceCollision = true,groundCollision = true,dynamic = false}
@@ -47,7 +47,7 @@ perguntas={
 "Quantos queijos no perfil são necessários para rodar scripts LUA no cafofo?","100","1000",1,
 "Se você digitar /cafe, o que acontece?","Abre o café","Faz aparecer cafés voadores",2,
 "Quantos morangos custa o item mais caro da loja?","550","600",1,
-"FunCorps fazem parte da Staff BR.","Verdadeiro","Falso",2,
+"FunCorps fazem parte da Staff BR/PT.","Verdadeiro","Falso",2,
 "Qual a categoria atribuída a mapas de Survivor?","P10","P12",1,
 "Qual a função do comando /langue?","Muda a linguagem do jogo","Muda você de sala",1,
 "Qual destes jogos não foi feito pela Atelier 801?","Bombom","Fortoresse",1,
@@ -87,14 +87,14 @@ perguntas={
 "Em qual module você precisa se esconder atrás das decorações do mapa?","#prophunt","#hidenseek",2,
 "Qual o nome da equipe que é responsável pela categorização de mapas do Transformice?","Module Team","MapCrew",2,
 "Quantas vezes você precisa completar um mapa bootcamp para ele ser contabilizado no perfil, quando você acaba de entrar na sala?","1","2",2,
-"Usuários do servidor BR eram proibidos de falar no antigo servidor EN1.","Verdadeiro","Falso",2,
-"Usuários do servidor BR eram proibidos de falar no antigo servidor EN2.","Verdadeiro","Falso",1,
+"Usuários do servidor BR/PT eram proibidos de falar no antigo servidor EN1.","Verdadeiro","Falso",2,
+"Usuários do servidor BR/PT eram proibidos de falar no antigo servidor EN2.","Verdadeiro","Falso",1,
 "O Transformice já fez, em 2019, um evento baseado em anime.","Verdadeiro","Falso",2,
 "No Transformice, os ratos que tocarem em um piso ácido...","Ficam presos nele","Morrem instantaneamente",2,
 "Qual o nome do criador do module que estamos jogando agora?","Reksai_void2600#6638","Patrick_mahomes#1795",1,
 "A habilidade 'Reparadora' faz parte de qual árvore de Habilidades?","Mecânico","Físico",2,
 "A mensagem de reinício do servidor do Transformice aparece em qual cor?","Rosa","Roxo",1,
-"Quantos queijos custa o pelo mais caro da loja?","10000","8000",1,
+"Quantos queijos custa o pelo mais caro da loja?","10000","15000",2,
 "Quantos ratos salvos são necessários para desbloquear o modo difícil?","1000","2000",1,
 "O Transformice possui uma série animada de desenhos no YouTube.","Verdadeiro","Falso",1,
 "A técnica chamada 'time deviation' ou 'clock drift' pode deixar seu rato mais rápido ou lento sem uso de hack.","Verdadeiro","Falso",1,
@@ -129,7 +129,7 @@ perguntas={
 "É possível ganhar queijos no perfil apenas jogando modules.","Verdadeiro","Falso",2,
 "É possível coletar estatísticas no perfil jogando quais modos oficiais?","Survivor, Racing e Vanilla","Survivor, Racing e Defilante",2,
 "É possível comprar morangos pelo celular no Brasil.","Verdadeiro","Falso",2,
-"Usuários do servidor BR podem falar apenas no servidor brasileiro.","Verdadeiro","Falso",2,
+"Usuários do servidor BR/PT podem falar apenas no servidor brasileiro.","Verdadeiro","Falso",2,
 "A habilidade 'Olho de Águia' faz parte de qual árvore de Habilidades?","Mecânico","Mestre do Vento",1,
 "Em qual ano estreou o module #batata?","2014","2016",2,
 "Em qual ano estreou o modo Defilante?","2014","2015",1,
@@ -258,6 +258,10 @@ perguntas={
 "É possível esconder todos os pregos em um mapa do Transformice.","Verdadeiro","Falso",1,
 "Quais são os valores padrões de vento e gravidade no Transformice, respectivamente?","0 e 1","0 e 10",2,
 "Quantos queijos no perfil são necessários para entrar no Editor de Mapas?","0","1000",1,
+"Qual é a tribo oficial da equipe de Funcorp BR/PT?","Alaranjados","Funcrepe",1,
+"É possível criar NPCs interativos em scripts LUA no Transformice.","Verdadeiro","Falso",1,
+"Quantas missões diárias você precisa completar para ganhar a recompensa de 20 morangos?","15","20",2,
+"Qual destes modules foi criado primeiro?","#batata","#keyhunt",2,
 }
 perguntas1={
 "Vai na sorte :)","ok","ok",1,
@@ -382,7 +386,7 @@ perguntas1={
 "Qual destes gases geralmente é presente dentro dos túneis de trânsito, e que podem causar problemas ao sistema respiratório?","CO","CO₂",1,
 "De 1994 a 2016, dois partidos estiveram na presidência do Brasil. Quais são esses partidos?","PT e PSDB","PT e PMDB",1,
 "Em que ano foi desenvolvido o Windows 2000?","1999","2000",1,
-"Quantos anos têm a Rainha Elizabeth?","93","95",2,
+"Quantos anos têm a Rainha Elizabeth?","95","96",2,
 "A partir de que ano Plutão deixou de ser considerado Planeta e foi considerado Planeta Anão?","2005","2006",2,
 "O seriado Chaves foi produzido em qual país?","México","Argentina",1,
 "A primeira emissora da Rede Globo foi lançado em qual estado do Brasil?","São Paulo","Rio de Janeiro",2,
@@ -410,7 +414,7 @@ perguntas1={
 "Em que ano começou oficialmente a operação da Usina de Itaipu?","1984","1985",1,
 "Em que ano começaram as transmissões de TV Digital no Brasil?","2007","2010",1,
 "Qual é a língua mais falada no mundo atualmente?","Inglês","Mandarim",2,
-"Qual o nome da extinta fabricante brasileira de carros?","Tupi","Gurgel",2,
+"Qual o nome da extinta fabricante brasileira de carros?","Corcel","Gurgel",2,
 "Quantos oceanos existem no Planeta Terra?","3","5",2,
 }
 perguntas2={
@@ -521,7 +525,7 @@ perguntas2={
 "O formato de música MP3 foi oficializado em qual ano?","1992","1998",1,
 "Qual o nome da cantora que gravou a famosa música Wrecking Ball?","Miley Cyrus","Ariana Grande",1,
 "Em que estado brasileiro surgiu o famoso grupo musical brasileiro Olodum?","Pernambuco","Bahia",2,
-"Qual destes cantores é participa da banda brasileira CPM 22?","Paulo Sousa","Rodrigo Koala",2,
+"Qual destes cantores é participante da banda brasileira CPM 22?","Paulo Sousa","Rodrigo Koala",2,
 }
 perguntas3={
 "Vai na sorte :)","ok","ok",1,
@@ -714,9 +718,7 @@ function showMessage(message,name)
 	end
 end
 function questionChanger(id,remove)
-	if remove == true then
-		table.remove(questions_list,id)
-	end
+	table.remove(questions_list,id)
 end
 function eventNewGame()
 	vivos=0
@@ -762,9 +764,7 @@ function eventChatCommand(name,message)
 		end
 		if (message:sub(0,4) == "setq") then
 			set_q=tonumber(message:sub(6))
-		end
-		if (message:sub(0,3) == "get") and tribehouse == false then
-			local sn=((tonumber(message:sub(5))-1)*4)+1
+			local sn=((tonumber(message:sub(6))-1)*4)+1
 			if tema == 0 then
 				showMessage(perguntas[sn],name)
 			elseif tema == 1 then
@@ -784,6 +784,11 @@ function eventChatCommand(name,message)
 				reset()
 			end
 		end
+		if (message:sub(0,2) == "tc") then
+			if tfm.get.room.playerList[name].tribeName == "Alaranjados" then
+				showMessage("<font color='#ff8000'>• [FunCorp - <b>"..name.."</b>] "..message:sub(4).."")
+			end
+		end
 	end
 end
 function eventNewPlayer(name)
@@ -796,7 +801,7 @@ function eventPlayerLeft(name)
 	ratos=ratos-1
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.21.0</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
+	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.22.0</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
@@ -899,9 +904,6 @@ function randomQuests()
 			local q=math.random(#questions_list)
 			pergunta=q
 			questionChanger(q,true)
-			if debug == true then
-				print(rawlen(questions_list))
-			end
 		else
 			pergunta=set_q
 		end
@@ -919,9 +921,6 @@ function randomQuests()
 			local q=math.random(#questions_list)
 			pergunta=q
 			questionChanger(q,true)
-			if debug == true then
-				print(rawlen(questions_list))
-			end
 		else
 			pergunta=set_q
 		end
@@ -939,9 +938,6 @@ function randomQuests()
 			local q=math.random(#questions_list)
 			pergunta=q
 			questionChanger(q,true)
-			if debug == true then
-				print(rawlen(questions_list))
-			end
 		else
 			pergunta=set_q
 		end
@@ -959,9 +955,6 @@ function randomQuests()
 			local q=math.random(#questions_list)
 			pergunta=q
 			questionChanger(q,true)
-			if debug == true then
-				print(rawlen(questions_list))
-			end
 		else
 			pergunta=set_q
 		end
@@ -979,9 +972,6 @@ function randomQuests()
 			local q=math.random(#questions_list)
 			pergunta=q
 			questionChanger(q,true)
-			if debug == true then
-				print(rawlen(questions_list))
-			end
 		else
 			pergunta=set_q
 		end
