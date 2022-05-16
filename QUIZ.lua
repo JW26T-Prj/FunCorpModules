@@ -1,19 +1,18 @@
--- Mudanças na Versão 2.22.0:
+-- Mudanças na Versão 2.22.1:
 
--- Adição de 4 perguntas de Transformice
--- Adição de comando de chat !tc para FunCorps (favor colocar nomes na variável admin para funcionar!)
 -- Correção de várias perguntas
--- Correção de bugs no sistema de seleção de perguntas
+-- Pequenas mudanças no sistema de visualização
+-- Adição de um sistema de detecção automática de cafofo da tribo
 
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.22.0
--- Por favor, edite a linha 26 a variável 'admin' pelo seu nome para ter acesso aos comandos.
--- Você pode selecionar o tema editando a linha 28, ou digitando !tema [número] conforme os números abaixo.
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.22.1
+-- Por favor, edite a linha 24 a variável 'admin' pelo seu nome para ter acesso aos comandos.
+-- Você pode selecionar o tema editando a linha 25, ou digitando !tema [número] conforme os números abaixo.
 
 -- Temas:
 -- 0 = transformice
 -- 1 = conhecimentos gerais
 -- 2 = música
--- 3 = lolzinho
+-- 3 = league of legends
 -- 4 = futebol
 
 -- Esta é uma versão bloqueada. As perguntas não podem ser alteradas.
@@ -21,12 +20,9 @@
 -- https://github.com/JW26T-Prj/FunCorpModules/blob/master/QUIZ%20desbloqueado.lua
 
 -- Para sugestões de perguntas ou correção de bugs contate Reksai_void2600#6638.
--- Caso você queira usar este código em um cafofo de tribo, altere a variável TRIBEHOUSE da linha 29 para 'true'.
 
 admin={"Reksai_void2600#6638"} -- FunCorps, insiram seus nomes aqui!
-
 tema=0 -- Edite conforme mostrado acima!
-tribehouse=false -- Altere para 'true' caso esteja rodando este código em um cafofo de tribo.
 
 piso={type = 6,width = 350,height = 40,foregound = 1,friction = 1.0,restitution = 0.0,angle = 0,color = 0,miceCollision = true,groundCollision = true,dynamic = false}
 barreira={type = 12,width = 20,height = 100,foregound = 1,friction = 0.0,restitution = 0.0,angle = 0,color = 0x000000,miceCollision = true,groundCollision = true,dynamic = false}
@@ -504,7 +500,7 @@ perguntas2={
 "Qual o nome do vocalista do grupo U2?","Bono Vox","Serj Tankian",1,
 "Complete a música: Meu amor! Quando palavras não conseguem expressar...","Veja o brilho em meu olhar","Veja o brilho em meu rosto",1,
 "Qual destas músicas foi tema da novela Duas Caras, exibida pela Globo em 2007?","Recomeçar","O Poder do Teu Amor",1,
-"O álbum 'As Quatro Estações', de Sandy e Júnior, foi vendido tanto em CD quanto em LP.","Verdadeiro","Falso",1,
+"O álbum 'As Quatro Estações', de Sandy e Júnior, é vendido tanto em CD quanto em LP.","Verdadeiro","Falso",1,
 "Qual o nome do vocalista da banda Skank?","Samuel Rosa","Chico Amaral",1,
 "A banda de rock The Beatles é de qual país?","Inglaterra","Estados Unidos",1,
 "A banda de rock System of a Down é de qual país?","Inglaterra","Estados Unidos",2,
@@ -530,7 +526,7 @@ perguntas2={
 perguntas3={
 "Vai na sorte :)","ok","ok",1,
 "Vai na sorte :)","ok","ok",2,
-"Quantos dragões elementares existem no League of Legends?","5","7",2,
+"Quantos dragões elementares existem no League of Legends?","6","7",1,
 "'A morte, é como o vento. Está sempre ao meu lado.'","Yasuo","Zed",1,
 "Qual destes campeões teve seu braço cortado por Irelia durante a invasão Noxiana contra Ionia?","Jax","Swain",2,
 "Qual destes, por muito tempo, foi dublador do personagem Ezreal?","Fábio Lucindo","Luciano Amaral",1,
@@ -694,7 +690,7 @@ perguntas4={
 "O Palmeiras é o único clube brasileiro que venceu duas edições seguidas da Libertadores.","Verdadeiro","Falso",2,
 "Qual foi o primeiro clube brasileiro a ser campeão da Copa Libertadores da América?","Santos","Botafogo",1,
 "Qual destes funkeiros já chegou a virar jogador de futebol?","MC Livinho","MC Kevinho",1,
-"Qual foi o jogador que errou o último pênalti na história final da Liga dos Campeões da Europa de 2004-2005?","Shevchenko","Maldini",1,
+"Qual foi o jogador que errou o último pênalti na histórica final da Liga dos Campeões da Europa de 2004-2005?","Shevchenko","Maldini",1,
 "A Copa do Mundo nunca foi realizada no continente africano.","Verdadeiro","Falso",2,
 "Em qual cidade Pelé nasceu?","Santos","Três Corações",2,
 "Em qual ano foi realizado o primeiro Mundial de Clubes organizado pela FIFA?","1960","2000",2,
@@ -711,9 +707,9 @@ end
 function showMessage(message,name)
 	temp_text=string.gsub(message,"<b>","")
 	temp_text=string.gsub(temp_text,"</b>","")
-	if tribehouse == false then
+	if tfm.get.room.isTribeHouse == false then
 		tfm.exec.chatMessage(message,name)
-	elseif tribehouse == true then
+	elseif tfm.get.room.isTribeHouse == true then
 		ui.addTextArea(0,"<p align='center'><font size='15'>"..message.."",nil,40,32,720,48,0,0,1.0,true)
 	end
 end
