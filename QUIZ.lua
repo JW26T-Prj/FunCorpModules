@@ -741,6 +741,11 @@ function eventNewGame()
 		end
 	end
 	showMessage("<N><b>Quantidade de perguntas presentes: "..fixed_cnt.."</b><br><VP>O sistema inteligente de escolha de perguntas está ativo.<br><br><G>Agora vocês podem sugerir temas e perguntas para este script! Entre em contato com Reksai_void2600#6638 por mensagem privada no fórum e envie suas perguntas.")
+	if tema == 3 then
+		showMessage("<J>As perguntas deste tema foram todas feitas por Spectra_phantom#6089.")
+	elseif tema == 4 then
+		showMessage("<J>As perguntas deste tema foram todas feitas por Lucianattack#0000.")
+	end
 end
 function reset()
 	rodada=0
@@ -797,7 +802,7 @@ function eventPlayerLeft(name)
 	ratos=ratos-1
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.22.0</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
+	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.22.1</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
