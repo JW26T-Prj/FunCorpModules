@@ -1,10 +1,10 @@
--- Mudanças na Versão 2.22.1:
+-- Mudanças na Versão 2.22.2:
 
--- Correção de várias perguntas
--- Pequenas mudanças no sistema de visualização
--- Adição de um sistema de detecção automática de cafofo da tribo
+-- Correção de bugs no comando !tc
+-- Adição de 4 perguntas de conhecimentos gerais
+-- Adição de 3 perguntas de música
 
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.22.1
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.22.2
 -- Por favor, edite a linha 24 a variável 'admin' pelo seu nome para ter acesso aos comandos.
 -- Você pode selecionar o tema editando a linha 25, ou digitando !tema [número] conforme os números abaixo.
 
@@ -29,7 +29,7 @@ barreira={type = 12,width = 20,height = 100,foregound = 1,friction = 0.0,restitu
 for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand","AfkDeath"} do
 	tfm.exec["disable"..f](true)
 end
-for _,g in next,{"setq","limite","tema","get"} do
+for _,g in next,{"setq","limite","tema","get","tc"} do
 	system.disableChatCommandDisplay(g)
 end
 ratos=0; vivos=0; set_q=0; questions_list={}; modo="inicial"; pergunta=0; rodada=0; limite=20; count=0; fixed_cnt=0;
@@ -412,6 +412,10 @@ perguntas1={
 "Qual é a língua mais falada no mundo atualmente?","Inglês","Mandarim",2,
 "Qual o nome da extinta fabricante brasileira de carros?","Corcel","Gurgel",2,
 "Quantos oceanos existem no Planeta Terra?","3","5",2,
+"Em que data ocorreu a promulgação da Lei do Ventre Livre?","28 de Setembro","4 de Outubro",1,
+"Em que data terminou a Batalha do Tuiuti, uma das mais importantes da Guerra do Paraguai?","24 de Maio","4 de Junho",1,
+"Quais destas duas empresas fabricaram computadores pessoais no Brasil nos anos 80?","Prológica e Gradiente","Prológica e Microdigital",2,
+"Em que ano a União Soviética foi extinta?","1990","1991",2,
 }
 perguntas2={
 "Vai na sorte :)","ok","ok",1,
@@ -522,6 +526,9 @@ perguntas2={
 "Qual o nome da cantora que gravou a famosa música Wrecking Ball?","Miley Cyrus","Ariana Grande",1,
 "Em que estado brasileiro surgiu o famoso grupo musical brasileiro Olodum?","Pernambuco","Bahia",2,
 "Qual destes cantores é participante da banda brasileira CPM 22?","Paulo Sousa","Rodrigo Koala",2,
+"Qual o nome da música do Noel Rosa que fez parte do encerramento das transmissões da TV Globo, de 1976 a 1981?","Até Amanhã","Meu Lugar",1,
+"Qual destes músicos é integrante da banda Fruto Sagrado?","André Figueiredo","Sylas Jr.",2,
+"Um álbum musical já foi gravado dentro da Estação Especial Internacional.","Verdadeiro","Falso",2,
 }
 perguntas3={
 "Vai na sorte :)","ok","ok",1,
@@ -802,7 +809,7 @@ function eventPlayerLeft(name)
 	ratos=ratos-1
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.22.1</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
+	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.22.2</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
