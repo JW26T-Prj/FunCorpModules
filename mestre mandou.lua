@@ -1,10 +1,19 @@
--- WARNING: THIS VERSION IS AVAILABLE ONLY IN PORTUGUESE!! Use the previous version for international rooms.
--- Previous version: https://raw.githubusercontent.com/JW26T-Prj/FunCorpModules/8012e32bf0df0b43efc1161da6b1ce718a8b2e99/mestre%20mandou.lua
+-- Código do module Mestre Mandou, versão RTM 17107.101, desenvolvido por Rakan_raster#0000.
+-- Code of Simon Says module, version RTM 17107.101, developed by Rakan_raster#0000.
 
--- Edição de aniversário do module Mestre Mandou, versão RTM 17006.100 Anniversary Edition, desenvolvida por Rakan_raster#0000.
+-- Atenção: Antes de rodar este código em uma sala, verifique se esta versão coincide com a versão mais recente presente abaixo:
+-- https://raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/mestre%20mandou.lua
+-- Isto vai garantir que você receba sempre as últimas atualizações e correções de bugs.
+
+-- Warning: Before running this code into a room, check if this version is the same than the latest version located here:
+-- https://raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/mestre%20mandou.lua
+-- This is a guarantee that you will receive all the latest updates and bugfixes.
 
 admin={""} -- Leia abaixo / Read below!
 -- Se estiver rodando este código em uma sala FunCorp, insira o nome dos FunCorps acima e digite !fc para habilitar algumas funções e comandos especiais.
+-- If you are running this code into a FunCorp room, insert the FunCorp names above and type !tc to enable some additional commands and functions.
+
+-- If you will run this module on a FunCorp session, type the nickname(s) of FunCorp(s) into 'admin' table above and type !fc to enable special functions and commands.
 -- FunCorp Comandos/Commands: !run [@code], !limit [number], !tc [message], !kill [player#tag], !pw [password].
 
 for _,f in next,{"AutoShaman","AutoNewGame","AutoTimeLeft","DebugCommand"} do
@@ -12,16 +21,16 @@ for _,f in next,{"AutoShaman","AutoNewGame","AutoTimeLeft","DebugCommand"} do
 end
 mapas={"@6788085","@6788174","@6788154","@6788715","@6788728","@6789271","@6790527","@6791838","@6789356","@6822331","@7290275","@6754319","@7686598","@7750148","@7688066","@6790295","@6788183","@6784965","@6789235","@6789853","@6790385","@6791944","@6801706","@6792470","@6806109","@6821950","@6866406","@6866437","@6885971","@5328362","@5957905","@7055459","@7525277","@2684847","@7214363","@6792516","@6825340","@6838871","@6788693","@6789272","@6799996","@6799998","@6808957","@6803018","@6809464","@6859175","@6907177","@7404327","@7382263","@6885799","@6790912","@6833993","@7721192","@7309605","@6532621","@6788861","@6789249","@6790484","@6792518","@6794050","@6830799","@6866549","@6834529","@6876563","@6888512","@6893463","@7431981","@7146925","@6937148","@6356881","@6789280","@6790895","@6799997","@6789324","@6803128","@6900149","@3832586","@6791871","@6811934","@7631682","@6876638","@6892608","@6982387","@7404106","@7405103","@7400694","@7400678","@7412412","@7412422","@7491944","@7755685","@6843950","@6810292","@3110915","@6789263","@4411212","@7354947","@3398791","@7201360","@6897042","@5549586","@6809461","@7242361","@7697974","@1966987","@7224471","@6932585","@6888879","@6781398","@5113656","@6920982","@5196033","@1468299","@7894614","@7863458","@7896602","@7897912","@7899697"}
 active=0; vivo=0; rato=0; dificuldade=1; rodadas=0; rodada=0; number=0; xpos=0; ypos=0; data={}; lang={}; alives={}; tempo=10; counter=0; q=""; a=""; qtime=10; creator=""; sd_vivo=0;
-fc_cmds={1,2,4,5,6,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,28,30,31,32,33,34,35,36,40,41,42,43,45,46,47,48,49,50,51,53,56,57,58,59,61,62,65,66,67,69,71,75,76,77,78,79,80,81,82,83,91,92}
+fc_cmds={1,2,4,5,6,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,28,30,31,32,33,34,35,36,40,41,43,45,46,47,48,49,50,51,53,56,57,58,59,61,62,65,66,67,69,71,75,76,77,78,80,81,82,83}
 spiderweb={type = 15,width = 60,height = 60}
 map_det={creator="",code=""}
-ninjas={"Rakan_raster#0000","Xayah_raster#7598","Morganadxana#0000","Forzaldenon#0000","Skyymellu#0000","Inthevayron#0000","Jessiewind26#2546","Nasus_assassin#1534","Ashearcher#0000"}
+ninjas={"Rakan_raster#0000","Xayah_raster#7598","Aurelianlua#0000","Forzaldenon#0000","Skyymellu#0000"}
 fc_mode=false; xpos=0; xpos2=0; unlocked=true;
 for _,f in next,{"command","pw","limit","run","fc","tc","q","a","t","kill"} do
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>O objetivo deste module é muito simples: Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><VP>Tenha sempre cuidado com os comandos trolls!<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Jessiewind26#2546<br><br><ROSE>Versão RTM 17006.100 Anniversary Edition",
+	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>O objetivo deste module é muito simples: Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><VP>Tenha sempre cuidado com os comandos trolls!<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Jessiewind26#2546<br><br><ROSE>Versão RTM 17107.101",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -120,19 +129,217 @@ lang.br = {
 	caps = "Pressione a tecla CAPS LOCK 10 vezes",
 	vampire = "Fujam dos vampiros!",
 	sudden = "Morte súbita habilitada!",
-	comando = "Digite o comando !omestremandou",
-	eq1 = "Qual o valor de <b>x</b> para a equação <b>4x - 8 = 0</b>?",
-	ld = "Digite: O Rakan é lindão",
-	crt = "Quem criou o Transformice?",
-	altf4 = "Pressione ALT e F4!",
-	jogar = "Quem aqui joga LOL?",
-	capital = "Qual a capital da Rússia?",
-	mundial = "Qual é o time que não tem mundial?",
-	fosfus = "Qual o nome do personagem do perfil da Lena_isis386#0000?",
-	description = "Qual a descrição da Ashe?",
+}
+lang.en = {
+	welcome = "<N><b>Welcome to Simon Says module!</b><br>This module's goal is easy: Follow everything the game told and test your limits until the end!<br><VP>Be always aware to troll commands!<br><br><J><b>Script developed by Rakan_raster#0000</b><br>Original concept by Jessiewind26#2546<br>Translation by Draw#6691<br><br><ROSE>Version RTM 17107.101",
+	dancar = "Dance!",
+	sentar = "Sit down!",
+	confetar = "Throw 5 confetti!",
+	mouse = "Click 10 times on the screen!",
+	beijos = "give 10 kisses!",
+	dormir = "You are so much sleepy. Sleep to rest.",
+	raiva = "Tigrounette is evil! Be mad at him",
+	chorem = "You didn't get cheese :( Cry!",
+	nchorem = "Dont cry!",
+	esquerda = "Dont go to the left!",
+	direita = "Dont go to the right!",
+	numero = "Type the following number: ",
+	digitar = "Type anything and send it to me.",
+	falar = "Dont speak!",
+	pular = "Dont jump!",
+	mexer = "Dont move!",
+	bandeira = "Swing any flag of a countrie!",
+	ano = "What year are we in?",
+	vesquerda = "Stay turned to the left!",
+	vdireita = "Stay turned to the right!",
+	quadradoa = "Stay on the blue square",
+	quadradov = "Stay on the red square!",
+	quadrado = "Stay on the white square!",
+	nquadrado = "Dont stay on the white square!",
+	retangulo = "Stay inside of the white rectangle!",
+	retangulov = "Stay inside of the red rectangle!",
+	nretangulo = "Dont stay inside of the white rectangle!",
+	nretangulov = "Dont stay inside of the red rectangle!",
+	preesquerda15 = "Press the left key 15 times!",
+	predireita15 = "Press the right key 15 times!",
+	preesquerda30 = "Press the left key 30 times!",
+	predireita30 = "Press the right key 30 times!",
+	preesquerda60 = "Press the left key 60 times!",
+	predireita60 = "Press the right key 60 times!",
+	preesquerda100 = "Press the left key 100 times!",
+	predireita100 = "Press the right key 100 times!",
+	espaco = "Press the space bar 20 times!",
+	nome = "Type your nickname in game (with #number).",
+	ndance = "Dont dance!",
+	key1 = "Press the delete key!",
+	action1 = "Dance, sit and sleep!",
+	laugh = "Laugh now!",
+	laugh2 = "who laughs now dies.",
+	stone = "Watch out the rock!",
+	noob = "Type: I AM A NOOB",
+	action2 = "Cry and then laugh!",
+	jump = "Jump!",
+	number = "Type the following number: ",
+	key = "Press any key!",
+	jump2 = "Jump 5 times!",
+	action3 = "Give a kiss and then cry!",
+	area = "Find out where is the hidden text and click on it!",
+	dancing = "It's party time!",
+	freeze = "Everyone STOP!",
+	transform = "Dance and sleep!",
+	down1 = "Get down 3 times!",
+	mestre = "Simon Says",
+	map = "Map",
+	time = "Time",
+	mice = "Mouses",
+	round = "Round",
+	mices = "This room request at least 4 mice.",
+	difficulty = "Difficulty",
+	segundos = "seconds.",
+	fim = "The match is over! next starting in ",
+	playingmap = "Running map",
+	created = "created by",
+	abaixar = "Get down and get up!",
+	action = "Do any action!",
+	naction = "dont do any action!",
+	math = "How much it is 1+1?",
+	math1 = "How much it is 2+2?",
+	ds = "Dance and sit!",
+	seq4 = "Dance, sit, sleep and clap!",
+	seq5 = "Dance, clap e laught!",
+	seq6 = "Dance and cry!",
+	spider = "Watch out at the cobwebs!",
+	key2 = "Press F4!",
+	clap = "Clap 5 times!",
+	completed = "You completed the command successfully!",
+	rain = "Sheep rain!",
+	skull = "Watch out at the skulls!",
+	gravity = "The gravity has been changed!",
+	version = "Version",
+	black = "A black hole has appeared and it's pulling all of you!",
+	creator = "Who's this module creator?",
+	sister = "Who's the sister of the creator of this module?",
+	counts = "How many mice this room has?",
+	counts_alive = "How many mice alive this room has?",
+	facepalm = "Put your hand on your face 5 times!",
+	enterprise = "What company created Transformice?",
+	collect = "Collect all the '+1' of the map!",
+	balls = "It's raining balls!",
+	explosion = "Look the explosion!",
+	queijo = "All mices that catched the cheese will die!",
+	caps = "Press the CAPS LOCK key 10 times!",
+	tribe = "Type the name of your tribe! (if you have)",
+	sudden = "Sudden death enabled!",
+}
+lang.fr = {
+	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Rakan_raster#0000</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 17107.101",
+	dancar = "Danse !",
+	sentar = "Assis !",
+	confetar = "Lance 5 fois des confettis !",
+	mouse = "Clique sur l'écran 10 fois !",
+	beijos = "Fais 10 bisous !",
+	dormir = "Tu es fatigué. Dors pour te reposer.",
+	raiva = "Tigrounette est méchant ! Mets-toi en colère contre lui !",
+	chorem = "Pas de fromage pour toi. Pleure !",
+	nchorem = "Ne pleure pas !",
+	esquerda = "Ne va pas vers la GAUCHE !",
+	direita = "Ne va pas vers la DROITE !",
+	numero = "Écris ce nombre : ",
+	digitar = "Écris n'importe quoi et envoie-le.",
+	falar = "Ne parle pas !",
+	pular = "Ne saute pas !",
+	mexer = "Ne bouge pas!",
+	bandeira = "Agite le drapeau de n'importe quel pays !",
+	ano = "En quelle année sommes-nous ?",
+	vesquerda = "Positionne-toi vers la GAUCHE !",
+	vdireita = "Positionne-toi vers la DROITE !",
+	quadradoa = "Reste dans le carré bleu !",
+	quadradov = "Reste dans le carré rouge !",
+	quadrado = "Reste dans le carré blanc !",
+	nquadrado = "Ne reste dans le carré blanc !",
+	retangulo = "Reste dans le rectangle blanc !",
+	retangulov = "Reste dans le rectangle rouge !",
+	nretangulo = "Ne reste pas sur le rectangle blanc !",
+	nretangulov = "Ne reste pas sur le rectangle rouge !",
+	preesquerda15 = "Appuie 15 fois sur la flèche GAUCHE !",
+	predireita15 = "Appuie 15 fois sur la flèche DROITE !",
+	preesquerda30 = "Appuie 30 fois sur la flèche GAUCHE !",
+	predireita30 = "Appuie 30 fois sur la flèche DROITE !",
+	preesquerda60 = "Appuie 60 fois sur la flèche GAUCHE !",
+	predireita60 = "Appuie 60 fois sur la flèche DROITE !",
+	preesquerda100 = "Appuie 100 fois sur la flèche GAUCHE !",
+	predireita100 = "Appuie 100 fois sur la flèche DROITE !",
+	espaco = "Appuie 20 fois sur la BARRE D'ESPACE !",
+	nome = "Écrit ton pseudo (avec le #tag) !",
+	ndance = "Ne dance pas !",
+	key1 = "Appuie sur la touche SUPPR !",
+	action1 = "Dance, assis-toi et dors !",
+	laugh = "Rigole !",
+	laugh2 = "Ne rigole pas !",
+	stone = "Attention aux pierres !",
+	noob = "Écris : I AM NOOB",
+	action2 = "Pleure et rigole !",
+	jump = "Saute !",
+	number = "Appuie sur le nombre suivant: ",
+	key = "Appuie sur n'importe quelle touche !",
+	jump2 = "Saute 5 fois !",
+	action3 = "Fais un bisou et pleure !",
+	area = "Cherche où se trouve le texte caché et clique dessus !",
+	dancing = "C'est l'heure de faire la fête !",
+	freeze = "Stop !",
+	transform = "Danse et dors !",
+	down1 = "Retourne-toi 3 fois !",
+	mestre = "Jacques à dit",
+	map = "Carte",
+	time = "Temps",
+	mice = "Souris",
+	round = "Tour",
+	mices = "Ce salon a besoin d'au moins 4 joueurs.",
+	difficulty = "Difficulté",
+	segundos = "secondes.",
+	fim = "Fin du match ! Le prochain match va commencer dans ",
+	playingmap = "Map chargé ",
+	created = "créée par",
+	abaixar = "Retourne-toi et lève-toi !",
+	naction = "Ne fais rien !",
+	action = "Faites n'importe quelle action !",
+	math = "Combien vaut 1 + 1?",
+	math1 = "Combien vaut 2 + 2?",
+	ds = "Danse et assis !",
+	seq4 = "Dance, assis-toi, dors et applaudir!",
+	seq5 = "Dance, tape dans tes mains et rigole !",
+	seq6 = "Dance et pleure!",
+	spider = "Attention aux toiles d'araignées!",
+	key2 = "Appuie sur la touche F4!",
+	clap = "Tape dans tes mains 5 fois!",
+	completed = "Vous avez terminé la commande !",
+	rain = "Attention aux moutons !",
+	skull = "Attention aux crânes!",
+	gravity = "La gravité a été changée!",
+	version = "Version",
+	black = "Un trou noir émerge et pousse toutes les souris!",
+	creator = "Qui est le créateur de cette module?",
+	sister = "Qui est le soeur de créateur de cette module?",
+	counts = "How many mices are on this room?",
+	counts_alive = "How many alive mices are on this room?",
+	facepalm = "Mets ta main sur ton visage 5 fois !",
+	enterprise = "Quelle est la société qui a créé Transformice?",
+	collect = "Récupérer tous les '+1' badges !",
+	rain = "Attention aux balles !",
+	explosion = "Attention aux spirits !",
+	queijo = "Tous les souris qui attrapent le fromage mourront ! ",
+	caps = "Appuie 10 fois sur la CAPS LOCK !",
+	vampire = "Ne vous infectez pas ! ",
+	sudden = "Mort subite activée ! ",
 }
 
-text = lang.br
+if tfm.get.room.community == "br" or tfm.get.room.community == "pt" then
+	text = lang.br
+elseif tfm.get.room.community == "fr" then
+	text = lang.fr
+else
+	text = lang.en
+end
 
 function verifyAdmin(name)
 	for i=1,rawlen(admin) do
@@ -177,7 +384,7 @@ function setAllAlive()
 end
 function eventNewPlayer(name)
 	rato=rato+1
-	for k=18, 87 do
+	for k=20, 87 do
 		tfm.exec.bindKeyboard(name,k,false,true)
 	end
 	tfm.exec.bindKeyboard(name,115,false,true)
@@ -248,7 +455,10 @@ function eventNewGame()
 	tfm.exec.setWorldGravity(0, 10)
 	if unlocked == true then
 		tfm.exec.setGameTime(15)
-		showMessage("<R><i>Spectra's map loader v2.218</i><br><N>Loading current map information...<br><b>Current Map :</b> <V>"..map_det.code.."<br><N><b>Author :</b> <V>"..map_det.creator.."")
+		showMessage("<BL><i>Spectra's map loader v2.212.1</i><br><N>Loading current map information...<br><b>Current Map :</b> <V>"..map_det.code.."<br><N><b>Author :</b> <V>"..map_det.creator.."")
+		if tfm.get.room.community == "br" then
+			showMessage("<VP><br><i>Em Maio de 2022, o module Mestre Mandou completará 8 anos de vida! Faremos no mês de Maio um evento super especial com todos os antigos criadores com comandos exclusivos e vários prêmios. Aguardem!</i>")
+		end
 		if fc_mode == true then
 			showMessage("<VP><br>The FunCorp mode of this module is now enabled.")
 		end
@@ -263,7 +473,7 @@ function eventNewGame()
 			data[name].key=0
 		end
 	end
-	rodadas=math.floor(30+math.floor(rato/5))
+	rodadas=math.floor(24+math.floor(rato/5))
 end
 function eventPlayerLeft()
 	rato=rato-1
@@ -271,7 +481,7 @@ end
 function sortearComandos()
 	if dificuldade < 7 then
 		if fc_mode == false then
-			active=math.random(1,96)
+			active=math.random(1,83)
 		else
 			active=tonumber(fc_cmds[math.random(#fc_cmds)])
 		end
@@ -340,9 +550,6 @@ function eventChatCommand(name,message)
 				showMessage("Password changed to: "..message:sub(4).."",name)
 			end
 		end
-	end
-	if message == "omestremandou" and active == 84 then
-		completeCommand(name)
 	end
 end
 function showCommand(id,text)
@@ -807,38 +1014,6 @@ function getCommand()
 		showCommand(active,text.caps)
 		tfm.exec.setGameTime(10)
 	end
-	if active == 84 then
-		showCommand(active,text.comando)
-		tfm.exec.setGameTime(10)
-	end
-	if active == 85 then
-		showCommand(active,text.eq1)
-		tfm.exec.setGameTime(10)
-	end
-	if active == 86 then
-		showCommand(active,text.ld)
-		tfm.exec.setGameTime(11)
-	end
-	if active == 87 then
-		showCommand(active,text.crt)
-		tfm.exec.setGameTime(10)
-	end
-	if active == 88 then
-		showCommand(active,text.altf4)
-		tfm.exec.setGameTime(8)
-	end
-	if active == 89 then
-		showCommand(active,text.jogar)
-		tfm.exec.setGameTime(7)
-	end
-	if active == 90 then
-		showCommand(active,text.capital)
-		tfm.exec.setGameTime(11)
-	end
-	if active == 91 then
-		showCommand(active,text.mundial)
-		tfm.exec.setGameTime(11)
-	end
 	if active == 92 then
 		showCommand(active,text.sister)
 		tfm.exec.setGameTime(12)
@@ -876,14 +1051,6 @@ function getCommand()
 	if active == 99 then
 		showCommand(active,q)
 		tfm.exec.setGameTime(qtime)
-	end
-	if active == 100 then
-		showCommand(active,text.fosfus)
-		tfm.exec.setGameTime(12)
-	end
-	if active == 101 then
-		showCommand(active,text.description)
-		tfm.exec.setGameTime(12)
 	end
 end
 function eventPlayerBonusGrabbed(name, id)
@@ -973,39 +1140,6 @@ function eventChatMessage(name,message)
 			tfm.exec.killPlayer(name)
 		end
 	end
-	if active == 85 then
-		if message == "2" then
-			completeCommand(name)
-		end
-	end
-	if active == 86 then
-		if string.upper(message) == "O RAKAN É LINDÃO" then
-			completeCommand(name)
-		end
-	end
-	if active == 87 then
-		if string.upper(message) == "TIGROUNETTE" or string.upper(message) == "MELIBELLULE" then
-			completeCommand(name)
-		end
-	end
-	if active == 89 then
-		if string.upper(message) == "EU" then
-			completeCommand(name)
-		end
-		if string.find(string.upper(message),string.upper("N")) then
-			tfm.exec.killPlayer(name)
-		end
-	end
-	if active == 90 then
-		if string.upper(message) == "MOSCOU" then
-			completeCommand(name)
-		end
-	end
-	if active == 91 then
-		if string.upper(message) == "PALMEIRAS" then
-			completeCommand(name)
-		end
-	end
 	if active == 92 then
 		if message == "Xayah_raster#7598" then
 			completeCommand(name)
@@ -1018,16 +1152,6 @@ function eventChatMessage(name,message)
 	end
 	if active == 99 then
 		if string.upper(message) == string.upper(a) then
-			completeCommand(name)
-		end
-	end
-	if active == 100 then
-		if message == "Lena Isis" then
-			completeCommand(name)
-		end
-	end
-	if active == 101 then
-		if string.upper(message) == "A ARQUEIRA DO GELO" then
 			completeCommand(name)
 		end
 	end
@@ -1383,14 +1507,6 @@ function eventKeyboard(name,id,down,x,y)
 			end
 		end
 	end
-	if active == 88 then
-		if id == 18 then
-			addCommandCount(name)
-			if data[name].s >= 1 and id == 115 then
-				completeCommand(name)
-			end
-		end
-	end
 	if active == 94 then
 		if id == 37 or id == 65 then
 			if data[name].key == 0 then
@@ -1429,11 +1545,11 @@ end
 function eventLoop(passado,faltando)
 	local tempo=math.floor(faltando/1000)
 	if active == -2 then
-		ui.setMapName("<N>"..text.mices.."   <G>|   <VP><b>"..text.version.." RTM 17006.100 Anniversary Edition</b><")
+		ui.setMapName("<N>"..text.mices.."   <G>|   <VP><b>"..text.version.." RTM 17107.101</b><")
 	elseif active == -1 then
-		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <VP><b>"..text.version.." RTM 17006.100 Anniversary Edition</b><")
+		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <VP><b>"..text.version.." RTM 17107.101</b><")
 	elseif active >= 0 then
-		ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <VP><b>"..text.version.." RTM 17006.100 Anniversary Edition</b><")
+		ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <VP><b>"..text.version.." RTM 17107.101</b><")
 	end
 	if rato < 4 then
 		if tfm.get.room.currentMap == "@2684847" and unlocked == true then
