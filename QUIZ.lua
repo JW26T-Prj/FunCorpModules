@@ -1,12 +1,11 @@
--- Mudanças na Versão 2.22.2:
+-- Mudanças na Versão 2.23.0:
 
--- Correção de bugs no comando !tc
 -- Adição de 4 perguntas de conhecimentos gerais
 -- Adição de 3 perguntas de música
 
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.22.2
--- Por favor, edite a linha 24 a variável 'admin' pelo seu nome para ter acesso aos comandos.
--- Você pode selecionar o tema editando a linha 25, ou digitando !tema [número] conforme os números abaixo.
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.23.0
+-- Por favor, edite a linha 23 a variável 'admin' pelo seu nome para ter acesso aos comandos.
+-- Você pode selecionar o tema editando a linha 24, ou digitando !tema [número] conforme os números abaixo.
 
 -- Temas:
 -- 0 = transformice
@@ -416,6 +415,10 @@ perguntas1={
 "Em que data terminou a Batalha do Tuiuti, uma das mais importantes da Guerra do Paraguai?","24 de Maio","4 de Junho",1,
 "Quais destas duas empresas fabricaram computadores pessoais no Brasil nos anos 80?","Prológica e Gradiente","Prológica e Microdigital",2,
 "Em que ano a União Soviética foi extinta?","1990","1991",2,
+"Qual destes browsers de Internet foi desenvolvido primeiro?","Mozilla Firefox","Google Chrome",1,
+"A famosa obra de arte 'Monalisa', de Leonardo da Vinci, é encontrada em qual museu?","Museu do Louvre","Museu de Atenas",1,
+"Em qual ano foi assinado o Tratado de Tordesilhas?","1494","1504",1,
+"Qual foi o presidente do Brasil que durou mais tempo no poder?","Getúlio Vargas","Fernando Henrique Cardoso",1,
 }
 perguntas2={
 "Vai na sorte :)","ok","ok",1,
@@ -503,7 +506,7 @@ perguntas2={
 "Qual o nome do estilo musical muito utilizado em discotecas e que teve seu auge nos anos 90?","Eurodance","Europop",1,
 "Qual o nome do vocalista do grupo U2?","Bono Vox","Serj Tankian",1,
 "Complete a música: Meu amor! Quando palavras não conseguem expressar...","Veja o brilho em meu olhar","Veja o brilho em meu rosto",1,
-"Qual destas músicas foi tema da novela Duas Caras, exibida pela Globo em 2007?","Recomeçar","O Poder do Teu Amor",1,
+"Qual destas músicas foi utilizada na novela Duas Caras, exibida pela Globo em 2007?","Recomeçar","O Poder do Teu Amor",1,
 "O álbum 'As Quatro Estações', de Sandy e Júnior, é vendido tanto em CD quanto em LP.","Verdadeiro","Falso",1,
 "Qual o nome do vocalista da banda Skank?","Samuel Rosa","Chico Amaral",1,
 "A banda de rock The Beatles é de qual país?","Inglaterra","Estados Unidos",1,
@@ -529,6 +532,9 @@ perguntas2={
 "Qual o nome da música do Noel Rosa que fez parte do encerramento das transmissões da TV Globo, de 1976 a 1981?","Até Amanhã","Meu Lugar",1,
 "Qual destes músicos é integrante da banda Fruto Sagrado?","André Figueiredo","Sylas Jr.",2,
 "Um álbum musical já foi gravado dentro da Estação Especial Internacional.","Verdadeiro","Falso",2,
+"Em qual ano a última fábrica de discos de vinil (LP) foi desativada no Brasil?","1997","2000",2,
+"'Eu sou a luz das estrelas, eu sou a cor do luar...' Qual o nome desta música famosa do cantor Raul Seixas?","Gita","Metamorfose Ambulante",1,
+"Qual destas músicas foi gravada por Roberto Carlos?","Eu Nasci Há Dez Mil Anos Atrás","Como é Grande o Meu Amor Por Você",2,
 }
 perguntas3={
 "Vai na sorte :)","ok","ok",1,
@@ -570,7 +576,7 @@ perguntas3={
 "'Regras foram feitas para serem quebradas. Igual prédios... Ou pessoas!'","Jinx","Katarina",1,
 "Qual o nome de dois dos três semideuses localizado no topo dos montes de Freljord?","Ornn e Volibear","Ornn e Sejuani",1,
 "Qual o nome do 'planeta' onde vivem todos os personagens de League of Legends?","Runeterra","Demacia",1,
-"Quantos campeões existem no League of Legends?","159","162",1,
+"Quantos campeões existem no League of Legends?","159","160",2,
 "O time do Cruzeiro já chegou a ter uma equipe competitiva de League of Legends.","Verdadeiro","Falso",1,
 "Ashe e Tryndamere são casados.","Verdadeiro","Falso",1,
 "Qual o nome da região onde majoritariamente ficam localizados os Vastayas?","Noxus","Ionia",2,
@@ -809,7 +815,7 @@ function eventPlayerLeft(name)
 	ratos=ratos-1
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.22.2</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
+	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.23.0</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
