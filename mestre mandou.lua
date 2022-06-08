@@ -1,5 +1,5 @@
--- Código do module Mestre Mandou, versão RTM 17107.101, desenvolvido por Rakan_raster#0000.
--- Code of Simon Says module, version RTM 17107.101, developed by Rakan_raster#0000.
+-- Código do module Mestre Mandou, versão RTM 17208.102, desenvolvido por Rakan_raster#0000.
+-- Code of Simon Says module, version RTM 17208.102, developed by Rakan_raster#0000.
 
 -- Atenção: Antes de rodar este código em uma sala, verifique se esta versão coincide com a versão mais recente presente abaixo:
 -- https://raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/mestre%20mandou.lua
@@ -25,12 +25,12 @@ fc_cmds={1,2,4,5,6,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,28,30,31,32
 spiderweb={type = 15,width = 60,height = 60}
 map_det={creator="",code=""}
 ninjas={"Rakan_raster#0000","Xayah_raster#7598","Aurelianlua#0000","Forzaldenon#0000","Skyymellu#0000"}
-fc_mode=false; xpos=0; xpos2=0; unlocked=true;
+fc_mode=false; xpos=0; xpos2=0;
 for _,f in next,{"command","pw","limit","run","fc","tc","q","a","t","kill"} do
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>O objetivo deste module é muito simples: Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><VP>Tenha sempre cuidado com os comandos trolls!<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Jessiewind26#2546<br><br><ROSE>Versão RTM 17107.101",
+	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>O objetivo deste module é muito simples: Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><VP>Tenha sempre cuidado com os comandos trolls!<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Jessiewind26#2546<br><br><ROSE>Versão RTM 17208.102",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -131,7 +131,7 @@ lang.br = {
 	sudden = "Morte súbita habilitada!",
 }
 lang.en = {
-	welcome = "<N><b>Welcome to Simon Says module!</b><br>This module's goal is easy: Follow everything the game told and test your limits until the end!<br><VP>Be always aware to troll commands!<br><br><J><b>Script developed by Rakan_raster#0000</b><br>Original concept by Jessiewind26#2546<br>Translation by Draw#6691<br><br><ROSE>Version RTM 17107.101",
+	welcome = "<N><b>Welcome to Simon Says module!</b><br>This module's goal is easy: Follow everything the game told and test your limits until the end!<br><VP>Be always aware to troll commands!<br><br><J><b>Script developed by Rakan_raster#0000</b><br>Original concept by Jessiewind26#2546<br>Translation by Draw#6691<br><br><ROSE>Version RTM 17208.102",
 	dancar = "Dance!",
 	sentar = "Sit down!",
 	confetar = "Throw 5 confetti!",
@@ -232,7 +232,7 @@ lang.en = {
 	sudden = "Sudden death enabled!",
 }
 lang.fr = {
-	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Rakan_raster#0000</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 17107.101",
+	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Rakan_raster#0000</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 17208.102",
 	dancar = "Danse !",
 	sentar = "Assis !",
 	confetar = "Lance 5 fois des confettis !",
@@ -453,17 +453,10 @@ function eventNewGame()
 	rodada=0; active=0; vivo=0; rato=0;
 	dificuldade=1
 	tfm.exec.setWorldGravity(0, 10)
-	if unlocked == true then
-		tfm.exec.setGameTime(15)
-		showMessage("<BL><i>Spectra's map loader v2.212.1</i><br><N>Loading current map information...<br><b>Current Map :</b> <V>"..map_det.code.."<br><N><b>Author :</b> <V>"..map_det.creator.."")
-		if tfm.get.room.community == "br" then
-			showMessage("<VP><br><i>Em Maio de 2022, o module Mestre Mandou completará 8 anos de vida! Faremos no mês de Maio um evento super especial com todos os antigos criadores com comandos exclusivos e vários prêmios. Aguardem!</i>")
-		end
-		if fc_mode == true then
-			showMessage("<VP><br>The FunCorp mode of this module is now enabled.")
-		end
-	else
-		tfm.exec.setGameTime(36000)
+	tfm.exec.setGameTime(15)
+	showMessage("<J><i>Spectra's map loader v2.219.1</i><br><N>Loading current map information...<br><b>Current Map :</b> <V>"..map_det.code.."<br><N><b>Author :</b> <V>"..map_det.creator.."")
+	if fc_mode == true then
+		showMessage("<VP><br>The FunCorp mode of this module is now enabled.")
 	end
 	for name,player in next,tfm.get.room.playerList do
 		vivo=vivo+1
@@ -592,7 +585,7 @@ function getCommand()
 	end
 	if active == 5 then
 		showCommand(active,text.beijos)
-		tfm.exec.setGameTime(14)
+		tfm.exec.setGameTime(13)
 	end
 	if active == 6 then
 		showCommand(active,text.dormir)
@@ -831,7 +824,7 @@ function getCommand()
 	if active == 51 then
 		showCommand(active,text.area)
 		ui.addTextArea(250,"<a href='event:command51'>CLICK HERE",nil,math.random(100,700),math.random(50,350),100,25,0,0,1.0,true)
-		tfm.exec.setGameTime(10)
+		tfm.exec.setGameTime(8)
 	end
 	if active == 52 then
 		showCommand(active,text.dancing)
@@ -839,7 +832,7 @@ function getCommand()
 		for name,player in next,tfm.get.room.playerList do
 			tfm.exec.playEmote(name,0)
 		end
-		tfm.exec.setGameTime(12)
+		tfm.exec.setGameTime(8)
 	end
 	if active == 53 then
 		showCommand(active,text.freeze)
@@ -911,11 +904,11 @@ function getCommand()
 	end
 	if active == 65 then
 		showCommand(active,text.preesquerda15)
-		tfm.exec.setGameTime(8)
+		tfm.exec.setGameTime(7)
 	end
 	if active == 66 then
 		showCommand(active,text.predireita15)
-		tfm.exec.setGameTime(8)
+		tfm.exec.setGameTime(7)
 	end
 	if active == 67 then
 		showCommand(active,text.clap)
@@ -1020,7 +1013,7 @@ function getCommand()
 	end
 	if active == 93 then
 		showCommand(active,text.vampire)
-		tfm.exec.setGameTime(24)
+		tfm.exec.setGameTime(30)
 		setAllAlive()
 		tfm.exec.setVampirePlayer(alives[math.random(#alives)],true)
 	end
@@ -1081,7 +1074,6 @@ function eventChatMessage(name,message)
 			completeCommand(name)
 		elseif message == "2021" then
 			tfm.exec.killPlayer(name)
-			showMessage("hoje é um novo dia, de um novo tempo que começou",name)
 		end
 	end
 	if active == 29 then
@@ -1545,18 +1537,18 @@ end
 function eventLoop(passado,faltando)
 	local tempo=math.floor(faltando/1000)
 	if active == -2 then
-		ui.setMapName("<N>"..text.mices.."   <G>|   <VP><b>"..text.version.." RTM 17107.101</b><")
+		ui.setMapName("<N>"..text.mices.."   <G>|   <VP><b>"..text.version.." RTM 17208.102</b><")
 	elseif active == -1 then
-		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <VP><b>"..text.version.." RTM 17107.101</b><")
+		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <VP><b>"..text.version.." RTM 17208.102</b><")
 	elseif active >= 0 then
-		ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <VP><b>"..text.version.." RTM 17107.101</b><")
+		ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <VP><b>"..text.version.." RTM 17208.102</b><")
 	end
 	if rato < 4 then
-		if tfm.get.room.currentMap == "@2684847" and unlocked == true then
+		if tfm.get.room.currentMap == "@2684847" then
 			active=-2
 			tfm.exec.setGameTime(8000)
 		else
-			if passado > 4000 and unlocked == true then
+			if passado > 4000 then
 				tfm.exec.newGame("@2684847")
 				tfm.exec.setGameTime(8000)
 				showMessage("<R>"..text.mices.."",nil)
@@ -1564,11 +1556,11 @@ function eventLoop(passado,faltando)
 		end
 	end
 	if rato >= 4 and passado >= 4000 then
-		if tfm.get.room.currentMap == "@2684847" and unlocked == true then
+		if tfm.get.room.currentMap == "@2684847" then
 			tfm.exec.newGame(mapas[math.random(#mapas)])
 		end
 	end
-	if active < 0 and faltando < 1 and unlocked == true then
+	if active < 0 and faltando < 1 then
 		tfm.exec.newGame(mapas[math.random(#mapas)])
 	end
 	if active == 0 and faltando < 4000 then
