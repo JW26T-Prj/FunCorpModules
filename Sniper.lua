@@ -22,7 +22,7 @@ function eventLoop(p,f)
 	loop=loop+0.5
 	if enabled == true then
 	remain=remain-0.5
-	end
+	end	
 	if remain <= 5 and remain >= 0.5 then
 		ui.addTextArea(0,"<font size='33'><p align='center'>"..math.ceil(remain).."",nil,370,350,60,45,0x000001,0x000001,0.8,true)
 	end
@@ -66,11 +66,11 @@ function eventTextAreaCallback(id,name,link)
 		end
 	end
 	if link == "close" then
-	for id=-1,2 do
-		ui.removeTextArea(id,name)
-		ui.removeTextArea(6969+id,name)
-		ui.removeTextArea(7979+id,name)
-	end
+		for id=-1,2 do
+			ui.removeTextArea(id,name)
+			ui.removeTextArea(6969+id,name)
+			ui.removeTextArea(7979+id,name)
+		end
 	end
 end
 function eventRanking(name)
@@ -91,16 +91,19 @@ function eventRanking(name)
             end
         end
     end
-             ui.addTextArea(1,'<B><J><font size="13"><p align="center">Top 10 (pontos / vitórias)',name,255,150,360,30,nil,0x2e424d,nil,true)
-           ui.addTextArea(2,"<B><font size='12'>"..str,name,255,185,360,150,0x0e232b,0x0e232b,nil,true)
-       ui.addTextArea(-1,"<B><p align='center'><font size='15'><R><a href='event:close'>Fechar</a>",name,340,320,190,20,0x3c5063,0x3c5063,nil,true)
+    ui.addTextArea(1,'<B><J><font size="13"><p align="center">Top 10 (pontos / vitórias)',name,255,150,360,30,nil,0x2e424d,nil,true)
+    ui.addTextArea(2,"<B><font size='12'>"..str,name,255,185,360,150,0x0e232b,0x0e232b,nil,true)
+    ui.addTextArea(-1,"<B><p align='center'><font size='15'><R><a href='event:close'>Fechar</a>",name,340,320,190,20,0x3c5063,0x3c5063,nil,true)
     return str
+end
+function eventSummoningStart(name)
+	tfm.exec.chatMessage("<R>Não é permitido o uso de objetos de shaman! Use somente a seta pra baixo.",name)
 end
 function eventSummoningEnd(name)
 	tfm.exec.killPlayer(name)
 end
 function eventNewGame()
-	tfm.exec.chatMessage("Não é permitido o uso de objetos de shaman! Use somente a seta pra baixo.",nil)
+	tfm.exec.chatMessage("<R>Não é permitido o uso de objetos de shaman! Use somente a seta pra baixo.",nil)
 	vivo=0
 	prox=false
 	obterJogadores()
@@ -122,21 +125,21 @@ function eventNewGame()
 	tfm.exec.setGameTime(90)
 end
 function eventNewPlayer(name)
-			p[name] = {
-				wins = 0,
-				rodadas = 0,
-				eff = 0,
-				pontos = 1
-			}
-			tfm.exec.bindKeyboard(name,40,true,true)
-		tfm.exec.bindKeyboard(name,83,true,true)
-		tfm.exec.chatMessage("<VP><b>Sniper!</b><br><N>Sobreviva às bigornas do shaman! Criado por Fosfus7heads#0000.<br><br>versão 1.4.2: correção de bugs",name)
+	p[name] = {
+	wins = 0,
+	rodadas = 0,
+	eff = 0,
+	pontos = 1
+	}
+	tfm.exec.bindKeyboard(name,40,true,true)
+	tfm.exec.bindKeyboard(name,83,true,true)
+	tfm.exec.chatMessage("<VP><b>Sniper!</b><br><N>Sobreviva às bigornas do shaman! Criado por Fosfus7heads#0000.<br>Comandos: !p e !rank.<br><br>versão 1.5: adição de pequenas melhorias",name)
 end
 function split(t,s)
-local a={}
-for i,v in string.gmatch(t,string.format("[^%s]+",s or "%s")) do
- table.insert(a,i)
- end
+	local a={}
+	for i,v in string.gmatch(t,string.format("[^%s]+",s or "%s")) do
+		table.insert(a,i)
+	end
 	return a
 end
 for name,player in pairs(tfm.get.room.playerList) do
