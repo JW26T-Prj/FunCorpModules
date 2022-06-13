@@ -32,7 +32,7 @@ function showMessage(message,name)
 end
 function eventChatCommand(n,m)
 	if m == "help" then
-		showMessage("<N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço! Caso o shaman morra, a partida é encerrada.<br><br><VP>Mapa criado por Threshlimit#0000 e Patrick_mahomes#1795. Código desenvolvido por Morganadxana#0000.<br>Conceito original de Nettoork#0000.<br>Versão 5.4.0",n)
+		showMessage("<N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço! Caso o shaman morra, a partida é encerrada.<br><br><VP>Mapa criado por Threshlimit#0000 e Patrick_mahomes#1795. Código desenvolvido por Morganadxana#0000.<br>Conceito original de Nettoork#0000.<br>Versão 5.4.1",n)
 	end
 	if m == "cancel" then
 		if n == "Threshlimit#0000" or n == "Morganadxana#0000"  or n == "Patrick_mahomes#1795" or n == "Forzaldenon#0000" then
@@ -60,8 +60,13 @@ end
 function eventLoop(p,f)
 	local m=math.floor(f/60000)
 	local s=math.floor((((m*60000)-f) * -1) / 1000)
-	ui.addTextArea(-1,"<font size='45'><font color='#222222'><font face='Trebuchet MS'><b><i>"..m..":"..s.."</b>",n,569,22,110,54,0,0,1.0,true)
-	ui.addTextArea(-2,"<font size='45'><font color='#d0d0d0'><font face='Trebuchet MS'><b><i>"..m..":"..s.."</b>",n,566,19,110,54,0,0,1.0,true)
+	if s >= 10 then
+		ui.addTextArea(-1,"<font size='45'><font color='#222222'><font face='Trebuchet MS'><b><i>"..m..":"..s.."</b>",n,569,22,110,54,0,0,1.0,true)
+		ui.addTextArea(-2,"<font size='45'><font color='#d0d0d0'><font face='Trebuchet MS'><b><i>"..m..":"..s.."</b>",n,566,19,110,54,0,0,1.0,true)
+	else
+		ui.addTextArea(-1,"<font size='45'><font color='#222222'><font face='Trebuchet MS'><b><i>"..m..":0"..s.."</b>",n,569,22,110,54,0,0,1.0,true)
+		ui.addTextArea(-2,"<font size='45'><font color='#d0d0d0'><font face='Trebuchet MS'><b><i>"..m..":0"..s.."</b>",n,566,19,110,54,0,0,1.0,true)
+	end
 	if mode == "fly" then
 		loop=loop+1
 	end
@@ -123,7 +128,7 @@ function eventLoop(p,f)
 end
 function eventNewGame()
 	ui.setMapName("<font color='#1288e8'><b>RockerLaunch 5</b> <N>Project by <VP>Threshlimit#0000, <ROSE>Morganadxana#0000<N> and <R>Patrick_mahomes#1795<")
-	tfm.exec.setGameTime(500)
+	tfm.exec.setGameTime(450)
 	showMessage("<VP>O shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço!")
 	mode="building"
 	for n,p in pairs(tfm.get.room.playerList) do
@@ -135,7 +140,7 @@ function eventNewGame()
 end
 function eventNewPlayer(n)
 	ui.setMapName("<font color='#1288e8'><b>RockerLaunch 5</b> <N>Project by <VP>Threshlimit#0000, <ROSE>Morganadxana#0000<N> and <R>Patrick_mahomes#1795<")
-	showMessage("<VP>Bem-vindos ao RockerLaunch 5!<br><N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço! Digite !help para saber como jogar.<br><br><ROSE>Créditos para Threshlimit#0000, Morganadxana#0000 and Patrick_mahomes#1795. Conceito original de Nettoork#0000.<br>Versão 5.4.0",n)
+	showMessage("<VP>Bem-vindos ao RockerLaunch 5!<br><N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço! Digite !help para saber como jogar.<br><br><ROSE>Créditos para Threshlimit#0000, Morganadxana#0000 and Patrick_mahomes#1795. Conceito original de Nettoork#0000.<br>Versão 5.4.1",n)
 	newData={
 		["message"]=0,
 		["reached"]=false
