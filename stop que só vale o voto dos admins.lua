@@ -1,9 +1,9 @@
 -- STOP
--- Escrito por Ninguem - 31/08/2015 // Atualizado por Reksai_void2600#6638 - 29/03/2022
+-- Escrito por Ninguem - 31/08/2015 // Atualizado por Reksai_void2600#6638 - 13/06/2022
 -- Limite de 20 categorias.
 -- FunCorp, caso você não queira visualizar as respostas dos jogadores (para identificar trapaças, por exemplo), altere a variável SHOW (linha 15) para false.
 
-ADM = {"Forzaldenon#0000"} -- editar com seu nome aqui!
+ADM = {"Reksai_void2600#6638"} -- editar com seu nome aqui!
 CAT = {"Nome","Animal","Objeto","Cor","Marca","Carro","TV/Anime/Desenho","Parte do Corpo","Comida/Bebida","País/Cidade/Estado","Profissão","Tem no Transformice","O(A) "..ADM[1].." é...","Qualquer Coisa"}
 ID = {cat=1,camada=2,add=3,msg=4,tempo=5,stop=6}
 PLAYER = {}
@@ -18,11 +18,13 @@ TEMAS = 14
 TEMPO = false
 LETRA = ""
 
+system.disableChatCommandDisplay("help")
+
 function carregaMapa()
 	if MAPA == true then
 		tfm.exec.newGame("@7631682")
 	elseif MAPA == false then
-		tfm.exec.newGame("@4677521")
+		tfm.exec.newGame("@7907254")
 	end
 end
 
@@ -195,6 +197,9 @@ function eventChatCommand(p, cmd)
 			end
 		end
 	end
+	if cmd == "help" then
+		tfm.exec.chatMessage("<N>O module <b>Stop</b> é muito parecido com o jogo 'adedanha' da vida real. Temas serão sorteados e você terá que descobrir itens que se encaixem nos temas de acordo com a letra.<br><br>Primeiro, você escolherá um número de 1 a 10. Isto irá ser feito com todos os jogadores para sortear a letra utilizada na rodada.<br><br>Após a letra ser sorteada, você vai clicar nos temas e digitar o item correspondente que comece com a letra indicada. Faça isso com o máximo de temas possível.<br><br><VP>O primeiro a completar todos os temas pode digitar !stop. Isto vai fazer com que todos os outros parem de escrever seus temas.<br><br><J>Após o momento do stop, chega a hora de avaliar as respostas. Você deve clicar nas respostas INCORRETAS para que fiquem da cor <R>vermelha.<J> Isto vai garantir que pontos não sejam dados para pessoas que colocarem respostas inválidas.<br><br><R>Aviso importante: Os administradores da sala e do module podem ver as respostas de cada um. Portanto, não ouse em colocar respostas inapropriadas.<N><br><br>Ppontuação por resposta:<br>- Resposta válida única: 10 pontos<br>- Resposta válida repetida: 5 pontos<br>- Resposta inválida: 0 pontos<br><br><ROSE>O vencedor é aquele que conseguir o maior número de pontos após um determinado número de rodadas.")
+	end
 end
 
 function eventTextAreaCallback(id, p, cmd)
@@ -256,7 +261,7 @@ function eventPopupAnswer(id, p, resp)
 end
 
 function eventNewPlayer(p)
-	ui.setMapName("<J><b>STOP!</b> <N>Script editado por Reksai_void2600#6638 - 29/03/2022<")
+	ui.setMapName("<BL><b>STOP!</b> <N>Script editado por Reksai_void2600#6638 - 13/06/2022<")
 	PLAYER[p] = {num = 0, pontos = 0, vitoria = 0, palavra = {}}
 	for i, v in pairs(CAT) do
 		PLAYER[p].palavra[v] = ""
@@ -265,6 +270,7 @@ function eventNewPlayer(p)
 		atualizaPlayer(true)
 	end
 	tfm.exec.respawnPlayer(p)
+	tfm.exec.chatMessage("<ROSE>Digite !help caso não saiba jogar este jogo.",p)
 end
 
 function eventPlayerLeft(p)
@@ -409,5 +415,5 @@ tfm.exec.disableAutoShaman(true)
 tfm.exec.disableAutoScore(true)
 tfm.exec.disableAutoNewGame(true)
 carregaMapa()
-ui.setMapName("<J><b>STOP!</b> <N>Script editado por Reksai_void2600#6638 - 29/03/2022<")
+ui.setMapName("<BL><b>STOP!</b> <N>Script editado por Reksai_void2600#6638 - 13/06/2022<")
 atualizaCat(true)
