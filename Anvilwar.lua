@@ -2,8 +2,8 @@
 Module authors : Spectra_phantom#6089, Morganadxana#0000
 (C) 2017-2022 Spectra Advanced Module Group
 
-Version : RTM 46311.184
-Compilation date : 06/13/2022 16:47 UTC
+Version : RTM 46412.185
+Compilation date : 06/18/2022 23:25 UTC
 Sending player : Morganadxana#0000
 
 Number of maps : 173
@@ -55,7 +55,7 @@ lang.br = {
 	p6 = "usou o powerup Chuva de Bigornas!",
 	p7 = "usou o powerup Anomalia Gravitacional!",
 	p8 = "usou o powerup Bigorna Invisível!",
-	p10 = "Você precisa ser capitão do seu time e possuir 25 pontos para reviver.<br>Além disso, não é possível reviver faltando menos de 30 segundos.",
+	p10 = "Você precisa ser capitão do seu time e possuir 30 pontos para reviver.<br>Além disso, não é possível reviver faltando menos de 30 segundos.",
 	p0 = "Você não possui pontos e/ou níveis suficientes para usar este powerup.",
 	ap = "Potência: ",
 	ag = "Ângulo: ",
@@ -96,7 +96,7 @@ lang.br = {
 	cap_text = "foi escolhido para ser o líder do seu time.",
 	cap = "<J><b>Você foi escolhido como o líder do time.</b><N><br>Digite !leader para saber as funcionalidades e os benefícios de ser o líder do seu time.",
 	leader = "Os líderes dos times <b>são escolhidos aleatoriamente</b> e possui as seguintes vantagens em relação aos outros jogadores:<br><br>• Recebe 50% a mais de quantidade de pontos e AnvilCoins em relação aos outros jogadores<br>• Pode reviver jogadores mortos do seu time usando !rv [jogador]<br>• Pode transferir seus pontos para outro jogador do seu time usando !tp [jogador]<br>• Possui 50% a mais de tempo para atirar do que os outros jogadores.",
-	legacy = "<J><b>Confiram os submódulos do #anvilwar!</b><br><VP>/sala #anvilwar00watercatch<br>/sala #anvilwar00cd3<br>/sala #anvilwar00mountain<br>/sala #anvilwar00beach<br><br><N>Para descobrir as novidades desta versão, digite <b>!changelog</b>.<br><br>",
+	legacy = "<J><b>Confiram os submódulos do #anvilwar!</b><br><VP>/sala #anvilwar00watercatch<br>/sala #anvilwar00mountain<br>/sala #anvilwar00beach<br><br><N>Para descobrir as novidades desta versão, digite <b>!changelog</b>.<br><br>",
 	disabled = "Este comando foi desabilitado por um administrador.",
 	gametime = "Tempo",
 	timeup = "<ROSE>Tempo esgotado! Este será o último tiro!",
@@ -122,7 +122,7 @@ lang.en = {
 	p6 = "used the powerup Anvil Rain!",
 	p7 = "used the powerup Gravity Anomaly!",
 	p8 = "used the powerup Invisible Anvil!",
-	p10 = "You must be the leader of your team and have at least 25 points to revive.<br>Also, isn't allowed to revive players on the last 30 seconds.",
+	p10 = "You must be the leader of your team and have at least 30 points to revive.<br>Also, isn't allowed to revive players on the last 30 seconds.",
 	p0 = "You don't have level and score to use this powerup.",
 	ap = "Power: ",
 	ag = "Angle: ",
@@ -262,7 +262,7 @@ function showMenu(name,color,x,y,width,height,title,content)
 end
 
 function showLobbyText(name)
-	ui.addTextArea(402,"<p align='center'><font size='14'><b><font face='Courier New'><i>"..text.version.." RTM 46311.184 - "..text.comp_date.."06/13/2022 16:47 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,10,379,780,36,0,0,1.0,true)
+	ui.addTextArea(402,"<p align='center'><font size='14'><b><font face='Courier New'><i>"..text.version.." RTM 46412.185 - "..text.comp_date.."06/18/2022 23:25 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,10,379,780,36,0,0,1.0,true)
 end
 
 function setLeaders()
@@ -335,7 +335,7 @@ end
 
 function updateTextBar()
 	if mode == "lobby" or mode == "map_sort" or mode == "wait1" then
-		ui.setMapName("<N><b>#anvilwar 2022 Edition</b>   <G>|   <VP>"..text.version.." <b>RTM 46311.184</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
+		ui.setMapName("<N><b>#anvilwar 2022 Edition</b>   <G>|   <VP>"..text.version.." <b>RTM 46412.185</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	elseif mode == "shoot" or mode == "wait2" or mode == "wait3" then
 		local m=math.floor(general_time/60)
 		local s=math.floor(general_time-(m*60))
@@ -882,7 +882,7 @@ function eventChatCommand(name,command)
 		end
 	end
 	if command == "changelog" then
-		showMenu(name,0xa8f233,140,110,520,100,"#anvilwar Changelog - RTM 46311.184","• Changes on prices of various powerups<br>• Added some temporary moderators<br>• Changed the version status font")
+		showMenu(name,0xa8f233,140,110,520,100,"#anvilwar Changelog - RTM 46412.185","• Changes on prices of various powerups<br>• Added some temporary moderators<br>• Changed the version status font<br>• The reviving score is now back to 30 points")
 	end
 	if (command:sub(0,2) == "rv") then
 		if name == actual_player and general_time >= 30 then
@@ -890,7 +890,7 @@ function eventChatCommand(name,command)
 				temp_name=command:sub(4)
 				print(temp_name)
 				if data[temp_name] then
-					if data[name].score >= 25 then
+					if data[name].score >= 30 then
 						if tfm.get.room.playerList[temp_name].isDead == true then
 							tfm.exec.respawnPlayer(temp_name)
 							if data[temp_name].team == 2 then
@@ -902,7 +902,7 @@ function eventChatCommand(name,command)
 								data[temp_name].killed=false
 							end
 							showMessage("<J>"..text.revived..""..temp_name.."")
-							setScores(name,-25,true)
+							setScores(name,-30,true)
 						end
 					else
 						showMessage(text.p10,name)
