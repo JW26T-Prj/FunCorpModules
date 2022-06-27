@@ -1,9 +1,9 @@
--- Mudanças na Versão 2.23.0:
+-- Mudanças na Versão 2.23.1:
 
--- Adição de 4 perguntas de conhecimentos gerais
--- Adição de 3 perguntas de música
+-- Correção de várias perguntas de Transformice
+-- Adição de 2 perguntas de Transformice
 
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.23.0
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.23.1
 -- Por favor, edite a linha 23 a variável 'admin' pelo seu nome para ter acesso aos comandos.
 -- Você pode selecionar o tema editando a linha 24, ou digitando !tema [número] conforme os números abaixo.
 
@@ -103,7 +103,7 @@ perguntas={
 "Qual destes comandos é utilizado para a inserção de um script LUA?","/lua","/code",1,
 "Qual destes eventos não é mais utilizado no Transformice?","Carnaval","Natal",1,
 "A habilidade 'Superstar' faz parte de qual árvore de Habilidades?","Selvagem","Guia Espiritual",2,
-"Qual destes usuários nunca se tornou FunCorp?","Shamousey#0015","Bolodefchoco#0015",1,
+"Qual destes usuários nunca se tornou FunCorp?","Shamousey#0015","Bolodefchoco#0095",1,
 "Se você ficar muito tempo dentro da água no Transformice, você morre automaticamente.","Verdadeiro","Falso",2,
 "É possível ganhar queijos na loja apenas jogando modules.","Verdadeiro","Falso",1,
 "Qual categoria de mapas é atribuída aos mapas de Defilante?","P18","P19",1,
@@ -113,7 +113,7 @@ perguntas={
 "Qual o nome do título que o Tigrounette usa?","La Belette","Les Populaires",1,
 "A habilidade 'Espírito Ancestral' faz parte de qual árvore de Habilidades?","Guia Espiritual","Mestre do Vento",1,
 "Quantos queijos custa a compra de um 2ª visual de roupas no Transformice?","100","1000",2,
-"Quem é o criador do module #circuit?","Bolodefchoco#0015","Ninguem#0095",2,
+"Qual o nome do antigo comando utilizado para alterar a taxa de quadros máxima operável pelo Transformice?","/fps36","/fps60",2,
 "Quantos queijos custa a customização de uma roupa no Transformice?","2000","4000",1,
 "Em qual ano estreou o sistema de missões no Transformice?","2019","2020",1,
 "Em qual ano estreou o evento de Pesca do Transformice?","2011","2012",2,
@@ -257,6 +257,8 @@ perguntas={
 "É possível criar NPCs interativos em scripts LUA no Transformice.","Verdadeiro","Falso",1,
 "Quantas missões diárias você precisa completar para ganhar a recompensa de 20 morangos?","15","20",2,
 "Qual destes modules foi criado primeiro?","#batata","#keyhunt",2,
+"Qual destes usuários nunca se tornou FunCorp?","Spectra_phantom#6089","Reksai_void2600#6638",1,
+"O comando /ban já serviu para banir jogadores do Transformice por 1 hora por voto popular.","Verdadeiro","Falso",1,
 }
 perguntas1={
 "Vai na sorte :)","ok","ok",1,
@@ -815,7 +817,7 @@ function eventPlayerLeft(name)
 	ratos=ratos-1
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.23.0</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
+	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.23.1</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
