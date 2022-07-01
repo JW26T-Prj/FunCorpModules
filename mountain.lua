@@ -13,8 +13,8 @@ events_pt={"Fúria da Tormenta","Chuva de Meteoros","Anomalia Gravitacional","Qu
 events_en={"Wind Fury","Meteor Rain","Gravity Anomaly","Cheese for All"}
 power_d={p2={6,8,10,12},p3={12,14,16,18,20,22}}
 lang.br = {
-	mapname = "<N><b>#mountain</b>  <V>-  <N>versão <ROSE>v1.0.8   <G>|   <N>Desenvolvido por <J>Morganadxana#0000<",
-	enter = "<N>Bem-vindo ao module <J><b>#mountain!</b><br><N>Você tem 3 minutos para escalar a grande montanha que há pelo caminho!<br><br><ROSE>Versão v1.0.8 - desenvolvido por Morganadxana#0000<br><VP>O module foi atualizado! Para descobrir as novidades, digite !changelog.",
+	mapname = "<N><b>#mountain</b>  <V>-  <N>versão <ROSE>v1.0.9   <G>|   <N>Desenvolvido por <J>Morganadxana#0000<",
+	enter = "<N>Bem-vindo ao module <J><b>#mountain!</b><br><N>Você tem 3 minutos para escalar a grande montanha que há pelo caminho!<br><br><ROSE>Versão v1.0.9 - desenvolvido por Morganadxana#0000<br><VP>O module foi atualizado! Para descobrir as novidades, digite !changelog.",
 	newgame = "<N>Caso não saiba o que fazer neste module, digite <b>!help</b>.",
 	getready = "<J>Se prepare! A estrada para a montanha será liberada em breve!",
 	start = "<VP><b>E que comece a batalha!</b>",
@@ -44,8 +44,8 @@ lang.br = {
 	lyncdowryammer = "Sinto na pele a desgraça que ela passou. Perdeu todos os seus amigos durante uma chuva de meteoros...<br><br>Agora falando sério, os deuses escondem um segredo gigante nesta montanha. Poderes extremamente fortes estão presentes no topo dela.<br><br>No entanto, não se empolgue. Os mesmos deuses estão muito furiosos ultimamente, e não querem que ninguém suba..."
 }
 lang.en = {
-	mapname = "<N><b>#mountain</b>  <V>-  <N>version <ROSE>v1.0.8   <G>|   <N>Developed by <J>Morganadxana#0000<",
-	enter = "<N>Welcome to the <J><b>#mountain</b> module!<br><N>You have 3 minutes to scale the big mountain that is on your way!<br><ROSE>Version v1.0.8 - developed by Morganadxana#0000<br><V>Translation by Rakan_raster#0000<br><VP>If you want to see the latest updates, type !changelog.",
+	mapname = "<N><b>#mountain</b>  <V>-  <N>version <ROSE>v1.0.9   <G>|   <N>Developed by <J>Morganadxana#0000<",
+	enter = "<N>Welcome to the <J><b>#mountain</b> module!<br><N>You have 3 minutes to scale the big mountain that is on your way!<br><ROSE>Version v1.0.9 - developed by Morganadxana#0000<br><V>Translation by Rakan_raster#0000<br><VP>If you want to see the latest updates, type !changelog.",
 	newgame = "<N>If you don't know about this module, please type <b>!help</b>.",
 	getready = "<J>Get ready! The road to the mountain will be opened!",
 	start = "<VP><b>Go!</b>",
@@ -111,8 +111,9 @@ function defineVencedor()
 end
 function showImages(name)
 	for j=0,5 do
-		tfm.exec.addImage("18164d398ff.png","?1",-800+(1920*j),-940,name)
-		tfm.exec.addImage("18164d398ff.png","?1",-800+(1920*j),140,name)
+		tfm.exec.addImage("181b9de5c95.png","?1",-800+(1920*j),-1240,name)
+		tfm.exec.addImage("181b9de5c95.png","?1",-800+(1920*j),-160,name)
+		tfm.exec.addImage("181b9de5c95.png","?1",-800+(1920*j),920,name)
 	end
 	for i=0,1 do
 		tfm.exec.addImage("17fe373d035.jpg","?1",-400+(i*3400),9592,name,1,1)
@@ -138,7 +139,7 @@ function eventChatCommand(name,command)
 		showMenu(name,0xb6e980,140,90,520,130,"Credits",text.credits)
 	end
 	if command == "changelog" then
-		showMenu(name,0x2578f6,140,70,520,270,"Changelog","<font size='11'>[v1.0.8]:<br>• Various modifications on the map<br>• Increased the game time by 20 seconds<br><br>[v1.0.7]:<br>• Slight changes on winning selection<br><br>[v1.0.6]:<br>• Fixed some issues with the end of game<br>• Added command hiding for !powerups, !changelog and !creditos<br>• Slight changes on the Universal Menu scheme<br><br>[v1.0.5]:<br>• More fixes on winner selection<br>• Added the Universal Menu scheme<br>• Added a protection for avoiding bugs with low memory client players")
+		showMenu(name,0x2578f6,140,70,520,270,"Changelog","<font size='11'>[v1.0.9]:<br>• Various modifications on the map<br>• Increased the game time by 20 seconds<br><br>[v1.0.7]:<br>• Slight changes on winning selection<br><br>[v1.0.6]:<br>• Fixed some issues with the end of game<br>• Added command hiding for !powerups, !changelog and !creditos<br>• Slight changes on the Universal Menu scheme<br><br>[v1.0.5]:<br>• More fixes on winner selection<br>• Added the Universal Menu scheme<br>• Added a protection for avoiding bugs with low memory client players")
 	end
 end
 function eventNewPlayer(name)
