@@ -1,5 +1,5 @@
--- Código do module Mestre Mandou, versão RTM 17208.102, desenvolvido por Rakan_raster#0000.
--- Code of Simon Says module, version RTM 17208.102, developed by Rakan_raster#0000.
+-- Código do module Mestre Mandou, versão RTM 17309.103, desenvolvido por Rakan_raster#0000.
+-- Code of Simon Says module, version RTM 17309.103, developed by Rakan_raster#0000.
 
 -- Atenção: Antes de rodar este código em uma sala, verifique se esta versão coincide com a versão mais recente presente abaixo:
 -- https://raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/mestre%20mandou.lua
@@ -30,7 +30,7 @@ for _,f in next,{"command","pw","limit","run","fc","tc","q","a","t","kill"} do
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>O objetivo deste module é muito simples: Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><VP>Tenha sempre cuidado com os comandos trolls!<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Jessiewind26#2546<br><br><ROSE>Versão RTM 17208.102",
+	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>O objetivo deste module é muito simples: Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><VP>Tenha sempre cuidado com os comandos trolls!<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Jessiewind26#2546<br><br><ROSE>Versão RTM 17309.103",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -131,7 +131,7 @@ lang.br = {
 	sudden = "Morte súbita habilitada!",
 }
 lang.en = {
-	welcome = "<N><b>Welcome to Simon Says module!</b><br>This module's goal is easy: Follow everything the game told and test your limits until the end!<br><VP>Be always aware to troll commands!<br><br><J><b>Script developed by Rakan_raster#0000</b><br>Original concept by Jessiewind26#2546<br>Translation by Draw#6691<br><br><ROSE>Version RTM 17208.102",
+	welcome = "<N><b>Welcome to Simon Says module!</b><br>This module's goal is easy: Follow everything the game told and test your limits until the end!<br><VP>Be always aware to troll commands!<br><br><J><b>Script developed by Rakan_raster#0000</b><br>Original concept by Jessiewind26#2546<br>Translation by Draw#6691<br><br><ROSE>Version RTM 17309.103",
 	dancar = "Dance!",
 	sentar = "Sit down!",
 	confetar = "Throw 5 confetti!",
@@ -232,7 +232,7 @@ lang.en = {
 	sudden = "Sudden death enabled!",
 }
 lang.fr = {
-	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Rakan_raster#0000</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 17208.102",
+	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Rakan_raster#0000</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 17309.103",
 	dancar = "Danse !",
 	sentar = "Assis !",
 	confetar = "Lance 5 fois des confettis !",
@@ -777,7 +777,7 @@ function getCommand()
 	end
 	if active == 42 then
 		showCommand(active,text.stone)
-		tfm.exec.setGameTime(8)
+		tfm.exec.setGameTime(5)
 		setAllAlive()
 		for i=1,24 do
 			tfm.exec.addShamanObject(85,(i*80)-20,64,0,0,0,false)
@@ -916,7 +916,7 @@ function getCommand()
 	end
 	if active == 68 then
 		showCommand(active,text.rain)
-		tfm.exec.setGameTime(8)
+		tfm.exec.setGameTime(5)
 		setAllAlive()
 		for i=1,24 do
 			tfm.exec.addShamanObject(40,(i*80)-20,64,0,0,0,false)
@@ -973,7 +973,7 @@ function getCommand()
 	end
 	if active == 79 then
 		showCommand(active,text.balls)
-		tfm.exec.setGameTime(9)
+		tfm.exec.setGameTime(5)
 		setAllAlive()
 		for i=1,24 do
 			tfm.exec.addShamanObject(6,(i*80)-20,64,0,0,0,false)
@@ -990,7 +990,7 @@ function getCommand()
 	end
 	if active == 81 then
 		showCommand(active,text.explosion)
-		tfm.exec.setGameTime(8)
+		tfm.exec.setGameTime(5)
 		setAllAlive()
 		for i=1,12 do
 			x=math.random(50,750)
@@ -1009,11 +1009,11 @@ function getCommand()
 	end
 	if active == 92 then
 		showCommand(active,text.sister)
-		tfm.exec.setGameTime(12)
+		tfm.exec.setGameTime(10)
 	end
 	if active == 93 then
 		showCommand(active,text.vampire)
-		tfm.exec.setGameTime(30)
+		tfm.exec.setGameTime(32)
 		setAllAlive()
 		tfm.exec.setVampirePlayer(alives[math.random(#alives)],true)
 	end
@@ -1027,7 +1027,7 @@ function getCommand()
 	end
 	if active == 96 then
 		showCommand(active,text.creator)
-		tfm.exec.setGameTime(12)
+		tfm.exec.setGameTime(10)
 	end
 	if active == 97 then
 		showCommand(active,text.collect)
@@ -1537,11 +1537,11 @@ end
 function eventLoop(passado,faltando)
 	local tempo=math.floor(faltando/1000)
 	if active == -2 then
-		ui.setMapName("<N>"..text.mices.."   <G>|   <VP><b>"..text.version.." RTM 17208.102</b><")
+		ui.setMapName("<N>"..text.mices.."   <G>|   <VP><b>"..text.version.." RTM 17309.103</b><")
 	elseif active == -1 then
-		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <VP><b>"..text.version.." RTM 17208.102</b><")
+		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <VP><b>"..text.version.." RTM 17309.103</b><")
 	elseif active >= 0 then
-		ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <VP><b>"..text.version.." RTM 17208.102</b><")
+		ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <VP><b>"..text.version.." RTM 17309.103</b><")
 	end
 	if rato < 4 then
 		if tfm.get.room.currentMap == "@2684847" then
