@@ -139,7 +139,7 @@ function eventChatCommand(name,command)
 		showMenu(name,0xb6e980,140,90,520,130,"Credits",text.credits)
 	end
 	if command == "changelog" then
-		showMenu(name,0x2578f6,140,70,520,270,"Changelog","<font size='11'>[v1.0.9]:<br>• Various modifications on the map<br>• Increased the game time by 20 seconds<br><br>[v1.0.7]:<br>• Slight changes on winning selection<br><br>[v1.0.6]:<br>• Fixed some issues with the end of game<br>• Added command hiding for !powerups, !changelog and !creditos<br>• Slight changes on the Universal Menu scheme<br><br>[v1.0.5]:<br>• More fixes on winner selection<br>• Added the Universal Menu scheme<br>• Added a protection for avoiding bugs with low memory client players")
+		showMenu(name,0x2578f6,140,70,520,240,"Changelog","<font size='11'>[v1.0.9]:<br>• Some modifications on the map<br><br>[v1.0.8]:<br>• Various modifications on the map<br>• Increased the game time by 20 seconds<br><br>[v1.0.7]:<br>• Slight changes on winning selection<br><br>[v1.0.6]:<br>• Fixed some issues with the end of game<br>• Added command hiding for !powerups, !changelog and !creditos<br>• Slight changes on the Universal Menu scheme")
 	end
 end
 function eventNewPlayer(name)
