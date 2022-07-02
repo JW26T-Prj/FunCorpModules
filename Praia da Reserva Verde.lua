@@ -35,6 +35,18 @@ function showWater(name)
 	for h=0,4 do
 		tfm.exec.addImage("1803e8e2250.jpg","?1",-1200+(h*2169),1050,name,1,0.75,0,1)
 	end
+	for k=0,6 do
+		tfm.exec.addImage("181ba85ccc2.png","!1",math.random(500,7500),math.random(150,700),name)
+	end
+	for l=0,6 do
+		tfm.exec.addImage("181ba86195e.png","!1",math.random(500,7500),math.random(150,700),name)
+	end
+	for m=0,6 do
+		tfm.exec.addImage("181ba86655c.png","!1",math.random(500,7500),math.random(150,700),name)
+	end
+	for n=0,4 do
+		tfm.exec.addImage("181ba86b15a.png","!1",math.random(7500,10000),math.random(50,300),name)
+	end
 	ui.setBackgroundColor("#7DB1E0")
 end
 function eventChatCommand(name,message)
