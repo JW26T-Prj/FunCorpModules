@@ -1,11 +1,12 @@
--- Mudanças na Versão 2.23.1:
+-- Mudanças na Versão 2.23.2:
 
--- Correção de várias perguntas de Transformice
--- Adição de 2 perguntas de Transformice
+-- Jogadores convidados (souris) não podem mais participar do jogo
+-- Pequenas alterações de funcionamento
+-- Adição do comando !reset
 
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.23.1
--- Por favor, edite a linha 23 a variável 'admin' pelo seu nome para ter acesso aos comandos.
--- Você pode selecionar o tema editando a linha 24, ou digitando !tema [número] conforme os números abaixo.
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.23.2
+-- Por favor, edite a linha 24 a variável 'admin' pelo seu nome para ter acesso aos comandos.
+-- Você pode selecionar o tema editando a linha 25, ou digitando !tema [número] conforme os números abaixo.
 
 -- Temas:
 -- 0 = transformice
@@ -28,7 +29,7 @@ barreira={type = 12,width = 20,height = 100,foregound = 1,friction = 0.0,restitu
 for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand","AfkDeath"} do
 	tfm.exec["disable"..f](true)
 end
-for _,g in next,{"setq","limite","tema","get","tc"} do
+for _,g in next,{"setq","limite","tema","get","tc","reset"} do
 	system.disableChatCommandDisplay(g)
 end
 ratos=0; vivos=0; set_q=0; questions_list={}; modo="inicial"; pergunta=0; rodada=0; limite=20; count=0; fixed_cnt=0;
@@ -733,9 +734,13 @@ function questionChanger(id,remove)
 end
 function eventNewGame()
 	vivos=0
-	tfm.exec.setGameTime(15)
+	tfm.exec.setGameTime(10)
 	for name,player in next,tfm.get.room.playerList do
 		vivos=vivos+1
+		if name:sub(1,1) == "*" then
+		   	tfm.exec.killPlayer(name)
+		   	showMessage("<R>Jogadores convidados (souris) não podem mais participar deste jogo. Faça login em uma conta para jogar.",name)
+		end
 	end
 	if tema == 0 then
 		count=rawlen(perguntas)/4
@@ -804,6 +809,10 @@ function eventChatCommand(name,message)
 			if tfm.get.room.playerList[name].tribeName == "Alaranjados" then
 				showMessage("<font color='#ff8000'>• [FunCorp - <b>"..name.."</b>] "..message:sub(4).."")
 			end
+		end
+		if message == "reset" then
+			questions_list={}; count=0;
+			reset()
 		end
 	end
 end
