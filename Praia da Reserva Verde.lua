@@ -22,15 +22,15 @@ function showNPCs()
 	tfm.exec.addNPC("Keith Cramer",{title = 216, look = "7;190_220b04+767576+585155+c44444+e0ddce+202020+e7e6e5,6_1d1c1c+464646,5_70707+d4c316,9,54,94,36,0,20",x = 567,y = 2925,female = false,lookLeft = false,lookAtPlayer = true,interactive = true})
 end
 function showWater(name)
-	for i=0,2 do
-		-- tfm.exec.addImage("17f74387366.png","!1",-600+(i*6400),1418,name,20,1.2,0,1)
-		-- tfm.exec.addImage("17f74378b9a.png","?1",-600+(i*6396),1376,name,1,1,0,1)
-		-- tfm.exec.addImage("17f7437d864.png","?1",-600+(i*6396),1376,name,1,1,0,0.5)
-		-- tfm.exec.addImage("17f74378b9a.png","!1",-600+(i*6396),1376,name,1,1,0,0.44)
-		-- tfm.exec.addImage("17f74382569.jpg","?1",-600+(i*6390),1418,name,2,0.6,0,1)
-		tfm.exec.addImage("17def3df6c5.jpg","?1",-600+(i*5200),1400,name,1,1.2)
-		tfm.exec.addImage("17def3e4466.png","!1",-600+(i*5200),1374,name,10,1.2,0,1)
-		tfm.exec.addImage("17def3da8f8.png","!1",-600+(i*5194),1387,name,1,1,0,0.75)
+	for i=0,1 do
+		tfm.exec.addImage("181f9cf5fc5.png", "?1", -800+(i*7180), 1382, name, 1.0, 1.0, 0, 1.0)
+		tfm.exec.addImage("181f9cf5fc5.png", "!1", -800+(i*7180), 1382, name, 1.0, 1.0, 0, 0.7)
+		tfm.exec.addImage("181f9cfac65.png", "!1", -800+(i*7180), 1440, name, 10, 6.5, 0, 1.0)
+	end
+	for b=0,4 do
+		for c=0,4 do
+			tfm.exec.addImage("181f9cff961.jpg","?1",-800+(b*1795),1440+(c*860),name)
+		end
 	end
 	for h=0,4 do
 		tfm.exec.addImage("1803e8e2250.jpg","?1",-1200+(h*2169),1050,name,1,0.75,0,1)
