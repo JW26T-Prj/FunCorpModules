@@ -23,13 +23,13 @@ function showNPCs()
 end
 function showWater(name)
 	for i=0,1 do
-		tfm.exec.addImage("181f9cf5fc5.png", "?1", -800+(i*7180), 1382, name, 1.0, 1.0, 0, 1.0)
-		tfm.exec.addImage("181f9cf5fc5.png", "!1", -800+(i*7180), 1382, name, 1.0, 1.0, 0, 0.7)
-		tfm.exec.addImage("181f9cfac65.png", "!1", -800+(i*7180), 1440, name, 10, 6.5, 0, 1.0)
+		tfm.exec.addImage("181f9cf5fc5.png", "?1", -800+(i*7180), 1387, name, 1.0, 1.0, 0, 1.0)
+		tfm.exec.addImage("181f9cf5fc5.png", "!1", -800+(i*7180), 1387, name, 1.0, 1.0, 0, 0.7)
+		tfm.exec.addImage("181f9cfac65.png", "!1", -800+(i*7180), 1445, name, 10, 6, 0, 1.0)
 	end
 	for b=0,4 do
 		for c=0,4 do
-			tfm.exec.addImage("181f9cff961.jpg","?1",-800+(b*1795),1440+(c*860),name)
+			tfm.exec.addImage("181f9cff961.jpg","?1",-800+(b*1795),1445+(c*860),name)
 		end
 	end
 	for h=0,4 do
