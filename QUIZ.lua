@@ -1,10 +1,10 @@
--- Mudanças na Versão 2.23.2:
+-- Mudanças na Versão 2.23.3:
 
--- Jogadores convidados (souris) não podem mais participar do jogo
--- Pequenas alterações de funcionamento
--- Adição do comando !reset
+-- Adição de 5 perguntas de conhecimentos gerais
+-- Adição de 5 perguntas de futebol
+-- Adição de 5 perguntas de league of legends
 
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.23.2
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.23.3
 -- Por favor, edite a linha 24 a variável 'admin' pelo seu nome para ter acesso aos comandos.
 -- Você pode selecionar o tema editando a linha 25, ou digitando !tema [número] conforme os números abaixo.
 
@@ -227,7 +227,7 @@ perguntas={
 "É possível presentear outros ratos com itens da loja utilizando somente queijos.","Verdadeiro","Falso",2,
 "Qual a função da habilidade de shaman 'Superstar'?","Os ratos ao redor dançam","Os ratos ao redor beijam",1,
 "Qual o último título de ratos salvos pelo Shaman?","Virtuoso","Alpha & Ômega",2,
-"Qual o nome do jogo de Zumbis lançado pela Atelier 801?","League of Legends","Dead Maze",2,
+"Qual o nome do jogo de Zumbis lançado pela Atelier 801?","Fortoresse","Dead Maze",2,
 "Quantas medalhas comemorativas de aniversário existem no Transformice?","2","10",1,
 "Em qual árvore de habilidades está presente a habilidade 'Desintegração controlada'?","Físico","Mecânico",1,
 "Em qual ano foi lançado o Poisson, antigo jogo que depois tornou o Transformice?","2010","2008",2,
@@ -422,6 +422,11 @@ perguntas1={
 "A famosa obra de arte 'Monalisa', de Leonardo da Vinci, é encontrada em qual museu?","Museu do Louvre","Museu de Atenas",1,
 "Em qual ano foi assinado o Tratado de Tordesilhas?","1494","1504",1,
 "Qual foi o presidente do Brasil que durou mais tempo no poder?","Getúlio Vargas","Fernando Henrique Cardoso",1,
+"Em que ano o Planeta Terra atingiu a marca de 7 bilhões de habitantes?","2011","2014",1,
+"Em que data terminou a Guerra do Paraguai?","1 de Fevereiro","1 de Março",2,
+"A novela Rebelde, lançada originalmente em 2004, é originada de qual país?","Brasil","México",2,
+"Qual foi o primeiro presidente da história do Brasil?","Deodoro da Fonseca","Epitácio Pessoa",1,
+"Por quanto tempo um ser humano consegue ficar consciente no espaço, sem uso de traje espacial, aproximadamente?","1 segundo","5 segundos",2,
 }
 perguntas2={
 "Vai na sorte :)","ok","ok",1,
@@ -579,7 +584,7 @@ perguntas3={
 "'Regras foram feitas para serem quebradas. Igual prédios... Ou pessoas!'","Jinx","Katarina",1,
 "Qual o nome de dois dos três semideuses localizado no topo dos montes de Freljord?","Ornn e Volibear","Ornn e Sejuani",1,
 "Qual o nome do 'planeta' onde vivem todos os personagens de League of Legends?","Runeterra","Demacia",1,
-"Quantos campeões existem no League of Legends?","159","160",2,
+"Quantos campeões existem no League of Legends?","160","162",1,
 "O time do Cruzeiro já chegou a ter uma equipe competitiva de League of Legends.","Verdadeiro","Falso",1,
 "Ashe e Tryndamere são casados.","Verdadeiro","Falso",1,
 "Qual o nome da região onde majoritariamente ficam localizados os Vastayas?","Noxus","Ionia",2,
@@ -645,6 +650,11 @@ perguntas3={
 "Não existem campeões do vazio que são humanos.","Verdadeiro","Falso",2,
 "Qual o nome do torneio de meio de temporada do League of Legends?","Worlds","Mid-Season Invitacional",2,
 "Quais os nomes das duas principals religiões existentes no Monte Targon?","Lunari e Solari","Lunari e Soraka",1,
+"A dubladora brasileira da personagem Nilah é a mesma que dubla a personagem Korra, em Avatar.","Verdadeiro","Falso",1,
+"O campeão Tahm Kench é um...","Sapo","Peixe-bagre",2,
+"Aurelion Sol e Shyvana são os únicos dragões presentes no universo de League of Legends.","Verdadeiro","Falso",2,
+"Qual é a descrição da Ahri?","A Raposa de Sete Caudas","A Raposa de Nove Caudas",2,
+"Todos os campeões do Vazio possuem um apóstrofo (') no nome.","Verdadeiro","Falso",2,
 }
 perguntas4={
 "Vai na sorte :)","ok","ok",1,
@@ -676,7 +686,7 @@ perguntas4={
 "Qual o nome do estádio que o Palmeiras utilizou até a construção do Allianz Parque?","Pacaembu","Parque Antártica",2,
 "Quantos times foram rebaixados no Campeonato Brasileiro de 1995?","2","4",1,
 "O Fluminense perdeu a final da Libertadores de 2008 para qual time?","Boca Juniors","LDU",2,
-"Qual destas cantoras NÃO cantou durante o show da abertura da Copa do Mundo de 2014?","Ivete Sangalo","Ariana Grande",2,
+"Qual destas cantoras não cantou durante o show da abertura da Copa do Mundo de 2014?","Ivete Sangalo","Ariana Grande",2,
 "Todas as edições da Copa América na qual o Brasil foi o país-sede, a Seleção Brasileira venceu.","Verdadeiro","Falso",2,
 "Quem marcou o gol do título de Portugal na final da Eurocopa de 2016, contra a anfitriã França?","Cristiano Ronaldo","Éder",2,
 "Quantas medalhas de ouro possui a seleção Argentina de futebol olímpica?","2","3",1,
@@ -710,6 +720,11 @@ perguntas4={
 "A Copa do Mundo nunca foi realizada no continente africano.","Verdadeiro","Falso",2,
 "Em qual cidade Pelé nasceu?","Santos","Três Corações",2,
 "Em qual ano foi realizado o primeiro Mundial de Clubes organizado pela FIFA?","1960","2000",2,
+"Qual o nome do goleiro que mais fez gols na história do Futebol?","Rogério Ceni","Oliver Kahn",1,
+"Quais destes três times são considerados times da Colônia Portuguesa?","Vasco, Portuguesa e Tuna Luso","Vasco, Portuguesa e Cruzeiro",1,
+"Todas as vezes na qual o Palmeiras foi finalista da Libertadores da América, foi campeão.","Verdadeiro","Falso",2,
+"Grêmio e Cruzeiro são os clubes que mais vezes conquistaram a Copa do Brasil.","Verdadeiro","Falso",1,
+"Em qual bairro do Rio de Janeiro fica localizado o Estádio Nilton Santos?","Engenho de Dentro","Engenho Novo",1,
 }
 mapa="@7786632"
 actual_question={quest="",a1="",a2="",answer=nil}
@@ -826,7 +841,7 @@ function eventPlayerLeft(name)
 	ratos=ratos-1
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.23.1</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
+	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.23.3</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
