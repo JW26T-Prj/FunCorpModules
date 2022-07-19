@@ -1,5 +1,5 @@
--- Código do module Mestre Mandou, versão RTM 17410.104, desenvolvido por Rakan_raster#0000.
--- Code of Simon Says module, version RTM 17410.104, developed by Rakan_raster#0000.
+-- Código do module Mestre Mandou, versão RTM 17411.105, desenvolvido por Rakan_raster#0000.
+-- Code of Simon Says module, version RTM 17411.105, developed by Rakan_raster#0000.
 
 -- Atenção: Antes de rodar este código em uma sala, verifique se esta versão coincide com a versão mais recente presente abaixo:
 -- https://raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/mestre%20mandou.lua
@@ -20,8 +20,8 @@ for _,f in next,{"AutoShaman","AutoNewGame","AutoTimeLeft","DebugCommand"} do
 	tfm.exec["disable"..f](true)
 end
 mapas={"@6788085","@6788174","@6788154","@6788715","@6788728","@6789271","@6790527","@6791838","@6789356","@6822331","@7290275","@6754319","@7686598","@7750148","@7688066","@6790295","@6788183","@6784965","@6789235","@6789853","@6790385","@6791944","@6801706","@6792470","@6806109","@6821950","@6866406","@6866437","@6885971","@5328362","@5957905","@7055459","@7525277","@2684847","@7214363","@6792516","@6825340","@6838871","@6788693","@6789272","@6799996","@6799998","@6808957","@6803018","@6809464","@6859175","@6907177","@7404327","@7382263","@6885799","@6790912","@6833993","@7721192","@7309605","@6532621","@6788861","@6789249","@6790484","@6792518","@6794050","@6830799","@6866549","@6834529","@6876563","@6888512","@6893463","@7431981","@7146925","@6937148","@6356881","@6789280","@6790895","@6799997","@6789324","@6803128","@6900149","@3832586","@6791871","@6811934","@7631682","@6876638","@6892608","@6982387","@7404106","@7405103","@7400694","@7400678","@7412412","@7412422","@7491944","@7755685","@6843950","@6810292","@3110915","@6789263","@4411212","@7354947","@3398791","@7201360","@6897042","@5549586","@6809461","@7242361","@7697974","@1966987","@7224471","@6932585","@6888879","@6781398","@5113656","@6920982","@5196033","@1468299","@7894614","@7863458","@7896602","@7897912","@7899697"}
-active=0; vivo=0; rato=0; dificuldade=1; rodadas=0; rodada=0; number=""; xpos=0; ypos=0; data={}; lang={}; alives={}; tempo=10; counter=0; q=""; a=""; qtime=10; creator=""; sd_vivo=0;
-fc_cmds={1,2,4,5,6,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,28,30,31,32,33,34,35,36,40,41,43,45,46,47,48,49,50,51,53,56,57,58,59,61,62,65,66,67,69,71,75,76,77,78,80,81,82,83}
+active=0; vivo=0; rato=0; dificuldade=1; rodadas=0; rodada=0; number=""; xpos=0; ypos=0; data={}; lang={}; alives={}; ids={}; tempo=10; counter=0; q=""; a=""; qtime=10; creator=""; sd_vivo=0;
+fc_cmds={1,2,4,5,6,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,28,30,31,32,33,34,35,36,40,41,43,45,46,47,48,49,50,51,53,56,57,58,59,61,62,65,66,67,69,71,75,76,77,78,80,81,82,83,84,85}
 spiderweb={type = 15,width = 60,height = 60}
 acidg={type = 19,width = 30,height = 30}
 map_det={creator="",code=""}
@@ -31,7 +31,7 @@ for _,f in next,{"command","pw","limit","run","fc","tc","ms","q","a","t","kill"}
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>O objetivo deste module é muito simples: Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><VP>Tenha sempre cuidado com os comandos trolls!<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Jessiewind26#2546<br><br><ROSE>Versão RTM 17410.104",
+	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>O objetivo deste module é muito simples: Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><VP>Tenha sempre cuidado com os comandos trolls!<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Jessiewind26#2546<br><br><ROSE>Versão RTM 17411.105",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -131,9 +131,11 @@ lang.br = {
 	vampire = "Fujam dos vampiros!",
 	sudden = "Morte súbita habilitada!",
 	acid = "Cuidado com o ácido!",
+	water = "Saia da água, ou seja engolido por ela!",
+	nowater = "Fique dentro da água!",
 }
 lang.en = {
-	welcome = "<N><b>Welcome to Simon Says module!</b><br>This module's goal is easy: Follow everything the game told and test your limits until the end!<br><VP>Be always aware to troll commands!<br><br><J><b>Script developed by Rakan_raster#0000</b><br>Original concept by Jessiewind26#2546<br>Translation by Draw#6691<br><br><ROSE>Version RTM 17410.104",
+	welcome = "<N><b>Welcome to Simon Says module!</b><br>This module's goal is easy: Follow everything the game told and test your limits until the end!<br><VP>Be always aware to troll commands!<br><br><J><b>Script developed by Rakan_raster#0000</b><br>Original concept by Jessiewind26#2546<br>Translation by Draw#6691<br><br><ROSE>Version RTM 17411.105",
 	dancar = "Dance!",
 	sentar = "Sit down!",
 	confetar = "Throw 5 confetti!",
@@ -233,9 +235,11 @@ lang.en = {
 	tribe = "Type the name of your tribe! (if you have)",
 	sudden = "Sudden death enabled!",
 	acid = "Caution with the acid grounds!",
+	water = "Get out of the water!",
+	nowater = "Stay into the water!",
 }
 lang.fr = {
-	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Rakan_raster#0000</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 17410.104",
+	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Rakan_raster#0000</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 17411.105",
 	dancar = "Danse !",
 	sentar = "Assis !",
 	confetar = "Lance 5 fois des confettis !",
@@ -335,6 +339,8 @@ lang.fr = {
 	vampire = "Ne vous infectez pas ! ",
 	sudden = "Mort subite activée ! ",
 	acid = "Attention aux acide !",
+	water = "Sortir de l'eau !",
+	nowater = "Rester dans l'eau !",
 }
 
 if tfm.get.room.community == "br" or tfm.get.room.community == "pt" then
@@ -478,7 +484,7 @@ end
 function sortearComandos()
 	if dificuldade < 7 then
 		if fc_mode == false then
-			active=math.random(1,85)
+			active=math.random(1,87)
 		else
 			active=tonumber(fc_cmds[math.random(#fc_cmds)])
 		end
@@ -1031,6 +1037,36 @@ function getCommand()
 		showCommand(active,text.number..number)
 		tfm.exec.setGameTime(13)
 	end
+	if active == 86 then
+		showCommand(active,text.nowater)
+		tfm.exec.setGameTime(10)
+		setAllAlive()
+		local imageId = 0;
+		imageId = tfm.exec.addImage("18200689108.png", "?1", -800, 138, name, 1.0, 1.0, 0, 1.0); table.insert(ids,imageId)
+		imageId = tfm.exec.addImage("18200689108.png", "!1", -800, 138, name, 1.0, 1.0, 0, 0.7); table.insert(ids,imageId)
+		imageId = tfm.exec.addImage("1820068de62.png", "!1", -800, 196, name, 10, 6, 0, 1.0); table.insert(ids,imageId)
+		for b=0,1 do
+			for c=0,1 do
+				imageId = tfm.exec.addImage("18200692b61.jpg","?1",-800+(b*1795),196+(c*860),name); table.insert(ids,imageId)
+			end
+		end
+		tfm.exec.addPhysicObject(2500, 700, 587, {type = 9,width = 3000,height = 860,foregound = 0,friction = 0.0,restitution = 0.0,angle = 0,color = 000000,miceCollision = false,groundCollision = false,dynamic = false})
+	end
+	if active == 87 then
+		showCommand(active,text.water)
+		tfm.exec.setGameTime(10)
+		setAllAlive()
+		local imageId = 0;
+		imageId = tfm.exec.addImage("18200689108.png", "?1", -800, 138, name, 1.0, 1.0, 0, 1.0); table.insert(ids,imageId)
+		imageId = tfm.exec.addImage("18200689108.png", "!1", -800, 138, name, 1.0, 1.0, 0, 0.7); table.insert(ids,imageId)
+		imageId = tfm.exec.addImage("1820068de62.png", "!1", -800, 196, name, 10, 6, 0, 1.0); table.insert(ids,imageId)
+		for b=0,1 do
+			for c=0,1 do
+				imageId = tfm.exec.addImage("18200692b61.jpg","?1",-800+(b*1795),196+(c*860),name); table.insert(ids,imageId)
+			end
+		end
+		tfm.exec.addPhysicObject(2500, 700, 587, {type = 9,width = 3000,height = 860,foregound = 0,friction = 0.0,restitution = 0.0,angle = 0,color = 000000,miceCollision = false,groundCollision = false,dynamic = false})
+	end
 	if active == 92 then
 		showCommand(active,text.sister)
 		tfm.exec.setGameTime(10)
@@ -1561,11 +1597,11 @@ end
 function eventLoop(passado,faltando)
 	local tempo=math.floor(faltando/1000)
 	if active == -2 then
-		ui.setMapName("<N>"..text.mices.."   <G>|   <VP><b>"..text.version.." RTM 17410.104</b><")
+		ui.setMapName("<N>"..text.mices.."   <G>|   <VP><b>"..text.version.." RTM 17411.105</b><")
 	elseif active == -1 then
-		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <VP><b>"..text.version.." RTM 17410.104</b><")
+		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <VP><b>"..text.version.." RTM 17411.105</b><")
 	elseif active >= 0 then
-		ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <VP><b>"..text.version.." RTM 17410.104</b><")
+		ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <VP><b>"..text.version.." RTM 17411.105</b><")
 	end
 	if rato < 4 then
 		if tfm.get.room.currentMap == "@2684847" then
@@ -1676,6 +1712,20 @@ function eventLoop(passado,faltando)
 				end
 			end
 		end
+		if active == 86 then
+			for name,player in next,tfm.get.room.playerList do
+				if tfm.get.room.playerList[name].y <= 147 then
+					tfm.exec.killPlayer(name)
+				end
+			end
+		end
+		if active == 87 then
+			for name,player in next,tfm.get.room.playerList do
+				if tfm.get.room.playerList[name].y >= 158 then
+					tfm.exec.killPlayer(name)
+				end
+			end
+		end
 		if active == 93 then
 			for name,player in next,tfm.get.room.playerList do
 				if tfm.get.room.playerList[name].isVampire then
@@ -1690,6 +1740,12 @@ function eventLoop(passado,faltando)
 		tfm.exec.setWorldGravity(0, 10)
 		for i=1,8 do
 			tfm.exec.removePhysicObject(i)
+		end
+		if rawlen(ids) >= 1 then
+			for i=0,rawlen(ids) do
+				tfm.exec.removeImage(i)
+			end
+			tfm.exec.removePhysicObject(2500)
 		end
 		for i=1,15 do
 			tfm.exec.removeBonus(i)
