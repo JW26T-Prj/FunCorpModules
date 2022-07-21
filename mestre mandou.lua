@@ -1,5 +1,5 @@
--- Código do module Mestre Mandou, versão RTM 17411.105, desenvolvido por Rakan_raster#0000.
--- Code of Simon Says module, version RTM 17411.105, developed by Rakan_raster#0000.
+-- Código do module Mestre Mandou, versão RTM 17512.106, desenvolvido por Rakan_raster#0000.
+-- Code of Simon Says module, version RTM 17512.106, developed by Rakan_raster#0000.
 
 -- Atenção: Antes de rodar este código em uma sala, verifique se esta versão coincide com a versão mais recente presente abaixo:
 -- https://raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/mestre%20mandou.lua
@@ -31,7 +31,7 @@ for _,f in next,{"command","pw","limit","run","fc","tc","ms","q","a","t","kill"}
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>O objetivo deste module é muito simples: Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><VP>Tenha sempre cuidado com os comandos trolls!<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Jessiewind26#2546<br><br><ROSE>Versão RTM 17411.105",
+	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>O objetivo deste module é muito simples: Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><VP>Tenha sempre cuidado com os comandos trolls!<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Jessiewind26#2546<br><br><ROSE>Versão RTM 17512.106",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -135,7 +135,7 @@ lang.br = {
 	nowater = "Fique dentro da água!",
 }
 lang.en = {
-	welcome = "<N><b>Welcome to Simon Says module!</b><br>This module's goal is easy: Follow everything the game told and test your limits until the end!<br><VP>Be always aware to troll commands!<br><br><J><b>Script developed by Rakan_raster#0000</b><br>Original concept by Jessiewind26#2546<br>Translation by Draw#6691<br><br><ROSE>Version RTM 17411.105",
+	welcome = "<N><b>Welcome to Simon Says module!</b><br>This module's goal is easy: Follow everything the game told and test your limits until the end!<br><VP>Be always aware to troll commands!<br><br><J><b>Script developed by Rakan_raster#0000</b><br>Original concept by Jessiewind26#2546<br>Translation by Draw#6691<br><br><ROSE>Version RTM 17512.106",
 	dancar = "Dance!",
 	sentar = "Sit down!",
 	confetar = "Throw 5 confetti!",
@@ -239,7 +239,7 @@ lang.en = {
 	nowater = "Stay into the water!",
 }
 lang.fr = {
-	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Rakan_raster#0000</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 17411.105",
+	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Rakan_raster#0000</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 17512.106",
 	dancar = "Danse !",
 	sentar = "Assis !",
 	confetar = "Lance 5 fois des confettis !",
@@ -1042,6 +1042,7 @@ function getCommand()
 		tfm.exec.setGameTime(10)
 		setAllAlive()
 		local imageId = 0;
+		tfm.exec.addPhysicObject(2500, 700, 587, {type = 9,width = 3000,height = 860,foregound = 0,friction = 0.0,restitution = 0.0,angle = 0,color = 000000,miceCollision = false,groundCollision = false,dynamic = false})
 		imageId = tfm.exec.addImage("18200689108.png", "?1", -800, 138, name, 1.0, 1.0, 0, 1.0); table.insert(ids,imageId)
 		imageId = tfm.exec.addImage("18200689108.png", "!1", -800, 138, name, 1.0, 1.0, 0, 0.7); table.insert(ids,imageId)
 		imageId = tfm.exec.addImage("1820068de62.png", "!1", -800, 196, name, 10, 6, 0, 1.0); table.insert(ids,imageId)
@@ -1050,12 +1051,12 @@ function getCommand()
 				imageId = tfm.exec.addImage("18200692b61.jpg","?1",-800+(b*1795),196+(c*860),name); table.insert(ids,imageId)
 			end
 		end
-		tfm.exec.addPhysicObject(2500, 700, 587, {type = 9,width = 3000,height = 860,foregound = 0,friction = 0.0,restitution = 0.0,angle = 0,color = 000000,miceCollision = false,groundCollision = false,dynamic = false})
 	end
 	if active == 87 then
 		showCommand(active,text.water)
 		tfm.exec.setGameTime(10)
 		setAllAlive()
+		tfm.exec.addPhysicObject(2500, 700, 587, {type = 9,width = 3000,height = 860,foregound = 0,friction = 0.0,restitution = 0.0,angle = 0,color = 000000,miceCollision = false,groundCollision = false,dynamic = false})
 		local imageId = 0;
 		imageId = tfm.exec.addImage("18200689108.png", "?1", -800, 138, name, 1.0, 1.0, 0, 1.0); table.insert(ids,imageId)
 		imageId = tfm.exec.addImage("18200689108.png", "!1", -800, 138, name, 1.0, 1.0, 0, 0.7); table.insert(ids,imageId)
@@ -1065,7 +1066,6 @@ function getCommand()
 				imageId = tfm.exec.addImage("18200692b61.jpg","?1",-800+(b*1795),196+(c*860),name); table.insert(ids,imageId)
 			end
 		end
-		tfm.exec.addPhysicObject(2500, 700, 587, {type = 9,width = 3000,height = 860,foregound = 0,friction = 0.0,restitution = 0.0,angle = 0,color = 000000,miceCollision = false,groundCollision = false,dynamic = false})
 	end
 	if active == 92 then
 		showCommand(active,text.sister)
@@ -1597,11 +1597,11 @@ end
 function eventLoop(passado,faltando)
 	local tempo=math.floor(faltando/1000)
 	if active == -2 then
-		ui.setMapName("<N>"..text.mices.."   <G>|   <VP><b>"..text.version.." RTM 17411.105</b><")
+		ui.setMapName("<N>"..text.mices.."   <G>|   <VP><b>"..text.version.." RTM 17512.106</b><")
 	elseif active == -1 then
-		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <VP><b>"..text.version.." RTM 17411.105</b><")
+		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <VP><b>"..text.version.." RTM 17512.106</b><")
 	elseif active >= 0 then
-		ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <VP><b>"..text.version.." RTM 17411.105</b><")
+		ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <VP><b>"..text.version.." RTM 17512.106</b><")
 	end
 	if rato < 4 then
 		if tfm.get.room.currentMap == "@2684847" then
