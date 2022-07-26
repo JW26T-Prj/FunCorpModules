@@ -67,12 +67,12 @@ function showWater(name)
 		tfm.exec.addImage("18204168d2e.png","?1",200+(n*1400),4897,name,-1,-2,0,1)
 	end
 	for i=0,1 do
-		tfm.exec.addImage("18200689108.png", "?1", -800+(i*7180), 2387, name, 1.0, 1.0, 0, 1.0)
-		tfm.exec.addImage("18200689108.png", "!1", -800+(i*7180), 2387, name, 1.0, 1.0, 0, 0.7)
-		tfm.exec.addImage("1820068de62.png", "!1", -800+(i*7180), 2445, name, 6, 12, 0, 1)
+		tfm.exec.addImage("181f9cf5fc5.png", "?1", -800+(i*7180), 2387, name, 1.0, 1.0, 0, 1.0)
+		tfm.exec.addImage("181f9cf5fc5.png", "!1", -800+(i*7180), 2387, name, 1.0, 1.0, 0, 0.7)
+		tfm.exec.addImage("181f9cfac65.png", "!1", -800+(i*7180), 2445, name, 12, 12, 0, 1)
 	end
 	for b=0,1 do
-		tfm.exec.addImage("18200692b61.jpg","?1",-800+(b*1795),2445,name,4,3)
+		tfm.exec.addImage("181f9cff961.jpg","?1",-800+(b*1795),2445,name,4,3)
 	end
 	for w=1,6 do
 		tfm.exec.addImage("181ba85ccc2.png","!1",math.random(50,5300),math.random(160,1800),name)
