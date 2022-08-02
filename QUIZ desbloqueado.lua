@@ -1,4 +1,4 @@
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.19.0
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.24.0
 -- Por favor, edite a linha 9 a variável 'admin' pelo seu nome para ter acesso aos comandos.
 -- Para adicionar novas perguntas, utilize a seguinte sintaxe na hora de inserir: "PERGUNTA","RESPOSTA 1","RESPOSTA 2",1 ou 2
 -- Caso você queira usar este código em um cafofo de tribo, altere a variável TRIBEHOUSE da linha 10 para 'true'.
@@ -71,7 +71,7 @@ function reset()
 	tfm.exec.newGame(mapa)
 end
 function eventChatCommand(name,message)
-	if name == "Forzaldenon#0000" or name == "Reksai_void2600#6638" or name == "Spectra_phantom#6089" or name == "Viego#0345" or verifyAdmin(name) == true then
+	if name == "Forzaldenon#0000" or name == "Reksai_void2600#6638" or name == "Akwimos#1937" or verifyAdmin(name) == true then
 		if (message:sub(0,6) == "limite") then
 			limite=tonumber(message:sub(8))
 			showMessage("Limite de rodadas alterado para: "..message:sub(8).."")
@@ -93,7 +93,7 @@ function eventPlayerLeft(name)
 	ratos=ratos-1
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.19.0</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
+	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.24.0</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
@@ -179,9 +179,9 @@ function randomQuests()
 	for name,player in next,tfm.get.room.playerList do
 		tfm.exec.movePlayer(name,400,145,false)
 	end
-	tfm.exec.setGameTime(17)
+	tfm.exec.setGameTime(24)
 	if rodada >= 13 then
-		tfm.exec.setGameTime(13)
+		tfm.exec.setGameTime(12)
 	end
 	tfm.exec.removePhysicObject(4)
 	tfm.exec.removePhysicObject(5)
