@@ -1,5 +1,5 @@
--- Código do module Mestre Mandou, versão RTM 17815.109, desenvolvido por Rakan_raster#0000.
--- Code of Simon Says module, version RTM 17815.109, developed by Rakan_raster#0000.
+-- Código do module Mestre Mandou, versão RTM 17916.110, desenvolvido por Rakan_raster#0000.
+-- Code of Simon Says module, version RTM 17916.110, developed by Rakan_raster#0000.
 
 -- Atenção: Antes de rodar este código em uma sala, verifique se esta versão coincide com a versão mais recente presente abaixo:
 -- https://raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/mestre%20mandou.lua
@@ -31,7 +31,7 @@ for _,f in next,{"command","pw","limit","run","fc","tc","ms","q","a","t","kill"}
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>O objetivo deste module é muito simples: Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><VP>Tenha sempre cuidado com os comandos trolls!<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Jessiewind26#2546<br><br><ROSE>Versão RTM 17815.109",
+	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>O objetivo deste module é muito simples: Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><VP>Tenha sempre cuidado com os comandos trolls!<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Jessiewind26#2546<br><br><ROSE>Versão RTM 17916.110",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -128,7 +128,6 @@ lang.br = {
 	explosion = "Olha a explosão!",
 	queijo = "Todos os ratos que estiverem com queijo vão morrer!",
 	caps = "Pressione a tecla CAPS LOCK 10 vezes",
-	sudden = "Morte súbita habilitada!",
 	acid = "Cuidado com o ácido!",
 	water = "Saia da água, ou seja engolido por ela!",
 	nowater = "Fique dentro da água!",
@@ -136,7 +135,7 @@ lang.br = {
 	newcreator = "Qual é o novo nome do criador deste module?",
 }
 lang.en = {
-	welcome = "<N><b>Welcome to Simon Says module!</b><br>This module's goal is easy: Follow everything the game told and test your limits until the end!<br><VP>Be always aware to troll commands!<br><br><J><b>Script developed by Rakan_raster#0000</b><br>Original concept by Jessiewind26#2546<br>Translation by Draw#6691<br><br><ROSE>Version RTM 17815.109",
+	welcome = "<N><b>Welcome to Simon Says module!</b><br>This module's goal is easy: Follow everything the game told and test your limits until the end!<br><VP>Be always aware to troll commands!<br><br><J><b>Script developed by Rakan_raster#0000</b><br>Original concept by Jessiewind26#2546<br>Translation by Draw#6691<br><br><ROSE>Version RTM 17916.110",
 	dancar = "Dance!",
 	sentar = "Sit down!",
 	confetar = "Throw 5 confetti!",
@@ -234,7 +233,6 @@ lang.en = {
 	queijo = "All mices that catched the cheese will die!",
 	caps = "Press the CAPS LOCK key 10 times!",
 	tribe = "Type the name of your tribe! (if you have)",
-	sudden = "Sudden death enabled!",
 	acid = "Caution with the acid grounds!",
 	water = "Get out of the water!",
 	nowater = "Stay into the water!",
@@ -242,7 +240,7 @@ lang.en = {
 	newcreator = "Who's the new nickname of the module creator?",
 }
 lang.fr = {
-	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Rakan_raster#0000</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 17815.109",
+	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Rakan_raster#0000</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 17916.110",
 	dancar = "Danse !",
 	sentar = "Assis !",
 	confetar = "Lance 5 fois des confettis !",
@@ -339,7 +337,6 @@ lang.fr = {
 	explosion = "Attention aux spirits !",
 	queijo = "Tous les souris qui attrapent le fromage mourront ! ",
 	caps = "Appuie 10 fois sur la CAPS LOCK !",
-	sudden = "Mort subite activée ! ",
 	acid = "Attention aux acide !",
 	water = "Sortir de l'eau !",
 	nowater = "Rester dans l'eau !",
@@ -568,11 +565,7 @@ function eventChatCommand(name,message)
 	end
 end
 function showCommand(id,text)
-	if dificuldade < 7 then
-		ui.addTextArea(0,"<font face='Rockwell,Arial'><font color='#ffffff'><font size='22'><p align='center'><b>"..text.."",nil,25,26,750,30,0x252525,0x010101,0.95,true)
-	else
-		ui.addTextArea(0,"<font face='Rockwell,Arial'><font color='#ffa0a0'><font size='22'><p align='center'><b>"..text.."",nil,25,26,750,30,0x250000,0x100101,0.95,true)
-	end
+	ui.addTextArea(0,"<font face='Verdana'><font color='#ffa0a0'><font size='21'><p align='center'><b>"..text.."",nil,25,26,750,30,0x101010,0x242424,0.95,true)
 end
 function whiteSquare(x)
 	ui.addTextArea(1,"",nil,x,320,80,65,0xffffff,0xffffff,0.68,false)
@@ -1607,11 +1600,11 @@ end
 function eventLoop(passado,faltando)
 	local tempo=math.floor(faltando/1000)
 	if active == -2 then
-		ui.setMapName("<N>"..text.mices.."   <G>|   <VP><b>"..text.version.." RTM 17815.109</b><")
+		ui.setMapName("<N>"..text.mices.."   <G>|   <VP><b>"..text.version.." RTM 17916.110</b><")
 	elseif active == -1 then
-		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <VP><b>"..text.version.." RTM 17815.109</b><")
+		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <VP><b>"..text.version.." RTM 17916.110</b><")
 	elseif active >= 0 then
-		ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <VP><b>"..text.version.." RTM 17815.109</b><")
+		ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <VP><b>"..text.version.." RTM 17916.110</b><")
 	end
 	if rato < 4 then
 		if tfm.get.room.currentMap == "@2684847" then
@@ -1754,14 +1747,8 @@ function eventLoop(passado,faltando)
 			tfm.exec.removeBonus(i)
 		end
 		active=0
-		if rodada == 3 or rodada == 6 or rodada == 9 or rodada == 12 or rodada == 15 then
+		if rodada == 3 or rodada == 6 or rodada == 9 or rodada == 12 or rodada == 15 or rodada == 18 then
 			dificuldade=dificuldade+1
-		end
-		if rodada >= 18 and vivo == 2 then
-			dificuldade=7
-		end
-		if rodada % 2 == 0 and rodada >= 18 and dificuldade == 7 and vivo == 2 then
-			showMessage("<R>"..text.sudden.."")
 		end
 		for name,player in next,tfm.get.room.playerList do
 			data[name].key=0
@@ -1772,10 +1759,10 @@ function eventLoop(passado,faltando)
 			tfm.exec.setNameColor(name,0xc2c2da)
 		end
 		if fc_mode == false then
-			if vivo > 4 then
-				tfm.exec.setGameTime(12-dificuldade)
+			if vivo > 5 then
+				tfm.exec.setGameTime(11-dificuldade)
 			else
-				tfm.exec.setGameTime(14-dificuldade)
+				tfm.exec.setGameTime(15-dificuldade)
 			end
 		else
 			tfm.exec.setGameTime(7)
