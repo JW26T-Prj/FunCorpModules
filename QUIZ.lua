@@ -1,12 +1,13 @@
--- Mudanças na Versão 2.23.3:
+-- Mudanças na Versão 2.24.0:
 
--- Adição de 5 perguntas de conhecimentos gerais
--- Adição de 5 perguntas de futebol
--- Adição de 5 perguntas de league of legends
+-- Alterações obrigatórias em várias perguntas
+-- Adição de 7 perguntas de Transformice
+-- Adição de 6 perguntas de conhecimentos gerais
+-- Correções de bugs
 
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.23.3
--- Por favor, edite a linha 24 a variável 'admin' pelo seu nome para ter acesso aos comandos.
--- Você pode selecionar o tema editando a linha 25, ou digitando !tema [número] conforme os números abaixo.
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.24.0
+-- Por favor, edite a linha 25 a variável 'admin' pelo seu nome para ter acesso aos comandos.
+-- Você pode selecionar o tema editando a linha 26, ou digitando !tema [número] conforme os números abaixo.
 
 -- Temas:
 -- 0 = transformice
@@ -130,7 +131,7 @@ perguntas={
 "Em qual ano estreou o module #batata?","2014","2016",2,
 "Em qual ano estreou o modo Defilante?","2014","2015",1,
 "Qual modo do Transformice foi desativado devido a limitação dos vídeos no Transformice?","Music","Nekodancer",1,
-"Em qual ano estreou o fórum em HTML5 do Atelier 801?","2015","2016",1,
+"Em qual ano estreou o fórum em HTML5 do Atelier 801?","2014","2015",1,
 "Usuários comuns não podem criar mapas nos quais os shamans possam usar portais.","Verdadeiro","Falso",2,
 "Qual é a fricção e a restituição, respectivamente, de um piso de lava?","20 e 0","0 e 20",2,
 "Apenas membros da Staff do Transformice podem criar mapas no modo Noite.","Verdadeiro","Falso",2,
@@ -150,7 +151,7 @@ perguntas={
 "Qual título é desbloqueado quando você consegue 1 bootcamp?","Principiante","Recruta",2,
 "Qual foi a maior quantidade de pessoas logadas no Transformice, aproximadamente?","100000","85000",2,
 "Qual os nicks dos criadores do Transformice?","Melibellule e Tigrounette","Mellibellule e Galaktine",1,
-"Quem é o gerenciador atual do module Mestre Mandou?","Rakan_raster#0000","Xayah_raster#0000",1,
+"Quem é o gerenciador atual do module #pictionary?","Shamousey#0015","Bolodefchoco#0095",1,
 "Quem é o criador do module O Chão é Lava?","Sett#6442","Osicat#0000",2,
 "Qual o limite de consumíveis que podem ser armazenados no inventário?","80","200",1,
 "Qual o nome do fun-site no qual você pode acessar um Ranking dos ratos?","Cheese For Mice","Viprin Drawing Editor",1,
@@ -260,6 +261,13 @@ perguntas={
 "Qual destes modules foi criado primeiro?","#batata","#keyhunt",2,
 "Qual destes usuários nunca se tornou FunCorp?","Spectra_phantom#6089","Reksai_void2600#6638",1,
 "O comando /ban já serviu para banir jogadores do Transformice por 1 hora por voto popular.","Verdadeiro","Falso",1,
+"Quantos firsts são necessários para desbloquear o título 'Rato Ninja'?","200","500",1,
+"Em qual árvore de habilidades está presente a habilidade 'Caixa de acompanhamento'?","Mecânico","Mestre do Vento",2,
+"Em qual ano foi lançada a primeira versão do module Mestre Mandou?","2014","2016",1,
+"É possível tocar músicas em scripts LUA no Transformice.","Verdadeiro","Falso",1,
+"A partir de qual ano foi possível mudar de nickname no Transformice?","2017","2018",1,
+"No Transformice, os ratos que tocarem em um piso teia de aranha...","Ficam presos nele","Morrem instantaneamente",1,
+"É possível manter mapas-script rodando no cafofo da tribo com as salas vazias.","Verdadeiro","Falso",2,
 }
 perguntas1={
 "Vai na sorte :)","ok","ok",1,
@@ -337,7 +345,7 @@ perguntas1={
 "Qual destes elementos químicos fica líquido na temperatura ambiente?","Água","Mercúrio",2,
 "Qual destas categorias é necessária na carteira de habilitação para dirigir motos?","Categoria A","Categoria B",1,
 "O ano-luz é uma unidade de medida de...","Tempo","Distância",2,
-"Qual foi o cineasta que chegou no fundo da Fossa das Marianas, lugar mais profundo do oceano?","James Cameron","Jacques Piccard",1,
+"Qual foi o cineasta foi responsável por dirigir os filmes Titanic e Avatar?","James Cameron","Jacques Piccard",1,
 "Qual é o nome dado para as bactérias que não precisam de oxigênio para se reproduzirem?","Aeróbicas","Anaeróbias",2,
 "Qual destes tipos de clima é encontrado no Brasil?","Semiárido","Mediterrâneo",1,
 "Quantas capitais a África do Sul possui?","2","3",2,
@@ -427,6 +435,12 @@ perguntas1={
 "A novela Rebelde, lançada originalmente em 2004, é originada de qual país?","Brasil","México",2,
 "Qual foi o primeiro presidente da história do Brasil?","Deodoro da Fonseca","Epitácio Pessoa",1,
 "Por quanto tempo um ser humano consegue ficar consciente no espaço, sem uso de traje espacial, aproximadamente?","1 segundo","5 segundos",2,
+"Por qual nome foi conhecido o diplomata que garantiu as fronteiras do nosso país?","Rio Branco","Olavo Bilac",1,
+"O município de Duque de Caxias, no Rio de Janeiro, tem esse nome em homenagem a um militar e monarquista muito importante na Independência do Brasil e na Guerra do Paraguai.","Pedro Ferreira de Oliveira","Luís Alves de Lima e Silva",2,
+"Qual foi o nome do primeiro presidente do Brasil após a Redemocratização, em 1985?","Fernando Collor de Mello","José Sarney",2,
+"Dilma Rousseff foi a primeira e única mulher eleita Presidente do Brasil.","Verdadeiro","Falso",1,
+"Não existem seres vivos no Planeta Terra que consigam sobreviver por mais de 24 horas no espaço, sem uso de traje especial.","Verdadeiro","Falso",2,
+"Em qual lugar foi registrada a temperatura mais alta da história do Planeta Terra nos últimos 200 anos?","Bangu - Rio de Janeiro","Califórnia - Estados Unidos",2,
 }
 perguntas2={
 "Vai na sorte :)","ok","ok",1,
@@ -749,7 +763,7 @@ function questionChanger(id,remove)
 end
 function eventNewGame()
 	vivos=0
-	tfm.exec.setGameTime(10)
+	tfm.exec.setGameTime(24)
 	for name,player in next,tfm.get.room.playerList do
 		vivos=vivos+1
 		if name:sub(1,1) == "*" then
@@ -841,7 +855,7 @@ function eventPlayerLeft(name)
 	ratos=ratos-1
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.23.3</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
+	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.24.0</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
