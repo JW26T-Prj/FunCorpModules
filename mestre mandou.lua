@@ -1,5 +1,5 @@
--- Código do module Mestre Mandou, versão RTM 17916.110, desenvolvido por Rakan_raster#0000.
--- Code of Simon Says module, version RTM 17916.110, developed by Rakan_raster#0000.
+-- Código do module Mestre Mandou, versão RTM 18017.111 LTS, desenvolvido por Rakan_raster#0000.
+-- Code of Simon Says module, version RTM 18017.111 LTS, developed by Rakan_raster#0000.
 
 -- Atenção: Antes de rodar este código em uma sala, verifique se esta versão coincide com a versão mais recente presente abaixo:
 -- https://raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/mestre%20mandou.lua
@@ -19,19 +19,19 @@ admin={""} -- Leia abaixo / Read below!
 for _,f in next,{"AutoShaman","AutoNewGame","AutoTimeLeft","DebugCommand"} do
 	tfm.exec["disable"..f](true)
 end
-mapas={"@6788085","@6788174","@6788154","@6788715","@6788728","@6789271","@6790527","@6791838","@6789356","@6822331","@7290275","@6754319","@7686598","@7750148","@7688066","@6790295","@6788183","@6784965","@6789235","@6789853","@6790385","@6791944","@6801706","@6792470","@6806109","@6821950","@6866406","@6866437","@6885971","@5328362","@5957905","@7055459","@7525277","@2684847","@7214363","@6792516","@6825340","@6838871","@6788693","@6789272","@6799996","@6799998","@6808957","@6803018","@6809464","@6859175","@6907177","@7404327","@7382263","@6885799","@6790912","@6833993","@7721192","@7309605","@6532621","@6788861","@6789249","@6790484","@6792518","@6794050","@6830799","@6866549","@6834529","@6876563","@6888512","@6893463","@7431981","@7146925","@6937148","@6356881","@6789280","@6790895","@6799997","@6789324","@6803128","@6900149","@3832586","@6791871","@6811934","@7631682","@6876638","@6892608","@6982387","@7404106","@7405103","@7400694","@7400678","@7412412","@7412422","@7491944","@7755685","@6843950","@6810292","@3110915","@6789263","@4411212","@7354947","@3398791","@7201360","@6897042","@5549586","@6809461","@7242361","@7697974","@1966987","@7224471","@6932585","@6888879","@6781398","@5113656","@6920982","@5196033","@1468299","@7894614","@7863458","@7896602","@7897912","@7899697"}
+mapas={"@6788085","@6788174","@6788154","@6788715","@6788728","@6789271","@6790527","@6791838","@6789356","@6822331","@7290275","@6754319","@7686598","@7750148","@7688066","@6790295","@6788183","@6784965","@6789235","@6789853","@6790385","@6791944","@6801706","@6792470","@6806109","@6821950","@6866406","@6866437","@6885971","@5328362","@5957905","@7055459","@7525277","@2684847","@7214363","@6792516","@6825340","@6838871","@6788693","@6789272","@6799996","@6799998","@6808957","@6803018","@6809464","@6859175","@6907177","@7404327","@7382263","@6885799","@6790912","@6833993","@7721192","@7309605","@6532621","@6788861","@6789249","@6790484","@6792518","@6794050","@6830799","@6866549","@6834529","@6876563","@6888512","@6893463","@7431981","@7146925","@6937148","@6356881","@6789280","@6790895","@6799997","@6789324","@6803128","@6900149","@3832586","@6791871","@6811934","@7631682","@6876638","@6892608","@6982387","@7404106","@7405103","@7400694","@7400678","@7412412","@7412422","@7491944","@7755685","@6843950","@6810292","@3110915","@6789263","@4411212","@7354947","@3398791","@7201360","@6897042","@5549586","@6809461","@7242361","@7697974","@1966987","@7224471","@6932585","@6888879","@6781398","@5113656","@6920982","@5196033","@1468299","@7894614","@7863458","@7897912","@7899697","@6916197","@7910742","@7236120","@1468299","@1567074","@2048617","@2802178","@2637755","@2632876"}
 active=0; vivo=0; rato=0; dificuldade=1; rodadas=0; rodada=0; number=""; xpos=0; ypos=0; data={}; lang={}; alives={}; ids={}; tempo=10; counter=0; q=""; a=""; qtime=10; creator=""; sd_vivo=0;
 fc_cmds={1,2,4,5,6,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,28,30,31,32,33,34,35,36,40,41,43,45,46,47,48,49,50,51,53,56,57,58,59,61,62,65,66,67,69,71,75,76,77,78,80,81,82,83,84,85,86,87}
 spiderweb={type = 15,width = 60,height = 60}
 acidg={type = 19,width = 30,height = 30}
 map_det={creator="",code=""}
-ninjas={"Akwimos#1937","Xayah_raster#7598","Aurelianlua#0000","Forzaldenon#0000","Skyymellu#0000"}
+ninjas={"Akwimos#1937","Xayah_raster#7598","Forzaldenon#0000","Viego#0345","Skyymellu#0000"}
 fc_mode=false; xpos=0; xpos2=0;
 for _,f in next,{"command","pw","limit","run","fc","tc","ms","q","a","t","kill"} do
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>O objetivo deste module é muito simples: Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><VP>Tenha sempre cuidado com os comandos trolls!<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Jessiewind26#2546<br><br><ROSE>Versão RTM 17916.110",
+	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>O objetivo deste module é muito simples: Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><VP>Tenha sempre cuidado com os comandos trolls!<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Jessiewind26#2546<br><br><ROSE>Versão RTM 18017.111 LTS",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -97,6 +97,7 @@ lang.br = {
 	difficulty = "Dificuldade",
 	segundos = "segundos.",
 	fim = "Partida encerrada! Próxima partida iniciando em ",
+	dofim = "Ninguém ganhou... Próxima partida iniciando em ",
 	playingmap = "Rodando mapa",
 	created = "criado por",
 	abaixar = "Abaixem e se levantem!",
@@ -133,9 +134,11 @@ lang.br = {
 	nowater = "Fique dentro da água!",
 	select = "<VP>O modo de comando seletivo está ativo nesta sala.",
 	newcreator = "Qual é o novo nome do criador deste module?",
+	funcorp = "O modo FunCorp deste jogo está habilitado.",
+	admin = "Você é o administrador desta sala.<br><br>Se você for um membro FunCorp, digite !fc para habilitar o modo FunCorp.",
 }
 lang.en = {
-	welcome = "<N><b>Welcome to Simon Says module!</b><br>This module's goal is easy: Follow everything the game told and test your limits until the end!<br><VP>Be always aware to troll commands!<br><br><J><b>Script developed by Rakan_raster#0000</b><br>Original concept by Jessiewind26#2546<br>Translation by Draw#6691<br><br><ROSE>Version RTM 17916.110",
+	welcome = "<N><b>Welcome to Simon Says module!</b><br>This module's goal is easy: Follow everything the game told and test your limits until the end!<br><VP>Be always aware to troll commands!<br><br><J><b>Script developed by Rakan_raster#0000</b><br>Original concept by Jessiewind26#2546<br>Translation by Draw#6691<br><br><ROSE>Version RTM 18017.111 LTS",
 	dancar = "Dance!",
 	sentar = "Sit down!",
 	confetar = "Throw 5 confetti!",
@@ -178,7 +181,7 @@ lang.en = {
 	key1 = "Press the delete key!",
 	action1 = "Dance, sit and sleep!",
 	laugh = "Laugh now!",
-	laugh2 = "who laughs now dies.",
+	laugh2 = "Who laughs now dies.",
 	stone = "Watch out the rock!",
 	noob = "Type: I AM A NOOB",
 	action2 = "Cry and then laugh!",
@@ -200,12 +203,13 @@ lang.en = {
 	mices = "This room request at least 4 mice.",
 	difficulty = "Difficulty",
 	segundos = "seconds.",
-	fim = "The match is over! next starting in ",
+	fim = "The match is over! Next starting in ",
+	dofim = "No winners! Next starting in ",
 	playingmap = "Running map",
 	created = "created by",
 	abaixar = "Get down and get up!",
 	action = "Do any action!",
-	naction = "dont do any action!",
+	naction = "Dont do any action!",
 	math = "How much it is 1+1?",
 	math1 = "How much it is 2+2?",
 	ds = "Dance and sit!",
@@ -238,9 +242,11 @@ lang.en = {
 	nowater = "Stay into the water!",
 	select = "<VP>The selective command mode is now enabled.",
 	newcreator = "Who's the new nickname of the module creator?",
+	funcorp = "The FunCorp mode of this module is now enabled.",
+	admin = "You are the administrator of this room.<br><br>If you are a FunCorp member, type !fc to enable the FunCorp mode.",
 }
 lang.fr = {
-	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Rakan_raster#0000</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 17916.110",
+	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Rakan_raster#0000</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 18017.111 LTS",
 	dancar = "Danse !",
 	sentar = "Assis !",
 	confetar = "Lance 5 fois des confettis !",
@@ -306,6 +312,7 @@ lang.fr = {
 	difficulty = "Difficulté",
 	segundos = "secondes.",
 	fim = "Fin du match ! Le prochain match va commencer dans ",
+	dofim = "Pas de gagnants ! Le prochain match va commencer dans ",
 	playingmap = "Map chargé ",
 	created = "créée par",
 	abaixar = "Retourne-toi et lève-toi !",
@@ -342,6 +349,8 @@ lang.fr = {
 	nowater = "Rester dans l'eau !",
 	select = "<VP>The selective command mode is now enabled.",
 	newcreator = "Qui est le nouveau nom de créateur de cette module?",
+	funcorp = "The FunCorp mode of this module is now enabled.",
+	admin = "You are the administrator of this room.<br><br>If you are a FunCorp member, type !fc to enable the FunCorp mode.",
 }
 
 if tfm.get.room.community == "br" or tfm.get.room.community == "pt" then
@@ -408,20 +417,22 @@ function eventNewPlayer(name)
 	showMessage("<br><br><br><p align='center'>"..text.welcome.."<br><p align='left'>",name)
 	if string.find(tfm.get.room.name,name) then
 		table.insert(admin,name)
-		showMessage("You are the administrator of this room.<br><br>If you are a FunCorp member, type !fc to enable the FunCorp mode.",name)
+		showMessage(text.admin,name)
+		showMessage("<br>Available commands: <br>!run [@code] - Run the specified map.<br> !kill [player#tag] - Kill the specified player.<br>!limit [number] - Limit the number of maximum players on the room.<br> !pw [password] - Lock the room with a password.",name)
 	end
 end
 for name,player in next,tfm.get.room.playerList do
 	eventNewPlayer(name)
 end
 function eventPlayerDied(name)
-	vivo=vivo-1
+	vivo=0
 	local i=0
 	local name
 	for pname,player in pairs(tfm.get.room.playerList) do
 		if not player.isDead then
 			i=i+1
 			name=pname
+			vivo=vivo+1
 		end
 	end
 	if i==0 then
@@ -465,9 +476,9 @@ function eventNewGame()
 	dificuldade=1
 	tfm.exec.setWorldGravity(0, 10)
 	tfm.exec.setGameTime(15)
-	showMessage("<BL><i>Spectra's map loader v2.223.3</i><br><N>Loading current map information...<br><b>Current Map :</b> <V>"..map_det.code.."<br><N><b>Author :</b> <V>"..map_det.creator.."")
+	showMessage("<R><i>Spectra's map loader v2.223.3</i><br><N>Loading current map information...<br><b>Current Map :</b> <V>"..map_det.code.."<br><N><b>Author :</b> <V>"..map_det.creator.."")
 	if fc_mode == true then
-		showMessage("<VP><br>The FunCorp mode of this module is now enabled.")
+		showMessage("<VP><br>"..text.funcorp.."")
 	end
 	for name,player in next,tfm.get.room.playerList do
 		vivo=vivo+1
@@ -521,23 +532,18 @@ function eventChatCommand(name,message)
 			if message == "fc" then
 				if fc_mode == false then
 					fc_mode=true
-					showMessage("<R>The FunCorp mode of this module is now enabled.<br><br>Available commands: !tc [message], !ms [message], !run [@code], !kill [player#tag], !limit [number], !pw [password].",name)
+					showMessage("<R>The FunCorp mode of this module is now enabled.<br><br>Available commands: !tc or !ms [message] - Display a message.<br>!run [@code] - Run the specified map.<br>!kill [player#tag] - Kill the specified player.<br>!limit [number] - Limit the number of maximum players on the room.<br>!pw [password] - Lock the room with a password.",name)
 				else
 					fc_mode=false
 					showMessage("<R>The FunCorp mode of this module is now disabled.",name)
 				end
 			end
 		end
-		if(message:sub(0,7) == "command") then
+		if(message:sub(0,7) == "command") and active <= 0 then
 				active=tonumber(message:sub(9))
 				getCommand()
 		end
-		if(message:sub(0,2) == "tc") then
-			if fc_mode == true then
-				showMessage("<font color='#FF8547'>• [FunCorp - <b>"..name.."</b>] "..message:sub(4).."")
-			end
-		end
-		if(message:sub(0,2) == "ms") then
+		if(message:sub(0,2) == "tc") or (message:sub(0,2) == "ms") then
 			if fc_mode == true then
 				showMessage("<font color='#FF8547'>• [FunCorp - <b>"..name.."</b>] "..message:sub(4).."")
 			end
@@ -565,7 +571,7 @@ function eventChatCommand(name,message)
 	end
 end
 function showCommand(id,text)
-	ui.addTextArea(0,"<font face='Verdana'><font color='#ffa0a0'><font size='21'><p align='center'><b>"..text.."",nil,25,26,750,30,0x101010,0x242424,0.95,true)
+	ui.addTextArea(0,"<font face='Verdana'><font color='#c8c8c8'><font size='21'><p align='center'><b>"..text.."",nil,25,26,750,30,0x101010,0x242424,0.95,true)
 end
 function whiteSquare(x)
 	ui.addTextArea(1,"",nil,x,320,80,65,0xffffff,0xffffff,0.68,false)
@@ -1123,6 +1129,9 @@ function eventChatMessage(name,message)
 		if string.len(message) >= 2 then
 			completeCommand(name)
 		end
+		if string.upper(message) == "A" then
+			tfm.exec.killPlayer(name)
+		end
 	end
 	if active == 12 then
 		tfm.exec.killPlayer(name)
@@ -1600,11 +1609,13 @@ end
 function eventLoop(passado,faltando)
 	local tempo=math.floor(faltando/1000)
 	if active == -2 then
-		ui.setMapName("<N>"..text.mices.."   <G>|   <VP><b>"..text.version.." RTM 17916.110</b><")
-	elseif active == -1 then
-		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <VP><b>"..text.version.." RTM 17916.110</b><")
+		ui.setMapName("<N>"..text.mices.."   <G>|   <VP><b>"..text.version.." RTM 18017.111 LTS</b><")
+	elseif active == -1 and vivo == 1 then
+		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <VP><b>"..text.version.." RTM 18017.111 LTS</b><")
+	elseif active == -1 and vivo <= 0 then
+		ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <VP><b>"..text.version.." RTM 18017.111 LTS</b><")
 	elseif active >= 0 then
-		ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <VP><b>"..text.version.." RTM 17916.110</b><")
+		ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <VP><b>"..text.version.." RTM 18017.111 LTS</b><")
 	end
 	if rato < 4 then
 		if tfm.get.room.currentMap == "@2684847" then
