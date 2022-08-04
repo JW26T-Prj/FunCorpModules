@@ -1,13 +1,15 @@
--- Mudanças na Versão 2.24.0:
+-- Mudanças na Versão 2.25.0:
 
--- Alterações obrigatórias em várias perguntas
--- Adição de 7 perguntas de Transformice
--- Adição de 6 perguntas de conhecimentos gerais
--- Correções de bugs
+-- Alterações em algumas perguntas
+-- Adição de 3 perguntas de Transformice
+-- Adição de 3 perguntas de conhecimentos gerais
+-- Adição de 3 perguntas de música
+-- Adição de 3 perguntas de League of Legends
+-- Pequenas alterações no código
 
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.24.0
--- Por favor, edite a linha 25 a variável 'admin' pelo seu nome para ter acesso aos comandos.
--- Você pode selecionar o tema editando a linha 26, ou digitando !tema [número] conforme os números abaixo.
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.25.0
+-- Por favor, edite a linha 27 a variável 'admin' pelo seu nome para ter acesso aos comandos.
+-- Você pode selecionar o tema editando a linha 28, ou digitando !tema [número] conforme os números abaixo.
 
 -- Temas:
 -- 0 = transformice
@@ -190,7 +192,7 @@ perguntas={
 "Para usar o café, você precisa estar com quantos dias jogados de conta?","10","30",2,
 "Em qual dia do ano o Transformice foi criado?","1","2",1,
 "Qual o limite de queijos que podem ser armazenados no inventário?","200","250",2,
-"Quantos anos tem o Tigrounette?","33","35",2,
+"Quantos anos tem o Tigrounette?","35","36",1,
 "Qual o nome da única mulher que criou um module semi-oficial no Transformice?","Morganadxana#0000","Lanadelrey#4862",1,
 "Ainda é possível colocar músicas no cafofo da tribo do Transformice, mesmo sem o plug-in do YouTube.","Verdadeiro","Falso",1,
 "Qual o nome de um module de testes extinto em que todos viravam Pikachu e tinham que descer a ladeira?","#surble","#surbler",1,
@@ -268,6 +270,9 @@ perguntas={
 "A partir de qual ano foi possível mudar de nickname no Transformice?","2017","2018",1,
 "No Transformice, os ratos que tocarem em um piso teia de aranha...","Ficam presos nele","Morrem instantaneamente",1,
 "É possível manter mapas-script rodando no cafofo da tribo com as salas vazias.","Verdadeiro","Falso",2,
+"Quais destes emblemas podem ser trocados por queijos na sala #village?","Survivor, Bootcamp, Racing e Parkour","Survivor, Bootcamp, Racing e Defilante",2,
+"Já existiu um tempo no Transformice onde ficar muito tempo dentro da água matava os ratos.","Verdadeiro","Falso",2,
+"Quantos NPCs existem na sala #village?","8","9",1,
 }
 perguntas1={
 "Vai na sorte :)","ok","ok",1,
@@ -440,7 +445,10 @@ perguntas1={
 "Qual foi o nome do primeiro presidente do Brasil após a Redemocratização, em 1985?","Fernando Collor de Mello","José Sarney",2,
 "Dilma Rousseff foi a primeira e única mulher eleita Presidente do Brasil.","Verdadeiro","Falso",1,
 "Não existem seres vivos no Planeta Terra que consigam sobreviver por mais de 24 horas no espaço, sem uso de traje especial.","Verdadeiro","Falso",2,
-"Em qual lugar foi registrada a temperatura mais alta da história do Planeta Terra nos últimos 200 anos?","Bangu - Rio de Janeiro","Califórnia - Estados Unidos",2,
+"Em qual lugar foi registrada a temperatura mais alta da história do Planeta Terra nos últimos 200 anos?","Bangu","Califórnia",2,
+"Barack Obama foi o primeiro negro eleito presidente dos Estados Unidos.","Verdadeiro","Falso",1,
+"Em que ano a vereadora Marielle Franco e o motorista Anderson Gomes foram assasinados?","2018","2019",1,
+"O município de Duque de Caxias, no Rio de Janeiro, antes era conhecido por qual nome?","Cisplatina de Ferro","Porto da Estrela",2,
 }
 perguntas2={
 "Vai na sorte :)","ok","ok",1,
@@ -552,11 +560,14 @@ perguntas2={
 "Em que estado brasileiro surgiu o famoso grupo musical brasileiro Olodum?","Pernambuco","Bahia",2,
 "Qual destes cantores é participante da banda brasileira CPM 22?","Paulo Sousa","Rodrigo Koala",2,
 "Qual o nome da música do Noel Rosa que fez parte do encerramento das transmissões da TV Globo, de 1976 a 1981?","Até Amanhã","Meu Lugar",1,
-"Qual destes músicos é integrante da banda Fruto Sagrado?","André Figueiredo","Sylas Jr.",2,
+"Em que ano foi lançada a famosa música Como é Grande o Meu Amor Por Você, do cantor Roberto Carlos?","1965","1973",1,
 "Um álbum musical já foi gravado dentro da Estação Especial Internacional.","Verdadeiro","Falso",2,
 "Em qual ano a última fábrica de discos de vinil (LP) foi desativada no Brasil?","1997","2000",2,
 "'Eu sou a luz das estrelas, eu sou a cor do luar...' Qual o nome desta música famosa do cantor Raul Seixas?","Gita","Metamorfose Ambulante",1,
-"Qual destas músicas foi gravada por Roberto Carlos?","Eu Nasci Há Dez Mil Anos Atrás","Como é Grande o Meu Amor Por Você",2,
+"Qual destas músicas foi gravada por Raul Seixas?","Eu Nasci Há Dez Mil Anos Atrás","Como é Grande o Meu Amor Por Você",1,
+"A música original de abertura do programa Fantástico por composta por quem?","Guto Graça Mello","Ricardo Garcia",1,
+"Qual destas músicas do Sandy e Júnior foi utilizada na novela O Cravo e a Rosa?","A Arte do Coração","Olha o Que o Amor Me Faz",2,
+"A famosa música 'Ameno', da banda francesa Era, que acabou virando meme, foi lançada em qual ano?","1996","2010",1,
 }
 perguntas3={
 "Vai na sorte :)","ok","ok",1,
@@ -567,7 +578,7 @@ perguntas3={
 "Qual destes, por muito tempo, foi dublador do personagem Ezreal?","Fábio Lucindo","Luciano Amaral",1,
 "Qual destas dubladoras é responsável pelas vozes da personagem Lissandra?","Juliana Fernandes","Alessandra Araújo",2,
 "Qual era a dupla famosa por fazer vários roubos em Águas de Sentina?","Graves e Twisted Fate","Graves e Pyke",1,
-"Quantos campeões dragões existem no League of Legends?","1","2",1,
+"Quantos campeões dragões existem no League of Legends?","1","2",2,
 "Qual o nome do subcontinente localizado ao leste de Shurima, completo basicamente por florestas?","Ionia","Ixtal",2,
 "Basicamente, do que é feita a tecnologia Hextec, utilizada no coração da Camille e no martelo do Jayce, por exemplo?","Magia Demaciana","Cristais Hextec",2,
 "Quantos títulos do Campeonato Brasileiro de League of Legends a PaiN Gaming possui?","3","4",1,
@@ -580,7 +591,7 @@ perguntas3={
 "Qual destes é o menor campeão do League of Legends?","Shaco","Veigar",1,
 "Qual destes é o maior campeão do League of Legends?","Aurelion Sol","Cho'Gath",1,
 "Antes de ser tomada pela Névoa Negra, as Ilhas das Sombras antes se chamavam...","Ilhas das Guerras","Ilhas das Bênçãos",2,
-"Qual o nome da região de League of Legends que está mais situada ao norte, e ao mesmo tempo é a mais gelada?","Demacia","Freljord",2,
+"Qual o nome da região de League of Legends que está mais situada ao norte, e ao mesmo tempo, é a mais gelada?","Demacia","Freljord",2,
 "Qual o nome da família responsável pela guarda de Demacia?","Stemmaguarda","Vastaya",1,
 "Twisted Fate nasceu de um povo com nome igual ao de um rio sitado ao noroeste do centro de Runeterra. Qual o nome desse rio?","Serpentina","Amazonas",1,
 "Qual o nome do lugar localizado em Freljord onde acreditam que os Observadores estejam presos?","Institute of War","Howling Abyss",2,
@@ -590,7 +601,7 @@ perguntas3={
 "Qual o nome do ponto mais alto do Monte Targon?","Pico da Luz","Pico do Dragão",2,
 "Quais os nomes das duas irmãs que representam a Lua e o Sol, respectivamente?","Diana e Aphelios","Diana e Leona",2,
 "Qual o nome do modo alternativo do League of Legends no qual os 5 jogadores jogam com o mesmo campeão","URF","Todos por Um",2,
-"Qual o nome da banda musical de League of Legends de K-Pop?","Pentakill","K/DA",2,
+"Qual o nome da 'banda musical' de League of Legends de K-Pop?","Pentakill","K/DA",2,
 "O Mid Season Invitational de 2017 foi realizado em qual país?","China","Brasil",2,
 "O Disco Solar localizado no centro de Shurima, foi feito com ajuda de qual povo targoniano?","Lunari","Solari",2,
 "Uma das falas do Pantheon no jogo, faz referência a um comercial/meme famoso.","Panificadora Alfa","Churrasqueira Controle Remoto",1,
@@ -606,7 +617,7 @@ perguntas3={
 "Qual o nome do sistema que automaticamente pune jogadores AFKs ou que 'quitam' de forma proposital no League of Legends?","Leaver Buster","Riot Forge",1,
 "Qual o nome do jogo de estratégia e táticas presente dentro do League of Legends?","Legends of Runeterra","Teamfight Tactics",2,
 "Qual o nome da escopeta usada por Graves?","Vingança","Destino",2,
-"A campeã Akali já passou por quantos reworks desde seu lançamento?","2","3",1,
+"A campeã Akali já passou por quantos reworks desde seu lançamento?","1","2",2,
 "Qual foi a única equipe do Ocidente a vencer o Campeonato Mundial de League of Legends?","FNATIC","Team Liquid",1,
 "O time do Flamengo possui uma equipe no competivivo de League of Legends.","Verdadeiro","Falso",1,
 "Qual foi a equipe brasileira que conseguiu a melhor campanha no Mundial de League of Legends, em 2015?","LOUD","INTZ",2,
@@ -645,7 +656,7 @@ perguntas3={
 "Qual o nome do local onde Zilean nasceu, e que posteriormente foi tomado pelo Vazio?","Bandópolis","Icathia",2,
 "Basicamente, qual é a única fala do Rammus no jogo?","Ok","Falou",1,
 "O campeão Ryze já passou por quantos Reworks desde seu lançamento?","2","3",1,
-"Não existem campeões dentro do League of Legends que sejam maiores que a própria Runeterra.","Verdadeiro","Falso",2,
+"Não existem campeões dentro do League of Legends que consigam sobreviver no espaço.","Verdadeiro","Falso",2,
 "Quantos continentes existem em Runeterra?","2","3",1,
 "Qual o nome da música tema do Campeonato Mundial de League of Legends de 2020?","Warriors","Take Over",2,
 "Quantos elos existem no League of Legends?","8","9",2,
@@ -669,6 +680,9 @@ perguntas3={
 "Aurelion Sol e Shyvana são os únicos dragões presentes no universo de League of Legends.","Verdadeiro","Falso",2,
 "Qual é a descrição da Ahri?","A Raposa de Sete Caudas","A Raposa de Nove Caudas",2,
 "Todos os campeões do Vazio possuem um apóstrofo (') no nome.","Verdadeiro","Falso",2,
+"O campeão Malzahar é originado de qual lugar?","Icathia","Vazio",1,
+"Quais os nomes dos 'bichinhos' que surgem na habilidade W do campeão Malzahar?","Observadores","Voidlings",2,
+"Qual o nome do material anti-magia na qual as construções de Demacia são construídas?","Petricita","Pedra-raiz",1,
 }
 perguntas4={
 "Vai na sorte :)","ok","ok",1,
@@ -763,7 +777,7 @@ function questionChanger(id,remove)
 end
 function eventNewGame()
 	vivos=0
-	tfm.exec.setGameTime(24)
+	tfm.exec.setGameTime(20)
 	for name,player in next,tfm.get.room.playerList do
 		vivos=vivos+1
 		if name:sub(1,1) == "*" then
@@ -855,7 +869,7 @@ function eventPlayerLeft(name)
 	ratos=ratos-1
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.24.0</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
+	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.25.0</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
