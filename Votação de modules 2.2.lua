@@ -1,10 +1,10 @@
 -- FunCorp, este script é usado para que os ratos possam votar em até 6 scripts diferentes.
--- Substitua na linha 5 do código na variável 'admin' o meu nome pelo seu nickname com a #tag. Ao rodar o código, digite !start e escolha os scripts e aguarde a votação.
+-- Substitua na linha 6 do código na variável 'admin' o meu nome pelo seu nickname com a #tag. Ao rodar o código, digite !start e escolha os scripts e aguarde a votação.
 -- Caso você também queira, substitua na linha 7 do código a variável 'tempo', para definir a quantidade de tempo até o resultado final.
 -- Se por algum motivo você precise reiniciar a votação, digite !reset para reiniciar tudo. Neste caso, volte a definir os scripts novamente.
+-- As instruções também serão exibidas no chat quando o código for iniciado. NÃO SE ESQUEÇA DE COLOCAR SEU NOME ABAIXO!
 admin="Rakan_raster#0000"
-testmode=false
-tempo=90
+tempo=60
 scripts={name1="",name2="",name3="",name4="",name5="",name6="",count1=0,count2=0,count3=0,count4=0,count5=0,count6=0}
 for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","AfkDeath"} do
 	tfm.exec["disable"..f]()
@@ -12,7 +12,7 @@ end
 for i=1,6 do
 	system.disableChatCommandDisplay(tostring(i))
 end
-script=0
+script=0; p_id=100;
 iniciado=false
 system.disableChatCommandDisplay("start")
 system.disableChatCommandDisplay("reset")
@@ -20,14 +20,11 @@ data={}
 function showMessage(message,name)
 	temp_text=string.gsub(message,"<b>","")
 	temp_text=string.gsub(temp_text,"</b>","")
-	if testmode == false then
+	if tfm.get.room.isTribeHouse == false then
 		tfm.exec.chatMessage(message,name)
-	elseif testmode == true then
-		if name == nil then
-			print("<ROSE>[Test Mode] : <br><BL>"..temp_text.."")
-		else
-			print("<ROSE>[Test Mode] - "..name.." : <br><BL>"..temp_text.."")
-		end
+	elseif tfm.get.room.isTribeHouse == true then
+		ui.addPopup(p_id,0,message,name,250,60,350,true)
+		p_id=p_id+1
 	end
 end
 function eventNewPlayer(name)
@@ -36,17 +33,18 @@ function eventNewPlayer(name)
 	}
 	data[name]=newData;
 	tfm.exec.respawnPlayer(name)
+	tfm.exec.movePlayer(name,math.random(450,1150),185)
 	if iniciado == true then
 		if script == 2 then
-			showMessage("<br><br><br><br><br><br><br><br><ROSE><b>VOTAÇÃO INICIADA!</b><br><br><N>Digite !1 para votar no script <b>"..scripts.name1.."</b><br>ou digite !2 para votar no script <b>"..scripts.name2.."</b>.<br><br>A votação só pode ocorrer 1 vez por rato, e sua escolha pode não ser alterada.")
+			showMessage("<br><br><br><br><br><br><br><br><ROSE><b>VOTAÇÃO INICIADA!</b><br><br><N>Digite !1 para votar no script <b>"..scripts.name1.."</b><br>ou digite !2 para votar no script <b>"..scripts.name2.."</b>.<br><br>A votação só pode ocorrer uma vez por rato, e sua escolha pode não ser alterada.")
 		elseif script == 3 then
-			showMessage("<br><br><br><br><br><br><br><br><ROSE><b>VOTAÇÃO INICIADA!</b><br><br><N>Digite !1 para votar no script <b>"..scripts.name1..",</b><br>!2 para votar no script <b>"..scripts.name2.."</b><br>ou !3 para votar no script <b>"..scripts.name3.."</b>.<br><br>A votação só pode ocorrer 1 vez por rato, e sua escolha pode não ser alterada.")
+			showMessage("<br><br><br><br><br><br><br><br><ROSE><b>VOTAÇÃO INICIADA!</b><br><br><N>Digite !1 para votar no script <b>"..scripts.name1..",</b><br>!2 para votar no script <b>"..scripts.name2.."</b><br>ou !3 para votar no script <b>"..scripts.name3.."</b>.<br><br>A votação só pode ocorrer uma vez por rato, e sua escolha pode não ser alterada.")
 		elseif script == 4 then
-			showMessage("<br><br><br><br><br><br><br><br><ROSE><b>VOTAÇÃO INICIADA!</b><br><br><N>Digite !1 para votar no script <b>"..scripts.name1..",</b><br>!2 para votar no script <b>"..scripts.name2.."</b>,<br>!3 para votar no script <b>"..scripts.name3..",</b><br>ou !4 para votar no script <b>"..scripts.name4.."</b>.<br><br>A votação só pode ocorrer 1 vez por rato, e sua escolha pode não ser alterada.")
+			showMessage("<br><br><br><br><br><br><br><br><ROSE><b>VOTAÇÃO INICIADA!</b><br><br><N>Digite !1 para votar no script <b>"..scripts.name1..",</b><br>!2 para votar no script <b>"..scripts.name2.."</b>,<br>!3 para votar no script <b>"..scripts.name3..",</b><br>ou !4 para votar no script <b>"..scripts.name4.."</b>.<br><br>A votação só pode ocorrer uma vez por rato, e sua escolha pode não ser alterada.")
 		elseif script == 5 then
-			showMessage("<br><br><br><br><br><br><br><br><ROSE><b>VOTAÇÃO INICIADA!</b><br><br><N>Digite !1 para votar no script <b>"..scripts.name1..",</b><br>!2 para votar no script <b>"..scripts.name2.."</b>,<br>!3 para votar no script <b>"..scripts.name3..",</b><br>!4 para votar no script <b>"..scripts.name4.."</b>,<br>ou !5 para votar no script <b>"..scripts.name5.."</b>.<br><br>A votação só pode ocorrer 1 vez por rato, e sua escolha pode não ser alterada.")
+			showMessage("<br><br><br><br><br><br><br><br><ROSE><b>VOTAÇÃO INICIADA!</b><br><br><N>Digite !1 para votar no script <b>"..scripts.name1..",</b><br>!2 para votar no script <b>"..scripts.name2.."</b>,<br>!3 para votar no script <b>"..scripts.name3..",</b><br>!4 para votar no script <b>"..scripts.name4.."</b>,<br>ou !5 para votar no script <b>"..scripts.name5.."</b>.<br><br>A votação só pode ocorrer uma vez por rato, e sua escolha pode não ser alterada.")
 		elseif script == 6 then
-			showMessage("<br><br><br><br><br><br><br><br><ROSE><b>VOTAÇÃO INICIADA!</b><br><br><N>Digite !1 para votar no script <b>"..scripts.name1..",</b><br>!2 para votar no script <b>"..scripts.name2.."</b>,<br>!3 para votar no script <b>"..scripts.name3..",</b><br>!4 para votar no script <b>"..scripts.name4.."</b>,<br>!5 para votar no script <b>"..scripts.name5.."</b><br>!6 para votar no script <b>"..scripts.name6.."</b>.<br><br>A votação só pode ocorrer 1 vez por rato, e sua escolha pode não ser alterada.")
+			showMessage("<br><br><br><br><br><br><br><br><ROSE><b>VOTAÇÃO INICIADA!</b><br><br><N>Digite !1 para votar no script <b>"..scripts.name1..",</b><br>!2 para votar no script <b>"..scripts.name2.."</b>,<br>!3 para votar no script <b>"..scripts.name3..",</b><br>!4 para votar no script <b>"..scripts.name4.."</b>,<br>!5 para votar no script <b>"..scripts.name5.."</b><br>!6 para votar no script <b>"..scripts.name6.."</b>.<br><br>A votação só pode ocorrer uma vez por rato, e sua escolha pode não ser alterada.")
 		end
 	end
 end
@@ -55,23 +53,25 @@ for name,player in pairs(tfm.get.room.playerList) do
 end
 function eventPlayerDied(name)
 	tfm.exec.respawnPlayer(name)
+	tfm.exec.movePlayer(name,math.random(450,1150),185)
 end
 function eventNewGame()
-	iniciado=false
-	ui.setMapName("<N>Votação de Modules v2.2  <b>-</b>  <VP>Script gerenciado por <b>Rakan_raster#0000</b> <")
+	iniciado=false; p_id=100;
+	ui.setMapName("<N>Votação de Modules <VP>v2.3")
 	scripts={name1="",name2="",name3="",name4="",name5="",name6="",count1=0,count2=0,count3=0,count4=0,count5=0,count6=0}
-	showMessage("FunCorp, este script é usado para que os ratos possam votar em até 6 scripts diferentes.<br><br>Digite !start, escolha os scripts e aguarde a votação.<br>Se por algum motivo você precise reiniciar a votação, digite !reset. Neste caso, volte a definir os scripts novamente.",admin)
+	showMessage("FunCorp, este script é usado para que os ratos possam votar em até 6 scripts diferentes.<br><br>Digite !start, escolha os scripts e aguarde a votação.<br>Se por algum motivo você precise reiniciar a votação, digite !reset. Neste caso, volte a definir os scripts novamente. Para alterar o tempo de votação, siga as instruções no começo do código.",admin)
 	for name,player in pairs(tfm.get.room.playerList) do
 		data[name].script=0
+		tfm.exec.movePlayer(name,math.random(450,1150),185)
 	end	
-	tfm.exec.setGameTime(9600)
+	tfm.exec.setGameTime(720000)
 end
 function eventChatCommand(name,command)
 	if name == admin and command == "start" then
 		ui.addPopup(1,2,"Digite o script nº1:",admin,350,175,200,true)
 	end
 	if name == admin and command == "reset" then
-		tfm.exec.newGame("@6907177")
+		tfm.exec.newGame("@4431434")
 	end
 	if command == "1" then
 		if iniciado == true then
@@ -178,15 +178,15 @@ function iniciarVotacao()
 	iniciado=true
 	tfm.exec.setGameTime(tempo)
 	if script == 2 then
-		showMessage("<br><br><br><br><br><br><br><br><ROSE><b>VOTAÇÃO INICIADA!</b><br><br><N>Digite !1 para votar no script <b>"..scripts.name1.."</b><br>ou digite !2 para votar no script <b>"..scripts.name2.."</b>.<br><br>A votação só pode ocorrer 1 vez por rato, e sua escolha pode não ser alterada.")
+		showMessage("<br><br><br><br><br><br><br><br><ROSE><b>VOTAÇÃO INICIADA!</b><br><br><N>Digite !1 para votar no script <b>"..scripts.name1.."</b><br>ou digite !2 para votar no script <b>"..scripts.name2.."</b>.<br><br>A votação só pode ocorrer uma vez por rato, e sua escolha pode não ser alterada.")
 	elseif script == 3 then
-		showMessage("<br><br><br><br><br><br><br><br><ROSE><b>VOTAÇÃO INICIADA!</b><br><br><N>Digite !1 para votar no script <b>"..scripts.name1..",</b><br>!2 para votar no script <b>"..scripts.name2.."</b><br>ou !3 para votar no script <b>"..scripts.name3.."</b>.<br><br>A votação só pode ocorrer 1 vez por rato, e sua escolha pode não ser alterada.")
+		showMessage("<br><br><br><br><br><br><br><br><ROSE><b>VOTAÇÃO INICIADA!</b><br><br><N>Digite !1 para votar no script <b>"..scripts.name1..",</b><br>!2 para votar no script <b>"..scripts.name2.."</b><br>ou !3 para votar no script <b>"..scripts.name3.."</b>.<br><br>A votação só pode ocorrer uma vez por rato, e sua escolha pode não ser alterada.")
 	elseif script == 4 then
-		showMessage("<br><br><br><br><br><br><br><br><ROSE><b>VOTAÇÃO INICIADA!</b><br><br><N>Digite !1 para votar no script <b>"..scripts.name1..",</b><br>!2 para votar no script <b>"..scripts.name2.."</b>,<br>!3 para votar no script <b>"..scripts.name3..",</b><br>ou !4 para votar no script <b>"..scripts.name4.."</b>.<br><br>A votação só pode ocorrer 1 vez por rato, e sua escolha pode não ser alterada.")
+		showMessage("<br><br><br><br><br><br><br><br><ROSE><b>VOTAÇÃO INICIADA!</b><br><br><N>Digite !1 para votar no script <b>"..scripts.name1..",</b><br>!2 para votar no script <b>"..scripts.name2.."</b>,<br>!3 para votar no script <b>"..scripts.name3..",</b><br>ou !4 para votar no script <b>"..scripts.name4.."</b>.<br><br>A votação só pode ocorrer uma vez por rato, e sua escolha pode não ser alterada.")
 	elseif script == 5 then
-		showMessage("<br><br><br><br><br><br><br><br><ROSE><b>VOTAÇÃO INICIADA!</b><br><br><N>Digite !1 para votar no script <b>"..scripts.name1..",</b><br>!2 para votar no script <b>"..scripts.name2.."</b>,<br>!3 para votar no script <b>"..scripts.name3..",</b><br>!4 para votar no script <b>"..scripts.name4.."</b>,<br>ou !5 para votar no script <b>"..scripts.name5.."</b>.<br><br>A votação só pode ocorrer 1 vez por rato, e sua escolha pode não ser alterada.")
+		showMessage("<br><br><br><br><br><br><br><br><ROSE><b>VOTAÇÃO INICIADA!</b><br><br><N>Digite !1 para votar no script <b>"..scripts.name1..",</b><br>!2 para votar no script <b>"..scripts.name2.."</b>,<br>!3 para votar no script <b>"..scripts.name3..",</b><br>!4 para votar no script <b>"..scripts.name4.."</b>,<br>ou !5 para votar no script <b>"..scripts.name5.."</b>.<br><br>A votação só pode ocorrer uma vez por rato, e sua escolha pode não ser alterada.")
 	elseif script == 6 then
-		showMessage("<br><br><br><br><br><br><br><br><ROSE><b>VOTAÇÃO INICIADA!</b><br><br><N>Digite !1 para votar no script <b>"..scripts.name1..",</b><br>!2 para votar no script <b>"..scripts.name2.."</b>,<br>!3 para votar no script <b>"..scripts.name3..",</b><br>!4 para votar no script <b>"..scripts.name4.."</b>,<br>!5 para votar no script <b>"..scripts.name5.."</b><br>ou !6 para votar no script <b>"..scripts.name6.."</b>.<br><br>A votação só pode ocorrer 1 vez por rato, e sua escolha pode não ser alterada.")
+		showMessage("<br><br><br><br><br><br><br><br><ROSE><b>VOTAÇÃO INICIADA!</b><br><br><N>Digite !1 para votar no script <b>"..scripts.name1..",</b><br>!2 para votar no script <b>"..scripts.name2.."</b>,<br>!3 para votar no script <b>"..scripts.name3..",</b><br>!4 para votar no script <b>"..scripts.name4.."</b>,<br>!5 para votar no script <b>"..scripts.name5.."</b><br>ou !6 para votar no script <b>"..scripts.name6.."</b>.<br><br>A votação só pode ocorrer uma vez por rato, e sua escolha pode não ser alterada.")
 	end
 end
 function eventPopupAnswer(id,name,answer)
@@ -249,4 +249,4 @@ function eventPopupAnswer(id,name,answer)
 		iniciarVotacao()
 	end
 end
-tfm.exec.newGame("@6907177")
+tfm.exec.newGame("@4431434")
