@@ -45,7 +45,7 @@ function eventNewGame()
 end
 
 function eventLoop(p,f)
-	ui.addTextArea(0,"<p align='center'><font face='Verdana'><font size='54'><font color='#000000'>"..min1..":"..seg1..""..seg2.."", nil, 306, 163, 190, 66, 0xffffff, 0xffffff, 1.0, true)
+	ui.addTextArea(0,"<p align='center'><font face='Verdana'><font size='54'><font color='#000000'>"..min1..":"..seg1..""..seg2.."", nil, 306, 203, 190, 66, 0xffffff, 0xffffff, 1.0, true)
 	ui.setMapName("<R>Esfera da Morte - <N>Module feito por Morganadxana#0000   <G>|   <N>Ratos : <V>"..vivo.." <N>/ <J>"..rato.."<")
 	if vivo >= 1 then
 		loop=loop+0.5
@@ -85,8 +85,8 @@ function eventPlayerDied(name)
 		tfm.exec.setGameTime(12)
 	end
 	tfm.exec.setPlayerScore(name,data[name].highest_time,false)
-	if data[name].highest_time > highest_score and match_count >= 3 then
-		highest_score=data[name].highest_time
+	if data[name].current_time > highest_score and match_count >= 3 then
+		highest_score=data[name].current_time
 		showMessage("<J><b>"..last_death.."</b> <VP>fez a maior pontuação da sala, fazendo <ROSE><b>"..highest_score.."</b><VP> pontos!")
 	end
 end
