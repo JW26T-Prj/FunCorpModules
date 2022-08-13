@@ -78,17 +78,13 @@ function eventPlayerDied(name)
 	vivo=vivo-1
 	if vivo == 0 then
 		if min1 == 0 then
-			showMessage("<J><b>"..last_death.."</b> foi o melhor jogador, ficando vivo por "..seg1..""..seg2.." segundos!")
+			showMessage("<J><b>"..last_death.."</b> foi o(a) melhor jogador(a), ficando vivo por "..seg1..""..seg2.." segundos!")
 		else
-			showMessage("<J><b>"..last_death.."</b> foi o melhor jogador, ficando vivo por "..min1.." minuto(s) e "..seg1..""..seg2.." segundos!")
+			showMessage("<J><b>"..last_death.."</b> foi o(a) melhor jogador(a), ficando vivo por "..min1.." minuto(s) e "..seg1..""..seg2.." segundos!")
 		end
-		tfm.exec.setGameTime(12)
+		tfm.exec.setGameTime(15)
 	end
 	tfm.exec.setPlayerScore(name,data[name].highest_time,false)
-	if data[name].current_time > highest_score and match_count >= 3 then
-		highest_score=data[name].current_time
-		showMessage("<J><b>"..last_death.."</b> <VP>fez a maior pontuação da sala, fazendo <ROSE><b>"..highest_score.."</b><VP> pontos!")
-	end
 end
 
 function eventPlayerLeft()
