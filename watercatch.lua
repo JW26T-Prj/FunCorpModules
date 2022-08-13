@@ -5,27 +5,17 @@ end
 for _,f in next,{"help","ajuda","tc","kill","powerups","creditos","changelog"} do
 	system.disableChatCommandDisplay(f)
 end
-rd = {title = 117, look = "201;0,6_2651d3+3d65a6,23,34,40,63_21f1f6+475edc+471ebb+5991d7+19809b,33_2b7dde+538be1,58,18_86b78+b78d1",x = 268,y = 1893,female = true,lookLeft = true,lookAtPlayer = true,interactive = true}
-ld = {title = 42, look = "138;228,49_332301+c38a07+bc7718+570e00,63_242b2c+5d7250+562d1a+572f14,11,44,82,0,0,36_3d0807+6a720a",x = 4391,y = 4058,female = false,lookLeft = true,lookAtPlayer = true,interactive = true}
-ku = {title = 35, look = "201;224,48_131313+0,27,74_141b22+70d,2_1a1a1a,40_23566c+f0f0f,36,2,0",x = 3009,y = 4808,female = false,lookLeft = true,lookAtPlayer = true,interactive = true}
-mf = {title = 1, look = "112;0,4,0,74_212121+d2d2d2,39,39,44,0,1",x = 5018,y = 319,female = true,lookLeft = true,lookAtPlayer = true,interactive = true}
-dr = {title = 43, look = "150;194,6_c926d3+a63d91,39,0,0,0,0,0,0",x = 4574,y = 2329,female = true,lookLeft = true,lookAtPlayer = true,interactive = true}
-cs = {title = 257, look = "1;44,40,87,3,62,91,37,52,0",x = 2475,y = 359,female = true,lookLeft = false,lookAtPlayer = true,interactive = true}
-dw = {title = 2, look = "1;203,50,20,41,42,103,50,0,0",x = 2726,y = 359,female = false,lookLeft = true,lookAtPlayer = true,interactive = true}
-kp = {title = 11, look = "1;16,5,20,73,26,94,29,62,46",x = 3698,y = 435,female = false,lookLeft = true,lookAtPlayer = true,interactive = true}
-ag = {title = 9, look = "4;225,43,38,0,54,104,0,0,20",x = 60,y = 409,female = false,lookLeft = false,lookAtPlayer = true,interactive = true}
-tfm.exec.newGame("@7913164")
 
 function initNPC(name)
-	tfm.exec.addNPC("Rheylean Darther",rd,name)
-	tfm.exec.addNPC("Lord Dowryammer",ld,name)
-	tfm.exec.addNPC("Keith Under",ku,name)
-	tfm.exec.addNPC("Mayra Flowers",mf,name)
-	tfm.exec.addNPC("Dylan Reigns",dr,name)
-	tfm.exec.addNPC("Camille Sanders",cs,name)
-	tfm.exec.addNPC("Daniel Winngs",dw,name)
-	tfm.exec.addNPC("King Pirate",kp,name)
-	tfm.exec.addNPC("Aaron Grand",ag,name)
+	tfm.exec.addNPC("Rheylean Darther",{title = 117, look = "201;0,6_2651d3+3d65a6,23,34,40,63_21f1f6+475edc+471ebb+5991d7+19809b,33_2b7dde+538be1,58,18_86b78+b78d1",x = 268,y = 1893,female = true,lookLeft = true,lookAtPlayer = true,interactive = true},name)
+	tfm.exec.addNPC("Lord Dowryammer",{title = 42, look = "138;228,49_332301+c38a07+bc7718+570e00,63_242b2c+5d7250+562d1a+572f14,11,44,82,0,0,36_3d0807+6a720a",x = 4391,y = 4058,female = false,lookLeft = true,lookAtPlayer = true,interactive = true},name)
+	tfm.exec.addNPC("Keith Under",{title = 35, look = "201;224,48_131313+0,27,74_141b22+70d,2_1a1a1a,40_23566c+f0f0f,36,2,0",x = 3009,y = 4808,female = false,lookLeft = true,lookAtPlayer = true,interactive = true},name)
+	tfm.exec.addNPC("Mayra Flowers",{title = 1, look = "112;0,4,0,74_212121+d2d2d2,39,39,44,0,1",x = 5018,y = 319,female = true,lookLeft = true,lookAtPlayer = true,interactive = true},name)
+	tfm.exec.addNPC("Dylan Reigns",{title = 43, look = "150;194,6_c926d3+a63d91,39,0,0,0,0,0,0",x = 4574,y = 2329,female = true,lookLeft = true,lookAtPlayer = true,interactive = true},name)
+	tfm.exec.addNPC("Camille Sanders",{title = 257, look = "1;44,40,87,3,62,91,37,52,0",x = 2475,y = 359,female = true,lookLeft = false,lookAtPlayer = true,interactive = true},name)
+	tfm.exec.addNPC("Daniel Winngs",{title = 2, look = "1;203,50,20,41,42,103,50,0,0",x = 2726,y = 359,female = false,lookLeft = true,lookAtPlayer = true,interactive = true},name)
+	tfm.exec.addNPC("King Pirate",{title = 11, look = "1;16,5,20,73,26,94,29,62,46",x = 3698,y = 435,female = false,lookLeft = true,lookAtPlayer = true,interactive = true},name)
+	tfm.exec.addNPC("Aaron Grand",{title = 9, look = "4;225,43,38,0,54,104,0,0,20",x = 60,y = 409,female = false,lookLeft = false,lookAtPlayer = true,interactive = true},name)
 end
 
 function eventNewGame()
@@ -175,7 +165,7 @@ function eventNewPlayer(name)
 	};
 		data[name] = newData;
 		ratos=ratos+1;
-		showMessage("<font color='#0080ff'><b>Bem-vindos ao module #watercatch!</b><br><J>Digite !help para ver a ajuda deste module.<br><br><N>Module e mapa criados por Morganadxana#0000.<br><br><BL>Atenção: Conexões lentas com a Internet podem fazer com que as artes da água demorem para carregar.<br><br>Caso o mapa não carregue, saia do jogo e entre novamente.",name)
+		showMessage("<font color='#0080ff'><b>Bem-vindos ao module #watercatch!</b><br><J>Digite !help para ver a ajuda deste module.<br><br><N>Module criado por Morganadxana#0000.<br><br><BL>Atenção: Conexões lentas com a Internet podem fazer com que as artes da água demorem para carregar.<br><br>Caso o mapa não carregue, saia do jogo e entre novamente.",name)
 		data[name].imageid2 = tfm.exec.addImage("17a53e1f94c.png",":1",0,350,name)
 		data[name].imageid3 = tfm.exec.addImage("17ae4e47000.png","&1",2,22,name)
 		data[name].imageid4 = tfm.exec.addImage("17ae4e48770.png","&1",670,22,name)
@@ -191,10 +181,10 @@ function eventChatCommand(name,message)
 		showMenu(name,0xf0f0f0,140,76,520,315,"Powerups do Module #watercatch","<font size='11'>Os seguintes powerups estão disponíveis no momento:<br><ROSE><b>• CAIXA</b><N><br>Faz aparecer uma caixa de acompanhamento em cima de você.<br><ROSE><b>• OXIGÊNIO</b><N><br>Aumenta o seu nível de oxigênio em 40%.<br><ROSE><b>• VELOCIDADE</b><N><br>Te dá um grande impulso de velocidade.<br><ROSE><b>• AFUNDAR</b><N><br>Cria uma anomalia temporária que leva todos os ratos em direção ao fundo do lago.<br><ROSE><b>• MEEP</b><N><br>Te dá o poder de usar o Meep!<br><ROSE><b>• SUFOCO</b><N><br>Diminui o seu nível de oxigênio em 25%. Caso seu nível esteja abaixo disso e você pegue este powerup, você morrerá afogado.<br><ROSE><b>• CONGELAR</b><N><br>Congela o seu rato.<br><ROSE><b>• QUEIJO</b><N><br>Dá queijo para o seu rato. Caso você esteja dentro do lago, você provavelmente será levado para o fundo dele.<br><ROSE><b>• REDUZIR</b><N><br>Reduz temporariamente o tamanho do seu rato.")
 	end
 	if message == "creditos" then
-		showMenu(name,0xf0f0f0,140,90,520,130,"Créditos","As seguintes pessoas ajudaram no desenvolvimento deste module:<br><br><ROSE><b>• Morganadxana#0000</b><N> - Desenvolvedora do código<br><ROSE><b>• Rakan_raster#0000</b><N> - Tradução do código original para o Português<br><ROSE><b>• Spectra_phantom#6089</b><N> - Ideia original e criação do mapa e das artes")
+		showMenu(name,0xf0f0f0,140,90,520,130,"Créditos","As seguintes pessoas ajudaram no desenvolvimento deste module:<br><br><ROSE><b>• Morganadxana#0000</b><N> - Desenvolvedora do código<br><ROSE><b>• Akwimos#1937</b><N> - Tradução do código original para o Português<br><ROSE><b>• Spectra_phantom#6089</b><N> - Ideia original, criação do mapa e das artes")
 	end
 	if message == "changelog" then
-		showMenu(name,0xf0f0f0,140,90,520,120,"Changelog da Versão 3.1.0","• Correções de bugs nos NPCs<br>• Correções de bugs no contador de mortes<br>• Várias mudanças de funcionamento<br>• Redução da duração do powerup QUEIJO para 4 segundos")
+		showMenu(name,0xf0f0f0,140,90,520,220,"Changelog da Versão 3.1.1","• Correções de bugs nos NPCs<br>• Correções de bugs no contador de mortes<br>• Várias mudanças de funcionamento<br>• Redução da duração do powerup QUEIJO para 4 segundos<br>• Pequenas atualizações nos Créditos<br>• Mudanças no sistema de powerups aleatórios<br>• Pequenas correções na inicialização do modo<br>• Pequenas mudanças no sistema de pontuação<br>• Diversas otimizações de código<br>• Mudanças no cálculo aproximado de Profundidade<br>• Adição de uma mensagem de aviso para falta de memória")
 	end
 	if (message:sub(0,2) == "tc") then
 		if tfm.get.room.playerList[name].isShaman == false then
@@ -238,8 +228,7 @@ function eventKeyboard(name,key,down)
 	if key == 32 and mode == "game" then
 		if tfm.get.room.playerList[name].x > powerups.x1-10 and tfm.get.room.playerList[name].x < powerups.x1+34 then
 			if tfm.get.room.playerList[name].y > powerups.y1-10 and tfm.get.room.playerList[name].y < powerups.y1+34 then
-				powerups.x1=-1
-				powerups.y1=-1
+				powerups.x1=-1; powerups.y1=-1;
 				ui.removeTextArea(100,nil)
 				if powerups.t1 == 1 then
 					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>CAIXA!</b>")
@@ -283,8 +272,7 @@ function eventKeyboard(name,key,down)
 		end
 		if tfm.get.room.playerList[name].x > powerups.x2-10 and tfm.get.room.playerList[name].x < powerups.x2+34 then
 			if tfm.get.room.playerList[name].y > powerups.y2-10 and tfm.get.room.playerList[name].y < powerups.y2+34 then
-				powerups.x2=-1
-				powerups.y2=-1
+				powerups.x2=-1; powerups.y2=-1;
 				ui.removeTextArea(101,nil)
 				if powerups.t2 == 1 then
 					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>CAIXA!</b>")
@@ -328,8 +316,7 @@ function eventKeyboard(name,key,down)
 		end
 		if tfm.get.room.playerList[name].x > powerups.x3-10 and tfm.get.room.playerList[name].x < powerups.x3+34 then
 			if tfm.get.room.playerList[name].y > powerups.y3-10 and tfm.get.room.playerList[name].y < powerups.y3+34 then
-				powerups.x3=-1
-				powerups.y3=-1
+				powerups.x3=-1; powerups.y3=-1;
 				ui.removeTextArea(102,nil)
 				if powerups.t3 == 1 then
 					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>CAIXA!</b>")
@@ -373,8 +360,7 @@ function eventKeyboard(name,key,down)
 		end
 		if tfm.get.room.playerList[name].x > powerups.x4-10 and tfm.get.room.playerList[name].x < powerups.x4+34 then
 			if tfm.get.room.playerList[name].y > powerups.y4-10 and tfm.get.room.playerList[name].y < powerups.y4+34 then
-				powerups.x4=-1
-				powerups.y4=-1
+				powerups.x4=-1; powerups.y4=-1;
 				ui.removeTextArea(103,nil)
 				if powerups.t4 == 1 then
 					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>CAIXA!</b>")
@@ -425,13 +411,8 @@ function eventKeyboard(name,key,down)
 end
 function reset()
 	if ratos >= 4 then
-		mode="hide"
-		shaman=""
-		alives=0
+		mode="hide"; shaman=""; alives=0;
 		for n,p in next,tfm.get.room.playerList do
-			if not tfm.get.room.playerList[n].isShaman then
-				tfm.exec.setPlayerScore(n,0,false)
-			end
 			tfm.exec.respawnPlayer(n)
 			tfm.exec.setShaman(n,false)
 			for i=32,40 do
@@ -449,10 +430,8 @@ function reset()
 		end
 		defineShaman()
 		ui.setBackgroundColor("#5FA9D4")
-		z=-1
-		cannons=6
+		z=-1; cannons=6; mode="hide";
 		ui.removeTextArea(22,nil)
-		mode="hide"
 		tfm.exec.setGameTime(60)
 	else
 		mode="wait"
@@ -472,25 +451,17 @@ function showMenu(name,color,x,y,width,height,title,content)
 end
 function genPowerup(pos,type,x,y)
 	if pos == 1 then
-		ui.addTextArea(100,"<font size='18'><p align='center'>!",nil,x,y,24,24,0x161636,0x121224,1.0,false)
-		powerups.x1=x
-		powerups.y1=y
-		powerups.t1=type
+		ui.addTextArea(100,"<font size='18'><p align='center'>?",nil,x,y,22,22,0x161636,0x121224,1.0,false)
+		powerups.x1=x; powerups.y1=y; powerups.t1=type;
 	elseif pos == 2 then
-		ui.addTextArea(101,"<font size='18'><p align='center'>!",nil,x,y,24,24,0x161636,0x121224,1.0,false)
-		powerups.x2=x
-		powerups.y2=y
-		powerups.t2=type
+		ui.addTextArea(101,"<font size='18'><p align='center'>?",nil,x,y,22,22,0x161636,0x121224,1.0,false)
+		powerups.x2=x; powerups.y2=y; powerups.t2=type;
 	elseif pos == 3 then
-		ui.addTextArea(102,"<font size='18'><p align='center'>!",nil,x,y,24,24,0x161636,0x121224,1.0,false)
-		powerups.x3=x
-		powerups.y3=y
-		powerups.t3=type
+		ui.addTextArea(102,"<font size='18'><p align='center'>?",nil,x,y,22,22,0x161636,0x121224,1.0,false)
+		powerups.x3=x; powerups.y3=y; powerups.t3=type;
 	elseif pos == 4 then
-		ui.addTextArea(103,"<font size='18'><p align='center'>!",nil,x,y,24,24,0x161636,0x121224,1.0,false)
-		powerups.x4=x
-		powerups.y4=y
-		powerups.t4=type
+		ui.addTextArea(103,"<font size='18'><p align='center'>?",nil,x,y,22,22,0x161636,0x121224,1.0,false)
+		powerups.x4=x; powerups.y4=y; powerups.t4=type;
 	end
 end
 function congelar(name)
@@ -514,7 +485,7 @@ function eventLoop(p,r)
 	loop=loop+0.5
 	time_passed=math.ceil(p/1000)
 	time_remain=math.ceil(r/1000)
-	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v3.1.0</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
+	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v3.1.1</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
 	local m=math.floor(r/60000)
 	local s=math.floor((((m*60000)-r) * -1) / 1000)
 	ui.addTextArea(-1,"<font size='45'><font color='#222222'><font face='Trebuchet MS'><b><i>"..m..":"..s.."</b>",n,569,22,110,54,0,0,1.0,true)
@@ -565,7 +536,7 @@ function eventLoop(p,r)
 		if tfm.get.room.playerList[n].y <= 495 then
 			ui.addTextArea(295,"<p align='center'><font size='13'>Profundidade: 0m",n,310,57,180,21,0x000001,0x000001,0.75,true)
 		else
-			ui.addTextArea(295,"<p align='center'><font size='13'>Profundidade: "..math.floor(math.pow(tfm.get.room.playerList[n].y-495,1.735)/2500).."m",n,310,57,180,21,0x000001,0x000001,0.75,true)
+			ui.addTextArea(295,"<p align='center'><font size='13'>Profundidade: "..math.floor(math.pow(tfm.get.room.playerList[n].y-495,1.6875)/2500).."m",n,310,57,180,21,0x000001,0x000001,0.75,true)
 		end
 		if data[n] then
 			data[n].x=tfm.get.room.playerList[n].x
@@ -597,14 +568,11 @@ function eventLoop(p,r)
 						data[n].y=0
 					else
 						if tfm.get.room.playerList[n].y <= 1200 then
-							data[n].o=data[n].o-0.3
-							data[n].c=0
+							data[n].o=data[n].o-0.3; data[n].c=0;
 						elseif tfm.get.room.playerList[n].y > 1200 and tfm.get.room.playerList[n].y <= 3500 then
-							data[n].o=data[n].o-0.4
-							data[n].c=0
+							data[n].o=data[n].o-0.4; data[n].c=0;
 						elseif tfm.get.room.playerList[n].y > 3500 then
-							data[n].o=data[n].o-0.8
-							data[n].c=0
+							data[n].o=data[n].o-0.8; data[n].c=0;
 						end
 					end
 				end
@@ -662,6 +630,13 @@ function eventLoop(p,r)
 		showMessage("<VP>Tempo esgotado! <b>"..alives.."</b> ratos sobreviveram! Iniciando nova partida...")
 		ui.removeTextArea(300,n)
 	end
+	if p >= 5000 and p <= 6125 then
+		for n,p in next,tfm.get.room.playerList do
+			if data[n] and data[n].yp == 334 then
+				showMessage("<R>Aviso: Não há mais memória disponível para o Transformice. Para poder entrar neste mapa, saia do jogo e entre novamente.",name)
+			end
+		end
+	end
 	if r <= 200 and mode == "end" then
 		reset()
 	end
@@ -705,3 +680,4 @@ function eventTextAreaCallback(id,name,callback)
 		eventChatCommand(name,"changelog")
 	end
 end
+tfm.exec.newGame("@7913164")
