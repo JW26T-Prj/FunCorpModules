@@ -2,20 +2,8 @@ admin={""} -- Insira o nome dos FunCorps aqui!
 for _,f in next,{"AutoNewGame","AfkDeath","AutoShaman","AutoTimeLeft","DebugCommand","AllShamanSkills","PhysicalConsumables"} do
 	tfm.exec["disable"..f](true)
 end
-for _,f in next,{"help","ajuda","tc","kill","powerups","creditos","changelog"} do
+for _,f in next,{"help","ajuda","tc","kill","powerups","creditos","changelog","reset"} do
 	system.disableChatCommandDisplay(f)
-end
-
-function initNPC(name)
-	tfm.exec.addNPC("Rheylean Darther",{title = 117, look = "201;0,6_2651d3+3d65a6,23,34,40,63_21f1f6+475edc+471ebb+5991d7+19809b,33_2b7dde+538be1,58,18_86b78+b78d1",x = 268,y = 1893,female = true,lookLeft = true,lookAtPlayer = true,interactive = true},name)
-	tfm.exec.addNPC("Lord Dowryammer",{title = 42, look = "138;228,49_332301+c38a07+bc7718+570e00,63_242b2c+5d7250+562d1a+572f14,11,44,82,0,0,36_3d0807+6a720a",x = 4391,y = 4058,female = false,lookLeft = true,lookAtPlayer = true,interactive = true},name)
-	tfm.exec.addNPC("Keith Under",{title = 35, look = "201;224,48_131313+0,27,74_141b22+70d,2_1a1a1a,40_23566c+f0f0f,36,2,0",x = 3009,y = 4808,female = false,lookLeft = true,lookAtPlayer = true,interactive = true},name)
-	tfm.exec.addNPC("Mayra Flowers",{title = 1, look = "112;0,4,0,74_212121+d2d2d2,39,39,44,0,1",x = 5018,y = 319,female = true,lookLeft = true,lookAtPlayer = true,interactive = true},name)
-	tfm.exec.addNPC("Dylan Reigns",{title = 43, look = "150;194,6_c926d3+a63d91,39,0,0,0,0,0,0",x = 4574,y = 2329,female = true,lookLeft = true,lookAtPlayer = true,interactive = true},name)
-	tfm.exec.addNPC("Camille Sanders",{title = 257, look = "1;44,40,87,3,62,91,37,52,0",x = 2475,y = 359,female = true,lookLeft = false,lookAtPlayer = true,interactive = true},name)
-	tfm.exec.addNPC("Daniel Winngs",{title = 2, look = "1;203,50,20,41,42,103,50,0,0",x = 2726,y = 359,female = false,lookLeft = true,lookAtPlayer = true,interactive = true},name)
-	tfm.exec.addNPC("King Pirate",{title = 11, look = "1;16,5,20,73,26,94,29,62,46",x = 3698,y = 435,female = false,lookLeft = true,lookAtPlayer = true,interactive = true},name)
-	tfm.exec.addNPC("Aaron Grand",{title = 9, look = "4;225,43,38,0,54,104,0,0,20",x = 60,y = 409,female = false,lookLeft = false,lookAtPlayer = true,interactive = true},name)
 end
 
 function eventNewGame()
@@ -48,7 +36,7 @@ function defineShaman()
 			shaman=name
 			tfm.exec.setShaman(shaman)
 			tfm.exec.setPlayerScore(shaman,-1,false)
-			tfm.exec.setShamanMode(shaman,1)
+			tfm.exec.setShamanMode(shaman,0)
 			tfm.exec.movePlayer(shaman,2600,-550,false,0,0,false)
 			showMessage("<ROSE>Não esqueça de se mover, ou você perderá sua vez como shaman!",name)
 			alives=alives-1
@@ -71,59 +59,6 @@ function showWater(name)
 	tfm.exec.addImage("17f74378b9a.png","!1",-600,471,name,1,1,0,0.44)
 	tfm.exec.addImage("17f74382569.jpg","?1",-600,513,name,2,1.375,0,1)
 end
-function eventTalkToNPC(name, npc)
-	if npc == "Rheylean Darther" then
-		if not tfm.get.room.playerList[name].isShaman then
-			showMessage("<V>[Rheylean Darther] <N>Quem ousa a mergulhar nas minhas sagradas águas, e interromper a paz de <ROSE><b>Rheylean Darther</b>?<br><br><BL>Ah, é só mais um desavisado... <J>SAIA DE MINHA PRESENÇA AGORA, OU SENTIRÁ A MINHA FÚRIA!",name)
-		else
-			showMessage("<V>[Rheylean Darther] <VP>Vá, e devore todos estes enfadonhos em meu nome! <b>AGORA!</b>",name)
-		end
-	elseif npc == "Lord Dowryammer" then
-		if not tfm.get.room.playerList[name].isShaman then
-			showMessage("<V>[Lord Dowryammer] <N>Seja bem-vindo(a) ao meu recife de peixes.<br><br>Desde que o cataclisma começou, usei meus poderes secretos para aprender a mergulhar. Pensa como isso foi importante para mim...<br><br>Graças a isso, criei um recife de peixes, onde os crio para sobreviver até tudo isso acabar.<br><br><J>Mas... mal sabe você que o cataclisma não é o maior problema... O grande problema é o tal do <VP>shaman...<br><J>Falando nisso, ele ainda está aqui?",name)
-		else
-			showMessage("<V>[Lord Dowryammer] <R>Saia daqui agora, seu monstro imundo! Você nunca vai conseguir me pegar de novo!",name)
-		end
-	elseif npc == "Keith Under" then
-		if not tfm.get.room.playerList[name].isShaman then
-			showMessage("<V>[Keith Under] <N>Você tem muita coragem de estar aqui no mar profundo. Não achei que você sobreviveria. Acho que aqui o <VP>shaman<N> não me encontra. Você o viu?<br><br><R>Espera... Você o viu? Onde ele está? Se estiver por perto, preciso sair daqui AGORA!",name)
-		else
-			showMessage("<V>[Keith Under] <N>Entre razões e emoções, a saída... Que barulho foi esse?<br><br><J><b>AH, ELE DE NOVO NÃO! SAIA DE MIM AGORA!</b>",name)
-		end
-	elseif npc == "Mayra Flowers" then
-		showMessage("<V>[Mayra Flowers] <N>Muuuuuuuu! <font face='Segoe UI Symbol'>(●'◡'●)<font face='Verdana'>",name)
-	elseif npc == "Dylan Reigns" then
-		if not tfm.get.room.playerList[name].isShaman then
-			showMessage("<V>[Dylan Reigns] <N>Oi. Me chame de Dylan Reigns. Sou uma das sobreviventes daquela tragédia catastrófica, e queria...<br><R>O MONSTRO ESTÁ VINDO! CORRA!!",name)
-		else
-			showMessage("<V>[Dylan Reigns] <R>O MONSTRO ESTÁ AQUI! ALGUÉM ME TIRE DAQUI!",name)
-		end
-	elseif npc == "Camille Sanders" then
-		if not tfm.get.room.playerList[name].isShaman then
-			showMessage("<V>[Camille Sanders] <N>Sou uma náufraga.<br><br>Há pouco tempo, um grande cataclisma mágico aconteceu e agora estou aqui, no meio deste oceano.<br><br>Recebi boatos de que guardiões muito poderosos estão guardando este lugar, mas não tenho como descer para descobrir.<br><br>O que sei, é que um monstro horroroso chamado <VP>shaman <N>está nos caçando para nos devorar. <br><br>Você precisa fazer de tudo para sobreviver neste lugar.<br>Seja lá como for.",name)
-		else
-			showMessage("<V>[Camille Sanders] <N>Olha só quem está aqui... Se não é o tal do <VP>shaman...<br><br><N>Preciso contar para... Espera, aquele é mesmo o <VP>shaman<N>?<br><br><J><b>FUJAM TODOS!!</b>",name)
-		end
-	elseif npc == "Daniel Winngs" then
-		if not tfm.get.room.playerList[name].isShaman then
-			showMessage("<V>[Daniel Winngs] <N>Eu era guia turístico desta região, até o momento do grande cataclisma acontecer e acabar com tudo o que eu tinha.<br><br>Agora, depois de muita luta, consegui descer até o fundo do mar e descobrir o que realmente existe lá.<br><br>E vi que ele está tomado por guardiões desconhecidos que podem até mesmo te prender no fundo do mar.<br><br>Portanto, tenha cuidado se for entrar no mar. Talvez seja um caminho sem volta.<br><br>Ah, e tome cuidado com um certo <VP>shaman<N>. Ele não quer a gente vivo, digo isso porque quase fui engolido por ele...",name)
-		else
-			showMessage("<V>[Daniel Winngs] <N>Saia daqui agora, seu bicho fedorento!",name)
-		end
-	elseif npc == "King Pirate" then
-		if not tfm.get.room.playerList[name].isShaman then
-			showMessage("<V>[King Pirate] <N>Todos a bordo, marujos!<br>Ah, esqueci. Não tenho mais marujos. Perdi todos naquele grande cataclisma.<br>Mas gostei do seu visual. Me lembra bastante os dos meus antigos marujos...<br><br>Infelizmente sei que tenho quase certeza que não saio vivo daqui. O tal <VP>shaman<N> está no fundo do mar pronto para me engolir. E se fosse você, sairia logo daqui. Só estou aqui porque não há muito o que eu fazer...",name)
-		else
-			showMessage("<V>[King Pirate] <N>Pelas barbas do pirata! O monstro está aqui!<br><br><VP>Evacuar navio agora! Ah!",name)
-		end
-	elseif npc == "Aaron Grand" then
-		if not tfm.get.room.playerList[name].isShaman then
-			showMessage("<V>[Aaron Grand] <N>Não sei se considero isso uma saudação. Meu mental está destruído depois daquilo tudo que presenciei.<br><br>E como se não bastasse, o pior ainda está por vir. Um grande <VP>shaman<N> submarino está vindo nos devorar. Se você fosse, sairia logo daqui...<br><br>Mas já que não quer, fique um pouco aqui. Vamos conversar.",name)
-		else
-			showMessage("<V>[Aaron Grand] <N>Qual será sua intenção? Tirar minha vida com suas próprias mãos? Nunca!",name)
-		end
-	end
-end
 function eventPlayerDied(n)
 	if changed == true then
 		if not tfm.get.room.playerList[n].isShaman then
@@ -143,10 +78,12 @@ function eventPlayerDied(n)
 			end
 		end
 		if alives <= 0 then
-			mode="end"
-			shaman=""
-			tfm.exec.setGameTime(15)
-			showMessage("<VP><b>O shaman matou todos os ratos e venceu o jogo!</b><br><N>Próxima rodada iniciando em 15 segundos.")
+			if mode == "game" then
+				mode="end"
+				shaman=""
+				tfm.exec.setGameTime(15)
+				showMessage("<VP><b>O shaman matou todos os ratos e venceu o jogo!</b><br><N>Próxima rodada iniciando em 15 segundos.")
+			end
 		end
 		data[n].o=0
 	end
@@ -159,7 +96,6 @@ function eventNewPlayer(name)
 		tfm.exec.setPlayerScore(name,1,false)
 		ui.setBackgroundColor("#5FA9D4")
 		showWater(name)
-		initNPC(name)
 		newData={
 	["o"]=99; ["i"]=0; ["t"]=0; ["c"]=0; ["opened"]=false; ["moved"]=0; ["imageid"]=-1; ["imageid2"]=-1; ["imageid3"]=-1; ["imageid4"]=-1; ["imaget"]=5;
 	};
@@ -184,7 +120,7 @@ function eventChatCommand(name,message)
 		showMenu(name,0xf0f0f0,140,90,520,130,"Créditos","As seguintes pessoas ajudaram no desenvolvimento deste module:<br><br><ROSE><b>• Morganadxana#0000</b><N> - Desenvolvedora do código<br><ROSE><b>• Akwimos#1937</b><N> - Tradução do código original para o Português<br><ROSE><b>• Spectra_phantom#6089</b><N> - Ideia original, criação do mapa e das artes")
 	end
 	if message == "changelog" then
-		showMenu(name,0xf0f0f0,140,90,520,220,"Changelog da Versão 3.1.1","• Correções de bugs nos NPCs<br>• Correções de bugs no contador de mortes<br>• Várias mudanças de funcionamento<br>• Redução da duração do powerup QUEIJO para 4 segundos<br>• Pequenas atualizações nos Créditos<br>• Mudanças no sistema de powerups aleatórios<br>• Pequenas correções na inicialização do modo<br>• Pequenas mudanças no sistema de pontuação<br>• Diversas otimizações de código<br>• Mudanças no cálculo aproximado de Profundidade<br>• Adição de uma mensagem de aviso para falta de memória")
+		showMenu(name,0xf0f0f0,140,90,520,130,"Changelog da Versão 3.1.2","• Remoção de todos os NPCs<br>• Pequenas correções de texto<br>• Pequenas correções de bugs<br>• Todos os objetos de shaman são removidos a cada início de partida<br>• O uso de espíritos (sp) agora é proibido")
 	end
 	if (message:sub(0,2) == "tc") then
 		if tfm.get.room.playerList[name].isShaman == false then
@@ -195,18 +131,21 @@ function eventChatCommand(name,message)
 			end
 		end
 	end
-	if name == "Morganadxana#0000" or verifyAdmin(name) == true then
+	if name == "Morganadxana#0000" or name == "Akwimos#1937" or name == "Spectra_phantom#6089" or verifyAdmin(name) == true then
 		if (message:sub(0,3) == "msg") then
 			showMessage("<VP>• [FunCorp - <b>"..name.."</b>] "..message:sub(5).."")
 		end
 		if (message:sub(0,4) == "kill") then
 			tfm.exec.killPlayer(message:sub(6))
 		end
+		if message == "reset" then
+			reset()
+		end
 	end
 end
 function eventSummoningEnd(name,id,x,y)
 	if time_passed >= 60 then
-		if id > 0 then
+		if not id == 24 then
 			cannons=cannons-1
 			if cannons >= 1 then
 				showMessage("<VP>O shaman agora pode usar <b>"..cannons.."</b> objetos.")
@@ -216,12 +155,17 @@ function eventSummoningEnd(name,id,x,y)
 				showMessage("<R>O shaman excedeu o limite de objetos utilizáveis!")
 				tfm.exec.killPlayer(shaman)
 			end
+		elseif id == 24 then
+			tfm.exec.killPlayer(shaman)
 		end
 	end
 end
 function eventSummoningStart(name,id,x,y)
 	if cannons == 0 then
 		showMessage("<R>Você não pode mais usar objetos! Invocar um objeto fará com que você morra e a partida termine!",name)
+	end
+	if id == 24 and cannons >= 1 then
+		showMessage("<R>O uso de espíritos não é permitido! Invocar um fará com que você morra e a partida termine!",name)
 	end
 end
 function eventKeyboard(name,key,down)
@@ -428,6 +372,9 @@ function reset()
 			ui.addTextArea(299,"<p align='center'><a href='event:show_menu'><font size='18'>Menu",n,365,25,70,24,0x000001,0x000001,0.75,true)
 			ui.removeTextArea(298,n)
 		end
+		for i=1000,3000 do
+			tfm.exec.removeObject(i)
+		end
 		defineShaman()
 		ui.setBackgroundColor("#5FA9D4")
 		z=-1; cannons=6; mode="hide";
@@ -485,7 +432,7 @@ function eventLoop(p,r)
 	loop=loop+0.5
 	time_passed=math.ceil(p/1000)
 	time_remain=math.ceil(r/1000)
-	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v3.1.1</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
+	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v3.1.2</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
 	local m=math.floor(r/60000)
 	local s=math.floor((((m*60000)-r) * -1) / 1000)
 	ui.addTextArea(-1,"<font size='45'><font color='#222222'><font face='Trebuchet MS'><b><i>"..m..":"..s.."</b>",n,569,22,110,54,0,0,1.0,true)
@@ -608,7 +555,7 @@ function eventLoop(p,r)
 		mode="game"
 		tfm.exec.setGameTime(240+math.ceil(alives*2.4))
 		ui.removeTextArea(22,nil)
-		showMessage("<J><b>O shaman foi liberado! Salvem-se quem puder!</b><br><N>Os itens marcados com <BL>!<N> são poderes especiais, que podem trazer efeitos positivos ou negativos aos ratos. Aperte ESPAÇO para usá-los.<br><br><ROSE>Use o comando !tc [mensagem] para falar no chat sem que o shaman saiba.")
+		showMessage("<J><b>O shaman foi liberado! Salvem-se quem puder!</b><br><N>Os itens marcados com <BL>?<N> são poderes especiais, que podem trazer efeitos positivos ou negativos aos ratos. Aperte ESPAÇO para usá-los.<br><br><ROSE>Use o comando !tc [mensagem] para falar no chat sem que o shaman saiba.")
 		for n,p in next,tfm.get.room.playerList do
 			ui.addTextArea(300,"",n,8,390,782,3,0x202020,0x121212,1.0,true)
 		end
