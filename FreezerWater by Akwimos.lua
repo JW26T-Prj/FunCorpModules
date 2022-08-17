@@ -60,7 +60,7 @@ room_language = translations[tfm.get.room.community] and tfm.get.room.community 
 }
 
 
-local maps = {7913565, 7913602}
+local maps = {7913565, 7913602, 7913605}
 
 local cache = {}
 local db = {}
@@ -254,6 +254,11 @@ function showWater(name)
 		for c=0,2 do
 			tfm.exec.addImage("181f9cff961.jpg","?1",-800+(c*1795),376,name)
 		end
+	elseif tfm.get.room.currentMap == "@7913605" then
+		tfm.exec.addImage("18200689108.png", "?1", -800, 332, name, 1.0, 1.0, 0, 1.0)
+		tfm.exec.addImage("18200689108.png", "!1", -800, 332, name, 1.0, 1.0, 0, 0.7)
+		tfm.exec.addImage("1820068de62.png", "!1", -800, 390, name, 6, 4, 0, 1)
+		tfm.exec.addImage("18200692b61.jpg","?1",-800,376,name,4,3)
 	end
 	tfm.exec.addImage("17a53e1f94c.png",":1",0,350,name)
 	ui.addTextArea(11,"",name,8,390,790,3,0x101010,0x060606,1.0,true)
