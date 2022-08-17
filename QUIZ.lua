@@ -1,15 +1,10 @@
--- Mudanças na Versão 2.25.0:
+-- Mudanças na Versão 2.25.1:
 
--- Alterações em algumas perguntas
--- Adição de 3 perguntas de Transformice
--- Adição de 3 perguntas de conhecimentos gerais
--- Adição de 3 perguntas de música
--- Adição de 3 perguntas de League of Legends
--- Pequenas alterações no código
+-- Correções em várias perguntas
 
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.25.0
--- Por favor, edite a linha 27 a variável 'admin' pelo seu nome para ter acesso aos comandos.
--- Você pode selecionar o tema editando a linha 28, ou digitando !tema [número] conforme os números abaixo.
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.25.1
+-- Por favor, edite a linha 22 a variável 'admin' pelo seu nome para ter acesso aos comandos.
+-- Você pode selecionar o tema editando a linha 23, ou digitando !tema [número] conforme os números abaixo.
 
 -- Temas:
 -- 0 = transformice
@@ -428,7 +423,7 @@ perguntas1={
 "Qual o nome da extinta fabricante brasileira de carros?","Corcel","Gurgel",2,
 "Quantos oceanos existem no Planeta Terra?","3","5",2,
 "Em que data ocorreu a promulgação da Lei do Ventre Livre?","28 de Setembro","4 de Outubro",1,
-"Em que data terminou a Batalha do Tuiuti, uma das mais importantes da Guerra do Paraguai?","24 de Maio","4 de Junho",1,
+"Em que data foi travada a Batalha do Tuiuti, uma das mais importantes da Guerra do Paraguai?","24 de Maio","4 de Junho",1,
 "Quais destas duas empresas fabricaram computadores pessoais no Brasil nos anos 80?","Prológica e Gradiente","Prológica e Microdigital",2,
 "Em que ano a União Soviética foi extinta?","1990","1991",2,
 "Qual destes browsers de Internet foi desenvolvido primeiro?","Mozilla Firefox","Google Chrome",1,
@@ -447,7 +442,7 @@ perguntas1={
 "Não existem seres vivos no Planeta Terra que consigam sobreviver por mais de 24 horas no espaço, sem uso de traje especial.","Verdadeiro","Falso",2,
 "Em qual lugar foi registrada a temperatura mais alta da história do Planeta Terra nos últimos 200 anos?","Bangu","Califórnia",2,
 "Barack Obama foi o primeiro negro eleito presidente dos Estados Unidos.","Verdadeiro","Falso",1,
-"Em que ano a vereadora Marielle Franco e o motorista Anderson Gomes foram assasinados?","2018","2019",1,
+"Em que ano a vereadora Marielle Franco e o motorista Anderson Gomes foram assasinados?","2017","2018",2,
 "O município de Duque de Caxias, no Rio de Janeiro, antes era conhecido por qual nome?","Cisplatina de Ferro","Porto da Estrela",2,
 }
 perguntas2={
@@ -473,7 +468,7 @@ perguntas2={
 "Complete a música: Do Leme ao Pontal... [...] Sem contar com Calabouço, Flamengo, Botafogo, Urca, ...","Praia Vermelha","Praia de Ipanema",1,
 "Qual destes gravou a música 'Pra não dizer que não falei das Flores', que retrata o período de censura do AI-5 do Regime Militar?","Geraldo Vandré","Vanusa",1,
 "Qual destas músicas foi gravada no primeiro EP da banda Linkin Park, lançada em 1999?","In the End","Carousel",2,
-"Complete a música: Rimas de ventos e velas, vida que vem e que vai, a solidão que fica e entra...","Me arremessando contra o cais","Me arremessando contra o vento",1,
+"'Rimas de ventos e velas, vida que vem e que vai...' Qual o nome desta música?","Porto Solidão","Estrela Reticente",1,
 "Qual destas cantoras morreu em 2021 em um acidente de avião em Minas Gerais?","Marília Mendonça","Pablo Vittar",1,
 "A cantora Shirley Carvalhaes lançou seu primeiro álbum em qual ano?","1977","1987",1,
 "O primeiro protótipo de disco de vinil foi apresentado no Brasil.","Verdadeiro","Falso",2,
@@ -487,7 +482,7 @@ perguntas2={
 "Rádio Pirata foi o nome do primeiro álbum lançado pela banda RPM.","Verdadeiro","Falso",2,
 "Qual destas músicas foi utilizada na novela Páginas da Vida?","Se Quiser","Páginas da Vida",1,
 "Qual destes foi o primeiro vocalista da banda NX Zero?","Yuri Nishida","Di Ferrero",1,
-"Complete a música: Ah, meu coração é um campo minado... Muito cuidado...","Ele pode explodir","Com a traição",1,
+"A música What I've Done, do Linkin Park, é de qual álbum?","Minutes to Midnight","One More Light",1,
 "A banda Charlie Brown Jr. foi formada na cidade de Santos.","Verdadeiro","Falso",1,
 "Qual era o nome do equipamento que era utilizado para ouvir músicas por fita cassete e podia ser transportado facilmente?","Discman","Walkman",2,
 "Quais foram as empresas que foram responsáveis pelo desenvolvimento dos CDs?","Sony e Pioneer","Sony e Philips",2,
@@ -511,7 +506,7 @@ perguntas2={
 "A música Admirável Chip Novo, da cantora Pitty, faz referência a qual livro famoso?","Admirável Mundo Novo","Admirável Tempo Novo",1,
 "De quem é a música 'Deixa a Vida me Levar'?","Zeca Pagodinho","Rodrigo Abrantes",1,
 "Quantas sinfonias Beethoven compôs?","9","11",1,
-"Complete a música: Cheiro de pneu queimado, carburador furado, o X9 foi...","Torrado","Morto",1,
+"O clipe da música 'É uma Partida de Futebol', foi gravada por Skank em qual ano?","1996","1997",2,
 "Bob Marley nasceu em qual país?","África do Sul","Jamaica",2,
 "Qual o nome da música que foi utilizada no encerramento das programações diárias do SBT, da metade dos anos 80 até a metade dos anos 90?","The Fight","Over the Top",1,
 "Em qual ano ocorreu o acidente aéreo que vitimou todos os integrantes da banda Mamonas Assasinas?","1996","1997",1,
@@ -869,7 +864,7 @@ function eventPlayerLeft(name)
 	ratos=ratos-1
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.25.0</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
+	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.25.1</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
