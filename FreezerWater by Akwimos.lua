@@ -107,6 +107,7 @@ tfm.exec.killPlayer(name)
 game.freezed[name] = tfm.exec.addShamanObject(54, data.x, data.y, 0, 0, 0, false)
 
 tfm.exec.chatMessage(translate("freezed"), name)
+tfm.exec.playSound("/transformice/son/gel.mp3", 75, nil, nil, name)
 
 if game.players[name].hp > 0 then
 updateLife(name, -1)
@@ -144,6 +145,7 @@ ui.removeTextArea(config.object_start_id + id)
 
 tfm.exec.respawnPlayer(name)
 tfm.exec.chatMessage(translate("unfreezed"):format(unfreezer_name), name)
+tfm.exec.playSound("/transformice/son/depart.mp3", 75, nil, nil, name)
 db[name].chance = db[name].chance + 1
 
 local lucky = math.random(100)
@@ -272,16 +274,19 @@ for name, data in next, tfm.get.room.playerList do
 				game.players[name].o=game.players[name].o+2
 			end
 		else
+			tfm.exec.playSound("/transformice/son/bulle2.mp3", 20, nil, nil, name)
 			game.players[name].o=game.players[name].o-1
 		end
 		if game.players[name].o <= 0 then
 			game.players[name].hp=0
 			tfm.exec.killPlayer(name)
 			tfm.exec.chatMessage(translate("player_drowned"):format(name))
+			tfm.exec.playSound("/deadmaze/monstres/mort/mf0.mp3", 80, nil, nil, name)
 		end
 		if game.players[name].o > 30 then
 			ui.addTextArea(10,"",name,8,390,(game.players[name].o*7.9),3,0xf0f0f0,0x808080,1.0,true)
 		else
+			tfm.exec.playSound("/transformice/son/bulle3.mp3", 30, nil, nil, name)
 			ui.addTextArea(10,"",name,8,390,(game.players[name].o*7.9),3,0x801500,0xa01000,1.0,true)
 		end
 	end
@@ -412,12 +417,14 @@ if freezers_won then
 for name, data in next, tfm.get.room.playerList do
 if not data.isDead and game.freezers[name] then
 tfm.exec.giveCheese(name)
+tfm.exec.playSound("/deadmaze/niveau/gain_niveau.mp3", 68, nil, nil, name)
 end
 end
 else
 for name, data in next, tfm.get.room.playerList do
 if not data.isDead and not game.freezers[name] then
 tfm.exec.giveCheese(name)
+tfm.exec.playSound("/deadmaze/niveau/gain_niveau.mp3", 68, nil, nil, name)
 end
 end
 end
