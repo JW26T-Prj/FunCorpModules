@@ -238,7 +238,7 @@ if c < 0 then
 c = 0
 end
 
-ui.addTextArea(1, translate("chance"):format(tostring(c)).."%", name, 10, 380, 0, 0, 1, 1, 0, true)
+ui.addTextArea(1, translate("chance"):format(tostring(c)).."%", name, 10, 340, 0, 0, 1, 1, 0, true)
 end
 
 function showWater(name)
