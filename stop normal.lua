@@ -1,5 +1,5 @@
 -- STOP
--- Escrito por Ninguem - 31/08/2015 // Atualizado por Reksai_void2600#6638 - 13/06/2022
+-- Escrito por Ninguem - 31/08/2015 // Atualizado por Reksai_void2600#6638 - 17/08/2022
 -- Limite de 20 categorias.
 -- FunCorp, caso você não queira visualizar as respostas dos jogadores (para identificar trapaças, por exemplo), altere a variável SHOW (linha 15) para false.
 
@@ -24,7 +24,7 @@ function carregaMapa()
 	if MAPA == true then
 		tfm.exec.newGame("@7631682")
 	elseif MAPA == false then
-		tfm.exec.newGame("@7907254")
+		tfm.exec.newGame("@4398443")
 	end
 end
 
@@ -159,7 +159,7 @@ function selecionaPalavra()
 	end
 	ui.addTextArea(ID.cat, "<p align='center'><font size='30px'>" .. CAT[PALAVRA] .. " com " .. LETRA, nil, 5, 80, 790, 40, 1, 1, 0.8, true)
 	TEMPO = os.time() + 15000+(1000*#ESCOLHA)
-	ui.addTextArea(ID.tempo, "<r><p align='center'><font size='25px'>20</font></p>", nil, 380, 350, 40, 40, 1, 1, 0.8, true)
+	ui.addTextArea(ID.tempo, "<r><p align='center'><font size='25px'>20</font></p>", nil, 750, 25, 40, 40, 1, 1, 0.8, true)
 end
 
 function eventChatCommand(p, cmd)
@@ -253,7 +253,7 @@ function eventPopupAnswer(id, p, resp)
 end
 
 function eventNewPlayer(p)
-	ui.setMapName("<BL><b>STOP!</b> <N>Script editado por Reksai_void2600#6638 - 13/06/2022<")
+	ui.setMapName("<BL><b>STOP!</b> <N>Script editado por Reksai_void2600#6638 - 17/08/2022<")
 	PLAYER[p] = {num = 0, pontos = 0, vitoria = 0, palavra = {}}
 	for i, v in pairs(CAT) do
 		PLAYER[p].palavra[v] = ""
@@ -406,5 +406,5 @@ tfm.exec.disableAutoShaman(true)
 tfm.exec.disableAutoScore(true)
 tfm.exec.disableAutoNewGame(true)
 carregaMapa()
-ui.setMapName("<BL><b>STOP!</b> <N>Script editado por Reksai_void2600#6638 - 13/06/2022<")
+ui.setMapName("<BL><b>STOP!</b> <N>Script editado por Reksai_void2600#6638 - 17/08/2022<")
 atualizaCat(true)
