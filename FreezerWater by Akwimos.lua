@@ -271,11 +271,11 @@ for name, data in next, tfm.get.room.playerList do
 	if game.started and not data.isDead and game.players[name] then
 		if tfm.get.room.playerList[name].y < 348 then
 			if game.players[name].o < 99 then
-				game.players[name].o=game.players[name].o+2
+				game.players[name].o=game.players[name].o+2.5
 			end
 		else
 			tfm.exec.playSound("/transformice/son/bulle2.mp3", 20, nil, nil, name)
-			game.players[name].o=game.players[name].o-1
+			game.players[name].o=game.players[name].o-1.5
 		end
 		if game.players[name].o <= 0 then
 			game.players[name].hp=0
