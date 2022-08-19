@@ -114,13 +114,13 @@ function eventChatCommand(name,message)
 		showMenu(name,0xf0f0f0,140,90,520,265,"Ajuda do Module #watercatch","O objetivo é bem simples: <b>Fugir do shaman</b>, se escondendo dentro do profundo lago e tomando cuidado para não morrer afogado!<br><R><b>Shamans, não esqueçam de se mexer, ou irão morrer AFK!</b><br><br><VP>Os quadrados marcados por <ROSE>'!'<VP> são powerups, que geram efeitos aleatórios nos ratos.<J><br>Estes powerups podem ser acionados pressionando ESPAÇO em cima deles.<br><N>Você pode ver os possíveis efeitos dos powerups indo no Menu e clicando em Powerups. Vale ressaltar que eles funcionam apenas depois que o shaman for liberado.<br><br><N>Caso você seja shaman, você tem um limite de <b>6</b> objetos que podem ser utilizados. Exceder este limite fará com que a partida acabe.")
 	end
 	if message == "powerups" then
-		showMenu(name,0xf0f0f0,140,76,520,315,"Powerups do Module #watercatch","<font size='11'>Os seguintes powerups estão disponíveis no momento:<br><ROSE><b>• CAIXA</b><N><br>Faz aparecer uma caixa de acompanhamento em cima de você.<br><ROSE><b>• OXIGÊNIO</b><N><br>Aumenta o seu nível de oxigênio em 40%.<br><ROSE><b>• VELOCIDADE</b><N><br>Te dá um grande impulso de velocidade.<br><ROSE><b>• AFUNDAR</b><N><br>Cria uma anomalia temporária que leva todos os ratos em direção ao fundo do lago.<br><ROSE><b>• MEEP</b><N><br>Te dá o poder de usar o Meep!<br><ROSE><b>• SUFOCO</b><N><br>Diminui o seu nível de oxigênio em 25%. Caso seu nível esteja abaixo disso e você pegue este powerup, você morrerá afogado.<br><ROSE><b>• CONGELAR</b><N><br>Congela o seu rato.<br><ROSE><b>• QUEIJO</b><N><br>Dá queijo para o seu rato. Caso você esteja dentro do lago, você provavelmente será levado para o fundo dele.<br><ROSE><b>• REDUZIR</b><N><br>Reduz temporariamente o tamanho do seu rato.")
+		showMenu(name,0xf0f0f0,140,76,520,315,"Powerups do Module #watercatch","<font size='11'>Os seguintes powerups estão disponíveis no momento:<br><ROSE><b>• CAIXA</b><N><br>Faz aparecer uma caixa de acompanhamento em cima de você.<br><ROSE><b>• OXIGÊNIO</b><N><br>Aumenta o seu nível de oxigênio em 40%.<br><ROSE><b>• VELOCIDADE</b><N><br>Te dá um grande impulso de velocidade.<br><ROSE><b>• AFUNDAR</b><N><br>Cria uma anomalia temporária que leva todos os ratos em direção ao fundo do lago.<br><ROSE><b>• MEEP</b><N><br>Te dá o poder de usar o Meep!<br><ROSE><b>• SUFOCO</b><N><br>Diminui o seu nível de oxigênio em 25%. Caso seu nível esteja abaixo disso e você pegue este powerup, você morrerá afogado.<br><ROSE><b>• CONGELAR</b><N><br>Congela o seu rato.<br><ROSE><b>• QUEIJO</b><N><br>Dá queijo para o seu rato. Caso você esteja dentro do oceano, você provavelmente será levado para o fundo dele.<br><ROSE><b>• REDUZIR</b><N><br>Reduz temporariamente o tamanho do seu rato.")
 	end
 	if message == "creditos" then
 		showMenu(name,0xf0f0f0,140,90,520,130,"Créditos","As seguintes pessoas ajudaram no desenvolvimento deste module:<br><br><ROSE><b>• Morganadxana#0000</b><N> - Desenvolvedora do código<br><ROSE><b>• Akwimos#1937</b><N> - Tradução do código original para o Português<br><ROSE><b>• Spectra_phantom#6089</b><N> - Ideia original, criação do mapa e das artes")
 	end
 	if message == "changelog" then
-		showMenu(name,0xf0f0f0,140,90,520,130,"Changelog da Versão 3.1.2","• Remoção de todos os NPCs<br>• Pequenas correções de texto<br>• Pequenas correções de bugs<br>• Todos os objetos de shaman são removidos a cada início de partida<br>• O uso de espíritos (sp) agora é proibido")
+		showMenu(name,0xf0f0f0,140,90,520,115,"Changelog da Versão 3.2.0","• O uso de espíritos (sp) volta a ser permitido<br>• Diversas otimizações de código<br>• Correções no contador de jogadores vivos")
 	end
 	if (message:sub(0,2) == "tc") then
 		if tfm.get.room.playerList[name].isShaman == false then
@@ -145,17 +145,13 @@ function eventChatCommand(name,message)
 end
 function eventSummoningEnd(name,id,x,y)
 	if time_passed >= 60 then
-		if not id == 24 then
-			cannons=cannons-1
-			if cannons >= 1 then
-				showMessage("<VP>O shaman agora pode usar <b>"..cannons.."</b> objetos.")
-			elseif cannons == 0 then
-				showMessage("<VP>O shaman não pode mais usar objetos!")
-			else
-				showMessage("<R>O shaman excedeu o limite de objetos utilizáveis!")
-				tfm.exec.killPlayer(shaman)
-			end
-		elseif id == 24 then
+		cannons=cannons-1
+		if cannons >= 1 then
+			showMessage("<VP>O shaman agora pode usar <b>"..cannons.."</b> objetos.")
+		elseif cannons == 0 then
+			showMessage("<VP>O shaman não pode mais usar objetos!")
+		else
+			showMessage("<R>O shaman excedeu o limite de objetos utilizáveis!")
 			tfm.exec.killPlayer(shaman)
 		end
 	end
@@ -168,182 +164,79 @@ function eventSummoningStart(name,id,x,y)
 		showMessage("<R>O uso de espíritos não é permitido! Invocar um fará com que você morra e a partida termine!",name)
 	end
 end
+function activatePowerup(name,id,number)
+	if id == 1 then
+		showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>CAIXA!</b>")
+		dropPlayer(name)
+	elseif id == 2 then
+		showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>OXIGÊNIO!</b>")
+		data[name].o=data[name].o+40
+		if data[name].o > 100 then
+			data[name].o=100
+		end
+	elseif id == 3 then
+		showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>VELOCIDADE!</b>")
+		if tfm.get.room.playerList[name].isFacingRight == true then
+			tfm.exec.movePlayer(name,0,0,true,120,0,false)
+		else
+			tfm.exec.movePlayer(name,0,0,true,-120,0,false)
+		end
+	elseif id == 4 then
+		showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>AFUNDAR!</b>")
+		timer=1
+	elseif id == 5 then
+		showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>MEEP!</b>")
+		tfm.exec.giveMeep(name,true)
+	elseif id == 6 then
+		showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>SUFOCO!</b>")
+		data[name].o=data[name].o-25
+		if data[name].o < 1 then
+			data[name].o=1
+		end
+	elseif id == 7 then
+		showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>CONGELAR!</b>")
+		congelar(name)
+	elseif id == 8 then
+		showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>QUEIJO!</b>")
+		queijo(name)
+	elseif id == 9 then
+		showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>REDUZIR!</b>")
+		reduzir(name)
+	end
+	if number == 1 then
+		powerups.x1=-1; powerups.y1=-1;
+		ui.removeTextArea(100,nil)
+	elseif number == 2 then
+		powerups.x2=-1; powerups.y2=-1;
+		ui.removeTextArea(101,nil)
+	elseif number == 3 then
+		powerups.x3=-1; powerups.y3=-1;
+		ui.removeTextArea(102,nil)
+	elseif number == 4 then
+		powerups.x4=-1; powerups.y4=-1;
+		ui.removeTextArea(103,nil)
+	end
+end
 function eventKeyboard(name,key,down)
 	if key == 32 and mode == "game" then
 		if tfm.get.room.playerList[name].x > powerups.x1-10 and tfm.get.room.playerList[name].x < powerups.x1+34 then
 			if tfm.get.room.playerList[name].y > powerups.y1-10 and tfm.get.room.playerList[name].y < powerups.y1+34 then
-				powerups.x1=-1; powerups.y1=-1;
-				ui.removeTextArea(100,nil)
-				if powerups.t1 == 1 then
-					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>CAIXA!</b>")
-					dropPlayer(name)
-				elseif powerups.t1 == 2 then
-					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>OXIGÊNIO!</b>")
-					data[name].o=data[name].o+40
-					if data[name].o > 100 then
-						data[name].o=100
-					end
-				elseif powerups.t1 == 3 then
-					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>VELOCIDADE!</b>")
-					if tfm.get.room.playerList[name].isFacingRight == true then
-						tfm.exec.movePlayer(name,0,0,true,120,0,false)
-					else
-						tfm.exec.movePlayer(name,0,0,true,-120,0,false)
-					end
-				elseif powerups.t1 == 4 then
-					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>AFUNDAR!</b>")
-					timer=1
-				elseif powerups.t1 == 5 then
-					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>MEEP!</b>")
-					tfm.exec.giveMeep(name,true)
-				elseif powerups.t1 == 6 then
-					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>SUFOCO!</b>")
-					data[name].o=data[name].o-25
-					if data[name].o < 1 then
-						data[name].o=1
-					end
-				elseif powerups.t1 == 7 then
-					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>CONGELAR!</b>")
-					congelar(name)
-				elseif powerups.t1 == 8 then
-					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>QUEIJO!</b>")
-					queijo(name)
-				elseif powerups.t1 == 9 then
-					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>REDUZIR!</b>")
-					reduzir(name)
-				end
+				activatePowerup(name,math.random(1,9),1)
 			end
 		end
 		if tfm.get.room.playerList[name].x > powerups.x2-10 and tfm.get.room.playerList[name].x < powerups.x2+34 then
 			if tfm.get.room.playerList[name].y > powerups.y2-10 and tfm.get.room.playerList[name].y < powerups.y2+34 then
-				powerups.x2=-1; powerups.y2=-1;
-				ui.removeTextArea(101,nil)
-				if powerups.t2 == 1 then
-					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>CAIXA!</b>")
-					dropPlayer(name)
-				elseif powerups.t2 == 2 then
-					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>OXIGÊNIO!</b>")
-					data[name].o=data[name].o+40
-					if data[name].o > 100 then
-						data[name].o=100
-					end
-				elseif powerups.t2 == 3 then
-					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>VELOCIDADE!</b>")
-					if tfm.get.room.playerList[name].isFacingRight == true then
-						tfm.exec.movePlayer(name,0,0,true,120,0,false)
-					else
-						tfm.exec.movePlayer(name,0,0,true,-120,0,false)
-					end
-				elseif powerups.t2 == 4 then
-					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>AFUNDAR!</b>")
-					timer=1
-				elseif powerups.t2 == 5 then
-					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>MEEP!</b>")
-					tfm.exec.giveMeep(name,true)
-				elseif powerups.t2 == 6 then
-					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>SUFOCO!</b>")
-					data[name].o=data[name].o-18
-					if data[name].o < 1 then
-						data[name].o=1
-					end
-				elseif powerups.t2 == 7 then
-					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>CONGELAR!</b>")
-					congelar(name)
-				elseif powerups.t2 == 8 then
-					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>QUEIJO!</b>")
-					queijo(name)
-				elseif powerups.t2 == 9 then
-					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>REDUZIR!</b>")
-					reduzir(name)
-				end
+				activatePowerup(name,math.random(1,9),2)
 			end
 		end
 		if tfm.get.room.playerList[name].x > powerups.x3-10 and tfm.get.room.playerList[name].x < powerups.x3+34 then
 			if tfm.get.room.playerList[name].y > powerups.y3-10 and tfm.get.room.playerList[name].y < powerups.y3+34 then
-				powerups.x3=-1; powerups.y3=-1;
-				ui.removeTextArea(102,nil)
-				if powerups.t3 == 1 then
-					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>CAIXA!</b>")
-					dropPlayer(name)
-				elseif powerups.t3 == 2 then
-					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>OXIGÊNIO!</b>")
-					data[name].o=data[name].o+40
-					if data[name].o > 100 then
-						data[name].o=100
-					end
-				elseif powerups.t3 == 3 then
-					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>VELOCIDADE!</b>")
-					if tfm.get.room.playerList[name].isFacingRight == true then
-						tfm.exec.movePlayer(name,0,0,true,120,0,false)
-					else
-						tfm.exec.movePlayer(name,0,0,true,-120,0,false)
-					end
-				elseif powerups.t3 == 4 then
-					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>AFUNDAR!</b>")
-					timer=1
-				elseif powerups.t3 == 5 then
-					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>MEEP!</b>")
-					tfm.exec.giveMeep(name,true)
-				elseif powerups.t3 == 6 then
-					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>SUFOCO!</b>")
-					data[name].o=data[name].o-18
-					if data[name].o < 1 then
-						data[name].o=1
-					end
-				elseif powerups.t3 == 7 then
-					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>CONGELAR!</b>")
-					congelar(name)
-				elseif powerups.t3 == 8 then
-					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>QUEIJO!</b>")
-					queijo(name)
-				elseif powerups.t3 == 9 then
-					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>REDUZIR!</b>")
-					reduzir(name)
-				end
+				activatePowerup(name,math.random(1,9),3)
 			end
 		end
 		if tfm.get.room.playerList[name].x > powerups.x4-10 and tfm.get.room.playerList[name].x < powerups.x4+34 then
 			if tfm.get.room.playerList[name].y > powerups.y4-10 and tfm.get.room.playerList[name].y < powerups.y4+34 then
-				powerups.x4=-1; powerups.y4=-1;
-				ui.removeTextArea(103,nil)
-				if powerups.t4 == 1 then
-					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>CAIXA!</b>")
-					dropPlayer(name)
-				elseif powerups.t4 == 2 then
-					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>OXIGÊNIO!</b>")
-					data[name].o=data[name].o+40
-					if data[name].o > 100 then
-						data[name].o=100
-					end
-				elseif powerups.t4 == 3 then
-					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>VELOCIDADE!</b>")
-					if tfm.get.room.playerList[name].isFacingRight == true then
-						tfm.exec.movePlayer(name,0,0,true,120,0,false)
-					else
-						tfm.exec.movePlayer(name,0,0,true,-120,0,false)
-					end
-				elseif powerups.t4 == 4 then
-					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>AFUNDAR!</b>")
-					timer=1
-				elseif powerups.t4 == 5 then
-					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>MEEP!</b>")
-					tfm.exec.giveMeep(name,true)
-				elseif powerups.t4 == 6 then
-					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>SUFOCO!</b>")
-					data[name].o=data[name].o-18
-					if data[name].o < 1 then
-						data[name].o=1
-					end
-				elseif powerups.t4 == 7 then
-					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>CONGELAR!</b>")
-					congelar(name)
-				elseif powerups.t4 == 8 then
-					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>QUEIJO!</b>")
-					queijo(name)
-				elseif powerups.t4 == 9 then
-					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>REDUZIR!</b>")
-					reduzir(name)
-				end
+				activatePowerup(name,math.random(1,9),4)
 			end
 		end
 	end
@@ -432,7 +325,7 @@ function eventLoop(p,r)
 	loop=loop+0.5
 	time_passed=math.ceil(p/1000)
 	time_remain=math.ceil(r/1000)
-	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v3.1.2</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
+	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v3.2.0</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
 	local m=math.floor(r/60000)
 	local s=math.floor((((m*60000)-r) * -1) / 1000)
 	ui.addTextArea(-1,"<font size='45'><font color='#222222'><font face='Trebuchet MS'><b><i>"..m..":"..s.."</b>",n,569,22,110,54,0,0,1.0,true)
@@ -466,8 +359,9 @@ function eventLoop(p,r)
 		end
 	end
 	if mode == "game" or mode == "hide" then
-		ui.addTextArea(31,"<font size='45'><font color='#222222'><font face='Trebuchet MS'><b><i>"..alives.."</b>",n,135,22,70,54,0,0,1.0,true)
-		ui.addTextArea(30,"<font size='45'><font color='#d0d0d0'><font face='Trebuchet MS'><b><i>"..alives.."</b>",n,132,19,70,54,0,0,1.0,true)
+		local lives=alives-1
+		ui.addTextArea(31,"<font size='45'><font color='#222222'><font face='Trebuchet MS'><b><i>"..lives.."</b>",n,135,22,70,54,0,0,1.0,true)
+		ui.addTextArea(30,"<font size='45'><font color='#d0d0d0'><font face='Trebuchet MS'><b><i>"..lives.."</b>",n,132,19,70,54,0,0,1.0,true)
 		if timer > 0 then
 			timer=timer-0.5
 			tfm.exec.setWorldGravity(0,22)
@@ -564,17 +458,16 @@ function eventLoop(p,r)
 	if r <= 1000 and mode == "game" then
 		tfm.exec.setGameTime(15)
 		mode="end"
-		local lives=0
 		for n,p in next,tfm.get.room.playerList do
 			if not tfm.get.room.playerList[n].isShaman and not tfm.get.room.playerList[n].isDead then
-				lives=lives+1
 				tfm.exec.giveCheese(n)
 				tfm.exec.playerVictory(n)
 			end
 		end
 		tfm.exec.killPlayer(shaman)
 		shaman=""
-		showMessage("<VP>Tempo esgotado! <b>"..alives.."</b> ratos sobreviveram! Iniciando nova partida...")
+		local final_a=alives-1
+		showMessage("<VP>Tempo esgotado! <b>"..final_a.."</b> ratos sobreviveram! Iniciando nova partida...")
 		ui.removeTextArea(300,n)
 	end
 	if p >= 5000 and p <= 6125 then
