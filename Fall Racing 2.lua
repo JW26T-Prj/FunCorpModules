@@ -9,7 +9,7 @@ tfm.exec.setRoomMaxPlayers(25)
 xml2='';creator="";position=0;objective=50;enabled=false;map="";
 mapas={"@7411648","@7568910","@7410842","@7568917","@7568919","@7568922","@7568923","@7568928","@7568964","@7568967","@7568965","@7354962","@7569413","@7721624","@6621726","@6316396"}
 system.disableChatCommandDisplay("obj")
-lobby="@7404106"
+lobby="@7405103"
 changed=false
 function showMessage(message,name)
 	temp_text=string.gsub(message,"<b>","")
@@ -39,8 +39,8 @@ function eventNewGame()
 			ui.removeTextArea(0,nil)
 		end
 	else
-		ui.addTextArea(10,"<font face='Eras Demi ITC'><font color='#00ffff'><font size='47'>Fall Racing 2.4",nil,330,42,400,100,0,0,1.0,true)
-		ui.setMapName("Welcome to Fall Racing 2.4! Script made by <b>Zed#9431</b>.<")
+		ui.addTextArea(10,"<font face='Eras Demi ITC'><font color='#ff8000'><font size='47'>Fall Racing 2.5",nil,40,42,400,100,0,0,1.0,true)
+		ui.setMapName("<N>Welcome to <J>Fall Racing 2.5! <N>Script made by <R><b>Zed#9431</b>.<")
 		tfm.exec.setGameTime(60)
 	end
 end
@@ -48,14 +48,14 @@ function eventLoop(p,f)
 	if p >= 5000 and p <= 6000 and changed == false and enabled == true then
 		tfm.exec.newGame(xml2)
 		changed=true
-		ui.setMapName("<J>#fall 2.4   <BL>|   <J>"..creator.." <BL>- "..map.."   <BL>|   <J>Objective : <J>"..objective.." points<")
+		ui.setMapName("<J>#fall 2.5   <BL>|   <J>"..creator.." <BL>- "..map.."   <BL>|   <J>Objective : <J>"..objective.." points<")
 	end
 	if f <= 1 and enabled == true then
 		changed=false
 		tfm.exec.newGame(mapas[math.random(#mapas)])
 	end
 	if enabled == false and f >= 1000 then
-		ui.addTextArea(11,"<font face='Eras Demi ITC'><font size='18'><font color='#ffff00'>Get ready! The match will start on "..math.floor(f/1000).." seconds.",nil,220,370,600,32,0,0,1.0,true)
+		ui.addTextArea(11,"<font face='Eras Demi ITC'><font size='18'><font color='#ffff00'>Get ready! The match will start on "..math.floor(f/1000).." seconds.",nil,220,375,600,32,0,0,1.0,true)
 	end
 	if f <= 10000 and f >= 9000 and enabled == false then
 		for name,player in pairs(tfm.get.room.playerList) do
@@ -103,8 +103,8 @@ function eventPlayerDied(name)
 end
 function eventNewPlayer(name)
 	if enabled == false then
-		ui.addTextArea(10,"<font face='Eras Demi ITC'><font color='#00ffff'><font size='47'>Fall Racing 2.4",nil,330,42,400,100,0,0,1.0,true)
-		ui.setMapName("Welcome to Fall Racing 2.4! Script made by <b>Zed#9431</b>.<")
+		ui.addTextArea(10,"<font face='Eras Demi ITC'><font color='#00ffff'><font size='47'>Fall Racing 2.5",nil,330,42,400,100,0,0,1.0,true)
+		ui.setMapName("<N>Welcome to <J>Fall Racing 2.5! <N>Script made by <R><b>Zed#9431</b>.<")
 	end
 	showMessage("<J>Welcome to the #fall2 module!<br><br>The objective of this room is fall to the end of the map!<br>The player that score more points will win the game!<br><br><R>WARNING: This script require at least 1.6GB of RAM to work without problems.<J><br><br>Script made by Zed#9431",name)
 end
