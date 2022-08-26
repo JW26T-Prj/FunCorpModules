@@ -1,8 +1,12 @@
+-- Script de Jogo das 3 Pistas, originalmente feito por Jessiewind26#2546, e agora gerenciado por Hecarimjhenx#0000.
+-- Adicione seu nome na variável 'admin' abaixo para ter acesso a todos os comandos.
+admin="";
+
 for _,f in next,{"AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand","AfkDeath","AllShamanSkills"} do
 	tfm.exec["disable"..f](true)
 end
-tfm.exec.setRoomMaxPlayers(30)
-pergunta=0; valendo=false; limite=7; dica10=""; dica9=""; dica8=""; resposta=""; data={}; admin=""; tempo=999; loop=0;
+if not tfm.get.room.isTribeHouse then tfm.exec.setRoomMaxPlayers(30) end
+pergunta=0; valendo=false; limite=7; dica10=""; dica9=""; dica8=""; resposta=""; data={}; tempo=999; loop=0;
 for _,f in next,{"help","skip","shaman","limite"} do
 	system.disableChatCommandDisplay(f)
 end
@@ -53,6 +57,15 @@ else
 end
 tfm.exec.newGame(mapa)
 rato=0
+function showMessage(message,name)
+	temp_text=string.gsub(message,"<b>","")
+	temp_text=string.gsub(temp_text,"</b>","")
+	if tfm.get.room.isTribeHouse == false then
+		tfm.exec.chatMessage(message,name)
+	else
+		ui.addPopup(0,0,temp_text,name,250,75,400,true)
+	end
+end
 function eventNewPlayer(name)
 	newData={
 		["played"]=0;
@@ -60,10 +73,12 @@ function eventNewPlayer(name)
 	data[name]=newData;
 	tfm.exec.bindKeyboard(name,71,true,true)
 	tfm.exec.respawnPlayer(name)
-	tfm.exec.chatMessage(text.welcome,name)
+	showMessage(text.welcome,name)
 	if string.find(tfm.get.room.name,name) then
 		admin=name
-		tfm.exec.chatMessage("You are the administrator of this room. Your commands:<br>!skip = Skip the current shaman<br>!limite [number] = Change the limit of questions<br>!shaman [username] = Change the shaman",name)
+	end
+	if admin == name then
+		showMessage("You are the administrator of this room. Your commands:<br>!skip = Skip the current shaman<br>!limite [number] = Change the limit of questions<br>!shaman [username] = Change the shaman",name)
 	end
 end
 for name,player in pairs(tfm.get.room.playerList) do
@@ -72,7 +87,7 @@ end
 function eventSummoningEnd(name,type,x,y,angle,vx,vy,obj)
 	for name,player in pairs(tfm.get.room.playerList) do
 		if tfm.get.room.playerList[name].isShaman then
-			tfm.exec.chatMessage("<ROSE>Isn't allowed the use of shaman objects in this module.",nil)
+			showMessage("<ROSE>Isn't allowed the use of shaman objects in this module.",nil)
 			tfm.exec.newGame(mapa)
 		end
 	end
@@ -81,7 +96,7 @@ function eventLoop(p,f)
 	loop=loop+1
 	tempo=math.ceil(f/1000)
 	if f < 2000 and valendo == true then
-		tfm.exec.chatMessage(""..text.time..""..resposta.."",nil)
+		showMessage(""..text.time..""..resposta.."",nil)
 		ui.removeTextArea(1,nil)
 		ui.removeTextArea(2,nil)
 		ui.removeTextArea(3,nil)
@@ -89,11 +104,11 @@ function eventLoop(p,f)
 		tfm.exec.setGameTime(63)
 	end
 	if pergunta >= limite and valendo == false then
-		tfm.exec.chatMessage(text.fim,nil)
+		showMessage(text.fim,nil)
 		tfm.exec.newGame(mapa)
 	end
 	if f <= 100 then
-		tfm.exec.chatMessage(text.shaman,nil)
+		showMessage(text.shaman,nil)
 		tfm.exec.newGame(mapa)
 	end
 	if loop == 10 then
@@ -110,12 +125,12 @@ function eventLoop(p,f)
 	if valendo == true and f <= 39000 then
 		ui.addTextArea(3,"<font size='15'><p align='center'><font face='Consolas,Lucida Console'><N>"..text.c8p.." <b>"..dica8.."",nil,5,98,780,26,0x000001,0x000001,0.9,true)
 	end
-	ui.setMapName("<J>"..text.module.."   <G>|   <N>"..text.question.." : <V>"..pergunta.."/"..limite.."   <G>|   <N>"..text.time.." : <V>"..tempo.."s   <G>|   <N>"..text.version.." <VP><b>RTM 3110.029</b><")
+	ui.setMapName("<J>"..text.module.."   <G>|   <N>"..text.question.." : <V>"..pergunta.."/"..limite.."   <G>|   <N>"..text.time.." : <V>"..tempo.."s   <G>|   <N>"..text.version.." <VP><b>RTM 3111.030</b><")
 end
 function eventChatCommand(name,message)
 	if message == "skip" then
 		if name == "Hecarimjhenx#0000" or name == "Jannawindmax#0000" or name == "Forzaldenon#0000" or name == admin then
-			tfm.exec.chatMessage(text.cancel,nil)
+			showMessage(text.cancel,nil)
 			tfm.exec.newGame(mapa)
 		end
 	end
@@ -131,7 +146,7 @@ function eventChatCommand(name,message)
 		end
 	end
 	if message == "help" then
-		tfm.exec.chatMessage(text.help,name)
+		showMessage(text.help,name)
 	end
 end
 function eventNewGame()
@@ -152,7 +167,7 @@ function eventNewGame()
 		if tfm.get.room.playerList[name].isShaman then
 			if data[name] then
 				data[name].played=1
-				tfm.exec.chatMessage(text.question,name)
+				showMessage(text.question,name)
 			end
 		end
 		tfm.exec.bindKeyboard(name,71,true,true)
@@ -172,13 +187,13 @@ function eventChatMessage(name,message)
 			end
 			valendo=false
 			tfm.exec.setGameTime(64)
-			tfm.exec.chatMessage("<VP>"..name.." "..text.win.." "..string.upper(resposta).."",nil)
+			showMessage("<VP>"..name.." "..text.win.." "..string.upper(resposta).."",nil)
 			resposta=""
 			ui.removeTextArea(1,nil)
 			ui.removeTextArea(2,nil)
 			ui.removeTextArea(3,nil)
 		else
-			tfm.exec.chatMessage(text.cancel,name)
+			showMessage(text.cancel,name)
 			valendo=false
 			tfm.exec.newGame(mapa)
 			resposta=""
