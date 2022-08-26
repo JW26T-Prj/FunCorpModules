@@ -1,22 +1,21 @@
 dados2={type = 12,width = 10,height = 3000,foregound = 0,friction = 0.0,restitution = 0.0,angle = 0,color = 0x6a7495,miceCollision = true,groundCollision = true,dynamic = false}
-tfm.exec.disableAutoNewGame(true)
-tfm.exec.disableAutoShaman(true)
-tfm.exec.disableAutoTimeLeft(true)
-tfm.exec.disableAutoScore(true)
-tfm.exec.disableAfkDeath(true)
-tfm.exec.disableMortCommand(true)
-tfm.exec.disableMinimalistMode(true)
-tfm.exec.disableDebugCommand(true)
-tfm.exec.setRoomMaxPlayers(30)
+for _,f in next,{"AutoScore","AutoNewGame","AutoTimeLeft","AutoScore","MortCommand","AfkDeath","DebugCommand","MinimalistMode"} do
+	tfm.exec["disable"..f](true)
+end
+for _,g in next,{"obj","bonus","new","perfil","p","rank"} do
+	system.disableChatCommandDisplay(g)
+end
+tfm.exec.setRoomMaxPlayers(35)
 loop=0; pos=0; first=""; objetivo=300; disparador=true; bonus=true; valendo=false; tempo=60; lvexp=0;
 mapas={3600369,3618133,3777799,3842712,3880734,3973560,4079653,6974226,4289602,4459045,5013105,5032380}
-system.disableChatCommandDisplay("obj")
-system.disableChatCommandDisplay("bonus")
-system.disableChatCommandDisplay("new")
-system.disableChatCommandDisplay("perfil")
-system.disableChatCommandDisplay("p")
-system.disableChatCommandDisplay("rank")
 p={}
+function showMessage(message,name)
+	if tfm.get.room.isTribeHouse == false then
+		tfm.exec.chatMessage(message,name)
+	elseif tfm.get.room.isTribeHouse == true then
+		ui.addPopup(0,0,message,name,250,160,300)
+	end
+end
 function eventNewPlayer(name)
 	p[name] = {
 		wins = 0,
@@ -24,7 +23,7 @@ function eventNewPlayer(name)
 		firsts = 0,
 		pontos = 0
 		}
-	tfm.exec.chatMessage("<J>Module temporário: Defilante Evolution v0.9.95<br><N>Vá até o final do mapa e chegue antes de todo mundo!<br>Comandos: !help, !p e !rank.<br><ROSE>Module criado e traduzido por Fosfus7heads#0000.",name)
+	showMessage("<J>Module temporário: Defilante Evolution v1.0<br><N>Vá até o final do mapa e chegue antes de todo mundo!<br>Comandos: !help, !p e !rank.<br><ROSE>Module criado por Fosfus7heads#0000.",name)
 end
 function split(t,s)
     	local a={}
@@ -48,7 +47,7 @@ function eventChatCommand(name,message)
         		ui.addTextArea(2,"<font size='12'>Vitórias: "..p[nome].wins.."<br>Rodadas: "..p[nome].rodadas.."<br>Firsts: "..p[nome].firsts.."<br>Pontos: "..p[nome].pontos.."",name,255,230,290,70,0x0e232b,0x0e232b,nil,true)
         		ui.addTextArea(3,"<R><p align='center'><B><a href='event:fechar'>Fechar</a>",name,255,300,290,20,0x3c5063,0x3c5063,nil,true)
         	else
-        		tfm.exec.chatMessage("<R>"..nome.." não se encontra em sala.</R>",name)
+        		showMessage("<R>"..nome.." não se encontra em sala.</R>",name)
        		end
 	end
 	if arg[1] == "rank" then
@@ -68,7 +67,7 @@ function eventChatCommand(name,message)
 	if(message:sub(1,3) == "obj") then
 		if name == "Fosfus7heads#0000" then
 			objetivo=tonumber(message:sub(5))
-			tfm.exec.chatMessage("<J>Objetivo da partida alterado para: "..objetivo,nil)
+			showMessage("<J>Objetivo da partida alterado para: "..objetivo,nil)
 		end
 	end
 	if message == "help" then
@@ -122,7 +121,7 @@ function eventLoop(p,f)
 			winner=name
 			valendo=false
 			tfm.exec.newGame('@6973961')
-			tfm.exec.chatMessage("<b>Parabéns!</b> <CH>"..winner.." <N>venceu a partida com "..tfm.get.room.playerList[winner].score.." pontos!")
+			showMessage("<b>Parabéns!</b> <CH>"..winner.." <N>venceu a partida com "..tfm.get.room.playerList[winner].score.." pontos!")
 			ui.addTextArea(4785,"<font color='#000001'><font size='48'><font face='Comic Sans MS'>Defilante Evolution",nil,170,50,680,100,0,0,1.0,true)
 			ui.addTextArea(4784,"<font color='#000001'><font size='20'>Script feito por Fosfus7heads#0000",nil,240,120,420,100,0,0,1.0,true)
 			if p > 10000 then
