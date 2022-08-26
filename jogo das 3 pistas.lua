@@ -110,7 +110,7 @@ function eventLoop(p,f)
 	if valendo == true and f <= 39000 then
 		ui.addTextArea(3,"<font size='15'><p align='center'><font face='Consolas,Lucida Console'><N>"..text.c8p.." <b>"..dica8.."",nil,5,98,780,26,0x000001,0x000001,0.9,true)
 	end
-	ui.setMapName("<J>"..text.module.."   <G>|   <N>"..text.question.." : <V>"..pergunta.."/"..limite.."   <G>|   <N>"..text.time.." : <V>"..tempo.."s   <G>|   <N>"..text.version.." <VP><b>RTM 3009.028</b><")
+	ui.setMapName("<J>"..text.module.."   <G>|   <N>"..text.question.." : <V>"..pergunta.."/"..limite.."   <G>|   <N>"..text.time.." : <V>"..tempo.."s   <G>|   <N>"..text.version.." <VP><b>RTM 3110.029</b><")
 end
 function eventChatCommand(name,message)
 	if message == "skip" then
@@ -145,6 +145,10 @@ function eventNewGame()
 	tfm.exec.setGameTime(64)
 	rato=0
 	for name,player in pairs(tfm.get.room.playerList) do
+		if name:sub(1,1) == "*" then
+		   	tfm.exec.killPlayer(name)
+		   	showMessage("<R>Souris aren't allowed to play on this module. Create an account or log in to play this game.",name)
+		end
 		if tfm.get.room.playerList[name].isShaman then
 			if data[name] then
 				data[name].played=1
