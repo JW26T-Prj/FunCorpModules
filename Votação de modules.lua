@@ -1,9 +1,9 @@
 -- FunCorp, este script é usado para que os ratos possam votar em até 6 scripts diferentes.
--- Substitua na linha 6 do código na variável 'admin' o meu nome pelo seu nickname com a #tag. Ao rodar o código, digite !start e escolha os scripts e aguarde a votação.
--- Caso você também queira, substitua na linha 7 do código a variável 'tempo', para definir a quantidade de tempo até o resultado final.
+-- Substitua na linha 6 do código na variável 'admin' o meu nome pelo seu nickname com a #tag. Ao rodar o código, digite !start, digite os nomes dos scripts e aguarde a votação.
+-- Caso você queira, antes de rodar o código, substitua na linha 7 do código a variável 'tempo', para definir a quantidade de tempo para votar.
 -- Se por algum motivo você precise reiniciar a votação, digite !reset para reiniciar tudo. Neste caso, volte a definir os scripts novamente.
 -- As instruções também serão exibidas no chat quando o código for iniciado. NÃO SE ESQUEÇA DE COLOCAR SEU NOME ABAIXO!
-admin="Rakan_raster#0000"
+admin=""
 tempo=60
 scripts={name1="",name2="",name3="",name4="",name5="",name6="",count1=0,count2=0,count3=0,count4=0,count5=0,count6=0}
 for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","AfkDeath"} do
@@ -12,10 +12,11 @@ end
 for i=1,6 do
 	system.disableChatCommandDisplay(tostring(i))
 end
+for _,c in next,{"start","reset"} do
+	system.disableChatCommandDisplay(c)
+end
 script=0; p_id=100;
 iniciado=false
-system.disableChatCommandDisplay("start")
-system.disableChatCommandDisplay("reset")
 data={}
 function showMessage(message,name)
 	temp_text=string.gsub(message,"<b>","")
@@ -57,7 +58,7 @@ function eventPlayerDied(name)
 end
 function eventNewGame()
 	iniciado=false; p_id=100;
-	ui.setMapName("<N>Votação de Modules <VP>v2.3")
+	ui.setMapName("<N>Votação de Modules <VP>v2.4")
 	scripts={name1="",name2="",name3="",name4="",name5="",name6="",count1=0,count2=0,count3=0,count4=0,count5=0,count6=0}
 	showMessage("FunCorp, este script é usado para que os ratos possam votar em até 6 scripts diferentes.<br><br>Digite !start, escolha os scripts e aguarde a votação.<br>Se por algum motivo você precise reiniciar a votação, digite !reset. Neste caso, volte a definir os scripts novamente. Para alterar o tempo de votação, siga as instruções no começo do código.",admin)
 	for name,player in pairs(tfm.get.room.playerList) do
