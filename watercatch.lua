@@ -61,6 +61,18 @@ function showWater(name)
 	for b=0,1 do
 		tfm.exec.addImage("18200692b61.jpg","?1",-10,545+(b*2992),name,4.5,4)
 	end
+	for w=1,6 do
+		tfm.exec.addImage("181ba85ccc2.png","!1",math.random(50,5000),math.random(-100,200),name,0.75,0.75)
+	end
+	for x=1,6 do
+		tfm.exec.addImage("181ba86195e.png","!1",math.random(50,5000),math.random(-100,200),name,0.75,0.75)
+	end
+	for y=1,6 do
+		tfm.exec.addImage("181ba86655c.png","!1",math.random(50,5000),math.random(-100,200),name,0.75,0.75)
+	end
+	for z=1,6 do
+		tfm.exec.addImage("181ba86b15a.png","!1",math.random(50,5000),math.random(-100,200),name,0.75,0.75)
+	end
 end
 function eventPlayerDied(n)
 	if changed == true then
@@ -123,7 +135,7 @@ function eventChatCommand(name,message)
 		showMenu(name,0xf0f0f0,140,90,520,130,"Créditos","As seguintes pessoas ajudaram no desenvolvimento deste module:<br><br><ROSE><b>• Morganadxana#0000</b><N> - Desenvolvedora do código<br><ROSE><b>• Akwimos#1937</b><N> - Tradução do código original para o Português<br><ROSE><b>• Spectra_phantom#6089</b><N> - Ideia original, criação do mapa e das artes")
 	end
 	if message == "changelog" then
-		showMenu(name,0xf0f0f0,140,90,520,125,"Changelog da Versão 3.3.0","• Diversas mudanças no mapa<br>• Adição de novas decorações<br>• Mudanças nos spawn points<br>• Adição de sons!")
+		showMenu(name,0xf0f0f0,140,90,520,125,"Changelog da Versão 3.3.1","• Diversas mudanças no mapa<br>• Adição de novas decorações<br>• Mudanças nos spawn points<br>• Adição de sons!<br>• Adição de novas nuvens no mapa")
 	end
 	if (message:sub(0,2) == "tc") then
 		if tfm.get.room.playerList[name].isShaman == false then
@@ -337,7 +349,7 @@ function eventLoop(p,r)
 	loop=loop+0.5
 	time_passed=math.ceil(p/1000)
 	time_remain=math.ceil(r/1000)
-	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v3.3.0</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
+	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v3.3.1</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
 	local m=math.floor(r/60000)
 	local s=math.floor((((m*60000)-r) * -1) / 1000)
 	ui.addTextArea(-1,"<font size='45'><font color='#222222'><font face='Trebuchet MS'><b><i>"..m..":"..s.."</b>",n,569,22,110,54,0,0,1.0,true)
