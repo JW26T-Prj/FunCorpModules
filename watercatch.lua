@@ -18,7 +18,7 @@ function eventNewGame()
 end
 
 tfm.exec.setRoomMaxPlayers(40)
-shaman=""; ratos=0; alives=0; cannons=6; z=0; data={}; mode="wait"; loop=0; timer=0; xml=''; time_passed=0; time_remain=0; changed=false; xml2='';
+shaman=""; ratos=0; alives=0; cannons=8; z=0; data={}; mode="wait"; loop=0; timer=0; xml=''; time_passed=0; time_remain=0; changed=false; xml2='';
 powerups={x1=-1,x2=-1,x3=-1,x4=-1,y1=-1,y2=-1,y3=-1,y4=-1,t1=0,t2=0,t3=0,t4=0}
 function showMessage(message,name)
 	temp_text=string.gsub(message,"<b>","")
@@ -54,12 +54,12 @@ function verifyAdmin(name)
 end
 function showWater(name)
 	for i=0,1 do
-		tfm.exec.addImage("18200689108.png", "?1", -800+(i*7180), 487, name, 1.0, 1.0, 0, 1.0)
-		tfm.exec.addImage("18200689108.png", "!1", -800+(i*7180), 487, name, 1.0, 1.0, 0, 0.7)
-		tfm.exec.addImage("1820068de62.png", "!1", -800+(i*7180), 545, name, 6, 7.5, 0, 1)
+		tfm.exec.addImage("181f9cf5fc5.png", "?1", -800+(i*7180), 487, name, 1.0, 1.0, 0, 1.0)
+		tfm.exec.addImage("181f9cf5fc5.png", "!1", -800+(i*7180), 487, name, 1.0, 1.0, 0, 0.7)
+		tfm.exec.addImage("181f9cfac65.png", "!1", -800+(i*7180), 545, name, 10, 18, 0, 1.0)
 	end
 	for b=0,1 do
-		tfm.exec.addImage("18200692b61.jpg","?1",-10,545+(b*2992),name,4.5,4)
+		tfm.exec.addImage("181f9cff961.jpg","?1",-10,545+(b*3440),name,4.5,4)
 	end
 	for w=1,6 do
 		tfm.exec.addImage("181ba85ccc2.png","!1",math.random(50,5000),math.random(-100,200),name,0.75,0.75)
@@ -126,16 +126,16 @@ function eventNewPlayer(name)
 end
 function eventChatCommand(name,message)
 	if message == "help" or message == "ajuda" then
-		showMenu(name,0xf0f0f0,140,90,520,265,"Ajuda do Module #watercatch","O objetivo é bem simples: <b>Fugir do shaman</b>, se escondendo dentro do profundo lago e tomando cuidado para não morrer afogado!<br><R><b>Shamans, não esqueçam de se mexer, ou irão morrer AFK!</b><br><br><VP>Os quadrados marcados por <ROSE>'!'<VP> são powerups, que geram efeitos aleatórios nos ratos.<J><br>Estes powerups podem ser acionados pressionando ESPAÇO em cima deles.<br><N>Você pode ver os possíveis efeitos dos powerups indo no Menu e clicando em Powerups. Vale ressaltar que eles funcionam apenas depois que o shaman for liberado.<br><br><N>Caso você seja shaman, você tem um limite de <b>6</b> objetos que podem ser utilizados. Exceder este limite fará com que a partida acabe.")
+		showMenu(name,0xf0f0f0,140,90,520,265,"Ajuda do Module #watercatch","O objetivo é bem simples: <b>Fugir do shaman</b>, se escondendo dentro do profundo lago e tomando cuidado para não morrer afogado!<br><R><b>Shamans, não esqueçam de se mexer, ou irão morrer AFK!</b><br><br><VP>Os quadrados marcados por <ROSE>'!'<VP> são powerups, que geram efeitos aleatórios nos ratos.<J><br>Estes powerups podem ser acionados pressionando ESPAÇO em cima deles.<br><N>Você pode ver os possíveis efeitos dos powerups indo no Menu e clicando em Powerups. Vale ressaltar que eles funcionam apenas depois que o shaman for liberado.<br><br><N>Caso você seja shaman, você tem um limite de <b>8</b> objetos que podem ser utilizados. Exceder este limite fará com que a partida acabe.")
 	end
 	if message == "powerups" then
-		showMenu(name,0xf0f0f0,140,76,520,315,"Powerups do Module #watercatch","<font size='11'>Os seguintes powerups estão disponíveis no momento:<br><ROSE><b>• CAIXA</b><N><br>Faz aparecer uma caixa de acompanhamento em cima de você.<br><ROSE><b>• OXIGÊNIO</b><N><br>Aumenta o seu nível de oxigênio em 40%.<br><ROSE><b>• VELOCIDADE</b><N><br>Te dá um grande impulso de velocidade.<br><ROSE><b>• AFUNDAR</b><N><br>Cria uma anomalia temporária que leva todos os ratos em direção ao fundo do lago.<br><ROSE><b>• MEEP</b><N><br>Te dá o poder de usar o Meep!<br><ROSE><b>• SUFOCO</b><N><br>Diminui o seu nível de oxigênio em 25%. Caso seu nível esteja abaixo disso e você pegue este powerup, você morrerá afogado.<br><ROSE><b>• CONGELAR</b><N><br>Congela o seu rato.<br><ROSE><b>• QUEIJO</b><N><br>Dá queijo para o seu rato. Caso você esteja dentro do oceano, você provavelmente será levado para o fundo dele.<br><ROSE><b>• REDUZIR</b><N><br>Reduz temporariamente o tamanho do seu rato.")
+		showMenu(name,0xf0f0f0,140,76,520,315,"Powerups do Module #watercatch","<font size='11'>Os seguintes powerups estão disponíveis no momento:<br><ROSE><b>• CAIXA</b><N><br>Faz aparecer uma caixa de acompanhamento em cima de você.<br><ROSE><b>• OXIGÊNIO</b><N><br>Aumenta o seu nível de oxigênio em 40%.<br><ROSE><b>• VELOCIDADE</b><N><br>Te dá um grande impulso de velocidade.<br><ROSE><b>• AFUNDAR</b><N><br>Cria uma anomalia temporária que leva todos os ratos em direção ao fundo do oceano.<br><ROSE><b>• MEEP</b><N><br>Te dá o poder de usar o Meep!<br><ROSE><b>• SUFOCO</b><N><br>Diminui o seu nível de oxigênio em 25%. Caso seu nível esteja abaixo disso e você pegue este powerup, você morrerá afogado.<br><ROSE><b>• CONGELAR</b><N><br>Congela o seu rato.<br><ROSE><b>• QUEIJO</b><N><br>Dá queijo para o seu rato. Caso você esteja dentro do oceano, você provavelmente será levado para o fundo dele.<br><ROSE><b>• REDUZIR</b><N><br>Reduz temporariamente o tamanho do seu rato.")
 	end
 	if message == "creditos" then
 		showMenu(name,0xf0f0f0,140,90,520,130,"Créditos","As seguintes pessoas ajudaram no desenvolvimento deste module:<br><br><ROSE><b>• Morganadxana#0000</b><N> - Desenvolvedora do código<br><ROSE><b>• Akwimos#1937</b><N> - Tradução do código original para o Português<br><ROSE><b>• Spectra_phantom#6089</b><N> - Ideia original, criação do mapa e das artes")
 	end
 	if message == "changelog" then
-		showMenu(name,0xf0f0f0,140,90,520,125,"Changelog da Versão 3.3.1","• Diversas mudanças no mapa<br>• Adição de novas decorações<br>• Mudanças nos spawn points<br>• Adição de sons!<br>• Adição de novas nuvens no mapa")
+		showMenu(name,0xf0f0f0,140,90,520,130,"Changelog da Versão 3.4.0","• Correções de bugs nos sons<br>• Ajustes no consumo de oxigênio na água<br>• Adição de aviso de invocação de objetos<br>• Aumento do limite de objetos de 6 para 8<br>• Mudanças na água")
 	end
 	if (message:sub(0,2) == "tc") then
 		if tfm.get.room.playerList[name].isShaman == false then
@@ -165,6 +165,7 @@ function eventSummoningEnd(name,id,x,y)
 			showMessage("<VP>O shaman agora pode usar <b>"..cannons.."</b> objetos.")
 		elseif cannons == 0 then
 			showMessage("<VP>O shaman não pode mais usar objetos!")
+			showMessage("<R>Você não pode mais invocar objetos! Fazer isso ocasionará na sua morte e na perda de sua vez de shaman.",shaman)
 		else
 			showMessage("<R>O shaman excedeu o limite de objetos utilizáveis!")
 			tfm.exec.killPlayer(shaman)
@@ -291,7 +292,7 @@ function reset()
 		end
 		defineShaman()
 		ui.setBackgroundColor("#5FA9D4")
-		z=-1; cannons=6; mode="hide";
+		z=-1; cannons=8; mode="hide";
 		ui.removeTextArea(22,nil)
 		tfm.exec.setGameTime(60)
 	else
@@ -349,7 +350,7 @@ function eventLoop(p,r)
 	loop=loop+0.5
 	time_passed=math.ceil(p/1000)
 	time_remain=math.ceil(r/1000)
-	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v3.3.1</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
+	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v3.4.0</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
 	local m=math.floor(r/60000)
 	local s=math.floor((((m*60000)-r) * -1) / 1000)
 	ui.addTextArea(-1,"<font size='45'><font color='#222222'><font face='Trebuchet MS'><b><i>"..m..":"..s.."</b>",n,569,22,110,54,0,0,1.0,true)
@@ -413,7 +414,7 @@ function eventLoop(p,r)
 						if not tfm.get.room.playerList[n].isShaman then
 							tfm.exec.killPlayer(n)
 							tfm.exec.playSound("/deadmaze/monstres/m_4/attaque1.mp3", 90, nil, nil, n)
-							tfm.exec.playSound("/deadmaze/monstres/m_4/touche_0.mp3", 90, nil, nil, shaman)
+							tfm.exec.playSound("/deadmaze/monstres/m_4/touche_0.mp3", 60, nil, nil, shaman)
 						end
 					end
 				end
@@ -435,10 +436,11 @@ function eventLoop(p,r)
 						end
 						data[n].y=0
 					else
+						tfm.exec.playSound("/transformice/son/bulle2.mp3", 10, nil, nil, n)
 						if tfm.get.room.playerList[n].y <= 1200 then
-							data[n].o=data[n].o-0.3; data[n].c=0;
-						elseif tfm.get.room.playerList[n].y > 1200 and tfm.get.room.playerList[n].y <= 3500 then
 							data[n].o=data[n].o-0.4; data[n].c=0;
+						elseif tfm.get.room.playerList[n].y > 1200 and tfm.get.room.playerList[n].y <= 3500 then
+							data[n].o=data[n].o-0.6; data[n].c=0;
 						elseif tfm.get.room.playerList[n].y > 3500 then
 							data[n].o=data[n].o-0.8; data[n].c=0;
 						end
@@ -454,7 +456,6 @@ function eventLoop(p,r)
 		end
 		if mode == "game" or mode == "hide" then
 			if data[n].o > 30 then
-				tfm.exec.playSound("/transformice/son/bulle2.mp3", 20, nil, nil, n)
 				ui.addTextArea(10,"",n,8,390,(data[n].o*7.9),3,0xf0f0f0,0x808080,1.0,true)
 				data[n].d=0
 				tfm.exec.setNameColor(n,0xc2c2da)
@@ -503,7 +504,7 @@ function eventLoop(p,r)
 	end
 	if p >= 5000 and p <= 6125 then
 		for n,p in next,tfm.get.room.playerList do
-			if data[n] and data[n].yp == 334 then
+			if data[n] and tfm.get.room.playerList[n].y == 334 then
 				showMessage("<R>Aviso: Não há mais memória disponível para o Transformice. Para poder entrar neste mapa, saia do jogo e entre novamente.",name)
 			end
 		end
