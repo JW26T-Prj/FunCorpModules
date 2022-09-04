@@ -13,8 +13,8 @@ events_pt={"Fúria da Tormenta","Chuva de Meteoros","Anomalia Gravitacional","Qu
 events_en={"Wind Fury","Meteor Rain","Gravity Anomaly","Cheese for All"}
 power_d={p2={6,8,10,12},p3={12,14,16,18,20,22}}
 lang.br = {
-	mapname = "<N><b>#mountain</b>  <V>-  <N>versão <ROSE>v1.1.0   <G>|   <N>Desenvolvido por <J>Morganadxana#0000<",
-	enter = "<N>Bem-vindo ao module <J><b>#mountain!</b><br><N>Você tem 3 minutos para escalar a grande montanha que há pelo caminho!<br><br><ROSE>Versão v1.1.0 - desenvolvido por Morganadxana#0000<br><VP>O module foi atualizado! Para descobrir as novidades, digite !changelog.",
+	mapname = "<N><b>#mountain</b>  <V>-  <N>versão <ROSE>v1.1.1   <G>|   <N>Desenvolvido por <J>Morganadxana#0000<",
+	enter = "<N>Bem-vindo ao module <J><b>#mountain!</b><br><N>Você tem 3 minutos para escalar a grande montanha que há pelo caminho!<br><br><ROSE>Versão v1.1.1 - desenvolvido por Morganadxana#0000<br><VP>O module foi atualizado! Para descobrir as novidades, digite !changelog.",
 	newgame = "<N>Caso não saiba o que fazer neste module, digite <b>!help</b>.",
 	getready = "<J>Se prepare! A estrada para a montanha será liberada em breve!",
 	start = "<VP><b>E que comece a batalha!</b>",
@@ -44,8 +44,8 @@ lang.br = {
 	lyncdowryammer = "Sinto na pele a desgraça que ela passou. Perdeu todos os seus amigos durante uma chuva de meteoros...<br><br>Agora falando sério, os deuses escondem um segredo gigante nesta montanha. Poderes extremamente fortes estão presentes no topo dela.<br><br>No entanto, não se empolgue. Os mesmos deuses estão muito furiosos ultimamente, e não querem que ninguém suba..."
 }
 lang.en = {
-	mapname = "<N><b>#mountain</b>  <V>-  <N>version <ROSE>v1.1.0   <G>|   <N>Developed by <J>Morganadxana#0000<",
-	enter = "<N>Welcome to the <J><b>#mountain</b> module!<br><N>You have 3 minutes to scale the big mountain that is on your way!<br><ROSE>Version v1.1.0 - developed by Morganadxana#0000<br><V>Translation by Rakan_raster#0000<br><VP>If you want to see the latest updates, type !changelog.",
+	mapname = "<N><b>#mountain</b>  <V>-  <N>version <ROSE>v1.1.1   <G>|   <N>Developed by <J>Morganadxana#0000<",
+	enter = "<N>Welcome to the <J><b>#mountain</b> module!<br><N>You have 3 minutes to scale the big mountain that is on your way!<br><ROSE>Version v1.1.1 - developed by Morganadxana#0000<br><V>Translation by Rakan_raster#0000<br><VP>If you want to see the latest updates, type !changelog.",
 	newgame = "<N>If you don't know about this module, please type <b>!help</b>.",
 	getready = "<J>Get ready! The road to the mountain will be opened!",
 	start = "<VP><b>Go!</b>",
@@ -67,7 +67,7 @@ lang.en = {
 	nowinners = "<R>No winners!",
 	help = "<p align='center'><VP><b>Welcome to the #mountain module.</b><br><br><p align='left'><N>This game is very simple. The objective is scale the big mountain that is in front of you.<br><br>However, the mountain gods are furious, and can attack you with various events.<br><br>The match will end after 3 minutes, when there is no more alive mices or when someone reaches the top of the mountain.<br><br><ROSE>Bugs and problems? Report to Morganadxana#0000.",
 	powerups = "<G>• Wind Fury: <N>Strong winds hover around the mountain.<br><G>• Meteor Rain: <N>Some meteors will fall from the heaven, making you go down.<br><G>• Gravity Anomaly: <N>A strong gravitational field appears on the mountain, randomly changing the gravity of the map.<br><G>• Cheese For All: <N>All the players will have cheese.",
-	credits = "The following players helped on this module:<br><br><ROSE><b>• Morganadxana#0000</b><N> - Code developer and creator of the map<br><ROSE><b>• Rakan_raster#0000</b><N> - English translation<br><ROSE><b>• Spectra_phantom#6089</b><N> - Image creation",
+	credits = "The following players helped on this module:<br><br><ROSE><b>• Morganadxana#0000</b><N> - Code developer and creator of the map<br><ROSE><b>• Akwimos#1937</b><N> - English translation<br><ROSE><b>• Spectra_phantom#6089</b><N> - Image creation",
 	memory_error = "<R>Warning: There's no more available memory for Transformice. To continue playing this game, log out of your account and enter again.",
 	juliahenderson = "You don't think that I'm beautiful?",
 	andersondarther = "Don't be fooled by her. She always likes to show off...<br><br>Talking serious, the mountain gods are hiding a very powerful secret. Extremely powerful things are present on the peak of the mountain.<br><br>However, don't get carried. The same gods are very furious recently. They like that nobody scale the mountain...",
@@ -110,6 +110,11 @@ function defineVencedor()
 	return winner
 end
 function showImages(name)
+	for a=1,2 do tfm.exec.addImage("182d6e2305b.png","?1",math.random(1300,4700),math.random(-450,1000),name) end
+	for b=1,2 do tfm.exec.addImage("182d6e2305b.png","?1",math.random(1300,4700),math.random(-450,1000),name,-1,1) end
+	for c=1,3 do tfm.exec.addImage("182d6e1e45c.png","?1",math.random(1300,4700),math.random(-450,1000),name) end
+	for d=1,3 do tfm.exec.addImage("182d6e1e45c.png","?1",math.random(1300,4700),math.random(-450,1000),name,-1,1) end
+	for e=1,12 do tfm.exec.addImage("182d6e197bb.png","?1",math.random(1300,4700),math.random(-250,1200),name) end
 	for k=0,6 do
 		tfm.exec.addImage("181ba85ccc2.png","!1",math.random(1700,4300),math.random(4500,8600),name)
 	end
@@ -151,7 +156,7 @@ function eventChatCommand(name,command)
 		showMenu(name,0xb6e980,140,90,520,130,"Credits",text.credits)
 	end
 	if command == "changelog" then
-		showMenu(name,0x2578f6,140,70,520,280,"Changelog","<font size='11'>[v1.1.0]:<br>• Added cloud images<br>• Some modifications on the map<br><br>[v1.0.9]:<br>• Some modifications on the map<br><br>[v1.0.8]:<br>• Various modifications on the map<br>• Increased the game time by 20 seconds<br><br>[v1.0.7]:<br>• Slight changes on winning selection<br><br>[v1.0.6]:<br>• Fixed some issues with the end of game<br>• Added command hiding for !powerups, !changelog and !creditos<br>• Slight changes on the Universal Menu scheme")
+		showMenu(name,0x2578f6,140,70,520,260,"Changelog","<font size='11'>[v1.1.1]:<br>• Addiction of various decorations on the map<br><br>[v1.1.0]:<br>• Added cloud images<br>• Some modifications on the map<br><br>[v1.0.9]:<br>• Some modifications on the map<br><br>[v1.0.8]:<br>• Various modifications on the map<br>• Increased the game time by 20 seconds<br><br>[v1.0.7]:<br>• Slight changes on winning selection")
 	end
 end
 function eventNewPlayer(name)
