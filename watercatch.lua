@@ -199,9 +199,9 @@ function eventChatCommand(name,message)
 		showMenu(name,0xf0f0f0,140,90,520,100,"Changelog da Versão 3.5.2","• Não há mais shamans em questão. Isto foi adicionado para evitar uso de cubos de gelo.")
 	end
 	if (message:sub(0,2) == "tc") then
-		if not shaman == n then
+		if not shaman == name then
 			for n,_ in next,tfm.get.room.playerList do
-				if not shaman == n then
+				if not shaman == name then
 					showMessage("<R>• ["..name.."]</b> <N>"..message:sub(4).."",n)
 				end
 			end
