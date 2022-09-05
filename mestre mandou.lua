@@ -1,5 +1,5 @@
--- Código do module Mestre Mandou, versão RTM 18219.113, desenvolvido por Rakan_raster#0000.
--- Code of Simon Says module, version RTM 18219.113, developed by Rakan_raster#0000.
+-- Código do module Mestre Mandou, versão RTM 18320.114, desenvolvido por Rakan_raster#0000.
+-- Code of Simon Says module, version RTM 18320.114, developed by Rakan_raster#0000.
 
 -- Atenção: Antes de rodar este código em uma sala, verifique se esta versão coincide com a versão mais recente presente abaixo:
 -- https://raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/mestre%20mandou.lua
@@ -25,13 +25,13 @@ fc_cmds={1,2,4,5,6,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,28,30,31,32
 spiderweb={type = 15,width = 60,height = 60}
 acidg={type = 19,width = 30,height = 30}
 map_det={creator="",code=""}
-ninjas={"Akwimos#1937","Xayah_raster#7598","Forzaldenon#0000","Viego#0345","Skyymellu#0000"}
+ninjas={"Rakan_raster#0000","Akwimos#1937","Xayah_raster#7598","Forzaldenon#0000","Viego#0345","Skyymellu#0000"}
 fc_mode=false; xpos=0; xpos2=0;
 for _,f in next,{"command","pw","limit","run","fc","tc","ms","q","a","t","kill"} do
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>O objetivo deste module é muito simples: Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><VP>Tenha sempre cuidado com os comandos trolls!<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Jessiewind26#2546<br><br><ROSE>Versão RTM 18219.113",
+	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>O objetivo deste module é muito simples: Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><VP>Tenha sempre cuidado com os comandos trolls!<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Jessiewind26#2546<br><br><ROSE>Versão RTM 18320.114",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -136,9 +136,10 @@ lang.br = {
 	newcreator = "Qual é o novo nome do criador deste module?",
 	funcorp = "O modo FunCorp deste jogo está habilitado.",
 	admin = "Você é o administrador desta sala.<br><br>Se você for um membro FunCorp, digite !fc para habilitar o modo FunCorp.",
+	macro = " foi morto pelo sistema anti-macro do module.",
 }
 lang.en = {
-	welcome = "<N><b>Welcome to Simon Says module!</b><br>This module's goal is easy: Follow everything the game told and test your limits until the end!<br><VP>Be always aware to troll commands!<br><br><J><b>Script developed by Rakan_raster#0000</b><br>Original concept by Jessiewind26#2546<br>Translation by Draw#6691<br><br><ROSE>Version RTM 18219.113",
+	welcome = "<N><b>Welcome to Simon Says module!</b><br>This module's goal is easy: Follow everything the game told and test your limits until the end!<br><VP>Be always aware to troll commands!<br><br><J><b>Script developed by Rakan_raster#0000</b><br>Original concept by Jessiewind26#2546<br>Translation by Draw#6691<br><br><ROSE>Version RTM 18320.114",
 	dancar = "Dance!",
 	sentar = "Sit down!",
 	confetar = "Throw 5 confetti!",
@@ -244,9 +245,10 @@ lang.en = {
 	newcreator = "Who's the new nickname of the module creator?",
 	funcorp = "The FunCorp mode of this module is now enabled.",
 	admin = "You are the administrator of this room.<br><br>If you are a FunCorp member, type !fc to enable the FunCorp mode.",
+	macro = " is now dead by the anti-macro system.",
 }
 lang.fr = {
-	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Rakan_raster#0000</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 18219.113",
+	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Rakan_raster#0000</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 18320.114",
 	dancar = "Danse !",
 	sentar = "Assis !",
 	confetar = "Lance 5 fois des confettis !",
@@ -351,6 +353,7 @@ lang.fr = {
 	newcreator = "Qui est le nouveau nom de créateur de cette module?",
 	funcorp = "The FunCorp mode of this module is now enabled.",
 	admin = "You are the administrator of this room.<br><br>If you are a FunCorp member, type !fc to enable the FunCorp mode.",
+	macro = " is now dead by the anti-macro system.",
 }
 
 if tfm.get.room.community == "br" or tfm.get.room.community == "pt" then
@@ -404,7 +407,10 @@ function setAllAlive()
 end
 function eventNewPlayer(name)
 	rato=rato+1
-	for k=20, 87 do
+	for i=0,3 do
+		tfm.exec.bindKeyboard(name,i,false,true)
+	end
+	for k=20,90 do
 		tfm.exec.bindKeyboard(name,k,false,true)
 	end
 	tfm.exec.bindKeyboard(name,115,false,true)
@@ -412,6 +418,7 @@ function eventNewPlayer(name)
 	newData={
 			["c"]=0;
 			["s"]=0;
+			["count"]=0;
 			};
 	data[name] = newData;
 	showMessage("<br><br><br><p align='center'>"..text.welcome.."<br><p align='left'>",name)
@@ -452,7 +459,6 @@ function completeCommand(name)
 				showMessage(text.completed,name)
 			end
 			sd_vivo=sd_vivo+1
-			print(""..sd_vivo.."/"..vivo.."")
 			data[name].c=1
 			tfm.exec.setNameColor(name,0x00ff00)
 		end
@@ -472,11 +478,10 @@ function eventNewGame()
 		ui.removeTextArea(i,nil)
 	end
 	ui.removeTextArea(250,nil)
-	rodada=0; active=0; vivo=0; rato=0;
-	dificuldade=1
+	rodada=0; active=0; vivo=0; rato=0; dificuldade=1;
 	tfm.exec.setWorldGravity(0, 10)
 	tfm.exec.setGameTime(15)
-	showMessage("<VP><i>Spectra's map loader v2.225</i><br><N>Loading current map information...<br><b>Current Map :</b> <V>"..map_det.code.."<br><N><b>Author :</b> <V>"..map_det.creator.."")
+	showMessage("<font color='#ff8000'><i>Spectra's map loader v2.227.1</i><br><N>Loading current map information...<br><b>Current Map :</b> <V>"..map_det.code.."<br><N><b>Author :</b> <V>"..map_det.creator.."")
 	if fc_mode == true then
 		showMessage("<VP><br>"..text.funcorp.."")
 	end
@@ -1400,6 +1405,11 @@ function eventMouse(name,x,y)
 	end
 end
 function eventKeyboard(name,id,down,x,y)
+	if active >= 1 and data[name] then
+		if id == 0 or id == 1 or id == 2 or id == 3 then
+			data[name].count=data[name].count+1
+		end
+	end
 	if active == 9 then
 		if id == 37 or id == 65 then
 			tfm.exec.killPlayer(name)
@@ -1614,13 +1624,13 @@ end
 function eventLoop(passado,faltando)
 	local tempo=math.floor(faltando/1000)
 	if active == -2 then
-		ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." RTM 18219.113</b><")
+		ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." RTM 18320.114</b><")
 	elseif active == -1 and vivo == 1 then
-		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." RTM 18219.113</b><")
+		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." RTM 18320.114</b><")
 	elseif active == -1 and vivo <= 0 then
-		ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." RTM 18219.113</b><")
+		ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." RTM 18320.114</b><")
 	elseif active >= 0 then
-		ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." RTM 18219.113</b><")
+		ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." RTM 18320.114</b><")
 	end
 	if rato < 4 then
 		if tfm.get.room.currentMap == "@2684847" then
@@ -1786,11 +1796,13 @@ function eventLoop(passado,faltando)
 		getAlives()
 	end
 	for name,player in next,tfm.get.room.playerList do
-		if data[name] then
-			if data[name].c == 1 then
-				if completed == false then
-					completed=true
+		if data[name] and not tfm.get.room.playerList[name].isDead then
+			if tempo % 2 == 0 then
+				if data[name].count >= 25 then
+					tfm.exec.killPlayer(name)
+					showMessage("<R><b>"..name.."</b>"..text.macro.."")
 				end
+				data[name].count=0
 			end
 		end
 	end
