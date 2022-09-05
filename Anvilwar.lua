@@ -2,12 +2,12 @@
 Module authors : Spectra_phantom#6089, Morganadxana#0000
 (C) 2017-2022 Spectra Advanced Module Group
 
-Version : RTM 48510.193
-Compilation date : 08/29/2022 18:44 UTC
+Version : RTM 48611.194
+Compilation date : 09/05/2022 21:36 UTC
 Sending player : Morganadxana#0000
 
 Number of maps : 173
-Number of module special members : 11 ]]--
+Number of module special members : 10 ]]--
 
 _VERSION = "Lua 5.4"
 _AUTHOR = "Spectra_phantom#6089"
@@ -34,7 +34,6 @@ admins={"Spectra_phantom#6089",
 "Morganadxana#0000"}
 ninjas={"Viego#0345",
 "Forzaldenon#0000",
-"Velkozdapic#0000",
 "Akwimos#1937"};
 data={}
 
@@ -96,7 +95,7 @@ lang.br = {
 	cap_text = "foi escolhido para ser o líder do seu time.",
 	cap = "<J><b>Você foi escolhido como o líder do time.</b><N><br>Digite !leader para saber as funcionalidades e os benefícios de ser o líder do seu time.",
 	leader = "Os líderes dos times <b>são escolhidos aleatoriamente</b> e possui as seguintes vantagens em relação aos outros jogadores:<br><br>• Recebe 50% a mais de quantidade de pontos e AnvilCoins em relação aos outros jogadores<br>• Pode reviver jogadores mortos do seu time usando !rv [jogador]<br>• Pode transferir seus pontos para outro jogador do seu time usando !tp [jogador]<br>• Possui 50% a mais de tempo para atirar do que os outros jogadores.",
-	legacy = "<J><b>Confiram os submódulos do #anvilwar!</b><br><VP>/sala #anvilwar00watercatch<br>/sala #anvilwar00beach<br>/sala #anvilwar00naturalpark<br>/sala #anvilwar00fall<br><br><N>Para descobrir as novidades desta versão, digite <b>!changelog</b>.<br><br><J>Atenção: Daqui a algumas semanas, o criador Spectra_phantom#6089 deixará o Transformice, e o comando total do module será transferido para Morganadxana#0000.<br><br>",
+	legacy = "<J><b>Confiram os submódulos do #anvilwar!</b><br><VP>/sala #anvilwar00watercatch<br>/sala #anvilwar00beach<br>/sala #anvilwar00naturalpark<br><br><N>Para descobrir as novidades desta versão, digite <b>!changelog</b>.<br><br><J>Atenção: Daqui a algumas semanas, o criador Spectra_phantom#6089 deixará o Transformice, e o comando total do module será transferido para Morganadxana#0000.<br><br>",
 	disabled = "Este comando foi desabilitado por um administrador.",
 	gametime = "Tempo",
 	timeup = "<ROSE>Tempo esgotado! Este será o último tiro!",
@@ -260,7 +259,7 @@ function showMenu(name,color,x,y,width,height,title,content)
 end
 
 function showLobbyText(name)
-	ui.addTextArea(402,"<p align='center'><font size='12'><b><font face='Courier New'><i>"..text.version.." RTM 48510.193 - "..text.comp_date.."08/29/2022 18:44 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,1,380,798,36,0,0,1.0,true)
+	ui.addTextArea(402,"<p align='center'><font size='12'><b><font face='Courier New'><i>"..text.version.." RTM 48611.194 - "..text.comp_date.."09/05/2022 21:36 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,1,380,798,36,0,0,1.0,true)
 end
 
 function setLeaders()
@@ -333,7 +332,7 @@ end
 
 function updateTextBar()
 	if mode == "lobby" or mode == "map_sort" or mode == "wait1" then
-		ui.setMapName("<N><b>#anvilwar 2022 Edition</b>   <G>|   <VP>"..text.version.." <b>RTM 48510.193</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
+		ui.setMapName("<N><b>#anvilwar 2022 Edition</b>   <G>|   <VP>"..text.version.." <b>RTM 48611.194</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	elseif mode == "shoot" or mode == "wait2" or mode == "wait3" then
 		local m=math.floor(general_time/60)
 		local s=math.floor(general_time-(m*60))
@@ -894,7 +893,7 @@ function eventChatCommand(name,command)
 		end
 	end
 	if command == "changelog" then
-		showMenu(name,0xa8f233,140,110,520,110,"#anvilwar Changelog - RTM 48510.193","• Internal changes<br>• Various bugfixes")
+		showMenu(name,0xa8f233,140,110,520,100,"#anvilwar Changelog - RTM 48611.194","• More internal changes")
 	end
 	if (command:sub(0,2) == "rv") then
 		if name == actual_player and general_time >= 30 then
