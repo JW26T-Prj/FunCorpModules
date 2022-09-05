@@ -36,7 +36,7 @@ function defineShaman()
 			tfm.exec.setPlayerScore(shaman,-1,false)
 			tfm.exec.movePlayer(shaman,2600,-550,false,0,0,false)
 			showMessage("<ROSE>Não esqueça de se mover, ou você perderá sua vez de caçador!",name)
-			showMessage("<ROSE><b>"..shaman.." <N>é o caçador! Fuja dele do jeito que for possível!",name)
+			showMessage("<ROSE><b>"..shaman.." <N>é o caçador! Fuja dele do jeito que for possível!")
 			alives=alives-1
 			max_score=tfm.get.room.playerList[name].score
 			break
