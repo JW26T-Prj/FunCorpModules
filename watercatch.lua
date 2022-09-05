@@ -2,7 +2,7 @@ admin={""} -- Insira o nome dos FunCorps aqui!
 for _,f in next,{"AutoNewGame","AfkDeath","AutoShaman","AutoTimeLeft","DebugCommand","AllShamanSkills","PhysicalConsumables"} do
 	tfm.exec["disable"..f](true)
 end
-for _,f in next,{"help","ajuda","tc","kill","powerups","creditos","changelog","reset"} do
+for _,f in next,{"help","ajuda","tc","kill","powerups","creditos","changelog","reset","skins"} do
 	system.disableChatCommandDisplay(f)
 end
 
@@ -17,7 +17,6 @@ function eventNewGame()
 	end
 end
 
-tfm.exec.setRoomMaxPlayers(40)
 shaman=""; ratos=0; alives=0; cannons=8; z=0; data={}; mode="wait"; loop=0; timer=0; xml=''; time_passed=0; time_remain=0; changed=false; xml2='';
 powerups={x1=-1,x2=-1,x3=-1,x4=-1,y1=-1,y2=-1,y3=-1,y4=-1,t1=0,t2=0,t3=0,t4=0}
 function showMessage(message,name)
@@ -45,6 +44,63 @@ function defineShaman()
 		end
 	end
 end
+function showAvailableSharks(name)
+	i=0
+	for _,link in next,{"18309d64e58.png","18309d6029f.png"} do
+		i=i+1
+		image_id=tfm.exec.addImage(link,"&1",163,170+(i*50),name,0.5,0.5,0,1.0)
+		table.insert(data[name].active_imgs,image_id)
+	end
+	i=0
+	for _,link in next,{"18309d69a5a.png","18309d7325a.png","18309d6e65a.png"} do
+		i=i+1
+		image_id=tfm.exec.addImage(link,"&1",383,110+(i*50),name,0.5,0.5,0,1.0)
+		table.insert(data[name].active_imgs,image_id)
+	end
+	ui.addTextArea(1006,"<i><font size='11.5'><b>Rato Normal</b><br><br><a href='event:a0'>Usar!</a><br><br><b>Tubarão Padrão 2</b><br><br><a href='event:a2'>Usar!</a><br><br><b>Tubarão-Branco</b><br><br><a href='event:a4'>Usar!</a>",name,248,157,175,215,0,0,1.0,true)
+	ui.addTextArea(1007,"<i><font size='11.5'><b>Tubarão Normal 1</b><br><br><a href='event:a1'>Usar!</a><br><br><b>Tubarão Normal 3</b><br><br><a href='event:a3'>Usar!</a><br><br><b>Tubarão-Martelo</b><br><br><a href='event:a5'>Usar!</a>",name,478,157,175,215,0,0,1.0,true)
+end
+function removeImagePlayers(name)
+	if rawlen(data[name].active_imgs) > 0 then
+		for _,id in next,data[name].active_imgs do
+			tfm.exec.removeImage(id)
+		end
+		data[name].active_imgs={}
+	end
+end
+function displayShark(name,type,reverse)
+	if type == 1 then
+		if reverse == false then
+			data[name].shark_id=tfm.exec.addImage("18309d69a5a.png","$"..name.."",85,-42,nil,-1,1)
+		else
+			data[name].shark_id=tfm.exec.addImage("18309d69a5a.png","$"..name.."",-90,-42,nil,1,1)
+		end
+	elseif type == 2 then
+		if reverse == true then
+			data[name].shark_id=tfm.exec.addImage("18309d64e58.png","$"..name.."",85,-31,nil,-1,1)
+		else
+			data[name].shark_id=tfm.exec.addImage("18309d64e58.png","$"..name.."",-90,-31,nil,1,1)
+		end
+	elseif type == 3 then
+		if reverse == false then
+			data[name].shark_id=tfm.exec.addImage("18309d7325a.png","$"..name.."",78,-50,nil,-1,1)
+		else
+			data[name].shark_id=tfm.exec.addImage("18309d7325a.png","$"..name.."",-80,-50,nil,1,1)
+		end
+	elseif type == 4 then
+		if reverse == false then
+			data[name].shark_id=tfm.exec.addImage("18309d6029f.png","$"..name.."",70,-29,nil,-1,1)
+		else
+			data[name].shark_id=tfm.exec.addImage("18309d6029f.png","$"..name.."",-50,-29,nil,1,1)
+		end
+	elseif type == 5 then
+		if reverse == false then
+			data[name].shark_id=tfm.exec.addImage("18309d6e65a.png","$"..name.."",85,-55,nil,-1,1)
+		else
+			data[name].shark_id=tfm.exec.addImage("18309d6e65a.png","$"..name.."",-90,-55,nil,1,1)
+		end
+	end
+end
 function verifyAdmin(name)
 	for i=1,rawlen(admin) do
 		if admin[i] == name then
@@ -53,6 +109,9 @@ function verifyAdmin(name)
 	end
 end
 function showWater(name)
+	tfm.exec.addImage("17a53e1f94c.png",":1",0,350,name)
+	tfm.exec.addImage("17ae4e47000.png","&1",2,22,name)
+	tfm.exec.addImage("17ae4e48770.png","&1",670,22,name)
 	for i=0,1 do
 		tfm.exec.addImage("181f9cf5fc5.png", "?1", -800+(i*7180), 487, name, 1.0, 1.0, 0, 1.0)
 		tfm.exec.addImage("181f9cf5fc5.png", "!1", -800+(i*7180), 487, name, 1.0, 1.0, 0, 0.7)
@@ -95,6 +154,7 @@ function eventPlayerDied(n)
 		if alives <= 0 then
 			if mode == "game" then
 				mode="end"
+				tfm.exec.removeImage(data[shaman].shark_id)
 				shaman=""
 				tfm.exec.setGameTime(15)
 				showMessage("<VP><b>O shaman matou todos os ratos e venceu o jogo!</b><br><N>Próxima rodada iniciando em 15 segundos.")
@@ -110,19 +170,16 @@ function eventNewPlayer(name)
 	if changed == true then
 		tfm.exec.setPlayerScore(name,1,false)
 		ui.setBackgroundColor("#5FA9D4")
-		showWater(name)
 		newData={
-	["o"]=99; ["i"]=0; ["t"]=0; ["c"]=0; ["opened"]=false; ["moved"]=0; ["imageid"]=-1; ["imageid2"]=-1; ["imageid3"]=-1; ["imageid4"]=-1; ["imaget"]=5;
+	["o"]=99; ["i"]=0; ["t"]=0; ["c"]=0; ["opened"]=false; ["moved"]=0; ["imaget"]=5; ["intoWater"]=false; ["shark_id"]=0; ["shark"]=0; ["active_imgs"]={};
 	};
 		data[name] = newData;
 		ratos=ratos+1;
 		showMessage("<font color='#0080ff'><b>Bem-vindos ao module #watercatch!</b><br><J>Digite !help para ver a ajuda deste module.<br><br><N>Module criado por Morganadxana#0000.<br><br><BL>Atenção: Conexões lentas com a Internet podem fazer com que as artes da água demorem para carregar.<br><br>Caso o mapa não carregue, saia do jogo e entre novamente.",name)
-		data[name].imageid2 = tfm.exec.addImage("17a53e1f94c.png",":1",0,350,name)
-		data[name].imageid3 = tfm.exec.addImage("17ae4e47000.png","&1",2,22,name)
-		data[name].imageid4 = tfm.exec.addImage("17ae4e48770.png","&1",670,22,name)
 		data[name].imaget=5
 		ui.addTextArea(299,"<p align='center'><a href='event:hide_menu'><font size='18'>Menu",name,365,25,70,24,0x000001,0x000001,0.75,true)
 	end
+	showWater(name)
 end
 function eventChatCommand(name,message)
 	if message == "help" or message == "ajuda" then
@@ -134,8 +191,12 @@ function eventChatCommand(name,message)
 	if message == "creditos" then
 		showMenu(name,0xf0f0f0,140,90,520,130,"Créditos","As seguintes pessoas ajudaram no desenvolvimento deste module:<br><br><ROSE><b>• Morganadxana#0000</b><N> - Desenvolvedora do código<br><ROSE><b>• Akwimos#1937</b><N> - Tradução do código original para o Português<br><ROSE><b>• Spectra_phantom#6089</b><N> - Ideia original, criação do mapa e das artes")
 	end
+	if message == "skins" then
+		showMenu(name,0x949494,140,90,520,220,"Skins","As skins de tubarão serão exibidas apenas quando você for shaman, e estiver dentro do oceano!")
+		showAvailableSharks(name)
+	end
 	if message == "changelog" then
-		showMenu(name,0xf0f0f0,140,90,520,130,"Changelog da Versão 3.4.0","• Correções de bugs nos sons<br>• Ajustes no consumo de oxigênio na água<br>• Adição de aviso de invocação de objetos<br>• Aumento do limite de objetos de 6 para 8<br>• Mudanças na água")
+		showMenu(name,0xf0f0f0,140,90,520,100,"Changelog da Versão 3.5.0","• Adição de skins de tubarão para shamans!<br>• Mais alterações na água")
 	end
 	if (message:sub(0,2) == "tc") then
 		if tfm.get.room.playerList[name].isShaman == false then
@@ -266,6 +327,30 @@ function eventKeyboard(name,key,down)
 		if data[name].moved == 0 then
 			data[name].moved=1
 		end
+		if shaman == name and data[name].shark >= 1 then
+			if data[name].intoWater == true then
+				tfm.exec.changePlayerSize(name,0.2)
+				if key == 39 or key == 68 then
+					tfm.exec.removeImage(data[name].shark_id)
+					displayShark(name,data[name].shark,false)
+				elseif key == 37 or key == 65 then
+					tfm.exec.removeImage(data[name].shark_id)
+					displayShark(name,data[name].shark,true)
+				end
+				if key == 38 or key == 40 or key == 83 or key == 87 then
+					if tfm.get.room.playerList[name].isFacingRight then
+						tfm.exec.removeImage(data[name].shark_id)
+						displayShark(name,data[name].shark,false)
+					else
+						tfm.exec.removeImage(data[name].shark_id)
+						displayShark(name,data[name].shark,true)
+					end
+				end
+			else
+				tfm.exec.changePlayerSize(name,1)
+				tfm.exec.removeImage(data[name].shark_id)
+			end
+		end
 	end
 end
 function reset()
@@ -274,6 +359,7 @@ function reset()
 		for n,p in next,tfm.get.room.playerList do
 			tfm.exec.respawnPlayer(n)
 			tfm.exec.setShaman(n,false)
+			tfm.exec.removeImage(data[n].shark_id)
 			for i=32,40 do
 				tfm.exec.bindKeyboard(n,i,true,true)
 			end
@@ -350,7 +436,7 @@ function eventLoop(p,r)
 	loop=loop+0.5
 	time_passed=math.ceil(p/1000)
 	time_remain=math.ceil(r/1000)
-	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v3.4.0</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
+	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v3.5.0</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
 	local m=math.floor(r/60000)
 	local s=math.floor((((m*60000)-r) * -1) / 1000)
 	ui.addTextArea(-1,"<font size='45'><font color='#222222'><font face='Trebuchet MS'><b><i>"..m..":"..s.."</b>",n,569,22,110,54,0,0,1.0,true)
@@ -431,18 +517,30 @@ function eventLoop(p,r)
 			if not tfm.get.room.playerList[n].isDead then
 				if mode == "game" or mode == "hide" then
 					if tfm.get.room.playerList[n].y < 500 then
+						data[n].intoWater=false
 						if data[n].o < 99 then
 							data[n].o=data[n].o+1
 						end
 						data[n].y=0
 					else
-						tfm.exec.playSound("/transformice/son/bulle2.mp3", 10, nil, nil, n)
-						if tfm.get.room.playerList[n].y <= 1200 then
-							data[n].o=data[n].o-0.4; data[n].c=0;
-						elseif tfm.get.room.playerList[n].y > 1200 and tfm.get.room.playerList[n].y <= 3500 then
-							data[n].o=data[n].o-0.6; data[n].c=0;
-						elseif tfm.get.room.playerList[n].y > 3500 then
-							data[n].o=data[n].o-0.8; data[n].c=0;
+						data[n].intoWater=true
+						tfm.exec.playSound("/transformice/son/bulle2.mp3", 5, nil, nil, n)
+						if not shaman == n then
+							if tfm.get.room.playerList[n].y <= 1200 then
+								data[n].o=data[n].o-0.4; data[n].c=0;
+							elseif tfm.get.room.playerList[n].y > 1200 and tfm.get.room.playerList[n].y <= 3500 then
+								data[n].o=data[n].o-0.6; data[n].c=0;
+							elseif tfm.get.room.playerList[n].y > 3500 then
+								data[n].o=data[n].o-0.8; data[n].c=0;
+							end
+						else
+							if tfm.get.room.playerList[n].y <= 1200 then
+								data[n].o=data[n].o-0.2; data[n].c=0;
+							elseif tfm.get.room.playerList[n].y > 1200 and tfm.get.room.playerList[n].y <= 3500 then
+								data[n].o=data[n].o-0.4; data[n].c=0;
+							elseif tfm.get.room.playerList[n].y > 3500 then
+								data[n].o=data[n].o-0.8; data[n].c=0;
+							end
 						end
 					end
 				end
@@ -527,17 +625,18 @@ end
 function eventTextAreaCallback(id,name,callback)
 	if callback == "show_menu" then
 		ui.addTextArea(299,"<p align='center'><a href='event:hide_menu'><font size='18'>Menu",name,365,25,70,24,0x000001,0x000001,0.75,true)
-		ui.addTextArea(298,"<p align='center'><a href='event:help'>Ajuda</a><br><a href='event:powerups'>Powerups</a><br><a href='event:cred'>Créditos</a><br><a href='event:change'>Changelog</a>",name,355,85,90,60,0x000001,0x000001,0.80,true)
+		ui.addTextArea(298,"<p align='center'><a href='event:help'>Ajuda</a><br><a href='event:powerups'>Powerups</a><br><a href='event:cred'>Créditos</a><br><a href='event:change'>Changelog</a><br><a href='event:skins'>Skins</a>",name,355,85,90,75,0x000001,0x000001,0.80,true)
 	end
 	if callback == "hide_menu" then
 		ui.addTextArea(299,"<p align='center'><a href='event:show_menu'><font size='18'>Menu",name,365,25,70,24,0x000001,0x000001,0.75,true)
 		ui.removeTextArea(298,name)
 	end
 	if callback == "close" then
-		for _,i in next,{1000,1001,1002,1003,1004,1005,1006,1007,1008,1009,1010,1011} do
+		for _,i in next,{1000,1001,1002,1003,1004,1005,1006,1007} do
 			ui.removeTextArea(i,name)
 		end
 		data[name].opened=false
+		removeImagePlayers(name)
 	end
 	if callback == "help" then
 		eventChatCommand(name,"help")
@@ -550,6 +649,34 @@ function eventTextAreaCallback(id,name,callback)
 	end
 	if callback == "change" then
 		eventChatCommand(name,"changelog")
+	end
+	if callback == "skins" then
+		eventChatCommand(name,"skins")
+	end
+	if callback == "a0" then
+		data[name].shark=0
+		tfm.exec.removeImage(data[name].shark_id)
+		showMessage("<N>Você desativou as skins de tubarão.",name)
+	end
+	if callback == "a1" then
+		data[name].shark=1
+		showMessage("<VP>Você está agora usando a skin <b>Tubarão Normal 1.</b>",name)
+	end
+	if callback == "a2" then
+		data[name].shark=2
+		showMessage("<VP>Você está agora usando a skin <b>Tubarão Normal 2.</b>",name)
+	end
+	if callback == "a3" then
+		data[name].shark=3
+		showMessage("<VP>Você está agora usando a skin <b>Tubarão Normal 3.</b>",name)
+	end
+	if callback == "a4" then
+		data[name].shark=4
+		showMessage("<VP>Você está agora usando a skin <b>Tubarão-Branco.</b>",name)
+	end
+	if callback == "a5" then
+		data[name].shark=5
+		showMessage("<VP>Você está agora usando a skin <b>Tubarão-Martelo.</b>",name)
 	end
 end
 tfm.exec.newGame("@7914623")
