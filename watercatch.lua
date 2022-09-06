@@ -1,4 +1,7 @@
 admin={""} -- Insira o nome dos FunCorps aqui!
+shaman=""; ratos=0; alives=0; cannons=8; z=0; data={}; mode="wait"; loop=0; timer=0; xml=''; time_passed=0; time_remain=0; changed=false; xml2='';
+powerups={x1=-1,x2=-1,x3=-1,x4=-1,y1=-1,y2=-1,y3=-1,y4=-1,t1=0,t2=0,t3=0,t4=0}
+
 for _,f in next,{"AutoNewGame","AfkDeath","AutoShaman","AutoTimeLeft","DebugCommand","AllShamanSkills","PhysicalConsumables"} do
 	tfm.exec["disable"..f](true)
 end
@@ -16,9 +19,6 @@ function eventNewGame()
 		ui.removeTextArea(0,nil)
 	end
 end
-
-shaman=""; ratos=0; alives=0; z=0; data={}; mode="wait"; loop=0; timer=0; xml=''; time_passed=0; time_remain=0; changed=false; xml2='';
-powerups={x1=-1,x2=-1,x3=-1,x4=-1,y1=-1,y2=-1,y3=-1,y4=-1,t1=0,t2=0,t3=0,t4=0}
 function showMessage(message,name)
 	temp_text=string.gsub(message,"<b>","")
 	temp_text=string.gsub(temp_text,"</b>","")
@@ -28,16 +28,43 @@ function showMessage(message,name)
 		ui.addPopup(0,0,message,name,250,100,300,true)
 	end
 end
+function getAlivePlayers()
+	alives=0
+	for name,player in next,tfm.get.room.playerList do
+		alives=alives+1
+		if shaman == name then
+			alives=alives-1
+		end
+		if data[name].dead == true then
+			alives=alives-1
+		end
+	end
+end
+function checkAlivePlayers()
+	if alives <= 0 then
+		mode="end"
+		if data[shaman] then
+			tfm.exec.removeImage(data[shaman].shark_id)
+			tfm.exec.changePlayerSize(shaman,1)
+			if data[shaman].dead == false then
+				shaman=""
+				tfm.exec.setGameTime(15)
+				showMessage("<VP><b>O shaman matou todos os ratos e venceu o jogo!</b><br><N>Próxima rodada iniciando em 15 segundos.")
+			end
+		end
+	end
+end
 function defineShaman()
 	max_score=0
 	for name,player in next,tfm.get.room.playerList do
-		if tfm.get.room.playerList[name].score >= max_score and not n == shaman then
+		if tfm.get.room.playerList[name].score >= max_score and not tfm.get.room.playerList[name].isShaman then
 			shaman=name
+			tfm.exec.setShaman(shaman)
 			tfm.exec.setPlayerScore(shaman,-1,false)
+			tfm.exec.setShamanMode(shaman,0)
 			tfm.exec.movePlayer(shaman,2600,-550,false,0,0,false)
-			showMessage("<ROSE>Não esqueça de se mover, ou você perderá sua vez de caçador!",name)
-			showMessage("<ROSE><b>"..shaman.." <N>é o caçador! Fuja dele do jeito que for possível!")
-			alives=alives-1
+			showMessage("<ROSE>Não esqueça de se mover, ou você perderá sua vez de shaman!",name)
+			showMessage("<ROSE><b>"..shaman.."</b> é o shaman! Saia de perto dele do jeito que for possível!")
 			max_score=tfm.get.room.playerList[name].score
 			break
 		end
@@ -131,33 +158,22 @@ function showWater(name)
 end
 function eventPlayerDied(n)
 	if changed == true then
-		if not shaman == n then
-			alives=alives-1
+		if data[n] then
+			data[n].dead=true
 		end
 		if mode == "hide" or mode == "game" then
-			if shaman == n then
-				showMessage("<J>O caçador morreu, está ausente ou saiu da sala. Iniciando nova partida...")
+			if tfm.get.room.playerList[n].isShaman then
+				showMessage("<J>O shaman morreu, está AFK ou saiu da sala. Iniciando nova partida...")
 				mode="end"
 				shaman=""
 				tfm.exec.setGameTime(10)
 				for n,_ in next,tfm.get.room.playerList do
-					tfm.exec.giveCheese(n)
-					tfm.exec.playerVictory(n)
-					ui.removeTextArea(300,n)
+					tfm.exec.killPlayer(n)
 				end
 			end
 		end
-		if alives <= 0 then
-			if mode == "game" then
-				mode="end"
-				tfm.exec.removeImage(data[shaman].shark_id)
-				tfm.exec.changePlayerSize(shaman,1)
-				shaman=""
-				tfm.exec.setGameTime(15)
-				showMessage("<VP><b>O caçador matou todos os ratos e venceu o jogo!</b><br><N>Próxima rodada iniciando em 15 segundos.")
-			end
-		end
-		data[n].o=0
+		getAlivePlayers()
+		checkAlivePlayers()
 	end
 end
 function eventPlayerLeft(name)
@@ -168,7 +184,7 @@ function eventNewPlayer(name)
 		tfm.exec.setPlayerScore(name,1,false)
 		ui.setBackgroundColor("#5FA9D4")
 		newData={
-	["o"]=99; ["i"]=0; ["t"]=0; ["c"]=0; ["opened"]=false; ["moved"]=0; ["imaget"]=5; ["intoWater"]=false; ["shark_id"]=0; ["shark"]=3; ["active_imgs"]={};
+	["o"]=99; ["i"]=0; ["t"]=0; ["c"]=0; ["opened"]=false; ["moved"]=0; ["imaget"]=5; ["intoWater"]=false; ["shark_id"]=0; ["shark"]=0; ["dead"]=true; ["active_imgs"]={};
 	};
 		data[name] = newData;
 		ratos=ratos+1;
@@ -196,12 +212,12 @@ function eventChatCommand(name,message)
 		showAvailableSharks(name)
 	end
 	if message == "changelog" then
-		showMenu(name,0xf0f0f0,140,90,520,100,"Changelog da Versão 3.5.2","• Não há mais shamans em questão. Isto foi adicionado para evitar uso de cubos de gelo.")
+		showMenu(name,0xf0f0f0,140,90,520,130,"Changelog da Versão 3.6.0","• Remoção da mensagem de falta de memória<br>• Jogadores convidados (souris) não podem mais participar<br>• Correções de vários bugs<br>• Mais alterações no consumo de oxigênio<br>• O uso do item de gelo agora é proibido")
 	end
 	if (message:sub(0,2) == "tc") then
-		if not shaman == name then
+		if tfm.get.room.playerList[name].isShaman == false then
 			for n,_ in next,tfm.get.room.playerList do
-				if not shaman == name then
+				if tfm.get.room.playerList[n].isShaman == false then
 					showMessage("<R>• ["..name.."]</b> <N>"..message:sub(4).."",n)
 				end
 			end
@@ -219,6 +235,28 @@ function eventChatCommand(name,message)
 		end
 	end
 end
+function eventSummoningEnd(name,id,x,y)
+	if id >= 1 then
+		cannons=cannons-1
+		if cannons >= 1 then
+			showMessage("<VP>O shaman agora pode usar <b>"..cannons.."</b> objetos.")
+		elseif cannons == 0 then
+			showMessage("<VP>O shaman não pode mais usar objetos!")
+			showMessage("<R>Você não pode mais invocar objetos! Fazer isso ocasionará na sua morte e na perda de sua vez de shaman.",shaman)
+		elseif cannons <= -1 then
+			showMessage("<R>O shaman excedeu o limite de objetos utilizáveis!")
+			tfm.exec.killPlayer(shaman)
+		end
+	end
+end
+function eventSummoningStart(name,id,x,y)
+	if cannons == 0 then
+		showMessage("<R>Você não pode mais usar objetos! Invocar um objeto fará com que você morra e a partida termine!",name)
+	end
+	if not id == 17 and cannons >= 1 then
+		showMessage("<R>Apenas é permitido o uso de canhões! Invocar outros objetos fará com que você morra e a partida termine!",name)
+	end
+end
 function activatePowerup(name,id,number)
 	if id == 1 then
 		showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>CAIXA!</b>")
@@ -233,7 +271,7 @@ function activatePowerup(name,id,number)
 		tfm.exec.playSound("/deadmaze/objectif2.mp3", 75, nil, nil, name)
 	elseif id == 3 then
 		showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>VELOCIDADE!</b>")
-		if tfm.get.room.playerList[name].isFacingRight == true then
+		if tfm.get.room.playerList[name].movingRight == true then
 			tfm.exec.movePlayer(name,0,0,true,120,0,false)
 		else
 			tfm.exec.movePlayer(name,0,0,true,-120,0,false)
@@ -316,7 +354,7 @@ function eventKeyboard(name,key,down)
 					displayShark(name,data[name].shark,true)
 				end
 				if key == 38 or key == 40 or key == 83 or key == 87 then
-					if tfm.get.room.playerList[name].isFacingRight then
+					if tfm.get.room.playerList[name].movingRight then
 						tfm.exec.removeImage(data[name].shark_id)
 						displayShark(name,data[name].shark,false)
 					else
@@ -333,36 +371,48 @@ function eventKeyboard(name,key,down)
 end
 function reset()
 	if ratos >= 2 then
-		mode="hide"; shaman=""; alives=0;
+		mode="hide"; shaman="";
 		for n,p in next,tfm.get.room.playerList do
-			tfm.exec.respawnPlayer(n)
-			tfm.exec.setShaman(n,false)
-			tfm.exec.removeImage(data[n].shark_id)
-			for i=32,40 do
-				tfm.exec.bindKeyboard(n,i,true,true)
+			if n:sub(1,1) == "*" then
+				tfm.exec.setPlayerScore(n,-10,false)
+				showMessage("<R>Jogadores convidados não podem jogar este jogo. Logue em uma conta para jogar #watercatch.",name)
+			else
+				tfm.exec.respawnPlayer(n)
+				tfm.exec.setShaman(n,false)
+				tfm.exec.removeImage(data[n].shark_id)
+				for i=32,40 do
+					tfm.exec.bindKeyboard(n,i,true,true)
+				end
+				for i=65,87 do
+					tfm.exec.bindKeyboard(n,i,true,true)
+				end
+				tfm.exec.giveMeep(n,false)
+				data[n].o=99; data[n].moved=0; data[n].i=0; data[n].t=0; data[n].c=0; data[n].opened=false; data[n].dead=false;
+				ui.addTextArea(300,"",n,8,390,782,3,0x202020,0x121212,1.0,true)
+				ui.addTextArea(299,"<p align='center'><a href='event:show_menu'><font size='18'>Menu",n,365,25,70,24,0x000001,0x000001,0.75,true)
+				ui.removeTextArea(298,n)	
 			end
-			for i=65,87 do
-				tfm.exec.bindKeyboard(n,i,true,true)
-			end
-			tfm.exec.giveMeep(n,false)
-			alives=alives+1
-			data[n].o=99; data[n].moved=0; data[n].i=0; data[n].t=0; data[n].c=0; data[n].opened=false;
-			ui.addTextArea(300,"",n,8,390,782,3,0x202020,0x121212,1.0,true)
-			ui.addTextArea(299,"<p align='center'><a href='event:show_menu'><font size='18'>Menu",n,365,25,70,24,0x000001,0x000001,0.75,true)
-			ui.removeTextArea(298,n)
 		end
 		for i=1000,3000 do
 			tfm.exec.removeObject(i)
 		end
-		defineShaman()
+		while string.len(shaman) <= 1 do
+			defineShaman()
+		end
+		getAlivePlayers()
 		ui.setBackgroundColor("#5FA9D4")
-		z=-1; mode="hide";
+		z=-1; cannons=8; mode="hide";
 		ui.removeTextArea(22,nil)
 		tfm.exec.setGameTime(60)
 	else
 		mode="wait"
 		showMessage("<R>São necessários pelo menos 2 ratos para jogar este module.")
 		tfm.exec.setGameTime(20)
+	end
+	if rawlen(tfm.get.room.objectList) > 0 then
+		for id in next,tfm.get.room.objectList do
+			tfm.exec.removeObject(id)
+		end
 	end
 end
 function showMenu(name,color,x,y,width,height,title,content)
@@ -414,7 +464,7 @@ function eventLoop(p,r)
 	loop=loop+0.5
 	time_passed=math.ceil(p/1000)
 	time_remain=math.ceil(r/1000)
-	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v3.5.2</b><N> - criado por <ROSE><b>Morganadxana#0000</b> <N>e <BL><b>Akwimos#1937</b><")
+	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v3.6.0</b><N> - criado por <ROSE><b>Morganadxana#0000</b> <N>e <BL><b>Akwimos#1937</b><")
 	local m=math.floor(r/60000)
 	local s=math.floor((((m*60000)-r) * -1) / 1000)
 	ui.addTextArea(-1,"<font size='45'><font color='#222222'><font face='Trebuchet MS'><b><i>"..m..":"..s.."</b>",n,569,22,110,54,0,0,1.0,true)
@@ -449,14 +499,23 @@ function eventLoop(p,r)
 		end
 	end
 	if mode == "game" or mode == "hide" then
-		local lives=alives-1
-		ui.addTextArea(31,"<font size='45'><font color='#222222'><font face='Trebuchet MS'><b><i>"..lives.."</b>",n,135,22,70,54,0,0,1.0,true)
-		ui.addTextArea(30,"<font size='45'><font color='#d0d0d0'><font face='Trebuchet MS'><b><i>"..lives.."</b>",n,132,19,70,54,0,0,1.0,true)
+		ui.addTextArea(31,"<font size='45'><font color='#222222'><font face='Trebuchet MS'><b><i>"..alives.."</b>",n,135,22,70,54,0,0,1.0,true)
+		ui.addTextArea(30,"<font size='45'><font color='#d0d0d0'><font face='Trebuchet MS'><b><i>"..alives.."</b>",n,132,19,70,54,0,0,1.0,true)
 		if timer > 0 then
 			timer=timer-0.5
 			tfm.exec.setWorldGravity(0,22)
 		elseif timer == 0 then
 			tfm.exec.setWorldGravity(0,10.5)
+		end
+		if time_passed % 2 == 0 then
+			for id in next,tfm.get.room.objectList do
+				if tfm.get.room.objectList[id].type == 54 then
+					tfm.exec.killPlayer(shaman)
+					showMessage("<ROSE>O uso do gelo não é permitido neste jogo.")
+					tfm.exec.removeObject(id)
+					break
+				end
+			end
 		end
 	else
 		for i=-6,104 do
@@ -475,7 +534,7 @@ function eventLoop(p,r)
 			if mode == "game" then
 				if q.x >= data[shaman].x - 60 and q.x <= data[shaman].x + 60 then
 					if q.y >= data[shaman].yp - 60 and q.y <= data[shaman].yp + 60 then
-						if not n == shaman then
+						if not tfm.get.room.playerList[n].isShaman then
 							tfm.exec.killPlayer(n)
 							tfm.exec.playSound("/deadmaze/monstres/m_4/attaque1.mp3", 90, nil, nil, n)
 							tfm.exec.playSound("/deadmaze/monstres/m_4/touche_0.mp3", 60, nil, nil, shaman)
@@ -496,7 +555,7 @@ function eventLoop(p,r)
 				if mode == "game" or mode == "hide" then
 					if tfm.get.room.playerList[n].y < 500 then
 						data[n].intoWater=false
-						if data[n].o < 99 then
+						if data[n].o <= 98.5 then
 							data[n].o=data[n].o+1
 						end
 						data[n].y=0
@@ -509,9 +568,9 @@ function eventLoop(p,r)
 							elseif tfm.get.room.playerList[n].y > 1700 and tfm.get.room.playerList[n].y <= 2500 then
 								data[n].o=data[n].o-0.4; data[n].c=0;
 							elseif tfm.get.room.playerList[n].y > 2500 and tfm.get.room.playerList[n].y <= 3660 then
-								data[n].o=data[n].o-0.6; data[n].c=0;
+								data[n].o=data[n].o-0.5; data[n].c=0;
 							elseif tfm.get.room.playerList[n].y > 3700 then
-								data[n].o=data[n].o-0.8; data[n].c=0;
+								data[n].o=data[n].o-0.55; data[n].c=0;
 							end
 						else
 							if tfm.get.room.playerList[n].y <= 1700 then
@@ -519,9 +578,9 @@ function eventLoop(p,r)
 							elseif tfm.get.room.playerList[n].y > 1700 and tfm.get.room.playerList[n].y <= 2500 then
 								data[n].o=data[n].o-0.6; data[n].c=0;
 							elseif tfm.get.room.playerList[n].y > 2500 and tfm.get.room.playerList[n].y <= 3660 then
+								data[n].o=data[n].o-0.8; data[n].c=0;
+							elseif tfm.get.room.playerList[n].y > 3700 then
 								data[n].o=data[n].o-0.9; data[n].c=0;
-							elseif tfm.get.room.playerList[n].y > 3660 then
-								data[n].o=data[n].o-1.2; data[n].c=0;
 							end
 						end
 					end
@@ -560,7 +619,7 @@ function eventLoop(p,r)
 		mode="game"
 		tfm.exec.setGameTime(180+math.ceil(alives*2.6))
 		ui.removeTextArea(22,nil)
-		showMessage("<J><b>O caçador foi liberado! Salvem-se quem puder!</b><br><N>Os itens marcados com <BL>?<N> são poderes especiais, que podem trazer efeitos positivos ou negativos aos ratos. Aperte ESPAÇO para usá-los.<br><br><ROSE>Use o comando !tc [mensagem] para falar no chat sem que o caçador saiba.")
+		showMessage("<J><b>O shaman foi liberado! Salvem-se quem puder!</b><br><N>Os itens marcados com <BL>?<N> são poderes especiais, que podem trazer efeitos positivos ou negativos aos ratos. Aperte ESPAÇO para usá-los.<br><br><ROSE>Use o comando !tc [mensagem] para falar no chat sem que o shaman saiba.")
 		for n,p in next,tfm.get.room.playerList do
 			ui.addTextArea(300,"",n,8,390,782,3,0x202020,0x121212,1.0,true)
 		end
@@ -570,23 +629,15 @@ function eventLoop(p,r)
 		tfm.exec.setGameTime(15)
 		mode="end"
 		for n,p in next,tfm.get.room.playerList do
-			if not n == shaman and not tfm.get.room.playerList[n].isDead then
+			if not tfm.get.room.playerList[n].isShaman and not tfm.get.room.playerList[n].isDead then
 				tfm.exec.giveCheese(n)
 				tfm.exec.playerVictory(n)
 			end
 		end
 		tfm.exec.killPlayer(shaman)
 		shaman=""
-		local final_a=alives-1
-		showMessage("<VP>Tempo esgotado! <b>"..final_a.."</b> ratos sobreviveram! Iniciando nova partida...")
+		showMessage("<VP>Tempo esgotado! <b>"..alives.."</b> ratos sobreviveram! Iniciando nova partida...")
 		ui.removeTextArea(300,n)
-	end
-	if p >= 5000 and p <= 6125 then
-		for n,p in next,tfm.get.room.playerList do
-			if data[n] and tfm.get.room.playerList[n].y == 334 then
-				showMessage("<R>Aviso: Não há mais memória disponível para o Transformice. Para poder entrar neste mapa, saia do jogo e entre novamente.",name)
-			end
-		end
 	end
 	if r <= 200 and mode == "end" then
 		reset()
