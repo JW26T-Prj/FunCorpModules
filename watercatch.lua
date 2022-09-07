@@ -35,7 +35,7 @@ function getAlivePlayers()
 		if shaman == name then
 			alives=alives-1
 		end
-		if data[name].dead == true then
+		if data[name] and data[name].dead == true then
 			alives=alives-1
 		end
 	end
@@ -212,7 +212,7 @@ function eventChatCommand(name,message)
 		showAvailableSharks(name)
 	end
 	if message == "changelog" then
-		showMenu(name,0xf0f0f0,140,90,520,130,"Changelog da Versão 3.6.0","• Remoção da mensagem de falta de memória<br>• Jogadores convidados (souris) não podem mais participar<br>• Correções de vários bugs<br>• Mais alterações no consumo de oxigênio<br>• O uso do item de gelo agora é proibido")
+		showMenu(name,0xf0f0f0,140,90,520,90,"Changelog da Versão 3.6.1","• Pequenas correções de bugs")
 	end
 	if (message:sub(0,2) == "tc") then
 		if tfm.get.room.playerList[name].isShaman == false then
@@ -265,7 +265,7 @@ function activatePowerup(name,id,number)
 	elseif id == 2 then
 		showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>OXIGÊNIO!</b>")
 		data[name].o=data[name].o+40
-		if data[name].o > 100 then
+		if data[name] and data[name].o > 100 then
 			data[name].o=100
 		end
 		tfm.exec.playSound("/deadmaze/objectif2.mp3", 75, nil, nil, name)
@@ -288,7 +288,7 @@ function activatePowerup(name,id,number)
 	elseif id == 6 then
 		showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>SUFOCO!</b>")
 		data[name].o=data[name].o-25
-		if data[name].o < 1 then
+		if data[name] and data[name].o < 1 then
 			data[name].o=1
 		end
 		tfm.exec.playSound("/cite18/combo2.mp3", 75, nil, nil, name)
@@ -340,11 +340,11 @@ function eventKeyboard(name,key,down)
 		end
 	end
 	if key == 37 or key == 38 or key == 39 or key == 40 or key == 65 or key == 68 or key == 83 or key == 87 then
-		if data[name].moved == 0 then
+		if data[name] and data[name].moved == 0 then
 			data[name].moved=1
 		end
 		if shaman == name and data[name].shark >= 1 then
-			if data[name].intoWater == true then
+			if data[name] and data[name].intoWater == true then
 				tfm.exec.changePlayerSize(name,0.2)
 				if key == 39 or key == 68 then
 					tfm.exec.removeImage(data[name].shark_id)
@@ -416,7 +416,7 @@ function reset()
 	end
 end
 function showMenu(name,color,x,y,width,height,title,content)
-	if data[name].opened == false then
+	if data[name] and data[name].opened == false then
 		data[name].opened=true
 		ui.addTextArea(1004,"",name,-1000,-600,2800,1600,0x000001,0x000001,0.65,true)
 		ui.addTextArea(1001,"",name,x+5,y+5,width,height,color,color,0.95,true)
@@ -464,7 +464,7 @@ function eventLoop(p,r)
 	loop=loop+0.5
 	time_passed=math.ceil(p/1000)
 	time_remain=math.ceil(r/1000)
-	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v3.6.0</b><N> - criado por <ROSE><b>Morganadxana#0000</b> <N>e <BL><b>Akwimos#1937</b><")
+	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v3.6.1</b><N> - criado por <ROSE><b>Morganadxana#0000</b> <N>e <BL><b>Akwimos#1937</b><")
 	local m=math.floor(r/60000)
 	local s=math.floor((((m*60000)-r) * -1) / 1000)
 	ui.addTextArea(-1,"<font size='45'><font color='#222222'><font face='Trebuchet MS'><b><i>"..m..":"..s.."</b>",n,569,22,110,54,0,0,1.0,true)
