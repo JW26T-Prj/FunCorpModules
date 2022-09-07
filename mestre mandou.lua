@@ -1,5 +1,5 @@
--- Código do module Mestre Mandou, versão RTM 18320.114, desenvolvido por Rakan_raster#0000.
--- Code of Simon Says module, version RTM 18320.114, developed by Rakan_raster#0000.
+-- Código do module Mestre Mandou, versão RTM 18421.115 LTS, desenvolvido por Rakan_raster#0000.
+-- Code of Simon Says module, version RTM 18421.115 LTS, developed by Rakan_raster#0000.
 
 -- Atenção: Antes de rodar este código em uma sala, verifique se esta versão coincide com a versão mais recente presente abaixo:
 -- https://raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/mestre%20mandou.lua
@@ -31,7 +31,7 @@ for _,f in next,{"command","pw","limit","run","fc","tc","ms","q","a","t","kill"}
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>O objetivo deste module é muito simples: Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><VP>Tenha sempre cuidado com os comandos trolls!<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Jessiewind26#2546<br><br><ROSE>Versão RTM 18320.114",
+	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>O objetivo deste module é muito simples: Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><VP>Tenha sempre cuidado com os comandos trolls!<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Jessiewind26#2546<br><br><ROSE>Versão RTM 18421.115 LTS",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -139,7 +139,7 @@ lang.br = {
 	macro = " foi morto pelo sistema anti-macro do module.",
 }
 lang.en = {
-	welcome = "<N><b>Welcome to Simon Says module!</b><br>This module's goal is easy: Follow everything the game told and test your limits until the end!<br><VP>Be always aware to troll commands!<br><br><J><b>Script developed by Rakan_raster#0000</b><br>Original concept by Jessiewind26#2546<br>Translation by Draw#6691<br><br><ROSE>Version RTM 18320.114",
+	welcome = "<N><b>Welcome to Simon Says module!</b><br>This module's goal is easy: Follow everything the game told and test your limits until the end!<br><VP>Be always aware to troll commands!<br><br><J><b>Script developed by Rakan_raster#0000</b><br>Original concept by Jessiewind26#2546<br>Translation by Draw#6691<br><br><ROSE>Version RTM 18421.115 LTS",
 	dancar = "Dance!",
 	sentar = "Sit down!",
 	confetar = "Throw 5 confetti!",
@@ -248,7 +248,7 @@ lang.en = {
 	macro = " is now dead by the anti-macro system.",
 }
 lang.fr = {
-	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Rakan_raster#0000</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 18320.114",
+	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Rakan_raster#0000</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 18421.115 LTS",
 	dancar = "Danse !",
 	sentar = "Assis !",
 	confetar = "Lance 5 fois des confettis !",
@@ -481,7 +481,7 @@ function eventNewGame()
 	rodada=0; active=0; vivo=0; rato=0; dificuldade=1;
 	tfm.exec.setWorldGravity(0, 10)
 	tfm.exec.setGameTime(15)
-	showMessage("<font color='#ff8000'><i>Spectra's map loader v2.227.1</i><br><N>Loading current map information...<br><b>Current Map :</b> <V>"..map_det.code.."<br><N><b>Author :</b> <V>"..map_det.creator.."")
+	showMessage("<font color='#ffffff'><i>Spectra's map loader v2.228.3</i><br><N>Loading current map information...<br><b>Current Map :</b> <V>"..map_det.code.."<br><N><b>Author :</b> <V>"..map_det.creator.."")
 	if fc_mode == true then
 		showMessage("<VP><br>"..text.funcorp.."")
 	end
@@ -491,6 +491,7 @@ function eventNewGame()
 		if data[name] then
 			data[name].c=0
 			data[name].key=0
+			data[name].count=0
 		end
 		if verifyNinjas(name) == true then
 			showMessage(text.select)
@@ -1624,13 +1625,13 @@ end
 function eventLoop(passado,faltando)
 	local tempo=math.floor(faltando/1000)
 	if active == -2 then
-		ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." RTM 18320.114</b><")
+		ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." RTM 18421.115 LTS</b><")
 	elseif active == -1 and vivo == 1 then
-		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." RTM 18320.114</b><")
+		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." RTM 18421.115 LTS</b><")
 	elseif active == -1 and vivo <= 0 then
-		ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." RTM 18320.114</b><")
+		ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." RTM 18421.115 LTS</b><")
 	elseif active >= 0 then
-		ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." RTM 18320.114</b><")
+		ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." RTM 18421.115 LTS</b><")
 	end
 	if rato < 4 then
 		if tfm.get.room.currentMap == "@2684847" then
@@ -1795,14 +1796,16 @@ function eventLoop(passado,faltando)
 		end
 		getAlives()
 	end
-	for name,player in next,tfm.get.room.playerList do
-		if data[name] and not tfm.get.room.playerList[name].isDead then
-			if tempo % 2 == 0 then
-				if data[name].count >= 25 then
-					tfm.exec.killPlayer(name)
-					showMessage("<R><b>"..name.."</b>"..text.macro.."")
+	if passado >= 10000 then
+		for name,player in next,tfm.get.room.playerList do
+			if data[name] and not tfm.get.room.playerList[name].isDead then
+				if tempo % 2 == 0 then
+					if data[name].count >= 25 then
+						tfm.exec.killPlayer(name)
+						showMessage("<R><b>"..name.."</b>"..text.macro.."")
+					end
+					data[name].count=0
 				end
-				data[name].count=0
 			end
 		end
 	end
