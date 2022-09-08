@@ -1,10 +1,12 @@
--- Mudanças na Versão 2.25.1:
+-- Mudanças na Versão 2.26.0:
 
 -- Correções em várias perguntas
+-- Adição de 4 perguntas de conhecimentos gerais
+-- Pequenos ajustes internos
 
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.25.1
--- Por favor, edite a linha 22 a variável 'admin' pelo seu nome para ter acesso aos comandos.
--- Você pode selecionar o tema editando a linha 23, ou digitando !tema [número] conforme os números abaixo.
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.26.0
+-- Por favor, edite a linha 24 a variável 'admin' pelo seu nome para ter acesso aos comandos.
+-- Você pode selecionar o tema editando a linha 25, ou digitando !tema [número] conforme os números abaixo.
 
 -- Temas:
 -- 0 = transformice
@@ -392,7 +394,7 @@ perguntas1={
 "Qual destes gases geralmente é presente dentro dos túneis de trânsito, e que podem causar problemas ao sistema respiratório?","CO","CO₂",1,
 "De 1994 a 2016, dois partidos estiveram na presidência do Brasil. Quais são esses partidos?","PT e PSDB","PT e PMDB",1,
 "Em que ano foi desenvolvido o Windows 2000?","1999","2000",1,
-"Quantos anos têm a Rainha Elizabeth?","95","96",2,
+"Com quantos anos morreu a Rainha Elizabeth?","96","97",1,
 "A partir de que ano Plutão deixou de ser considerado Planeta e foi considerado Planeta Anão?","2005","2006",2,
 "O seriado Chaves foi produzido em qual país?","México","Argentina",1,
 "A primeira emissora da Rede Globo foi lançado em qual estado do Brasil?","São Paulo","Rio de Janeiro",2,
@@ -434,7 +436,7 @@ perguntas1={
 "Em que data terminou a Guerra do Paraguai?","1 de Fevereiro","1 de Março",2,
 "A novela Rebelde, lançada originalmente em 2004, é originada de qual país?","Brasil","México",2,
 "Qual foi o primeiro presidente da história do Brasil?","Deodoro da Fonseca","Epitácio Pessoa",1,
-"Por quanto tempo um ser humano consegue ficar consciente no espaço, sem uso de traje espacial, aproximadamente?","1 segundo","5 segundos",2,
+"Por quanto tempo um ser humano consegue ficar consciente no espaço, sem uso de traje espacial, aproximadamente?","5 segundos","10 segundos",2,
 "Por qual nome foi conhecido o diplomata que garantiu as fronteiras do nosso país?","Rio Branco","Olavo Bilac",1,
 "O município de Duque de Caxias, no Rio de Janeiro, tem esse nome em homenagem a um militar e monarquista muito importante na Independência do Brasil e na Guerra do Paraguai.","Pedro Ferreira de Oliveira","Luís Alves de Lima e Silva",2,
 "Qual foi o nome do primeiro presidente do Brasil após a Redemocratização, em 1985?","Fernando Collor de Mello","José Sarney",2,
@@ -444,6 +446,10 @@ perguntas1={
 "Barack Obama foi o primeiro negro eleito presidente dos Estados Unidos.","Verdadeiro","Falso",1,
 "Em que ano a vereadora Marielle Franco e o motorista Anderson Gomes foram assasinados?","2017","2018",2,
 "O município de Duque de Caxias, no Rio de Janeiro, antes era conhecido por qual nome?","Cisplatina de Ferro","Porto da Estrela",2,
+"A chuva e a neve são, geograficamente falando, chamadas de...","Precipitações","Condensações",1,
+"Qual foi o município de Minas Gerais no qual houveram diversas minerações de ouro durante o século XVII?","Ouro Preto","Juiz de Fora",1,
+"Em qual ano ocorreu o rompimento da barragem em Brumadinho, responsável por destruir grande parte da vida e vegetação presente por lá?","2015","2019",2,
+"Qual o nome da lei que existia dos anos 70 até meados dos anos 80, na qual proibia os candidatos a falarem durante o horário eleitoral?","Lei Elefante","Lei Falcão",2,
 }
 perguntas2={
 "Vai na sorte :)","ok","ok",1,
@@ -772,7 +778,7 @@ function questionChanger(id,remove)
 end
 function eventNewGame()
 	vivos=0
-	tfm.exec.setGameTime(20)
+	tfm.exec.setGameTime(16)
 	for name,player in next,tfm.get.room.playerList do
 		vivos=vivos+1
 		if name:sub(1,1) == "*" then
@@ -814,7 +820,7 @@ function reset()
 	tfm.exec.newGame(mapa)
 end
 function eventChatCommand(name,message)
-	if name == "Forzaldenon#0000" or name == "Reksai_void2600#6638" or name == "Spectra_phantom#6089" or name == "Morganadxana#0000" or verifyAdmin(name) == true then
+	if name == "Forzaldenon#0000" or name == "Reksai_void2600#6638" or name == "Akwimos#1937" or name == "Morganadxana#0000" or verifyAdmin(name) == true then
 		if (message:sub(0,6) == "limite") then
 			limite=tonumber(message:sub(8))
 			showMessage("Limite de rodadas alterado para: "..message:sub(8).."")
@@ -864,7 +870,7 @@ function eventPlayerLeft(name)
 	ratos=ratos-1
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.25.1</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
+	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.26.0</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
