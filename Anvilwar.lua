@@ -2,9 +2,9 @@
 Module authors : Spectra_phantom#6089, Morganadxana#0000
 (C) 2017-2022 Spectra Advanced Module Group
 
-Version : RTM 48611.194
-Compilation date : 09/05/2022 21:36 UTC
-Sending player : Morganadxana#0000
+Version : RTM 48712.195 LTS
+Compilation date : 09/10/2022 14:05 UTC
+Sending player : Akwimos#1937
 
 Number of maps : 173
 Number of module special members : 10 ]]--
@@ -95,7 +95,7 @@ lang.br = {
 	cap_text = "foi escolhido para ser o líder do seu time.",
 	cap = "<J><b>Você foi escolhido como o líder do time.</b><N><br>Digite !leader para saber as funcionalidades e os benefícios de ser o líder do seu time.",
 	leader = "Os líderes dos times <b>são escolhidos aleatoriamente</b> e possui as seguintes vantagens em relação aos outros jogadores:<br><br>• Recebe 50% a mais de quantidade de pontos e AnvilCoins em relação aos outros jogadores<br>• Pode reviver jogadores mortos do seu time usando !rv [jogador]<br>• Pode transferir seus pontos para outro jogador do seu time usando !tp [jogador]<br>• Possui 50% a mais de tempo para atirar do que os outros jogadores.",
-	legacy = "<J><b>Confiram os submódulos do #anvilwar!</b><br><VP>/sala #anvilwar00watercatch<br>/sala #anvilwar00beach<br>/sala #anvilwar00naturalpark<br><br><N>Para descobrir as novidades desta versão, digite <b>!changelog</b>.<br><br><J>Atenção: Daqui a algumas semanas, o criador Spectra_phantom#6089 deixará o Transformice, e o comando total do module será transferido para Morganadxana#0000.<br><br>",
+	legacy = "<J><b>Confiram os submódulos do #anvilwar!</b><br><VP>/sala #anvilwar00watercatch<br>/sala #anvilwar00beach<br>/sala #anvilwar00naturalpark<br>/sala #anvilwar00objects<br><br><N>Para descobrir as novidades desta versão, digite <b>!changelog</b>.<br><br><J>Atenção: Daqui a algumas semanas, o criador Spectra_phantom#6089 deixará o Transformice, e o comando total do module será transferido para Morganadxana#0000.<br><br>",
 	disabled = "Este comando foi desabilitado por um administrador.",
 	gametime = "Tempo",
 	timeup = "<ROSE>Tempo esgotado! Este será o último tiro!",
@@ -259,7 +259,7 @@ function showMenu(name,color,x,y,width,height,title,content)
 end
 
 function showLobbyText(name)
-	ui.addTextArea(402,"<p align='center'><font size='12'><b><font face='Courier New'><i>"..text.version.." RTM 48611.194 - "..text.comp_date.."09/05/2022 21:36 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,1,380,798,36,0,0,1.0,true)
+	ui.addTextArea(402,"<p align='center'><font size='12'><b><font face='Courier New'><i>"..text.version.." RTM 48712.195 LTS - "..text.comp_date.."09/10/2022 14:05 UTC - "..text.uploaded.."Akwimos#1937</i>",name,1,380,798,36,0,0,1.0,true)
 end
 
 function setLeaders()
@@ -332,7 +332,7 @@ end
 
 function updateTextBar()
 	if mode == "lobby" or mode == "map_sort" or mode == "wait1" then
-		ui.setMapName("<N><b>#anvilwar 2022 Edition</b>   <G>|   <VP>"..text.version.." <b>RTM 48611.194</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
+		ui.setMapName("<N><b>#anvilwar 2022 Edition</b>   <G>|   <VP>"..text.version.." <b>RTM 48712.195 LTS</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	elseif mode == "shoot" or mode == "wait2" or mode == "wait3" then
 		local m=math.floor(general_time/60)
 		local s=math.floor(general_time-(m*60))
@@ -893,7 +893,7 @@ function eventChatCommand(name,command)
 		end
 	end
 	if command == "changelog" then
-		showMenu(name,0xa8f233,140,110,520,100,"#anvilwar Changelog - RTM 48611.194","• More internal changes")
+		showMenu(name,0xa8f233,140,110,520,100,"#anvilwar Changelog - RTM 48712.195 LTS","• Bug fixes on map switching")
 	end
 	if (command:sub(0,2) == "rv") then
 		if name == actual_player and general_time >= 30 then
@@ -1597,7 +1597,7 @@ function eventLoop(passed,remain)
 			lobby()
 		end
 	end
-	if mode == "wait1" and time_remain > 0 then
+	if mode == "wait1" and time_remain > 1 then
 		if rawlen(players_red) == 0 or rawlen(players_blue) == 0 then
 			lobby()
 		end
@@ -1669,7 +1669,7 @@ function eventLoop(passed,remain)
 		mode="shoot"
 		getAlivePlayers()
 	end
-	if mode == "wait1" and time_remain <= -1 then
+	if mode == "wait1" and time_remain == 1 then
 		for i=-8, -1 do
 			ui.removeTextArea(i,nil)
 		end
