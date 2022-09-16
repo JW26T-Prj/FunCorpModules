@@ -1,13 +1,14 @@
+admin="" -- Insert your name here, FunCorp!
+
 data={}; recorde=0; recorder="----"; changed=false; xml2='';
-tfm.exec.disableAutoNewGame(true)
-tfm.exec.disableAutoShaman(true)
-tfm.exec.disableAfkDeath(true)
-tfm.exec.disablePhysicalConsumables(true)
+for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","PhysicalConsumables","AfkDeath"} do
+	tfm.exec["disable"..f]()
+end
 tfm.exec.newGame('@7915086')
 ui.setBackgroundColor("#D1D1D1")
-system.disableChatCommandDisplay("ddddda")
+system.disableChatCommandDisplay("reset")
 function updateBar()
-	ui.setMapName("<D>Long Jump script v1.22 by <ROSE>Patrick_mahomes#1795   <V>|   <N>Highest score : <VP><b>"..recorde.."</b> <N>- <VP><b>"..recorder.."</b><")
+	ui.setMapName("<D>Long Jump script v1.23 by <ROSE>Patrick_mahomes#1795   <V>|   <N>Highest score : <VP><b>"..recorde.."</b> <N>- <VP><b>"..recorder.."</b><")
 end
 function eventNewGame()
 	if changed == false then
@@ -20,15 +21,18 @@ function eventNewGame()
 	end
 end
 function eventChatCommand(n,m)
-	if m == "ddddda" then
-		tfm.exec.chatMessage("Reboot",nil)
-		recorde=0
-		for name,player in pairs(tfm.get.room.playerList) do
-			data[name].recorde=0
+	if n == "Patrick_mahomes#1795" or n == "Forzaldenon#0000" or n == "Akwimos#1937" or n == admin then
+		if m == "reset" then
+			tfm.exec.chatMessage("All scores are now reset.",nil)
+			recorde=0
+			for name,player in pairs(tfm.get.room.playerList) do
+				data[name].recorde=0
+				tfm.exec.setPlayerScore(name,0,false)
+			end
+			updateBar()
+			ui.removeTextArea(80,nil)
+			ui.removeTextArea(81,nil)
 		end
-		updateBar()
-		ui.removeTextArea(80,nil)
-		ui.removeTextArea(81,nil)
 	end
 end
 function eventPlayerDied(n)
@@ -36,24 +40,29 @@ function eventPlayerDied(n)
 	tfm.exec.giveCheese(n)
 end
 function eventNewPlayer(n)
-	newData={
+	if n:sub(1,1) == "*" then
+		tfm.exec.chatMessage("<R>Souris players aren't allowed",n)
+	else
+		newData={
 		["x"]=0;
 		["position"]=0;
 		["x2"]=0;
 		["recorde"]=0;
 			}
-	data[n]=newData;
-	tfm.exec.respawnPlayer(n)
-	tfm.exec.giveCheese(n)
-	ui.addTextArea(1,"<font size='18'><b><font face='Courier New'>0 ||||||| 2000 ||||||| 4000 |||||||| 6000 ||||||| 8000 ||||>",nil,20,20,670,20,0x000001,0x000001,0.8,true)
-	for i=1,30 do
-		local a=500*i
-		ui.addTextArea(100+i,"<p align='center'><b><font size='14'><font color='#000001'>"..a.."",n,a-30,930,60,20,0,0,1.0,false)
+		data[n]=newData;
+	
+		tfm.exec.respawnPlayer(n)
+		tfm.exec.giveCheese(n)
+		ui.addTextArea(1,"<font size='18'><b><font face='Courier New'>0 ||||||| 2000 ||||||| 4000 |||||||| 6000 ||||||| 8000 ||||>",nil,20,20,670,20,0x000001,0x000001,0.8,true)
+		for i=1,30 do
+			local a=500*i
+			ui.addTextArea(100+i,"<p align='center'><b><font size='14'><font color='#000001'>"..a.."",n,a-30,930,60,20,0,0,1.0,false)
+		end
+		ui.setBackgroundColor("#D1D1D1")
+		tfm.exec.setPlayerScore(n,0,false)
+		tfm.exec.chatMessage("<VP>Testing long jump module from Patrick_mahomes#1795<br><br>Original idea from Dhanny_mheyran#6701",n)
+		updateBar()
 	end
-	ui.setBackgroundColor("#D1D1D1")
-	tfm.exec.setPlayerScore(n,0,false)
-	tfm.exec.chatMessage("<VP>Testing long jump module from Patrick_mahomes#1795<br><br>Original idea from Dhanny_mheyran#6701",n)
-	updateBar()
 end
 for name,player in pairs(tfm.get.room.playerList) do
 	eventNewPlayer(name)
