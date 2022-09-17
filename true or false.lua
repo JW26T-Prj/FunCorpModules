@@ -1,4 +1,8 @@
-for _,f in next,{"per","skip","limits","return","cancel","at","change","admin78"} do
+admin="" -- Insert your nickname here, FunCorp!
+
+-- Admin commands: !limits, !return, !cancel, !at [5-30], !admin78 [nickname#tag].
+
+for _,f in next,{"per","skip","limits","return","cancel","at","admin78"} do
 	system.disableChatCommandDisplay(f)
 end
 for _,G in next,{"DebugCommand","AutoScore","AutoNewGame","AfkDeath","PhysicalConsumables","AllShamanSkills"} do
@@ -47,7 +51,7 @@ function eventNewGame()
 end
 function eventNewPlayer(name)
 	tfm.exec.setPlayerScore(name,0,false)
-	ui.setMapName("<N>True or False <b>II</b> - version <VP><b>RTM 2610.007</b> <N>made by <ROSE><b>Spectra_phantom#6089</b><")
+	ui.setMapName("<N>True or False - version <VP><b>RTM 2711.008</b> <N>by <ROSE><b>Lanadelrey#4862</b><")
 end
 for name,player in next,tfm.get.room.playerList do
 	eventNewPlayer(name)
@@ -66,7 +70,7 @@ function reset()
 			tfm.exec.setPlayerScore(name,-1,false)
 		end
 	end
-	ui.setMapName("<N>True or False <b>II</b> - version <VP><b>RTM 2610.007</b> <N>made by <ROSE><b>Spectra_phantom#6089</b><")
+	ui.setMapName("<N>True or False - version <VP><b>RTM 2711.008</b> <N>by <ROSE><b>Lanadelrey#4862</b><")
 end
 function isTrue()
 	showMessage("<VP>The answer is TRUE!")
@@ -113,7 +117,7 @@ function eventPopupAnswer(id,name,answer)
 			end
 			showMessage("<N>"..questions.question.."")
 			ui.addTextArea(0,"<font size='18'><p align='center'><font face='Segoe UI,Arial'>"..questions.question.."",nil,15,25,770,50,0x010101,0x010101,0.95,true)
-			showMessage(questions.answer,"Spectra_phantom#6089")
+			showMessage(questions.answer,"Lanadelrey#4862")
 			showMessage(questions.answer,"Forzaldenon#0000")
 		end
 	end
@@ -125,7 +129,7 @@ function eventPopupAnswer(id,name,answer)
 	end
 end
 function eventChatCommand(name,message)
-	if name == "Spectra_phantom#6089" or name == "Forzaldenon#0000" or name == "Viego#0345" then
+	if name == "Lanadelrey#4862" or name == "Spectra_phantom#6089" or name == "Forzaldenon#0000" or name == admin then
 		if message == "limits" then
 			ui.addPopup(0,2,"Type the limit of questions (min: 1, max: 15)",name,350,175,200,true)
 		end
