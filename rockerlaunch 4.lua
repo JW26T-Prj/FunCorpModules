@@ -1,2 +1,0 @@
--- Esta versão foi descontinuada. Por favor, utilize a versão 5 utilizando este link:
--- https://github.com/JW26T-Prj/FunCorpModules/blob/master/rockerlaunch%205.lua
