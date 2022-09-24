@@ -1,5 +1,5 @@
--- Código do module Mestre Mandou, versão RTM 18523.117, desenvolvido por Rakan_raster#0000.
--- Code of Simon Says module, version RTM 18523.117, developed by Rakan_raster#0000.
+-- Código do module Mestre Mandou, versão RTM 18624.118 LTS, desenvolvido por Rakan_raster#0000.
+-- Code of Simon Says module, version RTM 18624.118 LTS, developed by Rakan_raster#0000.
 
 -- Atenção: Antes de rodar este código em uma sala, verifique se esta versão coincide com a versão mais recente presente abaixo:
 -- https://raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/mestre%20mandou.lua
@@ -19,19 +19,19 @@ admin={""} -- Leia abaixo / Read below!
 for _,f in next,{"AutoShaman","AutoNewGame","AutoTimeLeft","DebugCommand"} do
 	tfm.exec["disable"..f](true)
 end
-mapas={"@6788085","@6788174","@6788154","@6788715","@6788728","@6789271","@6790527","@6791838","@6789356","@6822331","@7290275","@6754319","@7686598","@7750148","@7688066","@6790295","@6788183","@6784965","@6789235","@6789853","@6790385","@6791944","@6801706","@6792470","@6806109","@6821950","@6866406","@6866437","@6885971","@5328362","@5957905","@7055459","@7525277","@2684847","@7214363","@6792516","@6825340","@6838871","@6788693","@6789272","@6799996","@6799998","@6808957","@6803018","@6809464","@6859175","@6907177","@7404327","@7382263","@6885799","@6790912","@6833993","@7721192","@7309605","@6532621","@6788861","@6789249","@6790484","@6792518","@6794050","@6830799","@6866549","@6834529","@6876563","@6888512","@6893463","@7431981","@7146925","@6937148","@6356881","@6789280","@6790895","@6799997","@6789324","@6803128","@6900149","@3832586","@6791871","@6811934","@7631682","@6876638","@6892608","@6982387","@7404106","@7405103","@7400694","@7400678","@7412412","@7412422","@7491944","@7755685","@6843950","@6810292","@3110915","@6789263","@4411212","@7354947","@3398791","@7201360","@6897042","@5549586","@6809461","@7242361","@7697974","@1966987","@7224471","@6932585","@6888879","@6781398","@5113656","@6920982","@5196033","@1468299","@7894614","@7863458","@7897912","@7899697","@6916197","@7910742","@7236120","@1468299","@2048617","@2802178","@2637755","@7896560","@7913565","@5549355","@7230453","@7188655","@6481798"}
+mapas={"@6788085","@6788174","@6788154","@6788715","@6788728","@6789271","@6790527","@6791838","@6789356","@6822331","@7290275","@6754319","@7686598","@7750148","@7688066","@6790295","@6788183","@6784965","@6789235","@6789853","@6790385","@6791944","@6801706","@6792470","@6806109","@6821950","@6866406","@6866437","@6885971","@5328362","@5957905","@7055459","@7525277","@7916613","@7214363","@6792516","@6825340","@6838871","@6788693","@6789272","@6799996","@6799998","@6808957","@6803018","@6809464","@6859175","@6907177","@7404327","@7382263","@6885799","@6790912","@6833993","@7721192","@7309605","@6532621","@6788861","@6789249","@6790484","@6792518","@6794050","@6830799","@6866549","@6834529","@6876563","@6888512","@6893463","@7431981","@7146925","@6937148","@6356881","@6789280","@6790895","@6799997","@6789324","@6803128","@6900149","@3832586","@6791871","@6811934","@7631682","@6876638","@6892608","@6982387","@7404106","@7405103","@7400694","@7400678","@7412412","@7412422","@7491944","@7755685","@6843950","@6810292","@3110915","@6789263","@4411212","@7354947","@3398791","@7201360","@6897042","@5549586","@6809461","@7242361","@7697974","@1966987","@7224471","@6932585","@6888879","@6781398","@5113656","@6920982","@5196033","@1468299","@7894614","@7863458","@7897912","@7899697","@6916197","@7910742","@7236120","@1468299","@2048617","@2802178","@2637755","@7896560","@7913565","@5549355","@7230453","@7188655","@6481798"}
 active=0; vivo=0; rato=0; dificuldade=1; rodadas=0; rodada=0; number=""; xpos=0; ypos=0; data={}; lang={}; alives={}; ids={}; tempo=10; counter=0; q=""; a=""; qtime=10; creator=""; sd_vivo=0;
 fc_cmds={1,2,4,5,6,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,28,30,31,32,33,34,35,36,40,41,43,45,46,47,48,49,50,51,53,56,57,58,59,61,62,65,66,67,69,71,75,76,77,78,80,81,82,83,84,85,86,87,88,89,92,93}
 spiderweb={type = 15,width = 60,height = 60}
 acidg={type = 19,width = 30,height = 30}
 map_det={creator="",code=""}
-ninjas={"Rakan_raster#0000","Akwimos#1937","Xayah_raster#7598","Forzaldenon#0000","Viego#0345","Skyymellu#0000"}
+ninjas={"Rakan_raster#0000","Akwimos#1937","Xayah_raster#7598","Forzaldenon#0000","Aurelianlua#0000","Velkozdapic#0000","Skyymellu#0000"}
 fc_mode=false; xpos=0; xpos2=0;
 for _,f in next,{"command","pw","limit","run","fc","tc","ms","q","a","t","kill"} do
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>O objetivo deste module é muito simples: Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><VP>Tenha sempre cuidado com os comandos trolls!<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Jessiewind26#2546<br><br><ROSE>Versão RTM 18523.117",
+	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>O objetivo deste module é muito simples: Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><VP>Tenha sempre cuidado com os comandos trolls!<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Jessiewind26#2546<br><br><ROSE>Versão RTM 18624.118 LTS",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -142,7 +142,7 @@ lang.br = {
 	npc = "Vá até Mayra Flowers e clique nela!",
 }
 lang.en = {
-	welcome = "<N><b>Welcome to Simon Says module!</b><br>This module's goal is easy: Follow everything the game told and test your limits until the end!<br><VP>Be always aware to troll commands!<br><br><J><b>Script developed by Rakan_raster#0000</b><br>Original concept by Jessiewind26#2546<br>Translation by Draw#6691<br><br><ROSE>Version RTM 18523.117",
+	welcome = "<N><b>Welcome to Simon Says module!</b><br>This module's goal is easy: Follow everything the game told and test your limits until the end!<br><VP>Be always aware to troll commands!<br><br><J><b>Script developed by Rakan_raster#0000</b><br>Original concept by Jessiewind26#2546<br>Translation by Draw#6691<br><br><ROSE>Version RTM 18624.118 LTS",
 	dancar = "Dance!",
 	sentar = "Sit down!",
 	confetar = "Throw 5 confetti!",
@@ -254,7 +254,7 @@ lang.en = {
 	npc = "Go to Mayra Flowers and click on her!",
 }
 lang.fr = {
-	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Rakan_raster#0000</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 18523.117",
+	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Rakan_raster#0000</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 18624.118 LTS",
 	dancar = "Danse !",
 	sentar = "Assis !",
 	confetar = "Lance 5 fois des confettis !",
@@ -490,7 +490,7 @@ function eventNewGame()
 	rodada=0; active=0; vivo=0; rato=0; dificuldade=1;
 	tfm.exec.setWorldGravity(0, 10)
 	tfm.exec.setGameTime(15)
-	showMessage("<font color='#010101'><i>Spectra's map loader v2.230</i><br><N>Loading current map information...<br><b>Current Map :</b> <V>"..map_det.code.."<br><N><b>Author :</b> <V>"..map_det.creator.."")
+	showMessage("<font color='#010101'><i>Spectra's map loader v2.231.1</i><br><N>Loading current map information...<br><b>Current Map :</b> <V>"..map_det.code.."<br><N><b>Author :</b> <V>"..map_det.creator.."")
 	if fc_mode == true then
 		showMessage("<VP><br>"..text.funcorp.."")
 	end
@@ -535,9 +535,7 @@ function addCommandCount(name)
 	data[name].s=data[name].s+1
 	if data[name].c == 0 then
 		if tfm.get.room.playerList[name].isDead == false then
-			if data[name].s <= 100 then
-				ui.addTextArea(24,"<font size='33'><p align='center'>"..data[name].s.."",name,360,350,80,45,0x000001,0x000001,0.8,true)
-			end
+			ui.addTextArea(24,"<font size='33'><p align='center'>"..data[name].s.."",name,360,350,80,45,0x000001,0x000001,0.8,true)
 		end
 	end
 end
@@ -1114,7 +1112,7 @@ function getCommand()
 	end
 	if active == 91 then
 		showCommand(active,text.npc)
-		tfm.exec.setGameTime(10)
+		tfm.exec.setGameTime(9)
 		tfm.exec.addNPC("Mayra Flowers",{title = 1, look = "112;0,4,0,74_212121+d2d2d2,39,39,44,0,1",x = math.random(100,700),y = 80,female = true,lookLeft = true,lookAtPlayer = true,interactive = true})
 	end
 	if active == 92 then
@@ -1680,28 +1678,28 @@ end
 function eventLoop(passado,faltando)
 	local tempo=math.floor(faltando/1000)
 	if active == -2 then
-		ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." RTM 18523.117</b><")
+		ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." RTM 18624.118 LTS</b><")
 	elseif active == -1 and vivo == 1 then
-		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." RTM 18523.117</b><")
+		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." RTM 18624.118 LTS</b><")
 	elseif active == -1 and vivo <= 0 then
-		ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." RTM 18523.117</b><")
+		ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." RTM 18624.118 LTS</b><")
 	elseif active >= 0 then
-		ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." RTM 18523.117</b><")
+		ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." RTM 18624.118 LTS</b><")
 	end
 	if rato < 4 then
-		if tfm.get.room.currentMap == "@2684847" then
+		if tfm.get.room.currentMap == "@7916613" then
 			active=-2
 			tfm.exec.setGameTime(8000)
 		else
 			if passado > 4000 then
-				tfm.exec.newGame("@2684847")
+				tfm.exec.newGame("@7916613")
 				tfm.exec.setGameTime(8000)
 				showMessage("<R>"..text.mices.."",nil)
 			end
 		end
 	end
 	if rato >= 4 and passado >= 4000 then
-		if tfm.get.room.currentMap == "@2684847" then
+		if tfm.get.room.currentMap == "@7916613" then
 			tfm.exec.newGame(mapas[math.random(#mapas)])
 		end
 	end
@@ -1881,4 +1879,4 @@ function eventLoop(passado,faltando)
 		end
 	end
 end
-tfm.exec.newGame("@2684847")
+tfm.exec.newGame("@7916613")
