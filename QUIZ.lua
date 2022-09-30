@@ -1,12 +1,13 @@
--- Mudanças na Versão 2.26.0:
+-- Mudanças na Versão 2.27.0:
 
--- Correções em várias perguntas
--- Adição de 4 perguntas de conhecimentos gerais
--- Pequenos ajustes internos
+-- Adição de 14 perguntas de conhecimentos gerais
+-- Adição de 10 perguntas de música
+-- Adição de 10 perguntas de futebol
+-- Adição de 5 perguntas de league of legends
 
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.26.0
--- Por favor, edite a linha 24 a variável 'admin' pelo seu nome para ter acesso aos comandos.
--- Você pode selecionar o tema editando a linha 25, ou digitando !tema [número] conforme os números abaixo.
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.27.0
+-- Por favor, edite a linha 25 a variável 'admin' pelo seu nome para ter acesso aos comandos.
+-- Você pode selecionar o tema editando a linha 26, ou digitando !tema [número] conforme os números abaixo.
 
 -- Temas:
 -- 0 = transformice
@@ -450,6 +451,20 @@ perguntas1={
 "Qual foi o município de Minas Gerais no qual houveram diversas minerações de ouro durante o século XVII?","Ouro Preto","Juiz de Fora",1,
 "Em qual ano ocorreu o rompimento da barragem em Brumadinho, responsável por destruir grande parte da vida e vegetação presente por lá?","2015","2019",2,
 "Qual o nome da lei que existia dos anos 70 até meados dos anos 80, na qual proibia os candidatos a falarem durante o horário eleitoral?","Lei Elefante","Lei Falcão",2,
+"Em qual ano foi lançado o Windows 7?","2007","2009",2,
+"Por quantas vezes Ciro Gomes já foi candidato à Presidência da República?","3","4",2,
+"Qual o nome da empresa responsável pelo desenvolvimento e lançamento do VHS (Video Home System)?","JVC","Sony",1,
+"Segundo a religião Católica, em qual data é comemorado o Dia de Cosme e Damião?","26 de Setembro","27 de Setembro",1,
+"Em qual ano foi lançado o navegador Google Chrome?","2005","2008",2,
+"A velocidade da luz no ar é a mesma velocidade do que nos sólidos.","Verdadeiro","Falso",2,
+"Em qual ano terminou o século XX?","1999","2000",2,
+"Qual o nome da avenida famosa do Rio de Janeiro que acabou virando nome de novela?","Avenida Brasil","Avenida Marginal Tietê",1,
+"Quais destas doenças podem ser contraídas pelos seres humanos quando em contato com águas de rios poluídos?","Leptospirose e Esquistossomose","Leptospirose e Doença de Chagas",1,
+"A glicose é composta por quais elementos químicos?","Carbono, Hidrogênio e Nitrogênio","Carbono, Hidrogênio e Oxigênio",2,
+"Durante uma chuva com raios, observamos primeiro o relâmpago e depois ouvimos o trovão por conta da diferença da velocidade de propagação da luz e do som.","Verdadeiro","Falso",1,
+"Qual é o nome dado para a pessoa que nasce no Estado do Rio de Janeiro?","Carioca","Fluminense",2,
+"O Parque Nacional do Itatiaia, conhecido por seu clima frio e sua natureza, fica localizado entre quais estados brasileiros?","Minas Gerais e Rio de Janeiro","Minas Gerais e São Paulo",1,
+"Qual destes municípios está localizado no Estado do Acre?","Plácido de Castro","Santo Antônio de Pádua",1,
 }
 perguntas2={
 "Vai na sorte :)","ok","ok",1,
@@ -551,7 +566,7 @@ perguntas2={
 "Qual é o nome do vocalista do grupo Capital Inicial?","Dinho Ouro Preto","Dinho Olho Preto",1,
 "Qual é o nome do primeiro single lançado pela banda Charlie Brown Jr.?","O Coro Vai Comê!","Tudo que Ela Gosta de Escutar",1,
 "Qual destas músicas do Linkin Park foi a primeira a ser gravada com Chester Bennington no vocal?","Numb","And One",2,
-"Em que ano foi lançada a famosa música Brincadeira de Criança, do grupo Molejo, junto com o álbum de mesmo nome?","1997","2000",1,
+"Em que ano foi lançada a famosa música 'Brincadeira de Criança', do grupo Molejo, junto com o álbum de mesmo nome?","1997","2000",1,
 "A banda de power metal Angra foi formada em qual cidade?","Angra dos Reis","São Paulo",2,
 "Qual o nome da rádio fundada por Assis Chateaubriand em 1935, empresário que depois seria responsável pela inauguração da TV no Brasil?","Rádio Jovem Pan","Super Rádio Tupi",2,
 "A cantora Shakira nasceu em qual país?","Colômbia","Estados Unidos",1,
@@ -569,6 +584,16 @@ perguntas2={
 "A música original de abertura do programa Fantástico por composta por quem?","Guto Graça Mello","Ricardo Garcia",1,
 "Qual destas músicas do Sandy e Júnior foi utilizada na novela O Cravo e a Rosa?","A Arte do Coração","Olha o Que o Amor Me Faz",2,
 "A famosa música 'Ameno', da banda francesa Era, que acabou virando meme, foi lançada em qual ano?","1996","2010",1,
+"Em que ano foi lançada 'Me Leva', primeiro single do cantor Latino e música referência em sua carreira?","1993","1994",1,
+"A música 'In the End', do Linkin Park, teve um outro nome antes de ser trocada. Qual era o antigo nome?","The Untitled","Part of Me",1,
+"A banda de metal cristã Metal Nobre foi formada em qual cidade?","Cuiabá","Brasília",2,
+"Complete a música: I got my red dress on tonight, dancing in the dark...","in the pale moonlight","I'm feeling alive",1,
+"Em que ano o iPod foi lançado?","2000","2001",2,
+"O álbum 'One More Light', do Linkin Park, é vendido tanto em CD quanto em LP.","Verdadeiro","Falso",2,
+"A música 'Ar Condicionado no 15', de Wesley Safadão, foi composta por ele.","Verdadeiro","Falso",2,
+"Quem é que canta a música 'Domingo de Manhã'?","Marcos e Belutti","Zé Neto e Cristiano",1,
+"Qual o nome da primeira música de sucesso da dupla Zezé di Camargo e Luciano?","É o Amor","Olhos de Lua",1,
+"A música 'Campo Minado', do cantor Jessé, faz referência ao famoso jogo Campo Minado do Windows.","Verdadeiro","Falso",2,
 }
 perguntas3={
 "Vai na sorte :)","ok","ok",1,
@@ -684,6 +709,11 @@ perguntas3={
 "O campeão Malzahar é originado de qual lugar?","Icathia","Vazio",1,
 "Quais os nomes dos 'bichinhos' que surgem na habilidade W do campeão Malzahar?","Observadores","Voidlings",2,
 "Qual o nome do material anti-magia na qual as construções de Demacia são construídas?","Petricita","Pedra-raiz",1,
+"Um acerto crítico no League of Legends equivale a qual porcentagem do dano tradicional?","175%","200%",1,
+"Qual é o item mais caro da loja do League of Legends?","Força da Trindade","Capuz da Morte de Rabadon",2,
+"Quantos feitiços de invocador existem no League of Legends?","10","11",2,
+"O Brasil nunca chegou até as quartas de final do mundial de League of Legends.","Verdadeiro","Falso",1,
+"Um partida de League of Legends é encerrada quando...","Todos os jogadores de um time morrem","O Nexus é destruído",2,
 }
 perguntas4={
 "Vai na sorte :)","ok","ok",1,
@@ -732,7 +762,7 @@ perguntas4={
 "A seleção da Bolívia já chegou em uma final de Copa América.","Verdadeiro","Falso",1,
 "Qual era a competição organizada pela FIFA que ocorria um ano antes da Copa do Mundo?","Copa das Confederações","Copa América",1,
 "Qual desses times do interior de São Paulo já chegou em uma final de Libertadores?","Santo André","São Caetano",2,
-"O time do Vasco já caiu quantas vezes para a série B?","3","4",2,
+"O time do Vasco já caiu quantas vezes para a série B?","4","5",1,
 "Qual foi o nome do episódio de virada de mesa que ocasionou na realização da Copa João Havelange, em 2000?","Caso Sandro Hiroshi","Caso Milton Mendes",1,
 "Qual foi o jogador que foi escalado irregularmente na última rodada no Brasileirão de 2013, causando o rebaixamento da Portuguesa?","Héverton","Éderson",1,
 "Qual o nome do estádio conhecido como Engenhão?","Estádio João Havelange","Estádio Nilton Santos",2,
@@ -754,6 +784,16 @@ perguntas4={
 "Todas as vezes na qual o Palmeiras foi finalista da Libertadores da América, foi campeão.","Verdadeiro","Falso",2,
 "Grêmio e Cruzeiro são os clubes que mais vezes conquistaram a Copa do Brasil.","Verdadeiro","Falso",1,
 "Em qual bairro do Rio de Janeiro fica localizado o Estádio Nilton Santos?","Engenho de Dentro","Engenho Novo",1,
+"Qual o nome do CEO da SAF de futebol do Botafogo?","Josh Wander","John Textor",2,
+"Qual o nome do ex-goleiro que foi preso por matar a então namorada Elisa Samúdio?","Bruno","Adriano",1,
+"Qual o nome do jogador que foi camisa 10 da Seleção Brasileira na Copa do Mundo de 1994?","Romário","Raí",2,
+"O Vasco da Gama foi campeão da Libertadores da América de 1998 contra qual equipe?","Barcelona de Guayaquil","River Plate",1,
+"Qual o nome do jogador que fez o gol do título mundial do Chelsea contra o Palmeiras, em 2022?","Lukaku","Kai Havertz",2,
+"Qual destes clubes venceu mais vezes o Campeonato Paulista?","Corinthians","Palmeiras",1,
+"Qual foi o único clube a ser campeão do Campeonato Brasileiro de forma invicta?","Internacional","São Paulo",1,
+"Qual destes jogadores foi responsável por perder o último pênalti na decisão do Mundial de Clubes da FIFA de 2000, fazendo com que o Corinthians seja campeão?","Romário","Edmundo",2,
+"A partir de qual ano a Copa Sul-Americana passou a ser disputada?","2002","2008",1,
+"Qual foi o único jogador a fazer 3 gols em um jogo de final de Copa Libertadores da América?","Riquelme","Thiago Neves",2,
 }
 mapa="@7786632"
 actual_question={quest="",a1="",a2="",answer=nil}
@@ -806,9 +846,9 @@ function eventNewGame()
 	end
 	showMessage("<N><b>Quantidade de perguntas presentes: "..fixed_cnt.."</b><br><VP>O sistema inteligente de escolha de perguntas está ativo.<br><br><G>Agora vocês podem sugerir temas e perguntas para este script! Entre em contato com Reksai_void2600#6638 por mensagem privada no fórum e envie suas perguntas.")
 	if tema == 3 then
-		showMessage("<J>As perguntas deste tema foram todas feitas por Spectra_phantom#6089.")
+		showMessage("<J>As perguntas deste tema foram, em sua maioria, feitas por Spectra_phantom#6089.")
 	elseif tema == 4 then
-		showMessage("<J>As perguntas deste tema foram todas feitas por Lucianattack#0000.")
+		showMessage("<J>As perguntas deste tema foram, em sua maioria, feitas por Lucianattack#0000.")
 	end
 end
 function reset()
@@ -870,7 +910,7 @@ function eventPlayerLeft(name)
 	ratos=ratos-1
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.26.0</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
+	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.27.0</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
