@@ -1,13 +1,11 @@
--- Mudanças na Versão 2.27.0:
+-- Mudanças na Versão 2.27.1:
 
--- Adição de 14 perguntas de conhecimentos gerais
--- Adição de 10 perguntas de música
--- Adição de 10 perguntas de futebol
--- Adição de 5 perguntas de league of legends
+-- Correções em várias perguntas
+-- Adição de 2 perguntas de conhecimentos gerais
 
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.27.0
--- Por favor, edite a linha 25 a variável 'admin' pelo seu nome para ter acesso aos comandos.
--- Você pode selecionar o tema editando a linha 26, ou digitando !tema [número] conforme os números abaixo.
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.27.1
+-- Por favor, edite a linha 23 a variável 'admin' pelo seu nome para ter acesso aos comandos.
+-- Você pode selecionar o tema editando a linha 24, ou digitando !tema [número] conforme os números abaixo.
 
 -- Temas:
 -- 0 = transformice
@@ -61,7 +59,7 @@ perguntas={
 "Qual o nome da Deusa Shaman do Transformice?","Elise","Elisah",2,
 "Qual destes modules foi desenvolvido por Sharpiepoops, pioneiro nos modules do Transformice?","#keyhunt","#campal",1,
 "Originalmente no Transformice era possível criar mapas com quantos tipos de pisos?","5","8",1,
-"Quem é o criador atual do module True or False?","Spectra_phantom#6089","Haxhhhhhhhhh#0000",1,
+"Quem é o(a) gerenciador(a) atual do module True or False?","Spectra_phantom#6089","Lanadelrey#4862",2,
 "Qual o nome da empresa que é responsável pelo Transformice?","Atelier 801","Riot Games",1,
 "Qual destes pregos não pode ser utilizado no modo difícil?","Vermelho","Amarelo",1,
 "Há quantas categorias de itens na loja?","16","17",2,
@@ -69,14 +67,14 @@ perguntas={
 "Quantos queijos custa a exportação de um mapa como cafofo da tribo?","5","40",1,
 "Quantos jogos a Atelier 801 tem atualmente?","5","6",2,
 "Qual é a fricção e a restituição, respectivamente, de um piso de chocolate?","20 e 0","0 e 20",1,
-"Qual destes usuários é responsável pelo module #anvilwar?","Jessiewind26#2546","Spectra_phantom#6089",2,
+"Qual destes usuários é responsável pelo module #anvilwar?","Jessiewind26#2546","Morganadxana#0000",2,
 "Qual destes usuários é responsável pelo module #batata?","Laagaadoo#0000","Ikke#0095",1,
 "Qual destes comandos é utilizado para a inserção de um código especial da Japan Expo?","/lua","/code",2,
 "A habilidade 'Meep!' faz parte de qual árvore de Habilidades?","Selvagem","Físico",1,
-"Qual a categoria atribuída a mapas de Cafofo da Tribo?","P22","P20",1,
+"Qual a categoria atribuída a mapas de cafofo da tribo?","P22","P20",1,
 "FunCorps são capazes de rodar scripts LUA em salas que não são de modules.","Verdadeiro","Falso",1,
 "O cargo de Modsent é atribuído a jogadores que são...","Moderadores e FunCorps","Moderadores e Sentinelas",2,
-"Quem é o gerenciador atual do module #pictionary?","Shamousey#0015","Ork#0015",1,
+"Quem é o gerenciador atual do module #pictionary?","Shamousey#0015","Ork#0095",1,
 "Quantas árvores de habilidades de shaman existem no Transformice?","3","5",2,
 "Qual o nome do cargo pré-definido do criador de uma tribo?","Shaman da Tribo","Líder Espiritual",2,
 "Qual o nome do título que a Melibellule usa?","La Belette","Fromadmin",2,
@@ -105,7 +103,7 @@ perguntas={
 "Qual destes comandos é utilizado para a inserção de um script LUA?","/lua","/code",1,
 "Qual destes eventos não é mais utilizado no Transformice?","Carnaval","Natal",1,
 "A habilidade 'Superstar' faz parte de qual árvore de Habilidades?","Selvagem","Guia Espiritual",2,
-"Qual destes usuários nunca se tornou FunCorp?","Shamousey#0015","Bolodefchoco#0095",1,
+"Qual destes usuários nunca se tornou FunCorp?","Spectra_phantom#6089","Bolodefchoco#0095",1,
 "Se você ficar muito tempo dentro da água no Transformice, você morre automaticamente.","Verdadeiro","Falso",2,
 "É possível ganhar queijos na loja apenas jogando modules.","Verdadeiro","Falso",1,
 "Qual categoria de mapas é atribuída aos mapas de Defilante?","P18","P19",1,
@@ -199,7 +197,7 @@ perguntas={
 "O module #freezertag antes era um submódulo de qual module?","#parkour","#circuit",1,
 "Qual o nome do código que é usado para carregar mapas do Transformice?","Lua","XML",2,
 "Qual destes usuários nunca se tornou FunCorp?","Patrick_mahomes#1795","Pamots#0095",1,
-"Qual destes modules não foi feito por um brasileiro?","#anvilwar","#freezertag",1,
+"Qual destes modules não foi feito por um brasileiro?","#anvilwar","#utility",2,
 "Qual destas ratas morreu na vida real, dando origem a uma decoração do Transformice?","Elise","Papaille",1,
 "Em qual mês do ano geralmente termina o evento de Natal?","Dezembro","Janeiro",2,
 "Em qual ano foram introduzidos os modules no Transformice?","2014","2013",2,
@@ -255,11 +253,11 @@ perguntas={
 "É possível esconder todos os pregos em um mapa do Transformice.","Verdadeiro","Falso",1,
 "Quais são os valores padrões de vento e gravidade no Transformice, respectivamente?","0 e 1","0 e 10",2,
 "Quantos queijos no perfil são necessários para entrar no Editor de Mapas?","0","1000",1,
-"Qual é a tribo oficial da equipe de Funcorp BR/PT?","Alaranjados","Funcrepe",1,
+"Qual é a tribo oficial da equipe de FunCorp BR/PT?","Alaranjados","Funcrepe",1,
 "É possível criar NPCs interativos em scripts LUA no Transformice.","Verdadeiro","Falso",1,
-"Quantas missões diárias você precisa completar para ganhar a recompensa de 20 morangos?","15","20",2,
+"Quantas missões diárias você precisa completar para ganhar a recompensa de 20 morangos?","20","25",1,
 "Qual destes modules foi criado primeiro?","#batata","#keyhunt",2,
-"Qual destes usuários nunca se tornou FunCorp?","Spectra_phantom#6089","Reksai_void2600#6638",1,
+"Qual destes usuários nunca se tornou FunCorp?","Shun_kazami#7014","Reksai_void2600#6638",1,
 "O comando /ban já serviu para banir jogadores do Transformice por 1 hora por voto popular.","Verdadeiro","Falso",1,
 "Quantos firsts são necessários para desbloquear o título 'Rato Ninja'?","200","500",1,
 "Em qual árvore de habilidades está presente a habilidade 'Caixa de acompanhamento'?","Mecânico","Mestre do Vento",2,
@@ -309,7 +307,7 @@ perguntas1={
 "Quantos anos durou o Regime Militar no Brasil?","21","25",1,
 "Qual dessas emissoras de televisão foi a primeira da América Latina?","Rede Tupi","Rede Manchete",1,
 "Uma polegada equivale a quantos centímetros, aproximadamente?","2.5 cm","3.3 cm",1,
-"Em qual ano ocorreu o último Censo do IBGE?","2010","2020",1,
+"Em qual ano ocorreu o último Censo do IBGE?","2010","2022",2,
 "O Arco do Triunfo, localizado na França, é uma homenagem a...","Napoleão Bonaparte","George Washington",1,
 "Na matemática, qual o nome do triângulo em que a soma dos números centrais é igual à soma das coeficientes binomiais?","Triângulo de Newton","Triângulo de Pascal",2,
 "Quais os povos que dominaram a região da Islândia no século IX?","Bárbaros","Vikings",2,
@@ -465,6 +463,9 @@ perguntas1={
 "Qual é o nome dado para a pessoa que nasce no Estado do Rio de Janeiro?","Carioca","Fluminense",2,
 "O Parque Nacional do Itatiaia, conhecido por seu clima frio e sua natureza, fica localizado entre quais estados brasileiros?","Minas Gerais e Rio de Janeiro","Minas Gerais e São Paulo",1,
 "Qual destes municípios está localizado no Estado do Acre?","Plácido de Castro","Santo Antônio de Pádua",1,
+"O tungstênio, material utilizado nas lâmpadas fluorescentes e halógenas, possui qual número na Tabela Periódica?","59","74",2,
+"Qual o nome do lugar onde vive o Presidente da Argentina?","Casa Branca","Casa Rosada",2,
+
 }
 perguntas2={
 "Vai na sorte :)","ok","ok",1,
@@ -870,15 +871,15 @@ function eventChatCommand(name,message)
 		if (message:sub(0,4) == "setq") then
 			set_q=tonumber(message:sub(6))
 			local sn=((tonumber(message:sub(6))-1)*4)+1
-			if tema == 0 then
+			if tema == 0 and tonumber(set_q) <= rawlen(perguntas)/4 then
 				showMessage(perguntas[sn],name)
-			elseif tema == 1 then
+			elseif tema == 1 and tonumber(set_q) <= rawlen(perguntas1)/4 then
 				showMessage(perguntas1[sn],name)
-			elseif tema == 2 then
+			elseif tema == 2 and tonumber(set_q) <= rawlen(perguntas2)/4 then
 				showMessage(perguntas2[sn],name)
-			elseif tema == 3 then
+			elseif tema == 3 and tonumber(set_q) <= rawlen(perguntas3)/4 then
 				showMessage(perguntas3[sn],name)
-			elseif tema == 4 then
+			elseif tema == 4 and tonumber(set_q) <= rawlen(perguntas4)/4 then
 				showMessage(perguntas4[sn],name)
 			end
 		end
@@ -910,7 +911,7 @@ function eventPlayerLeft(name)
 	ratos=ratos-1
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.27.0</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
+	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.27.1</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
