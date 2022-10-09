@@ -38,7 +38,7 @@ end
 
 function eventTalkToNPC(name, npc)
 	if npc == "Keith Hertzon" then
-		showMessage("<V>[Keith Hertzon] <N>Quem é você? Ah, mais um visitante...<br><br>Bem, se quer saber o destino deste elevador... Bem, eu acho que não deve ser bem o que você espera.<br><br>Você vai descer bastante dentro do rio. Chuto que deva ser uns 70 metros de profundidade... Você vai encontrar umas cápsulas bem antigas que era usadas para navegação, mas aquilo já existe há anos, então duvido que ainda funcione. Mas vai que, né...",name)
+		showMessage("<V>[Keith Hertzon] <N>Quem é você? Ah, mais um visitante...<br><br>Bem, se quer saber o destino deste elevador... Bem, eu acho que não deve ser bem o que você espera.<br><br>Você vai descer bastante dentro do rio. Chuto que deva ser uns 20 metros de profundidade... Você vai encontrar umas cápsulas bem antigas que era usadas para navegação, mas aquilo já existe há anos, então duvido que ainda funcione. Mas vai que, né...",name)
 	elseif npc == "Dhanny Dier" then
 		showMessage("<V>[Dhanny Dier] <N>Você é muito(a) corajoso(a) para estar neste lugar. A pressão aqui é bem alta.<br><br>Mas se quiser saber o que são aquelas coisas, são esferas submarinas. Elas eram utilizadas há décadas atrás, mas acredito que estejam todas enferrujadas. Não recomendo tentar ir para lá, a não ser que realmente seja muito curioso(a). <b>E sim, isto é um aviso.</b>",name)
 	elseif npc == "Andressa Nyeder" then
