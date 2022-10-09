@@ -3,7 +3,7 @@ for _,f in next,{"AutoNewGame","AfkDeath","AutoShaman","MinimalistMode","Physica
 end
 debug.disableEventLog(true)
 system.disableChatCommandDisplay("reset")
-tfm.exec.newGame("@7903160")
+tfm.exec.newGame("@7917467")
 data={}; changed=false; xml2='';
 
 function showMessage(message,name)
@@ -24,10 +24,11 @@ function showNPCs(name)
 	tfm.exec.addNPC("Keith Cramer",{title = 216, look = "7;190_220b04+767576+585155+c44444+e0ddce+202020+e7e6e5,6_1d1c1c+464646,5_70707+d4c316,9,54,94,36,0,20",x = 567,y = 2925,female = false,lookLeft = false,lookAtPlayer = true,interactive = true},name)
 end
 function showWater(name)
+	tfm.exec.addImage("182d6e2c97d.png","?1",3080,1,name,1,1)
 	for i=0,1 do
 		tfm.exec.addImage("181f9cf5fc5.png", "?1", -800+(i*7180), 1387, name, 1.0, 1.0, 0, 1.0)
 		tfm.exec.addImage("181f9cf5fc5.png", "!1", -800+(i*7180), 1387, name, 1.0, 1.0, 0, 0.7)
-		tfm.exec.addImage("181f9cfac65.png", "!1", -800+(i*7180), 1445, name, 10, 6, 0, 1.0)
+		tfm.exec.addImage("181f9cfac65.png", "!1", -800+(i*7180), 1445, name, 10, 7, 0, 1.0)
 	end
 	for b=0,4 do
 		for c=0,4 do
@@ -38,16 +39,21 @@ function showWater(name)
 		tfm.exec.addImage("1803e8e2250.jpg","?1",-1200+(h*2169),1050,name,1,0.75,0,1)
 	end
 	for k=0,6 do
-		tfm.exec.addImage("181ba85ccc2.png","!1",math.random(500,7500),math.random(150,700),name)
+		tfm.exec.addImage("181ba85ccc2.png","!1",math.random(500,7500),math.random(150,550),name)
 	end
 	for l=0,6 do
-		tfm.exec.addImage("181ba86195e.png","!1",math.random(500,7500),math.random(150,700),name)
+		tfm.exec.addImage("181ba86195e.png","!1",math.random(500,7500),math.random(150,550),name)
 	end
 	for m=0,6 do
-		tfm.exec.addImage("181ba86655c.png","!1",math.random(500,7500),math.random(150,700),name)
+		tfm.exec.addImage("181ba86655c.png","!1",math.random(500,7500),math.random(150,550),name)
 	end
 	for n=0,4 do
 		tfm.exec.addImage("181ba86b15a.png","!1",math.random(7500,10000),math.random(50,300),name)
+	end
+	tfm.exec.addImage("183b4bf815b.png","?1",4908,785,name)
+	tfm.exec.addImage("183b4bf815b.png","!1",4908,785,name,1,1,0,0.65)
+	for o=1,3 do
+		tfm.exec.addImage("183b4bf34ba.png","+"..o.."",-50,-48,name)
 	end
 	ui.setBackgroundColor("#7DB1E0")
 end
@@ -114,7 +120,7 @@ function eventNewPlayer(name)
 	if changed == true then
 		ui.setMapName("Praia da Reserva Verde - <ROSE>Morgana's Mechanical Maps<")
 	end
-	showMessage("<VP><b>Bem-vindo(a) a Praia da Reserva Verde.</b><br><br><p align='left'><N>Este é um mapa-script de praia bem grande e com diversos recursos para se divertir. Aproveite e curta!<br><br><R>Aviso: Este mapa pode consumir até 1,8GB de RAM dependendo de casos específicos.<br><br><ROSE><b>Mapa feito por Morganadxana#0000.</b><br><J>Agradecimentos especiais para <b>Draw#6691, Soft#1388, Viincenzo#9526, Lacoste#8972, Lipersz#9863, Spectra_phantom#6089, Threshlimit#0000, Star#8558 e Lanadelrey#4862.</b><br><br><N>Deseja usar este mapa-script no cafofo de sua tribo? Use o link a seguir:<br><N><VP>raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/Praia%20da%20Reserva%20Verde.lua",name)
+	showMessage("<VP><b>Bem-vindo(a) a Praia da Reserva Verde.</b><br><br><p align='left'><N>Este é um mapa-script de praia bem grande e com diversos recursos para se divertir. Aproveite e curta!<br><br><R>Aviso: Este mapa pode consumir até 1,8GB de RAM dependendo de casos específicos.<br><br><ROSE><b>Mapa feito por Morganadxana#0000.</b><br><J>Agradecimentos especiais para <b>Draw#6691, Soft#1388, Viincenzo#9526, Lacoste#8972, Lipersz#9863, Spectra_phantom#6089, Threshlimit#0000, Star#8558 e Lanadelrey#4862.</b><br><br><N>Deseja usar este mapa-script no cafofo de sua tribo? Use o link a seguir:<br><N><VP>raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/Praia%20da%20Reserva%20Verde.lua<br><br><N>Revisão 1.1",name)
 end
 function eventLoop(p,f)
 	if changed == true then
