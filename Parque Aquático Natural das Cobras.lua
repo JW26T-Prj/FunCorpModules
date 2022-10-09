@@ -3,17 +3,17 @@ for _,f in next,{"AutoNewGame","AfkDeath","AutoShaman","MinimalistMode","Physica
 end
 debug.disableEventLog(true)
 system.disableChatCommandDisplay("reset")
-tfm.exec.newGame("@7911576")
+tfm.exec.newGame("@7917579")
 data={}; changed=false; xml2='';
 npc_01={title = 5,look = "1;190_dbe10f+767576+585155+c44444+e0ddce+202020+e7e6e5,0,30_1f618d+2fb9a2+3a2cf0,0,54,111,49,0,0",x = 141,y = 2275,female = false,lookLeft = false,lookAtPlayer = true,interactive = true}
-npc_02={title = 339,look = "1;40_d0ff+1825e7,6_700ff+b8ff,20_beff,0,29_d99+b2ff,0,1_ffff+ff0000,0,0",x = 40,y = 3500,female = false,lookLeft = false,lookAtPlayer = false,interactive = true}
+npc_02={title = 339,look = "1;40_d0ff+1825e7,6_700ff+b8ff,20_beff,0,29_d99+b2ff,0,1_ffff+ff0000,0,0",x = 40,y = 2950,female = false,lookLeft = false,lookAtPlayer = false,interactive = true}
 npc_03={title = 382,look = "179;236_434f55+434f55+434f55+434f55+605520+a19d88,50,82,0,62,112,44,0,0",x = 3128,y = 1906,female = true,lookLeft = false,lookAtPlayer = false,interactive = true}
 npc_04={title = 115,look = "222;229,46,84_988c5c+d252d6+b8a866+3062c7+d3eb29,0,65,0,52,84,0",x = 5072,y = 1632,female = true,lookLeft = true,lookAtPlayer = true,interactive = true}
 npc_05={title = 10,look = "1;44,40,89,34,0,0,31,77,2_c918be",x = 1908,y = 2402,female = true,lookLeft = false,lookAtPlayer = true,interactive = true}
 npc_06={title = 2,look = "113;223,8,27_252525+383838+242424,31,55_6d2e29+9e9983+ddba1d,0,0,51,48",x = 1088,y = 336,female = false,lookLeft = true,lookAtPlayer = true,interactive = true}
 npc_07={title = 42,look = "157;83,0,9,0,6,102_148960+f7eeba+f7eeba,0,79,47",x = 1033,y = 1121,female = false,lookLeft = true,lookAtPlayer = false,interactive = true}
 npc_08={title = 213,look = "223;244,33,89,0,6,102_148960+f7eeba+f7eeba,0,72,47",x = 5117,y = 1417,female = true,lookLeft = false,lookAtPlayer = true,interactive = true}
-npc_09={title = 11,look = "213;217_436b98+41d7fb+327548+287f9d+e0e8f3+555e88,23_3976eb+21170d+3488bb+21170d+21170d,23_b68ad,34_1c815b,17,83,49_3477ac+2d2d2d,0,0",x = 883,y = 4235,female = false,lookLeft = true,lookAtPlayer = true,interactive = true}
+npc_09={title = 11,look = "213;217_436b98+41d7fb+327548+287f9d+e0e8f3+555e88,23_3976eb+21170d+3488bb+21170d+21170d,23_b68ad,34_1c815b,17,83,49_3477ac+2d2d2d,0,0",x = 883,y = 2985,female = false,lookLeft = true,lookAtPlayer = true,interactive = true}
 
 function initNPC(name)
 	tfm.exec.addNPC("Keith Hertzon", npc_01, name)
@@ -67,27 +67,33 @@ end
 
 function showWater(name)
 	for _,h in next,{0,2,4} do
-		tfm.exec.addImage("18204168d2e.png","?1",-1200+(h*1400),4275,name,1,0.5,0,1)
+		tfm.exec.addImage("18204168d2e.png","?1",-1200+(h*1400),3050,name,1,0.5,0,1)
 	end
 	for _,j in next,{1,3,5} do
-		tfm.exec.addImage("18204168d2e.png","?1",200+(j*1400),4275,name,-1,0.5,0,1)
+		tfm.exec.addImage("18204168d2e.png","?1",200+(j*1400),3050,name,-1,0.5,0,1)
 	end
 	for _,m in next,{0,2,4} do
-		tfm.exec.addImage("18204168d2e.png","?1",-1200+(m*1400),4897,name,1,-2,0,1)
+		tfm.exec.addImage("18204168d2e.png","?1",-1200+(m*1400),3672,name,1,-2,0,1)
 	end
 	for _,n in next,{1,3,5} do
-		tfm.exec.addImage("18204168d2e.png","?1",200+(n*1400),4897,name,-1,-2,0,1)
+		tfm.exec.addImage("18204168d2e.png","?1",200+(n*1400),3672,name,-1,-2,0,1)
+	end
+	for _,as in next,{0,2,4} do
+		tfm.exec.addImage("183bac46d1a.png","?1",-800+(as*1488),3365,name,1,-1,0,0.7)
+	end
+	for _,at in next,{1,3,5} do
+		tfm.exec.addImage("183bac46d1a.png","?1",688+(at*1488),3365,name,-1,-1,0,0.7)
 	end
 	for i=0,1 do
 		tfm.exec.addImage("18200689108.png", "?1", -800+(i*7180), 2387, name, 1.0, 1.0, 0, 1.0)
-		tfm.exec.addImage("18200689108.png", "!1", -800+(i*7180), 2387, name, 1.0, 1.0, 0, 0.7)
-		tfm.exec.addImage("1820068de62.png", "!1", -800+(i*7180), 2445, name, 6, 4, 0, 1)
-	end
-	for b=0,1 do
-		tfm.exec.addImage("18200692b61.jpg","?1",-800+(b*1795),2445,name,4,4)
+		tfm.exec.addImage("18200689108.png", "!1", -800+(i*7180), 2387, name, 1.0, 1.0, 0, 0.56)
+		tfm.exec.addImage("1820068de62.png", "!1", -800+(i*7180), 2445, name, 6, 1.5, 0, 0.8)
 	end
 	for w=1,6 do
 		tfm.exec.addImage("181ba85ccc2.png","!1",math.random(50,5300),math.random(160,1800),name)
+	end
+	for b=0,1 do
+		tfm.exec.addImage("18200692b61.jpg","?1",-800+(b*1795),2445,name,4,4)
 	end
 	for x=1,6 do
 		tfm.exec.addImage("181ba86195e.png","!1",math.random(50,5300),math.random(160,1800),name)
@@ -130,7 +136,7 @@ end
 function eventNewGame(name)
 	if changed == true then
 		for name,_ in next,tfm.get.room.playerList do
-			showMessage("<VP><b>Bem-vindo(a) ao Parque Aquático Natural das Cobras.</b><br><br><p align='left'><N>Este é um mapa-script bem diferente de tudo o que você já viu.<br>O rio é muito profundo! Caso não saiba nadar, recomendo sair desta sala agora! Mas se souber, apenas aproveite e curta!<br><br><R>Aviso: Este mapa pode consumir até 1,6GB de RAM dependendo de casos específicos.<br><br><ROSE><b>Mapa feito por Morganadxana#0000.</b><br><J>Agradecimentos especiais para Aurelianlua#0000, Velkozdapic#0000, Lanadelrey#4862, Lorena#0960, Star#8558, Soft#1388, Some#2636, Leticia1k#0000, Draw#6691 e Joanaanne#0000.<b></b><br><br><N>Deseja usar este mapa-script no cafofo de sua tribo? Use o link a seguir:<br><N><VP>raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/Parque%20Aqu%C3%A1tico%20Natural%20das%20Cobras.lua",name)
+			showMessage("<VP><b>Bem-vindo(a) ao Parque Aquático Natural das Cobras.</b><br><br><p align='left'><N>Este é um mapa-script bem diferente de tudo o que você já viu.<br>O rio é muito profundo! Caso não saiba nadar, recomendo sair desta sala agora! Mas se souber, apenas aproveite e curta!<br><br><R>Aviso: Este mapa pode consumir até 1,2GB de RAM dependendo de casos específicos.<br><br><ROSE><b>Mapa feito por Morganadxana#0000.</b><br><J>Agradecimentos especiais para Aurelianlua#0000, Velkozdapic#0000, Lanadelrey#4862, Lorena#0960, Star#8558, Soft#1388, Some#2636, Leticia1k#0000, Draw#6691 e Joanaanne#0000.<b></b><br><br><N>Deseja usar este mapa-script no cafofo de sua tribo? Use o link a seguir:<br><N><VP>raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/Parque%20Aqu%C3%A1tico%20Natural%20das%20Cobras.lua<br><br><N>Revisão 1.1",name)
 			showWater(name)
 			initNPC(name)
 		end
@@ -159,7 +165,7 @@ function eventNewPlayer(name)
 	data[name] = newData;
 	if changed == true then
 		ui.setMapName("<VP>Parque Aquático Natural das Cobras - <ROSE>Morgana's Mechanical Maps<")
-		showMessage("<VP><b>Bem-vindo(a) ao Parque Aquático Natural das Cobras.</b><br><br><p align='left'><N>Este é um mapa-script bem diferente de tudo o que você já viu.<br>O rio é muito profundo! Caso não saiba nadar, recomendo sair desta sala agora! Mas se souber, apenas aproveite e curta!<br><br><R>Aviso: Este mapa pode consumir até 1,6GB de RAM dependendo de casos específicos.<br><br><ROSE><b>Mapa feito por Morganadxana#0000.</b><br><J>Agradecimentos especiais para Aurelianlua#0000, Velkozdapic#0000, Lanadelrey#4862, Lorena#0960, Star#8558, Soft#1388, Some#2636, Leticia1k#0000, Draw#6691 e Joanaanne#0000.<b></b><br><br><N>Deseja usar este mapa-script no cafofo de sua tribo? Use o link a seguir:<br><N><VP>raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/Parque%20Aqu%C3%A1tico%20Natural%20das%20Cobras.lua",name)
+		showMessage("<VP><b>Bem-vindo(a) ao Parque Aquático Natural das Cobras.</b><br><br><p align='left'><N>Este é um mapa-script bem diferente de tudo o que você já viu.<br>O rio é muito profundo! Caso não saiba nadar, recomendo sair desta sala agora! Mas se souber, apenas aproveite e curta!<br><br><R>Aviso: Este mapa pode consumir até 1,2GB de RAM dependendo de casos específicos.<br><br><ROSE><b>Mapa feito por Morganadxana#0000.</b><br><J>Agradecimentos especiais para Aurelianlua#0000, Velkozdapic#0000, Lanadelrey#4862, Lorena#0960, Star#8558, Soft#1388, Some#2636, Leticia1k#0000, Draw#6691 e Joanaanne#0000.<b></b><br><br><N>Deseja usar este mapa-script no cafofo de sua tribo? Use o link a seguir:<br><N><VP>raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/Parque%20Aqu%C3%A1tico%20Natural%20das%20Cobras.lua<br><br><N>Revisão 1.1",name)
 		showWater(name)
 		initNPC(name)
 	end
@@ -182,16 +188,16 @@ function eventLoop(p,f)
 				end
 			end
 		end
-		if tfm.get.room.playerList[name].y >= 3830 then
+		if tfm.get.room.playerList[name].y >= 2550 then
 			data[name].fs=data[name].fs+1
 			if data[name].fs == 5 and data[name].warn == false then
 				data[name].warn=true
-				showMessage("<VP>Tenha cuidado: O fundo do rio é muito gelado. Ficar por muito tempo pode congelar seu rato.",name)
+				showMessage("<VP>Tenha cuidado: A água do rio é muito gelada. Ficar por muito tempo pode congelar seu rato.",name)
 			end
-			if data[name].fs == 120 then
+			if data[name].fs == 150 then
 				data[name].freezed=true
 				tfm.exec.freezePlayer(name)
-				tfm.exec.setPlayerGravityScale(name,1.37)
+				tfm.exec.setPlayerGravityScale(name,1.4)
 			end
 		else
 			data[name].fs=0
