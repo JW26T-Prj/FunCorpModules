@@ -3,7 +3,7 @@ for _,f in next,{"AutoNewGame","AfkDeath","AutoShaman","MinimalistMode","Physica
 end
 debug.disableEventLog(true)
 system.disableChatCommandDisplay("reset")
-tfm.exec.newGame("@7917467")
+tfm.exec.newGame("@7917999")
 data={}; changed=false; xml2='';
 
 function showMessage(message,name)
@@ -21,34 +21,39 @@ function showNPCs(name)
 	tfm.exec.addNPC("John Grand",{title = 298, look = "1;231,8,7,34,5,105,0,0,33",x = 9236,y = 1106,female = false,lookLeft = false,lookAtPlayer = true,interactive = true},name)
 	tfm.exec.addNPC("Danniel Victor",{title = 296, look = "1;194,29,27,41,54,103,33,81,57",x = 3172,y = 1202,female = false,lookLeft = false,lookAtPlayer = true,interactive = true},name)
 	tfm.exec.addNPC("Kenner Henderson",{title = 266, look = "27;236,45,22,0,44,0,50,67,35",x = 751,y = 1263,female = false,lookLeft = false,lookAtPlayer = true,interactive = true},name)
-	tfm.exec.addNPC("Keith Cramer",{title = 216, look = "7;190_220b04+767576+585155+c44444+e0ddce+202020+e7e6e5,6_1d1c1c+464646,5_70707+d4c316,9,54,94,36,0,20",x = 567,y = 2925,female = false,lookLeft = false,lookAtPlayer = true,interactive = true},name)
+	tfm.exec.addNPC("Keith Cramer",{title = 216, look = "7;190_220b04+767576+585155+c44444+e0ddce+202020+e7e6e5,6_1d1c1c+464646,5_70707+d4c316,9,54,94,36,0,20",x = 648,y = 1337,female = false,lookLeft = false,lookAtPlayer = true,interactive = true},name)
 	tfm.exec.addNPC("Mandery Under",{title = 387, look = "138;31,8,69,41,49,0,49,0,0",x = 4932,y = 758,female = false,lookLeft = false,lookAtPlayer = true,interactive = true},name)
 	tfm.exec.addNPC("Katarina Worlynder",{title = 220, look = "240;101_e0d9d0+1e9fa8+e0d9d0,36,38,0,62,0,0,0,0",x = 4610,y = 780,female = true,lookLeft = false,lookAtPlayer = true,interactive = true},name)
 	tfm.exec.addNPC("Mayra Flowers",{title = 1, look = "112;0,4,0,74_212121+d2d2d2,39,39,44,0,1",x = 6353,y = 355,female = true,lookLeft = true,lookAtPlayer = true,interactive = true},name)
 	tfm.exec.addNPC("Aaron Grand",{title = 9, look = "4;225,43,38,0,54,104,0,0,20",x = 9450,y = 146,female = false,lookLeft = false,lookAtPlayer = true,interactive = true},name)
+	tfm.exec.addNPC("Daniel Winngs",{title = 2, look = "1;203,50,20,41,42,103,50,0,0",x = 6174,y = 354,female = false,lookLeft = true,lookAtPlayer = true,interactive = true},name)
+	tfm.exec.addNPC("Camille Sanders",{title = 257, look = "1;44,40,87,3,62,91,37,52,0",x = 8586,y = 760,female = true,lookLeft = false,lookAtPlayer = true,interactive = true},name)
 end
 function showWater(name)
 	tfm.exec.addImage("182d6e2c97d.png","?1",3080,1,name,1,1)
-	for i=0,1 do
-		tfm.exec.addImage("181f9cf5fc5.png", "?1", -800+(i*7180), 1387, name, 1.0, 1.0, 0, 1.0)
-		tfm.exec.addImage("181f9cf5fc5.png", "!1", -800+(i*7180), 1387, name, 1.0, 1.0, 0, 0.7)
-		tfm.exec.addImage("181f9cfac65.png", "!1", -800+(i*7180), 1445, name, 10, 7, 0, 1.0)
+	tfm.exec.addImage("17be536e980.png","?1",-800,3680,name)
+	for _,b in next,{0,2,4} do
+		tfm.exec.addImage("183d7db795c.png","?1",-800+(b*1920),1405,name,1,1,0,0.25)
 	end
-	for b=0,4 do
-		for c=0,4 do
-			tfm.exec.addImage("181f9cff961.jpg","?1",-800+(b*1795),1445+(c*860),name)
-		end
+	for _,c in next,{1,3,5} do
+		tfm.exec.addImage("183d7db795c.png","?1",1120+(c*1920),1405,name,-1,1,0,0.25)
+	end
+	for i=0,3 do
+		tfm.exec.addImage("183d7dc6861.png","!1",-800+(i*3600),1380,name,1,1,0,0.5)
+		tfm.exec.addImage("183d7dc6861.png","?1",-800+(i*3600),1380,name,1,1)
+		tfm.exec.addImage("183d7dbc65f.png","!1",-800+(i*3600),1469,name,8,8)
+		tfm.exec.addImage("183d7dc1b2f.jpg","?1",-800+(i*3600),1469,name,2,2)
 	end
 	for h=0,4 do
 		tfm.exec.addImage("1803e8e2250.jpg","?1",-1200+(h*2169),1050,name,1,0.75,0,1)
 	end
-	for k=0,6 do
+	for k=0,5 do
 		tfm.exec.addImage("181ba85ccc2.png","!1",math.random(500,7500),math.random(150,550),name)
 	end
-	for l=0,6 do
+	for l=0,5 do
 		tfm.exec.addImage("181ba86195e.png","!1",math.random(500,7500),math.random(150,550),name)
 	end
-	for m=0,6 do
+	for m=0,5 do
 		tfm.exec.addImage("181ba86655c.png","!1",math.random(500,7500),math.random(150,550),name)
 	end
 	for n=0,4 do
@@ -90,6 +95,10 @@ function eventTalkToNPC(name, npc)
 		showMessage("<V>[Mayra Flowers] <N>Muuuuuuuu! <font face='Segoe UI Symbol'>(●'◡'●)<font face='Verdana'>",name)
 	elseif npc == "Aaron Grand" then
 		showMessage("<V>[Aaron Grand] <N>Esta é a Torre do Nascer do Sol. O lugar mais alto da praia. Daqui dá para ver absolutamente tudo. Incluindo o pôr do sol que é lindo.<br><br>Se eu fosse você, nunca mais sairia daqui. Tenho um baita medo de mar...",name)
+	elseif npc == "Daniel Winngs" then
+		showMessage("<V>[Daniel Winngs] <N>Seja bem-vindo(a). Você definitivamente está em um lugar privilegiado.<br><br>Esta é uma praia totalmente paradisíaca. Com sua água cristinalina, duas tirolesas e uma piscina suspensa, você não vai querer sair daqui tão cedo.",name)
+	elseif npc == "Camille Sanders" then
+		showMessage("<V>[Camille Sanders] <N>Me paga um passeio de barco? Tenho um desejo incrível de conhecer este lugar!",name)
 	end
 end
 function eventPlayerWon(name)
@@ -132,14 +141,14 @@ function eventNewPlayer(name)
 	if changed == true then
 		ui.setMapName("Praia da Reserva Verde - <ROSE>Morgana's Mechanical Maps<")
 	end
-	showMessage("<VP><b>Bem-vindo(a) a Praia da Reserva Verde.</b><br><br><p align='left'><N>Este é um mapa-script de praia bem grande e com diversos recursos para se divertir. Aproveite e curta!<br><br><R>Aviso: Este mapa pode consumir até 1,8GB de RAM dependendo de casos específicos.<br><br><ROSE><b>Mapa feito por Morganadxana#0000.</b><br><J>Agradecimentos especiais para <b>Draw#6691, Soft#1388, Viincenzo#9526, Lacoste#8972, Lipersz#9863, Spectra_phantom#6089, Threshlimit#0000, Star#8558 e Lanadelrey#4862.</b><br><br><N>Deseja usar este mapa-script no cafofo de sua tribo? Use o link a seguir:<br><N><VP>raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/Praia%20da%20Reserva%20Verde.lua<br><br><N>Revisão 1.2",name)
+	showMessage("<VP><b>Bem-vindo(a) a Praia da Reserva Verde.</b><br><br><p align='left'><N>Este é um mapa-script de praia bem grande e com diversos recursos para se divertir. Aproveite e curta!<br><br><R>Aviso: Este mapa pode consumir até 1,8GB de RAM dependendo de casos específicos.<br><br><ROSE><b>Mapa feito por Morganadxana#0000.</b><br><J>Agradecimentos especiais para <b>Draw#6691, Soft#1388, Viincenzo#9526, Lacoste#8972, Lipersz#9863, Spectra_phantom#6089, Threshlimit#0000, Star#8558 e Lanadelrey#4862.</b><br><br><N>Deseja usar este mapa-script no cafofo de sua tribo? Use o link a seguir:<br><N><VP>raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/Praia%20da%20Reserva%20Verde.lua<br><br><N>Revisão 1.3",name)
 end
 function eventLoop(p,f)
 	if changed == true then
 		for name,player in next,tfm.get.room.playerList do
 			if tfm.get.room.playerList[name].y >= 1399 then
 				if data[name].z <= 1.53 then
-					data[name].z=data[name].z+0.005
+					data[name].z=data[name].z+0.003
 				end
 			else
 				data[name].z=1
