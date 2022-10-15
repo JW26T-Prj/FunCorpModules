@@ -14,6 +14,7 @@ npc_06={title = 2,look = "113;223,8,27_252525+383838+242424,31,55_6d2e29+9e9983+
 npc_07={title = 42,look = "157;83,0,9,0,6,102_148960+f7eeba+f7eeba,0,79,47",x = 1033,y = 1121,female = false,lookLeft = true,lookAtPlayer = false,interactive = true}
 npc_08={title = 213,look = "223;244,33,89,0,6,102_148960+f7eeba+f7eeba,0,72,47",x = 5117,y = 1417,female = true,lookLeft = false,lookAtPlayer = true,interactive = true}
 npc_09={title = 11,look = "213;217_436b98+41d7fb+327548+287f9d+e0e8f3+555e88,23_3976eb+21170d+3488bb+21170d+21170d,23_b68ad,34_1c815b,17,83,49_3477ac+2d2d2d,0,0",x = 883,y = 2985,female = false,lookLeft = true,lookAtPlayer = true,interactive = true}
+npc_10={title = 1, look = "112;0,4,0,74_212121+d2d2d2,39,39,44,0,1",x = 685,y = 912,female = true,lookLeft = true,lookAtPlayer = true,interactive = true}
 
 function initNPC(name)
 	tfm.exec.addNPC("Keith Hertzon", npc_01, name)
@@ -25,6 +26,7 @@ function initNPC(name)
 	tfm.exec.addNPC("Damian Henderson", npc_07, name)
 	tfm.exec.addNPC("Luciana Bander", npc_08, name)
 	tfm.exec.addNPC("Jesse Malcolm", npc_09, name)
+	tfm.exec.addNPC("Mayra Flowers", npc_10, name)
 end
 function showMessage(message,name)
 	temp_text=string.gsub(message,"<b>","")
@@ -48,7 +50,7 @@ function eventTalkToNPC(name, npc)
 	elseif npc == "Carla Esther" then
 		local chance=math.random(1,50)
 		if chance == 10 and data[name].below == false then
-			showMessage("<V>[Carla Esther] <VP><b>Afunde e conheça as profundezas, seu inconveniente!</b>",name)
+			showMessage("<V>[Carla Esther] <R><b>Afunde e conheça as profundezas, seu inconveniente!</b>",name)
 			tfm.exec.giveCheese(name)
 			data[name].below=true
 		else
@@ -59,9 +61,11 @@ function eventTalkToNPC(name, npc)
 	elseif npc == "Damian Henderson" then
 		showMessage("<V>[Damian Henderson] <N>Está preparado? Pois se não estiver, é melhor estar. Esta é o maior escorregador aquático do mundo!<br><br>Com quase 55 metros de altura, é literalmente uma aventura de cair o queixo. Definitivamente não é um brinquedo para medrosos.<br><br>E aí, vai encarar?",name)
 	elseif npc == "Luciana Bander" then
-		showMessage("<V>[Luciana Bander] <N>A chuva cai, lentamente do céu...<br>Gotas me lembram teus olhos... Cheios de lágrimas...<br><br>Espera! Não está chovendo! Como eu queria uma boa chuva por aqui... Faz muito tempo que não cai uma água. Fora a que já tem no rio.",name)
+		showMessage("<V>[Luciana Bander] <N>Espera! Não está chovendo! Como eu queria uma boa chuva por aqui... Faz muito tempo que não cai uma água. Fora a que já tem no rio.",name)
 	elseif npc == "Jesse Malcolm" then
 		showMessage("<V>[Jesse Malcolm] <N>Nunca imaginarei que alguém pudesse chegar neste lugar tão ruim... No fundo de um gelado rio... Mas se quiser saber quem eu sou, então deixe-me explicar.<br><br>Certo dia estava me divertindo aqui no parque e praticando natação no rio, que é meu esporte favorito. Mas certo dia, o feitiço de uma mulher desconhecida me atacou e agora sou obrigado a viver aqui. Na escuridão. No frio.<br><br>Ah, vê se não fica muito tempo aqui em baixo, ou você pode congelar.",name)
+	elseif npc == "Mayra Flowers" then
+		showMessage("<V>[Mayra Flowers] <N>Muuuuuuuu! <font face='Segoe UI Symbol'>(●'◡'●)<font face='Verdana'>",name)
 	end
 end
 
