@@ -23,6 +23,14 @@ function showMessage(message,name)
 		end
 	end
 end
+function showNPCs(name)
+	tfm.exec.addNPC("Mayra Flowers",{title = 1, look = "112;0,4,0,74_212121+d2d2d2,39,39,44,0,1",x = 4005,y = 425,female = true,lookLeft = true,lookAtPlayer = true,interactive = true},name)
+end
+function eventTalkToNPC(name, npc)
+	if npc == "Mayra Flowers" then
+		showMessage("<V>[Mayra Flowers] <N>Muuuuuuuu! <font face='Segoe UI Symbol'>(●'◡'●)<font face='Verdana'>",name)
+	end
+end
 function showAvailableSharks(name)
 	i=0
 	for _,link in next,{"18309d64e58.png","18309d6029f.png","18412b7b55e.png","18412b71ce2.png"} do
@@ -201,7 +209,7 @@ end
 function eventNewPlayer(name)
 	tfm.exec.setPlayerScore(name,0,false)
 	showWater(name)
-	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <VP><b>v4.0.1</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
+	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <VP><b>v4.0.2</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
 	newData={
 	["o"]=99; ["i"]=0; ["t"]=0; ["c"]=0; ["opened"]=false; ["imageid"]=-1; ["imageid2"]=-1; ["imageid3"]=-1; ["imageid4"]=-1; ["imaget"]=5; ["shark_id"]=0; ["shark"]=0; ["active_imgs"]={};
 	};
@@ -232,7 +240,7 @@ function eventChatCommand(name,message)
 		showAvailableSharks(name)
 	end
 	if message == "changelog" then
-		showMenu(name,0xf0f0f0,140,90,520,150,"Changelog da Versão 4.0.1","• Correções de bugs no consumo de oxigênio<br>• Correções no sistema de pontos<br>• Adição de 3 novas skins de tubarão!<br>• Mudança na fonte que exibe os ratos vivos e o tempo<br>• Correções de bugs nas mensagens de tempo<br>• Aumento no tempo base das partidas para 210 segundos")
+		showMenu(name,0xf0f0f0,140,90,520,160,"Changelog da Versão 4.0.2","• Correções de bugs no consumo de oxigênio<br>• Correções no sistema de pontos<br>• Adição de 3 novas skins de tubarão!<br>• Mudança na fonte que exibe os ratos vivos e o tempo<br>• Correções de bugs nas mensagens de tempo<br>• Aumento no tempo base das partidas para 210 segundos<br>• Adição de NPC")
 	end
 	if (message:sub(0,2)== "tc") then
 		if tfm.get.room.playerList[name].isShaman == false then
@@ -416,6 +424,7 @@ function eventNewGame()
 		mode="hide"
 		showMessage("<J>Caso o mapa do jogo não esteja aparecendo, saia do jogo e entre novamente.<br>Isto é um problema de memória do Transformice e não do module.")
 		for n,p in next,tfm.get.room.playerList do
+			showNPCs(n)
 			tfm.exec.giveMeep(n,false)
 			tfm.exec.removeImage(data[n].shark_id)
 			tfm.exec.changePlayerSize(n,1)
@@ -499,7 +508,7 @@ function eventLoop(p,r)
 		resetMap()
 	end
 	if changed == true then
-		ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <VP><b>v4.0.1</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
+		ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <VP><b>v4.0.2</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
 		local m=math.floor(r/60000)
 		local s=math.floor((((m*60000)-r) * -1) / 1000)
 		ui.addTextArea(-1,"<font size='44'><font color='#222222'><font face='Copperplate Gothic Bold,Times New Roman'><b>"..m..":"..s.."</b>",n,557,27,125,54,0,0,1.0,true)
