@@ -2,7 +2,7 @@ for _,f in next,{"PhysicalConsumables","AutoNewGame","AutoTimeLeft","AllShamanSk
 	tfm.exec["disable"..f](true)
 end
 dragon=true -- troque para 'false' para desativar o dragão que aparece no topo do mapa
-mode=""; shaman=""; loop=0; data={}; testmode=false; changed=false;
+mode=""; shaman=""; loop=0; data={}; testmode=false; changed=false; xml2='';
 objects1={1,3,6,7,35,39,60,89,95}
 objects2={1,2,3,6,7,35,39,45,46,54,60,85,89,90,95}
 objects3={1,2,3,4,6,7,10,23,35,39,40,45,46,54,60,61,68,69,85,89,90,95}
@@ -26,16 +26,16 @@ function showMessage(message,name)
 end
 function eventChatCommand(n,m)
 	if m == "help" then
-		showMessage("<N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço! Caso o shaman morra, a partida é encerrada.<br><br><BL>Mapa criado por Threshlimit#0000 e Patrick_mahomes#1795. Código desenvolvido por Morganadxana#0000.<br>Conceito original de Nettoork#0000.<br>Versão 5.8.0",n)
+		showMessage("<N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço. Caso o shaman morra, a partida é encerrada.<br><br><BL>Mapa criado por Threshlimit#0000 e Patrick_mahomes#1795. Código desenvolvido por Morganadxana#0000.<br>Conceito original de Nettoork#0000.<br>Versão 5.8.1",n)
 	end
 	if m == "cancel" then
-		if n == "Threshlimit#0000" or n == "Morganadxana#0000" or n == "Patrick_mahomes#1795" or n == "Forzaldenon#0000" then
+		if n == "Threshlimit#0000" or n == "Morganadxana#0000" or n == "Patrick_mahomes#1795" or n == "Akwimos#1937" or n == "Forzaldenon#0000" then
 			tfm.exec.setGameTime(5)
 			showMessage("<R>Rodada cancelada! Iniciando uma nova rodada...")
 		end
 	end
 	if (m:sub(0,3) == "set") then
-		if n == "Threshlimit#0000" or n == "Morganadxana#0000" or n == "Patrick_mahomes#1795" or n == "Forzaldenon#0000" then
+		if n == "Threshlimit#0000" or n == "Morganadxana#0000" or n == "Patrick_mahomes#1795" or n == "Akwimos#1937" then
 			tfm.exec.setPlayerScore(m:sub(5),4000,true)
 			tfm.exec.setGameTime(5)
 			showMessage("<R>Rodada cancelada! Iniciando uma nova rodada...")
@@ -166,11 +166,12 @@ function eventNewGame()
 	if changed == true then
 		ui.setMapName("<font color='#1288e8'><b>RockerLaunch 5</b> <N>Project by <VP>Threshlimit#0000, <ROSE>Morganadxana#0000<N> and <R>Patrick_mahomes#1795<")
 		tfm.exec.setGameTime(435)
-		showMessage("<J>O shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço!<br><br><ROSE>Não esqueçam de desativar o modo divino nas opções do shaman!")
+		showMessage("<J>O shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço!")
 		mode="building"
 		for n,p in pairs(tfm.get.room.playerList) do
 			if tfm.get.room.playerList[n].isShaman then
 				shaman=n
+				tfm.exec.setShamanMode(n,0)
 			end
 			rodar(n)
 			data[n].reached=false
@@ -189,7 +190,7 @@ end
 function eventNewPlayer(n)
 	if changed == true then
 		ui.setMapName("<font color='#1288e8'><b>RockerLaunch 5</b> <N>Project by <VP>Threshlimit#0000, <ROSE>Morganadxana#0000<N> and <R>Patrick_mahomes#1795<")
-		showMessage("<VP>Bem-vindos ao RockerLaunch 5!<br><N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço! Digite !help para saber como jogar.<br><br><BL>Créditos para Threshlimit#0000, Morganadxana#0000 and Patrick_mahomes#1795. Conceito original de Nettoork#0000.<br><J>Versão 5.8.0",n)
+		showMessage("<VP>Bem-vindos ao RockerLaunch 5!<br><N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço! Digite !help para saber como jogar.<br><br><BL>Créditos para Threshlimit#0000, Morganadxana#0000 and Patrick_mahomes#1795. Conceito original de Nettoork#0000.<br><J>Versão 5.8.1",n)
 		newData={
 			["message"]=0,
 			["reached"]=false
