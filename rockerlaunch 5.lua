@@ -26,7 +26,7 @@ function showMessage(message,name)
 end
 function eventChatCommand(n,m)
 	if m == "help" then
-		showMessage("<N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço. Caso o shaman morra, a partida é encerrada.<br><br><BL>Mapa criado por Threshlimit#0000 e Patrick_mahomes#1795. Código desenvolvido por Morganadxana#0000.<br>Conceito original de Nettoork#0000.<br>Versão 5.8.1",n)
+		showMessage("<N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço. Caso o shaman morra, a partida é encerrada.<br><br><BL>Mapa criado por Threshlimit#0000 e Patrick_mahomes#1795. Código desenvolvido por Morganadxana#0000.<br>Conceito original de Nettoork#0000.<br>Versão 5.8.2",n)
 	end
 	if m == "cancel" then
 		if n == "Threshlimit#0000" or n == "Morganadxana#0000" or n == "Patrick_mahomes#1795" or n == "Akwimos#1937" or n == "Forzaldenon#0000" then
@@ -35,7 +35,7 @@ function eventChatCommand(n,m)
 		end
 	end
 	if (m:sub(0,3) == "set") then
-		if n == "Threshlimit#0000" or n == "Morganadxana#0000" or n == "Patrick_mahomes#1795" or n == "Akwimos#1937" then
+		if n == "Threshlimit#0000" or n == "Morganadxana#0000" or n == "Patrick_mahomes#1795" or n == "Akwimos#1937" or n == "Forzaldenon#0000" then
 			tfm.exec.setPlayerScore(m:sub(5),4000,true)
 			tfm.exec.setGameTime(5)
 			showMessage("<R>Rodada cancelada! Iniciando uma nova rodada...")
@@ -44,12 +44,12 @@ function eventChatCommand(n,m)
 end
 function rodar(name)
 	ui.setBackgroundColor("#000000")
+	tfm.exec.addImage("182d6e2c97d.png","!1",20,10,name,1,1)
 	for a=1,12 do tfm.exec.addImage("182d6e197bb.png","?1",math.random(-150,1750),math.random(-200,2500),name) end
 	tfm.exec.addImage("182d6e2305b.png","?1",math.random(-350,1550),math.random(-350,2000),name)
 	tfm.exec.addImage("182d6e2305b.png","?1",math.random(-350,1550),math.random(-350,2000),name,-1,1)
 	tfm.exec.addImage("182d6e1e45c.png","?1",math.random(-350,1550),math.random(-350,2000),name)
 	tfm.exec.addImage("182d6e1e45c.png","?1",math.random(-350,1550),math.random(-350,2000),name,-1,1)
-	tfm.exec.addImage("182d6e2c97d.png","!1",50,40,name,1,1)
 	for i=0,4 do
 		tfm.exec.addImage("181ba85ccc2.png","!1",math.random(-400,1500),math.random(3222,4900),name)
 	end
@@ -105,9 +105,13 @@ function eventLoop(p,f)
 				mode="fly"
 			end
 			for n,player in pairs(tfm.get.room.playerList) do
-				if player.y < 125 and p > 123000 and mode=="fly" then
-					tfm.exec.giveCheese(n)
-					tfm.exec.playerVictory(n)
+				if player.y < 150 and p > 123000 and mode=="fly" then
+					if data[n].reached2 == false then
+						tfm.exec.giveCheese(n)
+						tfm.exec.playerVictory(n)
+						tfm.exec.setGameTime(20)
+						data[n].reached2=true
+					end
 					mode="ending"
 				end
 				if dragon == true and player.y < 550 and data[n].reached == false and not tfm.get.room.playerList[n].isDead then
@@ -120,35 +124,37 @@ function eventLoop(p,f)
 				end
 			end
 		end
-		if p > 123000 and p < 123650 then
-			showMessage("<R>Tempo esgotado! Está na hora de voar!<br><ROSE><b>Atenção! Objetos voadores estão caindo do céu!</b>")
-			for n,player in pairs(tfm.get.room.playerList) do
-				tfm.exec.attachBalloon(n,false)
-				if tfm.get.room.playerList[n].isShaman then
-					tfm.exec.setShaman(n,false)
+		if f >= 5000 then
+			if p > 123000 and p < 123650 then
+				showMessage("<R>Tempo esgotado! Está na hora de voar!<br><ROSE><b>Atenção! Objetos voadores estão caindo do céu!</b>")
+				for n,player in pairs(tfm.get.room.playerList) do
+					tfm.exec.attachBalloon(n,false)
+					if tfm.get.room.playerList[n].isShaman then
+						tfm.exec.setShaman(n,false)
+					end
 				end
 			end
-		end
-		if p > 123651 and p <= 150000 then
-			tfm.exec.addShamanObject(objects1[math.random(#objects1)], math.random(-400,2000), 1, 0, 0, 0, false)
-			loop=0
-		end
-		if p > 150000 and p <= 200000 then
-			for i=1,2 do
-				tfm.exec.addShamanObject(objects2[math.random(#objects2)], math.random(-400,2000), 1, 0, 0, 0, false)
+			if p > 123651 and p <= 150000 then
+				tfm.exec.addShamanObject(objects1[math.random(#objects1)], math.random(-400,2000), 1, 0, 0, 0, false)
 				loop=0
 			end
-		end
-		if p > 200000 and p <= 250000 then
-			for i=1,2 do
-				tfm.exec.addShamanObject(objects3[math.random(#objects3)], math.random(-400,2000), 1, 0, 0, 0, false)
-				loop=0
+			if p > 150000 and p <= 200000 then
+				for i=1,2 do
+					tfm.exec.addShamanObject(objects2[math.random(#objects2)], math.random(-400,2000), 1, 0, 0, 0, false)
+					loop=0
+				end
 			end
-		end
-		if p >= 250000 then
-			for i=1,3 do
-				tfm.exec.addShamanObject(objects4[math.random(#objects4)], math.random(-400,2000), 1, 0, 0, 0, false)
-				loop=0
+			if p > 200000 and p <= 250000 then
+				for i=1,2 do
+					tfm.exec.addShamanObject(objects3[math.random(#objects3)], math.random(-400,2000), 1, 0, 0, 0, false)
+					loop=0
+				end
+			end
+			if p >= 250000 then
+				for i=1,3 do
+					tfm.exec.addShamanObject(objects4[math.random(#objects4)], math.random(-400,2000), 1, 0, 0, 0, false)
+					loop=0
+				end
 			end
 		end
 	else
@@ -175,6 +181,7 @@ function eventNewGame()
 			end
 			rodar(n)
 			data[n].reached=false
+			data[n].reached2=false
 		end
 	else
 		tfm.exec.setGameTime(5)
@@ -190,18 +197,16 @@ end
 function eventNewPlayer(n)
 	if changed == true then
 		ui.setMapName("<font color='#1288e8'><b>RockerLaunch 5</b> <N>Project by <VP>Threshlimit#0000, <ROSE>Morganadxana#0000<N> and <R>Patrick_mahomes#1795<")
-		showMessage("<VP>Bem-vindos ao RockerLaunch 5!<br><N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço! Digite !help para saber como jogar.<br><br><BL>Créditos para Threshlimit#0000, Morganadxana#0000 and Patrick_mahomes#1795. Conceito original de Nettoork#0000.<br><J>Versão 5.8.1",n)
+		showMessage("<VP>Bem-vindos ao RockerLaunch 5!<br><N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço! Digite !help para saber como jogar.<br><br><BL>Créditos para Threshlimit#0000, Morganadxana#0000 e Patrick_mahomes#1795. Conceito original de Nettoork#0000.<br><J>Versão 5.8.2",n)
 		newData={
 			["message"]=0,
-			["reached"]=false
+			["reached"]=false,
+			["reached2"]=false
 		}
 		data[n]=newData;
 		tfm.exec.setPlayerScore(n,0,false)
 		tfm.exec.addImage("17ae4e48770.png","&1",670,22,n)
 	end
-end
-function eventPlayerWon(n)
-	tfm.exec.setGameTime(20)
 end
 function eventPlayerDied(n)
 	if changed == true then
