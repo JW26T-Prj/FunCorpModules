@@ -13,8 +13,8 @@ events_pt={"Fúria da Tormenta","Chuva de Meteoros","Anomalia Gravitacional","Qu
 events_en={"Wind Fury","Meteor Rain","Gravity Anomaly","Cheese for All"}
 power_d={p2={6,8,10,12},p3={12,14,16,18,20,22}}
 lang.br = {
-	mapname = "<N><b>#mountain</b>  <V>-  <N>versão <ROSE>v1.1.1   <G>|   <N>Desenvolvido por <J>Morganadxana#0000<",
-	enter = "<N>Bem-vindo ao module <J><b>#mountain!</b><br><N>Você tem 3 minutos para escalar a grande montanha que há pelo caminho!<br><br><ROSE>Versão v1.1.1 - desenvolvido por Morganadxana#0000<br><VP>O module foi atualizado! Para descobrir as novidades, digite !changelog.",
+	mapname = "<N><b>#mountain</b>  <V>-  <N>versão <ROSE>v1.1.2   <G>|   <N>Desenvolvido por <J>Morganadxana#0000<",
+	enter = "<N>Bem-vindo ao module <J><b>#mountain!</b><br><N>Você tem 3 minutos para escalar a grande montanha que há pelo caminho!<br><br><ROSE>Versão v1.1.2 - desenvolvido por Morganadxana#0000<br><VP>O module foi atualizado! Para descobrir as novidades, digite !changelog.",
 	newgame = "<N>Caso não saiba o que fazer neste module, digite <b>!help</b>.",
 	getready = "<J>Se prepare! A estrada para a montanha será liberada em breve!",
 	start = "<VP><b>E que comece a batalha!</b>",
@@ -44,8 +44,8 @@ lang.br = {
 	lyncdowryammer = "Sinto na pele a desgraça que ela passou. Perdeu todos os seus amigos durante uma chuva de meteoros...<br><br>Agora falando sério, os deuses escondem um segredo gigante nesta montanha. Poderes extremamente fortes estão presentes no topo dela.<br><br>No entanto, não se empolgue. Os mesmos deuses estão muito furiosos ultimamente, e não querem que ninguém suba..."
 }
 lang.en = {
-	mapname = "<N><b>#mountain</b>  <V>-  <N>version <ROSE>v1.1.1   <G>|   <N>Developed by <J>Morganadxana#0000<",
-	enter = "<N>Welcome to the <J><b>#mountain</b> module!<br><N>You have 3 minutes to scale the big mountain that is on your way!<br><ROSE>Version v1.1.1 - developed by Morganadxana#0000<br><V>Translation by Rakan_raster#0000<br><VP>If you want to see the latest updates, type !changelog.",
+	mapname = "<N><b>#mountain</b>  <V>-  <N>version <ROSE>v1.1.2   <G>|   <N>Developed by <J>Morganadxana#0000<",
+	enter = "<N>Welcome to the <J><b>#mountain</b> module!<br><N>You have 3 minutes to scale the big mountain that is on your way!<br><ROSE>Version v1.1.2 - developed by Morganadxana#0000<br><V>Translation by Rakan_raster#0000<br><VP>If you want to see the latest updates, type !changelog.",
 	newgame = "<N>If you don't know about this module, please type <b>!help</b>.",
 	getready = "<J>Get ready! The road to the mountain will be opened!",
 	start = "<VP><b>Go!</b>",
@@ -156,7 +156,7 @@ function eventChatCommand(name,command)
 		showMenu(name,0xb6e980,140,90,520,130,"Credits",text.credits)
 	end
 	if command == "changelog" then
-		showMenu(name,0x2578f6,140,70,520,260,"Changelog","<font size='11'>[v1.1.1]:<br>• Addiction of various decorations on the map<br><br>[v1.1.0]:<br>• Added cloud images<br>• Some modifications on the map<br><br>[v1.0.9]:<br>• Some modifications on the map<br><br>[v1.0.8]:<br>• Various modifications on the map<br>• Increased the game time by 20 seconds<br><br>[v1.0.7]:<br>• Slight changes on winning selection")
+		showMenu(name,0x2578f6,140,70,520,260,"Changelog","<font size='11'>[v1.1.2]:<br>• Addiction of new NPC<br><br>[v1.1.1]:<br>• Addiction of various decorations on the map<br><br>[v1.1.0]:<br>• Added cloud images<br>• Some modifications on the map<br><br>[v1.0.9]:<br>• Some modifications on the map<br><br>[v1.0.8]:<br>• Various modifications on the map<br>• Increased the game time by 20 seconds")
 	end
 end
 function eventNewPlayer(name)
@@ -200,6 +200,8 @@ function eventTalkToNPC(name, npc)
 		showMessage("<V>[Mylenne Ganditz] <N>"..text.mylenneganditz.."",name)
 	elseif npc == "Lync Dowryammer" then
 		showMessage("<V>[Lync Dowryammer] <N>"..text.lyncdowryammer.."",name)
+	elseif npc == "Mayra Flowers" then
+		showMessage("<V>[Mayra Flowers] <N>Muuuuuuuu! <font face='Segoe UI Symbol'>(●'◡'●)<font face='Verdana'>",name)
 	end
 end
 function eventTextAreaCallback(id,name,callback)
@@ -253,6 +255,7 @@ function eventNewGame()
 		tfm.exec.addNPC("Lync Dowryammer",{title = 253, look = "176;40_7b00c8+70335,0,20_9d00ff,43_290448,29_729be0+1d0241,0,1_5c00cb+211ce0,0,0",x = 1700,y = 10320,female = false,lookLeft = true,lookAtPlayer = true,interactive = true})
 		tfm.exec.addNPC("Mylenne Ganditz",{title = 244, look = "161;212,38,57,66,62,0,33,0,0",x = 2430,y = 9368,female = true,lookLeft = true,lookAtPlayer = true,interactive = true})
 		tfm.exec.addNPC("Julia Henderson",{title = 125, look = "142;234,49_efa5e2+edf1f2+edf1f2+edf1f2,77,0,43,97,3,0,0",x = 3505,y = 9188,female = true,lookLeft = false,lookAtPlayer = true,interactive = true})
+		tfm.exec.addNPC("Mayra Flowers",{title = 1, look = "112;0,4,0,74_212121+d2d2d2,39,39,44,0,1",x = 3000,y = 6176,female = true,lookLeft = true,lookAtPlayer = true,interactive = true},name)
 	else
 		tfm.exec.setGameTime(5)
 		if changed == false then
