@@ -167,7 +167,7 @@ function eventPlayerDied(n)
 	if mode == "hide" or mode == "game" then
 		if tfm.get.room.playerList[n].isShaman then
 			showMessage("<R>O shaman morreu, está AFK ou saiu da sala. Iniciando nova partida...")
-			tfm.exec.setPlayerScore(shaman,-1,false)
+			tfm.exec.setPlayerScore(shaman,-2,false)
 			mode="end"
 			tfm.exec.setGameTime(10)
 			for n,_ in next,tfm.get.room.playerList do
@@ -209,7 +209,7 @@ end
 function eventNewPlayer(name)
 	tfm.exec.setPlayerScore(name,0,false)
 	showWater(name)
-	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <VP><b>v4.0.2</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
+	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <VP><b>v4.0.3</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
 	newData={
 	["o"]=99; ["i"]=0; ["t"]=0; ["c"]=0; ["opened"]=false; ["imageid"]=-1; ["imageid2"]=-1; ["imageid3"]=-1; ["imageid4"]=-1; ["imaget"]=5; ["shark_id"]=0; ["shark"]=0; ["active_imgs"]={};
 	};
@@ -236,11 +236,12 @@ function eventChatCommand(name,message)
 		showMenu(name,0xf0f0f0,140,90,520,160,"Créditos","As seguintes pessoas ajudaram no desenvolvimento deste module:<br><br><ROSE><b>• Morganadxana#0000</b><N> - Desenvolvedora do código<br><ROSE><b>• Akwimos#1937</b><N> - Criação do mapa e tradução do código original para o Português<br><ROSE><b>• Spectra_phantom#6089</b><N> - Ideia original e criação das artes")
 	end
 	if message == "skins" then
+		showMessage("<R>As skins de tubarão serão exibidas quando você for shaman, e estiver dentro do lago!",name)
 		showMenu(name,0x949494,140,90,520,294,"Skins","")
 		showAvailableSharks(name)
 	end
 	if message == "changelog" then
-		showMenu(name,0xf0f0f0,140,90,520,160,"Changelog da Versão 4.0.2","• Correções de bugs no consumo de oxigênio<br>• Correções no sistema de pontos<br>• Adição de 3 novas skins de tubarão!<br>• Mudança na fonte que exibe os ratos vivos e o tempo<br>• Correções de bugs nas mensagens de tempo<br>• Aumento no tempo base das partidas para 210 segundos<br>• Adição de NPC")
+		showMenu(name,0xf0f0f0,140,90,520,100,"Changelog da Versão 4.0.3","• Correções de bugs na seleção de shamans<br>• Enfraquecimento das zonas de oxigênio")
 	end
 	if (message:sub(0,2)== "tc") then
 		if tfm.get.room.playerList[name].isShaman == false then
@@ -425,6 +426,7 @@ function eventNewGame()
 		showMessage("<J>Caso o mapa do jogo não esteja aparecendo, saia do jogo e entre novamente.<br>Isto é um problema de memória do Transformice e não do module.")
 		for n,p in next,tfm.get.room.playerList do
 			showNPCs(n)
+			showWater(n)
 			tfm.exec.giveMeep(n,false)
 			tfm.exec.removeImage(data[n].shark_id)
 			tfm.exec.changePlayerSize(n,1)
@@ -442,13 +444,13 @@ function eventNewGame()
 			end
 			if tfm.get.room.playerList[n].isShaman then
 				tfm.exec.setShamanMode(n,0)
+				tfm.exec.setPlayerScore(n,-1,false)
 				if tfm.get.room.isTribeHouse == false then
 					tfm.exec.setPlayerSync(n)
 				end
 				showMessage("<ROSE>Não esqueça de se mover, ou você perderá sua vez como shaman!",n)
 				shaman=n
 				alives=alives-1
-				showWater(name)
 			end
 			ui.addTextArea(300,"",n,8,390,782,3,0x202020,0x121212,1.0,true)
 			ui.addTextArea(299,"<p align='center'><a href='event:show_menu'><font size='18'>Menu",n,365,25,70,24,0x000001,0x000001,0.75,true)
@@ -508,7 +510,7 @@ function eventLoop(p,r)
 		resetMap()
 	end
 	if changed == true then
-		ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <VP><b>v4.0.2</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
+		ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <VP><b>v4.0.3</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
 		local m=math.floor(r/60000)
 		local s=math.floor((((m*60000)-r) * -1) / 1000)
 		ui.addTextArea(-1,"<font size='44'><font color='#222222'><font face='Copperplate Gothic Bold,Times New Roman'><b>"..m..":"..s.."</b>",n,557,27,125,54,0,0,1.0,true)
@@ -554,7 +556,7 @@ function eventLoop(p,r)
 							data[n].y=0
 						else
 							if checkOxygenZones(n) == true then
-								data[n].o=data[n].o-0.1
+								data[n].o=data[n].o-0.2
 							else
 								tfm.exec.playSound("/transformice/son/bulle2.mp3", 6, nil, nil, n)
 								if tfm.get.room.playerList[n].y <= 1550 then
