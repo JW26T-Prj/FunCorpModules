@@ -157,6 +157,7 @@ end
 function eventPlayerDied(n)
 	if not tfm.get.room.playerList[n].isShaman then
 		alives=alives-1
+		tfm.exec.setPlayerScore(shaman,1,true)
 	end
 	if alives <= 0 then
 		mode="end"
@@ -172,6 +173,7 @@ function eventPlayerDied(n)
 			tfm.exec.setGameTime(10)
 			for n,_ in next,tfm.get.room.playerList do
 				if not tfm.get.room.playerList[n].isDead then
+					tfm.exec.setPlayerScore(n,1,true)
 					alives=alives+1
 					ui.removeTextArea(300,n)
 				end
@@ -209,7 +211,7 @@ end
 function eventNewPlayer(name)
 	tfm.exec.setPlayerScore(name,0,false)
 	showWater(name)
-	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <VP><b>v4.0.3</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
+	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <VP><b>v4.0.4</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
 	newData={
 	["o"]=99; ["i"]=0; ["t"]=0; ["c"]=0; ["opened"]=false; ["imageid"]=-1; ["imageid2"]=-1; ["imageid3"]=-1; ["imageid4"]=-1; ["imaget"]=5; ["shark_id"]=0; ["shark"]=0; ["active_imgs"]={};
 	};
@@ -241,7 +243,7 @@ function eventChatCommand(name,message)
 		showAvailableSharks(name)
 	end
 	if message == "changelog" then
-		showMenu(name,0xf0f0f0,140,90,520,100,"Changelog da Versão 4.0.3","• Correções de bugs na seleção de shamans<br>• Enfraquecimento das zonas de oxigênio")
+		showMenu(name,0xf0f0f0,140,90,520,100,"Changelog da Versão 4.0.4","• Mais correções de bugs na seleção de shamans<br>• Pequenas mudanças de funcionamento")
 	end
 	if (message:sub(0,2)== "tc") then
 		if tfm.get.room.playerList[name].isShaman == false then
@@ -510,7 +512,7 @@ function eventLoop(p,r)
 		resetMap()
 	end
 	if changed == true then
-		ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <VP><b>v4.0.3</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
+		ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <VP><b>v4.0.4</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
 		local m=math.floor(r/60000)
 		local s=math.floor((((m*60000)-r) * -1) / 1000)
 		ui.addTextArea(-1,"<font size='44'><font color='#222222'><font face='Copperplate Gothic Bold,Times New Roman'><b>"..m..":"..s.."</b>",n,557,27,125,54,0,0,1.0,true)
@@ -640,7 +642,7 @@ function eventLoop(p,r)
 		end
 		if r <= 2000 and mode == "hide" then
 			mode="game"
-			tfm.exec.setGameTime(210+math.floor(alives*2.5))
+			tfm.exec.setGameTime(210+math.floor(alives*2))
 			ui.removeTextArea(22,nil)
 			showMessage("<J><b>O shaman foi liberado! Salvem-se quem puder!</b><br><N>Os itens marcados com <b>!</b> são poderes especiais, que podem trazer efeitos positivos ou negativos aos ratos. Aperte ESPAÇO para usá-los.<br><br><ROSE>Use o comando !tc [mensagem] para falar no chat sem que o shaman saiba.<br><br><VP>As áreas marcadas por preto e amarelo são zonas de oxigênio. Fique nelas para ter seu consumo de oxigênio reduzido.")
 			moveShaman()
