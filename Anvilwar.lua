@@ -2,8 +2,8 @@
 Module authors : Morganadxana#0000
 (C) 2017-2022 Spectra Advanced Module Group
 
-Version : RTM 50519.202
-Compilation date : 10/28/2022 18:33 UTC
+Version : RTM 50620.203
+Compilation date : 11/03/2022 22:34 UTC
 Sending player : Morganadxana#0000
 
 Number of maps : 176
@@ -29,7 +29,7 @@ playersList={}; helpers={}; mods={
 "Flaysama#5935",
 "Chavestomil#0000",
 "Erickvinho#0000",
-"Nightfury#3411",
+"Maramara4#0000",
 "Spectra_phantom#6089"};
 admins={"Ashearcher#0000",
 "Morganadxana#0000"}
@@ -282,7 +282,7 @@ function showMenu(name,color,x,y,width,height,title,content)
 end
 
 function showLobbyText(name)
-	ui.addTextArea(402,"<p align='center'><font size='13'><b><font face='Courier New'><i>"..text.version.." RTM 50519.202 - "..text.comp_date.."10/28/2022 18:33 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,-10,380,820,36,0,0,1.0,true)
+	ui.addTextArea(402,"<p align='center'><font size='13'><b><font face='Courier New'><i>"..text.version.." RTM 50620.203 - "..text.comp_date.."11/03/2022 22:34 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,-10,380,820,36,0,0,1.0,true)
 end
 
 function setLeaders()
@@ -361,7 +361,7 @@ function updateTextBar()
 	if mode == "end" then
 		ui.setMapName("<VP><b>"..text.ending.."</b>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	else
-		ui.setMapName("<N><b>#anvilwar</b>   <G>|   <VP>"..text.version.." <b>RTM 50519.202</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
+		ui.setMapName("<N><b>#anvilwar</b>   <G>|   <VP>"..text.version.." <b>RTM 50620.203</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	end
 end
 
@@ -924,7 +924,7 @@ function eventChatCommand(name,command)
 		end
 	end
 	if command == "changelog" then
-		showMenu(name,0xa8f233,140,110,520,100,"#anvilwar Changelog - RTM 50519.202","• Slight changes on interface<br>• Addiction of a surprise")
+		showMenu(name,0xa8f233,140,110,520,90,"#anvilwar Changelog - RTM 50620.203","• Some bugfixes")
 	end
 	if (command:sub(0,2) == "rv") then
 		if name == actual_player and general_time >= 30 then
