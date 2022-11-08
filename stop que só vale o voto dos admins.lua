@@ -167,7 +167,7 @@ function selecionaPalavra()
 	end
 	ui.addTextArea(ID.cat, "<p align='center'><font size='30px'>" .. CAT[PALAVRA] .. " com " .. LETRA, nil, 5, 80, 790, 40, 1, 1, 0.8, true)
 	TEMPO = os.time() + 15000+(1000*#ESCOLHA)
-	ui.addTextArea(ID.tempo, "<r><p align='center'><font size='25px'>20</font></p>", nil, 780, 25, 40, 40, 1, 1, 0.8, true)
+	ui.addTextArea(ID.tempo, "<r><p align='center'><font size='25px'>20</font></p>", nil, 755, 358, 40, 40, 1, 1, 0.8, true)
 end
 
 function eventChatCommand(p, cmd)
