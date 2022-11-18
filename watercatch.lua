@@ -129,16 +129,16 @@ function showWater(name)
 		tfm.exec.addImage("18200692b61.jpg","?1",-800+(b*1795),545,name,4,4)
 	end
 	for _,m in next,{0,2,4} do
-		tfm.exec.addImage("18204168d2e.png","!1",-1200+(m*1400),2337,name,1,-1.5,0,1)
+		tfm.exec.addImage("18204168d2e.png","!1",-1200+(m*1400),2187,name,1,-1.5,0,1)
 	end
 	for _,n in next,{1,3,5} do
-		tfm.exec.addImage("18204168d2e.png","!1",200+(n*1400),2337,name,-1,-1.5,0,1)
+		tfm.exec.addImage("18204168d2e.png","!1",200+(n*1400),2187,name,-1,-1.5,0,1)
 	end
 	for _,h in next,{0,2,4} do
-		tfm.exec.addImage("18204168d2e.png","!1",-1200+(h*1400),1865,name,1,0.4,0,1)
+		tfm.exec.addImage("18204168d2e.png","!1",-1200+(h*1400),1715,name,1,0.4,0,1)
 	end
 	for _,j in next,{1,3,5} do
-		tfm.exec.addImage("18204168d2e.png","!1",200+(j*1400),1865,name,-1,0.4,0,1)
+		tfm.exec.addImage("18204168d2e.png","!1",200+(j*1400),1715,name,-1,0.4,0,1)
 	end
 	for w=1,3 do
 		tfm.exec.addImage("181ba85ccc2.png","!1",math.random(50,4500),math.random(-50,250),name,0.5,0.5)
@@ -198,7 +198,7 @@ function checkOxygenZones(name)
 		end
 	end
 	if tfm.get.room.playerList[name].x <= 785 then
-		if tfm.get.room.playerList[name].y >= 1800 then
+		if tfm.get.room.playerList[name].y >= 1650 then
 			return true
 		end
 	end
@@ -211,7 +211,7 @@ end
 function eventNewPlayer(name)
 	tfm.exec.setPlayerScore(name,0,false)
 	showWater(name)
-	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <VP><b>v4.0.4</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
+	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <VP><b>v4.1.0</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
 	newData={
 	["o"]=99; ["i"]=0; ["t"]=0; ["c"]=0; ["opened"]=false; ["imageid"]=-1; ["imageid2"]=-1; ["imageid3"]=-1; ["imageid4"]=-1; ["imaget"]=5; ["shark_id"]=0; ["shark"]=0; ["active_imgs"]={};
 	};
@@ -238,12 +238,16 @@ function eventChatCommand(name,message)
 		showMenu(name,0xf0f0f0,140,90,520,160,"Créditos","As seguintes pessoas ajudaram no desenvolvimento deste module:<br><br><ROSE><b>• Morganadxana#0000</b><N> - Desenvolvedora do código<br><ROSE><b>• Akwimos#1937</b><N> - Criação do mapa e tradução do código original para o Português<br><ROSE><b>• Spectra_phantom#6089</b><N> - Ideia original e criação das artes")
 	end
 	if message == "skins" then
-		showMessage("<R>As skins de tubarão serão exibidas quando você for shaman, e estiver dentro do lago!",name)
-		showMenu(name,0x949494,140,90,520,294,"Skins","")
-		showAvailableSharks(name)
+		if tfm.get.room.playerList[name].isShaman == false then
+			showMessage("<R>As skins de tubarão serão exibidas quando você for shaman, e estiver dentro do lago!",name)
+			showMenu(name,0x949494,140,90,520,294,"Skins","")
+			showAvailableSharks(name)
+		else
+			showMessage("<J>Para evitar bugs, não é mais possível trocar de skin de tubarão enquanto for shaman.",name)
+		end
 	end
 	if message == "changelog" then
-		showMenu(name,0xf0f0f0,140,90,520,100,"Changelog da Versão 4.0.4","• Mais correções de bugs na seleção de shamans<br>• Pequenas mudanças de funcionamento")
+		showMenu(name,0xf0f0f0,140,90,520,110,"Changelog da Versão 4.1.0","• Pequenas alterações no mapa<br>• Mais mudanças nas zonas de oxigênio<br>• O powerup AFUNDAR está mais forte!<br>• Não é mais possível trocar a skin de tubarão quando for shaman")
 	end
 	if (message:sub(0,2)== "tc") then
 		if tfm.get.room.playerList[name].isShaman == false then
@@ -288,7 +292,7 @@ end
 function resetMap()
 	if xml == '' then
 		tfm.exec.disableAutoShaman(true)
-		tfm.exec.newGame("@7918679")
+		tfm.exec.newGame("@7920839")
 		ui.setMapName("Carregando mapa. Por favor, aguarde...<")
 		changed=false
 		mode="load"
@@ -507,12 +511,12 @@ function eventLoop(p,r)
 	loop=loop+0.5
 	time_passed=math.ceil(p/500)
 	time_remain=math.ceil(r/500)
-	if time_passed >= 12 and tfm.get.room.currentMap == "@7918679" then
+	if time_passed >= 12 and tfm.get.room.currentMap == "@7920839" then
 		tfm.exec.disableAutoShaman(false)
 		resetMap()
 	end
 	if changed == true then
-		ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <VP><b>v4.0.4</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
+		ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <VP><b>v4.1.0</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
 		local m=math.floor(r/60000)
 		local s=math.floor((((m*60000)-r) * -1) / 1000)
 		ui.addTextArea(-1,"<font size='44'><font color='#222222'><font face='Copperplate Gothic Bold,Times New Roman'><b>"..m..":"..s.."</b>",n,557,27,125,54,0,0,1.0,true)
@@ -543,7 +547,7 @@ function eventLoop(p,r)
 			ui.addTextArea(30,"<font size='44'><font color='#d0d0d0'><font face='Copperplate Gothic Bold,Times New Roman'><b>"..alives.."</b>",n,132,24,80,54,0,0,1.0,true)
 			if timer > 0 then
 				timer=timer-0.5
-				tfm.exec.setWorldGravity(0,22)
+				tfm.exec.setWorldGravity(0,24)
 			elseif timer == 0 then
 				tfm.exec.setWorldGravity(0,10.5)
 			end
@@ -561,10 +565,10 @@ function eventLoop(p,r)
 								data[n].o=data[n].o-0.2
 							else
 								tfm.exec.playSound("/transformice/son/bulle2.mp3", 6, nil, nil, n)
-								if tfm.get.room.playerList[n].y <= 1550 then
+								if tfm.get.room.playerList[n].y <= 1525 then
 									data[n].o=data[n].o-0.5
 									data[n].c=0
-									elseif tfm.get.room.playerList[n].y > 1550 then
+									elseif tfm.get.room.playerList[n].y > 1525 then
 										data[n].o=data[n].o-0.7
 										data[n].c=0
 									end
