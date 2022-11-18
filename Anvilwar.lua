@@ -181,7 +181,7 @@ lang.en = {
 	latency = "You cannot enter the game because your average latency is very high.",
 	custom = "<VP>The room administrator defined custom rules for this room.",
 	defining = "<J>The room administrator is defining custom rules for this room. Please wait...",
-	kami = "<R>The anti-kamikaze mode is now active.",
+	kami = "<R>The anti-kamikaze is now active.",
 }
 if tfm.get.room.isTribeHouse == true then
 	text = lang.en
@@ -1065,7 +1065,7 @@ function eventChatCommand(name,command)
 		end
 	end
 	if command == "changelog" then
-		showMenu(name,0xa8f233,140,110,520,180,"#anvilwar Changelog - RTM 52023.206 LTS","• Added 4 new maps!<br>• Added a system to avoid players with high latency<br>• Some changes on the interface<br>• The return of the SUDDEN DEATH mode!<br>• Some changes on !tc command<br>• Some changes on map names<br>• Added the !settings command: You can now define custom options like game time, anti-kamikaze mode, shooting time, custom map rotation and many more!")
+		showMenu(name,0xa8f233,140,110,520,140,"#anvilwar Changelog - RTM 52023.206 LTS","• Added 4 new maps!<br>• Added a system to avoid players with high latency<br>• Some changes on the interface<br>• The return of the SUDDEN DEATH mode!<br>• Some changes on !tc command<br>• Some changes on map names")
 	end
 	if (command:sub(0,2) == "rv") then
 		if name == actual_player and general_time >= 30 then
@@ -1256,7 +1256,11 @@ end
 
 function moveTeams()
 	ui.setBackgroundColor("#6a7495")
-	showMessage("<VP>"..text.getr.."<br>"..text.kami.."")
+	if custom_mode == true and settings.anti_kami == true then
+		showMessage("<VP>"..text.getr.."<br>"..text.kami.."")
+	else
+		showMessage("<VP>"..text.getr.."")
+	end
 	for _,id in next,images_id do
 		tfm.exec.removeImage(id)
 		images_id={}
