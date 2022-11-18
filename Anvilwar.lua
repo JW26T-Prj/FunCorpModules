@@ -2,8 +2,8 @@
 Module authors : Morganadxana#0000
 (C) 2017-2022 Spectra Advanced Module Group
 
-Version : RTM 51122.205
-Compilation date : 11/18/2022 00:28 UTC
+Version : RTM 52023.206 LTS
+Compilation date : 11/18/2022 19:23 UTC
 Sending player : Morganadxana#0000
 
 Number of maps : 180
@@ -18,9 +18,10 @@ players_red={}; alives_red={};
 players_blue={}; alives_blue={};
 lobby_map="@7884784"
 current_map=""; actual_player="";
-enabled=false; powerups=false; permafrost=false; night_mode=false; gravity=false; change=false;
+enabled=false; powerups=false; permafrost=false; night_mode=false; gravity=false; change=false; custom_mode=false;
 mices=0; loop=0; turns=0; needs=0; turn=0; choose_time=20; time_passed=0; time_remain=0; current_red=0; current_blue=0; ping_check=2; sudden_death=false;
 points_loop=0; pf_time=0; general_time=0; total_time=0; map_id=0; set_player=""; set_map="-1"; def_map=-1; red_cap=""; blue_cap=""; temp_name=""; bar_text="";
+settings={time=180,plimit=12,map_mode=0,map_select="@7412348",g_powerups=true,shoot_time=15,anti_kami=false,sd_switch=true}
 mode="lobby"
 divider="　　　　　　　　　";
 images_id={};
@@ -70,10 +71,10 @@ lang.br = {
 	limit = "Limite de ratos na sala: ",
 	load1 = "O seguinte mapa será carregado: ",
 	load2 = "Certifique-se que há pelo menos 1 jogador em cada equipe.",
-	load0 = "Você precisa estar na tela principal para testar um mapa. Digite !reset para fazer isso e tente novamente.",
+	load0 = "Você precisa estar na tela principal para executar esta função. Digite !reset para fazer isso e tente novamente.",
 	ac = "Você atualmente possui ",
 	powerups = "<font size='11.5'><b>Tecla '1' - Disparo Duplo</b><br>Este powerup faz você atirar duas bigornas de uma vez.<br><b>Nível Mínimo:  1  /  Pontuação: 8pts</b><br><br><b>Tecla '2' - Disparo Triplo</b><br>Este powerup faz você atirar três bigornas de uma vez.<br><b>Nível Mínimo:  2  /  Pontuação: 12pts</b><br><br><b>Tecla '3' - Olha a Explosão</b><br>Este powerup permite a você criar uma explosão em um local do time inimigo.<br><b>Nível Mínimo:  3  /  Pontuação: 22pts</b><br><br><b>Tecla '4' - Congelamento</b><br>Este powerup congela todos os jogadores do time inimigo por um tempo limitado.<br><b>Nível Mínimo:  3  /  Pontuação: 20pts</b><br><p align='right'><a href='event:pw2'>Ir à Página 2</a>",
-	commands = "<font size='11.5'>Os comandos que começam com <b>*</b> podem ser utilizados apenas por administradores e o dono da sala (/room #anvilwar00seunome).<br>!commands (ou <b>B</b>) - Mostra esta caixa de texto.<br>!anvils - Mostra as bigornas disponíveis para compra<br>!help (ou <b>H</b>) - Mostra a ajuda do jogo.<br>!tc [mensagem] - Envia uma mensagem que aparece apenas para os jogadores do seu time.<br>!powerups (ou <b>U</b>) - Mostra os powerups disponíveis e seus respectivos custos.<br>!p [usuário] (ou <b>P</b>) - Mostra o perfil do usuário especificado. Digite apenas !p para ver o seu perfil.<br>!ranking (ou <b>R</b>) - Mostra o ranking dos jogadores na sala.<br>!sound (ou <b>M</b>) - Ativa ou desativa os efeitos sonoros do jogo.<br><R><b>*</b><N> !kill [usuário] - Mata o jogador selecionado.<br><R><b>*</b><N> !pw [senha] - Adiciona uma senha na sala. Digite apenas !pw para remover a senha.<br><R><b>*</b><N> !reset - Cancela a partida atual e retorna à tela inicial.<br><R><b>*</b><N> !limit [número] - Altera o limite de jogadores da sala.<br><R><b>*</b><N> !testmap [@código] - Testa um mapa. Isso pode ser útil para enviar o mapa para o #anvilwar.<br><R><b>*</b><N> !lc [0-3] - Altera a configuração do verificador de latência dos jogadores.",
+	commands = "<font size='11.5'>Os comandos que começam com <b>*</b> podem ser utilizados apenas por administradores e o dono da sala (/room #anvilwar00seunome).<br>!commands (ou <b>B</b>) - Mostra esta caixa de texto.<br>!anvils - Mostra as bigornas disponíveis para compra<br>!help (ou <b>H</b>) - Mostra a ajuda do jogo.<br>!tc [mensagem] - Envia uma mensagem que aparece apenas para os jogadores do seu time.<br>!powerups (ou <b>U</b>) - Mostra os powerups disponíveis e seus respectivos custos.<br>!p [usuário] (ou <b>P</b>) - Mostra o perfil do usuário especificado. Digite apenas !p para ver o seu perfil.<br>!ranking (ou <b>R</b>) - Mostra o ranking dos jogadores na sala.<br>!sound (ou <b>M</b>) - Ativa ou desativa os efeitos sonoros do jogo.<br><R><b>*</b><N> !kill [usuário] - Mata o jogador selecionado.<br><R><b>*</b><N> !pw [senha] - Adiciona uma senha na sala. Digite apenas !pw para remover a senha.<br><R><b>*</b><N> !reset - Cancela a partida atual e retorna à tela inicial.<br><R><b>*</b><N> !limit [número] - Altera o limite de jogadores da sala.<br><R><b>*</b><N> !testmap [@código] - Testa um mapa. Isso pode ser útil para enviar o mapa para o #anvilwar.<br><R><b>*</b><N> !lc [0-3] - Altera a configuração do verificador de latência dos jogadores.<br><R><b>*</b><N> !settings - Altera as configurações da sala.",
 	help = "<font size='12'><b>Bem-vindo ao #anvilwar!</b><br>O objetivo deste module é matar os jogadores do time adversário usando bigornas.<br><br>O jogo é simples de ser jogado. Quando for sua vez, use as teclas <b>Z e X</b> para mudar a potência do seu tiro e as teclas <b>C e V</b> para mudar o ângulo. Use a <b>BARRA DE ESPAÇO</b> para atirar.<br>O time que conseguir eliminar todos os jogadores do outro time vencerá o jogo!<br><br>Quando você joga ou ganha partidas, você vai receber <J><b>AnvilCoins</b><N>. Esta é a moeda do jogo. Ela pode ser usada para comprar novas bigornas.<br>Divirta-se e que vença o melhor time!<br><br><N><R><b>Administradora:</b><N> Morganadxana#0000<br><VP><b>Contribuidores:</b><N> Flaysama#5935, Chavestomil#0000, Dinamarquers#0000 e Spectra_phantom#6089<br><J><b>Tradutores:</b><N> Patrick_mahomes#1795 (BR)",
 	seconds = " segundos.",
 	leave = "Sair",
@@ -107,6 +108,9 @@ lang.br = {
 	sound = "Use o comando /music para ativar ou desativar os efeitos sonoros do jogo.",
 	suddendeath = "<J><b>MORTE SÚBITA ATIVADA!</b><br><br>A partir de agora, a equipe que conseguir qualquer eliminação será declarada a vencedora!",
 	latency = "Você não pode participar do jogo pois sua média de ping está muito alta.",
+	custom = "<VP>O administrador da sala definiu regras personalizadas para esta sala.",
+	defining = "<J>O administrador da sala está definindo regras personalizadas para esta sala. Por favor, aguarde...",
+	kami = "<R>O modo anti-kamikaze está ativo nesta sala.",
 }
 lang.en = {
 	version = "Version",
@@ -141,7 +145,7 @@ lang.en = {
 	load0 = "You needs to stay into LOBBY mode to use this command. Use !reset command and try again.",
 	ac = "You currently have ",
 	powerups = "<font size='11.5'><b>Key '1' - Double Shoot</b><br>This powerup makes you shoot 2 anvils at once.<br><b>Required Level: 1  /  Required Score: 8pts</b><br><br><b>Key '2' - Triple Shoot</b><br>This powerup makes you shoot 3 anvils at once.<br><b>Required Level: 2  /  Required Score: 12pts</b><br><br><b>Key '3' - Explosion</b><br>This powerup allows you to create an explosion on the enemy team area.<br><b>Required Level: 3  /  Required Score: 22pts</b><br><br><b>Key '4' - Permafrost</b><br>This powerup freezes all enemy team players by a limited time.<br><b>Required Level: 3  /  Required Score: 20pts</b><br><p align='right'><a href='event:pw2'>Go to Page 2</a>",
-	commands = "<font size='11.5'>The commands marked with <b>*</b> can be used only by Administrators and the room owner (/room #anvilwar00yourname).<br>!commands (or <b>B</b> key) - Display this message box.<br>!anvils - Show available #anvilwar anvils to buy.<br>!help (or <b>H</b> key) - Display the game help.<br>!tc [message] - Send a message that is visible only for players of your team.<br>!powerups (or <b>U</b> key) - Show all available powerups and their respective costs.<br>!p [username] (or <b>P</b> key) - Show the profile of the specified user. Type !p only to see your profile.<br>!ranking (or <b>R</b> key) - Show the room ranking.<br>!sound (or <b>M</b> key) - Enables or disables the sound effects.<br><R><b>*</b><N> !kill [username] - Kill the specified player.<br><R><b>*</b><N> !pw [password] - Locks the room with a password. Use only !pw to clear the password.<br><R><b>*</b><N> !reset - Cancel the current match and returns to the lobby screen.<br><R><b>*</b><N> !limit [number] - Change the limit of mices on the room.<br><R><b>*</b><N> !testmap [@code] - Test a map. This can use useful when you want to send your map to #anvilwar.<br><R><b>*</b><N> !lc [0-3] - Change the level of the player's latency checker.",
+	commands = "<font size='11.5'>The commands marked with <b>*</b> can be used only by Administrators and the room owner (/room #anvilwar00yourname).<br>!commands (or <b>B</b> key) - Display this message box.<br>!anvils - Show available #anvilwar anvils to buy.<br>!help (or <b>H</b> key) - Display the game help.<br>!tc [message] - Send a message that is visible only for players of your team.<br>!powerups (or <b>U</b> key) - Show all available powerups and their respective costs.<br>!p [username] (or <b>P</b> key) - Show the profile of the specified user. Type !p only to see your profile.<br>!ranking (or <b>R</b> key) - Show the room ranking.<br>!sound (or <b>M</b> key) - Enables or disables the sound effects.<br><R><b>*</b><N> !kill [username] - Kill the specified player.<br><R><b>*</b><N> !pw [password] - Locks the room with a password. Use only !pw to clear the password.<br><R><b>*</b><N> !reset - Cancel the current match and returns to the lobby screen.<br><R><b>*</b><N> !limit [number] - Change the limit of mices on the room.<br><R><b>*</b><N> !testmap [@code] - Test a map. This can use useful when you want to send your map to #anvilwar.<br><R><b>*</b><N> !lc [0-3] - Change the level of the player's latency checker.<br><R><b>*</b><N> !settings - Change the room settings.",
 	help = "<font size='12'><b>Welcome to #anvilwar!</b><br>The objective of this module is kill all the players of other team using anvils.<br><br>The module is very easy to play. When reaches your turn, use <b>Z and X</b> keys to change the intensity of the anvil shoot and <b>C and V</b> keys to change the angle of the anvil. Use the <b>SPACEBAR</b> to shoot.<br>The team that kill all players of other team will win the game!<br><br>When you kill players or win matches, you will receive <J><b>AnvilCoins</b><N>. This is the money of #anvilwar module. It can be used to unlock custom anvils.<br>Enjoy the module and may the best team wins!<br><br><N><R><b>Administrator:</b><N> Morganadxana#0000<br><VP><b>Contributors:</b><N> Flaysama#5935, Chavestomil#0000, Dinamarquers#0000 and Spectra_phantom#6089<br><J><b>Translators:</b><N> Patrick_mahomes#1795 (BR)",
 	seconds = " seconds.",
 	leave = "Leave",
@@ -175,6 +179,9 @@ lang.en = {
 	sound = "Use the /music command to enable or disable the in-game sound effects.",
 	suddendeath = "<J><b>SUDDEN DEATH ENABLED!</b><br><br>The team that gets any player killed will lose the game!",
 	latency = "You cannot enter the game because your average latency is very high.",
+	custom = "<VP>The room administrator defined custom rules for this room.",
+	defining = "<J>The room administrator is defining custom rules for this room. Please wait...",
+	kami = "<R>The anti-kamikaze mode is now active.",
 }
 if tfm.get.room.isTribeHouse == true then
 	text = lang.en
@@ -189,10 +196,10 @@ end
 for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand","MortCommand","AfkDeath"} do
 	tfm.exec["disable"..f](true)
 end
-for _,g in next,{"reset","help","sync","pw","commands","powerups","p","kill","limit","ranking","t","T","tc","TC","Tc","tC","anvils","set","testmap","defmap","leader","rv","tp","changelog","get","sound","lc"} do
+for _,g in next,{"reset","help","sync","pw","commands","powerups","p","kill","limit","ranking","t","T","tc","TC","Tc","tC","anvils","set","testmap","defmap","leader","rv","tp","changelog","get","sound","lc","settings"} do
 	system.disableChatCommandDisplay(g)
 end
-if not tfm.get.room.isTribeHouse then tfm.exec.setRoomMaxPlayers(30) end
+if not tfm.get.room.isTribeHouse then tfm.exec.setRoomMaxPlayers(32) end
 
 function tableSearch(table,element)
 	for i=1,rawlen(table) do
@@ -285,8 +292,24 @@ function showMenu(name,color,x,y,width,height,title,content)
 	end
 end
 
+function showRoomSettings(name)
+	choose_time=30
+	if data[name] and data[name].ranking >= 2 then
+		for i=1000,1011 do
+			ui.removeTextArea(i,name)
+		end
+		data[name].opened=false
+		if settings.map_mode == 0 then
+			string1="normal"
+		elseif settings.map_mode == 1 then
+			string1="@code"
+		end
+		showMenu(name,0x405401,200,125,400,230,""..tfm.get.room.name.." Room Settings","<p align='center'>Custom Room Mode : <b>"..tostring(custom_mode).."</b> <a href='event:cmode'>[change]</a></p><br>------------------ CUSTOM ROOM SETTINGS ------------------<br>Game Time : <b>"..tostring(settings.time).."</b> sec <a href='event:ctimea'>[-]</a> <a href='event:ctimeb'>[+]</a><br>Max Players/Team : <b>"..tostring(settings.plimit).."</b> <a href='event:cplayersa'>[-]</a> <a href='event:cplayersb'>[+]</a><br>Map Mode : <b>"..string1.."</b> <a href='event:cmap'>[change]</a><br>Map @code (for @CODE mode) : <b>"..tostring(settings.map_select).."</b> <a href='event:cmapcode'>[change]</a><br>Powerups : <b>"..tostring(settings.g_powerups).."</b> <a href='event:cpowerups'>[change]</a><br>Shooting Time : <b>"..tostring(settings.shoot_time).."</b> sec <a href='event:cstimea'>[-]</a> <a href='event:cstimeb'>[+]</a><br>Anti-Kamikaze Mode : <b>"..tostring(settings.anti_kami).."</b> <a href='event:ckami'>[change]</a><br>Sudden Death : <b>"..tostring(settings.sd_switch).."</b> <a href='event:csd'>[change]</a>")
+	end
+end
+
 function showLobbyText(name)
-	ui.addTextArea(402,"<p align='center'><font size='13'><b><font face='Courier New'><i>"..text.version.." RTM 51122.205 - "..text.comp_date.."11/18/2022 00:28 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,-10,380,820,36,0,0,1.0,true)
+	ui.addTextArea(402,"<p align='center'><font size='13'><b><font face='Courier New'><i>"..text.version.." RTM 52023.206 LTS - "..text.comp_date.."11/18/2022 19:23 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,-10,380,820,36,0,0,1.0,true)
 end
 
 function setLeaders()
@@ -365,7 +388,7 @@ function updateTextBar()
 	if mode == "end" then
 		ui.setMapName("<VP><b>"..text.ending.."</b>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	else
-		ui.setMapName("<N><b>#anvilwar</b>   <G>|   <VP>"..text.version.." <b>RTM 51122.205</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
+		ui.setMapName("<N><b>#anvilwar</b>   <G>|   <VP>"..text.version.." <b>RTM 52023.206 LTS</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	end
 end
 
@@ -409,7 +432,11 @@ function spawnAnvil(object,x,y,xp,yp,ghost)
 end
 
 function calculateMatchTime()
-	total_time=165+(mices*5)
+	if custom_mode == false then
+		total_time=165+(mices*5)	
+	else
+		total_time=settings.time
+	end
 	general_time=total_time
 end
 
@@ -458,11 +485,21 @@ function detectVictory()
 			setShooter()
 		end
 	else
-		if rawlen(alives_red) == rawlen(alives_blue) then
-			if (rawlen(alives_red)+rawlen(alives_blue)) >= 3 and sudden_death == false then
-				suddenDeath()
-			else
-				drawMatch()
+		if custom_mode == false then
+			if rawlen(alives_red) == rawlen(alives_blue) then
+				if (rawlen(alives_red)+rawlen(alives_blue)) >= 3 and sudden_death == false then
+					suddenDeath()
+				else
+					drawMatch()
+				end
+			end
+		else
+			if rawlen(alives_red) == rawlen(alives_blue) then
+				if (rawlen(alives_red)+rawlen(alives_blue)) >= 3 and settings.sd_switch == true and sudden_death == false then
+					suddenDeath()
+				else
+					drawMatch()
+				end
 			end
 		end
 		if rawlen(alives_red) > rawlen(alives_blue) then
@@ -545,8 +582,10 @@ function eventNewPlayer(name)
 	if not data[name] then
 		data[name]={level=1,exp=0,maxp=100,score=0,kills=0,wins=0,matches=0,killeds=0,eff=0.0,winrate=0.0,coins=0,multikills=0,
 		killed=false,team=0,ranking=0,angle=0,power=5,powerup=0,
-		current_coins=0,opened=false,active_imgs={},anvils={0,0,0,0,0,0,0,0,0,0,0},current_anvil=0,position=198,test_time=0,scoreboard_id=-1}
+		current_coins=0,opened=false,active_imgs={},anvils={0,0,0,0,0,0,0,0,0,0,0},current_anvil=0,position=198,test_time=0,scoreboard_id=-1,left=false}
 		table.insert(playersList,name)
+	else
+		data[name].left=false
 	end
 	if name:sub(1,1) == "*" then
 		data[name].ranking=-1
@@ -795,6 +834,7 @@ end
 
 function eventPlayerLeft(name)
 	removeTeam(name)
+	data[name].left=true
 	mices=mices-1
 end
 
@@ -821,8 +861,15 @@ function eventPlayerDied(name)
 			data[name].current_coins=math.floor(data[name].current_coins/2)
 			showMessage(""..text.suicide..""..actual_player)
 			setScores(name,0,false)
-			mode="wait3"
 			tfm.exec.setGameTime(6)
+			if custom_mode == true and settings.anti_kami == true and data[actual_player].left == false then
+				if data[actual_player].team == 1 then
+					victoryBlue()
+				elseif data[actual_player].team == 2 then
+					victoryRed()
+				end
+			end
+			mode="wait3"
 		end
 		data[name].killeds=data[name].killeds+1
 		setScores(name,0,false)
@@ -840,6 +887,13 @@ function eventPlayerDied(name)
 				data[actual_player].current_coins=0
 				setScores(actual_player,0,false)
 				showMessage(""..text.suicide..""..actual_player)
+				if custom_mode == true and settings.anti_kami == true and data[actual_player].left == false then
+					if data[actual_player].team == 1 then
+						victoryBlue()
+					elseif data[actual_player].team == 2 then
+						victoryRed()
+					end
+				end
 			else
 				data[actual_player].current_coins=data[actual_player].current_coins-5
 				setScores(actual_player,-5,true)
@@ -912,6 +966,9 @@ function lobby()
 	end
 	permafrost=false; night_mode=false;
 	showMessage("<VP>"..text.legacy.."")
+	if custom_mode == true then
+		showMessage(text.custom)
+	end
 end
 
 function eventNewGame()
@@ -970,6 +1027,15 @@ function eventChatCommand(name,command)
 	if command == "reset" and data[name].ranking >= 2 and time_passed >= 6 then
 		lobby()
 	end
+	if command == "settings" and data[name].ranking >= 2 then
+		if mode == "lobby" then
+			showRoomSettings(name)
+			mode="define";
+			showMessage(text.defining)
+		else
+			showMessage(text.load0,name)
+		end
+	end
 	if (command:sub(0,2) == "pw") and data[name].ranking >= 2 then
 		tfm.exec.setRoomPassword(tostring(command:sub(4)))
 		if string.len(command:sub(4)) > 0 then
@@ -999,7 +1065,7 @@ function eventChatCommand(name,command)
 		end
 	end
 	if command == "changelog" then
-		showMenu(name,0xa8f233,140,110,520,140,"#anvilwar Changelog - RTM 51122.205","• Added 4 new maps!<br>• Added a system to avoid players with high latency<br>• Some changes on the interface<br>• The return of the SUDDEN DEATH mode!<br>• Some changes on !tc command<br>• Some changes on map names")
+		showMenu(name,0xa8f233,140,110,520,180,"#anvilwar Changelog - RTM 52023.206 LTS","• Added 4 new maps!<br>• Added a system to avoid players with high latency<br>• Some changes on the interface<br>• The return of the SUDDEN DEATH mode!<br>• Some changes on !tc command<br>• Some changes on map names<br>• Added the !settings command: You can now define custom options like game time, anti-kamikaze mode, shooting time, custom map rotation and many more!")
 	end
 	if (command:sub(0,2) == "rv") then
 		if name == actual_player and general_time >= 30 then
@@ -1118,7 +1184,7 @@ function eventChatCommand(name,command)
 		showMenu(name,0x873469,140,90,520,200,"#anvilwar Team Leader Funcions",text.leader)
 	end
 	if command == "commands" then
-		showMenu(name,0x125490,120,100,560,285,"#anvilwar Commands",text.commands)
+		showMenu(name,0x125490,120,70,560,315,"#anvilwar Commands",text.commands)
 	end
 	if command == "help" then
 		showMenu(name,0x457426,100,125,600,260,"Help",text.help)
@@ -1139,9 +1205,27 @@ function eventPopupAnswer(id,name,message)
 			setScores(temp_name,tonumber(message),true)
 		end
 	end
+	if id == 1000 then
+		if message == "0" then
+			settings.map_mode=0
+			showRoomSettings()
+		elseif message == "1" then
+			ui.addPopup(2001,2,"Insert the map @code",name,350,175,200,true)
+			showRoomSettings()
+		end
+	end
+	if id == 2001 then
+		if string.len(message) == 8 then
+			settings.map_mode=1
+			settings.map_select=message
+		end
+		showRoomSettings()
+	end
 end
 function enterRedTeam(name)
-	if choose_time > 1 and data[name].team == 0 and rawlen(players_red) <= 12 then
+	if custom_mode == false then limit=13 else limit=settings.plimit; end
+	
+	if choose_time > 1 and data[name].team == 0 and rawlen(players_red) < limit then
 		tfm.exec.respawnPlayer(name)
 		table.insert(players_red,name)
 		updatePlayerList()
@@ -1155,7 +1239,9 @@ function enterRedTeam(name)
 end
 
 function enterBlueTeam(name)
-	if choose_time > 1 and data[name].team == 0 and rawlen(players_blue) <= 12 then
+	if custom_mode == false then limit=13 else limit=settings.plimit; end
+
+	if choose_time > 1 and data[name].team == 0 and rawlen(players_blue) < limit then
 		tfm.exec.respawnPlayer(name)
 		table.insert(players_blue,name)
 		updatePlayerList()
@@ -1170,7 +1256,7 @@ end
 
 function moveTeams()
 	ui.setBackgroundColor("#6a7495")
-	showMessage("<VP>"..text.getr.."")
+	showMessage("<VP>"..text.getr.."<br>"..text.kami.."")
 	for _,id in next,images_id do
 		tfm.exec.removeImage(id)
 		images_id={}
@@ -1242,6 +1328,9 @@ function eventTextAreaCallback(id,name,callback)
 		removeImagePlayers(name)
 		if mode == "lobby" or mode == "map_sort" then
 			updatePlayerList()
+		end
+		if mode == "define" then
+			lobby()
 		end
 	end
 	if callback == "pw1" then
@@ -1481,6 +1570,49 @@ function eventTextAreaCallback(id,name,callback)
 			end
 		end
 	end
+	if callback == "cmode" then
+		if custom_mode == false then custom_mode=true else custom_mode=false; end
+		showRoomSettings(name)
+	end
+	if callback == "ctimea" then
+		if settings.time > 60 then settings.time=settings.time-10 end
+		showRoomSettings(name)
+	end
+	if callback == "ctimeb" then
+		if settings.time < 450 then settings.time=settings.time+10 end
+		showRoomSettings(name)
+	end
+	if callback == "cplayersa" then
+		if settings.plimit > 1 then settings.plimit=settings.plimit-1 end
+		showRoomSettings(name)
+	end
+	if callback == "cplayersb" then
+		if settings.plimit < 12 then settings.plimit=settings.plimit+1 end
+		showRoomSettings(name)
+	end
+	if callback == "cmap" then
+		ui.addPopup(1000,2,"Insert the map mode:<br><br>0 = Normal<br>1 = @code based",name,350,175,200,true)
+	end
+	if callback == "cpowerups" then
+		if settings.g_powerups == false then settings.g_powerups=true else settings.g_powerups=false end
+		showRoomSettings(name)
+	end
+	if callback == "cstimea" then
+		if settings.shoot_time > 5 then settings.shoot_time=settings.shoot_time-1 end
+		showRoomSettings(name)
+	end
+	if callback == "cstimeb" then
+		if settings.shoot_time < 25 then settings.shoot_time=settings.shoot_time+1 end
+		showRoomSettings(name)
+	end
+	if callback == "ckami" then
+		if settings.anti_kami == false then settings.anti_kami=true else settings.anti_kami=false end
+		showRoomSettings(name)
+	end
+	if callback == "csd" then
+		if settings.sd_switch == false then settings.sd_switch=true else settings.sd_switch=false end
+		showRoomSettings(name)
+	end
 end
 
 function advanceLevel(name)
@@ -1574,16 +1706,30 @@ function setShooter()
 		if turn == 0 then
 			turn=1
 			actual_player=alives_blue[math.random(#alives_blue)]
-			tfm.exec.setGameTime(15)
-			if actual_player == blue_cap then
-				tfm.exec.setGameTime(22)
+			if custom_mode == false then
+				tfm.exec.setGameTime(15)
+				if actual_player == blue_cap then
+					tfm.exec.setGameTime(22)
+				end
+			else
+				tfm.exec.setGameTime(settings.shoot_time)
+				if actual_player == blue_cap then
+					tfm.exec.setGameTime(math.floor(settings.shoot_time*1.5))
+				end
 			end
 		elseif turn == 1 then
 			turn=0
 			actual_player=alives_red[math.random(#alives_red)]
-			tfm.exec.setGameTime(15)
-			if actual_player == red_cap then
-				tfm.exec.setGameTime(22)
+			if custom_mode == false then
+				tfm.exec.setGameTime(15)
+				if actual_player == red_cap then
+					tfm.exec.setGameTime(22)
+				end
+			else
+				tfm.exec.setGameTime(settings.shoot_time)
+				if actual_player == red_cap then
+					tfm.exec.setGameTime(math.floor(settings.shoot_time*1.5))
+				end
 			end
 		end
 	else
@@ -1701,31 +1847,69 @@ function eventLoop(passed,remain)
 		end
 	end
 	if mode == "map_sort" then
-		if set_map == "-1" then
-			if loop < 12 then
-				loop=loop+1
-				ui.addTextArea(-6,"<font face='Arial'><p align='center'><font color='#000000'><font size='24'><i>"..text.rm.."",nil,102,97,600,45,0,0,1.0,true)
-				ui.addTextArea(-5,"<font face='Arial'><p align='center'><font size='24'><i>"..text.rm.."",nil,100,95,600,45,0,0,1.0,true)
-				map_id=math.random(1,rawlen(maps))
-				tfm.exec.playSound("/bouboum/x_pose_bombe.mp3",65)
-			elseif loop == 12 then
-				if def_map > 0 then
-					map_id=def_map
+		if custom_mode == false then
+			if set_map == "-1" then
+				if loop < 12 then
+					loop=loop+1
+					ui.addTextArea(-6,"<font face='Arial'><p align='center'><font color='#000000'><font size='24'><i>"..text.rm.."",nil,102,97,600,45,0,0,1.0,true)
+					ui.addTextArea(-5,"<font face='Arial'><p align='center'><font size='24'><i>"..text.rm.."",nil,100,95,600,45,0,0,1.0,true)
+					map_id=math.random(1,rawlen(maps))
+					tfm.exec.playSound("/bouboum/x_pose_bombe.mp3",65)
+				elseif loop == 12 then
+					if def_map > 0 then
+						map_id=def_map
+					end
+						current_map=maps[map_id]
+					ui.addTextArea(-6,"<font face='Arial'><p align='center'><font color='#000000'><font size='24'><i>"..text.rm1..""..map_names[map_id].." - "..maps[map_id].."",nil,2,97,800,45,0,0,1.0,true)
+					ui.addTextArea(-5,"<font face='Arial'><p align='center'><font size='24'><VP><i>"..text.rm1..""..map_names[map_id].." - "..maps[map_id].."",nil,0,95,800,45,0,0,1.0,true)
+					mode="wait1"
+					tfm.exec.setGameTime(10)
+					tfm.exec.playSound("/bouboum/x_bonus_alea.mp3",75)
 				end
-				current_map=maps[map_id]
-				ui.addTextArea(-6,"<font face='Arial'><p align='center'><font color='#000000'><font size='24'><i>"..text.rm1..""..map_names[map_id].." - "..maps[map_id].."",nil,2,97,800,45,0,0,1.0,true)
-				ui.addTextArea(-5,"<font face='Arial'><p align='center'><font size='24'><VP><i>"..text.rm1..""..map_names[map_id].." - "..maps[map_id].."",nil,0,95,800,45,0,0,1.0,true)
+			else
+				current_map=set_map
+				ui.addTextArea(-6,"<font face='Arial'><p align='center'><font color='#000000'><font size='24'><i>"..text.rm1..""..set_map.."",nil,2,95,800,45,0,0,1.0,true)
+				ui.addTextArea(-5,"<font face='Arial'><p align='center'><font size='24'><VP><i>"..text.rm1..""..set_map.."",nil,0,95,800,45,0,0,1.0,true)
 				mode="wait1"
 				tfm.exec.setGameTime(10)
 				tfm.exec.playSound("/bouboum/x_bonus_alea.mp3",75)
 			end
 		else
-			current_map=set_map
-			ui.addTextArea(-6,"<font face='Arial'><p align='center'><font color='#000000'><font size='24'><i>"..text.rm1..""..set_map.."",nil,2,95,800,45,0,0,1.0,true)
-			ui.addTextArea(-5,"<font face='Arial'><p align='center'><font size='24'><VP><i>"..text.rm1..""..set_map.."",nil,0,95,800,45,0,0,1.0,true)
-			mode="wait1"
-			tfm.exec.setGameTime(10)
-			tfm.exec.playSound("/bouboum/x_bonus_alea.mp3",75)
+			if settings.map_mode == 0 then
+				if set_map == "-1" then
+					if loop < 12 then
+						loop=loop+1
+						ui.addTextArea(-6,"<font face='Arial'><p align='center'><font color='#000000'><font size='24'><i>"..text.rm.."",nil,102,97,600,45,0,0,1.0,true)
+						ui.addTextArea(-5,"<font face='Arial'><p align='center'><font size='24'><i>"..text.rm.."",nil,100,95,600,45,0,0,1.0,true)
+						map_id=math.random(1,rawlen(maps))
+						tfm.exec.playSound("/bouboum/x_pose_bombe.mp3",65)
+					elseif loop == 12 then
+						if def_map > 0 then
+							map_id=def_map
+						end
+						current_map=maps[map_id]
+						ui.addTextArea(-6,"<font face='Arial'><p align='center'><font color='#000000'><font size='24'><i>"..text.rm1..""..map_names[map_id].." - "..maps[map_id].."",nil,2,97,800,45,0,0,1.0,true)
+						ui.addTextArea(-5,"<font face='Arial'><p align='center'><font size='24'><VP><i>"..text.rm1..""..map_names[map_id].." - "..maps[map_id].."",nil,0,95,800,45,0,0,1.0,true)
+						mode="wait1"
+						tfm.exec.setGameTime(10)
+						tfm.exec.playSound("/bouboum/x_bonus_alea.mp3",75)
+					end
+				else
+					current_map=set_map
+					ui.addTextArea(-6,"<font face='Arial'><p align='center'><font color='#000000'><font size='24'><i>"..text.rm1..""..set_map.."",nil,2,95,800,45,0,0,1.0,true)
+					ui.addTextArea(-5,"<font face='Arial'><p align='center'><font size='24'><VP><i>"..text.rm1..""..set_map.."",nil,0,95,800,45,0,0,1.0,true)
+					mode="wait1"
+					tfm.exec.setGameTime(10)
+					tfm.exec.playSound("/bouboum/x_bonus_alea.mp3",75)
+				end
+			elseif settings.map_mode == 1 then
+				current_map=settings.map_select
+				ui.addTextArea(-6,"<font face='Arial'><p align='center'><font color='#000000'><font size='24'><i>"..text.rm1..""..settings.map_select.."",nil,2,95,800,45,0,0,1.0,true)
+				ui.addTextArea(-5,"<font face='Arial'><p align='center'><font size='24'><VP><i>"..text.rm1..""..settings.map_select.."",nil,0,95,800,45,0,0,1.0,true)
+				mode="wait1"
+				tfm.exec.setGameTime(10)
+				tfm.exec.playSound("/bouboum/x_bonus_alea.mp3",75)
+			end
 		end
 		if rawlen(players_red) == 0 or rawlen(players_blue) == 0 then
 			lobby()
@@ -1760,8 +1944,10 @@ function eventLoop(passed,remain)
 		ui.addTextArea(5653,"<font size='28'><p align='center'><b><R>"..rawlen(alives_red).."",nil,240,22,100,40,0,0,1.0,true)
 		ui.addTextArea(5656,"<font size='28'><p align='center'><font color='#050505'><b>"..rawlen(alives_blue).."",nil,452,24,100,40,0,0,1.0,true)
 		ui.addTextArea(5655,"<font size='28'><p align='center'><b><BL>"..rawlen(alives_blue).."",nil,450,22,100,40,0,0,1.0,true)
-		ui.addTextArea(5658,"<font size='24'><p align='center'><font color='#050505'><b>"..time_remain.."",nil,347,70,100,40,0,0,1.0,true)
-		ui.addTextArea(5657,"<font size='24'><p align='center'><VP><b>"..time_remain.."",nil,345,68,100,40,0,0,1.0,true)
+		if mode == "shoot" then
+			ui.addTextArea(5658,"<font size='24'><p align='center'><font color='#050505'><b>"..time_remain.."",nil,347,70,100,40,0,0,1.0,true)
+			ui.addTextArea(5657,"<font size='24'><p align='center'><VP><b>"..time_remain.."",nil,345,68,100,40,0,0,1.0,true)
+		end
 		if general_time > 0 then
 			general_time=general_time-0.5
 			if sudden_death == false then
@@ -1779,7 +1965,7 @@ function eventLoop(passed,remain)
 				tfm.exec.playSound("/tfmadv/soins7.mp3",66)
 			end
 		end
-		if time_passed == 60 and powerups == false then
+		if time_passed == 60 and powerups == false and settings.g_powerups == true then
 			powerups=true
 			showMessage(text.powerups_a)
 		end
