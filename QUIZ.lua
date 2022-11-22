@@ -1,9 +1,9 @@
--- Mudanças na Versão 2.27.1:
+-- Mudanças na Versão 2.28.0:
 
+-- Adição de 5 perguntas de música
 -- Correções em várias perguntas
--- Adição de 2 perguntas de conhecimentos gerais
 
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.27.1
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.28.0
 -- Por favor, edite a linha 23 a variável 'admin' pelo seu nome para ter acesso aos comandos.
 -- Você pode selecionar o tema editando a linha 24, ou digitando !tema [número] conforme os números abaixo.
 
@@ -465,7 +465,6 @@ perguntas1={
 "Qual destes municípios está localizado no Estado do Acre?","Plácido de Castro","Santo Antônio de Pádua",1,
 "O tungstênio, material utilizado nas lâmpadas fluorescentes e halógenas, possui qual número na Tabela Periódica?","59","74",2,
 "Qual o nome do lugar onde vive o Presidente da Argentina?","Casa Branca","Casa Rosada",2,
-
 }
 perguntas2={
 "Vai na sorte :)","ok","ok",1,
@@ -595,11 +594,16 @@ perguntas2={
 "Quem é que canta a música 'Domingo de Manhã'?","Marcos e Belutti","Zé Neto e Cristiano",1,
 "Qual o nome da primeira música de sucesso da dupla Zezé di Camargo e Luciano?","É o Amor","Olhos de Lua",1,
 "A música 'Campo Minado', do cantor Jessé, faz referência ao famoso jogo Campo Minado do Windows.","Verdadeiro","Falso",2,
+"Qual é o primeiro verso do Hino do Estado do Rio de Janeiro?","Cidade Maravilhosa, Cheia de encantos mil","Fluminenses, avante! Marchemos!",2,
+"A música 'Me Chama que eu Vou', do cantor Sidney Magal, foi utilizada na abertura qual novela?","Rainha da Sucata","Caminho das Índias",1,
+"Qual o nome do primeiro álbum ao vivo lançado pela banda RPM, em 1986?","Revoluções Por Minuto","Rádio Pirata",2,
+"'Seu corpo é fruto proibido, é chave de todo pecado, e da libido...' Qual o nome desta música?","Olhar 43","Liberdade",1,
+"Qual o nome do vocalista do grupo RPM?","Paulo Gustavo","Paulo Ricardo",2,
 }
 perguntas3={
 "Vai na sorte :)","ok","ok",1,
 "Vai na sorte :)","ok","ok",2,
-"Quantos dragões elementares existem no League of Legends?","6","7",1,
+"Quantos dragões elementares existem no League of Legends?","6","7",2,
 "'A morte, é como o vento. Está sempre ao meu lado.'","Yasuo","Zed",1,
 "Qual destes campeões teve seu braço cortado por Irelia durante a invasão Noxiana contra Ionia?","Jax","Swain",2,
 "Qual destes, por muito tempo, foi dublador do personagem Ezreal?","Fábio Lucindo","Luciano Amaral",1,
@@ -620,13 +624,13 @@ perguntas3={
 "Antes de ser tomada pela Névoa Negra, as Ilhas das Sombras antes se chamavam...","Ilhas das Guerras","Ilhas das Bênçãos",2,
 "Qual o nome da região de League of Legends que está mais situada ao norte, e ao mesmo tempo, é a mais gelada?","Demacia","Freljord",2,
 "Qual o nome da família responsável pela guarda de Demacia?","Stemmaguarda","Vastaya",1,
-"Twisted Fate nasceu de um povo com nome igual ao de um rio sitado ao noroeste do centro de Runeterra. Qual o nome desse rio?","Serpentina","Amazonas",1,
+"Twisted Fate nasceu de um povo com nome igual ao de um rio sitado ao noroeste do centro de Runeterra. Qual o nome desse rio?","Serpentina","Sentina",1,
 "Qual o nome do lugar localizado em Freljord onde acreditam que os Observadores estejam presos?","Institute of War","Howling Abyss",2,
 "Qual o nome da habilidade Ultimate (R) do Malzahar?","Investida do Vazio","Aperto Infero",2,
 "Qual o nome da habilidade Ultimate (R) da Miss Fortune?","Mandando Bala","Tapete Vermelho",1,
 "Qual é a descrição do Kassadin?","O Monstro do Vazio","O Andarilho do Vazio",2,
 "Qual o nome do ponto mais alto do Monte Targon?","Pico da Luz","Pico do Dragão",2,
-"Quais os nomes das duas irmãs que representam a Lua e o Sol, respectivamente?","Diana e Aphelios","Diana e Leona",2,
+"Quais os nomes das duas irmãs que representam as tribos da Lua e do Sol, respectivamente?","Diana e Aphelios","Diana e Leona",2,
 "Qual o nome do modo alternativo do League of Legends no qual os 5 jogadores jogam com o mesmo campeão","URF","Todos por Um",2,
 "Qual o nome da 'banda musical' de League of Legends de K-Pop?","Pentakill","K/DA",2,
 "O Mid Season Invitational de 2017 foi realizado em qual país?","China","Brasil",2,
@@ -646,7 +650,7 @@ perguntas3={
 "Qual o nome da escopeta usada por Graves?","Vingança","Destino",2,
 "A campeã Akali já passou por quantos reworks desde seu lançamento?","1","2",2,
 "Qual foi a única equipe do Ocidente a vencer o Campeonato Mundial de League of Legends?","FNATIC","Team Liquid",1,
-"O time do Flamengo possui uma equipe no competivivo de League of Legends.","Verdadeiro","Falso",1,
+"O time do Flamengo possui uma equipe no competivivo de League of Legends.","Verdadeiro","Falso",2,
 "Qual foi a equipe brasileira que conseguiu a melhor campanha no Mundial de League of Legends, em 2015?","LOUD","INTZ",2,
 "Qual foi o jogador que mais conquistou títulos do Campeonato Brasileiro de League of Legends?","BrTT","Revolta",1,
 "Qual foi o(a) campeã(o) que salvou vários zaunitas após uma falha em um experimento?","Janna","Viktor",1,
@@ -654,18 +658,18 @@ perguntas3={
 "Qual dessas é a maior região de Runeterra?","Noxus","Shurima",2,
 "Quantas regiões existem em Runeterra?","10","12",2,
 "Qual o nome do javali no qual a campeã Sejuani sempre fica montada?","Bristle","Valor",1,
-"'Tudo o que está quebrado pode ser reforjado.","Akali","Riven",2,
+"'Tudo o que está quebrado pode ser reforjado.'","Akali","Riven",2,
 "Qual o nome da série de League of Legends lançada cujo foco é em Piltover e em Zaun?","Arcane","Forge",1,
 "Qual o nome da região onde majoritamente vivem os Yordles?","Ionia","Bandópolis",2,
 "Qual é a descrição da Shyvana?","A Fúria do Dragão","A Meia-Dragão",2,
 "Quais destes monstros neutros pertencem ao Vazio?","Arauto do Vale e Barão Na'Shor","Arauto do Vale e Dragão Ancião",1,
 "No evento de Arcane, Heimerdinger chega a mencionar uma frase durante o jogo.","Tá pegando fogo bicho!","Sempre pela ciência!",1,
-"Qual destes personagens foi tirado de Demacia, subiu o monte Targon e virou o Escudo de Valoran?","Zoe","Taric",2,
+"Qual destes personagens foi exilado de Demacia, subiu o monte Targon e virou o Escudo de Valoran?","Zoe","Taric",2,
 "Águas de Sentina é um arquipélago localizado ao leste de Runeterra, onde basicamente só vivem...","Aspectos","Piratas",2,
 "Qual a cor do cabelo da Katarina?","Preto","Vermelho",2,
 "Nenhuma pessoa que foi capturada pela lanterna de Thresh conseguiu sair de lá.","Verdadeiro","Falso",2,
 "Qual destes campeões não faz parte das Ilhas das Sombras?","Hecarim","Lucian",2,
-"Qual o nome da matéria utilizada pelos Glacinatas para prender os Observadores dentro de Howling Abyss?","Gelo verdadeiro","Runas Globais",1,
+"Qual o nome da matéria utilizada pelos Glacinatas para prender os Observadores dentro de Howling Abyss?","Gelo Verdadeiro","Runas Globais",1,
 "Qual o(a) campeã(o) que conseguiu derrotar e derrubar o navio de Gangplank?","Miss Fortune","Twisted Fate",1,
 "Qual destas campeãs possui um coração Hextec?","Camille","Orianna",1,
 "'Eu sou o terror de todos que se oponham contra mim.'","Morgana","Shyvana",2,
@@ -679,7 +683,7 @@ perguntas3={
 "O Monte Targon é a única montanha existente em Runeterra.","Verdadeiro","Falso",2,
 "Quantos campeões do League of Legends conseguem voar por conta própria (sem ajuda de animais ou veículos adicionais)?","5","10",1,
 "Quantos campeões do League of Legends conseguem viver no mar?","3","4",2,
-"Quantas skins possui o campeão Yasuo? (excluindo cromas)","11","13",1,
+"Quantas skins possui o campeão Yasuo? (excluindo cromas)","11","13",2,
 "Qual o nome do local onde Zilean nasceu, e que posteriormente foi tomado pelo Vazio?","Bandópolis","Icathia",2,
 "Basicamente, qual é a única fala do Rammus no jogo?","Ok","Falou",1,
 "O campeão Ryze já passou por quantos Reworks desde seu lançamento?","2","3",1,
@@ -715,6 +719,7 @@ perguntas3={
 "Quantos feitiços de invocador existem no League of Legends?","10","11",2,
 "O Brasil nunca chegou até as quartas de final do mundial de League of Legends.","Verdadeiro","Falso",1,
 "Um partida de League of Legends é encerrada quando...","Todos os jogadores de um time morrem","O Nexus é destruído",2,
+"Qual a cor do cabelo do campeão Zed?","Branco","Preto",1,
 }
 perguntas4={
 "Vai na sorte :)","ok","ok",1,
@@ -911,7 +916,7 @@ function eventPlayerLeft(name)
 	ratos=ratos-1
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.27.1</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
+	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.28.0</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
