@@ -53,10 +53,7 @@ function resetPlayer(name)
 	tfm.exec.movePlayer(name,80,5250,false,0,0,false)
 end
 function eventNewPlayer(n)
-	if n:sub(1,1) == "*" then
-		showMessage("<R>Jogadores convidados (souris) não são permitidos neste jogo.",n)
-	else
-		newData={
+	newData={
 		["x"]=0;
 		["position"]=0;
 		["x2"]=0;
@@ -67,6 +64,9 @@ function eventNewPlayer(n)
 		}
 		data[n]=newData;
 	
+	if n:sub(1,1) == "*" then
+		showMessage("<R>Jogadores convidados (souris) não são permitidos neste jogo.",n)
+	else
 		tfm.exec.respawnPlayer(n)
 		tfm.exec.giveCheese(n)
 		data[n].loop=0
@@ -77,7 +77,7 @@ function eventNewPlayer(n)
 		end
 		ui.setBackgroundColor("#000000")
 		tfm.exec.setPlayerScore(n,0,false)
-		showMessage("<VP>Jogo de salto em distância feito por Patrick_mahomes#1795, Akwimos#1937, Dhanny_mheyran#6701 e Threshlimit#0000. <b>Versão 2.0</b><br><br><BL>Imagens enviadas por Spectra_phantom#6089 e Morganadxana#0000<br><br><N>Digite /mort para retornar ao ponto inicial sempre que necessário.",n)
+		showMessage("<VP>Jogo de salto em distância feito por Patrick_mahomes#1795, Akwimos#1937, Dhanny_mheyran#6701 e Threshlimit#0000. <b>Versão 2.1</b><br><br><BL>Imagens enviadas por Spectra_phantom#6089 e Morganadxana#0000<br><br><N>Digite /mort para retornar ao ponto inicial sempre que necessário.",n)
 		for a=1,5 do tfm.exec.addImage("182d6e2305b.png","?1",math.random(100,20000),math.random(-850,700),n) end
 		for b=1,5 do tfm.exec.addImage("182d6e2305b.png","?1",math.random(100,20000),math.random(-850,700),n,-1,1) end
 		for c=1,7 do tfm.exec.addImage("182d6e1e45c.png","?1",math.random(100,20000),math.random(-850,700),n) end
@@ -145,7 +145,7 @@ function eventLoop(e,r)
 			if tfm.get.room.playerList[name].y >= 5520 and tfm.get.room.currentMap == "@0" and data[name].freezed == false then
 				data[name].sc=data[name].sc+1
 				data[name].freezed=true
-				if data[name].sc == 10 then
+				if data[name].sc == 100 then
 					data[name].sc=-15
 					showMessage("<VP>O fundo do mar é o céu de outro mundo...<br><BL>— Pyke",name)
 				end
@@ -164,7 +164,7 @@ function eventLoop(e,r)
 						tfm.exec.setPlayerGravityScale(name,-0.2)
 						data[name].sc=data[name].sc+1
 						data[name].freezed=true
-						if data[name].sc >= 5 then
+						if data[name].sc >= 50 then
 							data[name].sc=-15
 							showMessage("<VP>Nada há de caminhar sobre as estrelas...<br><BL>— Aurelion Sol",name)
 						end
