@@ -1,5 +1,10 @@
--- Código do module Mestre Mandou, versão RTM 18927.121, desenvolvido por Rakan_raster#0000.
--- Code of Simon Says module, version RTM 18927.121, developed by Rakan_raster#0000.
+-- Código do module Mestre Mandou, versão 2022.26.11.01, antes desenvolvido por Rakan_raster#0000, e agora por Dhanny_mheyran#6701.
+-- Code of Simon Says module, version 2022.26.11.01, developed by Dhanny_mheyran#6701.
+
+admin={""} -- Leia abaixo / Read below!
+
+-- Se estiver rodando este código em uma sala FunCorp, insira o nome dos FunCorps acima e digite !fc para habilitar algumas funções e comandos especiais.
+-- If you are running this code into a FunCorp room, insert the FunCorp names above and type !tc to enable some additional commands and functions.
 
 -- Atenção: Antes de rodar este código em uma sala, verifique se esta versão coincide com a versão mais recente presente abaixo:
 -- https://raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/mestre%20mandou.lua
@@ -9,29 +14,41 @@
 -- https://raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/mestre%20mandou.lua
 -- This is a guarantee that you will receive all the latest updates and bugfixes.
 
-admin={""} -- Leia abaixo / Read below!
--- Se estiver rodando este código em uma sala FunCorp, insira o nome dos FunCorps acima e digite !fc para habilitar algumas funções e comandos especiais.
--- If you are running this code into a FunCorp room, insert the FunCorp names above and type !tc to enable some additional commands and functions.
+-- Comandos para uso de membros FunCorp e do dono da sala:
+-- !tc ou !ms [texto] - Exibe uma mensagem na cor laranja.
+-- !run [@número] - Executa o mapa especificado.
+-- !kill [nick#tag] - Mata o jogador especificado.
+-- !limit [número] - Altera o limite de jogadores na sala.
+-- !pw [password] - Adiciona uma senha na sala.
+-- !antimacro = Ativa ou desativa o sistema de anti-macro da sala.
 
--- If you will run this module on a FunCorp session, type the nickname(s) of FunCorp(s) into 'admin' table above and type !fc to enable special functions and commands.
--- FunCorp Comandos/Commands: !run [@code], !limit [number], !tc [message] or !ms [message], !kill [player#tag], !pw [password], !antimacro.
+-- FunCorp and Room Owner Available commands:
+-- !tc or !ms [message] - Display a message in orange.
+-- !run [@code] - Run the specified map.
+-- !kill [player#tag] - Kill the specified player.
+-- !limit [number] - Limit the number of maximum players on the room.
+-- !pw [password] - Lock the room with a password.
+-- !antimacro = Enable or disable the anti-macro system.
 
 for _,f in next,{"AutoShaman","AutoNewGame","AutoTimeLeft","DebugCommand"} do
 	tfm.exec["disable"..f](true)
 end
-mapas={"@6788085","@6788174","@6788154","@6788715","@6788728","@6789271","@6790527","@6791838","@6789356","@6822331","@7290275","@6754319","@7686598","@7750148","@7688066","@6790295","@6788183","@6784965","@6789235","@6789853","@6790385","@6791944","@6801706","@6792470","@6806109","@6821950","@6866406","@6866437","@6885971","@5328362","@5957905","@7055459","@7525277","@7916613","@7214363","@6792516","@6825340","@6838871","@6788693","@6789272","@6799996","@6799998","@6808957","@6803018","@6809464","@6859175","@6907177","@7404327","@7382263","@6885799","@6790912","@6833993","@7721192","@7309605","@6532621","@6788861","@6789249","@6790484","@6792518","@6794050","@6830799","@6866549","@6834529","@6876563","@6888512","@6893463","@7431981","@7146925","@6937148","@6356881","@6789280","@6790895","@6799997","@6789324","@6803128","@6900149","@3832586","@6791871","@6811934","@7631682","@6876638","@6892608","@6982387","@7404106","@7405103","@7400694","@7400678","@7412412","@7412422","@7491944","@7755685","@6843950","@6810292","@3110915","@6789263","@4411212","@7354947","@3398791","@7201360","@6897042","@5549586","@6809461","@7242361","@7697974","@1966987","@7224471","@6932585","@6888879","@6781398","@5113656","@6920982","@5196033","@1468299","@7894614","@7863458","@7897912","@7899697","@6916197","@7910742","@7236120","@1468299","@2048617","@2802178","@2637755","@7896560","@7913565","@5549355","@7230453","@7188655","@6481798"}
-active=0; vivo=0; rato=0; dificuldade=1; rodadas=0; rodada=0; number=""; xpos=0; ypos=0; data={}; lang={}; alives={}; ids={}; tempo=10; counter=0; q=""; a=""; qtime=10; creator=""; sd_vivo=0; anti_macro=true;
-fc_cmds={1,2,4,5,6,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,28,30,31,32,33,34,35,36,40,41,43,45,46,47,48,49,50,51,53,56,57,58,59,61,62,65,66,67,69,71,75,76,77,78,80,81,82,83,84,85,86,87,88,89,92,93}
+mapas={"@6788174","@6788154","@6788715","@6788728","@6789271","@6790527","@6791838","@6789356","@6822331","@7290275","@7686598","@7750148","@7688066","@6788183","@6784965","@6789235","@6789853","@6790385","@6791944","@6801706","@6792470","@6806109","@6821950","@6866406","@6866437","@6885971","@5328362","@5957905","@7055459","@7214363","@6792516","@6825340","@6788693","@6789272","@6799996","@6803018","@6859175","@6907177","@7404327","@7382263","@6885799","@6790912","@6833993","@7721192","@7309605","@6788861","@6789249","@6790484","@6794050","@6830799","@6866549","@6834529","@6876563","@6888512","@6893463","@7431981","@7146925","@6937148","@6356881","@6789280","@6790895","@6799997","@6789324","@6803128","@6900149","@3832586","@6791871","@6811934","@6876638","@6892608","@6982387","@7404106","@7405103","@7400694","@7400678","@7412412","@7412422","@7755685","@6843950","@6810292","@3110915","@6789263","@7354947","@7201360","@6897042","@5549586","@6809461","@7242361","@7697974","@1966987","@7224471","@6932585","@6920982","@7863458","@7897912","@7899697","@7910742","@7236120","@2802178","@7913565","@5549355","@7230453","@7188655","@6481798"}
+active=-2; vivo=0; rato=0; dificuldade=1; rodadas=0; rodada=0; number=""; xpos=0; ypos=0; data={}; lang={}; alives={}; ids={}; tempo=10; counter=0; q=""; a=""; qtime=10; creator=""; sd_vivo=0; anti_macro=false;
+fc_cmds={1,2,4,5,6,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,28,30,31,32,33,34,35,36,40,41,43,45,46,47,48,49,50,51,53,56,57,58,59,61,62,65,66,67,69,71,75,76,77,78,80,81,82,83,84,85,86,87,88,89,92,93,94,95,96}
 spiderweb={type = 15,width = 60,height = 60}
+acid={type = 19,width = 10,height = 25,miceCollision = true,groundCollision = false,dynamic = true, fixedRotation = true}
 acidg={type = 19,width = 30,height = 30}
+lava={type = 3,width = 2400,height = 100,miceCollision = false,groundCollision = false, foreground = true}
+acids={type = 19,width = 2400,height = 80,miceCollision = true,groundCollision = false}
 map_det={creator="",code=""}
-ninjas={"Rakan_raster#0000","Akwimos#1937","Xayah_raster#7598","Forzaldenon#0000","Aurelianlua#0000","Velkozdapic#0000","Skyymellu#0000"}
+ninjas={"Dhanny_mheyran#6701","Akwimos#1937","Forzaldenon#0000","Aurelianlua#0000","Viego#0345","Skyymellu#0000"}
 fc_mode=false; xpos=0; xpos2=0;
 for _,f in next,{"command","pw","limit","run","fc","tc","ms","q","a","t","kill"} do
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>O objetivo deste module é muito simples: Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><VP>Tenha sempre cuidado com os comandos trolls!<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Jessiewind26#2546<br><br><ROSE>Versão RTM 18927.121",
+	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><VP>Module sob nova direção!<br><br><J><b>Script gerenciado por Dhanny_mheyran#6701</b><br>Originalmente criado por Jessiewind26#2546<br><br><R>Versão 2022.26.11.01",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -125,7 +142,7 @@ lang.br = {
 	counts_alive = "Há quantos ratos vivos nesta sala?",
 	facepalm = "Coloque a mão no rosto 5 vezes!",
 	enterprise = "Qual é a empresa que criou o Transformice?",
-	collect = "Colete todos os '+1' do mapa!",
+	collect = "Cuidado com a chuva ácida!",
 	balls = "Está chovendo bolas!",
 	explosion = "Olha a explosão!",
 	queijo = "Todos os ratos que estiverem com queijo vão morrer!",
@@ -141,9 +158,11 @@ lang.br = {
 	balloon = "Voar, voar, subir, subir...",
 	npc = "Vá até Mayra Flowers e clique nela!",
 	mayraflowers = "<R>O uso do NPC Mayra Flowers foi permitido sob autorização de sua criadora Morganadxana#0000.",
+	lava1 = "Cuidado! O chão está se tornando lava!",
+	lava2 = "O chão é lava!",
 }
 lang.en = {
-	welcome = "<N><b>Welcome to Simon Says module!</b><br>This module's goal is easy: Follow everything the game told and test your limits until the end!<br><VP>Be always aware to troll commands!<br><br><J><b>Script developed by Rakan_raster#0000</b><br>Original concept by Jessiewind26#2546<br>Translation by Draw#6691<br><br><ROSE>Version RTM 18927.121",
+	welcome = "<N><b>Welcome to Simon Says module!</b><br>Follow everything the game told and test your limits until the end!<br><VP>Game under new direction!<br><br><J><b>Script developed by Dhanny_mheyran#6701</b><br>Originally made by Jessiewind26#2546<br>Translation by Draw#6691<br><br><R>Version 2022.26.11.01",
 	dancar = "Dance!",
 	sentar = "Sit down!",
 	confetar = "Throw 5 confetti!",
@@ -219,7 +238,7 @@ lang.en = {
 	math1 = "How much it is 2+2?",
 	ds = "Dance and sit!",
 	seq4 = "Dance, sit, sleep and clap!",
-	seq5 = "Dance, clap e laught!",
+	seq5 = "Dance, clap and laught!",
 	seq6 = "Dance and cry!",
 	seq7 = "Dance, give a kiss and get angry!",
 	spider = "Watch out at the cobwebs!",
@@ -237,7 +256,7 @@ lang.en = {
 	counts_alive = "How many mice alive this room has?",
 	facepalm = "Put your hand on your face 5 times!",
 	enterprise = "What company created Transformice?",
-	collect = "Collect all the '+1' of the map!",
+	collect = "Caution with the acid rain!",
 	balls = "It's raining balls!",
 	explosion = "Look the explosion!",
 	queijo = "All mices that catched the cheese will die!",
@@ -254,124 +273,12 @@ lang.en = {
 	balloon = "Balloon party!",
 	npc = "Go to Mayra Flowers and click on her!",
 	mayraflowers = "<R>The use of the Mayra Flowers NPC was allowed by their creator, Morganadxana#0000.",
-}
-lang.fr = {
-	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Rakan_raster#0000</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 18927.121",
-	dancar = "Danse !",
-	sentar = "Assis !",
-	confetar = "Lance 5 fois des confettis !",
-	mouse = "Clique sur l'écran 10 fois !",
-	beijos = "Fais 10 bisous !",
-	dormir = "Tu es fatigué. Dors pour te reposer.",
-	raiva = "Tigrounette est méchant ! Mets-toi en colère contre lui !",
-	chorem = "Pas de fromage pour toi. Pleure !",
-	nchorem = "Ne pleure pas !",
-	esquerda = "Ne va pas vers la GAUCHE !",
-	direita = "Ne va pas vers la DROITE !",
-	numero = "Écris ce nombre : ",
-	digitar = "Écris n'importe quoi et envoie-le.",
-	falar = "Ne parle pas !",
-	pular = "Ne saute pas !",
-	mexer = "Ne bouge pas!",
-	bandeira = "Agite le drapeau de n'importe quel pays !",
-	ano = "En quelle année sommes-nous ?",
-	vesquerda = "Positionne-toi vers la GAUCHE !",
-	vdireita = "Positionne-toi vers la DROITE !",
-	quadradoa = "Reste dans le carré bleu !",
-	quadradov = "Reste dans le carré rouge !",
-	quadrado = "Reste dans le carré blanc !",
-	nquadrado = "Ne reste dans le carré blanc !",
-	retangulo = "Reste dans le rectangle blanc !",
-	retangulov = "Reste dans le rectangle rouge !",
-	nretangulo = "Ne reste pas sur le rectangle blanc !",
-	nretangulov = "Ne reste pas sur le rectangle rouge !",
-	preesquerda15 = "Appuie 15 fois sur la flèche GAUCHE !",
-	predireita15 = "Appuie 15 fois sur la flèche DROITE !",
-	preesquerda30 = "Appuie 30 fois sur la flèche GAUCHE !",
-	predireita30 = "Appuie 30 fois sur la flèche DROITE !",
-	preesquerda60 = "Appuie 60 fois sur la flèche GAUCHE !",
-	predireita60 = "Appuie 60 fois sur la flèche DROITE !",
-	preesquerda100 = "Appuie 100 fois sur la flèche GAUCHE !",
-	predireita100 = "Appuie 100 fois sur la flèche DROITE !",
-	espaco = "Appuie 20 fois sur la BARRE D'ESPACE !",
-	nome = "Écrit ton pseudo (avec le #tag) !",
-	ndance = "Ne dance pas !",
-	key1 = "Appuie sur la touche SUPPR !",
-	action1 = "Dance, assis-toi et dors !",
-	laugh = "Rigole !",
-	laugh2 = "Ne rigole pas !",
-	stone = "Attention aux pierres !",
-	noob = "Écris : I AM NOOB",
-	action2 = "Pleure et rigole !",
-	jump = "Saute !",
-	number = "Appuie sur le nombre suivant: ",
-	key = "Appuie sur n'importe quelle touche !",
-	jump2 = "Saute 5 fois !",
-	action3 = "Fais un bisou et pleure !",
-	area = "Cherche où se trouve le texte caché et clique dessus !",
-	dancing = "C'est l'heure de faire la fête !",
-	freeze = "Stop !",
-	transform = "Danse et dors !",
-	down1 = "Retourne-toi 3 fois !",
-	mestre = "Jacques à dit",
-	map = "Carte",
-	time = "Temps",
-	mice = "Souris",
-	round = "Tour",
-	mices = "Ce salon a besoin d'au moins 4 joueurs.",
-	difficulty = "Difficulté",
-	segundos = "secondes.",
-	fim = "Fin du match ! Le prochain match va commencer dans ",
-	dofim = "Pas de gagnants ! Le prochain match va commencer dans ",
-	playingmap = "Map chargé ",
-	created = "créée par",
-	abaixar = "Retourne-toi et lève-toi !",
-	naction = "Ne fais rien !",
-	action = "Faites n'importe quelle action !",
-	math = "Combien vaut 1 + 1?",
-	math1 = "Combien vaut 2 + 2?",
-	ds = "Danse et assis !",
-	seq4 = "Dance, assis-toi, dors et applaudir !",
-	seq5 = "Dance, tape dans tes mains et rigole !",
-	seq6 = "Dance et pleure!",
-	seq7 = "Dance, fais bisous et se mettre en colère !",
-	spider = "Attention aux toiles d'araignées!",
-	key2 = "Appuie sur la touche F4!",
-	clap = "Tape dans tes mains 5 fois!",
-	completed = "Vous avez terminé la commande !",
-	rain = "Attention aux moutons !",
-	skull = "Attention aux crânes!",
-	gravity = "La gravité a été changée!",
-	version = "Version",
-	black = "Un trou noir émerge et pousse toutes les souris!",
-	creator = "Qui est le créateur de cette module?",
-	sister = "Qui est le soeur de créateur de cette module?",
-	counts = "How many mices are on this room?",
-	counts_alive = "How many alive mices are on this room?",
-	facepalm = "Mets ta main sur ton visage 5 fois !",
-	enterprise = "Quelle est la société qui a créé Transformice?",
-	collect = "Récupérer tous les '+1' badges !",
-	rain = "Attention aux balles !",
-	explosion = "Attention aux spirits !",
-	queijo = "Tous les souris qui attrapent le fromage mourront ! ",
-	caps = "Appuie 10 fois sur la CAPS LOCK !",
-	acid = "Attention aux acide !",
-	water = "Sortir de l'eau !",
-	nowater = "Rester dans l'eau !",
-	select = "<VP>The selective command mode is now enabled.",
-	newcreator = "Qui est le nouveau nom de créateur de cette module?",
-	funcorp = "The FunCorp mode of this module is now enabled.",
-	admin = "You are the administrator of this room.<br><br>If you are a FunCorp member, type !fc to enable the FunCorp mode.",
-	macro = " is now dead by the anti-macro system.",
-	balloon = "Fête des ballons !",
-	npc = "Aller à Mayra Flowers et clique sur elle !",
-	mayraflowers = "<R>The use of the Mayra Flowers NPC was allowed by their creator, Morganadxana#0000.",
+	lava1 = "Caution! The floor is turning into lava!",
+	lava2 = "The floor is lava!",
 }
 
 if tfm.get.room.community == "br" or tfm.get.room.community == "pt" then
 	text = lang.br
-elseif tfm.get.room.community == "fr" then
-	text = lang.fr
 else
 	text = lang.en
 end
@@ -417,6 +324,11 @@ function setAllAlive()
 		tfm.exec.setNameColor(name,0x00ff00)
 	end
 end
+function setAllNightMode()
+	for name,player in next,tfm.get.room.playerList do
+		tfm.exec.setPlayerNightMode(true, name)
+	end
+end
 function eventNewPlayer(name)
 	rato=rato+1
 	for i=0,3 do
@@ -433,7 +345,7 @@ function eventNewPlayer(name)
 			["count"]=0;
 			};
 	data[name] = newData;
-	showMessage("<br><br><br><p align='center'>"..text.welcome.."<br><p align='left'>",name)
+	showMessage(text.welcome,name)
 	if string.find(tfm.get.room.name,name) then
 		table.insert(admin,name)
 		showMessage(text.admin,name)
@@ -490,14 +402,17 @@ function eventNewGame()
 		ui.removeTextArea(i,nil)
 	end
 	ui.removeTextArea(250,nil)
-	rodada=0; active=0; vivo=0; rato=0; dificuldade=1;
 	tfm.exec.setWorldGravity(0, 10)
 	tfm.exec.setGameTime(15)
-	showMessage("<J><i>Spectra's map loader v2.235</i><br><N>Loading current map information...<br><b>Current Map :</b> <V>"..map_det.code.."<br><N><b>Author :</b> <V>"..map_det.creator.."<br><br><BL>Warning: The command of the Simon Says module will be passed to another player in a few days.")
+	if active >= 0 then
+		showMessage("<N>Loading current map information...<br><b>Current Map :</b> <V>"..map_det.code.."<br><N><b>Author :</b> <V>"..map_det.creator.."")
+	end
+	rodada=0; active=0; vivo=0; rato=0; dificuldade=1;
 	if fc_mode == true then
 		showMessage("<VP><br>"..text.funcorp.."")
 	end
 	for name,player in next,tfm.get.room.playerList do
+		tfm.exec.setPlayerNightMode(false, name)
 		vivo=vivo+1
 		rato=rato+1
 		if data[name] then
@@ -517,7 +432,7 @@ end
 function sortearComandos()
 	if dificuldade < 7 then
 		if fc_mode == false then
-			active=math.random(1,93)
+			active=math.random(1,96)
 		else
 			active=tonumber(fc_cmds[math.random(#fc_cmds)])
 		end
@@ -538,7 +453,7 @@ function addCommandCount(name)
 	data[name].s=data[name].s+1
 	if data[name].c == 0 then
 		if tfm.get.room.playerList[name].isDead == false then
-			ui.addTextArea(24,"<font size='33'><p align='center'>"..data[name].s.."",name,360,350,80,45,0x000001,0x000001,0.8,true)
+			ui.addTextArea(24,"<font size='33'><p align='center'>"..data[name].s.."",name,360,25,80,45,0x000001,0x000001,0.8,true)
 		end
 	end
 end
@@ -555,7 +470,7 @@ function eventChatCommand(name,message)
 			if message == "fc" then
 				if fc_mode == false then
 					fc_mode=true
-					showMessage("<R>The FunCorp mode of this module is now enabled.<br><br>Available commands: !tc or !ms [message] - Display a message.<br>!run [@code] - Run the specified map.<br>!kill [player#tag] - Kill the specified player.<br>!limit [number] - Limit the number of maximum players on the room.<br>!pw [password] - Lock the room with a password.<br>!antimacro = Enable or disable the anti-macro system.",name)
+					showMessage("<R>The FunCorp mode of this module is now enabled.",name)
 				else
 					fc_mode=false
 					showMessage("<R>The FunCorp mode of this module is now disabled.",name)
@@ -602,7 +517,7 @@ function eventChatCommand(name,message)
 	end
 end
 function showCommand(id,text)
-	ui.addTextArea(0,"<font face='Verdana'><font color='#c8c8c8'><font size='21'><p align='center'><b>"..text.."",nil,25,26,750,30,0x101010,0x242424,0.95,true)
+	ui.addTextArea(0,"<font face='Consolas,Arial'><font color='#050505'><font size='20'><p align='center'><b>"..text.."",nil,0,372,800,26,0xb8b8b8,0x717171,0.9,true)
 end
 function whiteSquare(x)
 	ui.addTextArea(1,"",nil,x,320,80,65,0xffffff,0xffffff,0.68,false)
@@ -1083,11 +998,6 @@ function getCommand()
 		imageId = tfm.exec.addImage("18200689108.png", "?1", -800, 138, name, 1.0, 1.0, 0, 1.0); table.insert(ids,imageId)
 		imageId = tfm.exec.addImage("18200689108.png", "!1", -800, 138, name, 1.0, 1.0, 0, 0.7); table.insert(ids,imageId)
 		imageId = tfm.exec.addImage("1820068de62.png", "!1", -800, 196, name, 10, 6, 0, 1.0); table.insert(ids,imageId)
-		for b=0,1 do
-			for c=0,1 do
-				imageId = tfm.exec.addImage("18200692b61.jpg","?1",-800+(b*1795),196+(c*860),name); table.insert(ids,imageId)
-			end
-		end
 	end
 	if active == 87 then
 		showCommand(active,text.water)
@@ -1098,11 +1008,6 @@ function getCommand()
 		imageId = tfm.exec.addImage("18200689108.png", "?1", -800, 138, name, 1.0, 1.0, 0, 1.0); table.insert(ids,imageId)
 		imageId = tfm.exec.addImage("18200689108.png", "!1", -800, 138, name, 1.0, 1.0, 0, 0.7); table.insert(ids,imageId)
 		imageId = tfm.exec.addImage("1820068de62.png", "!1", -800, 196, name, 10, 6, 0, 1.0); table.insert(ids,imageId)
-		for b=0,1 do
-			for c=0,1 do
-				imageId = tfm.exec.addImage("18200692b61.jpg","?1",-800+(b*1795),196+(c*860),name); table.insert(ids,imageId)
-			end
-		end
 	end
 	if active == 88 then
 		showCommand(active,text.seq7)
@@ -1123,6 +1028,7 @@ function getCommand()
 	end
 	if active == 91 then
 		showCommand(active,text.npc)
+		showMessage(text.mayraflowers,name)
 		tfm.exec.setGameTime(9)
 		tfm.exec.addNPC("Mayra Flowers",{title = 1, look = "112;0,4,0,74_212121+d2d2d2,39,39,44,0,1",x = math.random(100,700),y = 80,female = true,lookLeft = true,lookAtPlayer = true,interactive = true})
 	end
@@ -1135,23 +1041,28 @@ function getCommand()
 		tfm.exec.setGameTime(17)
 	end
 	if active == 94 then
-		showCommand(active,text.newcreator)
-		tfm.exec.setGameTime(10)
+		showCommand(active,text.collect)
+		tfm.exec.setGameTime(7)
+		setAllAlive()
+		for i=1,4 do
+			tfm.exec.addPhysicObject(i, math.random(50,750), 50, acid)
+		end
 	end
 	if active == 95 then
-		showCommand(active,text.sister)
-		tfm.exec.setGameTime(10)
+		showCommand(active,text.npc)
+		showMessage(text.mayraflowers,name)
+		tfm.exec.setGameTime(15)
+		setAllNightMode()
+		tfm.exec.addNPC("Mayra Flowers",{title = 1, look = "112;0,4,0,74_212121+d2d2d2,39,39,44,0,1",x = math.random(100,700),y = 80,female = true,lookLeft = true,lookAtPlayer = true,interactive = true})
 	end
 	if active == 96 then
-		showCommand(active,text.creator)
-		tfm.exec.setGameTime(10)
+		showCommand(active,text.lava1)
+		tfm.exec.setGameTime(11)
+		setAllAlive()
 	end
 	if active == 97 then
-		showCommand(active,text.collect)
-		tfm.exec.setGameTime(19)
-		for i=12,15 do
-			tfm.exec.addBonus(0, math.random(150,650), math.random(60,250), i, 0)
-		end
+		showCommand(active,text.creator)
+		tfm.exec.setGameTime(10)
 	end
 	if active == 98 then
 		showCommand(active,q)
@@ -1163,18 +1074,12 @@ function getCommand()
 		tfm.exec.setGameTime(qtime)
 	end
 end
-function eventPlayerBonusGrabbed(name, id)
-	if active == 97 then
-		addCommandCount(name)
-		if data[name].s >= 4 then
+function eventTalkToNPC(name, npc)
+	if npc == "Mayra Flowers" and data[name].c == 0 then
+		if active == 91 or active == 95 then
+			showMessage("<V>[Mayra Flowers] <N>Muuuuuuuu! <font face='Segoe UI Symbol'>(●'◡'●)<font face='Verdana'>",name)
 			completeCommand(name)
 		end
-	end
-end
-function eventTalkToNPC(name, npc)
-	if npc == "Mayra Flowers" and data[name].c == 0 and active == 91 then
-		showMessage("<V>[Mayra Flowers] <N>Muuuuuuuu! <font face='Segoe UI Symbol'>(●'◡'●)<font face='Verdana'>",name)
-		completeCommand(name)
 	end
 end
 function eventTextAreaCallback(id,name,callback)
@@ -1258,18 +1163,8 @@ function eventChatMessage(name,message)
 			tfm.exec.killPlayer(name)
 		end
 	end
-	if active == 94 then
-		if message == "Akwimos#1937" then
-			completeCommand(name)
-		end
-	end
-	if active == 95 then
-		if message == "Xayah_raster#7598" then
-			completeCommand(name)
-		end
-	end
-	if active == 96 then
-		if message == "Rakan_raster#0000" then
+	if active == 97 then
+		if message == "Dhanny_mheyran#6701" then
 			completeCommand(name)
 		end
 	end
@@ -1651,9 +1546,6 @@ function eventKeyboard(name,id,down,x,y)
 			end
 		end
 	end
-	if active == 91 then
-		showMessage(text.mayraflowers,name)
-	end
 	if active == 92 then
 		if id == 37 or id == 65 then
 			if data[name].key == 0 then
@@ -1692,33 +1584,40 @@ end
 function eventLoop(passado,faltando)
 	local tempo=math.floor(faltando/1000)
 	if active == -2 then
-		ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." RTM 18927.121</b><")
+		ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." 2022.26.11.01</b><")
 	elseif active == -1 and vivo == 1 then
-		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." RTM 18927.121</b><")
+		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 2022.26.11.01</b><")
 	elseif active == -1 and vivo <= 0 then
-		ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." RTM 18927.121</b><")
+		ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 2022.26.11.01</b><")
 	elseif active >= 0 then
-		ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." RTM 18927.121</b><")
+		ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." 2022.26.11.01</b><")
 	end
 	if rato < 4 then
-		if tfm.get.room.currentMap == "@7916613" then
+		if tfm.get.room.currentMap == "@6788085" then
 			active=-2
 			tfm.exec.setGameTime(8000)
 		else
 			if passado > 4000 then
-				tfm.exec.newGame("@7916613")
+				tfm.exec.newGame("@6788085")
 				tfm.exec.setGameTime(8000)
 				showMessage("<R>"..text.mices.."",nil)
 			end
 		end
 	end
 	if rato >= 4 and passado >= 4000 then
-		if tfm.get.room.currentMap == "@7916613" then
+		if tfm.get.room.currentMap == "@6788085" then
 			tfm.exec.newGame(mapas[math.random(#mapas)])
 		end
 	end
-	if active < 0 and faltando < 1 then
+	if active < 0 and faltando <= 1000 and faltando >= 449 then
 		tfm.exec.newGame(mapas[math.random(#mapas)])
+	end
+	if active == 96 and tempo == 6 then
+		active=666
+		showCommand(active,text.lava2)
+		tfm.exec.setGameTime(8)
+		tfm.exec.addPhysicObject(667, 400, 360, acids)
+		tfm.exec.addPhysicObject(666, 400, 350, lava)
 	end
 	if active == 0 and faltando < 4000 then
 		if rodada < rodadas then
@@ -1847,6 +1746,8 @@ function eventLoop(passado,faltando)
 		for i=1,8 do
 			tfm.exec.removePhysicObject(i)
 		end
+		tfm.exec.removePhysicObject(666)
+		tfm.exec.removePhysicObject(667)
 		if rawlen(ids) >= 1 then
 			for i=0,rawlen(ids) do
 				tfm.exec.removeImage(i)
@@ -1867,6 +1768,7 @@ function eventLoop(passado,faltando)
 				tfm.exec.killPlayer(name)
 			end
 			tfm.exec.setNameColor(name,0xc2c2da)
+			tfm.exec.setPlayerNightMode(false, name)
 		end
 		if fc_mode == false then
 			if vivo > 5 then
@@ -1895,4 +1797,4 @@ function eventLoop(passado,faltando)
 		end
 	end
 end
-tfm.exec.newGame("@7916613")
+tfm.exec.newGame("@6788085")
