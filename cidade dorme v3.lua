@@ -1,8 +1,6 @@
--- Script do module Cidade Dorme, versão RTM 3028.022, desenvolvido por Rakan_raster#0000.
--- NÃO SE ESQUEÇA DE COLOCAR O SEU NOME NA LINHA 5 ANTES DE INICIAR!!
 -- Para reiniciar o script em caso de falta de ratos ou de qualquer bug, digite !reiniciar.
 
-admin="" -- colocar seu nome aqui, funcorp!
+admin="" -- colocar seu nome aqui, FunCorp!
 for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand","MortCommand"} 
 do
 	tfm.exec["disable"..f](true)
@@ -13,8 +11,6 @@ quant={assasinos=0,detetives=0,medicos=0,vitimas=0,vivos=0}
 limites={assasinos=0,detetives=0,medicos=0}
 modo="inicial"; contador=0; rodada=0; data={}; templist={};
 mapas={"@3110915","@3148619","@4411212","@4477478","@5832272","@3203198","@5113656","@6380942","@7730312","@7712670","@7896560"}
-tfm.exec.setRoomMaxPlayers(40)
-system.disableChatCommandDisplay("reiniciar")
 system.disableChatCommandDisplay("help")
 function showMessage(message,name)
 	temp_text=string.gsub(message,"<b>","")
@@ -30,7 +26,7 @@ function showMessage(message,name)
 	end
 end
 function showDebugText(text)
-	for _,name in next,{"Akwimos#1937","Xayah_raster#7598","Aurelianlua#0000","Forzaldenon#0000","Skyymellu#0000"} do
+	for _,name in next,{"Zed#9431","Viego#0345","Akwimos#1937","Aurelianlua#0000","Forzaldenon#0000","Skyymellu#0000"} do
 		showMessage(text,name)
 	end
 end
@@ -57,12 +53,12 @@ function checkNickname(name)
 end
 function eventChatCommand(name,comando)
 	if comando == "reiniciar" then
-		if name == "Akwimos#1937" or name == "Xayah_raster#7598" or name == "Aurelianlua#0000" or name == "Forzaldenon#0000" or name == "Skyymellu#0000" or name == admin then
+		if name == "Akwimos#1937" or name == "Zed#9431" or name == "Aurelianlua#0000" or name == "Forzaldenon#0000" or name == "Skyymellu#0000" or name == admin then
 			tfm.exec.newGame(mapas[math.random(#mapas)])
 		end
 	end
 	if comando == "help" then
-		showMessage("<p align='center'><VP><b>Bem-vindo ao module Cidade Dorme.</b><br><br><p align='left'><N>Neste module você deverá descobrir quem são os assasinos e impedir que eles matem todos os detetives ou todas as vítimas.<br><br>O jogo consiste basicamente em 4 classes de jogadores:<br><R>• Assasinos: <N>São aqueles que irão tentar matar os outros ratos, não importando suas funções.<br><BL>• Médicos: <N>São aqueles que irão tentar salvar os jogadores dos assasinos.<br><VP>• Detetives: <N>São aqueles que irão tentar descobrir e matar os assasinos.<br><J>• Vítimas: <N>Ficam só rezando pra não serem mortos.<br><br>O jogo acaba sempre quando todos os assasinos, detetives ou vítimas são mortos.<br><br><ROSE>Quaisquer bugs ou problemas reporte para Rakan_raster#0000.",name)
+		showMessage("<VP><b>Bem-vindo ao module Cidade Dorme.</b><br><br><N>Neste module você deverá descobrir quem são os assasinos e impedir que eles matem todos os detetives ou todas as vítimas.<br><br>O jogo consiste basicamente em 4 classes de jogadores:<br><R>• Assasinos: <N>São aqueles que irão tentar matar os outros ratos, não importando suas funções.<br><BL>• Médicos: <N>São aqueles que irão tentar salvar os jogadores dos assasinos.<br><VP>• Detetives: <N>São aqueles que irão tentar descobrir e matar os assasinos.<br><J>• Vítimas: <N>Ficam só rezando pra não serem mortos.<br><br>O jogo acaba sempre quando todos os assasinos, detetives ou vítimas são mortos.",name)
 	end
 end
 function eventNewGame()
@@ -83,7 +79,7 @@ function eventNewGame()
 		end
 	end
 	rodada=0
-	ui.setMapName("<N><b>Cidade Dorme v3</b> <VP>RTM 3028.022 <N>- por <J>Rakan_raster#0000<")
+	ui.setMapName("<N><b>Cidade Dorme v3</b> <N>- gerenciado por <R>Zed#9431<")
 end
 function escolherAssasinos(name)
 	if data[name] and data[name].type == 0 then
@@ -111,7 +107,7 @@ function escolherDetetives(name)
 end
 function eventNewPlayer(name)
 	if not data[name] then
-		showMessage("<br><br><br><p align='center'><N><b>Bem-vindos ao module Cidade Dorme!</b><br>O objetivo deste module é: Descubra quem são os assassinos, desconfie e se divirta!<br><VP>O jogo irá explicar todo seu funcionamento durante a partida.<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Spectra_phantom#6089<br><br><ROSE>Versão RTM 3028.022<br><p align='left'>",name)
+		showMessage("<N><b>Bem-vindos ao module Cidade Dorme!</b><br>O objetivo deste module é: Descubra quem são os assassinos, desconfie e os mate!<br><VP>O jogo irá explicar todo seu funcionamento durante a partida.<br><br><J><b>Script gerenciado por Zed#9431</b><br>Conceito original por Spectra_phantom#6089",name)
 	end
 	data[name]={type=-1,morre=false}
 end
@@ -202,14 +198,14 @@ end
 function eventLoop()
 	contador=contador+0.5
 	if modo == "aguardando" then
-		ui.setMapName("<J>Assasinos: <R><b>"..quant.assasinos.."</b>  <V>|  <J>Detetives: <VP><b>"..quant.detetives.."</b>  <V>|  <J>Médicos: <N><b>"..quant.medicos.."</b>  <V>|  <N>Rodada: <J><b>"..rodada.."</b>  <BL>|  <N><b>Cidade Dorme v3</b> <VP>RTM 3028.022<")
+		ui.setMapName("<J>Assasinos: <R><b>"..quant.assasinos.."</b>  <V>|  <J>Detetives: <VP><b>"..quant.detetives.."</b>  <V>|  <J>Médicos: <N><b>"..quant.medicos.."</b>  <V>|  <N>Rodada: <J><b>"..rodada.."</b>  <BL>|  <N><b>Cidade Dorme v3</b><")
 	end
 	if contador == 3 then
 		if admin == "" then
-			showMessage("<VP>O module não pode ser iniciado. <br>Certifique-se de que inseriu seu nome corretamente no nome da sala.<br><br>Exemplo: <b>/sala #anvilwar00cd3#Spectra_phantom#6089</b><br><br>Em caso de um FunCorp, certifique-se que inseriu o nome corretamente no código.<br><br>Script desativado.")
+			showMessage("<VP>O module não pode ser iniciado. <br>Certifique-se de que inseriu seu nome corretamente no nome da sala.<br><br>No caso de uma sala FunCorp, certifique-se que inseriu o nome corretamente no código.")
 			contador=-524288
 		else
-			showMessage("<br><br><br><p align='center'><N><b>Bem-vindos ao module Cidade Dorme!</b><br>O objetivo deste module é: Descubra quem são os assassinos, desconfie e se divirta!<br><VP>O jogo irá explicar todo seu funcionamento durante a partida.<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Spectra_phantom#6089<br><br><ROSE>Versão RTM 3028.022<br><p align='left'>")
+			showMessage("<N><b>Bem-vindos ao module Cidade Dorme!</b><br>O objetivo deste module é: Descubra quem são os assassinos, desconfie e os mate!<br><VP>O jogo irá explicar todo seu funcionamento durante a partida.<br><br><J><b>Script gerenciado por Zed#9431</b><br>Conceito original por Spectra_phantom#6089")
 		end
 	end
 	if contador == 10 then
