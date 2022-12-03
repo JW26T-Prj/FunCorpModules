@@ -2,8 +2,8 @@
 Module authors : Morganadxana#0000
 (C) 2017-2022 Spectra Advanced Module Group
 
-Version : RTM 52225.208
-Compilation date : 12/02/2022 12:56 UTC
+Version : RTM 52226.209
+Compilation date : 12/03/2022 21:33 UTC
 Sending player : Morganadxana#0000
 
 Number of maps : 180
@@ -21,7 +21,7 @@ current_map=""; actual_player="";
 enabled=false; powerups=false; permafrost=false; night_mode=false; gravity=false; change=false; custom_mode=false;
 mices=0; loop=0; turns=0; needs=0; turn=0; choose_time=20; time_passed=0; time_remain=0; current_red=0; current_blue=0; ping_check=2; sudden_death=false;
 points_loop=0; pf_time=0; general_time=0; total_time=0; map_id=0; set_player=""; set_map="-1"; def_map=-1; red_cap=""; blue_cap=""; temp_name=""; bar_text="";
-settings={time=180,plimit=13,map_mode=0,map_select="@7412348",g_powerups=true,shoot_time=16,anti_kami=false,sd_switch=true}
+settings={time=180,plimit=13,map_mode=0,map_select="@7412348",g_powerups=true,shoot_time=16,anti_kami=false,sd_switch=true,bg_switch=false}
 mode="lobby"
 divider="　　　　　　　　　";
 images_id={};
@@ -66,7 +66,7 @@ lang.br = {
 	rankw = "Aviso: Tenha em mente que os dados do Ranking e do Perfil são temporários e são redefinidos quando a sala esvazia.",
 	tk1 = "Oh não! ",
 	tk2 = " matou um companheiro de equipe: ",
-	submission = "",
+	submission = "<N>As avaliações de mapas do #anvilwar estão abertas!",
 	pw = "Senha trocada para: ",
 	pw0 = "Senha removida.",
 	limit = "Limite de ratos na sala: ",
@@ -111,6 +111,9 @@ lang.br = {
 	custom = "<VP>O administrador da sala definiu regras personalizadas para esta sala.",
 	defining = "<J>O administrador da sala está definindo regras personalizadas para esta sala. Por favor, aguarde...",
 	kami = "<R>O modo anti-kamikaze está ativo nesta sala.",
+	errorbg1 = "O modo Meninos contra Meninas está habilitado. Apenas meninas podem entrar no time vermelho.",
+	errorbg2 = "O modo Meninos contra Meninas está habilitado. Apenas meninos podem entrar no time azul.",
+	bgtext = "<N>O modo Meninos contra Meninas está habilitado. Meninos precisam entrar no time azul, enquanto meninas precisam entrar no time vermelho.",
 }
 lang.en = {
 	version = "Version",
@@ -136,7 +139,7 @@ lang.en = {
 	rankw = "Keep in mind that the profile and ranking data is temporary and will be lost when the room is gone.",
 	tk1 = "Oh no! ",
 	tk2 = " has killed a player of her team: ",
-	submission = "",
+	submission = "#anvilwar Map Submissions are now open!",
 	pw = "Password changed to: ",
 	pw0 = "Password cleared.",
 	limit = "New room mice limit ",
@@ -181,6 +184,9 @@ lang.en = {
 	custom = "<VP>The room administrator defined custom rules for this room.",
 	defining = "<J>The room administrator is defining custom rules for this room. Please wait...",
 	kami = "<R>The anti-kamikaze is now active.",
+	errorbg1 = "The Boys against Girls mode is active. Only girls can join the red team.",
+	errorbg1 = "The Boys against Girls mode is active. Only boys can join the blue team.",
+	bgtext = "<N>The Boys against Girls mode is now active. Boys need to join the blue team, and girls need to join the red team.",
 }
 if tfm.get.room.isTribeHouse == true then
 	text = lang.en
@@ -303,12 +309,12 @@ function showRoomSettings(name)
 		elseif settings.map_mode == 1 then
 			string1="@code"
 		end
-		showMenu(name,0x405401,200,125,400,230,""..tfm.get.room.name.." Room Settings","<p align='center'>Custom Room Mode : <b>"..tostring(custom_mode).."</b> <a href='event:cmode'>[change]</a></p><br>------------------ CUSTOM ROOM SETTINGS ------------------<br>Game Time : <b>"..tostring(settings.time).."</b> sec <a href='event:ctimea'>[-]</a> <a href='event:ctimeb'>[+]</a><br>Max Players/Team : <b>"..tostring(settings.plimit).."</b> <a href='event:cplayersa'>[-]</a> <a href='event:cplayersb'>[+]</a><br>Map Mode : <b>"..string1.."</b> <a href='event:cmap'>[change]</a><br>Map @code (for @CODE mode) : <b>"..tostring(settings.map_select).."</b> <a href='event:cmapcode'>[change]</a><br>Powerups : <b>"..tostring(settings.g_powerups).."</b> <a href='event:cpowerups'>[change]</a><br>Shooting Time : <b>"..tostring(settings.shoot_time).."</b> sec <a href='event:cstimea'>[-]</a> <a href='event:cstimeb'>[+]</a><br>Anti-Kamikaze Mode : <b>"..tostring(settings.anti_kami).."</b> <a href='event:ckami'>[change]</a><br>Sudden Death : <b>"..tostring(settings.sd_switch).."</b> <a href='event:csd'>[change]</a>")
+		showMenu(name,0x405401,200,125,400,230,""..tfm.get.room.name.." Room Settings","<p align='center'>Custom Room Mode : <b>"..tostring(custom_mode).."</b> <a href='event:cmode'>[change]</a></p><br>------------------ CUSTOM ROOM SETTINGS ------------------<br>Game Time : <b>"..tostring(settings.time).."</b> sec <a href='event:ctimea'>[-]</a> <a href='event:ctimeb'>[+]</a><br>Max Players/Team : <b>"..tostring(settings.plimit).."</b> <a href='event:cplayersa'>[-]</a> <a href='event:cplayersb'>[+]</a><br>Map Mode : <b>"..string1.."</b> <a href='event:cmap'>[change]</a><br>Map @code (for @CODE mode) : <b>"..tostring(settings.map_select).."</b> <a href='event:cmapcode'>[change]</a><br>Powerups : <b>"..tostring(settings.g_powerups).."</b> <a href='event:cpowerups'>[change]</a><br>Shooting Time : <b>"..tostring(settings.shoot_time).."</b> sec <a href='event:cstimea'>[-]</a> <a href='event:cstimeb'>[+]</a><br>Anti-Kamikaze Mode : <b>"..tostring(settings.anti_kami).."</b> <a href='event:ckami'>[change]</a><br>Sudden Death : <b>"..tostring(settings.sd_switch).."</b> <a href='event:csd'>[change]</a><br>Boys against Girls mode : <b>"..tostring(settings.bg_switch).."</b> <a href='event:bgd'>[change]</a>")
 	end
 end
 
 function showLobbyText(name)
-	ui.addTextArea(402,"<p align='center'><font size='13'><b><font face='Courier New'><i>"..text.version.." RTM 52225.208 - "..text.comp_date.."12/02/2022 12:56 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,-10,380,820,36,0,0,1.0,true)
+	ui.addTextArea(402,"<p align='center'><font size='13'><b><font face='Courier New'><i>"..text.version.." RTM 52226.209 - "..text.comp_date.."12/03/2022 21:33 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,-10,380,820,36,0,0,1.0,true)
 end
 
 function setLeaders()
@@ -387,7 +393,7 @@ function updateTextBar()
 	if mode == "end" then
 		ui.setMapName("<VP><b>"..text.ending.."</b>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	else
-		ui.setMapName("<N><b>#anvilwar</b>   <G>|   <VP>"..text.version.." <b>RTM 52225.208</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
+		ui.setMapName("<N><b>#anvilwar</b>   <G>|   <VP>"..text.version.." <b>RTM 52226.209</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	end
 end
 
@@ -961,7 +967,7 @@ function lobby()
 		end
 	end
 	permafrost=false; night_mode=false;
-	showMessage("<VP>"..text.legacy.."")
+	showMessage("<VP><br>"..text.legacy..text.submission.."<br><b>atelier801.com/topic?f=6&t=894824&p=1</b>")
 	if custom_mode == true then
 		showMessage(text.custom)
 	end
@@ -1061,7 +1067,7 @@ function eventChatCommand(name,command)
 		end
 	end
 	if command == "changelog" then
-		showMenu(name,0xa8f233,140,110,520,110,"#anvilwar Changelog - RTM 52225.208","• Some fixes on !settings command<br>• The 'Invisible Anvil' powerup was replaced by 'Companion Box'<br>• The cost of 'Explosion' powerup was incrased to 26 points")
+		showMenu(name,0xa8f233,140,110,520,110,"#anvilwar Changelog - RTM 52226.209","• Some fixes on !settings command<br>• The 'Invisible Anvil' powerup was replaced by 'Companion Box'<br>• The cost of 'Explosion' powerup was incrased to 26 points<br>• New custom game mode: Boys against Girls!")
 	end
 	if (command:sub(0,2) == "rv") then
 		if name == actual_player and general_time >= 30 then
@@ -1221,14 +1227,30 @@ function enterRedTeam(name)
 	if custom_mode == false then limit=13 else limit=settings.plimit; end
 	
 	if choose_time > 1 and data[name].team == 0 and rawlen(players_red) < limit then
-		tfm.exec.respawnPlayer(name)
-		table.insert(players_red,name)
-		updatePlayerList()
-		tfm.exec.movePlayer(name,200,280,false,0,0,false)
-		data[name].team=1
-		for i=479,481 do
-			ui.removeTextArea(i,name)
-			ui.addTextArea(482,"<font size='16'><font color='#ffffff'><p align='center'><b><a href='event:quit'>"..text.leave.."",name,320,250,150,25,0,0,0.9,true)
+		if settings.bg_switch == true and custom_mode == true then
+			if tfm.get.room.playerList[name].gender == 1 then
+				tfm.exec.respawnPlayer(name)
+				table.insert(players_red,name)
+				updatePlayerList()
+				tfm.exec.movePlayer(name,200,280,false,0,0,false)
+				data[name].team=1
+				for i=479,481 do
+					ui.removeTextArea(i,name)
+					ui.addTextArea(482,"<font size='16'><font color='#ffffff'><p align='center'><b><a href='event:quit'>"..text.leave.."",name,320,250,150,25,0,0,0.9,true)
+				end
+			else
+				showMessage(text.errorbg1,name)
+			end
+		else
+			tfm.exec.respawnPlayer(name)
+			table.insert(players_red,name)
+			updatePlayerList()
+			tfm.exec.movePlayer(name,200,280,false,0,0,false)
+			data[name].team=1
+			for i=479,481 do
+				ui.removeTextArea(i,name)
+				ui.addTextArea(482,"<font size='16'><font color='#ffffff'><p align='center'><b><a href='event:quit'>"..text.leave.."",name,320,250,150,25,0,0,0.9,true)
+			end
 		end
 	end
 end
@@ -1237,14 +1259,30 @@ function enterBlueTeam(name)
 	if custom_mode == false then limit=13 else limit=settings.plimit; end
 
 	if choose_time > 1 and data[name].team == 0 and rawlen(players_blue) < limit then
-		tfm.exec.respawnPlayer(name)
-		table.insert(players_blue,name)
-		updatePlayerList()
-		data[name].team=2
-		tfm.exec.movePlayer(name,600,280,false,0,0,false)
-		for i=479,481 do
-			ui.removeTextArea(i,name)
-			ui.addTextArea(482,"<font size='16'><font color='#ffffff'><p align='center'><b><a href='event:quit'>"..text.leave.."",name,320,250,150,25,0,0,0.9,true)
+		if settings.bg_switch == true and custom_mode == true then
+			if tfm.get.room.playerList[name].gender == 2 then
+				tfm.exec.respawnPlayer(name)
+				table.insert(players_blue,name)
+				updatePlayerList()
+				data[name].team=2
+				tfm.exec.movePlayer(name,600,280,false,0,0,false)
+				for i=479,481 do
+					ui.removeTextArea(i,name)
+					ui.addTextArea(482,"<font size='16'><font color='#ffffff'><p align='center'><b><a href='event:quit'>"..text.leave.."",name,320,250,150,25,0,0,0.9,true)
+				end
+			else
+				showMessage(text.errorbg2,name)
+			end
+		else
+			tfm.exec.respawnPlayer(name)
+			table.insert(players_blue,name)
+			updatePlayerList()
+			data[name].team=2
+			tfm.exec.movePlayer(name,600,280,false,0,0,false)
+			for i=479,481 do
+				ui.removeTextArea(i,name)
+				ui.addTextArea(482,"<font size='16'><font color='#ffffff'><p align='center'><b><a href='event:quit'>"..text.leave.."",name,320,250,150,25,0,0,0.9,true)
+			end
 		end
 	end
 end
@@ -1610,6 +1648,10 @@ function eventTextAreaCallback(id,name,callback)
 	end
 	if callback == "csd" then
 		if settings.sd_switch == false then settings.sd_switch=true else settings.sd_switch=false end
+		showRoomSettings(name)
+	end
+	if callback == "bgd" then
+		if settings.bg_switch == false then settings.bg_switch=true else settings.bg_switch=false end
 		showRoomSettings(name)
 	end
 end
