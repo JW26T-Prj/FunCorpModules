@@ -2,8 +2,8 @@
 Module authors : Morganadxana#0000
 (C) 2017-2022 Spectra Advanced Module Group
 
-Version : RTM 52428.211
-Compilation date : 12/11/2022 16:46 UTC
+Version : RTM 52529.212
+Compilation date : 12/15/2022 17:07 UTC
 Sending player : Morganadxana#0000
 
 Number of maps : 184
@@ -36,7 +36,7 @@ admins={"Ashearcher#0000",
 "Morganadxana#0000"}
 ninjas={"Viego#0345",
 "Forzaldenon#0000",
-"Sett#6442"};
+"Caitlyndma7#0000"};
 data={}
 
 lang = {}
@@ -203,7 +203,7 @@ end
 for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand","MortCommand","AfkDeath"} do
 	tfm.exec["disable"..f](true)
 end
-for _,g in next,{"reset","help","sync","pw","commands","powerups","p","kill","limit","ranking","t","T","tc","TC","Tc","tC","anvils","set","testmap","defmap","leader","rv","tp","changelog","get","lc","settings"} do
+for _,g in next,{"help","sync","pw","commands","powerups","p","limit","ranking","t","T","tc","TC","Tc","tC","anvils","set","testmap","defmap","leader","rv","tp","changelog","get","lc","settings"} do
 	system.disableChatCommandDisplay(g)
 end
 if not tfm.get.room.isTribeHouse then tfm.exec.setRoomMaxPlayers(40) end
@@ -316,7 +316,7 @@ function showRoomSettings(name)
 end
 
 function showLobbyText(name)
-	ui.addTextArea(402,"<p align='center'><font size='13'><b><font face='Courier New'><i>"..text.version.." RTM 52428.211 - "..text.comp_date.."12/11/2022 16:46 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,-10,380,820,36,0,0,1.0,true)
+	ui.addTextArea(402,"<p align='center'><font size='13'><b><font face='Courier New'><i>"..text.version.." RTM 52529.212 - "..text.comp_date.."12/15/2022 17:07 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,-10,380,820,36,0,0,1.0,true)
 end
 
 function setLeaders()
@@ -395,7 +395,7 @@ function updateTextBar()
 	if mode == "end" then
 		ui.setMapName("<VP><b>"..text.ending.."</b>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	else
-		ui.setMapName("<N><b>#anvilwar</b>   <G>|   <VP>"..text.version.." <b>RTM 52428.211</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
+		ui.setMapName("<N><b>#anvilwar</b>   <G>|   <VP>"..text.version.." <b>RTM 52529.212</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	end
 end
 
@@ -856,7 +856,7 @@ function eventPlayerDied(name)
 		tfm.exec.respawnPlayer(name)
 	end
 	if mode == "wait2" and time_passed < 20 or mode == "end" then
-		data[name].position=data[name].position+6
+		data[name].position=data[name].position+10
 		if data[name] and data[name].team == 1 then
 			tfm.exec.respawnPlayer(name)
 			tfm.exec.movePlayer(name,600,data[name].position,false,0,0,false)
@@ -996,7 +996,7 @@ function eventNewGame()
 			data[name].scoreboard_id = tfm.exec.addImage("1835da984ec.png", ":1", 260, 15, name, 1.0, 1.0, 0, 1)
 			tfm.exec.setNameColor(name,0xd7d7e6)
 			data[name].score=0
-			data[name].position=198
+			data[name].position=185
 			if data[name].team > 0 then
 				data[name].matches=data[name].matches+1
 			else
@@ -1078,7 +1078,7 @@ function eventChatCommand(name,command)
 		end
 	else showMessage(text.wrong,name) end end
 	if command == "changelog" then
-		showMenu(name,0xa8f233,140,110,520,200,"#anvilwar Changelog - RTM 52428.211","• The cost of 'Companion Box' powerup was decreased to 12 points, and the minimal level required is now 2 instead of 3<br>• Several room administrator commands are now disabled for common users<br>• Increased the maximum team players from 13 to 16<br>• The map #176 was removed and changed to another<br>• (Old) New powerup: Random Shoot!<br>• Added 4 new maps!<br>• Changes on the player's latency checker")
+		showMenu(name,0xa8f233,140,110,520,140,"#anvilwar Changelog - RTM 52529.212","• Fixes on spawn points<br>• Changes on !testmap and !kill commands")
 	end
 	if (command:sub(0,2) == "rv") then
 		if name == actual_player and general_time >= 30 then
@@ -1138,17 +1138,17 @@ function eventChatCommand(name,command)
 			showMessage("Defined map: "..def_map.."",name)
 		end
 	else showMessage(text.wrong,name) end end
-	if (command:sub(0,4) == "kill") then if data[name].ranking >= 3 then
+	if (command:sub(0,4) == "kill") then if data[name].ranking >= 2 then
 		tfm.exec.killPlayer(command:sub(6))
 	else showMessage(text.wrong,name) end end
 	if (command:sub(0,7) == "testmap") then
 		if mode == "lobby" then
 			if string.len(command:sub(9)) == 2 or string.len(command:sub(9)) == 8 then
-				if data[name].ranking >= 2 then
+				if data[name].ranking >= 3 then
 					set_map=command:sub(9)
 					showMessage(""..text.load1..""..command:sub(9)..". "..text.load2.."",name)
 				else
-					showMessage(text.wrong,name)
+					showMessage(text.disabled,name)
 				end
 			end
 		else
