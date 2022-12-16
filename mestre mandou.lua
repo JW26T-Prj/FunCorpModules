@@ -1,5 +1,7 @@
--- Código do module Mestre Mandou, versão 2022.26.11.02, antes desenvolvido por Rakan_raster#0000, e agora por Dhanny_mheyran#6701.
--- Code of Simon Says module, version 2022.26.11.02, developed by Dhanny_mheyran#6701.
+-- Código do module Mestre Mandou, versão 2022.16.12.01, desenvolvido por Dhanny_mheyran#6701.
+-- Code of Simon Says module, version 2022.16.12.01, developed by Dhanny_mheyran#6701.
+
+-- Versão atualizada já com suporte ao ano de 2023.
 
 admin={""} -- Leia abaixo / Read below!
 
@@ -15,6 +17,7 @@ admin={""} -- Leia abaixo / Read below!
 -- This is a guarantee that you will receive all the latest updates and bugfixes.
 
 -- Comandos para uso de membros FunCorp e do dono da sala:
+-- !command [número de 1 a 100] - Executa um comando manualmente.
 -- !tc ou !ms [texto] - Exibe uma mensagem na cor laranja.
 -- !run [@número] - Executa o mapa especificado.
 -- !kill [nick#tag] - Mata o jogador especificado.
@@ -23,6 +26,7 @@ admin={""} -- Leia abaixo / Read below!
 -- !antimacro = Ativa ou desativa o sistema de anti-macro da sala.
 
 -- FunCorp and Room Owner Available commands:
+-- !command [1-100] - Run a command manually.
 -- !tc or !ms [message] - Display a message in orange.
 -- !run [@code] - Run the specified map.
 -- !kill [player#tag] - Kill the specified player.
@@ -48,7 +52,7 @@ for _,f in next,{"command","pw","limit","run","fc","tc","ms","q","a","t","kill",
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><VP>Module sob nova direção!<br><br><J><b>Script gerenciado por Dhanny_mheyran#6701</b><br>Originalmente criado por Jessiewind26#2546<br><br><R>Versão 2022.26.11.02",
+	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><VP>Module sob nova direção!<br><br><J><b>Script gerenciado por Dhanny_mheyran#6701</b><br>Originalmente criado por Jessiewind26#2546<br><br><R>Versão 2022.16.12.01",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -160,10 +164,10 @@ lang.br = {
 	mayraflowers = "<R>O uso do NPC Mayra Flowers foi permitido sob autorização de sua criadora Morganadxana#0000.",
 	lava1 = "Cuidado! O chão está se transformando em lava!",
 	lava2 = "O chão é lava!",
-	clickhere = "CLIQUE AQUI",
+	clickhere = "<font size='8'>CLIQUE AQUI",
 }
 lang.en = {
-	welcome = "<N><b>Welcome to Simon Says module!</b><br>Follow everything the game told and test your limits until the end!<br><VP>Game under new direction!<br><br><J><b>Script developed by Dhanny_mheyran#6701</b><br>Originally made by Jessiewind26#2546<br>Translation by Draw#6691<br><br><R>Version 2022.26.11.02",
+	welcome = "<N><b>Welcome to Simon Says module!</b><br>Follow everything the game told and test your limits until the end!<br><VP>Game under new direction!<br><br><J><b>Script developed by Dhanny_mheyran#6701</b><br>Originally made by Jessiewind26#2546<br>Translation by Draw#6691<br><br><R>Version 2022.16.12.01",
 	dancar = "Dance!",
 	sentar = "Sit down!",
 	confetar = "Throw 5 confetti!",
@@ -276,7 +280,7 @@ lang.en = {
 	mayraflowers = "<R>The use of the Mayra Flowers NPC was allowed by their creator, Morganadxana#0000.",
 	lava1 = "Caution! The floor is turning into lava!",
 	lava2 = "The floor is lava!",
-	clickhere = "CLICK HERE",
+	clickhere = "<font size='8'>CLICK HERE",
 }
 
 if tfm.get.room.community == "br" or tfm.get.room.community == "pt" then
@@ -351,7 +355,7 @@ function eventNewPlayer(name)
 	if string.find(tfm.get.room.name,name) then
 		table.insert(admin,name)
 		showMessage(text.admin,name)
-		showMessage("<br>Available commands: <br>!run [@code] - Run the specified map.<br> !kill [player#tag] - Kill the specified player.<br>!limit [number] - Limit the number of maximum players on the room.<br> !pw [password] - Lock the room with a password.<br>!antimacro = Enable or disable the anti-macro system.",name)
+		showMessage("<br>Available commands: <br>!command [1-100] - Run a command manually.<br>!run [@code] - Run the specified map.<br> !kill [player#tag] - Kill the specified player.<br>!limit [number] - Limit the number of maximum players on the room.<br> !pw [password] - Lock the room with a password.<br>!antimacro = Enable or disable the anti-macro system.",name)
 	end
 end
 for name,player in next,tfm.get.room.playerList do
@@ -430,14 +434,10 @@ function eventPlayerLeft()
 	rato=rato-1
 end
 function sortearComandos()
-	if dificuldade < 7 then
-		if fc_mode == false then
-			active=math.random(1,97)
-		else
-			active=tonumber(fc_cmds[math.random(#fc_cmds)])
-		end
-	else
+	if fc_mode == true then
 		active=tonumber(fc_cmds[math.random(#fc_cmds)])
+	else
+		active=math.random(1,97)
 	end
 	sd_vivo=0
 	getCommand()
@@ -1084,10 +1084,12 @@ function getCommand()
 	end
 end
 function eventTalkToNPC(name, npc)
-	if npc == "Mayra Flowers" and data[name].c == 0 then
-		if active == 91 or active == 95 then
-			showMessage("<V>[Mayra Flowers] <N>Muuuuuuuu! <font face='Segoe UI Symbol'>(●'◡'●)<font face='Verdana'>",name)
-			completeCommand(name)
+	if npc == "Mayra Flowers" then
+		showMessage("<V>[Mayra Flowers] <N>Muuuuuuuu! <font face='Segoe UI Symbol'>(●'◡'●)<font face='Verdana'>",name)
+		if data[name].c == 0 then
+			if active == 91 or active == 95 then
+				completeCommand(name)
+			end
 		end
 	end
 end
@@ -1107,10 +1109,8 @@ function eventChatMessage(name,message)
 		tfm.exec.killPlayer(name)
 	end
 	if active == 16 then
-		if message == "2022" then
+		if message == "2022" or message == "2023" then
 			completeCommand(name)
-		elseif message == "2021" then
-			tfm.exec.killPlayer(name)
 		end
 	end
 	if active == 29 then
@@ -1590,13 +1590,13 @@ end
 function eventLoop(passado,faltando)
 	local tempo=math.floor(faltando/1000)
 	if active == -2 then
-		ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." 2022.26.11.02</b><")
+		ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." 2022.16.12.01</b><")
 	elseif active == -1 and vivo == 1 then
-		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 2022.26.11.02</b><")
+		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 2022.16.12.01</b><")
 	elseif active == -1 and vivo <= 0 then
-		ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 2022.26.11.02</b><")
+		ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 2022.16.12.01</b><")
 	elseif active >= 0 then
-		ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." 2022.26.11.02</b><")
+		ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." 2022.16.12.01</b><")
 	end
 	if rato < 4 then
 		if tfm.get.room.currentMap == "@6788085" then
