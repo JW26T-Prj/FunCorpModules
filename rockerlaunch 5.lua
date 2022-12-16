@@ -2,13 +2,12 @@ for _,f in next,{"PhysicalConsumables","AutoNewGame","AutoTimeLeft","AllShamanSk
 	tfm.exec["disable"..f](true)
 end
 dragon=true -- troque para 'false' para desativar o dragão que aparece no topo do mapa
-mode=""; shaman=""; loop=0; data={}; testmode=false; changed=false; xml2='';
+mode=""; shaman=""; loop=0; data={}; changed=false; xml2='';
 objects1={1,3,6,7,35,39,60,89,95}
 objects2={1,2,3,6,7,35,39,45,46,54,60,85,89,90,95}
 objects3={1,2,3,4,6,7,10,23,35,39,40,45,46,54,60,61,68,69,85,89,90,95}
 objects4={2,4,10,39,40,45,46,54,61,67,68,69,90}
 map="@7916314"; map_dragon="@7916315";
-system.disableChatCommandDisplay("help")
 system.disableChatCommandDisplay("cancel")
 system.disableChatCommandDisplay("set")
 function showMessage(message,name)
@@ -26,16 +25,16 @@ function showMessage(message,name)
 end
 function eventChatCommand(n,m)
 	if m == "help" then
-		showMessage("<N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço. Caso o shaman morra, a partida é encerrada.<br><br><BL>Mapa criado por Threshlimit#0000 e Patrick_mahomes#1795. Código desenvolvido por Morganadxana#0000.<br>Conceito original de Nettoork#0000.<br>Versão 5.8.2",n)
+		showMessage("<N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço. Caso o shaman morra, a partida é encerrada.<br><br><BL>Mapa criado por Threshlimit#0000 e Patrick_mahomes#1795. Código desenvolvido por Morganadxana#0000.<br>Conceito original de Nettoork#0000.<br>Versão 5.9.0",n)
 	end
 	if m == "cancel" then
-		if n == "Threshlimit#0000" or n == "Morganadxana#0000" or n == "Patrick_mahomes#1795" or n == "Akwimos#1937" or n == "Forzaldenon#0000" then
+		if n == "Threshlimit#0000" or n == "Morganadxana#0000" or n == "Patrick_mahomes#1795" or n == "Viego#0345" or n == "Forzaldenon#0000" then
 			tfm.exec.setGameTime(5)
 			showMessage("<R>Rodada cancelada! Iniciando uma nova rodada...")
 		end
 	end
 	if (m:sub(0,3) == "set") then
-		if n == "Threshlimit#0000" or n == "Morganadxana#0000" or n == "Patrick_mahomes#1795" or n == "Akwimos#1937" or n == "Forzaldenon#0000" then
+		if n == "Threshlimit#0000" or n == "Morganadxana#0000" or n == "Patrick_mahomes#1795" or n == "Viego#0345" or n == "Forzaldenon#0000" then
 			tfm.exec.setPlayerScore(m:sub(5),4000,true)
 			tfm.exec.setGameTime(5)
 			showMessage("<R>Rodada cancelada! Iniciando uma nova rodada...")
@@ -74,7 +73,7 @@ function eventLoop(p,f)
 	if changed == true then
 		local m=math.floor(f/60000)
 		local s=math.floor((((m*60000)-f) * -1) / 1000)
-		remain=math.floor(f/1000)-312
+		remain=math.floor(f/1000)-282
 		local mr=math.floor(remain/60)
 		local sr=math.floor(((mr*60)-remain) * -1)
 		if s >= 10 then
@@ -100,32 +99,31 @@ function eventLoop(p,f)
 			tfm.exec.newGame(xml2,false)
 			mode="building"
 		end
-		if p > 120000 then
-			if mode == "building" then
-				mode="fly"
-			end
-			for n,player in pairs(tfm.get.room.playerList) do
-				if player.y < 150 and p > 123000 and mode=="fly" then
-					if data[n].reached2 == false then
-						tfm.exec.giveCheese(n)
-						tfm.exec.playerVictory(n)
-						tfm.exec.setGameTime(20)
-						data[n].reached2=true
+		if p > 123000 then
+			if mode == "fly" then
+				for n,player in pairs(tfm.get.room.playerList) do
+					if player.y < 200 and p > 123000 and mode=="fly" then
+						if not tfm.get.room.playerList[n].isDead then
+							tfm.exec.giveCheese(n)
+							tfm.exec.playerVictory(n)
+							tfm.exec.setGameTime(20)
+						end
+						mode="ending"
 					end
-					mode="ending"
-				end
-				if dragon == true and player.y < 550 and data[n].reached == false and not tfm.get.room.playerList[n].isDead then
-					data[n].reached=true
-					data[n].message=data[n].message+1
-					if data[n].message == 1 then
-						showMessage("<VP>Nada causa tanta admiração quanto a beleza das estrelas...<br><BL>— Aurelion Sol",n)
-						data[n].message=-10
+					if dragon == true and player.y < 550 and not tfm.get.room.playerList[n].isDead and data[n].reached == false then
+						data[n].reached=true
+						data[n].message=data[n].message+1
+						if data[n].message == 1 then
+							showMessage("<VP>Nada causa tanta admiração quanto a beleza das estrelas...<br><BL>— Aurelion Sol",n)
+							data[n].message=-10
+						end
 					end
 				end
 			end
 		end
 		if f >= 5000 then
-			if p > 123000 and p < 123650 then
+			if p > 122000 and mode == "building" then
+				mode="fly"
 				showMessage("<R>Tempo esgotado! Está na hora de voar!<br><ROSE><b>Atenção! Objetos voadores estão caindo do céu!</b>")
 				for n,player in pairs(tfm.get.room.playerList) do
 					tfm.exec.attachBalloon(n,false)
@@ -134,7 +132,7 @@ function eventLoop(p,f)
 					end
 				end
 			end
-			if p > 123651 and p <= 150000 then
+			if p > 123600 and p <= 150000 then
 				tfm.exec.addShamanObject(objects1[math.random(#objects1)], math.random(-400,2000), 1, 0, 0, 0, false)
 				loop=0
 			end
@@ -171,7 +169,7 @@ end
 function eventNewGame()
 	if changed == true then
 		ui.setMapName("<font color='#1288e8'><b>RockerLaunch 5</b> <N>Project by <VP>Threshlimit#0000, <ROSE>Morganadxana#0000<N> and <R>Patrick_mahomes#1795<")
-		tfm.exec.setGameTime(435)
+		tfm.exec.setGameTime(405)
 		showMessage("<J>O shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço!")
 		mode="building"
 		for n,p in pairs(tfm.get.room.playerList) do
@@ -179,9 +177,8 @@ function eventNewGame()
 				shaman=n
 				tfm.exec.setShamanMode(n,0)
 			end
-			rodar(n)
 			data[n].reached=false
-			data[n].reached2=false
+			rodar(n)
 		end
 	else
 		tfm.exec.setGameTime(5)
@@ -197,11 +194,10 @@ end
 function eventNewPlayer(n)
 	if changed == true then
 		ui.setMapName("<font color='#1288e8'><b>RockerLaunch 5</b> <N>Project by <VP>Threshlimit#0000, <ROSE>Morganadxana#0000<N> and <R>Patrick_mahomes#1795<")
-		showMessage("<VP>Bem-vindos ao RockerLaunch 5!<br><N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço! Digite !help para saber como jogar.<br><br><BL>Créditos para Threshlimit#0000, Morganadxana#0000 e Patrick_mahomes#1795. Conceito original de Nettoork#0000.<br><J>Versão 5.8.2",n)
+		showMessage("<VP>Bem-vindos ao RockerLaunch 5!<br><N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço! Digite !help para saber como jogar.<br><br><BL>Créditos para Threshlimit#0000, Morganadxana#0000 e Patrick_mahomes#1795. Conceito original de Nettoork#0000.<br><J>Versão 5.9.0",n)
 		newData={
 			["message"]=0,
-			["reached"]=false,
-			["reached2"]=false
+			["reached"]=false
 		}
 		data[n]=newData;
 		tfm.exec.setPlayerScore(n,0,false)
