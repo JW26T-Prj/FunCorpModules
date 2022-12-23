@@ -1121,7 +1121,7 @@ function eventChatCommand(name,command)
 	end
 	if (command:sub(0,5) == "limit") then if data[name].ranking >= 3 then
 		old_limit=tonumber(command:sub(7)
-		tfm.exec.setRoomMaxPlayers(old_limit)
+		tfm.exec.setRoomMaxPlayers(old_limit))
 		showMessage(""..text.limit..""..old_limit.."",name)
 	else showMessage(text.wrong,name) end end
 	if (command:sub(0,5) == "score") then if data[name].ranking >= 3 then
