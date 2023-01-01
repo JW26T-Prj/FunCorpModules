@@ -1,7 +1,5 @@
--- Código do module Mestre Mandou, versão 2022.16.12.01, desenvolvido por Dhanny_mheyran#6701.
--- Code of Simon Says module, version 2022.16.12.01, developed by Dhanny_mheyran#6701.
-
--- Versão atualizada já com suporte ao ano de 2023.
+-- Código do module Mestre Mandou, versão 2023.01.01a, desenvolvido por Dhanny_mheyran#6701.
+-- Code of Simon Says module, version 2023.01.01a, developed by Dhanny_mheyran#6701.
 
 admin={""} -- Leia abaixo / Read below!
 
@@ -39,7 +37,7 @@ for _,f in next,{"AutoShaman","AutoNewGame","AutoTimeLeft","DebugCommand"} do
 end
 mapas={"@6788174","@6788154","@6788715","@6788728","@6789271","@6790527","@6791838","@6789356","@6822331","@7290275","@7686598","@7750148","@7688066","@6788183","@6784965","@6789235","@6789853","@6790385","@6791944","@6801706","@6792470","@6806109","@6821950","@6866406","@6866437","@6885971","@5328362","@5957905","@7055459","@7214363","@6792516","@6825340","@6788693","@6789272","@6799996","@6803018","@6859175","@6907177","@7404327","@7382263","@6885799","@6790912","@6833993","@7721192","@7309605","@6788861","@6789249","@6790484","@7921432","6794050","@6830799","@6866549","@6834529","@6876563","@6888512","@6893463","@7431981","@7146925","@6937148","@6356881","@6789280","@6790895","@6799997","@6789324","@6803128","@6900149","@3832586","@6791871","@6811934","@6876638","@6892608","@6982387","@7404106","@7405103","@7400694","@7400678","@7412412","@7412422","@7755685","@6843950","@6810292","@3110915","@6789263","@7354947","@7201360","@6897042","@5549586","@6809461","@7242361","@7697974","@1966987","@7224471","@6932585","@6920982","@7863458","@7897912","@7899697","@7910742","@7236120","@2802178","@7913565","@5549355","@7230453","@7188655","@6481798"}
 active=-2; vivo=0; rato=0; dificuldade=1; rodadas=0; rodada=0; number=""; xpos=0; ypos=0; data={}; lang={}; alives={}; ids={}; tempo=10; counter=0; q=""; a=""; qtime=10; creator=""; sd_vivo=0; anti_macro=true;
-fc_cmds={1,2,4,5,6,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,28,30,31,32,33,34,35,36,40,41,43,45,46,47,48,49,50,51,53,56,57,58,59,61,62,65,66,67,69,71,75,76,77,78,80,81,82,83,84,85,86,87,88,89,92,93,94,95,96,97}
+fc_cmds={1,2,4,5,6,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,28,30,31,32,33,34,35,36,40,41,43,45,46,47,48,49,50,51,53,56,57,58,59,61,62,65,66,67,69,71,75,76,77,78,80,81,82,83,84,85,86,87,88,89,91,92,93,94,95,96,97}
 spiderweb={type = 15,width = 60,height = 60}
 acid={type = 19,width = 10,height = 25,miceCollision = true,groundCollision = false,dynamic = true,fixedRotation = true,mass = 5000}
 acidg={type = 19,width = 30,height = 30}
@@ -52,7 +50,7 @@ for _,f in next,{"command","pw","limit","run","fc","tc","ms","q","a","t","kill",
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><VP>Module sob nova direção!<br><br><J><b>Script gerenciado por Dhanny_mheyran#6701</b><br>Originalmente criado por Jessiewind26#2546<br><br><R>Versão 2022.16.12.01",
+	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><VP>Module sob nova direção!<br><br><J><b>Script gerenciado por Dhanny_mheyran#6701</b><br>Originalmente criado por Jessiewind26#2546<br><br><R>Versão 2023.01.01a",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -160,14 +158,13 @@ lang.br = {
 	admin = "Você é o administrador desta sala.<br><br>Se você for um membro FunCorp, digite !fc para habilitar o modo FunCorp.",
 	macro = " foi morto pelo sistema anti-macro do module.",
 	balloon = "Voar, voar, subir, subir...",
-	npc = "Vá até Mayra Flowers e clique nela!",
-	mayraflowers = "<R>O uso do NPC Mayra Flowers foi permitido sob autorização de sua criadora Morganadxana#0000.",
 	lava1 = "Cuidado! O chão está se transformando em lava!",
 	lava2 = "O chão é lava!",
+	light = "Acabou a luz!",
 	clickhere = "<font size='8'>CLIQUE AQUI",
 }
 lang.en = {
-	welcome = "<N><b>Welcome to Simon Says module!</b><br>Follow everything the game told and test your limits until the end!<br><VP>Game under new direction!<br><br><J><b>Script developed by Dhanny_mheyran#6701</b><br>Originally made by Jessiewind26#2546<br>Translation by Draw#6691<br><br><R>Version 2022.16.12.01",
+	welcome = "<N><b>Welcome to Simon Says module!</b><br>Follow everything the game told and test your limits until the end!<br><VP>Game under new direction!<br><br><J><b>Script developed by Dhanny_mheyran#6701</b><br>Originally made by Jessiewind26#2546<br>Translation by Draw#6691<br><br><R>Version 2023.01.01a",
 	dancar = "Dance!",
 	sentar = "Sit down!",
 	confetar = "Throw 5 confetti!",
@@ -276,10 +273,9 @@ lang.en = {
 	admin = "You are the administrator of this room.<br><br>If you are a FunCorp member, type !fc to enable the FunCorp mode.",
 	macro = " is now dead by the anti-macro system.",
 	balloon = "Balloon party!",
-	npc = "Go to Mayra Flowers and click on her!",
-	mayraflowers = "<R>The use of the Mayra Flowers NPC was allowed by their creator, Morganadxana#0000.",
 	lava1 = "Caution! The floor is turning into lava!",
 	lava2 = "The floor is lava!",
+	light = "The map is now black!",
 	clickhere = "<font size='8'>CLICK HERE",
 }
 
@@ -1027,10 +1023,10 @@ function getCommand()
 		balloonParty()
 	end
 	if active == 91 then
-		showCommand(active,text.npc)
-		showMessage(text.mayraflowers,name)
-		tfm.exec.setGameTime(8)
-		tfm.exec.addNPC("Mayra Flowers",{title = 1, look = "112;0,4,0,74_212121+d2d2d2,39,39,44,0,1",x = math.random(100,700),y = 80,female = true,lookLeft = true,lookAtPlayer = true,interactive = true})
+		showCommand(active,text.light)
+		tfm.exec.setGameTime(10)
+		setAllAlive()
+		setAllNightMode()
 	end
 	if active == 92 then
 		showCommand(active,text.preesquerda100)
@@ -1049,11 +1045,12 @@ function getCommand()
 		end
 	end
 	if active == 95 then
-		showCommand(active,text.npc)
-		showMessage(text.mayraflowers,name)
-		tfm.exec.setGameTime(10)
-		setAllNightMode()
-		tfm.exec.addNPC("Mayra Flowers",{title = 1, look = "112;0,4,0,74_212121+d2d2d2,39,39,44,0,1",x = math.random(100,700),y = 80,female = true,lookLeft = true,lookAtPlayer = true,interactive = true})
+		showCommand(active,text.collect)
+		tfm.exec.setGameTime(9)
+		setAllAlive()
+		for i=1,8 do
+			tfm.exec.addPhysicObject(i, math.random(50,750), 50, acid)
+		end
 	end
 	if active == 96 then
 		showCommand(active,text.lava1)
@@ -1083,16 +1080,6 @@ function getCommand()
 		tfm.exec.setGameTime(qtime)
 	end
 end
-function eventTalkToNPC(name, npc)
-	if npc == "Mayra Flowers" then
-		showMessage("<V>[Mayra Flowers] <N>Muuuuuuuu! <font face='Segoe UI Symbol'>(●'◡'●)<font face='Verdana'>",name)
-		if data[name].c == 0 then
-			if active == 91 or active == 95 then
-				completeCommand(name)
-			end
-		end
-	end
-end
 function eventTextAreaCallback(id,name,callback)
 	if callback == "command51" and active == 51 then
 		completeCommand(name)
@@ -1109,8 +1096,11 @@ function eventChatMessage(name,message)
 		tfm.exec.killPlayer(name)
 	end
 	if active == 16 then
-		if message == "2022" or message == "2023" then
+		if message == "2023" then
 			completeCommand(name)
+		elseif message == "2022" then
+			tfm.exec.killPlayer(name)
+			showMessage("Hoje é um novo dia, de um novo tempo que começou...",name)
 		end
 	end
 	if active == 29 then
@@ -1590,13 +1580,13 @@ end
 function eventLoop(passado,faltando)
 	local tempo=math.floor(faltando/1000)
 	if active == -2 then
-		ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." 2022.16.12.01</b><")
+		ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." 2023.01.01a</b><")
 	elseif active == -1 and vivo == 1 then
-		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 2022.16.12.01</b><")
+		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 2023.01.01a</b><")
 	elseif active == -1 and vivo <= 0 then
-		ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 2022.16.12.01</b><")
+		ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 2023.01.01a</b><")
 	elseif active >= 0 then
-		ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." 2022.16.12.01</b><")
+		ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." 2023.01.01a</b><")
 	end
 	if rato < 4 then
 		if tfm.get.room.currentMap == "@6788085" then
