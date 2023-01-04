@@ -1,9 +1,9 @@
--- Mudanças na Versão 2.28.0:
+-- Mudanças na Versão 2.29.0:
 
--- Adição de 5 perguntas de música
--- Correções em várias perguntas
+-- Adição de 8 perguntas de conhecimentos gerais
+-- Pequenas correções de bugs
 
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.28.0
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.29.0
 -- Por favor, edite a linha 23 a variável 'admin' pelo seu nome para ter acesso aos comandos.
 -- Você pode selecionar o tema editando a linha 24, ou digitando !tema [número] conforme os números abaixo.
 
@@ -465,6 +465,14 @@ perguntas1={
 "Qual destes municípios está localizado no Estado do Acre?","Plácido de Castro","Santo Antônio de Pádua",1,
 "O tungstênio, material utilizado nas lâmpadas fluorescentes e halógenas, possui qual número na Tabela Periódica?","59","74",2,
 "Qual o nome do lugar onde vive o Presidente da Argentina?","Casa Branca","Casa Rosada",2,
+"Qual destes monumentos não é considerado como uma das Sete Maravilhas do Mundo Moderno?","Coliseu de Roma","Torre Eiffel",2,
+"Qual destes monumentos não é considerado como uma das Sete Maravilhas do Mundo Antigo?","Grande Muralha da China","Grande Pirâmide de Gizé",1,
+"Em que ano foi exibido o primeiro capítulo da novela Carrossel no Brasil?","1991","2012",1,
+"Em que ano foi lançado o jogo Grand Chase?","2003","2007",1,
+"Quantos presidentes teve o Brasil desde a Redemocratização, em 1985?","7","8",2,
+"Qual destes países possui o Português como a língua oficial?","Cabo Frio","Cabo Verde",2,
+"Qual destes municípios de Minas Gerais faz parte da chamada Zona da Mata Mineira?","Juiz de Fora","Uberaba",1,
+"A Lagoa de Araruama, no Rio de Janeiro, corta todos os municípios da chamada Região dos Lagos.","Verdadeiro","Falso",2,
 }
 perguntas2={
 "Vai na sorte :)","ok","ok",1,
@@ -916,7 +924,7 @@ function eventPlayerLeft(name)
 	ratos=ratos-1
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.28.0</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
+	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.29.0</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
@@ -963,9 +971,8 @@ function eventLoop(p,f)
 		if rodada < limite then
 			randomQuests()
 		else
-			tfm.exec.setGameTime(5)
 			showMessage("<R>Sem vencedores!")
-			modo="fim2"
+			reset()
 		end
 	end
 	if modo == "perguntar" and f >= 1 then
