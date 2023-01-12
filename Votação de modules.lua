@@ -1,9 +1,10 @@
 -- FunCorp, este script é usado para que os ratos possam votar em até 6 scripts diferentes.
--- Substitua na linha 6 do código na variável 'admin' o meu nome pelo seu nickname com a #tag. Ao rodar o código, digite !start, digite os nomes dos scripts e aguarde a votação.
--- Caso você queira, antes de rodar o código, substitua na linha 7 do código a variável 'tempo', para definir a quantidade de tempo para votar.
+-- Substitua na linha 7 do código na variável 'admin' o meu nome pelo seu nickname com a #tag. Ao rodar o código, digite !start, digite os nomes dos scripts e aguarde a votação.
+-- Caso você queira, antes de rodar o código, substitua na linha 8 do código a variável 'tempo', para definir a quantidade de tempo para votar.
 -- Se por algum motivo você precise reiniciar a votação, digite !reset para reiniciar tudo. Neste caso, volte a definir os scripts novamente.
 -- As instruções também serão exibidas no chat quando o código for iniciado. NÃO SE ESQUEÇA DE COLOCAR SEU NOME ABAIXO!
-admin=""
+-- Código administrado por Jarvanfender#0000.
+admin="" -- INSIRA SEU NOME AQUI!
 tempo=60
 scripts={name1="",name2="",name3="",name4="",name5="",name6="",count1=0,count2=0,count3=0,count4=0,count5=0,count6=0}
 for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","AfkDeath"} do
@@ -37,15 +38,15 @@ function eventNewPlayer(name)
 	tfm.exec.movePlayer(name,math.random(450,1150),185)
 	if iniciado == true then
 		if script == 2 then
-			showMessage("<br><br><br><br><br><br><br><br><ROSE><b>VOTAÇÃO INICIADA!</b><br><br><N>Digite !1 para votar no script <b>"..scripts.name1.."</b><br>ou digite !2 para votar no script <b>"..scripts.name2.."</b>.<br><br>A votação só pode ocorrer uma vez por rato, e sua escolha pode não ser alterada.")
+			showMessage("<br><br><br><br><br><br><br><br><ROSE><b>VOTAÇÃO INICIADA!</b><br><br><N>Digite !1 para votar no script <b>"..scripts.name1.."</b><br>ou digite !2 para votar no script <b>"..scripts.name2.."</b>.<br><br>A votação só pode ocorrer uma vez por rato, e sua escolha pode não ser alterada.",name)
 		elseif script == 3 then
-			showMessage("<br><br><br><br><br><br><br><br><ROSE><b>VOTAÇÃO INICIADA!</b><br><br><N>Digite !1 para votar no script <b>"..scripts.name1..",</b><br>!2 para votar no script <b>"..scripts.name2.."</b><br>ou !3 para votar no script <b>"..scripts.name3.."</b>.<br><br>A votação só pode ocorrer uma vez por rato, e sua escolha pode não ser alterada.")
+			showMessage("<br><br><br><br><br><br><br><br><ROSE><b>VOTAÇÃO INICIADA!</b><br><br><N>Digite !1 para votar no script <b>"..scripts.name1..",</b><br>!2 para votar no script <b>"..scripts.name2.."</b><br>ou !3 para votar no script <b>"..scripts.name3.."</b>.<br><br>A votação só pode ocorrer uma vez por rato, e sua escolha pode não ser alterada.",name)
 		elseif script == 4 then
-			showMessage("<br><br><br><br><br><br><br><br><ROSE><b>VOTAÇÃO INICIADA!</b><br><br><N>Digite !1 para votar no script <b>"..scripts.name1..",</b><br>!2 para votar no script <b>"..scripts.name2.."</b>,<br>!3 para votar no script <b>"..scripts.name3..",</b><br>ou !4 para votar no script <b>"..scripts.name4.."</b>.<br><br>A votação só pode ocorrer uma vez por rato, e sua escolha pode não ser alterada.")
+			showMessage("<br><br><br><br><br><br><br><br><ROSE><b>VOTAÇÃO INICIADA!</b><br><br><N>Digite !1 para votar no script <b>"..scripts.name1..",</b><br>!2 para votar no script <b>"..scripts.name2.."</b>,<br>!3 para votar no script <b>"..scripts.name3..",</b><br>ou !4 para votar no script <b>"..scripts.name4.."</b>.<br><br>A votação só pode ocorrer uma vez por rato, e sua escolha pode não ser alterada.",name)
 		elseif script == 5 then
-			showMessage("<br><br><br><br><br><br><br><br><ROSE><b>VOTAÇÃO INICIADA!</b><br><br><N>Digite !1 para votar no script <b>"..scripts.name1..",</b><br>!2 para votar no script <b>"..scripts.name2.."</b>,<br>!3 para votar no script <b>"..scripts.name3..",</b><br>!4 para votar no script <b>"..scripts.name4.."</b>,<br>ou !5 para votar no script <b>"..scripts.name5.."</b>.<br><br>A votação só pode ocorrer uma vez por rato, e sua escolha pode não ser alterada.")
+			showMessage("<br><br><br><br><br><br><br><br><ROSE><b>VOTAÇÃO INICIADA!</b><br><br><N>Digite !1 para votar no script <b>"..scripts.name1..",</b><br>!2 para votar no script <b>"..scripts.name2.."</b>,<br>!3 para votar no script <b>"..scripts.name3..",</b><br>!4 para votar no script <b>"..scripts.name4.."</b>,<br>ou !5 para votar no script <b>"..scripts.name5.."</b>.<br><br>A votação só pode ocorrer uma vez por rato, e sua escolha pode não ser alterada.",name)
 		elseif script == 6 then
-			showMessage("<br><br><br><br><br><br><br><br><ROSE><b>VOTAÇÃO INICIADA!</b><br><br><N>Digite !1 para votar no script <b>"..scripts.name1..",</b><br>!2 para votar no script <b>"..scripts.name2.."</b>,<br>!3 para votar no script <b>"..scripts.name3..",</b><br>!4 para votar no script <b>"..scripts.name4.."</b>,<br>!5 para votar no script <b>"..scripts.name5.."</b><br>!6 para votar no script <b>"..scripts.name6.."</b>.<br><br>A votação só pode ocorrer uma vez por rato, e sua escolha pode não ser alterada.")
+			showMessage("<br><br><br><br><br><br><br><br><ROSE><b>VOTAÇÃO INICIADA!</b><br><br><N>Digite !1 para votar no script <b>"..scripts.name1..",</b><br>!2 para votar no script <b>"..scripts.name2.."</b>,<br>!3 para votar no script <b>"..scripts.name3..",</b><br>!4 para votar no script <b>"..scripts.name4.."</b>,<br>!5 para votar no script <b>"..scripts.name5.."</b><br>!6 para votar no script <b>"..scripts.name6.."</b>.<br><br>A votação só pode ocorrer uma vez por rato, e sua escolha pode não ser alterada.",name)
 		end
 	end
 end
@@ -58,12 +59,11 @@ function eventPlayerDied(name)
 end
 function eventNewGame()
 	iniciado=false; p_id=100;
-	ui.setMapName("<N>Votação de Modules <VP>v2.4")
+	ui.setMapName("<N>Votação de Modules <VP>v2.5")
 	scripts={name1="",name2="",name3="",name4="",name5="",name6="",count1=0,count2=0,count3=0,count4=0,count5=0,count6=0}
 	showMessage("FunCorp, este script é usado para que os ratos possam votar em até 6 scripts diferentes.<br><br>Digite !start, escolha os scripts e aguarde a votação.<br>Se por algum motivo você precise reiniciar a votação, digite !reset. Neste caso, volte a definir os scripts novamente. Para alterar o tempo de votação, siga as instruções no começo do código.",admin)
 	for name,player in pairs(tfm.get.room.playerList) do
 		data[name].script=0
-		tfm.exec.movePlayer(name,math.random(450,1150),185)
 	end	
 	tfm.exec.setGameTime(720000)
 end
@@ -72,7 +72,7 @@ function eventChatCommand(name,command)
 		ui.addPopup(1,2,"Digite o script nº1:",admin,350,175,200,true)
 	end
 	if name == admin and command == "reset" then
-		tfm.exec.newGame("@4431434")
+		tfm.exec.newGame("@5113656")
 	end
 	if command == "1" then
 		if iniciado == true then
@@ -156,7 +156,7 @@ end
 function eventLoop(passou, faltando)
 	if faltando <= 100 and iniciado == true then
 		iniciado=false
-		showMessage("<br><br><br><br><br><br><br><br><br><br><VP>Estes são os resultados da votação!<br><br>")
+		showMessage("<br><br><br><br><br><br><br><br><br><br><VP>Estes são os resultados da votação!<br>")
 		if script >= 2 then
 			showMessage("<N>"..scripts.name1.." - <b>"..scripts.count1.." votos</b>.")
 			showMessage("<N>"..scripts.name2.." - <b>"..scripts.count2.." votos</b>.")
@@ -250,4 +250,4 @@ function eventPopupAnswer(id,name,answer)
 		iniciarVotacao()
 	end
 end
-tfm.exec.newGame("@4431434")
+tfm.exec.newGame("@5113656")
