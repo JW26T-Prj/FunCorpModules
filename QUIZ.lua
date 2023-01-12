@@ -1,9 +1,10 @@
--- Mudanças na Versão 2.29.0:
+-- Mudanças na Versão 2.30.0:
 
--- Adição de 8 perguntas de conhecimentos gerais
--- Pequenas correções de bugs
+-- Adição de 3 perguntas de Transformice
+-- Adição de 5 perguntas de conhecimentos gerais
+-- Ajustes gerais no código
 
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.29.0
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.30.0
 -- Por favor, edite a linha 23 a variável 'admin' pelo seu nome para ter acesso aos comandos.
 -- Você pode selecionar o tema editando a linha 24, ou digitando !tema [número] conforme os números abaixo.
 
@@ -67,7 +68,7 @@ perguntas={
 "Quantos queijos custa a exportação de um mapa como cafofo da tribo?","5","40",1,
 "Quantos jogos a Atelier 801 tem atualmente?","5","6",2,
 "Qual é a fricção e a restituição, respectivamente, de um piso de chocolate?","20 e 0","0 e 20",1,
-"Qual destes usuários é responsável pelo module #anvilwar?","Jessiewind26#2546","Morganadxana#0000",2,
+"Qual destes usuários é responsável pelo module #anvilwar?","Spectra_phantom#6089","Morganadxana#0000",2,
 "Qual destes usuários é responsável pelo module #batata?","Laagaadoo#0000","Ikke#0095",1,
 "Qual destes comandos é utilizado para a inserção de um código especial da Japan Expo?","/lua","/code",2,
 "A habilidade 'Meep!' faz parte de qual árvore de Habilidades?","Selvagem","Físico",1,
@@ -188,7 +189,7 @@ perguntas={
 "Para usar o café, você precisa estar com quantos dias jogados de conta?","10","30",2,
 "Em qual dia do ano o Transformice foi criado?","1","2",1,
 "Qual o limite de queijos que podem ser armazenados no inventário?","200","250",2,
-"Quantos anos tem o Tigrounette?","35","36",1,
+"Quantos anos tem o Tigrounette?","35","36",2,
 "Qual o nome da única mulher que criou um module semi-oficial no Transformice?","Morganadxana#0000","Lanadelrey#4862",1,
 "Ainda é possível colocar músicas no cafofo da tribo do Transformice, mesmo sem o plug-in do YouTube.","Verdadeiro","Falso",1,
 "Qual o nome de um module de testes extinto em que todos viravam Pikachu e tinham que descer a ladeira?","#surble","#surbler",1,
@@ -227,7 +228,7 @@ perguntas={
 "Qual a função da habilidade de shaman 'Superstar'?","Os ratos ao redor dançam","Os ratos ao redor beijam",1,
 "Qual o último título de ratos salvos pelo Shaman?","Virtuoso","Alpha & Ômega",2,
 "Qual o nome do jogo de Zumbis lançado pela Atelier 801?","Fortoresse","Dead Maze",2,
-"Quantas medalhas comemorativas de aniversário existem no Transformice?","2","10",1,
+"Quantas medalhas comemorativas de aniversário existem no Transformice?","2","13",1,
 "Em qual árvore de habilidades está presente a habilidade 'Desintegração controlada'?","Físico","Mecânico",1,
 "Em qual ano foi lançado o Poisson, antigo jogo que depois tornou o Transformice?","2010","2008",2,
 "Por quantas horas você é banido por Hack no Transformice, por padrão?","360","168",1,
@@ -257,7 +258,7 @@ perguntas={
 "É possível criar NPCs interativos em scripts LUA no Transformice.","Verdadeiro","Falso",1,
 "Quantas missões diárias você precisa completar para ganhar a recompensa de 20 morangos?","20","25",1,
 "Qual destes modules foi criado primeiro?","#batata","#keyhunt",2,
-"Qual destes usuários nunca se tornou FunCorp?","Shun_kazami#7014","Reksai_void2600#6638",1,
+"Qual destes usuários nunca se tornou FunCorp?","Shun_kazami#7014","Soft#1388",1,
 "O comando /ban já serviu para banir jogadores do Transformice por 1 hora por voto popular.","Verdadeiro","Falso",1,
 "Quantos firsts são necessários para desbloquear o título 'Rato Ninja'?","200","500",1,
 "Em qual árvore de habilidades está presente a habilidade 'Caixa de acompanhamento'?","Mecânico","Mestre do Vento",2,
@@ -269,6 +270,9 @@ perguntas={
 "Quais destes emblemas podem ser trocados por queijos na sala #village?","Survivor, Bootcamp, Racing e Parkour","Survivor, Bootcamp, Racing e Defilante",2,
 "Já existiu um tempo no Transformice onde ficar muito tempo dentro da água matava os ratos.","Verdadeiro","Falso",2,
 "Quantos NPCs existem na sala #village?","8","9",1,
+"Qual o limite de moedas de morangos que podem ser armazenados no inventário?","80","250",2,
+"É possível definir gravidades diferentes para pisos nos mapas do Transformice.","Verdadeiro","Falso",1,
+"Qual o nome do module onde o objetivo é adivinhar o que o Shaman está desenhando?","#drawbattle","#pictionary",2,
 }
 perguntas1={
 "Vai na sorte :)","ok","ok",1,
@@ -392,7 +396,7 @@ perguntas1={
 "Em qual ano ocorreu a Quebra da Bolsa de Nova York?","1929","1930",1,
 "Qual destes gases geralmente é presente dentro dos túneis de trânsito, e que podem causar problemas ao sistema respiratório?","CO","CO₂",1,
 "De 1994 a 2016, dois partidos estiveram na presidência do Brasil. Quais são esses partidos?","PT e PSDB","PT e PMDB",1,
-"Em que ano foi desenvolvido o Windows 2000?","1999","2000",1,
+"Em que ano foi lançado o Windows 2000?","1999","2000",1,
 "Com quantos anos morreu a Rainha Elizabeth?","96","97",1,
 "A partir de que ano Plutão deixou de ser considerado Planeta e foi considerado Planeta Anão?","2005","2006",2,
 "O seriado Chaves foi produzido em qual país?","México","Argentina",1,
@@ -473,6 +477,11 @@ perguntas1={
 "Qual destes países possui o Português como a língua oficial?","Cabo Frio","Cabo Verde",2,
 "Qual destes municípios de Minas Gerais faz parte da chamada Zona da Mata Mineira?","Juiz de Fora","Uberaba",1,
 "A Lagoa de Araruama, no Rio de Janeiro, corta todos os municípios da chamada Região dos Lagos.","Verdadeiro","Falso",2,
+"Em que ano foi fundada a União Soviética?","1922","1946",1,
+"Qual era o antigo nome da marca que hoje conhecemos como LG?","Goldstar","Luckystar",1,
+"O salário mínimo surgiu em qual governo brasileiro?","Washington Luís","Getúlio Vargas",2,
+"A primeira emissora de Sílvio Santos foi inaugurada em qual estado do Brasil?","São Paulo","Rio de Janeiro",2,
+"Em um computador, onde ficam armazenados todos os arquivos como fotos, vídeos e jogos?","Memória RAM","Disco Rígido",2,
 }
 perguntas2={
 "Vai na sorte :)","ok","ok",1,
@@ -874,7 +883,7 @@ function reset()
 	tfm.exec.newGame(mapa)
 end
 function eventChatCommand(name,message)
-	if name == "Forzaldenon#0000" or name == "Reksai_void2600#6638" or name == "Akwimos#1937" or name == "Morganadxana#0000" or verifyAdmin(name) == true then
+	if name == "Forzaldenon#0000" or name == "Reksai_void2600#6638" or name == "Spectra_phantom#6089" or name == "Viego#0345" or verifyAdmin(name) == true then
 		if (message:sub(0,6) == "limite") then
 			limite=tonumber(message:sub(8))
 			showMessage("Limite de rodadas alterado para: "..message:sub(8).."")
@@ -883,7 +892,12 @@ function eventChatCommand(name,message)
 		end
 		if (message:sub(0,4) == "setq") then
 			set_q=tonumber(message:sub(6))
-			local sn=((tonumber(message:sub(6))-1)*4)+1
+			if tonumber(set_q) > rawlen(perguntas)/4 then
+				set_q=3
+			end
+		end
+		if (message:sub(0,3) == "get") then
+			local sn=((tonumber(message:sub(5))-1)*4)+1
 			if tema == 0 and tonumber(set_q) <= rawlen(perguntas)/4 then
 				showMessage(perguntas[sn],name)
 			elseif tema == 1 and tonumber(set_q) <= rawlen(perguntas1)/4 then
@@ -895,7 +909,7 @@ function eventChatCommand(name,message)
 			elseif tema == 4 and tonumber(set_q) <= rawlen(perguntas4)/4 then
 				showMessage(perguntas4[sn],name)
 			end
-		end
+		emd
 		if (message:sub(0,4) == "tema") then
 			if message:sub(6) == "0" or message:sub(6) == "1" or message:sub(6) == "2" or message:sub(6) == "3" or message:sub(6) == "4" then
 				tema=tonumber(message:sub(6))
@@ -904,9 +918,7 @@ function eventChatCommand(name,message)
 			end
 		end
 		if (message:sub(0,2) == "tc") then
-			if tfm.get.room.playerList[name].tribeName == "Alaranjados" then
-				showMessage("<font color='#ff8000'>• [FunCorp - <b>"..name.."</b>] "..message:sub(4).."")
-			end
+			showMessage("<font color='#ff8000'>• [FunCorp - <b>"..name.."</b>] "..message:sub(4).."")
 		end
 		if message == "reset" then
 			questions_list={}; count=0;
@@ -924,7 +936,7 @@ function eventPlayerLeft(name)
 	ratos=ratos-1
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.29.0</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
+	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.30.0</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
