@@ -2,8 +2,8 @@
 Module authors : Morganadxana#0000
 (C) 2017-2023 Spectra Advanced Module Group
 
-Version : RTM 53134.217
-Compilation date : 01/05/2023 15:32 UTC
+Version : RTM 53235.218
+Compilation date : 01/12/2023 18:26 UTC
 Sending player : Morganadxana#0000
 
 Number of maps : 188
@@ -312,7 +312,7 @@ function showRoomSettings(name)
 end
 
 function showLobbyText(name)
-	ui.addTextArea(402,"<p align='center'><font size='12'><b><font face='Courier New'><i>"..text.version.." RTM 53134.217 - "..text.comp_date.."01/05/2023 15:32 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,-10,380,820,36,0,0,1.0,true)
+	ui.addTextArea(402,"<p align='center'><font size='12'><b><font face='Courier New'><i>"..text.version.." RTM 53235.218 - "..text.comp_date.."01/12/2023 18:26 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,-10,380,820,36,0,0,1.0,true)
 end
 
 function setLeaders()
@@ -395,7 +395,7 @@ function updateTextBar()
 	if mode == "end" then
 		ui.setMapName("<VP><b>"..text.ending.."</b>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	else
-		ui.setMapName("<N><b>#anvilwar</b>   <G>|   <VP>"..text.version.." <b>RTM 53134.217</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
+		ui.setMapName("<N><b>#anvilwar</b>   <G>|   <VP>"..text.version.." <b>RTM 53235.218</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	end
 end
 
@@ -608,11 +608,6 @@ function eventNewPlayer(name)
 	if name:sub(1,1) == "*" then
 		data[name].ranking=-1
 	end
-	if string.find(tfm.get.room.name,name) then
-		table.insert(mods,name)
-		showMessage(text.manager,name)
-		print(name)
-	end
 	for _,k in next,{32,48,49,50,51,52,53,54,55,56,57,66,67,72,77,80,82,85,86,88,90,112,113,114,115,116,117,118} do
 		tfm.exec.bindKeyboard(name,k,true,true)
 	end
@@ -627,6 +622,9 @@ function eventNewPlayer(name)
 			end
 		end
 		updatePlayerList()
+	end
+	if mode == "wait2" then
+		data[name].scoreboard_id = tfm.exec.addImage("1835da984ec.png", ":1", 266, 15, name, 1.0, 1.0, 0, 1)
 	end
 	giveRankings(name)
 	tfm.exec.setPlayerScore(name,0,false)
@@ -1021,7 +1019,7 @@ function lobby()
 		end
 	end
 	permafrost=false; night_mode=false;
-	showMessage("<VP>"..text.legacy..text.submission.."<br><br><b>atelier801.com/topic?f=6&t=894824&p=1</b>")
+	showMessage("<VP>"..text.legacy.."")
 	if custom_mode == true then
 		showMessage(text.custom)
 	end
@@ -1036,7 +1034,7 @@ function eventNewGame()
 		tfm.exec.setGameTime(20)
 		moveTeams()
 		for name,player in next,tfm.get.room.playerList do
-			data[name].scoreboard_id = tfm.exec.addImage("1835da984ec.png", ":1", 270, 15, name, 1.0, 1.0, 0, 1)
+			data[name].scoreboard_id = tfm.exec.addImage("1835da984ec.png", ":1", 266, 15, name, 1.0, 1.0, 0, 1)
 			tfm.exec.setNameColor(name,0xd7d7e6)
 			data[name].score=0
 			if data[name].team > 0 then
@@ -1118,7 +1116,7 @@ function eventChatCommand(name,command)
 		end
 	else showMessage(text.wrong,name) end end
 	if command == "changelog" then
-		showMenu(name,0xa8f233,140,130,520,156,"#anvilwar Changelog - RTM 53134.217","• Bug fixes on score count<br>• Various changes on map names<br>• Added a message to warn about killing team leaders<br>• Team leaders will lose half of their points when killed<br>• Bug fixes on some strings<br>• The cost for reviving players decreased from 30 to 25 points")
+		showMenu(name,0xa8f233,140,130,520,105,"#anvilwar Changelog - RTM 53235.218","• Minor changes<br>• The room managers commands are temporarily disabled")
 	end
 	if (command:sub(0,2) == "rv") then
 		if name == actual_player and general_time >= 25 then
@@ -1996,28 +1994,28 @@ function eventLoop(passed,remain)
 		local s=math.floor(general_time-(m*60))
 		if sudden_death == false then
 			if s >= 10 then
-				ui.addTextArea(5652,"<font size='24'><p align='center'><font color='#050505'><b>"..m..":"..s.."",nil,357,24,100,40,0,0,1.0,true)
-				ui.addTextArea(5651,"<font size='24'><p align='center'><b>"..m..":"..s.."",nil,355,22,100,40,0,0,1.0,true)
+				ui.addTextArea(5652,"<font size='24'><p align='center'><font color='#050505'><b>"..m..":"..s.."",nil,353,24,100,40,0,0,1.0,true)
+				ui.addTextArea(5651,"<font size='24'><p align='center'><b>"..m..":"..s.."",nil,351,22,100,40,0,0,1.0,true)
 			else
-				ui.addTextArea(5652,"<font size='24'><p align='center'><font color='#050505'><b>"..m..":0"..s.."",nil,357,24,100,40,0,0,1.0,true)
-				ui.addTextArea(5651,"<font size='24'><p align='center'><b>"..m..":0"..s.."",nil,355,22,100,40,0,0,1.0,true)
+				ui.addTextArea(5652,"<font size='24'><p align='center'><font color='#050505'><b>"..m..":0"..s.."",nil,353,24,100,40,0,0,1.0,true)
+				ui.addTextArea(5651,"<font size='24'><p align='center'><b>"..m..":0"..s.."",nil,351,22,100,40,0,0,1.0,true)
 			end
 		elseif sudden_death == true then
 			if s >= 10 then
-				ui.addTextArea(5652,"<font size='24'><p align='center'><font color='#050505'><b>"..m..":"..s.."",nil,357,24,100,40,0,0,1.0,true)
-				ui.addTextArea(5651,"<font size='24'><p align='center'><b><J>"..m..":"..s.."",nil,355,22,100,40,0,0,1.0,true)
+				ui.addTextArea(5652,"<font size='24'><p align='center'><font color='#050505'><b>"..m..":"..s.."",nil,353,24,100,40,0,0,1.0,true)
+				ui.addTextArea(5651,"<font size='24'><p align='center'><b><J>"..m..":"..s.."",nil,351,22,100,40,0,0,1.0,true)
 			else
-				ui.addTextArea(5652,"<font size='24'><p align='center'><font color='#050505'><b>"..m..":0"..s.."",nil,357,24,100,40,0,0,1.0,true)
-				ui.addTextArea(5651,"<font size='24'><p align='center'><b><J>"..m..":0"..s.."",nil,355,22,100,40,0,0,1.0,true)
+				ui.addTextArea(5652,"<font size='24'><p align='center'><font color='#050505'><b>"..m..":0"..s.."",nil,353,24,100,40,0,0,1.0,true)
+				ui.addTextArea(5651,"<font size='24'><p align='center'><b><J>"..m..":0"..s.."",nil,351,22,100,40,0,0,1.0,true)
 			end
 		end
-		ui.addTextArea(5654,"<font size='28'><p align='center'><font color='#050505'><b>"..rawlen(alives_red).."",nil,252,24,100,40,0,0,1.0,true)
-		ui.addTextArea(5653,"<font size='28'><p align='center'><b><R>"..rawlen(alives_red).."",nil,250,22,100,40,0,0,1.0,true)
-		ui.addTextArea(5656,"<font size='28'><p align='center'><font color='#050505'><b>"..rawlen(alives_blue).."",nil,462,24,100,40,0,0,1.0,true)
-		ui.addTextArea(5655,"<font size='28'><p align='center'><b><BL>"..rawlen(alives_blue).."",nil,460,22,100,40,0,0,1.0,true)
+		ui.addTextArea(5654,"<font size='28'><p align='center'><font color='#050505'><b>"..rawlen(alives_red).."",nil,248,24,100,40,0,0,1.0,true)
+		ui.addTextArea(5653,"<font size='28'><p align='center'><b><R>"..rawlen(alives_red).."",nil,246,22,100,40,0,0,1.0,true)
+		ui.addTextArea(5656,"<font size='28'><p align='center'><font color='#050505'><b>"..rawlen(alives_blue).."",nil,458,24,100,40,0,0,1.0,true)
+		ui.addTextArea(5655,"<font size='28'><p align='center'><b><BL>"..rawlen(alives_blue).."",nil,456,22,100,40,0,0,1.0,true)
 		if mode == "shoot" then
-			ui.addTextArea(5658,"<font size='24'><p align='center'><font color='#050505'><b>"..time_remain.."",nil,357,70,100,40,0,0,1.0,true)
-			ui.addTextArea(5657,"<font size='24'><p align='center'><VP><b>"..time_remain.."",nil,355,68,100,40,0,0,1.0,true)
+			ui.addTextArea(5658,"<font size='24'><p align='center'><font color='#050505'><b>"..time_remain.."",nil,353,70,100,40,0,0,1.0,true)
+			ui.addTextArea(5657,"<font size='24'><p align='center'><VP><b>"..time_remain.."",nil,351,68,100,40,0,0,1.0,true)
 		end
 		if general_time > 0 then
 			general_time=general_time-0.5
