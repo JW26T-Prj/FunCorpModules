@@ -909,7 +909,7 @@ function eventChatCommand(name,message)
 			elseif tema == 4 and tonumber(set_q) <= rawlen(perguntas4)/4 then
 				showMessage(perguntas4[sn],name)
 			end
-		emd
+		end
 		if (message:sub(0,4) == "tema") then
 			if message:sub(6) == "0" or message:sub(6) == "1" or message:sub(6) == "2" or message:sub(6) == "3" or message:sub(6) == "4" then
 				tema=tonumber(message:sub(6))
