@@ -1,5 +1,5 @@
 -- STOP
--- Escrito por Ninguem - 31/08/2015 // Atualizado por Reksai_void2600#6638 - 07/11/2022
+-- Escrito por Ninguem - 31/08/2015 // Atualizado por Reksai_void2600#6638 - 12/01/2023
 -- Limite de 20 categorias.
 -- FunCorp, caso você não queira visualizar as respostas dos jogadores (para identificar trapaças, por exemplo), altere a variável SHOW (linha 15) para false.
 
@@ -7,25 +7,21 @@ ADM = {"Reksai_void2600#6638"} -- editar com seu nome aqui!
 CAT = {"Nome","Animal","Objeto","Cor","Marca","TV/Anime/Desenho","Parte do Corpo","Comida/Bebida","País/Cidade/Estado","Profissão","Tem no Transformice","O(A) "..ADM[1].." é...","Qualquer Coisa"}
 ID = {cat=1,camada=2,add=3,msg=4,tempo=5,stop=6}
 PLAYER = {}
-MAPA = false -- altere para 'true' caso queira usar o mapa do twisted fate descolorido
 ESCOLHA = {}
 MODO = "inicio"
 ROUND = 1
 PALAVRA = 1
 SHOW = true
 MAXROUND = 5
-TEMAS = 14
+TEMAS = 13
 TEMPO = false
 LETRA = ""
 
 system.disableChatCommandDisplay("help")
 
 function carregaMapa()
-	if MAPA == true then
-		tfm.exec.newGame("@7631682")
-	elseif MAPA == false then
-		tfm.exec.newGame("@7884393")
-	end
+	tfm.exec.newGame("@7924777")
+	ui.setBackgroundColor("#929292")
 end
 
 function atualizaCat(first)
@@ -35,7 +31,7 @@ function atualizaCat(first)
 	end
 	txt = txt .. "<vp>- <a href='event:add'>Adicionar</a>\n\n<rose><p align='center'><font size='16px'><a href='event:start'>Começar</a></p></font>"
 	for i, v in pairs(ADM) do
-		ui.addTextArea(ID.cat, txt, v, 250, 30, 300, 360, 1, 1, 0.8, true)
+		ui.addTextArea(ID.cat, txt, v, 250, 30, 300, 360, 1, 1, 0.9, true)
 	end
 end
 
@@ -47,21 +43,13 @@ function atualizaPlayer()
 	for i, v in pairs(PLAYER) do
 		table.insert(player, {nome = i, pontos = v.pontos, vitoria = v.vitoria, num = v.num})
 	end
-	table.sort(player, function(a, b) if a.pontos and b.pontos then return a.pontos > b.pontos end end)
-	for i, v in ipairs(player) do
-		txt = txt .. string.format("<%s>- %s - %d pontos %s\n", v.num and v.num > 0 and "vp" or "r", v.nome, v.pontos or 0, v.vitoria and v.vitoria > 0 and string.format("<j>- Vitórias: %d", v.vitoria) or "")
-		if v.num > 0 then
-			cont = cont + 1
-		end
-		total = total + 1
-		if total > 20 then
-			break
-		end
-	end
-	if cont == total then
+	if cont == total + 15 then
 		TEMPO = os.time()+5000
 	end
-	ui.addTextArea(ID.cat, txt, nil, 300, 25, 200, 285, 1, 1, 0.8, true)
+	if ROUND >= 2 then
+		tfm.exec.chatMessage("<VP>Todas as pontuações podem ser vistas na lista de jogadores da sala!")
+	end
+	ui.addTextArea(ID.cat, txt, nil, 300, 25, 200, 20, 1, 1, 0.9, true)
 end
 
 function split(txt)
@@ -111,19 +99,19 @@ end
 function atualizaPalavras(p)
 	local cont = 0
 	for i, v in pairs(CAT) do
-		ui.addTextArea(i+1000, string.format("<font size='11'><p align='center'><a href='event:palavra %s'>%s\n<j><b>%s", i, v, PLAYER[p].palavra[v]), p, ((i-1)%5)*160+5, math.floor((i-1)/5)*62+120, 150, 57, 1, 1, 0.8, true)
+		ui.addTextArea(i+1000, string.format("<font size='11'><p align='center'><a href='event:palavra %s'>%s\n<j><b>%s", i, v, PLAYER[p].palavra[v]), p, ((i-1)%5)*160+5, math.floor((i-1)/5)*62+120, 150, 57, 1, 1, 0.9, true)
 		if PLAYER[p].palavra[v] ~= "" then
 			cont = cont + 1
 		end
 	end
 	if cont == #CAT then
-		ui.addTextArea(ID.stop, "<p align='center'>Você foi muito rápido! Tempo para pedir stop: <r>" .. math.floor((TEMPO - os.time())/1000), p, 5, 375, 790, 20, 1, 1, 0.8, true)
+		ui.addTextArea(ID.stop, "<p align='center'>Você foi muito rápido! Tempo para pedir stop: <r>" .. math.floor((TEMPO - os.time())/1000), p, 5, 375, 790, 20, 1, 1, 0.9, true)
 	end
 end
 
 function atualizaSeleciona(p)
 	for i, v in ipairs(ESCOLHA) do
-		ui.addTextArea(i+1000, string.format("<p align='center'><a href='event:escolha %d'><%s>%s", i, PLAYER[p].escolha[i] and "vp" or "r", v.p), p, ((i-1)%5)*160+5, math.floor((i-1)/5)*40+130, 150, 30, 1, 1, 0.8, true)
+		ui.addTextArea(i+1000, string.format("<p align='center'><a href='event:escolha %d'><%s>%s", i, PLAYER[p].escolha[i] and "vp" or "r", v.p), p, ((i-1)%5)*160+5, math.floor((i-1)/5)*40+130, 150, 30, 1, 1, 0.9, true)
 	end
 end
 
@@ -157,9 +145,9 @@ function selecionaPalavra()
 			tfm.exec.chatMessage(i.." - "..CAT[PALAVRA].." - "..v.palavra[CAT[PALAVRA]],"Varusofeyzan#0000")
 		end
 	end
-	ui.addTextArea(ID.cat, "<p align='center'><font size='30px'>" .. CAT[PALAVRA] .. " com " .. LETRA, nil, 5, 80, 790, 40, 1, 1, 0.8, true)
+	ui.addTextArea(ID.cat, "<p align='center'><font size='30px'>" .. CAT[PALAVRA] .. " com " .. LETRA, nil, 5, 80, 790, 40, 1, 1, 0.9, true)
 	TEMPO = os.time() + 15000+(1000*#ESCOLHA)
-	ui.addTextArea(ID.tempo, "<r><p align='center'><font size='25px'>20</font></p>", nil, 755, 358, 40, 40, 1, 1, 0.8, true)
+	ui.addTextArea(ID.tempo, "<r><p align='center'><font size='25px'>--</font></p>", nil, 755, 358, 40, 40, 1, 1, 0.9, true)
 end
 
 function eventChatCommand(p, cmd)
@@ -178,7 +166,7 @@ function eventChatCommand(p, cmd)
 			end
 			MODO = "fim"
 			PALAVRA = 1
-			ui.addTextArea(ID.msg, "<p align='center'>Clique nas palavras ERRADAS e marque de <r>vermelho <n>para anular seus pontos.", nil, 5, 50, 790, 20, 1, 1, 0.8, true)
+			ui.addTextArea(ID.msg, "<p align='center'>Clique nas palavras ERRADAS e marque de <r>vermelho <n>para anular seus pontos.", nil, 5, 50, 790, 20, 1, 1, 0.9, true)
 			ESCOLHA = {}
 			selecionaPalavra()
 			for i, v in pairs(PLAYER) do
@@ -209,10 +197,10 @@ function eventTextAreaCallback(id, p, cmd)
 				TEMPO = os.time()+15000
 				zeraTudo(true, true)
 				atualizaPlayer(true)
-				ui.addTextArea(ID.tempo, "<r><p align='center'><font size='25px'>40</font></p>", nil, 520, 50, 40, 40, 1, 1, 0.8, true)
-				ui.addTextArea(ID.msg, "<r><p align='center'>Escolha um número</p>", nil, 150, 320, 490, 20, 1, 1, 0.8, true)
+				ui.addTextArea(ID.tempo, "<r><p align='center'><font size='25px'>--</font></p>", nil, 755, 358, 40, 40, 1, 1, 0.9, true)
+				ui.addTextArea(ID.msg, "<r><p align='center'>Escolha um número</p>", nil, 150, 320, 490, 20, 1, 1, 0.9, true)
 				for i=1, 10 do
-					ui.addTextArea(i+30, string.format("<p align='center'><font size='28px'><a href='event:num %d'>%d", i, i), nil, 150+((i-1)*50), 350, 40, 40, 1, 1, 0.8, true)
+					ui.addTextArea(i+30, string.format("<p align='center'><font size='28px'><a href='event:num %d'>%d", i, i), nil, 150+((i-1)*50), 350, 40, 40, 1, 1, 0.9, true)
 				end
 			else
 				tfm.exec.chatMessage("<R>São necessários no mínimo 5 temas para o jogo ser iniciado",p)
@@ -229,7 +217,7 @@ function eventTextAreaCallback(id, p, cmd)
 		elseif arg[1] == "escolha" then
 			PLAYER[p].escolha[tonumber(arg[2],10)] = PLAYER[p].escolha and not PLAYER[p].escolha[tonumber(arg[2],10)] or false
 			if PLAYER[p].escolha then
-				ui.addTextArea(tonumber(arg[2],10)+1000, string.format("<p align='center'><a href='event:escolha %d'><%s>%s", tonumber(arg[2],10), PLAYER[p].escolha and PLAYER[p].escolha[tonumber(arg[2],10)] and "vp" or "r", ESCOLHA[tonumber(arg[2],10)] and ESCOLHA[tonumber(arg[2],10)].p or ""), p, ((tonumber(arg[2],10)-1)%5)*160+5, math.floor((tonumber(arg[2],10)-1)/5)*40+130, 150, 30, 1, 1, 0.8, true)
+				ui.addTextArea(tonumber(arg[2],10)+1000, string.format("<p align='center'><a href='event:escolha %d'><%s>%s", tonumber(arg[2],10), PLAYER[p].escolha and PLAYER[p].escolha[tonumber(arg[2],10)] and "vp" or "r", ESCOLHA[tonumber(arg[2],10)] and ESCOLHA[tonumber(arg[2],10)].p or ""), p, ((tonumber(arg[2],10)-1)%5)*160+5, math.floor((tonumber(arg[2],10)-1)/5)*40+130, 150, 30, 1, 1, 0.9, true)
 			end
 		end
 	end
@@ -253,7 +241,7 @@ function eventPopupAnswer(id, p, resp)
 end
 
 function eventNewPlayer(p)
-	ui.setMapName("<font color='#ffffff'><b>STOP!</b> <N>Script editado por Reksai_void2600#6638 - 07/11/2022<")
+	ui.setMapName("<font color='#ffffff'><b>STOP!</b> <N>Script editado por Reksai_void2600#6638 - 12/01/2023<")
 	PLAYER[p] = {num = 0, pontos = 0, vitoria = 0, palavra = {}}
 	for i, v in pairs(CAT) do
 		PLAYER[p].palavra[v] = ""
@@ -262,6 +250,8 @@ function eventNewPlayer(p)
 		atualizaPlayer(true)
 	end
 	tfm.exec.respawnPlayer(p)
+	tfm.exec.chatMessage("<ROSE>Digite !help caso não saiba jogar este jogo.",p)
+	ui.setBackgroundColor("#929292")
 end
 
 function eventPlayerLeft(p)
@@ -299,7 +289,7 @@ function eventLoop(current, remaining)
 			end
 			txt = txt .. "\n<p align='center'><rose>Soma: " .. cont
 			LETRA = string.char(cont%26 == 0 and 90 or cont%26+64)
-			ui.addTextArea(ID.cat, txt, nil, 300, 25, 200, 285, 1, 1, 0.8, true)
+			ui.addTextArea(ID.cat, txt, nil, 300, 25, 200, 285, 1, 1, 0.9, true)
 			ui.removeTextArea(ID.tempo)
 			TEMPO = os.time()+10000
 			for i=1, 10 do
@@ -312,7 +302,7 @@ function eventLoop(current, remaining)
 			MODO = "round"
 			TEMPO = os.time()+15000+(6000*#CAT)
 			ui.removeTextArea(ID.cat, nil)
-			ui.addTextArea(ID.cat, string.format("<p align='center'>A letra é:\n<font size='50px'><rose>%s</rose></font></p>", LETRA), nil, 300, 30, 200, 80, 1, 1, 0.8, true)
+			ui.addTextArea(ID.cat, string.format("<p align='center'>A letra é:\n<font size='50px'><rose>%s</rose></font></p>", LETRA), nil, 300, 30, 200, 80, 1, 1, 0.9, true)
 			for i, v in pairs(PLAYER) do
 				atualizaPalavras(i)
 			end
@@ -354,10 +344,10 @@ function eventLoop(current, remaining)
 				TEMPO = os.time()+15000
 				zeraTudo(false, false)
 				atualizaPlayer(true)
-				ui.addTextArea(ID.tempo, "<r><p align='center'><font size='25px'>40</font></p>", nil, 520, 50, 40, 40, 1, 1, 0.8, true)
-				ui.addTextArea(ID.msg, "<r><p align='center'>Escolha um número</p>", nil, 150, 320, 490, 20, 1, 1, 0.8, true)
+				ui.addTextArea(ID.tempo, "<r><p align='center'><font size='25px'>--</font></p>", nil, 755, 358, 40, 40, 1, 1, 0.9, true)
+				ui.addTextArea(ID.msg, "<r><p align='center'>Escolha um número</p>", nil, 150, 320, 490, 20, 1, 1, 0.9, true)
 				for i=1, 10 do
-					ui.addTextArea(i+30, string.format("<p align='center'><font size='28px'><a href='event:num %d'>%d", i, i), nil, 150+((i-1)*50), 350, 40, 40, 1, 1, 0.8, true)
+					ui.addTextArea(i+30, string.format("<p align='center'><font size='28px'><a href='event:num %d'>%d", i, i), nil, 150+((i-1)*50), 350, 40, 40, 1, 1, 0.9, true)
 				end
 				for i, v in pairs(ESCOLHA) do
 					ui.removeTextArea(i+1000, nil)
@@ -392,10 +382,9 @@ function eventLoop(current, remaining)
 			ROUND = 1
 			zeraTudo(false, true)
 			atualizaPlayer(true)
-			ui.addTextArea(ID.tempo, "<r><p align='center'><font size='25px'>40</font></p>", nil, 520, 50, 40, 40, 1, 1, 0.8, true)
-			ui.addTextArea(ID.msg, "<r><p align='center'>Escolha um número</p>", nil, 150, 320, 490, 20, 1, 1, 0.8, true)
+			ui.addTextArea(ID.msg, "<r><p align='center'>Escolha um número</p>", nil, 150, 320, 490, 20, 1, 1, 0.9, true)
 			for i=1, 10 do
-				ui.addTextArea(i+30, string.format("<p align='center'><font size='28px'><a href='event:num %d'>%d", i, i), nil, 150+((i-1)*50), 350, 40, 40, 1, 1, 0.8, true)
+				ui.addTextArea(i+30, string.format("<p align='center'><font size='28px'><a href='event:num %d'>%d", i, i), nil, 150+((i-1)*50), 350, 40, 40, 1, 1, 0.9, true)
 			end
 		end
 	end
@@ -406,5 +395,5 @@ tfm.exec.disableAutoShaman(true)
 tfm.exec.disableAutoScore(true)
 tfm.exec.disableAutoNewGame(true)
 carregaMapa()
-ui.setMapName("<font color='#ffffff'><b>STOP!</b> <N>Script editado por Reksai_void2600#6638 - 07/11/2022<")
+ui.setMapName("<font color='#ffffff'><b>STOP!</b> <N>Script editado por Reksai_void2600#6638 - 12/01/2023<")
 atualizaCat(true)
