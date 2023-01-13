@@ -27,7 +27,7 @@ function eventNewGame()
 			end
 		end
 	end
-	tfm.exec.setUIMapName("<N>Tente não cair v1.1.0 - Module criado por <VP><b>Rivenbagassa#0000</b><")
+	tfm.exec.setUIMapName("<N>Tente não cair v1.1.1 - Module criado por <VP><b>Rivenbagassa#0000</b><")
 	for i=1,19 do
 		tfm.exec.addShamanObject(2, (60*i)+40, 270, 0, 0, 0, false)
 		tfm.exec.addShamanObject(2, (60*i)+40, 330, 0, 0, 0, false)
@@ -43,6 +43,7 @@ function eventPlayerDied(name)
 		end
 	end
 	if i==0 then
+		tfm.exec.setGameTime(5)
 		showMessage("<R>Ninguém ganhou!")
 		modo="final"
 	elseif i==1 then
@@ -63,6 +64,7 @@ function eventLoop(p,f)
 	end
 	if f <= 4000 and f >= 3400 then
 		if modo == "jogar" then
+			modo="final"
 			tfm.exec.disableAutoScore(true)
 			for name,player in next,tfm.get.room.playerList do
 				if not tfm.get.room.playerList[name].isDead then
