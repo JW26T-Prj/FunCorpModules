@@ -23,29 +23,28 @@ function showMessage(message,name)
 		end
 	end
 end
-function showNPCs(name)
-	tfm.exec.addNPC("Mayra Flowers",{title = 1, look = "112;0,4,0,74_212121+d2d2d2,39,39,44,0,1",x = 4005,y = 425,female = true,lookLeft = true,lookAtPlayer = true,interactive = true},name)
-end
-function eventTalkToNPC(name, npc)
-	if npc == "Mayra Flowers" then
-		showMessage("<V>[Mayra Flowers] <N>Muuuuuuuu! <font face='Segoe UI Symbol'>(●'◡'●)<font face='Verdana'>",name)
-	end
-end
 function showAvailableSharks(name)
 	i=0
-	for _,link in next,{"18309d64e58.png","18309d6029f.png","18412b7b55e.png","18412b71ce2.png"} do
+	for _,link in next,{"18309d69a5a.png","18309d64e58.png","18309d7325a.png","18412b7b55e.png"} do
 		i=i+1
-		image_id=tfm.exec.addImage(link,"&1",163,140+(i*50),name,0.5,0.5,0,1.0)
+		image_id=tfm.exec.addImage(link,"&1",83,90+(i*49),name,0.5,0.5,0,1.0)
 		table.insert(data[name].active_imgs,image_id)
 	end
 	i=0
-	for _,link in next,{"18309d69a5a.png","18309d7325a.png","18309d6e65a.png","18412b7695c.png"} do
+	for _,link in next,{"18309d6029f.png","18412b7695c.png","18309d6e65a.png","18412b71ce2.png"} do
 		i=i+1
-		image_id=tfm.exec.addImage(link,"&1",383,80+(i*50),name,0.5,0.5,0,1.0)
+		image_id=tfm.exec.addImage(link,"&1",293,90+(i*52),name,0.5,0.5,0,1.0)
 		table.insert(data[name].active_imgs,image_id)
 	end
-	ui.addTextArea(1006,"<i><font size='11.5'><b>Rato Normal</b><br><br><a href='event:a0'>Usar!</a><br><br><b>Tubarão Padrão 2</b><br><br><a href='event:a2'>Usar!</a><br><br><b>Tubarão-Branco 1</b><br><br><a href='event:a4'>Usar!</a><br><br><b>Tubarão Normal 4</b><br><br><a href='event:a6'>Usar!</a><br><br><b>Barracuda</b><br><br><a href='event:a8'>Usar!</a>",name,248,127,175,315,0,0,1.0,true)
-	ui.addTextArea(1007,"<i><font size='11.5'><b>Tubarão Normal 1</b><br><br><a href='event:a1'>Usar!</a><br><br><b>Tubarão Normal 3</b><br><br><a href='event:a3'>Usar!</a><br><br><b>Tubarão-Martelo</b><br><br><a href='event:a5'>Usar!</a><br><br><b>Tubarão-Branco 2</b><br><br><a href='event:a7'>Usar!</a>",name,478,127,175,265,0,0,1.0,true)
+	i=0
+	for _,link in next,{"185c2e9722e.png","185c2ea0c4f.png","185c2e9bf2f.png"} do
+		i=i+1
+		image_id=tfm.exec.addImage(link,"&1",503,90+(i*48),name,0.5,0.5,0,1.0)
+		table.insert(data[name].active_imgs,image_id)
+	end
+	ui.addTextArea(1006,"<i><font size='11.5'><b>Tubarão Normal 1</b><br><br><a href='event:a1'>Usar!</a><br><br><b>Tubarão Normal 2</b><br><br><a href='event:a2'>Usar!</a><br><br><b>Tubarão Normal 3</b><br><br><a href='event:a3'>Usar!</a><br><br><b>Tubarão Normal 4</b><br><br><a href='event:a6'>Usar!</a>",name,170,129,175,315,0,0,1.0,true)
+	ui.addTextArea(1007,"<i><font size='11.5'><b>Tubarão Branco 1</b><br><br><a href='event:a4'>Usar!</a><br><br><b>Tubarão Branco 2</b><br><br><a href='event:a7'>Usar!</a><br><br><b>Tubarão-Martelo</b><br><br><a href='event:a5'>Usar!</a><br><br><b>Barracuda</b><br><br><a href='event:a8'>Usar!</a>",name,380,129,175,265,0,0,1.0,true)
+	ui.addTextArea(1008,"<i><font size='11.5'><b>Peixe Diabo-Negro</b><br><br><a href='event:a9'>Usar!</a><br><br><b>Tubarão-Tigre</b><br><br><a href='event:a11'>Usar!</a><br><br><b>Baleia</b><br><br><a href='event:a10'>Usar!</a><br><br><br><b><a href='event:a0'>Desativar skins</a>",name,590,129,175,265,0,0,1.0,true)
 end
 function removeImagePlayers(name)
 	if rawlen(data[name].active_imgs) > 0 then
@@ -104,6 +103,24 @@ function displayShark(name,type,reverse)
 		else
 			data[name].shark_id=tfm.exec.addImage("18412b71ce2.png","$"..name.."",-80,-26,nil,1,1)
 		end
+	elseif type == 9 then
+		if reverse == false then
+			data[name].shark_id=tfm.exec.addImage("185c2e9722e.png","$"..name.."",35,-60,nil,-1,1)
+		else
+			data[name].shark_id=tfm.exec.addImage("185c2e9722e.png","$"..name.."",-40,-60,nil,1,1)
+		end
+	elseif type == 10 then
+		if reverse == false then
+			data[name].shark_id=tfm.exec.addImage("185c2e9bf2f.png","$"..name.."",65,-59,nil,-1,1)
+		else
+			data[name].shark_id=tfm.exec.addImage("185c2e9bf2f.png","$"..name.."",-70,-59,nil,1,1)
+		end
+	elseif type == 11 then
+		if reverse == false then
+			data[name].shark_id=tfm.exec.addImage("185c2ea0c4f.png","$"..name.."",75,-36,nil,-1,1)
+		else
+			data[name].shark_id=tfm.exec.addImage("185c2ea0c4f.png","$"..name.."",-80,-36,nil,1,1)
+		end
 	end
 end
 function verifyAdmin(name)
@@ -114,45 +131,38 @@ function verifyAdmin(name)
 	end
 end
 function showWater(name)
-	for _,as in next,{0,2,4} do
-		tfm.exec.addImage("183bac46d1a.png","?1",-800+(as*1488),1945,name,1,-1.5,0,1)
+	for i=0,6 do
+		tfm.exec.addImage("185c2e9252b.png", "?1", -800+(i*944), 457, name, 1.0, 1.0, 0, 1.0)
+		tfm.exec.addImage("185c2e9252b.png", "!1", -800+(i*944), 457, name, 1.0, 1.0, 0, 0.55)
 	end
-	for _,at in next,{1,3,5} do
-		tfm.exec.addImage("183bac46d1a.png","?1",688+(at*1488),1945,name,-1,-1.5,0,1)
-	end
-	for i=0,1 do
-		tfm.exec.addImage("18200689108.png", "?1", -800+(i*7180), 487, name, 1.0, 1.0, 0, 1.0)
-		tfm.exec.addImage("18200689108.png", "!1", -800+(i*7180), 487, name, 1.0, 1.0, 0, 0.56)
-		tfm.exec.addImage("1820068de62.png", "!1", -800+(i*7180), 545, name, 6, 2.5, 0, 0.8)
-	end
-	for b=0,1 do
-		tfm.exec.addImage("18200692b61.jpg","?1",-800+(b*1795),545,name,4,4)
-	end
+	tfm.exec.addImage("185c2e88ac8.png", "!1", -800, 664, name, 30, 3.6)
+	tfm.exec.addImage("185c2e88ac8.png", "!1", -800, 3904, name, 30, -3.6)
+	tfm.exec.addImage("185c2e8d858.png", "?1", -800, 664, name, 30, 3.6)
 	for _,m in next,{0,2,4} do
-		tfm.exec.addImage("18204168d2e.png","!1",-1200+(m*1400),2187,name,1,-1.5,0,1)
+		tfm.exec.addImage("18204168d2e.png","!1",-1200+(m*1400),2590,name,1,-1.5,0,1)
 	end
 	for _,n in next,{1,3,5} do
-		tfm.exec.addImage("18204168d2e.png","!1",200+(n*1400),2187,name,-1,-1.5,0,1)
+		tfm.exec.addImage("18204168d2e.png","!1",200+(n*1400),2590,name,-1,-1.5,0,1)
 	end
 	for _,h in next,{0,2,4} do
-		tfm.exec.addImage("18204168d2e.png","!1",-1200+(h*1400),1715,name,1,0.4,0,1)
+		tfm.exec.addImage("18204168d2e.png","!1",-1200+(h*1400),2122,name,1,0.4,0,1)
 	end
 	for _,j in next,{1,3,5} do
-		tfm.exec.addImage("18204168d2e.png","!1",200+(j*1400),1715,name,-1,0.4,0,1)
+		tfm.exec.addImage("18204168d2e.png","!1",200+(j*1400),2122,name,-1,0.4,0,1)
 	end
-	for w=1,3 do
-		tfm.exec.addImage("181ba85ccc2.png","!1",math.random(50,4500),math.random(-50,250),name,0.5,0.5)
+	for w=1,2 do
+		tfm.exec.addImage("181ba85ccc2.png","!1",math.random(50,4000),math.random(-50,250),name,0.5,0.5)
 	end
-	for x=1,3 do
-		tfm.exec.addImage("181ba86195e.png","!1",math.random(50,4500),math.random(-50,250),name,0.5,0.5)
+	for x=1,2 do
+		tfm.exec.addImage("181ba86195e.png","!1",math.random(50,4000),math.random(-50,250),name,0.5,0.5)
 	end
-	for y=1,4 do
-		tfm.exec.addImage("181ba86655c.png","!1",math.random(50,4500),math.random(-50,250),name,0.5,0.5)
+	for y=1,3 do
+		tfm.exec.addImage("181ba86655c.png","!1",math.random(50,4000),math.random(-50,250),name,0.5,0.5)
 	end
-	for z=1,4 do
-		tfm.exec.addImage("181ba86b15a.png","!1",math.random(50,4500),math.random(-50,250),name,0.5,0.5)
+	for z=1,3 do
+		tfm.exec.addImage("181ba86b15a.png","!1",math.random(50,4000),math.random(-50,250),name,0.5,0.5)
 	end
-	tfm.exec.addImage("17fe3741e5f.jpg","?1",-400,-500,name,8.5,1,0,1)
+	tfm.exec.addImage("17fe3741e5f.jpg","?1",-400,-350,name,8.5,1,0,1)
 end
 function eventPlayerDied(n)
 	if not tfm.get.room.playerList[n].isShaman then
@@ -186,9 +196,9 @@ function moveShaman()
 	if position == 1 then
 		tfm.exec.movePlayer(shaman,631,181,false,0,0,false)
 	elseif position == 2 then
-		tfm.exec.movePlayer(shaman,2769,90,false,0,0,false)
+		tfm.exec.movePlayer(shaman,2769,50,false,0,0,false)
 	elseif position == 3 then
-		tfm.exec.movePlayer(shaman,4721,212,false,0,0,false)
+		tfm.exec.movePlayer(shaman,4333,186,false,0,0,false)
 	end
 end
 function checkOxygenZones(name)
@@ -197,8 +207,8 @@ function checkOxygenZones(name)
 			return true
 		end
 	end
-	if tfm.get.room.playerList[name].x <= 785 then
-		if tfm.get.room.playerList[name].y >= 1650 then
+	if  tfm.get.room.playerList[name].x >= 442 and tfm.get.room.playerList[name].x <= 585 then
+		if tfm.get.room.playerList[name].y >= 2206 then
 			return true
 		end
 	end
@@ -207,11 +217,21 @@ function checkOxygenZones(name)
 			return true
 		end
 	end
+	if tfm.get.room.playerList[name].x >= 3818 and tfm.get.room.playerList[name].x <= 3966 then
+		if tfm.get.room.playerList[name].y >= 1910 and tfm.get.room.playerList[name].y <= 1994 then
+			return true
+		end
+	end
+	if tfm.get.room.playerList[name].x >= 705 and tfm.get.room.playerList[name].x <= 850 then
+		if tfm.get.room.playerList[name].y >= 1567 and tfm.get.room.playerList[name].y <= 1648 then
+			return true
+		end
+	end
 end
 function eventNewPlayer(name)
 	tfm.exec.setPlayerScore(name,0,false)
 	showWater(name)
-	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <VP><b>v4.1.1</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
+	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <VP><b>v4.2.0</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
 	newData={
 	["o"]=99; ["i"]=0; ["t"]=0; ["c"]=0; ["opened"]=false; ["imageid"]=-1; ["imageid2"]=-1; ["imageid3"]=-1; ["imageid4"]=-1; ["imaget"]=5; ["shark_id"]=0; ["shark"]=0; ["active_imgs"]={};
 	};
@@ -238,16 +258,16 @@ function eventChatCommand(name,message)
 		showMenu(name,0xf0f0f0,140,90,520,150,"Créditos","As seguintes pessoas ajudaram no desenvolvimento deste module:<br><br><ROSE><b>• Morganadxana#0000</b><N> - Desenvolvedora do código<br><ROSE><b>• Akwimos#1937</b><N> - Criação do mapa e tradução do código original para o Português<br><ROSE><b>• Spectra_phantom#6089</b><N> - Ideia original e criação das artes")
 	end
 	if message == "skins" then
-		if tfm.get.room.playerList[name].isShaman == false then
+		if tfm.get.room.playerList[name].isShaman == true then
 			showMessage("<R>As skins de tubarão serão exibidas quando você for shaman, e estiver dentro do lago!",name)
-			showMenu(name,0x949494,140,90,520,294,"Skins","")
+			showMenu(name,0x949494,65,98,670,240,"Skins","")
 			showAvailableSharks(name)
 		else
 			showMessage("<J>Para evitar bugs, não é mais possível trocar de skin de tubarão enquanto for shaman.",name)
 		end
 	end
 	if message == "changelog" then
-		showMenu(name,0xf0f0f0,140,90,520,105,"Changelog da Versão 4.1.1","• Pequenas correções no sistema de pontuação<br>• Quando um rato morre afogado, os ratos agora viram galinhas ao invés de gelo para evitar bloqueio do mapa")
+		showMenu(name,0xf0f0f0,140,90,520,100,"Changelog da Versão 4.2.0","• Adição de 3 novas skins: Peixe diabo-negro, Baleia e Tubarão-tigre!<br>• Diversas mudanças no mapa<br>• Adição de 2 novas zonas de oxigênio")
 	end
 	if (message:sub(0,2)== "tc") then
 		if tfm.get.room.playerList[name].isShaman == false then
@@ -292,7 +312,7 @@ end
 function resetMap()
 	if xml == '' then
 		tfm.exec.disableAutoShaman(true)
-		tfm.exec.newGame("@7920839")
+		tfm.exec.newGame("@7925247")
 		ui.setMapName("Carregando mapa. Por favor, aguarde...<")
 		changed=false
 		mode="load"
@@ -431,7 +451,6 @@ function eventNewGame()
 		mode="hide"
 		showMessage("<J>Caso o mapa do jogo não esteja aparecendo, saia do jogo e entre novamente.<br>Isto é um problema de memória do Transformice e não do module.")
 		for n,p in next,tfm.get.room.playerList do
-			showNPCs(n)
 			showWater(n)
 			tfm.exec.giveMeep(n,false)
 			tfm.exec.removeImage(data[n].shark_id)
@@ -511,12 +530,12 @@ function eventLoop(p,r)
 	loop=loop+0.5
 	time_passed=math.ceil(p/500)
 	time_remain=math.ceil(r/500)
-	if time_passed >= 12 and tfm.get.room.currentMap == "@7920839" then
+	if time_passed >= 12 and tfm.get.room.currentMap == "@7925247" then
 		tfm.exec.disableAutoShaman(false)
 		resetMap()
 	end
 	if changed == true then
-		ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <VP><b>v4.1.1</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
+		ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <VP><b>v4.2.0</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
 		local m=math.floor(r/60000)
 		local s=math.floor((((m*60000)-r) * -1) / 1000)
 		ui.addTextArea(-1,"<font size='44'><font color='#222222'><font face='Copperplate Gothic Bold,Times New Roman'><b>"..m..":"..s.."</b>",n,557,27,125,54,0,0,1.0,true)
@@ -555,7 +574,7 @@ function eventLoop(p,r)
 				if not tfm.get.room.playerList[n].isShaman then
 					if not tfm.get.room.playerList[n].isDead then
 						if mode == "game" or mode == "hide" then
-							if tfm.get.room.playerList[n].y < 498 then
+							if tfm.get.room.playerList[n].y < 598 then
 								if data[n].o < 99 then
 									data[n].o=data[n].o+1
 								end
@@ -565,10 +584,10 @@ function eventLoop(p,r)
 								data[n].o=data[n].o-0.2
 							else
 								tfm.exec.playSound("/transformice/son/bulle2.mp3", 6, nil, nil, n)
-								if tfm.get.room.playerList[n].y <= 1525 then
+								if tfm.get.room.playerList[n].y <= 1625 then
 									data[n].o=data[n].o-0.5
 									data[n].c=0
-									elseif tfm.get.room.playerList[n].y > 1525 then
+									elseif tfm.get.room.playerList[n].y > 1625 then
 										data[n].o=data[n].o-0.7
 										data[n].c=0
 									end
@@ -691,7 +710,7 @@ function eventTextAreaCallback(id,name,callback)
 		ui.removeTextArea(298,name)
 	end
 	if callback == "close" then
-		for _,i in next,{1000,1001,1002,1003,1004,1005,1006,1007} do
+		for _,i in next,{1000,1001,1002,1003,1004,1005,1006,1007,1008} do
 			ui.removeTextArea(i,name)
 		end
 		data[name].opened=false
@@ -749,6 +768,18 @@ function eventTextAreaCallback(id,name,callback)
 	if callback == "a8" then
 		data[name].shark=8
 		showMessage("<VP>Você está agora usando a skin <b>Barracuda.</b>",name)
+	end
+	if callback == "a9" then
+		data[name].shark=9
+		showMessage("<VP>Você está agora usando a skin <b>Peixe Diabo-Negro.</b>",name)
+	end
+	if callback == "a10" then
+		data[name].shark=10
+		showMessage("<VP>Você está agora usando a skin <b>Baleia.</b>",name)
+	end
+	if callback == "a11" then
+		data[name].shark=11
+		showMessage("<VP>Você está agora usando a skin <b>Tubarão-Tigre.</b>",name)
 	end
 end
 resetMap()
