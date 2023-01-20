@@ -111,9 +111,9 @@ function displayShark(name,type,reverse)
 		end
 	elseif type == 10 then
 		if reverse == false then
-			data[name].shark_id=tfm.exec.addImage("185c2e9bf2f.png","$"..name.."",65,-59,nil,-1,1)
+			data[name].shark_id=tfm.exec.addImage("185c2e9bf2f.png","$"..name.."",65,-44,nil,-1,1)
 		else
-			data[name].shark_id=tfm.exec.addImage("185c2e9bf2f.png","$"..name.."",-70,-59,nil,1,1)
+			data[name].shark_id=tfm.exec.addImage("185c2e9bf2f.png","$"..name.."",-70,-44,nil,1,1)
 		end
 	elseif type == 11 then
 		if reverse == false then
@@ -203,12 +203,12 @@ function moveShaman()
 end
 function checkOxygenZones(name)
 	if tfm.get.room.playerList[name].x >= 2328 and tfm.get.room.playerList[name].x <= 2474 then
-		if tfm.get.room.playerList[name].y >= 1190 and tfm.get.room.playerList[name].y <= 1300 then
+		if tfm.get.room.playerList[name].y >= 1230 and tfm.get.room.playerList[name].y <= 1300 then
 			return true
 		end
 	end
 	if  tfm.get.room.playerList[name].x >= 442 and tfm.get.room.playerList[name].x <= 585 then
-		if tfm.get.room.playerList[name].y >= 2206 then
+		if tfm.get.room.playerList[name].y >= 2106 then
 			return true
 		end
 	end
@@ -218,12 +218,12 @@ function checkOxygenZones(name)
 		end
 	end
 	if tfm.get.room.playerList[name].x >= 3818 and tfm.get.room.playerList[name].x <= 3966 then
-		if tfm.get.room.playerList[name].y >= 1910 and tfm.get.room.playerList[name].y <= 1994 then
+		if tfm.get.room.playerList[name].y >= 1800 and tfm.get.room.playerList[name].y <= 1894 then
 			return true
 		end
 	end
 	if tfm.get.room.playerList[name].x >= 705 and tfm.get.room.playerList[name].x <= 850 then
-		if tfm.get.room.playerList[name].y >= 1567 and tfm.get.room.playerList[name].y <= 1648 then
+		if tfm.get.room.playerList[name].y >= 1467 and tfm.get.room.playerList[name].y <= 1548 then
 			return true
 		end
 	end
@@ -231,7 +231,7 @@ end
 function eventNewPlayer(name)
 	tfm.exec.setPlayerScore(name,0,false)
 	showWater(name)
-	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <VP><b>v4.2.0</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
+	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <VP><b>v4.3.0</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
 	newData={
 	["o"]=99; ["i"]=0; ["t"]=0; ["c"]=0; ["opened"]=false; ["imageid"]=-1; ["imageid2"]=-1; ["imageid3"]=-1; ["imageid4"]=-1; ["imaget"]=5; ["shark_id"]=0; ["shark"]=0; ["active_imgs"]={};
 	};
@@ -252,22 +252,28 @@ function eventChatCommand(name,message)
 		showMenu(name,0xf0f0f0,140,90,520,265,"Ajuda do Module #watercatch","O objetivo é bem simples: <b>Fugir do shaman</b>, se escondendo dentro do lago e tomando cuidado para não morrer afogado!<br><R><b>Shamans, não esqueçam de se mexer, ou irão morrer AFK!</b><br><br><VP>Os quadrados marcados por <N>'!'<VP> são powerups, que geram efeitos aleatórios nos ratos.<J><br>Estes powerups podem ser acionados pressionando ESPAÇO em cima deles.<br><N>Você pode ver os possíveis efeitos dos powerups indo no Menu e clicando em Powerups. Vale ressaltar que eles funcionam apenas depois que o shaman for liberado.<br><br><N>Caso você seja shaman, você tem um limite de <b>10</b> objetos que podem ser utilizados. Exceder este limite fará com que a partida acabe.")
 	end
 	if message == "powerups" then
-		showMenu(name,0xf0f0f0,140,86,520,290,"Powerups do Module #watercatch","<font size='11'>Os seguintes powerups estão disponíveis no momento:<br><ROSE><b>• CAIXA</b><N><br>Faz aparecer uma caixa de acompanhamento em cima de você.<br><ROSE><b>• OXIGÊNIO</b><N><br>Aumenta o seu nível de oxigênio em 40%.<br><ROSE><b>• VELOCIDADE</b><N><br>Te dá um grande impulso de velocidade.<br><ROSE><b>• AFUNDAR</b><N><br>Cria uma anomalia temporária que leva todos os ratos em direção ao fundo do lago.<br><ROSE><b>• MEEP</b><N><br>Te dá o poder de usar o Meep!<br><ROSE><b>• SUFOCO</b><N><br>Diminui o seu nível de oxigênio em 35%. Caso seu nível esteja abaixo disso e você pegue este powerup, você morrerá afogado.<br><ROSE><b>• CONGELAR</b><N><br>Congela o seu rato.<br><ROSE><b>• QUEIJO</b><N><br>Dá queijo para o seu rato. Caso você esteja dentro do lago, você provavelmente será levado para o fundo dele.")
+		showMenu(name,0xf0f0f0,140,86,520,290,"Powerups do Module #watercatch","<font size='11'>Os seguintes powerups estão disponíveis no momento:<br><ROSE><b>• ARMADILHA</b><N><br>Prende seu rato em uma armadilha triangular.<br><ROSE><b>• OXIGÊNIO</b><N><br>Aumenta o seu nível de oxigênio em 50%.<br><ROSE><b>• VELOCIDADE</b><N><br>Te dá um grande impulso de velocidade.<br><ROSE><b>• AFUNDAR</b><N><br>Cria uma curta anomalia que puxa todos os ratos em direção ao fundo do lago.<br><ROSE><b>• MEEP</b><N><br>Te dá o poder de usar o Meep!<br><ROSE><b>• SUFOCO</b><N><br>Diminui o seu nível de oxigênio em 35%. Caso seu nível esteja abaixo disso e você pegue este powerup, você morrerá afogado.<br><ROSE><b>• CONGELAR</b><N><br>Congela o seu rato.<br><ROSE><b>• QUEIJO</b><N><br>Dá queijo para o seu rato. Caso você esteja dentro do lago, você provavelmente será levado para o fundo dele.")
 	end
 	if message == "creditos" then
-		showMenu(name,0xf0f0f0,140,90,520,150,"Créditos","As seguintes pessoas ajudaram no desenvolvimento deste module:<br><br><ROSE><b>• Morganadxana#0000</b><N> - Desenvolvedora do código<br><ROSE><b>• Akwimos#1937</b><N> - Criação do mapa e tradução do código original para o Português<br><ROSE><b>• Spectra_phantom#6089</b><N> - Ideia original e criação das artes")
+		showMenu(name,0xf0f0f0,140,90,520,150,"Créditos","As seguintes pessoas ajudaram no desenvolvimento deste module:<br><br><ROSE><b>• Morganadxana#0000</b><N> - Desenvolvedora do código<br><ROSE><b>• Shun_kazami#7014</b><N> - Criação do mapa<br><ROSE><b>• Akwimos#1937</b><N> - Tradução do código original para o Português<br><ROSE><b>• Spectra_phantom#6089</b><N> - Ideia original e criação das artes")
 	end
 	if message == "skins" then
-		if tfm.get.room.playerList[name].isShaman == true then
+		if name == "Morganadxana#0000" or name == "Akwimos#1937" or name == "Spectra_phantom#6089" or verifyAdmin(name) == true then
 			showMessage("<R>As skins de tubarão serão exibidas quando você for shaman, e estiver dentro do lago!",name)
 			showMenu(name,0x949494,65,98,670,240,"Skins","")
 			showAvailableSharks(name)
 		else
-			showMessage("<J>Para evitar bugs, não é mais possível trocar de skin de tubarão enquanto for shaman.",name)
+			if tfm.get.room.playerList[name].isShaman == false then
+				showMessage("<R>As skins de tubarão serão exibidas quando você for shaman, e estiver dentro do lago!",name)
+				showMenu(name,0x949494,65,98,670,240,"Skins","")
+				showAvailableSharks(name)
+			else
+				showMessage("<J>Para evitar bugs, não é mais possível trocar de skin de tubarão enquanto for shaman.",name)
+			end
 		end
 	end
 	if message == "changelog" then
-		showMenu(name,0xf0f0f0,140,90,520,100,"Changelog da Versão 4.2.0","• Adição de 3 novas skins: Peixe diabo-negro, Baleia e Tubarão-tigre!<br>• Diversas mudanças no mapa<br>• Adição de 2 novas zonas de oxigênio")
+		showMenu(name,0xf0f0f0,140,90,520,180,"Changelog da Versão 4.3.0","• Correções de bugs nas zonas de oxigênio<br>• Correção de bug na escolha de skins<br>• O powerup OXIGÊNIO foi melhorado de 40% para 50%<br>• O powerup CAIXA foi substituído por ARMADILHA<br>• O tempo do powerup QUEIJO foi reduzido de 12 para 8 segundos<br>• O tempo do powerup CONGELAR foi reduzido de 8 para 6 segundos<br>• O tempo das partidas agora é fixado em 4 minutos<br>• Os ratos que morrem afogados viram pedras ao invés de galinhas")
 	end
 	if (message:sub(0,2)== "tc") then
 		if tfm.get.room.playerList[name].isShaman == false then
@@ -306,7 +312,7 @@ function eventSummoningEnd(name,id,x,y)
 end
 function eventSummoningStart(name,id,x,y)
 	if cannons == 0 then
-		showMessage("<R>Você não pode mais usar objetos! Invocar um objeto fará com que você morra e a partida termine!",name)
+		showMessage("<R>Você não pode mais invocar objetos! Fazer isso ocasionará na sua morte e na perda de sua vez de shaman.",name)
 	end
 end
 function resetMap()
@@ -323,13 +329,13 @@ function resetMap()
 end
 function activatePowerup(name,id,number)
 	if id == 1 then
-		showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>CAIXA!</b>")
+		showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>ARMADILHA!</b>")
 		dropPlayer(name)
 		tfm.exec.playSound("/transformice/son/petard.mp3", 75, nil, nil, name)
 	elseif id == 2 then
 		showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>OXIGÊNIO!</b>")
 		if not tfm.get.room.playerList[name].isShaman then
-			data[name].o=data[name].o+40
+			data[name].o=data[name].o+50
 			if data[name] and data[name].o > 100 then
 				data[name].o=100
 			end
@@ -449,7 +455,6 @@ function eventNewGame()
 		ui.removeTextArea(22,nil)
 		alives=0
 		mode="hide"
-		showMessage("<J>Caso o mapa do jogo não esteja aparecendo, saia do jogo e entre novamente.<br>Isto é um problema de memória do Transformice e não do module.")
 		for n,p in next,tfm.get.room.playerList do
 			showWater(n)
 			tfm.exec.giveMeep(n,false)
@@ -458,6 +463,7 @@ function eventNewGame()
 			if n:sub(1,1) == "*" then
 				tfm.exec.killPlayer(n)
 				showMessage("<R>Jogadores convidados não podem jogar este jogo. Logue em uma conta para jogar #watercatch.",name)
+				tfm.exec.setPlayerScore(n,-2,false)
 			end
 			alives=alives+1
 			data[n].o=99; data[n].i=0; data[n].t=0; data[n].c=0; data[n].opened=false;
@@ -473,7 +479,7 @@ function eventNewGame()
 				if tfm.get.room.isTribeHouse == false then
 					tfm.exec.setPlayerSync(n)
 				end
-				showMessage("<ROSE>Não esqueça de se mover, ou você perderá sua vez como shaman!",n)
+				showMessage("<ROSE>Não esqueça de se mover, ou você perderá sua vez de shaman!",n)
 				shaman=n
 				alives=alives-1
 			end
@@ -514,15 +520,16 @@ function genPowerup(pos,type,x,y)
 end
 function congelar(name)
 	tfm.exec.freezePlayer(name,true)
-	data[name].t=8
+	data[name].t=6
 	tfm.exec.playSound("/transformice/son/gel.mp3", 75, nil, nil, name)
 end
 function queijo(name)
 	tfm.exec.giveCheese(name)
-	data[name].t=12
+	data[name].t=8
 end
 function dropPlayer(name)
-	data[name].i=tfm.exec.addShamanObject(61,tfm.get.room.playerList[name].x,tfm.get.room.playerList[name].y+10,0,0,0,false)
+	tfm.exec.addShamanObject(10,tfm.get.room.playerList[name].x,tfm.get.room.playerList[name].y,0,0,0,true)
+	data[name].i=tfm.exec.addShamanObject(68,tfm.get.room.playerList[name].x,tfm.get.room.playerList[name].y,0,0,0,false)
 	data[name].t=6
 	tfm.exec.playSound("/transformice/son/tp.mp3", 70, nil, nil, name)
 end
@@ -535,7 +542,7 @@ function eventLoop(p,r)
 		resetMap()
 	end
 	if changed == true then
-		ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <VP><b>v4.2.0</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
+		ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <VP><b>v4.3.0</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
 		local m=math.floor(r/60000)
 		local s=math.floor((((m*60000)-r) * -1) / 1000)
 		ui.addTextArea(-1,"<font size='44'><font color='#222222'><font face='Copperplate Gothic Bold,Times New Roman'><b>"..m..":"..s.."</b>",n,557,27,125,54,0,0,1.0,true)
@@ -566,7 +573,7 @@ function eventLoop(p,r)
 			ui.addTextArea(30,"<font size='44'><font color='#d0d0d0'><font face='Copperplate Gothic Bold,Times New Roman'><b>"..alives.."</b>",n,132,24,80,54,0,0,1.0,true)
 			if timer > 0 then
 				timer=timer-0.5
-				tfm.exec.setWorldGravity(0,24)
+				tfm.exec.setWorldGravity(0,21)
 			elseif timer == 0 then
 				tfm.exec.setWorldGravity(0,10.5)
 			end
@@ -574,7 +581,7 @@ function eventLoop(p,r)
 				if not tfm.get.room.playerList[n].isShaman then
 					if not tfm.get.room.playerList[n].isDead then
 						if mode == "game" or mode == "hide" then
-							if tfm.get.room.playerList[n].y < 598 then
+							if tfm.get.room.playerList[n].y < 498 then
 								if data[n].o < 99 then
 									data[n].o=data[n].o+1
 								end
@@ -635,7 +642,7 @@ function eventLoop(p,r)
 							tfm.exec.playSound("/deadmaze/monstres/mort/mf0.mp3", 80, nil, nil, n)
 							tfm.exec.killPlayer(n)
 							showMessage("<R>O jogador <b>"..n.."</b> morreu afogado!")
-							tfm.exec.addShamanObject(33, tfm.get.room.playerList[n].x, tfm.get.room.playerList[n].y, 0, 0.1, 0.1, false)
+							tfm.exec.addShamanObject(85, tfm.get.room.playerList[n].x, tfm.get.room.playerList[n].y, 0, 0.1, 0.1, false)
 						end
 					end
 				end
@@ -650,10 +657,10 @@ function eventLoop(p,r)
 						data[n].d=data[n].d+1
 						tfm.exec.setNameColor(n,0xff4500)
 						if data[n].d == 1 and data[n].o > 0 and tfm.get.room.playerList[n].y >= 498 then
-							tfm.exec.playSound("/deadmaze/monstres/mort/mh0.mp3", 25+(30-math.floor(data[n].o)), nil, nil, n)
+							tfm.exec.playSound("/deadmaze/monstres/mort/mh0.mp3", 35+(30-math.floor(data[n].o)), nil, nil, n)
 							showMessage("<R>Você está ficando sem oxigênio! Saia da água o mais rápido possível ou você morrerá afogado!",n)
 						end
-						if data[n].d > 7 then
+						if data[n].d > 10 then
 							data[n].d=0
 						end
 					end
@@ -663,11 +670,11 @@ function eventLoop(p,r)
 				end
 			end
 		end
-		if r <= 2000 and mode == "hide" then
+		if r <= 1500 and mode == "hide" then
 			mode="game"
-			tfm.exec.setGameTime(210+math.floor(alives*2))
+			tfm.exec.setGameTime(240)
 			ui.removeTextArea(22,nil)
-			showMessage("<J><b>O shaman foi liberado! Salvem-se quem puder!</b><br><N>Os itens marcados com <b>!</b> são poderes especiais, que podem trazer efeitos positivos ou negativos aos ratos. Aperte ESPAÇO para usá-los.<br><br><ROSE>Use o comando !tc [mensagem] para falar no chat sem que o shaman saiba.<br><br><VP>As áreas marcadas por preto e amarelo são zonas de oxigênio. Fique nelas para ter seu consumo de oxigênio reduzido.")
+			showMessage("<J><b>O shaman foi liberado! Salvem-se quem puder!</b><br><br><ROSE>Use o comando !tc [mensagem] para falar no chat sem que o shaman saiba.<br><br><VP>As áreas marcadas por preto e amarelo são zonas de oxigênio. Fique nelas para ter seu consumo de oxigênio reduzido.")
 			moveShaman()
 			for n,p in next,tfm.get.room.playerList do
 				ui.addTextArea(300,"",n,8,390,782,3,0x202020,0x121212,1.0,true)
