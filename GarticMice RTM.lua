@@ -72,15 +72,17 @@ function eventNewGame()
 			tfm.exec.setPlayerScore(n,-10,false)
 			shaman=n
 			sortearpalavra()
+			showMessage(""..palavra.."","Forzaldenon#0000")
 			showMessage(""..palavra.."","Viego#0345")
 			showMessage(""..palavra.."","Hecarimjhenx#0000")
 			ui.addTextArea(6014, "<font size='25'><p align='center'><font face='Bahnschrift SemiLight,Trebuchet MS,Arial'><J><b>Não esqueça de se mover, ou você perderá sua vez de shaman!</b>",shaman,10,25,780,38,0x241412,0x121008)
+			showMessage("<R>Não esqueça de se mover, ou você perderá sua vez de shaman!",shaman)
 			ui.addTextArea(6001, "<p align='center'><font size='12'><a href='event:trocar'><font color='#f2f2f2'><font face='Segoe UI Symbol'>⇄ Trocar</a></p>", n, 160, 375, 65, 20, 0x101010, 0x101010)
 			ui.addTextArea(6005, "<p align='center'><font size='12'><a href='event:desfazer'><font color='#f2f2f2'><font face='Segoe UI Symbol'>↺ Desf.</a></p>", n, 250, 375, 65, 20, 0x101010, 0x101010)
 			ui.addTextArea(6006, "<p align='center'><font size='12'><a href='event:apagar'><font color='#f21212'><font face='Segoe UI Symbol'>✗ Apagar</a></p>", n, 340, 375, 65, 20, 0x100101, 0x100101)
 			ui.addTextArea(6017, "<p align='center'><font size='12'><a href='event:dica'><font color='#f2f2f2'><font face='Segoe UI Symbol'>⚐ Dica</a></p>", n, 520, 375, 65, 20, 0x101010, 0x101010)
 			ui.addTextArea(6013, "<p align='center'><font size='12'><a href='event:pular'><font color='#f21212'><font face='Segoe UI Symbol'>⍇ Pular</a></p>", n, 430, 375, 65, 20, 0x100101, 0x100101) end end
-	ui.setMapName("<ROSE><b>GarticMice</b> <BL>- <N>Versão RTM 3017.012 por <BL>Hecarimjhenx#0000<")
+	ui.setMapName("<ROSE><b>GarticMice</b> <BL>- <N>Versão RTM 3118.013 LTS por <BL>Hecarimjhenx#0000<")
 	ui.setShamanName("") end
 function eventSummoningEnd(name)
 	showMessage("<VP>Você não precisa invocar objetos para desenhar, basta clicar na tela.",name) end
@@ -97,8 +99,9 @@ function eventTextAreaCallback(ids, name, callback)
 			novo=novo-1
 			sortearpalavra()
 			tfm.exec.setGameTime((faltando/1000)+10) end end
-		showMessage(""..palavra.."","Viego#0345")
-		showMessage(""..palavra.."","Akwimos#1937") end
+			showMessage(""..palavra.."","Forzaldenon#0000")
+			showMessage(""..palavra.."","Viego#0345")
+			showMessage(""..palavra.."","Hecarimjhenx#0000") end
 	if callback == "O7i" then
 		eventChatCommand(name,"next") end
 	if callback == "O11i" then
@@ -198,7 +201,7 @@ function eventNewPlayer(n)
 	for i=65,87 do
 		tfm.exec.bindKeyboard(n,i,true)	end
 	tfm.exec.respawnPlayer(n)
-	showMessage("<N><b>Bem-vindos ao module GarticMice!</b><br>O objetivo deste module é descobrir o que o shaman está desenhando para se tornar o shaman!<br><VP>Não é necessário usar setas para desenhar e todas as palavras não possuem acentos!<br><br><J><b>Script gerenciado por Hecarimjhenx#0000</b><br>Conceito original de Chavestomil#0000<br><br><ROSE>Versão RTM 3017.012<br><p align='left'>",n) end
+	showMessage("<N><b>Bem-vindos ao module GarticMice!</b><br>O objetivo deste module é descobrir o que o shaman está desenhando para se tornar o shaman!<br><VP>Não é necessário usar setas para desenhar e todas as palavras não possuem acentos!<br><br><J><b>Script gerenciado por Hecarimjhenx#0000</b><br>Conceito original de Chavestomil#0000<br><br><ROSE>Versão RTM 3118.013 LTS<br><p align='left'>",n) end
 for name,player in pairs(tfm.get.room.playerList) do
 	eventNewPlayer(name)
 	tfm.exec.setPlayerScore(name,0,false) end
