@@ -1,5 +1,5 @@
 -- FunCorp, se o jogo começar a sortear muita gente off ou fora da sala, digite !reset para reiniciar o script.
--- Atenção: Esta é uma versão bem antiga do jogo da forca, e que pode conter vários bugs. Para acessar uma versão refeita, utilize o seguinte código:
+-- Atenção: Esta é uma versão bem antiga do jogo da forca, e que pode conter alguns bugs. Para acessar uma versão refeita, utilize o seguinte código:
 -- https://github.com/JW26T-Prj/FunCorpModules/blob/master/Jogo%20da%20forca%20refeito.lua
 
 tfm.exec.disableAfkDeath(true)
