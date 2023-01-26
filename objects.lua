@@ -1,7 +1,7 @@
-for _,f in next,{"help","kill","run","restart","shutdown"} do
+for _,f in next,{"help","kill","restart"} do
 	system.disableChatCommandDisplay(f)
 end
-for _,G in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables",} do
+for _,G in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables"} do
 	tfm.exec["disable"..G](true)
 end
 
@@ -28,12 +28,9 @@ function eventChatCommand(name,message)
 	if message == "help" then
 		showMessage("<J>The objective of this module is survive! Don't hit the objects that are falling! The last alive player wins the game!<br><br><ROSE>Module made by Hecarimjhenx#0000",name)
 	end
-	if name == "Hecarimjhenx#0000" or name == "Forzaldenon#0000" or name == "Viego#0345" then
+	if name == "Hecarimjhenx#0000" then
 		if (message:sub(0,4) == "kill") then
 			tfm.exec.killPlayer(message:sub(6))
-		end
-		if (message:sub(0,3) == "run") then
-			tfm.exec.newGame(message:sub(5))
 		end
 		if message == "restart" then
 			tfm.exec.newGame(mapas[math.random(#mapas)])
@@ -58,9 +55,9 @@ function showBar()
 		if mapas[i] == tfm.get.room.currentMap then
 			local diff=functs.level
 			if map_names[i] == "" then
-				ui.setMapName("<J><b>"..tfm.get.room.currentMap.."   </b><V>|   <N>Difficulty : <R>"..diff.."   <V>|   <N>#objects <ROSE>RTM 9062.046<")
+				ui.setMapName("<J><b>"..tfm.get.room.currentMap.."   </b><V>|   <N>Difficulty : <R>"..diff.."   <V>|   <N>#objects <ROSE>RTM 9163.047 LTS<")
 			else
-				ui.setMapName("<J><b>"..map_names[i].."</b> <BL>- "..tfm.get.room.currentMap.."   <V>|   <N>Difficulty : <R>"..diff.."   <V>|   <N>#objects <ROSE>RTM 9062.046<")
+				ui.setMapName("<J><b>"..map_names[i].."</b> <BL>- "..tfm.get.room.currentMap.."   <V>|   <N>Difficulty : <R>"..diff.."   <V>|   <N>#objects <ROSE>RTM 9163.047 LTS<")
 			end
 		end
 	end
