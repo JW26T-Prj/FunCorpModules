@@ -25,7 +25,7 @@ function showMessage(message,name)
 end
 function eventChatCommand(n,m)
 	if m == "help" then
-		showMessage("<N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço. Caso o shaman morra, a partida é encerrada.<br><br><BL>Mapa criado por Threshlimit#0000 e Patrick_mahomes#1795. Código desenvolvido por Morganadxana#0000.<br>Conceito original de Nettoork#0000.<br>Versão 5.9.0",n)
+		showMessage("<N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço. Caso o shaman morra, a partida é encerrada.<br><br><BL>Mapa criado por Threshlimit#0000 e Patrick_mahomes#1795. Código desenvolvido por Morganadxana#0000.<br>Conceito original de Nettoork#0000.<br>Versão 5.10.0",n)
 	end
 	if m == "cancel" then
 		if n == "Threshlimit#0000" or n == "Morganadxana#0000" or n == "Patrick_mahomes#1795" or n == "Viego#0345" or n == "Forzaldenon#0000" then
@@ -49,16 +49,16 @@ function rodar(name)
 	tfm.exec.addImage("182d6e2305b.png","?1",math.random(-350,1550),math.random(-350,2000),name,-1,1)
 	tfm.exec.addImage("182d6e1e45c.png","?1",math.random(-350,1550),math.random(-350,2000),name)
 	tfm.exec.addImage("182d6e1e45c.png","?1",math.random(-350,1550),math.random(-350,2000),name,-1,1)
-	for i=0,4 do
+	for i=0,2 do
 		tfm.exec.addImage("181ba85ccc2.png","!1",math.random(-400,1500),math.random(3222,4900),name)
 	end
-	for j=0,3 do
+	for j=0,2 do
 		tfm.exec.addImage("181ba86195e.png","!1",math.random(-400,1500),math.random(3222,4900),name)
 	end
-	for k=0,4 do
+	for k=0,2 do
 		tfm.exec.addImage("181ba86655c.png","!1",math.random(-400,1500),math.random(3222,4900),name)
 	end
-	for l=0,3 do
+	for l=0,2 do
 		tfm.exec.addImage("181ba86b15a.png","!1",math.random(-400,1500),math.random(3222,4900),name)
 	end
 	for m=1,3 do
@@ -194,7 +194,7 @@ end
 function eventNewPlayer(n)
 	if changed == true then
 		ui.setMapName("<font color='#1288e8'><b>RockerLaunch 5</b> <N>Project by <VP>Threshlimit#0000, <ROSE>Morganadxana#0000<N> and <R>Patrick_mahomes#1795<")
-		showMessage("<VP>Bem-vindos ao RockerLaunch 5!<br><N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço! Digite !help para saber como jogar.<br><br><BL>Créditos para Threshlimit#0000, Morganadxana#0000 e Patrick_mahomes#1795. Conceito original de Nettoork#0000.<br><J>Versão 5.9.0",n)
+		showMessage("<VP>Bem-vindos ao RockerLaunch 5!<br><N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço! Digite !help para saber como jogar.<br><br><BL>Créditos para Threshlimit#0000, Morganadxana#0000 e Patrick_mahomes#1795. Conceito original de Nettoork#0000.<br><J>Versão 5.10.0",n)
 		newData={
 			["message"]=0,
 			["reached"]=false
