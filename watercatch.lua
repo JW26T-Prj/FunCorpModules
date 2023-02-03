@@ -7,8 +7,14 @@ for _,f in next,{"help","ajuda","tc","kill","powerups","creditos","changelog","r
 	system.disableChatCommandDisplay(f)
 end
 if tfm.get.room.isTribeHouse == false then tfm.exec.setRoomMaxPlayers(40) end
+
 shaman=""; alives=0; cannons=10; z=0; data={}; mode="load"; changed=false; loop=0; timer=0; xml=''; time_passed=0; time_remain=0;
-powerups={x1=-1,x2=-1,x3=-1,x4=-1,x5=-1,y1=-1,y2=-1,y3=-1,y4=-1,y5=-1,t1=0,t2=0,t3=0,t4=0,t5=0}
+active_imgs={}; active_imgs2={}; powerups_x={}; powerups_y={}; powerups_types={}; oxygen_x={}; oxygen_y={};
+border={type = 12,width = 3000,height = 10}
+borderx={type = 12,width = 10,height = 3000}
+d1={2670,5585,3580}; d2={1040,1900,1820};
+e1={5170,4288,3942,3080,2808,2398,123,744,4335,5777,543}; e2={760,1578,850,840,1441,999,987,2144,1953,2578,1132};
+e3={5150,4944,4350,3885,3499,1610,3696,2870,1997,3100,1366,950,5660}; e4={1280,1488,1190,1080,819,750,1449,2330,2090,2700,1666,1400,1720};
 
 function showMessage(message,name)
 	temp_text=string.gsub(message,"<b>","")
@@ -131,38 +137,53 @@ function verifyAdmin(name)
 	end
 end
 function showWater(name)
-	for i=0,6 do
-		tfm.exec.addImage("185c2e9252b.png", "?1", -800+(i*944), 457, name, 1.0, 1.0, 0, 1.0)
-		tfm.exec.addImage("185c2e9252b.png", "!1", -800+(i*944), 457, name, 1.0, 1.0, 0, 0.55)
+	for d=1,rawlen(d2) do
+		tfm.exec.addImage("1860ee29c2f.png","?1",d1[d],d2[d],name)
 	end
-	tfm.exec.addImage("185c2e88ac8.png", "!1", -800, 664, name, 30, 3.6)
-	tfm.exec.addImage("185c2e88ac8.png", "!1", -800, 3904, name, 30, -3.6)
-	tfm.exec.addImage("185c2e8d858.png", "?1", -800, 664, name, 30, 3.6)
+	for e=1,rawlen(e2) do
+		tfm.exec.addImage("1860ee24f31.png","?1",e1[e],e2[e],name,0.5,0.5)
+	end
+	for f=1,rawlen(e4) do
+		tfm.exec.addImage("1860ee24f31.png","?1",e3[f],e4[f],name,-0.5,0.5)
+	end
+	tfm.exec.addImage("1860ee2e933.png","?1",1500,2500,name,-1,1)
+	tfm.exec.addImage("1860ee2e933.png","?1",4650,2500,name)
+	for a=0,4 do
+		tfm.exec.addImage("1860ee4bc27.png","?1",-800+(a*1762),680,name,1,1,0,1)
+		tfm.exec.addImage("1860ee4bc27.png","!1",-800+(a*1762),680,name,1,1,0,0.65)
+	end
+	for b=0,10 do
+		tfm.exec.addImage("1860ee46b2e.jpg","?1",-800+(b*690),1012,name,1,3.5,0,1)
+		tfm.exec.addImage("1860ee41de2.png","!1",-800+(b*690),1012,name,1,3.5,0,1)
+		tfm.exec.addImage("1860ee46b2e.jpg","?1",-800+(b*690),5212,name,1,-3.5,0,1)
+		tfm.exec.addImage("1860ee41de2.png","!1",-800+(b*690),5212,name,1,-3.5,0,1)
+	end
+	tfm.exec.addImage("17fe3741e5f.jpg","?1",-800,-1000,name,11,1.6,0,1)
+	tfm.exec.addImage("1860ee201fd.png","!1",1640,1888,name,-1,1)
+	tfm.exec.addImage("1860ee201fd.png","!1",5282,1291,name)
+	tfm.exec.addImage("1860ee201fd.png","!1",330,1169,name,-1,1)
+	tfm.exec.addImage("1860ee201fd.png","!1",4000,1304,name,-1,1)
 	for _,m in next,{0,2,4} do
-		tfm.exec.addImage("18204168d2e.png","!1",-1200+(m*1400),2590,name,1,-1.5,0,1)
+		tfm.exec.addImage("18204168d2e.png","!1",-1200+(m*1400),3508,name,1,-1.5,0,1)
 	end
 	for _,n in next,{1,3,5} do
-		tfm.exec.addImage("18204168d2e.png","!1",200+(n*1400),2590,name,-1,-1.5,0,1)
+		tfm.exec.addImage("18204168d2e.png","!1",200+(n*1400),3508,name,-1,-1.5,0,1)
 	end
 	for _,h in next,{0,2,4} do
-		tfm.exec.addImage("18204168d2e.png","!1",-1200+(h*1400),2122,name,1,0.4,0,1)
+		tfm.exec.addImage("18204168d2e.png","!1",-1200+(h*1400),3010,name,1,0.5,0,1)
 	end
 	for _,j in next,{1,3,5} do
-		tfm.exec.addImage("18204168d2e.png","!1",200+(j*1400),2122,name,-1,0.4,0,1)
+		tfm.exec.addImage("18204168d2e.png","!1",200+(j*1400),3010,name,-1,0.5,0,1)
 	end
-	for w=1,2 do
-		tfm.exec.addImage("181ba85ccc2.png","!1",math.random(50,4000),math.random(-50,250),name,0.5,0.5)
+	for i=0,1 do
+		tfm.exec.addPhysicObject(i, 0, -200+(i*3000), borderx)
 	end
-	for x=1,2 do
-		tfm.exec.addImage("181ba86195e.png","!1",math.random(50,4000),math.random(-50,250),name,0.5,0.5)
+	for j=0,1 do
+		tfm.exec.addPhysicObject(j+2, 6100, j*3000, borderx)
 	end
-	for y=1,3 do
-		tfm.exec.addImage("181ba86655c.png","!1",math.random(50,4000),math.random(-50,250),name,0.5,0.5)
+	for k=0,1 do
+		tfm.exec.addPhysicObject(k+4, k*3000, -200, border)
 	end
-	for z=1,3 do
-		tfm.exec.addImage("181ba86b15a.png","!1",math.random(50,4000),math.random(-50,250),name,0.5,0.5)
-	end
-	tfm.exec.addImage("17fe3741e5f.jpg","?1",-400,-350,name,8.5,1,0,1)
 end
 function eventPlayerDied(n)
 	if not tfm.get.room.playerList[n].isShaman then
@@ -194,36 +215,26 @@ end
 function moveShaman()
 	position=math.random(1,3)
 	if position == 1 then
-		tfm.exec.movePlayer(shaman,631,181,false,0,0,false)
+		tfm.exec.movePlayer(shaman,380,340,false,0,0,false)
 	elseif position == 2 then
-		tfm.exec.movePlayer(shaman,2769,50,false,0,0,false)
+		tfm.exec.movePlayer(shaman,3280,500,false,0,0,false)
 	elseif position == 3 then
-		tfm.exec.movePlayer(shaman,4333,186,false,0,0,false)
+		tfm.exec.movePlayer(shaman,5645,400,false,0,0,false)
 	end
 end
 function checkOxygenZones(name)
-	if tfm.get.room.playerList[name].x >= 2328 and tfm.get.room.playerList[name].x <= 2474 then
-		if tfm.get.room.playerList[name].y >= 1230 and tfm.get.room.playerList[name].y <= 1300 then
+	if tfm.get.room.playerList[name].x >= 960 and tfm.get.room.playerList[name].x <= 1080 then
+		if tfm.get.room.playerList[name].y >= 2180 and tfm.get.room.playerList[name].y <= 2270 then
 			return true
 		end
 	end
-	if  tfm.get.room.playerList[name].x >= 442 and tfm.get.room.playerList[name].x <= 585 then
-		if tfm.get.room.playerList[name].y >= 2106 then
+	if  tfm.get.room.playerList[name].x >= 1960 and tfm.get.room.playerList[name].x <= 2080 then
+		if tfm.get.room.playerList[name].y >= 2940 and tfm.get.room.playerList[name].y <= 3010 then
 			return true
 		end
 	end
-	if tfm.get.room.playerList[name].x >= 3918 and tfm.get.room.playerList[name].x <= 4066 then
-		if tfm.get.room.playerList[name].y >= 1270 and tfm.get.room.playerList[name].y <= 1405 then
-			return true
-		end
-	end
-	if tfm.get.room.playerList[name].x >= 3818 and tfm.get.room.playerList[name].x <= 3966 then
-		if tfm.get.room.playerList[name].y >= 1800 and tfm.get.room.playerList[name].y <= 1894 then
-			return true
-		end
-	end
-	if tfm.get.room.playerList[name].x >= 705 and tfm.get.room.playerList[name].x <= 850 then
-		if tfm.get.room.playerList[name].y >= 1467 and tfm.get.room.playerList[name].y <= 1548 then
+	if tfm.get.room.playerList[name].x >= 4510 and tfm.get.room.playerList[name].x <= 4630 then
+		if tfm.get.room.playerList[name].y >= 1900 and tfm.get.room.playerList[name].y <= 1985 then
 			return true
 		end
 	end
@@ -231,17 +242,15 @@ end
 function eventNewPlayer(name)
 	tfm.exec.setPlayerScore(name,0,false)
 	showWater(name)
-	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <VP><b>v4.3.0</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
+	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <VP><b>v5.0.0</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
 	newData={
-	["o"]=99; ["i"]=0; ["t"]=0; ["c"]=0; ["opened"]=false; ["imageid"]=-1; ["imageid2"]=-1; ["imageid3"]=-1; ["imageid4"]=-1; ["imaget"]=5; ["shark_id"]=0; ["shark"]=0; ["active_imgs"]={};
+	["o"]=99; ["i"]=0; ["t"]=0; ["c"]=0; ["opened"]=false; ["imageid"]=-1; ["imageid2"]=-1; ["imageid3"]=-1; ["imageid4"]=-1; ["shark_id"]=0; ["shark"]=0; ["active_imgs"]={};
 	};
 	data[name] = newData;
-	showMessage("<font color='#0080ff'><b>Bem-vindos ao module #watercatch!</b><br><J>Digite !help para ver a ajuda deste module.<br><br><N>Module criado por Morganadxana#0000.<br><br><BL>Atenção: Conexões lentas com a Internet podem fazer com que as artes da água demorem para carregar.<br><br>Caso o mapa não carregue, saia do jogo e entre novamente.",name)
-	data[name].imageid = tfm.exec.addImage("17a53e210bf.png","&1",180,90,name)
-	data[name].imageid2 = tfm.exec.addImage("17a53e1f94c.png",":1",0,350,name)
-	data[name].imageid3 = tfm.exec.addImage("17ae4e47000.png","&1",2,22,name)
-	data[name].imageid4 = tfm.exec.addImage("17ae4e48770.png","&1",670,22,name)
-	data[name].imaget=5
+	showMessage("<font color='#0080ff'><b>Bem-vindos ao module #watercatch!</b><br><J>Digite !help para ver a ajuda deste module.<br><br><N>Module criado por Morganadxana#0000.",name)
+	data[name].imageid2 = tfm.exec.addImage("1860ee3d02a.png","&1",724,224,name)
+	data[name].imageid3 = tfm.exec.addImage("17ae4e47000.png","&1",2,370,name,0.5,0.5)
+	data[name].imageid4 = tfm.exec.addImage("17ae4e48770.png","&1",152,370,name,0.5,0.5)
 	ui.addTextArea(299,"<p align='center'><a href='event:hide_menu'><font size='18'>Menu",name,365,25,70,24,0x000001,0x000001,0.75,true)
 end
 for name,player in next,tfm.get.room.playerList do
@@ -252,7 +261,7 @@ function eventChatCommand(name,message)
 		showMenu(name,0xf0f0f0,140,90,520,265,"Ajuda do Module #watercatch","O objetivo é bem simples: <b>Fugir do shaman</b>, se escondendo dentro do lago e tomando cuidado para não morrer afogado!<br><R><b>Shamans, não esqueçam de se mexer, ou irão morrer AFK!</b><br><br><VP>Os quadrados marcados por <N>'!'<VP> são powerups, que geram efeitos aleatórios nos ratos.<J><br>Estes powerups podem ser acionados pressionando ESPAÇO em cima deles.<br><N>Você pode ver os possíveis efeitos dos powerups indo no Menu e clicando em Powerups. Vale ressaltar que eles funcionam apenas depois que o shaman for liberado.<br><br><N>Caso você seja shaman, você tem um limite de <b>10</b> objetos que podem ser utilizados. Exceder este limite fará com que a partida acabe.")
 	end
 	if message == "powerups" then
-		showMenu(name,0xf0f0f0,140,86,520,290,"Powerups do Module #watercatch","<font size='11'>Os seguintes powerups estão disponíveis no momento:<br><ROSE><b>• ARMADILHA</b><N><br>Prende seu rato em uma armadilha triangular.<br><ROSE><b>• OXIGÊNIO</b><N><br>Aumenta o seu nível de oxigênio em 50%.<br><ROSE><b>• VELOCIDADE</b><N><br>Te dá um grande impulso de velocidade.<br><ROSE><b>• AFUNDAR</b><N><br>Cria uma curta anomalia que puxa todos os ratos em direção ao fundo do lago.<br><ROSE><b>• MEEP</b><N><br>Te dá o poder de usar o Meep!<br><ROSE><b>• SUFOCO</b><N><br>Diminui o seu nível de oxigênio em 35%. Caso seu nível esteja abaixo disso e você pegue este powerup, você morrerá afogado.<br><ROSE><b>• CONGELAR</b><N><br>Congela o seu rato.<br><ROSE><b>• QUEIJO</b><N><br>Dá queijo para o seu rato. Caso você esteja dentro do lago, você provavelmente será levado para o fundo dele.")
+		showMenu(name,0xf0f0f0,140,100,520,270,"Powerups do Module #watercatch","<font size='11'>Os seguintes powerups estão disponíveis no momento:<br><ROSE><b>• VAMPIRO</b><N><br>Transforma seu rato em um vampiro, forçando você a ir para fora do lago.<br><ROSE><b>• ESCURIDÃO</b><N><br>Reduz drasticamente o campo de visão do seu rato.<br><ROSE><b>• AFUNDAR</b><N><br>Cria uma curta anomalia que puxa todos os ratos em direção ao fundo do lago.<br><ROSE><b>• MEEP</b><N><br>Te dá o poder de usar o Meep!<br><ROSE><b>• SUFOCO</b><N><br>Diminui o seu nível de oxigênio em 35%. Caso seu nível esteja abaixo disso e você pegue este powerup, você morrerá afogado.<br><ROSE><b>• CONGELAR</b><N><br>Congela o seu rato.<br><ROSE><b>• QUEIJO</b><N><br>Dá queijo para o seu rato. Caso você esteja dentro do lago, você provavelmente será levado para o fundo dele.")
 	end
 	if message == "creditos" then
 		showMenu(name,0xf0f0f0,140,90,520,150,"Créditos","As seguintes pessoas ajudaram no desenvolvimento deste module:<br><br><ROSE><b>• Morganadxana#0000</b><N> - Desenvolvedora do código<br><ROSE><b>• Shun_kazami#7014</b><N> - Criação do mapa<br><ROSE><b>• Akwimos#1937</b><N> - Tradução do código original para o Português<br><ROSE><b>• Spectra_phantom#6089</b><N> - Ideia original e criação das artes")
@@ -273,7 +282,7 @@ function eventChatCommand(name,message)
 		end
 	end
 	if message == "changelog" then
-		showMenu(name,0xf0f0f0,140,90,520,180,"Changelog da Versão 4.3.0","• Correções de bugs nas zonas de oxigênio<br>• Correção de bug na escolha de skins<br>• O powerup OXIGÊNIO foi melhorado de 40% para 50%<br>• O powerup CAIXA foi substituído por ARMADILHA<br>• O tempo do powerup QUEIJO foi reduzido de 12 para 8 segundos<br>• O tempo do powerup CONGELAR foi reduzido de 8 para 6 segundos<br>• O tempo das partidas agora é fixado em 4 minutos<br>• Os ratos que morrem afogados viram pedras ao invés de galinhas")
+		showMenu(name,0xf0f0f0,140,90,520,210,"Changelog da Versão 5.0.0","• Novo tema de mapa: Rio Nilo!<br>• Adição de novo powerup: ESCURIDÃO!<br>• Novas imagens para os powerups<br>• O powerup OXIGÊNIO foi removido. Agora, pontos específicos de oxigênio estão disponíveis no rio<br>• Nova barra de medição de oxigênio<br>• O powerup ARMADILHA foi substituído por VAMPIRO<br>• O tempo do powerup CONGELAR foi aumentado de 6 para 9 segundos<br>• Mudanças no cálculo no tempo das partidas<br>• Várias correções de bugs")
 	end
 	if (message:sub(0,2)== "tc") then
 		if tfm.get.room.playerList[name].isShaman == false then
@@ -318,7 +327,7 @@ end
 function resetMap()
 	if xml == '' then
 		tfm.exec.disableAutoShaman(true)
-		tfm.exec.newGame("@7925247")
+		tfm.exec.newGame("@7926250")
 		ui.setMapName("Carregando mapa. Por favor, aguarde...<")
 		changed=false
 		mode="load"
@@ -329,25 +338,16 @@ function resetMap()
 end
 function activatePowerup(name,id,number)
 	if id == 1 then
-		showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>ARMADILHA!</b>")
+		showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>VAMPIRO!</b>")
 		dropPlayer(name)
 		tfm.exec.playSound("/transformice/son/petard.mp3", 75, nil, nil, name)
 	elseif id == 2 then
-		showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>OXIGÊNIO!</b>")
-		if not tfm.get.room.playerList[name].isShaman then
-			data[name].o=data[name].o+50
-			if data[name] and data[name].o > 100 then
-				data[name].o=100
-			end
-		end
-		tfm.exec.playSound("/deadmaze/objectif2.mp3", 75, nil, nil, name)
+		showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>QUEIJO!</b>")
+		queijo(name)
+		tfm.exec.playSound("/transformice/son/petard.mp3", 75, nil, nil, name)
 	elseif id == 3 then
-		showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>VELOCIDADE!</b>")
-		if tfm.get.room.playerList[name].movingRight == true then
-			tfm.exec.movePlayer(name,0,0,true,120,0,false)
-		else
-			tfm.exec.movePlayer(name,0,0,true,-120,0,false)
-		end
+		showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>ESCURIDÃO!</b>")
+		escuro(name)
 		tfm.exec.playSound("/transformice/son/chamane2.mp3", 65, nil, nil, name)
 	elseif id == 4 then
 		showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>AFUNDAR!</b>")
@@ -369,58 +369,41 @@ function activatePowerup(name,id,number)
 	elseif id == 7 then
 		showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>CONGELAR!</b>")
 		congelar(name)
-	elseif id == 8 then
-		showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>QUEIJO!</b>")
-		queijo(name)
 	end
-	if number == 1 then
-		powerups.x1=-1; powerups.y1=-1;
-		ui.removeTextArea(100,nil)
-	elseif number == 2 then
-		powerups.x2=-1; powerups.y2=-1;
-		ui.removeTextArea(101,nil)
-	elseif number == 3 then
-		powerups.x3=-1; powerups.y3=-1;
-		ui.removeTextArea(102,nil)
-	elseif number == 4 then
-		powerups.x4=-1; powerups.y4=-1;
-		ui.removeTextArea(103,nil)
-	elseif number == 5 then
-		powerups.x5=-1; powerups.y5=-1;
-		ui.removeTextArea(104,nil)
-	end
+	powerups_x[number]=-1024; powerups_y[number]=-1024; powerups_types[number]=-1;
+	tfm.exec.removeImage(active_imgs[number])
 end
-function eventKeyboard(name,key,down)
-	if key == 32 and mode == "game" then
-		if tfm.get.room.playerList[name].x > powerups.x1-10 and tfm.get.room.playerList[name].x < powerups.x1+34 then
-			if tfm.get.room.playerList[name].y > powerups.y1-10 and tfm.get.room.playerList[name].y < powerups.y1+34 then
-				activatePowerup(name,math.random(1,8),1)
+function activateOxygen(name,number)
+	if data[name] then
+		count=math.random(10,60);
+		data[name].o=data[name].o+count
+		if data[name].o > 100 then
+			data[name].o=100
+		end
+	end
+	oxygen_x[number]=-1024; oxygen_y[number]=-1024;
+	tfm.exec.removeImage(active_imgs2[number])
+end
+function eventKeyboard(name,key,down,x,y)
+	if key == 32 and mode == "game" and time_passed >= 125 then
+		for i=1,6 do
+			if x >= powerups_x[i] and x <= powerups_x[i]+51 then
+				if y >= powerups_y[i] and y <= powerups_y[i]+51 then
+					activatePowerup(name,powerups_types[i],i)
+				end
 			end
 		end
-		if tfm.get.room.playerList[name].x > powerups.x2-10 and tfm.get.room.playerList[name].x < powerups.x2+34 then
-			if tfm.get.room.playerList[name].y > powerups.y2-10 and tfm.get.room.playerList[name].y < powerups.y2+34 then
-				activatePowerup(name,math.random(1,8),2)
-			end
-		end
-		if tfm.get.room.playerList[name].x > powerups.x3-10 and tfm.get.room.playerList[name].x < powerups.x3+34 then
-			if tfm.get.room.playerList[name].y > powerups.y3-10 and tfm.get.room.playerList[name].y < powerups.y3+34 then
-				activatePowerup(name,math.random(1,8),3)
-			end
-		end
-		if tfm.get.room.playerList[name].x > powerups.x4-10 and tfm.get.room.playerList[name].x < powerups.x4+34 then
-			if tfm.get.room.playerList[name].y > powerups.y4-10 and tfm.get.room.playerList[name].y < powerups.y4+34 then
-				activatePowerup(name,math.random(1,8),4)
-			end
-		end
-		if tfm.get.room.playerList[name].x > powerups.x5-10 and tfm.get.room.playerList[name].x < powerups.x5+34 then
-			if tfm.get.room.playerList[name].y > powerups.y5-10 and tfm.get.room.playerList[name].y < powerups.y5+34 then
-				activatePowerup(name,math.random(1,8),5)
+		for i=1,4 do
+			if x >= oxygen_x[i] and x <= oxygen_x[i]+51 then
+				if y >= oxygen_y[i] and y <= oxygen_y[i]+51 then
+					activateOxygen(name,i)
+				end
 			end
 		end
 	end
 	if key == 37 or key == 38 or key == 39 or key == 40 or key == 65 or key == 68 or key == 83 or key == 87 then
 		if shaman == name and data[name].shark >= 1 then
-			if data[name] and tfm.get.room.playerList[name].y >= 505 then
+			if data[name] and tfm.get.room.playerList[name].y >= 705 then
 				tfm.exec.changePlayerSize(name,0.2)
 				if key == 39 or key == 68 then
 					tfm.exec.removeImage(data[name].shark_id)
@@ -466,7 +449,7 @@ function eventNewGame()
 				tfm.exec.setPlayerScore(n,-2,false)
 			end
 			alives=alives+1
-			data[n].o=99; data[n].i=0; data[n].t=0; data[n].c=0; data[n].opened=false;
+			data[n].o=100; data[n].i=0; data[n].t=0; data[n].c=0; data[n].opened=false;
 			for i=32,40 do
 				tfm.exec.bindKeyboard(n,i,true,true)
 			end
@@ -483,7 +466,7 @@ function eventNewGame()
 				shaman=n
 				alives=alives-1
 			end
-			ui.addTextArea(300,"",n,8,390,782,3,0x202020,0x121212,1.0,true)
+			ui.addTextArea(300,"",n,740,255,8,145,0x202020,0x121212,1.0,true)
 			ui.addTextArea(299,"<p align='center'><a href='event:show_menu'><font size='18'>Menu",n,365,25,70,24,0x000001,0x000001,0.75,true)
 			ui.removeTextArea(298,n)
 		end
@@ -500,63 +483,74 @@ function showMenu(name,color,x,y,width,height,title,content)
 		ui.addTextArea(1003,"<font color='#ff2300'><font size='14'><b><a href='event:close'>X</a>",name,x+width-25,y+5,width-10,20,0,0,0.95,true)
 	end
 end
-function genPowerup(pos,type,x,y)
-	if pos == 1 then
-		ui.addTextArea(100,"<font size='18'><font color='#010101'><p align='center'>?",nil,x,y,22,22,0xd0d0d0,0x808080,1.0,false)
-		powerups.x1=x; powerups.y1=y; powerups.t1=type;
-	elseif pos == 2 then
-		ui.addTextArea(101,"<font size='18'><font color='#010101'><p align='center'>?",nil,x,y,22,22,0xd0d0d0,0x808080,1.0,false)
-		powerups.x2=x; powerups.y2=y; powerups.t2=type;
-	elseif pos == 3 then
-		ui.addTextArea(102,"<font size='18'><font color='#010101'><p align='center'>?",nil,x,y,22,22,0xd0d0d0,0x808080,1.0,false)
-		powerups.x3=x; powerups.y3=y; powerups.t3=type;
-	elseif pos == 4 then
-		ui.addTextArea(103,"<font size='18'><font color='#010101'><p align='center'>?",nil,x,y,22,22,0xd0d0d0,0x808080,1.0,false)
-		powerups.x4=x; powerups.y4=y; powerups.t4=type;
-	elseif pos == 5 then
-		ui.addTextArea(104,"<font size='18'><font color='#010101'><p align='center'>?",nil,x,y,22,22,0xd0d0d0,0x808080,1.0,false)
-		powerups.x5=x; powerups.y5=y; powerups.t5=type;
+function genPowerup()
+	for i=1,6 do
+		temp_x=math.random(500,5500); temp_y=math.random(750,2950); type=math.random(1,7);
+		imageId = tfm.exec.addImage("1860ee33630.png","!1",temp_x,temp_y,nil)
+		table.insert(powerups_x,temp_x); table.insert(powerups_y,temp_y); table.insert(powerups_types,type);
+		table.insert(active_imgs,imageId)
 	end
+end
+function genOxygen()
+	for i=1,4 do
+		temp_x1=math.random(500,5500); temp_y1=math.random(750,2950);
+		imageId1 = tfm.exec.addImage("1860ee38326.png","!1",temp_x1,temp_y1,nil)
+		table.insert(oxygen_x,temp_x1); table.insert(oxygen_y,temp_y1);
+		table.insert(active_imgs2,imageId1)
+	end
+end
+function removePowerups()
+	for i=1,rawlen(active_imgs) do
+		tfm.exec.removeImage(active_imgs[i])
+	end
+	for i=1,rawlen(active_imgs2) do
+		tfm.exec.removeImage(active_imgs2[i])
+	end
+	active_imgs={}; active_imgs2={}; powerups_x={}; powerups_y={}; powerups_types={}; oxygen_x={}; oxygen_y={};
 end
 function congelar(name)
 	tfm.exec.freezePlayer(name,true)
-	data[name].t=6
+	data[name].t=9
 	tfm.exec.playSound("/transformice/son/gel.mp3", 75, nil, nil, name)
 end
 function queijo(name)
 	tfm.exec.giveCheese(name)
 	data[name].t=8
 end
+function escuro(name)
+	tfm.exec.setPlayerNightMode(true, name)
+	data[name].t=10
+end
 function dropPlayer(name)
-	tfm.exec.addShamanObject(10,tfm.get.room.playerList[name].x,tfm.get.room.playerList[name].y,0,0,0,true)
-	data[name].i=tfm.exec.addShamanObject(68,tfm.get.room.playerList[name].x,tfm.get.room.playerList[name].y,0,0,0,false)
-	data[name].t=6
+	tfm.exec.setVampirePlayer(name, true)
+	tfm.exec.setPlayerGravityScale(name, 0.5, 1)
+	data[name].t=10
 	tfm.exec.playSound("/transformice/son/tp.mp3", 70, nil, nil, name)
 end
 function eventLoop(p,r)
 	loop=loop+0.5
 	time_passed=math.ceil(p/500)
 	time_remain=math.ceil(r/500)
-	if time_passed >= 12 and tfm.get.room.currentMap == "@7925247" then
+	if time_passed >= 12 and tfm.get.room.currentMap == "@7926250" then
 		tfm.exec.disableAutoShaman(false)
 		resetMap()
 	end
 	if changed == true then
-		ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <VP><b>v4.3.0</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
+		ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <VP><b>v5.0.0</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
 		local m=math.floor(r/60000)
 		local s=math.floor((((m*60000)-r) * -1) / 1000)
-		ui.addTextArea(-1,"<font size='44'><font color='#222222'><font face='Copperplate Gothic Bold,Times New Roman'><b>"..m..":"..s.."</b>",n,557,27,125,54,0,0,1.0,true)
-		ui.addTextArea(-2,"<font size='44'><font color='#d0d0d0'><font face='Copperplate Gothic Bold,Times New Roman'><b>"..m..":"..s.."</b>",n,554,24,125,54,0,0,1.0,true)
+		ui.addTextArea(-1,"<font size='30'><font color='#222222'><font face='Calisto MT,Times New Roman'><b>"..m..":"..s.."</b>",n,222,365,125,54,0,0,1.0,true)
+		ui.addTextArea(-2,"<font size='30'><font color='#d0d0d0'><font face='Calisto MT,Times New Roman'><b>"..m..":"..s.."</b>",n,220,363,125,54,0,0,1.0,true)
 		if s < 10 then
-			ui.addTextArea(-1,"<font size='44'><font face='Copperplate Gothic Bold,Times New Roman'><font color='#222222'><b>"..m..":0"..s.."</b>",n,557,27,125,54,0,0,1.0,true)
-			ui.addTextArea(-2,"<font size='44'><font color='#d0d0d0'><font face='Copperplate Gothic Bold,Times New Roman'><b>"..m..":0"..s.."</b>",n,554,24,125,54,0,0,1.0,true)
+			ui.addTextArea(-1,"<font size='30'><font face='Calisto MT,Times New Roman'><font color='#222222'><b>"..m..":0"..s.."</b>",n,222,365,125,54,0,0,1.0,true)
+			ui.addTextArea(-2,"<font size='30'><font color='#d0d0d0'><font face='Calisto MT,Times New Roman'><b>"..m..":0"..s.."</b>",n,220,363,125,54,0,0,1.0,true)
 		end
 		if mode == "game" then
-			if loop >= 24 then
+			if loop >= 30 then
 				if time_passed >= 120 then
-					for i=1,5 do
-						genPowerup(i,math.random(1,9),math.random(100,4700),math.random(600,1800))
-					end
+					removePowerups()
+					genPowerup()
+					genOxygen()
 					loop=0
 					tfm.exec.playSound("/transformice/son/invoc.mp3", 40, nil, nil, nil)
 				end
@@ -569,8 +563,8 @@ function eventLoop(p,r)
 			end
 		end
 		if mode == "game" or mode == "hide" then
-			ui.addTextArea(31,"<font size='44'><font color='#222222'><font face='Copperplate Gothic Bold,Times New Roman'><b>"..alives.."</b>",n,135,27,80,54,0,0,1.0,true)
-			ui.addTextArea(30,"<font size='44'><font color='#d0d0d0'><font face='Copperplate Gothic Bold,Times New Roman'><b>"..alives.."</b>",n,132,24,80,54,0,0,1.0,true)
+			ui.addTextArea(31,"<font size='30'><font color='#222222'><font face='Calisto MT,Times New Roman'><b>"..alives.."</b>",n,72,365,80,54,0,0,1.0,true)
+			ui.addTextArea(30,"<font size='30'><font color='#d0d0d0'><font face='Calisto MT,Times New Roman'><b>"..alives.."</b>",n,70,363,80,54,0,0,1.0,true)
 			if timer > 0 then
 				timer=timer-0.5
 				tfm.exec.setWorldGravity(0,21)
@@ -581,21 +575,21 @@ function eventLoop(p,r)
 				if not tfm.get.room.playerList[n].isShaman then
 					if not tfm.get.room.playerList[n].isDead then
 						if mode == "game" or mode == "hide" then
-							if tfm.get.room.playerList[n].y < 498 then
+							if tfm.get.room.playerList[n].y < 695 then
 								if data[n].o < 99 then
 									data[n].o=data[n].o+1
 								end
 							data[n].y=0
 						else
 							if checkOxygenZones(n) == true then
-								data[n].o=data[n].o-0.2
+								data[n].o=data[n].o-0.1
 							else
 								tfm.exec.playSound("/transformice/son/bulle2.mp3", 6, nil, nil, n)
-								if tfm.get.room.playerList[n].y <= 1625 then
-									data[n].o=data[n].o-0.5
+								if tfm.get.room.playerList[n].y <= 2080 then
+									data[n].o=data[n].o-0.4
 									data[n].c=0
-									elseif tfm.get.room.playerList[n].y > 1625 then
-										data[n].o=data[n].o-0.7
+									elseif tfm.get.room.playerList[n].y > 2080 then
+										data[n].o=data[n].o-0.6
 										data[n].c=0
 									end
 								end
@@ -611,12 +605,6 @@ function eventLoop(p,r)
 		end
 		for n,q in next,tfm.get.room.playerList do
 			if data[n] then
-				if data[n].imaget >= 0 then
-					data[n].imaget=data[n].imaget-0.5
-				end
-				if data[n].imaget == 0 then
-					tfm.exec.removeImage(data[n].imageid)
-				end
 				data[n].x=tfm.get.room.playerList[n].x
 				data[n].yp=tfm.get.room.playerList[n].y
 				if mode == "game" then
@@ -635,6 +623,9 @@ function eventLoop(p,r)
 							tfm.exec.removeObject(data[n].i)
 							tfm.exec.freezePlayer(n,false)
 							tfm.exec.removeCheese(n)
+							tfm.exec.setPlayerNightMode(false, n)
+							tfm.exec.setVampirePlayer(n, false)
+							tfm.exec.setPlayerGravityScale(n, 1, 1)
 						end
 					end
 					if not tfm.get.room.playerList[n].isDead then
@@ -648,14 +639,12 @@ function eventLoop(p,r)
 				end
 				if mode == "game" or mode == "hide" then
 					if data[n].o > 30 then
-						ui.addTextArea(10,"",n,8,390,(data[n].o*7.9),3,0xf0f0f0,0x808080,1.0,true)
+						ui.addTextArea(10,"",n,740,400-(data[n].o*1.45),8,145,0xf0f0f0,0x808080,1.0,true)
 						data[n].d=0
-						tfm.exec.setNameColor(n,0xc2c2da)
 					elseif data[n].o > 0 then
 						tfm.exec.playSound("/transformice/son/bulle3.mp3", 30, nil, nil, n)
-						ui.addTextArea(10,"",n,8,390,(data[n].o*7.9),3,0x801500,0xa01000,1.0,true)
+						ui.addTextArea(10,"",n,740,400-(data[n].o*1.45),8,145,0x801500,0xa01000,1.0,true)
 						data[n].d=data[n].d+1
-						tfm.exec.setNameColor(n,0xff4500)
 						if data[n].d == 1 and data[n].o > 0 and tfm.get.room.playerList[n].y >= 498 then
 							tfm.exec.playSound("/deadmaze/monstres/mort/mh0.mp3", 35+(30-math.floor(data[n].o)), nil, nil, n)
 							showMessage("<R>Você está ficando sem oxigênio! Saia da água o mais rápido possível ou você morrerá afogado!",n)
@@ -677,7 +666,7 @@ function eventLoop(p,r)
 			showMessage("<J><b>O shaman foi liberado! Salvem-se quem puder!</b><br><br><ROSE>Use o comando !tc [mensagem] para falar no chat sem que o shaman saiba.<br><br><VP>As áreas marcadas por preto e amarelo são zonas de oxigênio. Fique nelas para ter seu consumo de oxigênio reduzido.")
 			moveShaman()
 			for n,p in next,tfm.get.room.playerList do
-				ui.addTextArea(300,"",n,8,390,782,3,0x202020,0x121212,1.0,true)
+				ui.addTextArea(300,"",n,740,255,8,145,0x202020,0x121212,1.0,true)
 				tfm.exec.playSound("cite18/squelette-spawn.mp3", 80, nil, nil, n)
 			end
 		end
