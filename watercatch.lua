@@ -1,6 +1,6 @@
 admin={""} -- Insira o nome dos FunCorps aqui!
 
-for _,f in next,{"AutoNewGame","AutoShaman","AutoTimeLeft","DebugCommand","AllShamanSkills","PhysicalConsumables"} do
+for _,f in next,{"AutoNewGame","AutoShaman","AutoTimeLeft","DebugCommand","AllShamanSkills","PhysicalConsumables","PrespawnPreview","MinimalistMode"} do
 	tfm.exec["disable"..f](true)
 end
 for _,f in next,{"help","ajuda","tc","kill","powerups","creditos","changelog","reset","skins"} do
@@ -8,7 +8,7 @@ for _,f in next,{"help","ajuda","tc","kill","powerups","creditos","changelog","r
 end
 if tfm.get.room.isTribeHouse == false then tfm.exec.setRoomMaxPlayers(40) end
 
-shaman=""; alives=0; cannons=10; z=0; data={}; mode="load"; changed=false; loop=0; timer=0; xml=''; time_passed=0; time_remain=0;
+shaman=""; alives=0; cannons=12; z=0; data={}; mode="load"; changed=false; loop=0; timer=0; xml=''; time_passed=0; time_remain=0;
 active_imgs={}; active_imgs2={}; powerups_x={}; powerups_y={}; powerups_types={}; oxygen_x={}; oxygen_y={};
 border={type = 12,width = 3000,height = 10}
 borderx={type = 12,width = 10,height = 3000}
@@ -20,6 +20,7 @@ function showMessage(message,name)
 	temp_text=string.gsub(message,"<b>","")
 	temp_text=string.gsub(temp_text,"</b>","")
 	if tfm.get.room.isTribeHouse == false then
+		debug.disableEventLog(true)
 		tfm.exec.chatMessage(message,name)
 	elseif tfm.get.room.isTribeHouse == true then
 		if name == nil then
@@ -242,12 +243,12 @@ end
 function eventNewPlayer(name)
 	tfm.exec.setPlayerScore(name,0,false)
 	showWater(name)
-	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <VP><b>v5.0.0</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
+	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <VP><b>v5.0.1</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
 	newData={
 	["o"]=99; ["i"]=0; ["t"]=0; ["c"]=0; ["opened"]=false; ["imageid"]=-1; ["imageid2"]=-1; ["imageid3"]=-1; ["imageid4"]=-1; ["shark_id"]=0; ["shark"]=0; ["active_imgs"]={};
 	};
 	data[name] = newData;
-	showMessage("<font color='#0080ff'><b>Bem-vindos ao module #watercatch!</b><br><J>Digite !help para ver a ajuda deste module.<br><br><N>Module criado por Morganadxana#0000.",name)
+	showMessage("<font color='#0080ff'><b>Bem-vindos ao module #watercatch!</b><br><VP>Fuja do shaman (tubarão) e sobreviva no perigoso rio!<br><br><J>Digite !help para ver a ajuda deste module.<br><br><N>Module criado por Morganadxana#0000.",name)
 	data[name].imageid2 = tfm.exec.addImage("1860ee3d02a.png","&1",724,224,name)
 	data[name].imageid3 = tfm.exec.addImage("17ae4e47000.png","&1",2,370,name,0.5,0.5)
 	data[name].imageid4 = tfm.exec.addImage("17ae4e48770.png","&1",152,370,name,0.5,0.5)
@@ -258,22 +259,22 @@ for name,player in next,tfm.get.room.playerList do
 end
 function eventChatCommand(name,message)
 	if message == "help" or message == "ajuda" then
-		showMenu(name,0xf0f0f0,140,90,520,265,"Ajuda do Module #watercatch","O objetivo é bem simples: <b>Fugir do shaman</b>, se escondendo dentro do lago e tomando cuidado para não morrer afogado!<br><R><b>Shamans, não esqueçam de se mexer, ou irão morrer AFK!</b><br><br><VP>Os quadrados marcados por <N>'!'<VP> são powerups, que geram efeitos aleatórios nos ratos.<J><br>Estes powerups podem ser acionados pressionando ESPAÇO em cima deles.<br><N>Você pode ver os possíveis efeitos dos powerups indo no Menu e clicando em Powerups. Vale ressaltar que eles funcionam apenas depois que o shaman for liberado.<br><br><N>Caso você seja shaman, você tem um limite de <b>10</b> objetos que podem ser utilizados. Exceder este limite fará com que a partida acabe.")
+		showMenu(name,0xf0f0f0,140,90,520,250,"Ajuda do Module #watercatch","O objetivo é bem simples: <b>Fugir do shaman</b>, se escondendo dentro do rio e tomando cuidado para não morrer afogado!<br><R><b>Shamans, não esqueçam de se mexer, ou irão morrer AFK!</b><br><br><VP>Os quadrados marcados por <N>'!'<VP> são powerups, que geram efeitos aleatórios nos ratos.<J><br>Estes powerups podem ser acionados pressionando ESPAÇO em cima deles.<br><N>Você pode ver os possíveis efeitos dos powerups indo no Menu e clicando em Powerups.<br><br><N>Caso você seja shaman, você tem um limite de <b>12</b> objetos que podem ser utilizados. Exceder este limite fará com que a partida acabe.")
 	end
 	if message == "powerups" then
-		showMenu(name,0xf0f0f0,140,100,520,270,"Powerups do Module #watercatch","<font size='11'>Os seguintes powerups estão disponíveis no momento:<br><ROSE><b>• VAMPIRO</b><N><br>Transforma seu rato em um vampiro, forçando você a ir para fora do lago.<br><ROSE><b>• ESCURIDÃO</b><N><br>Reduz drasticamente o campo de visão do seu rato.<br><ROSE><b>• AFUNDAR</b><N><br>Cria uma curta anomalia que puxa todos os ratos em direção ao fundo do lago.<br><ROSE><b>• MEEP</b><N><br>Te dá o poder de usar o Meep!<br><ROSE><b>• SUFOCO</b><N><br>Diminui o seu nível de oxigênio em 35%. Caso seu nível esteja abaixo disso e você pegue este powerup, você morrerá afogado.<br><ROSE><b>• CONGELAR</b><N><br>Congela o seu rato.<br><ROSE><b>• QUEIJO</b><N><br>Dá queijo para o seu rato. Caso você esteja dentro do lago, você provavelmente será levado para o fundo dele.")
+		showMenu(name,0xf0f0f0,140,100,520,270,"Powerups do Module #watercatch","<font size='11'>Os seguintes powerups estão disponíveis no momento:<br><ROSE><b>• VAMPIRO</b><N><br>Transforma seu rato em um vampiro, forçando você a ir para fora do rio.<br><ROSE><b>• ESCURIDÃO</b><N><br>Reduz drasticamente o campo de visão do seu rato.<br><ROSE><b>• AFUNDAR</b><N><br>Cria uma curta anomalia que puxa todos os ratos em direção ao fundo do rio.<br><ROSE><b>• MEEP</b><N><br>Te dá o poder de usar o Meep!<br><ROSE><b>• SUFOCO</b><N><br>Diminui o seu nível de oxigênio. Caso seu nível de oxigênio esteja muito baixo e você pegue este powerup, você morrerá afogado.<br><ROSE><b>• CONGELAR</b><N><br>Congela o seu rato.<br><ROSE><b>• QUEIJO</b><N><br>Dá queijo para o seu rato. Caso você esteja dentro do rio, você provavelmente será levado para o fundo dele.")
 	end
 	if message == "creditos" then
 		showMenu(name,0xf0f0f0,140,90,520,150,"Créditos","As seguintes pessoas ajudaram no desenvolvimento deste module:<br><br><ROSE><b>• Morganadxana#0000</b><N> - Desenvolvedora do código<br><ROSE><b>• Shun_kazami#7014</b><N> - Criação do mapa<br><ROSE><b>• Akwimos#1937</b><N> - Tradução do código original para o Português<br><ROSE><b>• Spectra_phantom#6089</b><N> - Ideia original e criação das artes")
 	end
 	if message == "skins" then
 		if name == "Morganadxana#0000" or name == "Akwimos#1937" or name == "Spectra_phantom#6089" or verifyAdmin(name) == true then
-			showMessage("<R>As skins de tubarão serão exibidas quando você for shaman, e estiver dentro do lago!",name)
+			showMessage("<R>As skins de tubarão serão exibidas quando você for shaman, e estiver dentro do rio!",name)
 			showMenu(name,0x949494,65,98,670,240,"Skins","")
 			showAvailableSharks(name)
 		else
 			if tfm.get.room.playerList[name].isShaman == false then
-				showMessage("<R>As skins de tubarão serão exibidas quando você for shaman, e estiver dentro do lago!",name)
+				showMessage("<R>As skins de tubarão serão exibidas quando você for shaman, e estiver dentro do rio!",name)
 				showMenu(name,0x949494,65,98,670,240,"Skins","")
 				showAvailableSharks(name)
 			else
@@ -282,7 +283,7 @@ function eventChatCommand(name,message)
 		end
 	end
 	if message == "changelog" then
-		showMenu(name,0xf0f0f0,140,90,520,210,"Changelog da Versão 5.0.0","• Novo tema de mapa: Rio Nilo!<br>• Adição de novo powerup: ESCURIDÃO!<br>• Novas imagens para os powerups<br>• O powerup OXIGÊNIO foi removido. Agora, pontos específicos de oxigênio estão disponíveis no rio<br>• Nova barra de medição de oxigênio<br>• O powerup ARMADILHA foi substituído por VAMPIRO<br>• O tempo do powerup CONGELAR foi aumentado de 6 para 9 segundos<br>• Mudanças no cálculo no tempo das partidas<br>• Várias correções de bugs")
+		showMenu(name,0xf0f0f0,140,90,520,235,"Changelog da Versão 5.0.1","• Novo tema de mapa: Rio Nilo!<br>• Adição de novo powerup: ESCURIDÃO!<br>• Novas imagens para os powerups<br>• O powerup OXIGÊNIO foi removido. Agora, pontos específicos de oxigênio estão disponíveis no rio<br>• Nova barra de medição de oxigênio<br>• O powerup ARMADILHA foi substituído por VAMPIRO<br>• O tempo do powerup CONGELAR foi aumentado de 6 para 9 segundos<br>• Mudanças no cálculo no tempo das partidas<br>• Várias correções de bugs<br>• Ajustes no consumo de oxigênio<br>• Aumento do limite de objetos de shaman de 10 para 12")
 	end
 	if (message:sub(0,2)== "tc") then
 		if tfm.get.room.playerList[name].isShaman == false then
@@ -360,8 +361,9 @@ function activatePowerup(name,id,number)
 	elseif id == 6 then
 		showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>SUFOCO!</b>")
 		if not tfm.get.room.playerList[name].isShaman then
-			data[name].o=data[name].o-35
-			if data[name] and data[name].o < 1 then
+			count=math.random(20,50)
+			data[name].o=data[name].o-count
+			if data[name] and data[name].o <= 1 then
 				data[name].o=1
 			end
 		end
@@ -375,7 +377,7 @@ function activatePowerup(name,id,number)
 end
 function activateOxygen(name,number)
 	if data[name] then
-		count=math.random(10,60);
+		count=math.random(10,65);
 		data[name].o=data[name].o+count
 		if data[name].o > 100 then
 			data[name].o=100
@@ -393,7 +395,7 @@ function eventKeyboard(name,key,down,x,y)
 				end
 			end
 		end
-		for i=1,4 do
+		for i=1,7 do
 			if x >= oxygen_x[i] and x <= oxygen_x[i]+51 then
 				if y >= oxygen_y[i] and y <= oxygen_y[i]+51 then
 					activateOxygen(name,i)
@@ -434,7 +436,7 @@ function eventNewGame()
 	if changed == true then
 		ui.removeTextArea(0,nil)
 		z=-1
-		cannons=10
+		cannons=12
 		ui.removeTextArea(22,nil)
 		alives=0
 		mode="hide"
@@ -492,7 +494,7 @@ function genPowerup()
 	end
 end
 function genOxygen()
-	for i=1,4 do
+	for i=1,7 do
 		temp_x1=math.random(500,5500); temp_y1=math.random(750,2950);
 		imageId1 = tfm.exec.addImage("1860ee38326.png","!1",temp_x1,temp_y1,nil)
 		table.insert(oxygen_x,temp_x1); table.insert(oxygen_y,temp_y1);
@@ -536,14 +538,14 @@ function eventLoop(p,r)
 		resetMap()
 	end
 	if changed == true then
-		ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <VP><b>v5.0.0</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
+		ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <VP><b>v5.0.1</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
 		local m=math.floor(r/60000)
 		local s=math.floor((((m*60000)-r) * -1) / 1000)
-		ui.addTextArea(-1,"<font size='30'><font color='#222222'><font face='Calisto MT,Times New Roman'><b>"..m..":"..s.."</b>",n,222,365,125,54,0,0,1.0,true)
-		ui.addTextArea(-2,"<font size='30'><font color='#d0d0d0'><font face='Calisto MT,Times New Roman'><b>"..m..":"..s.."</b>",n,220,363,125,54,0,0,1.0,true)
+		ui.addTextArea(-1,"<font size='30'><font color='#222222'><font face='Calisto MT,Times New Roman'><b>"..m..":"..s.."</b>",n,222,368,125,54,0,0,1.0,true)
+		ui.addTextArea(-2,"<font size='30'><font color='#d0d0d0'><font face='Calisto MT,Times New Roman'><b>"..m..":"..s.."</b>",n,220,366,125,54,0,0,1.0,true)
 		if s < 10 then
-			ui.addTextArea(-1,"<font size='30'><font face='Calisto MT,Times New Roman'><font color='#222222'><b>"..m..":0"..s.."</b>",n,222,365,125,54,0,0,1.0,true)
-			ui.addTextArea(-2,"<font size='30'><font color='#d0d0d0'><font face='Calisto MT,Times New Roman'><b>"..m..":0"..s.."</b>",n,220,363,125,54,0,0,1.0,true)
+			ui.addTextArea(-1,"<font size='30'><font face='Calisto MT,Times New Roman'><font color='#222222'><b>"..m..":0"..s.."</b>",n,222,368,125,54,0,0,1.0,true)
+			ui.addTextArea(-2,"<font size='30'><font color='#d0d0d0'><font face='Calisto MT,Times New Roman'><b>"..m..":0"..s.."</b>",n,220,366,125,54,0,0,1.0,true)
 		end
 		if mode == "game" then
 			if loop >= 30 then
@@ -563,13 +565,13 @@ function eventLoop(p,r)
 			end
 		end
 		if mode == "game" or mode == "hide" then
-			ui.addTextArea(31,"<font size='30'><font color='#222222'><font face='Calisto MT,Times New Roman'><b>"..alives.."</b>",n,72,365,80,54,0,0,1.0,true)
-			ui.addTextArea(30,"<font size='30'><font color='#d0d0d0'><font face='Calisto MT,Times New Roman'><b>"..alives.."</b>",n,70,363,80,54,0,0,1.0,true)
+			ui.addTextArea(31,"<font size='30'><font color='#222222'><font face='Calisto MT,Times New Roman'><b>"..alives.."</b>",n,72,368,80,54,0,0,1.0,true)
+			ui.addTextArea(30,"<font size='30'><font color='#d0d0d0'><font face='Calisto MT,Times New Roman'><b>"..alives.."</b>",n,70,366,80,54,0,0,1.0,true)
 			if timer > 0 then
 				timer=timer-0.5
-				tfm.exec.setWorldGravity(0,21)
+				tfm.exec.setWorldGravity(0,22)
 			elseif timer == 0 then
-				tfm.exec.setWorldGravity(0,10.5)
+				tfm.exec.setWorldGravity(0,10)
 			end
 			for n,q in next,tfm.get.room.playerList do
 				if not tfm.get.room.playerList[n].isShaman then
@@ -582,16 +584,19 @@ function eventLoop(p,r)
 							data[n].y=0
 						else
 							if checkOxygenZones(n) == true then
-								data[n].o=data[n].o-0.1
+								data[n].o=data[n].o+0.1
 							else
 								tfm.exec.playSound("/transformice/son/bulle2.mp3", 6, nil, nil, n)
-								if tfm.get.room.playerList[n].y <= 2080 then
+								if tfm.get.room.playerList[n].y <= 1500 then
+									data[n].o=data[n].o-0.2
+									data[n].c=0
+								elseif tfm.get.room.playerList[n].y > 1500 and tfm.get.room.playerList[n].y <= 2700 then
 									data[n].o=data[n].o-0.4
 									data[n].c=0
-									elseif tfm.get.room.playerList[n].y > 2080 then
-										data[n].o=data[n].o-0.6
-										data[n].c=0
-									end
+								elseif tfm.get.room.playerList[n].y > 2700 then
+									data[n].o=data[n].o-0.6
+									data[n].c=0
+								end
 								end
 							end
 						end
@@ -661,7 +666,7 @@ function eventLoop(p,r)
 		end
 		if r <= 1500 and mode == "hide" then
 			mode="game"
-			tfm.exec.setGameTime(240)
+			tfm.exec.setGameTime(210+(alives*4))
 			ui.removeTextArea(22,nil)
 			showMessage("<J><b>O shaman foi liberado! Salvem-se quem puder!</b><br><br><ROSE>Use o comando !tc [mensagem] para falar no chat sem que o shaman saiba.<br><br><VP>As áreas marcadas por preto e amarelo são zonas de oxigênio. Fique nelas para ter seu consumo de oxigênio reduzido.")
 			moveShaman()
