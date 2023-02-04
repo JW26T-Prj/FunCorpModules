@@ -10,8 +10,6 @@ if tfm.get.room.isTribeHouse == false then tfm.exec.setRoomMaxPlayers(40) end
 
 shaman=""; alives=0; cannons=12; z=0; data={}; mode="load"; changed=false; loop=0; timer=0; xml=''; time_passed=0; time_remain=0;
 active_imgs={}; active_imgs2={}; powerups_x={}; powerups_y={}; powerups_types={}; oxygen_x={}; oxygen_y={};
-border={type = 12,width = 3000,height = 10}
-borderx={type = 12,width = 10,height = 3000}
 d1={2670,5585,3580}; d2={1040,1900,1820};
 e1={5170,4288,3942,3080,2808,2398,123,744,4335,5777,543}; e2={760,1578,850,840,1441,999,987,2144,1953,2578,1132};
 e3={5150,4944,4350,3885,3499,1610,3696,2870,1997,3100,1366,950,5660}; e4={1280,1488,1190,1080,819,750,1449,2330,2090,2700,1666,1400,1720};
@@ -176,15 +174,6 @@ function showWater(name)
 	for _,j in next,{1,3,5} do
 		tfm.exec.addImage("18204168d2e.png","!1",200+(j*1400),3010,name,-1,0.5,0,1)
 	end
-	for i=0,1 do
-		tfm.exec.addPhysicObject(i, 0, -200+(i*3000), borderx)
-	end
-	for j=0,1 do
-		tfm.exec.addPhysicObject(j+2, 6100, j*3000, borderx)
-	end
-	for k=0,1 do
-		tfm.exec.addPhysicObject(k+4, k*3000, -200, border)
-	end
 end
 function eventPlayerDied(n)
 	if not tfm.get.room.playerList[n].isShaman then
@@ -243,7 +232,7 @@ end
 function eventNewPlayer(name)
 	tfm.exec.setPlayerScore(name,0,false)
 	showWater(name)
-	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <VP><b>v5.0.1</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
+	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <VP><b>v5.0.2</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
 	newData={
 	["o"]=99; ["i"]=0; ["t"]=0; ["c"]=0; ["opened"]=false; ["imageid"]=-1; ["imageid2"]=-1; ["imageid3"]=-1; ["imageid4"]=-1; ["shark_id"]=0; ["shark"]=0; ["active_imgs"]={};
 	};
@@ -283,7 +272,7 @@ function eventChatCommand(name,message)
 		end
 	end
 	if message == "changelog" then
-		showMenu(name,0xf0f0f0,140,90,520,235,"Changelog da Versão 5.0.1","• Novo tema de mapa: Rio Nilo!<br>• Adição de novo powerup: ESCURIDÃO!<br>• Novas imagens para os powerups<br>• O powerup OXIGÊNIO foi removido. Agora, pontos específicos de oxigênio estão disponíveis no rio<br>• Nova barra de medição de oxigênio<br>• O powerup ARMADILHA foi substituído por VAMPIRO<br>• O tempo do powerup CONGELAR foi aumentado de 6 para 9 segundos<br>• Mudanças no cálculo no tempo das partidas<br>• Várias correções de bugs<br>• Ajustes no consumo de oxigênio<br>• Aumento do limite de objetos de shaman de 10 para 12")
+		showMenu(name,0xf0f0f0,140,90,520,250,"Changelog da Versão 5.0.2","• Novo tema de mapa: Rio Nilo!<br>• Adição de novo powerup: ESCURIDÃO!<br>• Novas imagens para os powerups<br>• O powerup OXIGÊNIO foi removido. Agora, pontos específicos de oxigênio estão disponíveis no rio<br>• Nova barra de medição de oxigênio<br>• O powerup ARMADILHA foi substituído por VAMPIRO<br>• O tempo do powerup CONGELAR foi aumentado de 6 para 9 segundos<br>• Mudanças no cálculo no tempo das partidas<br>• Várias correções de bugs<br>• Ajustes no consumo de oxigênio<br>• Aumento do limite de objetos de shaman de 10 para 12<br>• Os ratos que morrem afogados agora viram bolhas grandes")
 	end
 	if (message:sub(0,2)== "tc") then
 		if tfm.get.room.playerList[name].isShaman == false then
@@ -538,7 +527,7 @@ function eventLoop(p,r)
 		resetMap()
 	end
 	if changed == true then
-		ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <VP><b>v5.0.1</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
+		ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <VP><b>v5.0.2</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
 		local m=math.floor(r/60000)
 		local s=math.floor((((m*60000)-r) * -1) / 1000)
 		ui.addTextArea(-1,"<font size='30'><font color='#222222'><font face='Calisto MT,Times New Roman'><b>"..m..":"..s.."</b>",n,222,368,125,54,0,0,1.0,true)
@@ -637,8 +626,8 @@ function eventLoop(p,r)
 						if data[n].o <= 0 then
 							tfm.exec.playSound("/deadmaze/monstres/mort/mf0.mp3", 80, nil, nil, n)
 							tfm.exec.killPlayer(n)
-							showMessage("<R>O jogador <b>"..n.."</b> morreu afogado!")
-							tfm.exec.addShamanObject(85, tfm.get.room.playerList[n].x, tfm.get.room.playerList[n].y, 0, 0.1, 0.1, false)
+							showMessage("<J>O jogador <b>"..n.."</b> morreu afogado!")
+							tfm.exec.addShamanObject(59, tfm.get.room.playerList[n].x, tfm.get.room.playerList[n].y, 0, 0.1, 0.1, false)
 						end
 					end
 				end
