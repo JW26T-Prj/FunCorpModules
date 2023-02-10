@@ -1,12 +1,10 @@
--- Mudanças na Versão 2.30.0:
+-- Mudanças na Versão 2.30.1:
 
--- Adição de 3 perguntas de Transformice
--- Adição de 5 perguntas de conhecimentos gerais
--- Ajustes gerais no código
+-- Correções em várias perguntas
 
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.30.0
--- Por favor, edite a linha 23 a variável 'admin' pelo seu nome para ter acesso aos comandos.
--- Você pode selecionar o tema editando a linha 24, ou digitando !tema [número] conforme os números abaixo.
+-- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.30.1
+-- Por favor, edite a linha 21 a variável 'admin' pelo seu nome para ter acesso aos comandos.
+-- Você pode selecionar o tema editando a linha 22, ou digitando !tema [número] conforme os números abaixo.
 
 -- Temas:
 -- 0 = transformice
@@ -63,7 +61,7 @@ perguntas={
 "Quem é o(a) gerenciador(a) atual do module True or False?","Spectra_phantom#6089","Lanadelrey#4862",2,
 "Qual o nome da empresa que é responsável pelo Transformice?","Atelier 801","Riot Games",1,
 "Qual destes pregos não pode ser utilizado no modo difícil?","Vermelho","Amarelo",1,
-"Há quantas categorias de itens na loja?","16","17",2,
+"Há quantas categorias de itens na loja?","17","22",2,
 "Em que ano o Transformice atingiu seu número máximo de jogadores ativos?","2012","2013",1,
 "Quantos queijos custa a exportação de um mapa como cafofo da tribo?","5","40",1,
 "Quantos jogos a Atelier 801 tem atualmente?","5","6",2,
@@ -91,7 +89,7 @@ perguntas={
 "A habilidade 'Reparadora' faz parte de qual árvore de Habilidades?","Mecânico","Físico",2,
 "A mensagem de reinício do servidor do Transformice aparece em qual cor?","Rosa","Roxo",1,
 "Quantos queijos custa o pelo mais caro da loja?","10000","15000",2,
-"Quantos ratos salvos são necessários para desbloquear o modo difícil?","1000","2000",1,
+"Quantos saves são necessários para desbloquear o modo difícil?","1000","2000",1,
 "O Transformice possui uma série animada de desenhos no YouTube.","Verdadeiro","Falso",1,
 "A técnica chamada 'time deviation' ou 'clock drift' pode deixar seu rato mais rápido ou lento sem uso de hack.","Verdadeiro","Falso",1,
 "A habilidade 'Anjo' faz parte de qual árvore de Habilidades?","Mecânico","Mestre do Vento",2,
@@ -190,7 +188,7 @@ perguntas={
 "Em qual dia do ano o Transformice foi criado?","1","2",1,
 "Qual o limite de queijos que podem ser armazenados no inventário?","200","250",2,
 "Quantos anos tem o Tigrounette?","35","36",2,
-"Qual o nome da única mulher que criou um module semi-oficial no Transformice?","Morganadxana#0000","Lanadelrey#4862",1,
+"Qual o nome do module do Transformice onde o objetivo é fugir dos ratos que congelam?","#freezertag","#snatch",1,
 "Ainda é possível colocar músicas no cafofo da tribo do Transformice, mesmo sem o plug-in do YouTube.","Verdadeiro","Falso",1,
 "Qual o nome de um module de testes extinto em que todos viravam Pikachu e tinham que descer a ladeira?","#surble","#surbler",1,
 "No começo da vida do Defilante, quem ganhava as partidas recebia 2 firsts e quantos queijos?","0","2",1,
@@ -198,7 +196,7 @@ perguntas={
 "O module #freezertag antes era um submódulo de qual module?","#parkour","#circuit",1,
 "Qual o nome do código que é usado para carregar mapas do Transformice?","Lua","XML",2,
 "Qual destes usuários nunca se tornou FunCorp?","Patrick_mahomes#1795","Pamots#0095",1,
-"Qual destes modules não foi feito por um brasileiro?","#anvilwar","#utility",2,
+"Qual destes modules não foi feito por um brasileiro?","#unotfm","#utility",2,
 "Qual destas ratas morreu na vida real, dando origem a uma decoração do Transformice?","Elise","Papaille",1,
 "Em qual mês do ano geralmente termina o evento de Natal?","Dezembro","Janeiro",2,
 "Em qual ano foram introduzidos os modules no Transformice?","2014","2013",2,
@@ -871,7 +869,7 @@ function eventNewGame()
 	if tema == 3 then
 		showMessage("<J>As perguntas deste tema foram, em sua maioria, feitas por Spectra_phantom#6089.")
 	elseif tema == 4 then
-		showMessage("<J>As perguntas deste tema foram, em sua maioria, feitas por Lucianattack#0000.")
+		showMessage("<J>As perguntas deste tema foram, em sua maioria, feitas por Lucianattack#0000.<br><BL>ESTOU PRECISANDO DE MAIS PERGUNTAS DE FUTEBOL URGENTEMENTE")
 	end
 end
 function reset()
@@ -936,7 +934,7 @@ function eventPlayerLeft(name)
 	ratos=ratos-1
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.30.0</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
+	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.30.1</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
 	if f < 2000 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
