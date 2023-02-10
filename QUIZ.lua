@@ -290,7 +290,7 @@ perguntas1={
 "Na matemática, qual o nome da sequência onde o resultado é a soma dos dois números anteriores?","Fibonacci","Pascal",1,
 "A cidade do Rio de Janeiro foi capital do Brasil até que ano?","1889","1960",2,
 "A área de um círculo pode ser calculada utilizando qual fórmula?","2.πr","π.r²",2,
-"Quantos anos possui Silvio Santos?","89","91",2,
+"Quantos anos possui Silvio Santos?","91","92",2,
 "Qual destes mares possui maior concentração de sal por litro de água?","Mar Morto","Mar Mediterrâneo",1,
 "A Rodovia Presidente Dutra, que liga os estados do RJ e SP, foi construída em qual governo Brasileiro?","Getúlio Vargas","Eurico Gaspar Dutra",2,
 "Qual é a unidade utilizada para medir a altura de sons?","decibéis","watts",1,
