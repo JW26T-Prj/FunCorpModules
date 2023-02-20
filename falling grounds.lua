@@ -48,7 +48,7 @@ function eventNewGame()
 		})
 		tfm.exec.setGameTime(80)
 	end
-	red = math.random(0,255); green = math.random(0,255); blue = math.random(0,255);
+	red = math.random(0,143); green = math.random(0,143); blue = math.random(0,143);
 	output_red = string.format("%x", red); output_green = string.format("%x", green); output_blue = string.format("%x", blue); 
 	output=output_red..output_green..output_blue
 	ui.setBackgroundColor("#"..output.."")
@@ -63,7 +63,7 @@ for name,player in next,tfm.get.room.playerList do
 	eventNewPlayer(name)
 end
 function eventLoop(p,f)
-	ui.setMapName("Falling Grounds <ROSE><b>RTM 3012.006 LTS</b> <J>- made by <N><R><b>Patrick_mahomes#1795</b><")
+	ui.setMapName("Falling Grounds <ROSE><b>RTM 3113.007</b> <J>- made by <N><R><b>Patrick_mahomes#1795</b><")
 	loop=loop+1
 	if loop >= 4 and ground_id >= 2 then
 		tfm.exec.removePhysicObject(ground_id)
