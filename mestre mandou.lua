@@ -1,5 +1,5 @@
--- Código do module Mestre Mandou, versão 2023.01.01a, desenvolvido por Dhanny_mheyran#6701.
--- Code of Simon Says module, version 2023.01.01a, developed by Dhanny_mheyran#6701.
+-- Código do module Mestre Mandou, versão 2023.02.20a, desenvolvido por Dhanny_mheyran#6701.
+-- Code of Simon Says module, version 2023.02.20a, developed by Dhanny_mheyran#6701.
 
 admin={""} -- Leia abaixo / Read below!
 
@@ -41,7 +41,7 @@ fc_cmds={1,2,4,5,6,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,28,30,31,32
 spiderweb={type = 15,width = 60,height = 60}
 acid={type = 19,width = 10,height = 25,miceCollision = true,groundCollision = false,dynamic = true,fixedRotation = true,mass = 5000}
 acidg={type = 19,width = 30,height = 30}
-lava={type = 3,width = 2400,height = 100,miceCollision = false,groundCollision = false, foreground = true}
+lava={type = 3,width = 2400,height = 120,miceCollision = false,groundCollision = false, foreground = true}
 acids={type = 19,width = 2400,height = 80,miceCollision = true,groundCollision = false}
 map_det={creator="",code=""}
 ninjas={"Dhanny_mheyran#6701","Akwimos#1937","Forzaldenon#0000","Aurelianlua#0000","Viego#0345","Skyymellu#0000"}
@@ -50,7 +50,7 @@ for _,f in next,{"command","pw","limit","run","fc","tc","ms","q","a","t","kill",
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><VP>Module sob nova direção!<br><br><J><b>Script gerenciado por Dhanny_mheyran#6701</b><br>Originalmente criado por Jessiewind26#2546<br><br><R>Versão 2023.01.01a",
+	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><VP>Module sob nova direção!<br><br><J><b>Script gerenciado por Dhanny_mheyran#6701</b><br>Originalmente criado por Jessiewind26#2546<br><br><R>Versão 2023.02.20a",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -164,7 +164,7 @@ lang.br = {
 	clickhere = "<font size='8'>CLIQUE AQUI",
 }
 lang.en = {
-	welcome = "<N><b>Welcome to Simon Says module!</b><br>Follow everything the game told and test your limits until the end!<br><VP>Game under new direction!<br><br><J><b>Script developed by Dhanny_mheyran#6701</b><br>Originally made by Jessiewind26#2546<br>Translation by Draw#6691<br><br><R>Version 2023.01.01a",
+	welcome = "<N><b>Welcome to Simon Says module!</b><br>Follow everything the game told and test your limits until the end!<br><VP>Game under new direction!<br><br><J><b>Script developed by Dhanny_mheyran#6701</b><br>Originally made by Jessiewind26#2546<br>Translation by Draw#6691<br><br><R>Version 2023.02.20a",
 	dancar = "Dance!",
 	sentar = "Sit down!",
 	confetar = "Throw 5 confetti!",
@@ -1580,13 +1580,13 @@ end
 function eventLoop(passado,faltando)
 	local tempo=math.floor(faltando/1000)
 	if active == -2 then
-		ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." 2023.01.01a</b><")
+		ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." 2023.02.20a</b><")
 	elseif active == -1 and vivo == 1 then
-		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 2023.01.01a</b><")
+		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 2023.02.20a</b><")
 	elseif active == -1 and vivo <= 0 then
-		ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 2023.01.01a</b><")
+		ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 2023.02.20a</b><")
 	elseif active >= 0 then
-		ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." 2023.01.01a</b><")
+		ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." 2023.02.20a</b><")
 	end
 	if rato < 4 then
 		if tfm.get.room.currentMap == "@6788085" then
@@ -1612,8 +1612,8 @@ function eventLoop(passado,faltando)
 		active=666
 		showCommand(active,text.lava2)
 		tfm.exec.setGameTime(8)
-		tfm.exec.addPhysicObject(667, 400, 360, acids)
-		tfm.exec.addPhysicObject(666, 400, 350, lava)
+		tfm.exec.addPhysicObject(667, 400, 340, acids)
+		tfm.exec.addPhysicObject(666, 400, 330, lava)
 	end
 	if active == 0 and faltando < 4000 then
 		if rodada < rodadas then
@@ -1782,7 +1782,7 @@ function eventLoop(passado,faltando)
 			for name,player in next,tfm.get.room.playerList do
 				if data[name] and not tfm.get.room.playerList[name].isDead then
 					if tempo % 2 == 0 then
-						if data[name].count >= 25 then
+						if data[name].count >= 23 then
 							tfm.exec.killPlayer(name)
 							showMessage("<R><b>"..name.."</b>"..text.macro.."")
 						end
