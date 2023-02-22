@@ -1,3 +1,5 @@
+** WARNING: IN A FEW WEEKS, MANY OF THE MODULES OF THIS FOLDER WILL RECEIVE A UPDATE THAT DOESN'T ALLOW OLD VERSIONS TO BE EXECUTED. ALWAYS GET THE LATEST VERSIONS OF THE MODULES FROM THIS FOLDER. **
+
 # Welcome to the Jessiewind26's Funcorp Modules folder.
 
 This folder contain all the scripts made by the old Spectra Advanced Module Group folder and the codes that players sent to the folder administrators.
