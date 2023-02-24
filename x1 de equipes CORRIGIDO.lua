@@ -1,4 +1,4 @@
--- Script de x1 entre 4 equipes feito por Nasus_assassin#1534 em ,aio de 2020. Altere a linha 4 do código, na variável 'admin' pelo seu nickname com #tag
+-- Script de x1 entre 4 equipes feito por Nasus_assassin#1534 em Maio de 2020. Altere a linha 4 do código, na variável 'admin' pelo seu nickname com #tag
 -- Para iniciar o jogo, digite !iniciar. Retornar à tela inicial, digite !reset. Para alterar o limite de vitórias, digite !limite [número].
 -- Adicionado por Patrick_mahomes#1795.
 admin="" -- colocar seu nome aqui!
