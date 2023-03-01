@@ -1,11 +1,9 @@
 -- SCRIPT EXCLUSIVO DE SHUN_KAZAMI#7014 (antigo membro da Spectra Advanced Module Group)
 -- Versão ORIGINAL do Corrida das Perguntas (vulgo #bolodefchoco00perguntas) importado diretamente do criador original (Haxhhhhhhhhh).
-tfm.exec.disableAutoNewGame(true)
-tfm.exec.disablePhysicalConsumables(true)
-tfm.exec.disableAutoTimeLeft(true)
-tfm.exec.disableAllShamanSkills(true)
+for _,f in next,{"AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand","AfkDeath","AllShamanSkills"} do
+	tfm.exec["disable"..f](true)
+end
 tfm.exec.setRoomMaxPlayers(30)
-tfm.exec.disableAfkDeath(true)
 mapa5="@7722950"
 mapa6="@7881966"
 blackmode=false -- Altere para 'true' caso queira utilizar o mapa com fundo preto
@@ -90,9 +88,9 @@ function eventPopupAnswer(id,name,answer)
 	end	
 end
 function eventNewPlayer(name)
-	ui.setMapName("Corrida de Perguntas v10.6 [versão de 32-bits]. By Shun_kazami#7014. Versão original.<")
+	ui.setMapName("Corrida de Perguntas v10.7 [versão de 32-bits]. Gerenciado por Shun_kazami#7014.<")
 	tfm.exec.respawnPlayer(name)
-	tfm.exec.chatMessage("<N>Script de Corrida das Perguntas, importado diretamente da versão original feita por Haxhhhhhhhhh.<br><VP><b>Versão 10.6</b><br><br><N>Atualmente administrado por Shun_kazami#7014, mapa feito também por Shun_kazami#7014.<br><br><ROSE>Proibida execução ou cópia sem autorização do criador.",name)
+	tfm.exec.chatMessage("<N>Script de Corrida das Perguntas, importado diretamente da versão original feita por Haxhhhhhhhhh.<br><VP><b>Versão 10.7</b><br><br><N>Atualmente administrado por Shun_kazami#7014, mapa feito também por Shun_kazami#7014.<br><br><ROSE>Proibida execução ou cópia sem autorização do criador.",name)
 	if not data[name] then
 		table.insert(players_table,name)
 		data[name]={p=0}
@@ -127,7 +125,7 @@ end
 function eventNewGame()
 	palavra=""
 	ui.removeTextArea(2,NIL)
-	ui.setMapName("Corrida de Perguntas v10.6 [versão de 32-bits]. By Shun_kazami#7014.<")
+	ui.setMapName("Corrida de Perguntas v10.7 [versão de 32-bits]. Gerenciado por Shun_kazami#7014.<")
 	for id,name in pairs(players_table) do
 		data[name].p=0
 	end
