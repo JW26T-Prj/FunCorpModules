@@ -1,7 +1,7 @@
 -- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.31.0
--- Por favor, edite a linha 9 a variável 'admin' pelo seu nome para ter acesso aos comandos.
+-- Por favor, edite a linha 6 a variável 'admin' pelo seu nome para ter acesso aos comandos.
 -- Para adicionar novas perguntas, utilize a seguinte sintaxe na hora de inserir: "PERGUNTA","RESPOSTA 1","RESPOSTA 2",1 ou 2
--- Caso você queira usar este código em um cafofo de tribo, altere a variável TRIBEHOUSE da linha 10 para 'true'.
+-- Caso você queira usar este código em um cafofo de tribo, altere a variável TRIBEHOUSE da linha 7 para 'true'.
 
 admin={"Reksai_void2600#6638"} -- FunCorps, insiram seus nomes aqui!
 tribehouse=false -- Altere para 'true' caso esteja rodando este código em um cafofo de tribo.
