@@ -31,7 +31,7 @@ admin={"Dhanny_mheyran#6701"} -- Insira seus nomes aqui, FunCorp! / Insert your 
 for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","PhysicalConsumables","AfkDeath","MortCommand","DebugCommand"} do
 	tfm.exec["disable"..f]()
 end
-for _,g in next,{"start","reset","rounds","mapmode","maptime","kill","ban","tribeban","help","ranking"} do
+for _,g in next,{"start","reset","rounds","mapmode","maptime","kill","ban","tribeban","help","ranking","cavalinho"} do
 	system.disableChatCommandDisplay(g)
 end
 lang={}; data={}; rounds=15; mode="lobby"; maps="racing"; map_time=60; lobby_map="@6390711"; winner_map="@7928188"; round=-1; alives=0; position=1; remain_int=0;
@@ -228,7 +228,7 @@ function genFinalRanking()
 end
 function lobby()
 	tfm.exec.newGame(lobby_map)
-	mode="lobby"; round=-1; alives=0; position=1; deciding=false; tribes={}; final_ranking={};
+	mode="lobby"; round=-1; alives=0; position=1; tribes={}; final_ranking={};
 	for i=1,6 do
 		ui.removeTextArea(i)
 	end
@@ -413,6 +413,9 @@ function eventChatCommand(name,command)
 	if command == "help" then
 		showMessage(text.help,name)
 	end
+	if command == "cavalinho" then
+		showMessage("Essa mulher enlouqueceu<br>Ela quer montar em cima de mim<br>Ela pirou de vez<br>Tá pensando que eu sou seu cavalinho<br>E eu vou só dizendo assim<br>Vai, vai<br><br>E vai no cavalinho, vai, vai, vai, vai<br>E vai no cavalinho, vai, vai, vai, vai<br>Vai no cavalinho, vai, vai, vai, vai",name)
+	end
 	if command == "ranking" and mode == "game" then
 		if data[name].opened == false then
 			eventRanking(name)
@@ -422,14 +425,14 @@ end
 function eventLoop(release,remain)
 	remain_int=math.ceil(remain/1000)
 	if mode == "lobby" or mode == "waiting" or mode == "end" then
-		ui.setMapName("<J><b>TribeWar Renewed</b>   <G>|   <N>"..text.version.." 2023.03.03-TM "..text.madeby.."<")
+		ui.setMapName("<J><b>TribeWar Renewed</b>   <G>|   <N>"..text.version.." 2023.03.03.1-TM "..text.madeby.."<")
 	end
 	if remain <= 1000 and mode == "waiting" then
 		mode="game"; changeMap();
 	end
 	if mode == "game" then
 		remaining=math.floor(remain/1000)
-		ui.setMapName("<J><b>TribeWar Renewed</b>   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.time.." : <V>"..remaining.."s   <G>|   <N>Round : <V>"..round.."/"..rounds.."   <G>|   <R><b>"..text.version.." 2023.03.03-TM</b><")
+		ui.setMapName("<J><b>TribeWar Renewed</b>   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.time.." : <V>"..remaining.."s   <G>|   <N>Round : <V>"..round.."/"..rounds.."   <G>|   <R><b>"..text.version.." 2023.03.03.1-TM</b><")
 		if remain <= 500 and round < rounds then
 			changeMap();
 		elseif remain <= 500 and round >= rounds then
