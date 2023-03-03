@@ -17,21 +17,23 @@ admin={"Dhanny_mheyran#6701"} -- Insira seus nomes aqui, FunCorp! / Insert your 
 -- !maptime [30-120] = Define o tempo, em segundos, no qual cada mapa será executado. (padrão: 60)
 -- !kill [name#tag] = Mata o jogador selecionado.
 -- !ban [name#tag] = Bane o jogador selecionado do module.
+-- !ms [mensagem] ou !tc [mensagem] = Exibe uma mensagem na cor laranja.
 
 -- !start = Start a new game. You need to stay into the lobby screen to do this.
 -- !reset = Discard the current match and go back to the lobby screen.
--- !rounds [5-25] = Set the number of rounds for each match.
--- !mapmode [0-3] = Set the map category.
--- With the above command, insert 0 for RACING, 1 for BOOTCAMP, 2 for VANILLA e 3 for MIX.
--- !maptime [30-120] = Define the number of seconds that each map will run.
+-- !rounds [5-25] = Set the number of rounds for each match. (default: 15)
+-- !mapmode [0-3] = Set the map category. (default: racing)
+-- With the above command, insert 0 for RACING, 1 for BOOTCAMP, 2 for VANILLA and 3 for MIX.
+-- !maptime [30-120] = Define the number of seconds that each map will run. (default: 60)
 -- !kill [name#tag] = Kill the specified player.
 -- !ban [name#tag] = Ban the specified player. This only has effect into the module.
+-- !ms [text] or !tc [text] = Show a FunCorp orange message.
 
 -- NÃO EDITE NADA A PARTIR DESTA LINHA!! // DON'T EDIT ANYTHING BELOW THIS LINE!!
 for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","PhysicalConsumables","AfkDeath","MortCommand","DebugCommand"} do
 	tfm.exec["disable"..f]()
 end
-for _,g in next,{"start","reset","rounds","mapmode","maptime","kill","ban","tribeban","help","ranking","cavalinho"} do
+for _,g in next,{"start","reset","rounds","mapmode","maptime","kill","ban","ms","tc","help","ranking","cavalinho"} do
 	system.disableChatCommandDisplay(g)
 end
 lang={}; data={}; rounds=15; mode="lobby"; maps="racing"; map_time=60; lobby_map="@6390711"; winner_map="@7928188"; round=-1; alives=0; position=1; remain_int=0;
@@ -39,7 +41,7 @@ tribes={}; final_ranking={};
 mapas={1,2,8,11,12,14,19,22,26,27,28,30,31,33,35,40,41,44,45,49,53,55,57,58,59,62,63,64,65,67,69,70,71,73,74,78,79,80,81,86,89,92,96,100}
 ninjas={"Alisson#3938","Aurelianlua#0000","Akwimos#1937","Viego#0345"};
 lang.br = {
-	welcome = "<N><b>Bem-vindos ao module TribeWar Renewed!</b><br>Junte a sua tribo, conquiste pódios e represente-a com sucesso!<br><ROSE>Digite !help para ver a ajuda e digite !ranking para ver o ranking da partida.<br><br><J><b>Script gerenciado por Dhanny_mheyran#6701</b><br>Originalmente feito por Lynezx#0000 e Nasus_assassin#1534<br><br><R>Versão 2023.03.03-TW",
+	welcome = "<N><b>Bem-vindos ao module TribeWar Renewed!</b><br>Junte a sua tribo, conquiste pódios e represente-a com sucesso!<br><ROSE>Digite !help para ver a ajuda e digite !ranking para ver o ranking da partida.<br><br><J><b>Script gerenciado por Dhanny_mheyran#6701</b><br>Originalmente feito por Lynezx#0000 e Nasus_assassin#1534<br><br><R>Versão 2023.03.03.2-TW",
 	tribelock1 = "<VP>Você está participando do jogo pela tribo </b>",
 	tribelock2 = ".</b><br><N>Caso você troque de tribo, você poderá representá-la apenas no próximo jogo.",
 	notribe = "<R>Você ainda pode participar deste jogo, caso seja convidado para alguma tribo. No entanto, você só pode representar uma tribo por jogo.",
@@ -62,7 +64,7 @@ lang.br = {
 	help = "<p align='center'><N><b>Bem-vindo ao module TribeWar Renewed.</b><br><br><p align='left'>Neste module, os jogadores representam suas tribos em uma competição. Conseguir pódios garantirá pontos para a sua tribo.<br><br>Ao final de um determinado número de rounds, a tribo que conseguir pontuar mais vencerá o jogo.<br><br><VP>Pontuações do jogo:<br><BL>• <N>1º lugar = <VP>6 pontos<br><BL>• <N>2º lugar = <VP>4 pontos<br><BL>• <N>3º lugar = <VP>2 pontos<br><br><R>Caso você saia de uma tribo e vá para outra, você poderá representá-la somente no próximo jogo."
 }
 lang.en = {
-	welcome = "<N><b>Welcome to TribeWar Renewed module!</b><br>Gather the players of your tribe, win matches and represent her with success!<br><ROSE>Type !help to see the game help and !ranking to see the ranking of the match.<br><br><J><b>Script developed by Dhanny_mheyran#6701</b><br>Originally made by Lynezx#0000 and Nasus_assassin#1534<br><br><R>Version 2023.03.03-TW",
+	welcome = "<N><b>Welcome to TribeWar Renewed module!</b><br>Gather the players of your tribe, win matches and represent her with success!<br><ROSE>Type !help to see the game help and !ranking to see the ranking of the match.<br><br><J><b>Script developed by Dhanny_mheyran#6701</b><br>Originally made by Lynezx#0000 and Nasus_assassin#1534<br><br><R>Version 2023.03.03.2-TW",
 	tribelock1 = "<VP>You are representing the following tribe: <b>",
 	tribelock2 = ".</b><br><N>If you join another tribe, you only can represent her in the next game.",
 	notribe = "<R>You still can play this game, if you are invited to join any tribe. However, you can only represent one tribe at time.",
@@ -409,6 +411,9 @@ function eventChatCommand(name,command)
 			tt={}; for i=30,120 do table.insert(tt,tostring(i)) end
 			if findString(command:sub(9),tt) then map_time=tonumber(command:sub(9)); end
 		end
+		if (command:sub(0,2) == "tc") or (command:sub(0,2) == "ms") then
+			showMessage("<font color='#FF8547'>• [FunCorp - <b>"..name.."</b>] "..command:sub(4).."")
+		end
 	end
 	if command == "help" then
 		showMessage(text.help,name)
@@ -425,14 +430,14 @@ end
 function eventLoop(release,remain)
 	remain_int=math.ceil(remain/1000)
 	if mode == "lobby" or mode == "waiting" or mode == "end" then
-		ui.setMapName("<J><b>TribeWar Renewed</b>   <G>|   <N>"..text.version.." 2023.03.03.1-TM "..text.madeby.."<")
+		ui.setMapName("<J><b>TribeWar Renewed</b>   <G>|   <N>"..text.version.." 2023.03.03.2-TW "..text.madeby.."<")
 	end
 	if remain <= 1000 and mode == "waiting" then
 		mode="game"; changeMap();
 	end
 	if mode == "game" then
 		remaining=math.floor(remain/1000)
-		ui.setMapName("<J><b>TribeWar Renewed</b>   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.time.." : <V>"..remaining.."s   <G>|   <N>Round : <V>"..round.."/"..rounds.."   <G>|   <R><b>"..text.version.." 2023.03.03.1-TM</b><")
+		ui.setMapName("<J><b>TribeWar Renewed</b>   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.time.." : <V>"..remaining.."s   <G>|   <N>Round : <V>"..round.."/"..rounds.."   <G>|   <R><b>"..text.version.." 2023.03.03.2-TW</b><")
 		if remain <= 500 and round < rounds then
 			changeMap();
 		elseif remain <= 500 and round >= rounds then
