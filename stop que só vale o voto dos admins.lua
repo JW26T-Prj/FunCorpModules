@@ -1,9 +1,9 @@
 -- STOP
--- Escrito por Ninguem - 31/08/2015 // Atualizado por Reksai_void2600#6638 - 12/01/2023
+-- Escrito por Ninguem - 31/08/2015 // Atualizado por Reksai_void2600#6638 - 06/03/2023
 -- Limite de 20 categorias.
 -- FunCorp, caso você não queira visualizar as respostas dos jogadores (para identificar trapaças, por exemplo), altere a variável SHOW (linha 15) para false.
 
-ADM = {"Dhanny_mheyran#6701"} -- editar com seu nome aqui!
+ADM = {"Reksai_void2600#6638"} -- editar com seu nome aqui!
 CAT = {"Nome","Animal","Objeto","Cor","Marca","TV/Anime/Desenho","Parte do Corpo","Comida/Bebida","País/Cidade/Estado","Profissão","Tem no Transformice","O(A) "..ADM[1].." é...","Qualquer Coisa"}
 ID = {cat=1,camada=2,add=3,msg=4,tempo=5,stop=6}
 PLAYER = {}
@@ -13,7 +13,6 @@ ROUND = 1
 PALAVRA = 1
 SHOW = true
 MAXROUND = 5
-TEMAS = 13
 TEMPO = false
 LETRA = ""
 
@@ -197,10 +196,9 @@ function eventTextAreaCallback(id, p, cmd)
 			ui.addPopup(ID.add, 2, "Adicionar categoria", p, 300, 200, 200, true)
 		elseif arg[1] == "del" then
 			table.remove(CAT, buscaItem(CAT, table.concat(arg, " ", 2)))
-			TEMAS = TEMAS - 1
 			atualizaCat(false)
 		elseif arg[1] == "start" then
-			if TEMAS >= 5 then
+			if rawlen(CAT) then
 				MODO = "espera"
 				TEMPO = os.time()+15000
 				zeraTudo(true, true)
@@ -233,12 +231,11 @@ end
 function eventPopupAnswer(id, p, resp)
 	if id == ID.add and resp ~= "" and MODO == "inicio" then
 		if not buscaItem(CAT, resp) then
-			if TEMAS >= 20 then
+			if rawlen(CAT) > 20 then
 				tfm.exec.chatMessage("<R>Limite máximo de 20 temas atingido!",p)
 			else
 				table.insert(CAT, resp)
 				atualizaCat(false)
-				TEMAS = TEMAS + 1
 			end
 		end
 	elseif MODO == "round" and (string.upper(resp)):sub(1,1) == LETRA and string.len(resp) >= 2 then
@@ -248,7 +245,7 @@ function eventPopupAnswer(id, p, resp)
 end
 
 function eventNewPlayer(p)
-	ui.setMapName("<font color='#ffffff'><b>STOP!</b> <N>Script editado por Reksai_void2600#6638 - 12/01/2023<")
+	ui.setMapName("<font color='#ffffff'><b>STOP!</b> <N>Script editado por Reksai_void2600#6638 - 06/03/2023<")
 	PLAYER[p] = {num = 0, pontos = 0, vitoria = 0, palavra = {}}
 	for i, v in pairs(CAT) do
 		PLAYER[p].palavra[v] = ""
@@ -312,6 +309,9 @@ function eventLoop(current, remaining)
 			ui.addTextArea(ID.cat, string.format("<p align='center'>A letra é:\n<font size='50px'><rose>%s</rose></font></p>", LETRA), nil, 300, 30, 200, 80, 1, 1, 0.9, true)
 			for i, v in pairs(PLAYER) do
 				atualizaPalavras(i)
+			end
+			if SHOW == true then
+				tfm.exec.chatMessage("<R>Os administradores desta sala podem ver as respostas dos usuários. Respostas inapropriadas poderão ser retiradas da sala.")
 			end
 		end
 	elseif MODO == "round" then
@@ -403,5 +403,5 @@ tfm.exec.disableAutoShaman(true)
 tfm.exec.disableAutoScore(true)
 tfm.exec.disableAutoNewGame(true)
 carregaMapa()
-ui.setMapName("<font color='#ffffff'><b>STOP!</b> <N>Script editado por Reksai_void2600#6638 - 12/01/2023<")
+ui.setMapName("<font color='#ffffff'><b>STOP!</b> <N>Script editado por Reksai_void2600#6638 - 06/03/2023<")
 atualizaCat(true)
