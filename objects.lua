@@ -8,7 +8,7 @@ end
 tfm.exec.setRoomMaxPlayers(35)
 mapas={"@7565678","@7358458","@7356189","@7513747","@7488224","@7434176","@7566381","@7566353","@7566062","@7566079","@7566040","@7282115","@7284500","@7177229","@3859389","@4122612","@7568657","@7593122","@7593485","@7593959","@7593964","@7594550","@7120063","@7607195","@7627535","@7627546","@7627556","@7631682","@7634571","@4916014","@4005264","@7033610","@7308352","@3222646","@5937915","@7114147","@7288402","@7756165","@7757983","@7754765","@7754518"}
 map_names={"The Beginning of All","Platforms on The Heaven","Simple Circles","The Pyramid of Lava","The Damage of Fall","False Beach","Inside the Fire Cave","","","","A Simple Snow Box","The Maze of Lava","The Grasses that Disappear","Without Limits","Don't Jump!","Don't Touch on Lava","Choose Your Side","Where Are We?","The Island Forest","Black and White - Objects Edition","The Lake of Fall","On the Edge of Void - Objects Edition","White and Black","Mortal Cinema","Background Directions","Without Plans","Defilante Maze","Testing Purposes","Under the Darkness","Fallen Layers","Defilante Platform","Threshold of Boxes","Simple Black","Grassy Walls","Thickness of Clouds","Unreal Illusion","Testing Lava Cave","Ninja Directions","Limits of Tomorrow","",""}
-objects={1,2,3,4,6,7,10,17,23,33,35,39,40,45,46,54,60,61,65,68,69,85,89,90,95}
+objects={1,2,3,4,6,7,10,17,23,33,34,35,39,40,45,46,54,60,61,65,67,68,69,85,89,90,95}
 actual_map=""; remaining=0; imageId=-1; actual_creator=""; bar=""; loop=0; winner=false; times=0;
 functs={running=false,level=0,count=8}
 function showMessage(message,name)
@@ -55,9 +55,9 @@ function showBar()
 		if mapas[i] == tfm.get.room.currentMap then
 			local diff=functs.level
 			if map_names[i] == "" then
-				ui.setMapName("<J><b>"..tfm.get.room.currentMap.."   </b><V>|   <N>Difficulty : <R>"..diff.."   <V>|   <N>#objects <ROSE>RTM 9163.047 LTS<")
+				ui.setMapName("<J><b>"..tfm.get.room.currentMap.."   </b><V>|   <N>Difficulty : <R>"..diff.."   <V>|   <N>#objects <ROSE>RTM 9264.048<")
 			else
-				ui.setMapName("<J><b>"..map_names[i].."</b> <BL>- "..tfm.get.room.currentMap.."   <V>|   <N>Difficulty : <R>"..diff.."   <V>|   <N>#objects <ROSE>RTM 9163.047 LTS<")
+				ui.setMapName("<J><b>"..map_names[i].."</b> <BL>- "..tfm.get.room.currentMap.."   <V>|   <N>Difficulty : <R>"..diff.."   <V>|   <N>#objects <ROSE>RTM 9264.048<")
 			end
 		end
 	end
