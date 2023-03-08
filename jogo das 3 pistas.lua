@@ -97,9 +97,9 @@ function eventLoop(p,f)
 	tempo=math.ceil(f/1000)
 	if f < 2000 and valendo == true then
 		showMessage(""..text.time..""..resposta.."",nil)
-		ui.removeTextArea(1,nil)
-		ui.removeTextArea(2,nil)
-		ui.removeTextArea(3,nil)
+		for i=1,3 do
+			ui.removeTextArea(i,nil)
+		end
 		valendo=false
 		tfm.exec.setGameTime(63)
 	end
@@ -125,7 +125,7 @@ function eventLoop(p,f)
 	if valendo == true and f <= 39000 then
 		ui.addTextArea(3,"<font size='15'><p align='center'><font face='Consolas,Lucida Console'><N>"..text.c8p.." <b>"..dica8.."",nil,5,98,780,26,0x000001,0x000001,0.9,true)
 	end
-	ui.setMapName("<J>"..text.module.."   <G>|   <N>"..text.question.." : <V>"..pergunta.."/"..limite.."   <G>|   <N>"..text.time.." : <V>"..tempo.."s   <G>|   <N>"..text.version.." <VP><b>RTM 3111.030</b><")
+	ui.setMapName("<J>"..text.module.."   <G>|   <N>"..text.question.." : <V>"..pergunta.."/"..limite.."   <G>|   <N>"..text.time.." : <V>"..tempo.."s   <G>|   <N>"..text.version.." <VP><b>RTM 3212.031</b><")
 end
 function eventChatCommand(name,message)
 	if message == "skip" then
@@ -151,9 +151,9 @@ function eventChatCommand(name,message)
 end
 function eventNewGame()
 	loop=0
-	ui.removeTextArea(1,nil)
-	ui.removeTextArea(2,nil)
-	ui.removeTextArea(3,nil)
+	for i=1,3 do
+		ui.removeTextArea(i,nil)
+	end
 	pistas={p10="",p9="",p8=""}
 	valendo=false
 	pergunta=0
@@ -189,17 +189,17 @@ function eventChatMessage(name,message)
 			tfm.exec.setGameTime(64)
 			showMessage("<VP>"..name.." "..text.win.." "..string.upper(resposta).."",nil)
 			resposta=""
-			ui.removeTextArea(1,nil)
-			ui.removeTextArea(2,nil)
-			ui.removeTextArea(3,nil)
+			for i=1,3 do
+				ui.removeTextArea(i,nil)
+			end
 		else
 			showMessage(text.cancel,name)
 			valendo=false
 			tfm.exec.newGame(mapa)
 			resposta=""
-			ui.removeTextArea(1,nil)
-			ui.removeTextArea(2,nil)
-			ui.removeTextArea(3,nil)
+			for i=1,3 do
+				ui.removeTextArea(i,nil)
+			end
 		end
 	end
 end
