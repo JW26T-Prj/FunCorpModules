@@ -145,17 +145,17 @@ function showWater(name)
 	for f=1,rawlen(e4) do
 		tfm.exec.addImage("1860ee24f31.png","?1",e3[f],e4[f],name,-0.5,0.5)
 	end
-	tfm.exec.addImage("1860ee2e933.png","?1",1500,2500,name,-1,1)
-	tfm.exec.addImage("1860ee2e933.png","?1",4650,2500,name)
+	tfm.exec.addImage("1860ee2e933.png","?1",1600,2480,name,-1,1)
+	tfm.exec.addImage("1860ee2e933.png","?1",4250,2300,name)
 	for a=0,4 do
 		tfm.exec.addImage("1860ee4bc27.png","?1",-800+(a*1762),680,name,1,1,0,1)
-		tfm.exec.addImage("1860ee4bc27.png","!1",-800+(a*1762),680,name,1,1,0,0.65)
+		tfm.exec.addImage("1860ee4bc27.png","!1",-800+(a*1762),680,name,1,1,0,0.6)
 	end
 	for b=0,10 do
-		tfm.exec.addImage("1860ee46b2e.jpg","?1",-800+(b*690),1012,name,1,3.5,0,1)
-		tfm.exec.addImage("1860ee41de2.png","!1",-800+(b*690),1012,name,1,3.5,0,1)
-		tfm.exec.addImage("1860ee46b2e.jpg","?1",-800+(b*690),5212,name,1,-3.5,0,1)
-		tfm.exec.addImage("1860ee41de2.png","!1",-800+(b*690),5212,name,1,-3.5,0,1)
+		tfm.exec.addImage("1860ee46b2e.jpg","?1",-800+(b*690),1012,name,1,3.2,0,1)
+		tfm.exec.addImage("1860ee41de2.png","!1",-800+(b*690),1012,name,1,3.2,0,1)
+		tfm.exec.addImage("1860ee46b2e.jpg","?1",-800+(b*690),4852,name,1,-3.2,0,1)
+		tfm.exec.addImage("1860ee41de2.png","!1",-800+(b*690),4852,name,1,-3.2,0,1)
 	end
 	tfm.exec.addImage("17fe3741e5f.jpg","?1",-800,-1000,name,11,1.6,0,1)
 	tfm.exec.addImage("1860ee201fd.png","!1",1640,1888,name,-1,1)
@@ -163,16 +163,16 @@ function showWater(name)
 	tfm.exec.addImage("1860ee201fd.png","!1",330,1169,name,-1,1)
 	tfm.exec.addImage("1860ee201fd.png","!1",4000,1304,name,-1,1)
 	for _,m in next,{0,2,4} do
-		tfm.exec.addImage("18204168d2e.png","!1",-1200+(m*1400),3508,name,1,-1.5,0,1)
+		tfm.exec.addImage("18204168d2e.png","!1",-1200+(m*1400),3198,name,1,-1.5,0,1)
 	end
 	for _,n in next,{1,3,5} do
-		tfm.exec.addImage("18204168d2e.png","!1",200+(n*1400),3508,name,-1,-1.5,0,1)
+		tfm.exec.addImage("18204168d2e.png","!1",200+(n*1400),3198,name,-1,-1.5,0,1)
 	end
 	for _,h in next,{0,2,4} do
-		tfm.exec.addImage("18204168d2e.png","!1",-1200+(h*1400),3010,name,1,0.5,0,1)
+		tfm.exec.addImage("18204168d2e.png","!1",-1200+(h*1400),2700,name,1,0.5,0,1)
 	end
 	for _,j in next,{1,3,5} do
-		tfm.exec.addImage("18204168d2e.png","!1",200+(j*1400),3010,name,-1,0.5,0,1)
+		tfm.exec.addImage("18204168d2e.png","!1",200+(j*1400),2700,name,-1,0.5,0,1)
 	end
 end
 function eventPlayerDied(n)
@@ -213,8 +213,8 @@ function moveShaman()
 	end
 end
 function checkOxygenZones(name)
-	if tfm.get.room.playerList[name].x >= 960 and tfm.get.room.playerList[name].x <= 1080 then
-		if tfm.get.room.playerList[name].y >= 2180 and tfm.get.room.playerList[name].y <= 2270 then
+	if tfm.get.room.playerList[name].x >= 545 and tfm.get.room.playerList[name].x <= 625 then
+		if tfm.get.room.playerList[name].y >= 1555 and tfm.get.room.playerList[name].y <= 1650 then
 			return true
 		end
 	end
@@ -232,7 +232,7 @@ end
 function eventNewPlayer(name)
 	tfm.exec.setPlayerScore(name,0,false)
 	showWater(name)
-	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <VP><b>v5.0.2</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
+	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <VP><b>v5.1.0</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
 	newData={
 	["o"]=99; ["i"]=0; ["t"]=0; ["c"]=0; ["opened"]=false; ["imageid"]=-1; ["imageid2"]=-1; ["imageid3"]=-1; ["imageid4"]=-1; ["shark_id"]=0; ["shark"]=0; ["active_imgs"]={};
 	};
@@ -272,7 +272,7 @@ function eventChatCommand(name,message)
 		end
 	end
 	if message == "changelog" then
-		showMenu(name,0xf0f0f0,140,90,520,250,"Changelog da Versão 5.0.2","• Novo tema de mapa: Rio Nilo!<br>• Adição de novo powerup: ESCURIDÃO!<br>• Novas imagens para os powerups<br>• O powerup OXIGÊNIO foi removido. Agora, pontos específicos de oxigênio estão disponíveis no rio<br>• Nova barra de medição de oxigênio<br>• O powerup ARMADILHA foi substituído por VAMPIRO<br>• O tempo do powerup CONGELAR foi aumentado de 6 para 9 segundos<br>• Mudanças no cálculo no tempo das partidas<br>• Várias correções de bugs<br>• Ajustes no consumo de oxigênio<br>• Aumento do limite de objetos de shaman de 10 para 12<br>• Os ratos que morrem afogados agora viram bolhas grandes")
+		showMenu(name,0xf0f0f0,140,130,520,100,"Changelog da Versão 5.1.0","• Mudanças na física da água<br>• Mudanças no tamanho do mapa")
 	end
 	if (message:sub(0,2)== "tc") then
 		if tfm.get.room.playerList[name].isShaman == false then
@@ -317,7 +317,7 @@ end
 function resetMap()
 	if xml == '' then
 		tfm.exec.disableAutoShaman(true)
-		tfm.exec.newGame("@7926250")
+		tfm.exec.newGame("@7928958")
 		ui.setMapName("Carregando mapa. Por favor, aguarde...<")
 		changed=false
 		mode="load"
@@ -522,12 +522,12 @@ function eventLoop(p,r)
 	loop=loop+0.5
 	time_passed=math.ceil(p/500)
 	time_remain=math.ceil(r/500)
-	if time_passed >= 12 and tfm.get.room.currentMap == "@7926250" then
+	if time_passed >= 12 and tfm.get.room.currentMap == "@7928958" then
 		tfm.exec.disableAutoShaman(false)
 		resetMap()
 	end
 	if changed == true then
-		ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <VP><b>v5.0.2</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
+		ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <VP><b>v5.1.0</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
 		local m=math.floor(r/60000)
 		local s=math.floor((((m*60000)-r) * -1) / 1000)
 		ui.addTextArea(-1,"<font size='30'><font color='#222222'><font face='Calisto MT,Times New Roman'><b>"..m..":"..s.."</b>",n,222,368,125,54,0,0,1.0,true)
@@ -579,10 +579,10 @@ function eventLoop(p,r)
 								if tfm.get.room.playerList[n].y <= 1500 then
 									data[n].o=data[n].o-0.2
 									data[n].c=0
-								elseif tfm.get.room.playerList[n].y > 1500 and tfm.get.room.playerList[n].y <= 2700 then
+								elseif tfm.get.room.playerList[n].y > 1500 and tfm.get.room.playerList[n].y <= 2400 then
 									data[n].o=data[n].o-0.4
 									data[n].c=0
-								elseif tfm.get.room.playerList[n].y > 2700 then
+								elseif tfm.get.room.playerList[n].y > 2400 then
 									data[n].o=data[n].o-0.6
 									data[n].c=0
 								end
