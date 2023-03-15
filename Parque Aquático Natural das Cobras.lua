@@ -9,7 +9,6 @@ npc_01={title = 5,look = "1;190_dbe10f+767576+585155+c44444+e0ddce+202020+e7e6e5
 npc_02={title = 339,look = "1;40_d0ff+1825e7,6_700ff+b8ff,20_beff,0,29_d99+b2ff,0,1_ffff+ff0000,0,0",x = 40,y = 2950,female = false,lookLeft = false,lookAtPlayer = false,interactive = true}
 npc_03={title = 382,look = "179;236_434f55+434f55+434f55+434f55+605520+a19d88,50,82,0,62,112,44,0,0",x = 3128,y = 1906,female = true,lookLeft = false,lookAtPlayer = false,interactive = true}
 npc_04={title = 115,look = "222;229,46,84_988c5c+d252d6+b8a866+3062c7+d3eb29,0,65,0,52,84,0",x = 5072,y = 1632,female = true,lookLeft = true,lookAtPlayer = true,interactive = true}
-npc_05={title = 10,look = "1;44,40,89,34,0,0,31,77,2_c918be",x = 1908,y = 2402,female = true,lookLeft = false,lookAtPlayer = true,interactive = true}
 npc_06={title = 2,look = "113;223,8,27_252525+383838+242424,31,55_6d2e29+9e9983+ddba1d,0,0,51,48",x = 1088,y = 336,female = false,lookLeft = true,lookAtPlayer = true,interactive = true}
 npc_07={title = 42,look = "157;83,0,9,0,6,102_148960+f7eeba+f7eeba,0,79,47",x = 1033,y = 1121,female = false,lookLeft = true,lookAtPlayer = false,interactive = true}
 npc_08={title = 213,look = "223;244,33,89,0,6,102_148960+f7eeba+f7eeba,0,72,47",x = 5117,y = 1417,female = true,lookLeft = false,lookAtPlayer = true,interactive = true}
@@ -21,7 +20,6 @@ function initNPC(name)
 	tfm.exec.addNPC("Dhanny Dier", npc_02, name)
 	tfm.exec.addNPC("Andressa Nyeder", npc_03, name)
 	tfm.exec.addNPC("Fabia Murray", npc_04, name)
-	tfm.exec.addNPC("Carla Esther", npc_05, name)
 	tfm.exec.addNPC("Dereek Nandertz", npc_06, name)
 	tfm.exec.addNPC("Damian Henderson", npc_07, name)
 	tfm.exec.addNPC("Luciana Bander", npc_08, name)
@@ -47,15 +45,6 @@ function eventTalkToNPC(name, npc)
 		showMessage("<V>[Andressa Nyeder] <N>Seja bem-vindo(a). Este é o mirante de observação do Parque Aquático Natural das Cobras. Daqui é possível ver quase toda a extensão do rio com muito mais clareza.<br><br>As cobras não são lindas? E o melhor de tudo, não são venenosas! Você pode fazer carinho nelas sem medo.",name)
 	elseif npc == "Fabia Murray" then
 		showMessage("<V>[Fabia Murray] <N>Alguém aqui está preparado(a) para grandes emoções? Tomem cuidado apenas com as cobras!",name)
-	elseif npc == "Carla Esther" then
-		local chance=math.random(1,50)
-		if chance == 10 and data[name].below == false then
-			showMessage("<V>[Carla Esther] <R><b>Afunde e conheça as profundezas, seu inconveniente!</b>",name)
-			tfm.exec.giveCheese(name)
-			data[name].below=true
-		else
-			showMessage("<V>[Carla Esther] <J>Alguém me salve! A água está muito gelada e eu não sei nadar!",name)
-		end
 	elseif npc == "Dereek Nandertz" then
 		showMessage("<V>[Dereek Nandertz] <N>Está perdido(a)? Não precisa se preocupar. Eu serei o seu guia.<br><br>Ali na frente, há uma tirolesa bem grande e um trampolim. Desse jeito, você consegue sentir a água gelada do rio com muito mais propriedade.<br><br><R>Só vê se não fica muito tempo pulando no trampolim... Aquilo já quebrou várias vezes por conta de alguns que nem quero comentar.",name)
 	elseif npc == "Damian Henderson" then
@@ -135,12 +124,12 @@ function eventPlayerDied(name)
 	if changed == true then
 		tfm.exec.respawnPlayer(name)
 	end
-	data[name].z=1; data[name].below=false; data[name].fs=0; data[name].freezed=false;
+	data[name].below=false; data[name].fs=0; data[name].freezed=false;
 end
 function eventNewGame(name)
 	if changed == true then
 		for name,_ in next,tfm.get.room.playerList do
-			showMessage("<VP><b>Bem-vindo(a) ao Parque Aquático Natural das Cobras.</b><br><br><p align='left'><N>Este é um mapa-script bem diferente de tudo o que você já viu.<br>O rio é muito profundo! Caso não saiba nadar, recomendo sair desta sala agora! Mas se souber, apenas aproveite e curta!<br><br><R>Aviso: Este mapa pode consumir até 1,2GB de RAM dependendo de casos específicos.<br><br><ROSE><b>Mapa feito por Morganadxana#0000.</b><br><J>Agradecimentos especiais para Aurelianlua#0000, Velkozdapic#0000, Lanadelrey#4862, Lorena#0960, Star#8558, Soft#1388, Some#2636, Leticia1k#0000, Draw#6691 e Joanaanne#0000.<b></b><br><br><N>Deseja usar este mapa-script no cafofo de sua tribo? Use o link a seguir:<br><N><VP>raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/Parque%20Aqu%C3%A1tico%20Natural%20das%20Cobras.lua<br><br><N>Revisão 1.1",name)
+			showMessage("<VP><b>Bem-vindo(a) ao Parque Aquático Natural das Cobras.</b><br><br><p align='left'><N>Este é um mapa-script bem diferente de tudo o que você já viu.<br>O rio é muito profundo! Caso não saiba nadar, recomendo sair desta sala agora! Mas se souber, apenas aproveite e curta!<br><br><R>Aviso: Este mapa pode consumir até 1,2GB de RAM dependendo de casos específicos.<br><br><ROSE><b>Mapa feito por Morganadxana#0000.</b><br><J>Agradecimentos especiais para Aurelianlua#0000, Velkozdapic#0000, Lanadelrey#4862, Lorena#0960, Star#8558, Soft#1388, Some#2636, Leticia1k#0000, Draw#6691 e Joanaanne#0000.<b></b><br><br><N>Deseja usar este mapa-script no cafofo de sua tribo? Use o link a seguir:<br><N><VP>raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/Parque%20Aqu%C3%A1tico%20Natural%20das%20Cobras.lua<br><br><N>Revisão 1.2",name)
 			showWater(name)
 			initNPC(name)
 		end
@@ -160,7 +149,6 @@ end
 function eventNewPlayer(name)
 	tfm.exec.respawnPlayer(name)
 	newData={
-	["z"]=1;
 	["below"]=false;
 	["fs"]=0;
 	["freezed"]=false;
@@ -169,7 +157,7 @@ function eventNewPlayer(name)
 	data[name] = newData;
 	if changed == true then
 		ui.setMapName("<VP>Parque Aquático Natural das Cobras - <ROSE>Morgana's Mechanical Maps<")
-		showMessage("<VP><b>Bem-vindo(a) ao Parque Aquático Natural das Cobras.</b><br><br><p align='left'><N>Este é um mapa-script bem diferente de tudo o que você já viu.<br>O rio é muito profundo! Caso não saiba nadar, recomendo sair desta sala agora! Mas se souber, apenas aproveite e curta!<br><br><R>Aviso: Este mapa pode consumir até 1,2GB de RAM dependendo de casos específicos.<br><br><ROSE><b>Mapa feito por Morganadxana#0000.</b><br><J>Agradecimentos especiais para Aurelianlua#0000, Velkozdapic#0000, Lanadelrey#4862, Lorena#0960, Star#8558, Soft#1388, Some#2636, Leticia1k#0000, Draw#6691 e Joanaanne#0000.<b></b><br><br><N>Deseja usar este mapa-script no cafofo de sua tribo? Use o link a seguir:<br><N><VP>raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/Parque%20Aqu%C3%A1tico%20Natural%20das%20Cobras.lua<br><br><N>Revisão 1.1",name)
+		showMessage("<VP><b>Bem-vindo(a) ao Parque Aquático Natural das Cobras.</b><br><br><p align='left'><N>Este é um mapa-script bem diferente de tudo o que você já viu.<br>O rio é muito profundo! Caso não saiba nadar, recomendo sair desta sala agora! Mas se souber, apenas aproveite e curta!<br><br><R>Aviso: Este mapa pode consumir até 1,2GB de RAM dependendo de casos específicos.<br><br><ROSE><b>Mapa feito por Morganadxana#0000.</b><br><J>Agradecimentos especiais para Aurelianlua#0000, Velkozdapic#0000, Lanadelrey#4862, Lorena#0960, Star#8558, Soft#1388, Some#2636, Leticia1k#0000, Draw#6691 e Joanaanne#0000.<b></b><br><br><N>Deseja usar este mapa-script no cafofo de sua tribo? Use o link a seguir:<br><N><VP>raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/Parque%20Aqu%C3%A1tico%20Natural%20das%20Cobras.lua<br><br><N>Revisão 1.2",name)
 		showWater(name)
 		initNPC(name)
 	end
@@ -180,18 +168,6 @@ end
 function eventLoop(p,f)
 	if changed == true then
 	for name,player in next,tfm.get.room.playerList do
-		if not string.find(tfm.get.room.playerList[name].look,"106") then
-			if tfm.get.room.playerList[name].y >= 2395 then
-				if data[name].z <= 1.32 then
-					data[name].z=data[name].z+0.002
-				end
-			else
-				data[name].z=data[name].z-0.04
-				if data[name].z <= 1 then
-					data[name].z=1
-				end
-			end
-		end
 		if tfm.get.room.playerList[name].y >= 2550 then
 			data[name].fs=data[name].fs+1
 			if data[name].fs == 5 and data[name].warn == false then
@@ -201,13 +177,10 @@ function eventLoop(p,f)
 			if data[name].fs == 150 then
 				data[name].freezed=true
 				tfm.exec.freezePlayer(name)
-				tfm.exec.setPlayerGravityScale(name,1.4)
+				tfm.exec.setPlayerGravityScale(name,2)
 			end
 		else
 			data[name].fs=0
-		end
-		if data[name].freezed == false then
-			tfm.exec.setPlayerGravityScale(name,data[name].z)
 		end
 	end
 	else
