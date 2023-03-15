@@ -2,8 +2,8 @@
 Module authors : Morganadxana#0000
 (C) 2017-2023 Spectra Advanced Module Group
 
-Version : RTM 53437.220
-Compilation date : 02/03/2023 00:05 UTC
+Version : RTM 53538.221 LTS
+Compilation date : 03/15/2023 21:59 UTC
 Sending player : Morganadxana#0000
 
 Number of maps : 189
@@ -312,7 +312,7 @@ function showRoomSettings(name)
 end
 
 function showLobbyText(name)
-	ui.addTextArea(402,"<p align='center'><font size='12'><b><font face='Courier New'><i>"..text.version.." RTM 53437.220 - "..text.comp_date.."02/03/2023 00:05 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,-10,380,820,36,0,0,1.0,true)
+	ui.addTextArea(402,"<p align='center'><font size='12'><b><font face='Courier New'><i>"..text.version.." RTM 53538.221 LTS - "..text.comp_date.."03/15/2023 21:59 UTC - "..text.uploaded.."Velkozdapic#0000</i>",name,-10,380,820,36,0,0,1.0,true)
 end
 
 function setLeaders()
@@ -395,7 +395,7 @@ function updateTextBar()
 	if mode == "end" then
 		ui.setMapName("<VP><b>"..text.ending.."</b>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	else
-		ui.setMapName("<N><b>#anvilwar</b>   <G>|   <VP>"..text.version.." <b>RTM 53437.220</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
+		ui.setMapName("<N><b>#anvilwar</b>   <G>|   <VP>"..text.version.." <b>RTM 53538.221 LTS</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	end
 end
 
@@ -1120,7 +1120,7 @@ function eventChatCommand(name,command)
 		end
 	else showMessage(text.wrong,name) end end
 	if command == "changelog" then
-		showMenu(name,0xa8f233,140,130,520,110,"#anvilwar Changelog - RTM 53437.220","• The cost to revive players is now back to 30 points<br>• Added 1 new map<br>• Changes on map names")
+		showMenu(name,0xa8f233,140,130,520,95,"#anvilwar Changelog - RTM 53538.221 LTS","• Changes on !settings command")
 	end
 	if (command:sub(0,2) == "rv") then
 		if name == actual_player and general_time >= 30 then
@@ -1664,7 +1664,7 @@ function eventTextAreaCallback(id,name,callback)
 		showRoomSettings(name)
 	end
 	if callback == "ctimea" then
-		if settings.time > 120 then settings.time=settings.time-10 end
+		if settings.time > 150 then settings.time=settings.time-10 end
 		showRoomSettings(name)
 	end
 	if callback == "ctimeb" then
@@ -1691,7 +1691,7 @@ function eventTextAreaCallback(id,name,callback)
 		showRoomSettings(name)
 	end
 	if callback == "cstimeb" then
-		if settings.shoot_time < 24 then settings.shoot_time=settings.shoot_time+1 end
+		if settings.shoot_time < 30 then settings.shoot_time=settings.shoot_time+1 end
 		showRoomSettings(name)
 	end
 	if callback == "ckami" then
