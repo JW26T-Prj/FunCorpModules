@@ -6,7 +6,7 @@
 -- Insert your nickname with #tag at line 9 to make the code work.
 -- Original credits to Lynezx#0000 and Nasus_assassin#1534.
 
-admin={"Dhanny_mheyran#6701"} -- Insira seus nomes aqui, FunCorp! / Insert your nicknames here, FunCorp!
+admin="Dhanny_mheyran#6701" -- Insira seu nome aqui, FunCorp! / Insert your nickname here, FunCorp!
 
 -- Comandos/Commands:
 -- !start = Inicia uma nova partida. Você precisa estar na tela inicial para fazer isso.
@@ -39,9 +39,8 @@ end
 lang={}; data={}; rounds=15; mode="lobby"; maps="racing"; map_time=60; lobby_map="@6390711"; winner_map="@7928188"; round=-1; alives=0; position=1; remain_int=0;
 tribes={}; final_ranking={};
 mapas={1,2,8,11,12,14,19,22,26,27,28,30,31,33,35,40,41,44,45,49,53,55,57,58,59,62,63,64,65,67,69,70,71,73,74,78,79,80,81,86,89,92,96,100}
-ninjas={"Alisson#3938","Aurelianlua#0000","Akwimos#1937","Viego#0345"};
 lang.br = {
-	welcome = "<N><b>Bem-vindos ao module TribeWar Renewed!</b><br>Junte a sua tribo, conquiste pódios e represente-a com sucesso!<br><ROSE>Digite !help para ver a ajuda e digite !ranking para ver o ranking da partida.<br><br><J><b>Script gerenciado por Dhanny_mheyran#6701</b><br>Originalmente feito por Lynezx#0000 e Nasus_assassin#1534<br><br><R>Versão 2023.03.03.2-TW",
+	welcome = "<N><b>Bem-vindos ao module TribeWar Renewed!</b><br>Junte a sua tribo, conquiste pódios e represente-a com sucesso!<br><ROSE>Digite !help para ver a ajuda e digite !ranking para ver o ranking da partida.<br><br><J><b>Script gerenciado por Dhanny_mheyran#6701</b><br>Originalmente feito por Lynezx#0000 e Nasus_assassin#1534<br><br><R>Versão 2023.03.18.1-TW",
 	tribelock1 = "<VP>Você está participando do jogo pela tribo </b>",
 	tribelock2 = ".</b><br><N>Caso você troque de tribo, você poderá representá-la apenas no próximo jogo.",
 	notribe = "<R>Você ainda pode participar deste jogo, caso seja convidado para alguma tribo. No entanto, você só pode representar uma tribo por jogo.",
@@ -64,7 +63,7 @@ lang.br = {
 	help = "<p align='center'><N><b>Bem-vindo ao module TribeWar Renewed.</b><br><br><p align='left'>Neste module, os jogadores representam suas tribos em uma competição. Conseguir pódios garantirá pontos para a sua tribo.<br><br>Ao final de um determinado número de rounds, a tribo que conseguir pontuar mais vencerá o jogo.<br><br><VP>Pontuações do jogo:<br><BL>• <N>1º lugar = <VP>6 pontos<br><BL>• <N>2º lugar = <VP>4 pontos<br><BL>• <N>3º lugar = <VP>2 pontos<br><br><R>Caso você saia de uma tribo e vá para outra, você poderá representá-la somente no próximo jogo."
 }
 lang.en = {
-	welcome = "<N><b>Welcome to TribeWar Renewed module!</b><br>Gather the players of your tribe, win matches and represent her with success!<br><ROSE>Type !help to see the game help and !ranking to see the ranking of the match.<br><br><J><b>Script developed by Dhanny_mheyran#6701</b><br>Originally made by Lynezx#0000 and Nasus_assassin#1534<br><br><R>Version 2023.03.03.2-TW",
+	welcome = "<N><b>Welcome to TribeWar Renewed module!</b><br>Gather the players of your tribe, win matches and represent her with success!<br><ROSE>Type !help to see the game help and !ranking to see the ranking of the match.<br><br><J><b>Script developed by Dhanny_mheyran#6701</b><br>Originally made by Lynezx#0000 and Nasus_assassin#1534<br><br><R>Version 2023.03.18.1-TW",
 	tribelock1 = "<VP>You are representing the following tribe: <b>",
 	tribelock2 = ".</b><br><N>If you join another tribe, you only can represent her in the next game.",
 	notribe = "<R>You still can play this game, if you are invited to join any tribe. However, you can only represent one tribe at time.",
@@ -93,20 +92,6 @@ else
 	text = lang.en
 end
 
-function verifyAdmin(name)
-	for i=1,rawlen(admin) do
-		if admin[i] == name then
-			return true
-		end
-	end
-end
-function verifyNinjas(name)
-	for i=1,rawlen(ninjas) do
-		if ninjas[i] == name then
-			return true
-		end
-	end
-end
 function findString(object,tb)
 	for i=1,rawlen(tb) do
 		if tb[i] == object then
@@ -236,14 +221,16 @@ function lobby()
 	end
 end
 function eventNewPlayer(name)
-	newData={
+	if not data[name] then
+		newData={
 			["tribe"]="";
 			["wins"]=0;
 			["rankings"]=0;
 			["banned"]=false;
 			["opened"]=false;
 			};
-	data[name] = newData;
+		data[name] = newData;
+	end
 	showMessage(text.welcome,name)
 	if mode == "lobby" or mode == "waiting" then
 		tfm.exec.respawnPlayer(name)
@@ -384,7 +371,7 @@ function changeMap()
 	end
 end
 function eventChatCommand(name,command)
-	if verifyAdmin(name) or verifyNinjas(name) then
+	if name == admin then
 		if command == "start" and mode == "lobby" then
 			lockTribes(); mode="waiting";
 			tfm.exec.setGameTime(15)
@@ -430,14 +417,14 @@ end
 function eventLoop(release,remain)
 	remain_int=math.ceil(remain/1000)
 	if mode == "lobby" or mode == "waiting" or mode == "end" then
-		ui.setMapName("<J><b>TribeWar Renewed</b>   <G>|   <N>"..text.version.." 2023.03.03.2-TW "..text.madeby.."<")
+		ui.setMapName("<J><b>TribeWar Renewed</b>   <G>|   <N>"..text.version.." 2023.03.18.1-TW "..text.madeby.."<")
 	end
 	if remain <= 1000 and mode == "waiting" then
 		mode="game"; changeMap();
 	end
 	if mode == "game" then
 		remaining=math.floor(remain/1000)
-		ui.setMapName("<J><b>TribeWar Renewed</b>   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.time.." : <V>"..remaining.."s   <G>|   <N>Round : <V>"..round.."/"..rounds.."   <G>|   <R><b>"..text.version.." 2023.03.03.2-TW</b><")
+		ui.setMapName("<J><b>TribeWar Renewed</b>   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.time.." : <V>"..remaining.."s   <G>|   <N>Round : <V>"..round.."/"..rounds.."   <G>|   <R><b>"..text.version.." 2023.03.18.1-TW</b><")
 		if remain <= 500 and round < rounds then
 			changeMap();
 		elseif remain <= 500 and round >= rounds then
