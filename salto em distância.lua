@@ -1,5 +1,5 @@
 admin="" -- Insira seu nome aqui, FunCorp! / Insert your name here, FunCorp!
-freeze=true -- Troque para 'false' para desativar o congelamento no espaço
+freeze=true -- Troque para 'false' para desativar o congelamento no espaço // Change to 'false' to disable mice freezing in space
 
 data={}; recorde=0; recorder="----";
 for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","PhysicalConsumables","AfkDeath"} do
@@ -18,12 +18,12 @@ function showMessage(message,name)
 	end
 end
 function updateBar()
-	ui.setMapName("<D>Salto em Distância <V><b>II</b>   <G>|   <N>Recorde : <J><b>"..recorder.."</b> ("..recorde..")<")
+	ui.setMapName("<D>Salto em Distância / Long Jump <V><b>II</b>   <G>|   <N>Recorde / High Score : <J><b>"..recorder.."</b> ("..recorde..")<")
 end
 function eventChatCommand(n,m)
 	if n == "Patrick_mahomes#1795" or n == "Forzaldenon#0000" or n == "Dhanny_mheyran#6701" or n == "Viego#0345" or n == admin then
 		if m == "reset" then
-			showMessage("Todas as pontuações e o recorde foram reiniciados.",nil)
+			showMessage("Todas as pontuações e o recorde foram reiniciados.<br>All scores and the high score have been removed.",nil)
 			recorde=0
 			recorder="----";
 			for _,i in next,{3,4,5,80,81} do
@@ -66,7 +66,7 @@ function eventNewPlayer(n)
 		data[n]=newData;
 	
 	if n:sub(1,1) == "*" then
-		showMessage("<R>Jogadores convidados (souris) não são permitidos neste jogo.",n)
+		showMessage("<R>Jogadores convidados (souris) não são permitidos neste jogo.<br>Guest players (souris) aren't allowed to play this game.",n)
 	else
 		tfm.exec.respawnPlayer(n)
 		tfm.exec.giveCheese(n)
@@ -78,7 +78,7 @@ function eventNewPlayer(n)
 		end
 		ui.setBackgroundColor("#000000")
 		tfm.exec.setPlayerScore(n,0,false)
-		showMessage("<VP>Jogo de salto em distância feito por Patrick_mahomes#1795, Akwimos#1937, Dhanny_mheyran#6701 e Threshlimit#0000. <b>Versão 2.2</b><br><br><BL>Imagens enviadas por Spectra_phantom#6089 e Morganadxana#0000<br><br><N>Digite /mort para retornar ao ponto inicial sempre que necessário.",n)
+		showMessage("<VP>Jogo de salto em distância feito por (New Long Jump module made by) Patrick_mahomes#1795, Akwimos#1937, Dhanny_mheyran#6701 e Threshlimit#0000. <b>Versão / Version 2.3</b><br><br><BL>Imagens enviadas por (Pictures sent by) Spectra_phantom#6089, Morganadxana#0000<br><br><N>Digite /mort para retornar ao ponto inicial sempre que necessário.<br>Type /mort to return to the start point when necessary",n)
 		for a=1,5 do tfm.exec.addImage("182d6e2305b.png","?1",math.random(100,20000),math.random(-850,700),n) end
 		for b=1,5 do tfm.exec.addImage("182d6e2305b.png","?1",math.random(100,20000),math.random(-850,700),n,-1,1) end
 		for c=1,7 do tfm.exec.addImage("182d6e1e45c.png","?1",math.random(100,20000),math.random(-850,700),n) end
@@ -121,12 +121,12 @@ function eventLoop(e,r)
 			ui.addTextArea(2,"<p align='center'><font size='20'><b><font color='#800000'><font face='Courier New'>"..data[name].x.."",name,700,18,80,22,0xff0000,0x800000,0.9,true)
 			ui.addTextArea(3,"",name,30,48,data[name].x/37,5,0xff0000,0x800000,0.9,true)
 			if tfm.get.room.playerList[name].vx <= 3 and tfm.get.room.playerList[name].x >= 500 and tfm.get.room.playerList[name].y >= 5450 then
-				showMessage("<BL>Distância percorrida: <b>"..data[name].x.."</b> pixels.",name)
+				showMessage("<BL>Distância percorrida / Travelled distance : <b>"..data[name].x.."</b> pixels.",name)
 				data[name].freezed=false
 				tfm.exec.freezePlayer(name,false)
 				if data[name].x > data[name].recorde then
 					data[name].recorde=data[name].x
-					showMessage("<VP>Você atingiu sua maior pontuação: <b>"..data[name].x.." pixels</b>.",name)
+					showMessage("<VP>Você atingiu sua maior pontuação / You reached your high score : <b>"..data[name].x.." pixels</b>.",name)
 					ui.addTextArea(4,"",name,30+data[name].recorde/37,48,1,5,0x00ff00,0x008000,0.9,true)
 					ui.addTextArea(80,"",name,data[name].x+803,50,6,5990,0x00ff00,0x008000,0.8,false)
 					tfm.exec.setPlayerScore(name,data[name].x,false)
@@ -134,7 +134,7 @@ function eventLoop(e,r)
 				if data[name].x > recorde then
 					recorde=data[name].x
 					recorder=name
-					showMessage("<J>Novo recorde da sala: <b>"..data[name].x.." pixels</b>, feito por "..name.."!")
+					showMessage("<J>Novo recorde da sala / New room high score : <b>"..data[name].x.." pixels</b>, feito por (made by) "..name.."!")
 					ui.addTextArea(5,"",nil,30+recorde/37,48,1,5,0xff00ff,0x800080,0.9,true)
 					updateBar()
 					ui.addTextArea(81,"",nil,data[name].x+803,50,6,5990,0xff00ff,0x800080,0.8,false)
@@ -146,9 +146,11 @@ function eventLoop(e,r)
 			if tfm.get.room.playerList[name].y >= 5520 and tfm.get.room.currentMap == "@0" and data[name].freezed == false then
 				data[name].sc=data[name].sc+1
 				data[name].freezed=true
-				if data[name].sc == 50 then
+				if data[name].sc == 10 then
 					data[name].sc=-15
-					showMessage("<VP>O fundo do mar é o céu de outro mundo...<br><BL>— Pyke",name)
+					if tfm.get.room.community == "br" or tfm.get.room.community == "pt" then
+						showMessage("<VP>O fundo do mar é o céu de outro mundo...<br><BL>— Pyke",name)
+					end
 				end
 			end
 		end
@@ -165,9 +167,11 @@ function eventLoop(e,r)
 						tfm.exec.setPlayerGravityScale(name,-0.2)
 						data[name].sc=data[name].sc+1
 						data[name].freezed=true
-						if data[name].sc >= 30 then
+						if data[name].sc >= 15 then
 							data[name].sc=-15
-							showMessage("<VP>Nada há de caminhar sobre as estrelas...<br><BL>— Aurelion Sol",name)
+							if tfm.get.room.community == "br" or tfm.get.room.community == "pt" then
+								showMessage("<VP>Nada há de caminhar sobre as estrelas...<br><BL>— Aurelion Sol",name)
+							end
 						end
 					end
 				end
