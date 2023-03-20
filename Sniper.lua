@@ -3,9 +3,6 @@ tfm.exec.disablePhysicalConsumables(true)
 tfm.exec.disableAllShamanSkills(true)
 enabled=true; vivo=0; vivos=0; loop=0; prox=false; shaman=""; remain=10; players={}; p={};
 mapas={"@7284500","@7282115","@7282073","@7284814","@6958866","@7177229","@3859389","@7285283"}
-system.disableChatCommandDisplay("cmd",true)
-system.disableChatCommandDisplay("p",true)
-system.disableChatCommandDisplay("rank",true)
 tfm.exec.newGame(mapas[math.random(#mapas)])
 function eventLoop(p,f)
 	ui.setMapName("<N><J>"..tfm.get.room.currentMap.."   <G>|   <N>Vivos : <V>"..vivos.."")
@@ -21,18 +18,29 @@ function eventLoop(p,f)
 	end
 	loop=loop+0.5
 	if enabled == true then
-	remain=remain-0.5
+		remain=remain-0.5
 	end	
-	if remain <= 5 and remain >= 0.5 then
-		ui.addTextArea(0,"<font size='33'><p align='center'>"..math.ceil(remain).."",nil,370,350,60,45,0x000001,0x000001,0.8,true)
+	if remain == 3 then
+		imageId = tfm.exec.addImage("17a4e9afa86.png",":1",358,280,nul)
 	end
-	if remain <= 0 and remain >= -1 then
-		ui.addTextArea(0,"<font size='33'><p align='center'>Vai!",nil,350,350,100,45,0x000001,0x000001,0.8,true)
+	if remain == 2 then
+		tfm.exec.removeImage(imageId)
+		imageId = tfm.exec.addImage("17a4e9ae302.png",":1",358,280,nul)
 	end
-	if remain <= -1.5 then
+	if remain == 1 then
+		tfm.exec.removeImage(imageId)
+		imageId = tfm.exec.addImage("17a4e9acb8f.png",":1",358,280,nul)
+	end
+	if remain == 0 then
+		tfm.exec.removeImage(imageId)
+		imageId = tfm.exec.addImage("17a4e9ab41f.png",":1",303,280,nul)
+		enabled=true;
+	end
+	if remain <= -1 then
 		ui.removeTextArea(0,nil)
 		enabled=false
 		remain=10
+		tfm.exec.removeImage(imageId)
 	end
 	vivos=vivo-1
 end
@@ -79,7 +87,7 @@ end
 function eventNewPlayer(name)
 	tfm.exec.bindKeyboard(name,40,true,true)
 	tfm.exec.bindKeyboard(name,83,true,true)
-	tfm.exec.chatMessage("<VP><b>Sniper!</b><br><N>Sobreviva às bigornas do shaman! Criado por Fosfus7heads#0000.<br><br>versão 1.6: mudanças internas de código",name)
+	tfm.exec.chatMessage("<VP><b>Sniper!</b><br><N>Sobreviva às bigornas do shaman! Criado por Fosfus7heads#0000.<br><br>versão 1.7: limpeza de código e atualizações gráficas",name)
 end
 for name,player in pairs(tfm.get.room.playerList) do
 	eventNewPlayer(name)
@@ -93,7 +101,7 @@ end
 function eventKeyboard(name,key,down,x,y)
 	if y < 150 then
 		if enabled == false then
-			if loop >= 1.5 then
+			if loop >= 1 then
 				tfm.exec.addShamanObject(10,x,y+60,90,0,25,false)
 				loop=0
 			end
