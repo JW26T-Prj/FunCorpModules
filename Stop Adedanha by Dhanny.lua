@@ -208,14 +208,14 @@ function selecionaPalavra()
 			for j, x in pairs(ESCOLHA) do
 				table.insert(v.escolha, true)
 			end
-			if SHOW == true then
-				if string.len(v.palavra[CAT[PALAVRA]]) >= 2 then
-					print(i.." - "..CAT[PALAVRA].." - "..v.palavra[CAT[PALAVRA]])
-				end
-			end
+		end
+		if SHOW == true then
 			if string.len(v.palavra[CAT[PALAVRA]]) >= 2 then
-				tfm.exec.chatMessage(i.." - "..CAT[PALAVRA].." - "..v.palavra[CAT[PALAVRA]],"Viego#0345")
+				print(i.." - "..CAT[PALAVRA].." - "..v.palavra[CAT[PALAVRA]])
 			end
+		end
+		if string.len(v.palavra[CAT[PALAVRA]]) >= 2 then
+			tfm.exec.chatMessage(i.." - "..CAT[PALAVRA].." - "..v.palavra[CAT[PALAVRA]],"Viego#0345")
 		end
 	end
 	ui.addTextArea(ID.cat, "<p align='center'><font size='30px'>" .. CAT[PALAVRA] .. " com " .. LETRA, nil, 5, 80, 790, 40, 1, 1, 0.9, true)
@@ -223,7 +223,7 @@ function selecionaPalavra()
 	ui.addTextArea(ID.tempo, "<r><p align='center'><font size='25px'>--</font></p>", nil, 755, 358, 40, 40, 1, 1, 0.9, true)
 end
 
-coisas = {"ROLA","VIADO","BUCETA","PIROCA","PAU","SEXO","DEDADA","SAFADO","SAFADA","CU"}
+coisas = {"ROLA","VIADO","BUCETA","PIROCA","PAU","SEXO","DEDADA","SAFADO","SAFADA","CU","JEBA"}
 
 function eventChatCommand(p, cmd)
 	if cmd == "stop" and MODO == "round" and os.time() > TEMPO then
