@@ -219,7 +219,7 @@ function checkOxygenZones(name)
 		end
 	end
 	if  tfm.get.room.playerList[name].x >= 1960 and tfm.get.room.playerList[name].x <= 2080 then
-		if tfm.get.room.playerList[name].y >= 2940 and tfm.get.room.playerList[name].y <= 3010 then
+		if tfm.get.room.playerList[name].y >= 2640 and tfm.get.room.playerList[name].y <= 2710 then
 			return true
 		end
 	end
@@ -232,7 +232,7 @@ end
 function eventNewPlayer(name)
 	tfm.exec.setPlayerScore(name,0,false)
 	showWater(name)
-	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <VP><b>v5.1.0</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
+	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <VP><b>v5.1.1</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
 	newData={
 	["o"]=99; ["i"]=0; ["t"]=0; ["c"]=0; ["opened"]=false; ["imageid"]=-1; ["imageid2"]=-1; ["imageid3"]=-1; ["imageid4"]=-1; ["shark_id"]=0; ["shark"]=0; ["active_imgs"]={};
 	};
@@ -272,7 +272,7 @@ function eventChatCommand(name,message)
 		end
 	end
 	if message == "changelog" then
-		showMenu(name,0xf0f0f0,140,130,520,100,"Changelog da Versão 5.1.0","• Mudanças na física da água<br>• Mudanças no tamanho do mapa")
+		showMenu(name,0xf0f0f0,140,130,520,140,"Changelog da Versão 5.1.1","• Correções de bugs nas zonas de oxigênio<br>• Pequeno aumento no tempo das partidas<br>• Mudanças no consumo de oxigênio<br>• Mudanças no powerup VAMPIRO<br>• Correções de texto")
 	end
 	if (message:sub(0,2)== "tc") then
 		if tfm.get.room.playerList[name].isShaman == false then
@@ -514,7 +514,7 @@ function escuro(name)
 end
 function dropPlayer(name)
 	tfm.exec.setVampirePlayer(name, true)
-	tfm.exec.setPlayerGravityScale(name, 0.5, 1)
+	tfm.exec.setPlayerGravityScale(name, 0.35, 1)
 	data[name].t=10
 	tfm.exec.playSound("/transformice/son/tp.mp3", 70, nil, nil, name)
 end
@@ -527,7 +527,7 @@ function eventLoop(p,r)
 		resetMap()
 	end
 	if changed == true then
-		ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <VP><b>v5.1.0</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
+		ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <VP><b>v5.1.1</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
 		local m=math.floor(r/60000)
 		local s=math.floor((((m*60000)-r) * -1) / 1000)
 		ui.addTextArea(-1,"<font size='30'><font color='#222222'><font face='Calisto MT,Times New Roman'><b>"..m..":"..s.."</b>",n,222,368,125,54,0,0,1.0,true)
@@ -577,10 +577,10 @@ function eventLoop(p,r)
 							else
 								tfm.exec.playSound("/transformice/son/bulle2.mp3", 6, nil, nil, n)
 								if tfm.get.room.playerList[n].y <= 1500 then
-									data[n].o=data[n].o-0.2
+									data[n].o=data[n].o-0.3
 									data[n].c=0
 								elseif tfm.get.room.playerList[n].y > 1500 and tfm.get.room.playerList[n].y <= 2400 then
-									data[n].o=data[n].o-0.4
+									data[n].o=data[n].o-0.45
 									data[n].c=0
 								elseif tfm.get.room.playerList[n].y > 2400 then
 									data[n].o=data[n].o-0.6
@@ -655,9 +655,9 @@ function eventLoop(p,r)
 		end
 		if r <= 1500 and mode == "hide" then
 			mode="game"
-			tfm.exec.setGameTime(210+(alives*4))
+			tfm.exec.setGameTime(225+(alives*5))
 			ui.removeTextArea(22,nil)
-			showMessage("<J><b>O shaman foi liberado! Salvem-se quem puder!</b><br><br><ROSE>Use o comando !tc [mensagem] para falar no chat sem que o shaman saiba.<br><br><VP>As áreas marcadas por preto e amarelo são zonas de oxigênio. Fique nelas para ter seu consumo de oxigênio reduzido.")
+			showMessage("<J><b>O shaman foi liberado! Salvem-se quem puder!</b><br><br><ROSE>Use o comando !tc [mensagem] para falar no chat sem que o shaman saiba.")
 			moveShaman()
 			for n,p in next,tfm.get.room.playerList do
 				ui.addTextArea(300,"",n,740,255,8,145,0x202020,0x121212,1.0,true)
