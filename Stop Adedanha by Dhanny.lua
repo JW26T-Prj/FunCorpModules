@@ -1,16 +1,16 @@
-﻿-- STOP
+-- STOP
 -- Escrito por Ninguem - 31/08/2015 // Atualizado por Dhanny_mheyran#6701 - 23/03/2023
--- Limite de 20 categorias.
+-- Mínimo de 5 temas e máximo de 20 temas.
 -- FunCorp, caso você não queira visualizar as respostas dos jogadores, altere a variável SHOW (linha 10) para false.
 -- Para bloquear um jogador, digite !kick [nome#tag]. Digite o mesmo comando para desbloqueá-lo caso o mesmo já esteja bloqueado.
 
 ADM = {"Dhanny_mheyran#6701"} -- editar com seu nome aqui!
-ADMIN_ONLY = false -- troque para 'true' se você quiser que só os votos dos jogadores indicados em 'ADM' contem
+ADMIN_ONLY = false -- troque para 'true' se você quiser que só os votos dos jogadores que estejam na tabela 'ADM' contem
 CAT = {"Nome","Animal","Objeto","Cor","Marca","TV/Filme/Anime/Desenho","Parte do Corpo Humano","Ator/Cantor/Celebridade","Comida/Bebida","País/Cidade/Estado","Profissão","Tem no Transformice","O(A) "..ADM[1].." é..."}
 SHOW = true
 MAXROUND = 5 -- número máximo de rounds
 
--- NÃO MEXA EM NADA A PARTIR DESTA LINHA!
+-- NÃO MEXA EM NADA DEPOIS DESTA LINHA!
 
 ID = {cat=1,camada=2,add=3,msg=4,tempo=5,stop=6}
 PLAYER = {};
@@ -95,9 +95,6 @@ function atualizaPlayer()
 	end
 	if cont == total + 15 then
 		TEMPO = os.time()+5000
-	end
-	if ROUND >= 2 then
-		tfm.exec.chatMessage("<VP>Todas as pontuações podem ser vistas na lista de jogadores da sala!")
 	end
 	ui.addTextArea(ID.cat, txt, nil, 300, 25, 200, 20, 1, 1, 0.9, true)
 end
@@ -215,15 +212,16 @@ function selecionaPalavra()
 			end
 		end
 		if string.len(v.palavra[CAT[PALAVRA]]) >= 2 then
-			tfm.exec.chatMessage(i.." - "..CAT[PALAVRA].." - "..v.palavra[CAT[PALAVRA]],"Viego#0345")
+			tfm.exec.chatMessage(i.." - "..CAT[PALAVRA].." - "..v.palavra[CAT[PALAVRA]],"Alisson#3938")
+			tfm.exec.chatMessage(i.." - "..CAT[PALAVRA].." - "..v.palavra[CAT[PALAVRA]],"Aurelianlua#0000")
 		end
 	end
 	ui.addTextArea(ID.cat, "<p align='center'><font size='30px'>" .. CAT[PALAVRA] .. " com " .. LETRA, nil, 5, 80, 790, 40, 1, 1, 0.9, true)
-	TEMPO = os.time() + 10000+(1000*#ESCOLHA)
+	TEMPO = os.time() + 10000+(1750*#ESCOLHA)
 	ui.addTextArea(ID.tempo, "<r><p align='center'><font size='25px'>--</font></p>", nil, 755, 358, 40, 40, 1, 1, 0.9, true)
 end
 
-coisas = {"ROLA","VIADO","BUCETA","PIROCA","PAU","SEXO","DEDADA","SAFADO","SAFADA","CU","JEBA"}
+coisas = {"ROLA","VIAD","BUCET","PIROC","PAU","SEX","DEDAD","SAFAD","CARALH","JEB","PUNHET","PORR","PORN"}
 
 function eventChatCommand(p, cmd)
 	if cmd == "stop" and MODO == "round" and os.time() > TEMPO then
@@ -397,7 +395,7 @@ function eventLoop(current, remaining)
 	elseif MODO == "letra" then
 		if os.time() > TEMPO then
 			MODO = "round"
-			TEMPO = os.time()+15000+(6000*#CAT)
+			TEMPO = os.time()+30000+(4000*#CAT)
 			ui.removeTextArea(ID.cat, nil)
 			ui.addTextArea(ID.cat, string.format("<p align='center'>A letra é:\n<font size='50px'><rose>%s</rose></font></p>", LETRA), nil, 300, 30, 200, 80, 1, 1, 0.9, true)
 			for i, v in pairs(PLAYER) do
@@ -454,6 +452,9 @@ function eventLoop(current, remaining)
 				TEMPO = os.time()+15000
 				zeraTudo(false, false)
 				atualizaPlayer(true)
+				if ROUND >= 2 then
+					tfm.exec.chatMessage("<VP>Todas as pontuações podem ser vistas na lista de jogadores da sala!")
+				end
 				ui.addTextArea(ID.tempo, "<r><p align='center'><font size='25px'>--</font></p>", nil, 755, 358, 40, 40, 1, 1, 0.9, true)
 				ui.addTextArea(ID.msg, "<r><p align='center'>Escolha um número</p>", nil, 150, 320, 490, 20, 1, 1, 0.9, true)
 				for i=1, 10 do
@@ -467,6 +468,9 @@ function eventLoop(current, remaining)
 				MODO = "vitoria"
 				TEMPO = os.time()+30000
 				atualizaPlayer()
+				if ROUND >= 2 then
+					tfm.exec.chatMessage("<VP>Todas as pontuações podem ser vistas na lista de jogadores da sala!")
+				end
 				local maior = 0
 				local n = ""
 				for i, v in pairs(PLAYER) do
