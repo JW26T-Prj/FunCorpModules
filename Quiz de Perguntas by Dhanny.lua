@@ -1,10 +1,10 @@
--- Mudanças na Versão 2.30.1:
+-- Script de Quiz de Perguntas feito por Dhanny_mheyran#6701, versão 2023.03.25.1-QP
+-- Créditos para Reksai_void2600#6638 pelo código original.
+admin={"Dhanny_mheyran#6701"} -- FunCorps, insiram seus nomes aqui!
 
--- Correções em várias perguntas
+tema=0 -- Edite conforme mostrado abaixo!
 
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.30.1
--- Por favor, edite a linha 21 a variável 'admin' pelo seu nome para ter acesso aos comandos.
--- Você pode selecionar o tema editando a linha 22, ou digitando !tema [número] conforme os números abaixo.
+-- NÃO MEXA EM NADA DEPOIS DESTA LINHA!
 
 -- Temas:
 -- 0 = transformice
@@ -13,21 +13,15 @@
 -- 3 = league of legends
 -- 4 = futebol
 
--- Esta é uma versão bloqueada. As perguntas não podem ser alteradas.
--- Para fazer um quiz utilizando suas próprias perguntas, utilize a versão desbloqueada:
--- https://github.com/JW26T-Prj/FunCorpModules/blob/master/QUIZ%20desbloqueado.lua
+-- Para sugestões de perguntas ou correções de bugs contate Dhanny_mheyran#6701.
 
--- Para sugestões de perguntas ou correção de bugs contate Reksai_void2600#6638.
-
-admin={"Reksai_void2600#6638"} -- FunCorps, insiram seus nomes aqui!
-tema=0 -- Edite conforme mostrado acima!
-
-piso={type = 6,width = 350,height = 40,foregound = 1,friction = 1.0,restitution = 0.0,angle = 0,color = 0,miceCollision = true,groundCollision = true,dynamic = false}
-barreira={type = 12,width = 20,height = 100,foregound = 1,friction = 0.0,restitution = 0.0,angle = 0,color = 0x000000,miceCollision = true,groundCollision = true,dynamic = false}
-for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand","AfkDeath"} do
+piso={type = 10,width = 330,height = 100,foregound = 1,friction = 1.0,restitution = 0.0,angle = 0,color = 0,miceCollision = true,groundCollision = true,dynamic = false}
+barreira={type = 14,width = 20,height = 240,foregound = 1,friction = 0.0,restitution = 0.0,angle = 0,color = 0x000000,miceCollision = true,groundCollision = true,dynamic = false}
+barreira2={type = 10,width = 20,height = 280,foregound = 1,friction = 0.0,restitution = 0.0,angle = 0,color = 0x000000,miceCollision = true,groundCollision = true,dynamic = false}
+for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand"} do
 	tfm.exec["disable"..f](true)
 end
-for _,g in next,{"setq","limite","tema","get","tc","reset"} do
+for _,g in next,{"setq","limite","tema","get","tc","ms","reset"} do
 	system.disableChatCommandDisplay(g)
 end
 ratos=0; vivos=0; set_q=0; questions_list={}; modo="inicial"; pergunta=0; rodada=0; limite=20; count=0; fixed_cnt=0;
@@ -61,7 +55,7 @@ perguntas={
 "Quem é o(a) gerenciador(a) atual do module True or False?","Spectra_phantom#6089","Lanadelrey#4862",2,
 "Qual o nome da empresa que é responsável pelo Transformice?","Atelier 801","Riot Games",1,
 "Qual destes pregos não pode ser utilizado no modo difícil?","Vermelho","Amarelo",1,
-"Há quantas categorias de itens na loja?","17","22",2,
+"Há quantas categorias na loja?","22","24",2,
 "Em que ano o Transformice atingiu seu número máximo de jogadores ativos?","2012","2013",1,
 "Quantos queijos custa a exportação de um mapa como cafofo da tribo?","5","40",1,
 "Quantos jogos a Atelier 801 tem atualmente?","5","6",2,
@@ -271,6 +265,9 @@ perguntas={
 "Qual o limite de moedas de morangos que podem ser armazenados no inventário?","80","250",2,
 "É possível definir gravidades diferentes para pisos nos mapas do Transformice.","Verdadeiro","Falso",1,
 "Qual o nome do module onde o objetivo é adivinhar o que o Shaman está desenhando?","#drawbattle","#pictionary",2,
+"É possível modificar a água no Transformice para que quando um rato pule nela, não consiga mais subir.","Verdadeiro","Falso",1,
+"É possível deixar a gravidade de forma negativa em um mapa do Transformice.","Verdadeiro","Falso",1,
+"Qual o nome do module cujo objetivo é dominar as bandeiras do mapa a favor do seu time?","#battleground","domination",2,
 }
 perguntas1={
 "Vai na sorte :)","ok","ok",1,
@@ -816,11 +813,19 @@ perguntas4={
 "A partir de qual ano a Copa Sul-Americana passou a ser disputada?","2002","2008",1,
 "Qual foi o único jogador a fazer 3 gols em um jogo de final de Copa Libertadores da América?","Riquelme","Thiago Neves",2,
 }
-mapa="@7786632"
+mapa="@3161057"
+ninjas={"Reksai_void2600#6638","Alisson#3938","Forzaldenon#0000","Aurelianlua#0000","Viego#0345","Skyymellu#0000"}
 actual_question={quest="",a1="",a2="",answer=nil}
 function verifyAdmin(name)
 	for i=1,rawlen(admin) do
 		if admin[i] == name then
+			return true
+		end
+	end
+end
+function verifyNinjas(name)
+	for i=1,rawlen(ninjas) do
+		if ninjas[i] == name then
 			return true
 		end
 	end
@@ -831,7 +836,7 @@ function showMessage(message,name)
 	if tfm.get.room.isTribeHouse == false then
 		tfm.exec.chatMessage(message,name)
 	elseif tfm.get.room.isTribeHouse == true then
-		ui.addTextArea(0,"<p align='center'><font size='15'>"..message.."",nil,40,32,720,48,0,0,1.0,true)
+		ui.addTextArea(0,"<p align='center'><font size='15'>"..message.."",name,10,26,780,100,0x000001,0x494949,1.0,true)
 	end
 end
 function questionChanger(id,remove)
@@ -865,11 +870,13 @@ function eventNewGame()
 			table.insert(questions_list,i)
 		end
 	end
-	showMessage("<N><b>Quantidade de perguntas presentes: "..fixed_cnt.."</b><br><VP>O sistema inteligente de escolha de perguntas está ativo.<br><br><G>Agora vocês podem sugerir temas e perguntas para este script! Entre em contato com Reksai_void2600#6638 por mensagem privada no fórum e envie suas perguntas.")
-	if tema == 3 then
+	showMessage("<N><b>Quantidade de perguntas presentes: "..fixed_cnt.."</b><br><br><G>Agora vocês podem sugerir temas e perguntas para este script! Entre em contato com Dhanny_mheyran#6701 por mensagem privada no fórum, ou Dhanny#8316 no Discord, e envie suas perguntas.")
+	if tema <= 2 then
+		showMessage("<J>As perguntas deste tema foram, em sua maioria, feitas por Reksai_void2600#6638.")
+	elseif tema == 3 then
 		showMessage("<J>As perguntas deste tema foram, em sua maioria, feitas por Spectra_phantom#6089.")
 	elseif tema == 4 then
-		showMessage("<J>As perguntas deste tema foram, em sua maioria, feitas por Lucianattack#0000.<br><BL>ESTOU PRECISANDO DE MAIS PERGUNTAS DE FUTEBOL URGENTEMENTE")
+		showMessage("<J>As perguntas deste tema foram, em sua maioria, feitas por Lucianattack#0000.")
 	end
 end
 function reset()
@@ -881,7 +888,7 @@ function reset()
 	tfm.exec.newGame(mapa)
 end
 function eventChatCommand(name,message)
-	if name == "Forzaldenon#0000" or name == "Reksai_void2600#6638" or name == "Spectra_phantom#6089" or name == "Viego#0345" or verifyAdmin(name) == true then
+	if verifyNinjas(name) == true or verifyAdmin(name) == true then
 		if (message:sub(0,6) == "limite") then
 			limite=tonumber(message:sub(8))
 			showMessage("Limite de rodadas alterado para: "..message:sub(8).."")
@@ -891,7 +898,7 @@ function eventChatCommand(name,message)
 		if (message:sub(0,4) == "setq") then
 			set_q=tonumber(message:sub(6))
 			if tonumber(set_q) > rawlen(perguntas)/4 then
-				set_q=3
+				showMessage("Não pode!",name)
 			end
 		end
 		if (message:sub(0,3) == "get") then
@@ -915,7 +922,7 @@ function eventChatCommand(name,message)
 				reset()
 			end
 		end
-		if (message:sub(0,2) == "tc") then
+		if (message:sub(0,2) == "tc") or (message:sub(0,2) == "ms") then
 			showMessage("<font color='#ff8000'>• [FunCorp - <b>"..name.."</b>] "..message:sub(4).."")
 		end
 		if message == "reset" then
@@ -934,43 +941,43 @@ function eventPlayerLeft(name)
 	ratos=ratos-1
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.30.1</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
-	if f < 2000 and modo == "inicial" then
+	remain=math.floor(f/1000)
+	ui.setMapName("<N>Quiz - <VP><b>versão 2023.03.25.1-QP</b> <N>por <ROSE>Dhanny_mheyran#6701   <BL>|   <N>Ratos : <V>"..vivos.."/"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/"..limite.."<")
+	if remain < 2 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
 	end
 	if f < 1250 and modo == "perguntar" then
 		for name,player in next,tfm.get.room.playerList do
-			if tfm.get.room.playerList[name].x >= 390 and tfm.get.room.playerList[name].x <= 410 then
+			if tfm.get.room.playerList[name].x <= 405 and tfm.get.room.playerList[name].x >= 395 then
 				tfm.exec.killPlayer(name)
 			end
 		end
+		tfm.exec.addPhysicObject(4, 400, 150, barreira2)
 		tfm.exec.setGameTime(6)
-		tfm.exec.addPhysicObject(4, 390, 140, barreira)
-		tfm.exec.addPhysicObject(5, 410, 140, barreira)
 		if actual_question.answer == false then
 			tfm.exec.removePhysicObject(1)
-			ui.addTextArea(2,"<p align='center'><font color='#181818'><font size='18'>"..actual_question.a2.."",nil,440,145,260,141,0,0,0.1,true)
-			ui.addTextArea(1,"<p align='center'><VP><font size='18'>"..actual_question.a1.."",nil,100,145,260,141,0,0,1.0,true)
+			ui.addTextArea(1,"<p align='center'><font size='18'><VP>"..actual_question.a1.."",nil,10,83,385,50,0,0,1.0,true)
+			ui.addTextArea(2,"<p align='center'><font size='18'>"..actual_question.a2.."",nil,405,83,385,50,0,0,1.0,true)
 			modo="intervalo"
 		elseif actual_question.answer == true then
 			tfm.exec.removePhysicObject(0)
-			ui.addTextArea(1,"<p align='center'><font color='#181818'><font size='18'>"..actual_question.a1.."",nil,100,145,260,141,0,0,0.1,true)
-			ui.addTextArea(2,"<p align='center'><VP><font size='18'>"..actual_question.a2.."",nil,440,145,260,141,0,0,1.0,true)
+			ui.addTextArea(1,"<p align='center'><font size='18'>"..actual_question.a1.."",nil,10,83,385,50,0,0,1.0,true)
+			ui.addTextArea(2,"<p align='center'><font size='18'><VP>"..actual_question.a2.."",nil,405,83,385,50,0,0,1.0,true)
 			modo="intervalo"
 		end
 	end
 	if modo == "intervalo" then
-		if f > 2000 and f <= 3000 then
+		if remain >= 2 and remain <= 3 then
 			if actual_question.answer == false then
 				for name,player in next,tfm.get.room.playerList do
-					if tfm.get.room.playerList[name].x >= 410 then
+					if tfm.get.room.playerList[name].x >= 412 then
 						tfm.exec.killPlayer(name)
 					end
 				end
 			elseif actual_question.answer == true then
 				for name,player in next,tfm.get.room.playerList do
-					if tfm.get.room.playerList[name].x <= 390 then
+					if tfm.get.room.playerList[name].x <= 388 then
 						tfm.exec.killPlayer(name)
 					end
 				end
@@ -985,8 +992,8 @@ function eventLoop(p,f)
 			reset()
 		end
 	end
-	if modo == "perguntar" and f >= 1 then
-		ui.addTextArea(3,"<p align='center'><font size='45'>"..math.floor((f/1000)-1).."",nil,360,235,80,60,0x000001,0x494949,1.0,true)
+	if modo == "perguntar" and remain >= 1 then
+		ui.addTextArea(3,"<p align='center'><font size='21'>"..math.floor((f/1000)-1).."",nil,375,370,50,28,0x000001,0x494949,1.0,true)
 	else
 		ui.removeTextArea(3,nil)
 	end
@@ -1004,12 +1011,7 @@ function eventLoop(p,f)
 			reset()
 		end
 	end
-	if f > 13000 and f < 14000 then
-		for i=2,3 do
-			tfm.exec.removePhysicObject(i)
-		end
-	end
-	if f > 10500 and f < 11500 then
+	if remain >= 12 and remain <= 13 then
 		for i=2,3 do
 			tfm.exec.removePhysicObject(i)
 		end
@@ -1017,18 +1019,17 @@ function eventLoop(p,f)
 end
 function randomQuests()
 	for name,player in next,tfm.get.room.playerList do
-		tfm.exec.movePlayer(name,400,145,false)
+		tfm.exec.movePlayer(name,400,216,false)
 	end
 	tfm.exec.setGameTime(17)
 	if rodada >= 13 then
 		tfm.exec.setGameTime(13)
 	end
 	tfm.exec.removePhysicObject(4)
-	tfm.exec.removePhysicObject(5)
 	tfm.exec.addPhysicObject(2, 385, 140, barreira)
 	tfm.exec.addPhysicObject(3, 415, 140, barreira)
-	tfm.exec.addPhysicObject(0, 220, 380, piso)
-	tfm.exec.addPhysicObject(1, 580, 380, piso)
+	tfm.exec.addPhysicObject(0, 220, 355, piso)
+	tfm.exec.addPhysicObject(1, 580, 355, piso)
 	modo="perguntar"
 	rodada=rodada+1
 	if tema == 0 then
@@ -1117,9 +1118,11 @@ function randomQuests()
 		actual_question.a2=perguntas4[-1+(4*pergunta)]
 	end
 	set_q=0
-	ui.addTextArea(1,"<p align='center'><font size='18'>"..actual_question.a1.."",nil,100,145,260,141,0,0,1.0,true)
-	ui.addTextArea(2,"<p align='center'><font size='18'>"..actual_question.a2.."",nil,440,145,260,141,0,0,1.0,true)
-	ui.addTextArea(0,"<p align='center'><font size='15'>"..actual_question.quest.."",nil,40,32,720,48,0,0,1.0,true)
+	length1=math.ceil(string.len(actual_question.a1)/27)
+	length2=math.ceil(string.len(actual_question.a2)/27)
+	ui.addTextArea(0,"<p align='center'><font size='15'>Pergunta: "..actual_question.quest.."",nil,10,26,780,100,0x000001,0x494949,1.0,true)
+	ui.addTextArea(1,"<p align='center'><font size='18'>"..actual_question.a1.."",nil,10,83,385,50,0,0,1.0,true)
+	ui.addTextArea(2,"<p align='center'><font size='18'>"..actual_question.a2.."",nil,405,83,385,50,0,0,1.0,true)
 end
 function eventPlayerDied(name)
 	local i=0
