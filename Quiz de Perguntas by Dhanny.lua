@@ -1,4 +1,4 @@
--- Script de Quiz de Perguntas feito por Dhanny_mheyran#6701, versão 2023.03.25.1-QP
+-- Script de Quiz de Perguntas feito por Dhanny_mheyran#6701, versão 2023.03.28.1-QP
 -- Créditos para Reksai_void2600#6638 pelo código original.
 admin={"Dhanny_mheyran#6701"} -- FunCorps, insiram seus nomes aqui!
 
@@ -477,6 +477,25 @@ perguntas1={
 "O salário mínimo surgiu em qual governo brasileiro?","Washington Luís","Getúlio Vargas",2,
 "A primeira emissora de Sílvio Santos foi inaugurada em qual estado do Brasil?","São Paulo","Rio de Janeiro",2,
 "Em um computador, onde ficam armazenados todos os arquivos como fotos, vídeos e jogos?","Memória RAM","Disco Rígido",2,
+"Em que ano foi inaugurada a Avenida Brasil, principal via expressa da cidade do Rio de Janeiro?","1946","1966",1,
+"O município de Urupema, no estado de Santa Catarina, é conhecido como a cidade mais o que do Brasil?","Úmida","Fria",2,
+"Como se chamava a teoria de que o Sol girava em torno da Terra, utilizada principalmente na Idade Média?","Geocentrismo","Heliocentrismo",1,
+"Qual o nome do planeta mais quente do Sistema Solar?","Mercúrio","Vênus",2,
+"Em qual estado brasileiro fica localizado o Marco Zero, monumento que marca a divisão entre os hemisférios Norte e Sul?","Amapá","Amazonas",1,
+"Qual o nome do canal do YouTube brasileiro com maior número de inscritos?","whinderssonnunes","Canal KondZilla",2,
+"Qual o nome do pai do humorista Carlos Alberto de Nóbrega?","Manoel da Nóbrega","André da Nóbrega",1,
+"Qual o nome do livro mais vendido do mundo?","A Culpa é das Estrelas","Bíblia",2,
+"Qual o nome do filme lançado em 1998, indicado ao Óscar, cujo nome se tornou a principal estação de trem do Rio de Janeiro?","Central do Brasil","Estação da Luz",1,
+"Qual o nome do poeta compositor da famosa obra 'Os Lusíadas'?","Castro Alves","Luís de Camões",2,
+"Qual o nome do ex-presidente do Brasil cujo apelido era Jango?","João Goulart","Jânio Quadros",1,
+"Qual foi o primeiro planeta descoberto com a ajuda de um telescópio?","Júpiter","Urano",2,
+"A Primeira Guerra Mundial durou mais que a Segunda Guerra Mundial.","Verdadeiro","Falso",2,
+"Qual o nome da maior favela do Brasil?","Favela do Sol Nascente","Favela da Rocinha",1,
+"Em qual ano foram lançados os primeiros Emojis Unicode, que podiam ser utilizados em vários dispositivos?","1993","2008",1,
+"A diabetes é uma doença causada pelo excesso do quê no sangue?","Açúcar","Sal",1,
+"Quantas estrelas existem na bandeira dos Estados Unidos?","48","50",2,
+"Em qual dia e mês do ano é comemorado o feriado de Tiradentes?","21 de Abril","21 de Junho",1,
+"Em qual país foi inventada a Calça Jeans?","Estados Unidos","Inglaterra",1,
 }
 perguntas2={
 "Vai na sorte :)","ok","ok",1,
@@ -611,6 +630,8 @@ perguntas2={
 "Qual o nome do primeiro álbum ao vivo lançado pela banda RPM, em 1986?","Revoluções Por Minuto","Rádio Pirata",2,
 "'Seu corpo é fruto proibido, é chave de todo pecado, e da libido...' Qual o nome desta música?","Olhar 43","Liberdade",1,
 "Qual o nome do vocalista do grupo RPM?","Paulo Gustavo","Paulo Ricardo",2,
+"Qual o nome da vocalista principal da banda Evanescence?","Amy Lee","Amy Winehouse",1,
+"
 }
 perguntas3={
 "Vai na sorte :)","ok","ok",1,
@@ -652,7 +673,7 @@ perguntas3={
 "'Regras foram feitas para serem quebradas. Igual prédios... Ou pessoas!'","Jinx","Katarina",1,
 "Qual o nome de dois dos três semideuses localizado no topo dos montes de Freljord?","Ornn e Volibear","Ornn e Sejuani",1,
 "Qual o nome do 'planeta' onde vivem todos os personagens de League of Legends?","Runeterra","Demacia",1,
-"Quantos campeões existem no League of Legends?","160","162",1,
+"Quantos campeões existem no League of Legends?","162","163",2,
 "O time do Cruzeiro já chegou a ter uma equipe competitiva de League of Legends.","Verdadeiro","Falso",1,
 "Ashe e Tryndamere são casados.","Verdadeiro","Falso",1,
 "Qual o nome da região onde majoritariamente ficam localizados os Vastayas?","Noxus","Ionia",2,
@@ -942,7 +963,7 @@ function eventPlayerLeft(name)
 end
 function eventLoop(p,f)
 	remain=math.floor(f/1000)
-	ui.setMapName("<N>Quiz - <VP><b>versão 2023.03.25.1-QP</b> <N>por <ROSE>Dhanny_mheyran#6701   <BL>|   <N>Ratos : <V>"..vivos.."/"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/"..limite.."<")
+	ui.setMapName("<N>Quiz - <VP><b>versão 2023.03.28.1-QP</b> <N>por <ROSE>Dhanny_mheyran#6701   <BL>|   <N>Ratos : <V>"..vivos.."/"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/"..limite.."<")
 	if remain < 2 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
