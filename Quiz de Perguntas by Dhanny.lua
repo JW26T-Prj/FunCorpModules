@@ -1,4 +1,4 @@
--- Script de Quiz de Perguntas feito por Dhanny_mheyran#6701, versão 2023.03.28.1-QP
+-- Script de Quiz de Perguntas feito por Dhanny_mheyran#6701, versão 2023.04.15.1-QP
 -- Créditos para Reksai_void2600#6638 pelo código original.
 admin={"Dhanny_mheyran#6701"} -- FunCorps, insiram seus nomes aqui!
 
@@ -154,7 +154,7 @@ perguntas={
 "Qual destes eventos estreou primeiro no Transformice?","Halloween","Natal",1,
 "Qual destes títulos é atribuído a quantidade de ratos salvos no modo difícil?","Virtuoso","Redentor",1,
 "A partir de qual ano foi possível criar mapas com largura maior que a normal?","2012","2011",2,
-"Em qual cidade fica situada a sede da Atelier 801?","Lille","Paris",1,
+"Qual destes títulos é desbloqueado quando você compra um item na loja do Transformice?","Rato Ambicioso","Rato Descolado",2,
 "Qual desses foi o primeiro desenvolvedor do module #perguntas?","Brenower#0000","Dhanny_mheyran#6701",2,
 "Quantos firsts são necessários para desbloquear o título 'O Mito'?","1000","1100",2,
 "Qual a largura máxima que um mapa pode ter sem ter o modo defilante ativado?","1600","4800",1,
@@ -250,7 +250,7 @@ perguntas={
 "É possível criar NPCs interativos em scripts LUA no Transformice.","Verdadeiro","Falso",1,
 "Quantas missões diárias você precisa completar para ganhar a recompensa de 20 morangos?","20","25",1,
 "Qual destes modules foi criado primeiro?","#batata","#keyhunt",2,
-"Qual destes usuários nunca se tornou FunCorp?","Shun_kazami#7014","Soft#1388",1,
+"Qual destes usuários já se tornou FunCorp?","Shun_kazami#7014","Soft#1388",2,
 "O comando /ban já serviu para banir jogadores do Transformice por 1 hora por voto popular.","Verdadeiro","Falso",1,
 "Quantos firsts são necessários para desbloquear o título 'Rato Ninja'?","200","500",1,
 "Em qual árvore de habilidades está presente a habilidade 'Caixa de acompanhamento'?","Mecânico","Mestre do Vento",2,
@@ -268,6 +268,11 @@ perguntas={
 "É possível modificar a água no Transformice para que quando um rato pule nela, não consiga mais subir.","Verdadeiro","Falso",1,
 "É possível deixar a gravidade de forma negativa em um mapa do Transformice.","Verdadeiro","Falso",1,
 "Qual o nome do module cujo objetivo é dominar as bandeiras do mapa a favor do seu time?","#battleground","domination",2,
+"A tribo Les Populaires foi a primeira tribo a ser criada no Transformice.","Verdadeiro","Falso",2,
+"Quantos queijos custam os pelos da loja do Transformice cujo tema é Sol e Lua?","6000","7000",2,
+"A partir de qual ano o Transformice ficou disponível para download na Steam?","2015","2016",1,
+"É possível usar totem quando shaman, mesmo quando você não está no Modo Difícil.","Verdadeiro","Falso",2,
+"Depois de quanto tempo os ratos congelados desaparecem em salas oficiais?","10 segundos","15 segundos",1,
 }
 perguntas1={
 "Vai na sorte :)","ok","ok",1,
@@ -963,7 +968,7 @@ function eventPlayerLeft(name)
 end
 function eventLoop(p,f)
 	remain=math.floor(f/1000)
-	ui.setMapName("<N>Quiz - <VP><b>versão 2023.03.28.1-QP</b> <N>por <ROSE>Dhanny_mheyran#6701   <BL>|   <N>Ratos : <V>"..vivos.."/"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/"..limite.."<")
+	ui.setMapName("<N>Quiz - <VP><b>versão 2023.04.15.1-QP</b> <N>por <ROSE>Dhanny_mheyran#6701   <BL>|   <N>Ratos : <V>"..vivos.."/"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/"..limite.."<")
 	if remain < 2 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
