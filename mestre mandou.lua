@@ -1,5 +1,5 @@
--- Código do module Mestre Mandou, versão 2023.03.19.01-SS, desenvolvido por Dhanny_mheyran#6701.
--- Code of Simon Says module, version 2023.03.19.01-SS, developed by Dhanny_mheyran#6701.
+-- Código do module Mestre Mandou, versão 2023.04.15.01-SS, desenvolvido por Dhanny_mheyran#6701.
+-- Code of Simon Says module, version 2023.04.15.01-SS, developed by Dhanny_mheyran#6701.
 
 admin={""} -- Leia abaixo / Read below!
 
@@ -36,7 +36,7 @@ for _,f in next,{"AutoShaman","AutoNewGame","AutoTimeLeft","DebugCommand"} do
 	tfm.exec["disable"..f](true)
 end
 mapas={"@6788174","@6788154","@6788715","@6788728","@6789271","@6790527","@6791838","@6789356","@6822331","@7290275","@7686598","@7750148","@7688066","@6788183","@6784965","@6789235","@6789853","@6790385","@6791944","@6801706","@6792470","@6806109","@6821950","@6866406","@6866437","@6885971","@5328362","@5957905","@7055459","@7214363","@6792516","@6825340","@6788693","@6789272","@6799996","@6803018","@6859175","@6907177","@7404327","@7382263","@6885799","@6790912","@6833993","@7721192","@7309605","@6788861","@6789249","@6790484","@7921432","6794050","@6830799","@6866549","@6834529","@6876563","@6888512","@6893463","@7431981","@7146925","@6937148","@6356881","@6789280","@6790895","@6799997","@6789324","@6803128","@6900149","@3832586","@6791871","@6811934","@6876638","@6892608","@6982387","@7404106","@7405103","@7400694","@7400678","@7412412","@7412422","@7755685","@6843950","@6810292","@3110915","@6789263","@7354947","@7201360","@6897042","@5549586","@6809461","@7242361","@7697974","@1966987","@7224471","@6932585","@6920982","@7863458","@7897912","@7899697","@7910742","@7236120","@2802178","@7913565","@5549355","@7230453","@7188655","@6481798"}
-active=-2; vivo=0; rato=0; dificuldade=1; rodadas=0; rodada=0; number=""; xpos=0; ypos=0; data={}; lang={}; alives={}; ids={}; tempo=10; counter=0; q=""; a=""; qtime=10; creator=""; sd_vivo=0; anti_macro=true;
+active=-2; vivo=0; rato=0; dificuldade=1; rodadas=0; rodada=0; number=""; xpos=0; ypos=0; data={}; lang={}; alives={}; tempo=10; counter=0; q=""; a=""; qtime=10; creator=""; sd_vivo=0; anti_macro=true;
 fc_cmds={1,2,4,5,6,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,28,30,31,32,33,34,35,36,40,41,43,45,46,47,48,49,50,51,53,56,57,58,59,61,62,65,66,67,69,71,75,76,77,78,80,81,82,83,84,85,86,87,88,89,91,92,93,94,95,96,97}
 spiderweb={type = 15,width = 60,height = 60}
 acid={type = 19,width = 10,height = 25,miceCollision = true,groundCollision = false,dynamic = true,fixedRotation = true,mass = 5000}
@@ -50,7 +50,7 @@ for _,f in next,{"command","pw","limit","run","fc","tc","ms","q","a","t","kill",
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><br><J><b>Script gerenciado por Dhanny_mheyran#6701</b><br>Originalmente criado por Jessiewind26#2546<br><br><R>Versão 2023.03.19.01-SS",
+	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><br><J><b>Script gerenciado por Dhanny_mheyran#6701</b><br>Originalmente criado por Jessiewind26#2546<br><br><R>Versão 2023.04.15.01-SS",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -164,7 +164,7 @@ lang.br = {
 	clickhere = "<font size='8'>CLIQUE AQUI",
 }
 lang.en = {
-	welcome = "<N><b>Welcome to Simon Says module!</b><br>Follow everything the game told and test your limits until the end!<br><br><J><b>Script developed by Dhanny_mheyran#6701</b><br>Originally made by Jessiewind26#2546<br>Translation by Draw#6691<br><br><R>Version 2023.03.19.01-SS",
+	welcome = "<N><b>Welcome to Simon Says module!</b><br>Follow everything the game told and test your limits until the end!<br><br><J><b>Script developed by Dhanny_mheyran#6701</b><br>Originally made by Jessiewind26#2546<br>Translation by Draw#6691<br><br><R>Version 2023.04.15.01-SS",
 	dancar = "Dance!",
 	sentar = "Sit down!",
 	confetar = "Throw 5 confetti!",
@@ -622,28 +622,28 @@ function getCommand()
 		whiteSquare(xpos)
 	end
 	if active == 20 then
-		xpos=math.random(100,700)
+		xpos=math.random(80,700)
 		showCommand(active,text.retangulo)
 		tfm.exec.setGameTime(6)
 		setAllAlive()
 		verticalRectangle(xpos)
 	end
 	if active == 21 then
-		xpos=math.random(100,700)
+		xpos=math.random(80,700)
 		showCommand(active,text.nretangulo)
 		tfm.exec.setGameTime(6)
 		setAllAlive()
 		verticalRectangle(xpos)
 	end
 	if active == 22 then
-		ypos=math.random(50,300)
+		ypos=math.random(30,320)
 		showCommand(active,text.retangulo)
 		tfm.exec.setGameTime(6)
 		setAllAlive()
 		horizontalRectangle(ypos)
 	end
 	if active == 23 then
-		ypos=math.random(50,300)
+		ypos=math.random(30,320)
 		showCommand(active,text.nretangulo)
 		tfm.exec.setGameTime(6)
 		setAllAlive()
@@ -985,30 +985,22 @@ function getCommand()
 	end
 	if active == 85 then
 		number1=math.random(100000000,999999999)
-		number2=math.random(10000000,99999999)
+		number2=math.random(1000000,9999999)
 		number=tostring(number1..number2)
 		showCommand(active,text.number..number)
-		tfm.exec.setGameTime(14)
+		tfm.exec.setGameTime(13)
 	end
 	if active == 86 then
 		showCommand(active,text.nowater)
 		tfm.exec.setGameTime(6)
 		setAllAlive()
-		local imageId = 0;
-		tfm.exec.addPhysicObject(2500, 700, 587, {type = 9,width = 3000,height = 860,foregound = 0,friction = 0.0,restitution = 0.0,angle = 0,color = 000000,miceCollision = false,groundCollision = false,dynamic = false})
-		imageId = tfm.exec.addImage("18200689108.png", "?1", -800, 138, name, 1.0, 1.0, 0, 1.0); table.insert(ids,imageId)
-		imageId = tfm.exec.addImage("18200689108.png", "!1", -800, 138, name, 1.0, 1.0, 0, 0.7); table.insert(ids,imageId)
-		imageId = tfm.exec.addImage("1820068de62.png", "!1", -800, 196, name, 10, 6, 0, 1.0); table.insert(ids,imageId)
+		tfm.exec.addPhysicObject(2500, 700, 587, {type = 9,width = 3000,height = 860,foregound = true,friction = 0.0,restitution = 0.0,angle = 0,color = 0x0040ff,miceCollision = false,groundCollision = false,dynamic = false})
 	end
 	if active == 87 then
 		showCommand(active,text.water)
 		tfm.exec.setGameTime(6)
 		setAllAlive()
-		tfm.exec.addPhysicObject(2500, 700, 587, {type = 9,width = 3000,height = 860,foregound = 0,friction = 0.0,restitution = 0.0,angle = 0,color = 000000,miceCollision = false,groundCollision = false,dynamic = false})
-		local imageId = 0;
-		imageId = tfm.exec.addImage("18200689108.png", "?1", -800, 138, name, 1.0, 1.0, 0, 1.0); table.insert(ids,imageId)
-		imageId = tfm.exec.addImage("18200689108.png", "!1", -800, 138, name, 1.0, 1.0, 0, 0.7); table.insert(ids,imageId)
-		imageId = tfm.exec.addImage("1820068de62.png", "!1", -800, 196, name, 10, 6, 0, 1.0); table.insert(ids,imageId)
+		tfm.exec.addPhysicObject(2500, 700, 587, {type = 9,width = 3000,height = 860,foregound = true,friction = 0.0,restitution = 0.0,angle = 0,color = 0x0040ff,miceCollision = false,groundCollision = false,dynamic = false})
 	end
 	if active == 88 then
 		showCommand(active,text.seq7)
@@ -1067,7 +1059,7 @@ function getCommand()
 		tfm.exec.setGameTime(7)
 		setAllAlive()
 		setAllNightMode()
-		for i=1,4 do
+		for i=1,8 do
 			tfm.exec.addPhysicObject(i, math.random(50,750), 50, acid)
 		end
 	end
@@ -1588,13 +1580,13 @@ end
 function eventLoop(passado,faltando)
 	local tempo=math.floor(faltando/1000)
 	if active == -2 then
-		ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." 2023.03.19.01-SS</b><")
+		ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." 2023.04.15.01-SS</b><")
 	elseif active == -1 and vivo == 1 then
-		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 2023.03.19.01-SS</b><")
+		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 2023.04.15.01-SS</b><")
 	elseif active == -1 and vivo <= 0 then
-		ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 2023.03.19.01-SS</b><")
+		ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 2023.04.15.01-SS</b><")
 	elseif active >= 0 then
-		ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." 2023.03.19.01-SS</b><")
+		ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." 2023.04.15.01-SS</b><")
 	end
 	if rato < 4 then
 		if tfm.get.room.currentMap == "@6788085" then
@@ -1752,12 +1744,7 @@ function eventLoop(passado,faltando)
 		end
 		tfm.exec.removePhysicObject(666)
 		tfm.exec.removePhysicObject(667)
-		if rawlen(ids) >= 1 then
-			for i=0,rawlen(ids) do
-				tfm.exec.removeImage(i)
-			end
-			tfm.exec.removePhysicObject(2500)
-		end
+		tfm.exec.removePhysicObject(2500)
 		for i=1,15 do
 			tfm.exec.removeBonus(i)
 		end
