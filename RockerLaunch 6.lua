@@ -286,9 +286,9 @@ function eventPlayerDied(name)
 			end
 		end
 		if i==0 then
-			tfm.exec.setGameTime(300)
+			tfm.exec.setGameTime(5)
 		elseif i==1 then
-			tfm.exec.setGameTime(300)
+			tfm.exec.setGameTime(20)
 		end
 	end
 end
