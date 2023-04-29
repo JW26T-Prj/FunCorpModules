@@ -4,10 +4,10 @@ for _,f in next,{"AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugComman
 	tfm.exec["disable"..f](true)
 end
 tfm.exec.setRoomMaxPlayers(30)
-mapa5="@7722950"
-mapa6="@7881966"
 blackmode=false -- Altere para 'true' caso queira utilizar o mapa com fundo preto
-admin=""
+
+mapa5="@7722950"; mapa6="@7881966"; admin=""; palavra=""; pergunta=""; data={}; players_table={};
+system.disableChatCommandDisplay("def")
 function trocarMapa()
 	if blackmode == false then
 		tfm.exec.newGame(mapa5)
@@ -17,13 +17,6 @@ function trocarMapa()
 		ui.setBackgroundColor("#ffffff")
 	end
 end
-tfm.exec.setGameTime(60)
-palavra=""
-pergunta=""
-data={}
-players_table={}
-system.disableChatCommandDisplay("def")
-system.disableChatCommandDisplay("skip")
 for name,player in pairs(tfm.get.room.playerList) do
 	newData={
 	["p"]=0;
@@ -88,9 +81,9 @@ function eventPopupAnswer(id,name,answer)
 	end	
 end
 function eventNewPlayer(name)
-	ui.setMapName("Corrida de Perguntas v10.7 [versão de 32-bits]. Gerenciado por Shun_kazami#7014.<")
+	ui.setMapName("Corrida de Perguntas v10.8, gerenciado por Shun_kazami#7014.<")
 	tfm.exec.respawnPlayer(name)
-	tfm.exec.chatMessage("<N>Script de Corrida das Perguntas, importado diretamente da versão original feita por Haxhhhhhhhhh.<br><VP><b>Versão 10.7</b><br><br><N>Atualmente administrado por Shun_kazami#7014, mapa feito também por Shun_kazami#7014.<br><br><ROSE>Proibida execução ou cópia sem autorização do criador.",name)
+	tfm.exec.chatMessage("<N>Script de Corrida das Perguntas, importado diretamente da versão original feita por Haxhhhhhhhhh.<br><VP><b>Versão 10.8</b><br><br><N>Atualmente administrado por Shun_kazami#7014, mapa feito também por Shun_kazami#7014.<br><br><ROSE>Proibida reutilização ou cópia sem autorização do criador.",name)
 	if not data[name] then
 		table.insert(players_table,name)
 		data[name]={p=0}
@@ -125,7 +118,7 @@ end
 function eventNewGame()
 	palavra=""
 	ui.removeTextArea(2,NIL)
-	ui.setMapName("Corrida de Perguntas v10.7 [versão de 32-bits]. Gerenciado por Shun_kazami#7014.<")
+	ui.setMapName("Corrida de Perguntas v10.8, gerenciado por Shun_kazami#7014.<")
 	for id,name in pairs(players_table) do
 		data[name].p=0
 	end
