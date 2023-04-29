@@ -1,4 +1,4 @@
--- Script de Quiz de Perguntas feito por Dhanny_mheyran#6701, versão 2023.04.29.1-QP
+-- Script de Quiz de Perguntas feito por Dhanny_mheyran#6701, versão 2023.04.29.2-QP
 -- Créditos para Reksai_void2600#6638 pelo código original.
 admin={"Dhanny_mheyran#6701"} -- FunCorps, insiram seus nomes aqui!
 
@@ -636,7 +636,6 @@ perguntas2={
 "'Seu corpo é fruto proibido, é chave de todo pecado, e da libido...' Qual o nome desta música?","Olhar 43","Liberdade",1,
 "Qual o nome do vocalista do grupo RPM?","Paulo Gustavo","Paulo Ricardo",2,
 "Qual o nome da vocalista principal da banda Evanescence?","Amy Lee","Amy Winehouse",1,
-"
 }
 perguntas3={
 "Vai na sorte :)","ok","ok",1,
@@ -968,7 +967,7 @@ function eventPlayerLeft(name)
 end
 function eventLoop(p,f)
 	remain=math.floor(f/1000)
-	ui.setMapName("<N>Quiz - <VP><b>versão 2023.04.29.1-QP</b> <N>por <ROSE>Dhanny_mheyran#6701   <BL>|   <N>Ratos : <V>"..vivos.."/"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/"..limite.."<")
+	ui.setMapName("<N>Quiz - <VP><b>versão 2023.04.29.2-QP</b> <N>por <ROSE>Dhanny_mheyran#6701   <BL>|   <N>Ratos : <V>"..vivos.."/"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/"..limite.."<")
 	if remain < 2 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
