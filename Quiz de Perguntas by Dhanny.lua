@@ -1,4 +1,4 @@
--- Script de Quiz de Perguntas feito por Dhanny_mheyran#6701, versão 2023.04.15.1-QP
+-- Script de Quiz de Perguntas feito por Dhanny_mheyran#6701, versão 2023.04.29.1-QP
 -- Créditos para Reksai_void2600#6638 pelo código original.
 admin={"Dhanny_mheyran#6701"} -- FunCorps, insiram seus nomes aqui!
 
@@ -40,8 +40,8 @@ perguntas={
 "Qual a função do comando /langue?","Muda a linguagem do jogo","Muda você de sala",1,
 "Qual destes jogos não foi feito pela Atelier 801?","Bombom","Fortoresse",1,
 "Qual o limite máximo de amigos do Transformice?","500","1000",1,
-"Há quantos emoticons no Transformice?","10","14",1,
-"Há quantas ações de rato no Transformice?","10","14",2,
+"Há quantos emoticons no Transformice?","10","21",2,
+"Há quantas ações de rato no Transformice?","14","21",1,
 "Qual o nome do antigo modo do module #deathmatch?","Baffbotffa","Baffbot",1,
 "A partir de qual nível todas as árvores de habilidades de shaman são exibidas?","20","30",1,
 "O que acontece se você digitar /version?","Mostra informações do jogo","Abre a versão do jogo",2,
@@ -52,7 +52,7 @@ perguntas={
 "Qual o nome da Deusa Shaman do Transformice?","Elise","Elisah",2,
 "Qual destes modules foi desenvolvido por Sharpiepoops, pioneiro nos modules do Transformice?","#keyhunt","#campal",1,
 "Originalmente no Transformice era possível criar mapas com quantos tipos de pisos?","5","8",1,
-"Quem é o(a) gerenciador(a) atual do module True or False?","Spectra_phantom#6089","Lanadelrey#4862",2,
+"Os modules #utility e #shamousey são desenvolvidos pela mesma pessoa.","Verdadeiro","Falso",1,
 "Qual o nome da empresa que é responsável pelo Transformice?","Atelier 801","Riot Games",1,
 "Qual destes pregos não pode ser utilizado no modo difícil?","Vermelho","Amarelo",1,
 "Há quantas categorias na loja?","22","24",2,
@@ -79,7 +79,7 @@ perguntas={
 "Usuários do servidor BR/PT eram proibidos de falar no antigo servidor EN2.","Verdadeiro","Falso",1,
 "O Transformice já fez, em 2019, um evento baseado em anime.","Verdadeiro","Falso",2,
 "No Transformice, os ratos que tocarem em um piso ácido...","Ficam presos nele","Morrem instantaneamente",2,
-"Qual o nome do criador do module que estamos jogando agora?","Reksai_void2600#6638","Patrick_mahomes#1795",1,
+"Qual o nome do criador original do module que estamos jogando agora?","Reksai_void2600#6638","Patrick_mahomes#1795",1,
 "A habilidade 'Reparadora' faz parte de qual árvore de Habilidades?","Mecânico","Físico",2,
 "A mensagem de reinício do servidor do Transformice aparece em qual cor?","Rosa","Roxo",1,
 "Quantos queijos custa o pelo mais caro da loja?","10000","15000",2,
@@ -199,7 +199,7 @@ perguntas={
 "Quantos queijos são necessários para exportar um mapa como cafofo da tribo?","5","40",1,
 "Quantos objetos de shaman podem ser utilizados no modo padrão?","13","14",2,
 "Em qual ano houve o desban de todas as contas banidas permanentes no Transformice?","2012","2013",2,
-"Em qual país está situado o host de baixo ping disponível no Brasil?","Canadá","México",1,
+"Em qual país está situado o host de baixo ping disponível?","Canadá","México",1,
 "Qual categoria de mapas é atribuída aos mapas permanentes de modules?","P41","P43",1,
 "Em qual ano surgiu o sistema de missões diárias no Transformice?","2018","2019",2,
 "Qual a idade mínima para virar membro da Module Team no Transformice?","16","Não tem idade mínima",2,
@@ -238,7 +238,7 @@ perguntas={
 "Apenas membros da Module Team podem carregar modules nas salas do Transformice.","Verdadeiro","Falso",2,
 "Quantos servidores host da Atelier801 existem no Brasil?","0","1",1,
 "Qual é a margem máxima offscreen de largura e altura no qual os ratos podem permanecer vivos?","400px por lado","800px por lado",1,
-"Quantos modules oficiais existem no Transformice?","37","43",2,
+"Quantos modules oficiais existem no Transformice?","43","45",2,
 "Qual é a resolução de tela padrão na qual o Transformice funciona?","800x600","1024x768",1,
 "Qual a função da habilidade de shaman 'Arquiteto'?","Remover um objeto invocado","Alterar a transparência de um objeto invocado",2,
 "Quanto tempo dura um mapa normal no Transformice, sem o uso de powerups?","2 minutos","2 minutos e 30 segundos",1,
@@ -264,10 +264,10 @@ perguntas={
 "Quantos NPCs existem na sala #village?","8","9",1,
 "Qual o limite de moedas de morangos que podem ser armazenados no inventário?","80","250",2,
 "É possível definir gravidades diferentes para pisos nos mapas do Transformice.","Verdadeiro","Falso",1,
-"Qual o nome do module onde o objetivo é adivinhar o que o Shaman está desenhando?","#drawbattle","#pictionary",2,
+"Qual o nome do module cujo objetivo é adivinhar o que o Shaman está desenhando?","#drawbattle","#pictionary",2,
 "É possível modificar a água no Transformice para que quando um rato pule nela, não consiga mais subir.","Verdadeiro","Falso",1,
 "É possível deixar a gravidade de forma negativa em um mapa do Transformice.","Verdadeiro","Falso",1,
-"Qual o nome do module cujo objetivo é dominar as bandeiras do mapa a favor do seu time?","#battleground","domination",2,
+"Qual o nome do module cujo objetivo é dominar as bandeiras do mapa a favor do seu time?","#battleground","#domination",2,
 "A tribo Les Populaires foi a primeira tribo a ser criada no Transformice.","Verdadeiro","Falso",2,
 "Quantos queijos custam os pelos da loja do Transformice cujo tema é Sol e Lua?","6000","7000",2,
 "A partir de qual ano o Transformice ficou disponível para download na Steam?","2015","2016",1,
@@ -968,7 +968,7 @@ function eventPlayerLeft(name)
 end
 function eventLoop(p,f)
 	remain=math.floor(f/1000)
-	ui.setMapName("<N>Quiz - <VP><b>versão 2023.04.15.1-QP</b> <N>por <ROSE>Dhanny_mheyran#6701   <BL>|   <N>Ratos : <V>"..vivos.."/"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/"..limite.."<")
+	ui.setMapName("<N>Quiz - <VP><b>versão 2023.04.29.1-QP</b> <N>por <ROSE>Dhanny_mheyran#6701   <BL>|   <N>Ratos : <V>"..vivos.."/"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/"..limite.."<")
 	if remain < 2 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
