@@ -1,11 +1,3 @@
--- Código do module Mestre Mandou, versão 2023.04.15.01-SS, desenvolvido por Dhanny_mheyran#6701.
--- Code of Simon Says module, version 2023.04.15.01-SS, developed by Dhanny_mheyran#6701.
-
-admin={""} -- Leia abaixo / Read below!
-
--- Se estiver rodando este código em uma sala FunCorp, insira o nome dos FunCorps acima e digite !fc para habilitar algumas funções e comandos especiais.
--- If you are running this code into a FunCorp room, insert the FunCorp names above and type !tc to enable some additional commands and functions.
-
 -- Atenção: Antes de rodar este código em uma sala, verifique se esta versão coincide com a versão mais recente presente abaixo:
 -- https://raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/mestre%20mandou.lua
 -- Isto vai garantir que você receba sempre as últimas atualizações e correções de bugs.
@@ -13,6 +5,14 @@ admin={""} -- Leia abaixo / Read below!
 -- Warning: Before running this code into a room, check if this version is the same than the latest version located here:
 -- https://raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/mestre%20mandou.lua
 -- This is a guarantee that you will receive all the latest updates and bugfixes.
+
+-- Código do module Mestre Mandou, versão 2023.05.01.01-SS, desenvolvido por Dhanny_mheyran#6701.
+-- Code of Simon Says module, version 2023.05.01.01-SS, developed by Dhanny_mheyran#6701.
+
+admin={""} -- Leia abaixo / Read below!
+
+-- Se estiver rodando este código em uma sala FunCorp, insira o nome dos FunCorps acima e digite !fc para habilitar algumas funções e comandos especiais.
+-- If you are running this code into a FunCorp room, insert the FunCorp names above and type !tc to enable some additional commands and functions.
 
 -- Comandos para uso de membros FunCorp e do dono da sala:
 -- !command [número de 1 a 100] - Executa um comando manualmente.
@@ -50,7 +50,7 @@ for _,f in next,{"command","pw","limit","run","fc","tc","ms","q","a","t","kill",
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><br><J><b>Script gerenciado por Dhanny_mheyran#6701</b><br>Originalmente criado por Jessiewind26#2546<br><br><R>Versão 2023.04.15.01-SS",
+	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><br><J><b>Script gerenciado por Dhanny_mheyran#6701</b><br>Originalmente criado por Jessiewind26#2546<br><br><R>Versão 2023.05.01.01-SS",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -164,7 +164,7 @@ lang.br = {
 	clickhere = "<font size='8'>CLIQUE AQUI",
 }
 lang.en = {
-	welcome = "<N><b>Welcome to Simon Says module!</b><br>Follow everything the game told and test your limits until the end!<br><br><J><b>Script developed by Dhanny_mheyran#6701</b><br>Originally made by Jessiewind26#2546<br>Translation by Draw#6691<br><br><R>Version 2023.04.15.01-SS",
+	welcome = "<N><b>Welcome to Simon Says module!</b><br>Follow everything the game told and test your limits until the end!<br><br><J><b>Script developed by Dhanny_mheyran#6701</b><br>Originally made by Jessiewind26#2546<br>Translation by Draw#6691<br><br><R>Version 2023.05.01.01-SS",
 	dancar = "Dance!",
 	sentar = "Sit down!",
 	confetar = "Throw 5 confetti!",
@@ -389,13 +389,6 @@ function completeCommand(name)
 			tfm.exec.setNameColor(name,0x00ff00)
 		end
 	end
-	if dificuldade >= 7 and sd_vivo == vivo-1 then
-		for n,player in next,tfm.get.room.playerList do
-			if data[n].c == 0 then
-				tfm.exec.killPlayer(n)
-			end
-		end
-	end
 end
 function eventNewGame()
 	map_det.code=tfm.get.room.currentMap
@@ -407,7 +400,7 @@ function eventNewGame()
 	ui.removeTextArea(250,nil)
 	tfm.exec.setWorldGravity(0, 10)
 	tfm.exec.setGameTime(15)
-	showMessage("<N>Loading current map information...<br><b>Current Map :</b> <V>"..map_det.code.."<br><N><b>Author :</b> <V>"..map_det.creator.."<br><br><J>The map submissions are now open!<br><b>atelier801.com/topic?f=796133&t=915772</b>")
+	showMessage("<N>Loading current map information...<br><b>Current Map :</b> <V>"..map_det.code.."<br><N><b>Author :</b> <V>"..map_det.creator.."<br>")
 	if fc_mode == true then
 		showMessage("<VP><br>"..text.funcorp.."")
 	end
@@ -1105,7 +1098,7 @@ function eventChatMessage(name,message)
 		end
 	end
 	if active == 41 then
-		if string.find(string.upper(message),"K") or string.find(string.upper(message),"HA") or string.find(string.upper(message),"LMAO") or string.find(string.upper(message),"HI") or string.find(string.upper(message),"KA") then
+		if string.find(string.upper(message),"K") or string.find(string.upper(message),"HA") or string.find(string.upper(message),"LMAO") or string.find(string.upper(message),"HI") then
 			tfm.exec.killPlayer(name)
 		end
 	end
@@ -1580,13 +1573,13 @@ end
 function eventLoop(passado,faltando)
 	local tempo=math.floor(faltando/1000)
 	if active == -2 then
-		ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." 2023.04.15.01-SS</b><")
+		ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." 2023.05.01.01-SS</b><")
 	elseif active == -1 and vivo == 1 then
-		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 2023.04.15.01-SS</b><")
+		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 2023.05.01.01-SS</b><")
 	elseif active == -1 and vivo <= 0 then
-		ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 2023.04.15.01-SS</b><")
+		ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 2023.05.01.01-SS</b><")
 	elseif active >= 0 then
-		ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." 2023.04.15.01-SS</b><")
+		ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." 2023.05.01.01-SS</b><")
 	end
 	if rato < 4 then
 		if tfm.get.room.currentMap == "@6788085" then
