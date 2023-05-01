@@ -1,4 +1,4 @@
--- Script de Quiz de Perguntas feito por Dhanny_mheyran#6701, versão 2023.04.29.2-QP
+-- Script de Quiz de Perguntas feito por Dhanny_mheyran#6701, versão 2023.04.31.1-QP
 -- Créditos para Reksai_void2600#6638 pelo código original.
 admin={"Dhanny_mheyran#6701"} -- FunCorps, insiram seus nomes aqui!
 
@@ -180,8 +180,8 @@ perguntas={
 "Qual destes comandos servem para ver informações do mapa atual?","/map","/info",2,
 "Para usar o café, você precisa estar com quantos dias jogados de conta?","10","30",2,
 "Em qual dia do ano o Transformice foi criado?","1","2",1,
-"Qual o limite de queijos que podem ser armazenados no inventário?","200","250",2,
-"Quantos anos tem o Tigrounette?","35","36",2,
+"Qual o limite de queijos que podem ser armazenados no inventário?","250","1500",2,
+"Quantos anos tem o Transformice?","12","13",2,
 "Qual o nome do module do Transformice onde o objetivo é fugir dos ratos que congelam?","#freezertag","#snatch",1,
 "Ainda é possível colocar músicas no cafofo da tribo do Transformice, mesmo sem o plug-in do YouTube.","Verdadeiro","Falso",1,
 "Qual o nome de um module de testes extinto em que todos viravam Pikachu e tinham que descer a ladeira?","#surble","#surbler",1,
@@ -967,7 +967,7 @@ function eventPlayerLeft(name)
 end
 function eventLoop(p,f)
 	remain=math.floor(f/1000)
-	ui.setMapName("<N>Quiz - <VP><b>versão 2023.04.29.2-QP</b> <N>por <ROSE>Dhanny_mheyran#6701   <BL>|   <N>Ratos : <V>"..vivos.."/"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/"..limite.."<")
+	ui.setMapName("<N>Quiz - <VP><b>versão 2023.04.31.1-QP</b> <N>por <ROSE>Dhanny_mheyran#6701   <BL>|   <N>Ratos : <V>"..vivos.."/"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/"..limite.."<")
 	if remain < 2 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
