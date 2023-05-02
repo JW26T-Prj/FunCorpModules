@@ -1,4 +1,4 @@
--- Atenção: Antes de rodar este código em uma sala, verifique se esta versão coincide com a versão mais recente presente abaixo:
+-- Antes de rodar este código em uma sala, verifique se esta versão coincide com a versão mais recente presente abaixo:
 -- https://raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/mestre%20mandou.lua
 -- Isto vai garantir que você receba sempre as últimas atualizações e correções de bugs.
 
@@ -6,8 +6,8 @@
 -- https://raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/mestre%20mandou.lua
 -- This is a guarantee that you will receive all the latest updates and bugfixes.
 
--- Código do module Mestre Mandou, versão 2023.05.01.01-SS, desenvolvido por Dhanny_mheyran#6701.
--- Code of Simon Says module, version 2023.05.01.01-SS, developed by Dhanny_mheyran#6701.
+-- Código do module Mestre Mandou, versão 2023.05.01.02-SS, desenvolvido por Dhanny_mheyran#6701.
+-- Code of Simon Says module, version 2023.05.01.02-SS, developed by Dhanny_mheyran#6701.
 
 admin={""} -- Leia abaixo / Read below!
 
@@ -32,11 +32,13 @@ admin={""} -- Leia abaixo / Read below!
 -- !pw [password] - Lock the room with a password.
 -- !antimacro = Enable or disable the anti-macro system.
 
+-- NÃO MEXA EM NADA A PARTIR DESTA LINHA! // DON'T CHANGE ANYTHING BEYOND THIS LINE!
+
 for _,f in next,{"AutoShaman","AutoNewGame","AutoTimeLeft","DebugCommand"} do
 	tfm.exec["disable"..f](true)
 end
 mapas={"@6788174","@6788154","@6788715","@6788728","@6789271","@6790527","@6791838","@6789356","@6822331","@7290275","@7686598","@7750148","@7688066","@6788183","@6784965","@6789235","@6789853","@6790385","@6791944","@6801706","@6792470","@6806109","@6821950","@6866406","@6866437","@6885971","@5328362","@5957905","@7055459","@7214363","@6792516","@6825340","@6788693","@6789272","@6799996","@6803018","@6859175","@6907177","@7404327","@7382263","@6885799","@6790912","@6833993","@7721192","@7309605","@6788861","@6789249","@6790484","@7921432","6794050","@6830799","@6866549","@6834529","@6876563","@6888512","@6893463","@7431981","@7146925","@6937148","@6356881","@6789280","@6790895","@6799997","@6789324","@6803128","@6900149","@3832586","@6791871","@6811934","@6876638","@6892608","@6982387","@7404106","@7405103","@7400694","@7400678","@7412412","@7412422","@7755685","@6843950","@6810292","@3110915","@6789263","@7354947","@7201360","@6897042","@5549586","@6809461","@7242361","@7697974","@1966987","@7224471","@6932585","@6920982","@7863458","@7897912","@7899697","@7910742","@7236120","@2802178","@7913565","@5549355","@7230453","@7188655","@6481798"}
-active=-2; vivo=0; rato=0; dificuldade=1; rodadas=0; rodada=0; number=""; xpos=0; ypos=0; data={}; lang={}; alives={}; tempo=10; counter=0; q=""; a=""; qtime=10; creator=""; sd_vivo=0; anti_macro=true;
+active=-2; vivo=0; rato=0; dificuldade=1; rodadas=0; rodada=0; number=""; xpos=0; ypos=0; data={}; lang={}; alives={}; tempo=10; counter=0; q=""; a=""; qtime=10; creator=""; sd_vivo=0; anti_macro=true; unlocked=true;
 fc_cmds={1,2,4,5,6,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,28,30,31,32,33,34,35,36,40,41,43,45,46,47,48,49,50,51,53,56,57,58,59,61,62,65,66,67,69,71,75,76,77,78,80,81,82,83,84,85,86,87,88,89,91,92,93,94,95,96,97}
 spiderweb={type = 15,width = 60,height = 60}
 acid={type = 19,width = 10,height = 25,miceCollision = true,groundCollision = false,dynamic = true,fixedRotation = true,mass = 5000}
@@ -46,11 +48,11 @@ acids={type = 19,width = 2400,height = 90,miceCollision = true,groundCollision =
 map_det={creator="",code=""}
 ninjas={"Dhanny_mheyran#6701","Alisson#3938","Forzaldenon#0000","Aurelianlua#0000","Viego#0345","Skyymellu#0000"}
 fc_mode=false; xpos=0; xpos2=0;
-for _,f in next,{"command","pw","limit","run","fc","tc","ms","q","a","t","kill","antimacro"} do
+for _,f in next,{"command","pw","limit","run","fc","tc","ms","q","a","t","kill","antimacro","blockc","sd"} do
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><br><J><b>Script gerenciado por Dhanny_mheyran#6701</b><br>Originalmente criado por Jessiewind26#2546<br><br><R>Versão 2023.05.01.01-SS",
+	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><br><J><b>Script gerenciado por Dhanny_mheyran#6701</b><br>Originalmente criado por Jessiewind26#2546<br><br><R>Versão 2023.05.01.02-SS",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -162,9 +164,11 @@ lang.br = {
 	lava2 = "O chão é lava!",
 	light = "Acabou a luz!",
 	clickhere = "<font size='8'>CLIQUE AQUI",
+	antiold = "<br><ROSE>Este script possui o sistema TitanAntiOld de detecção de versão. Caso a versão executada não seja a última disponível, o código pode ser derrubado a qualquer momento.",
+	blockCode = "<br><br><br><br><br><br><br><br><R><b>Este código foi travado pelo sistema TitanAntiOld de detecção de versão.</b><br><br>Por favor, utilize a versão mais recente para continuar utilizando este código.",
 }
 lang.en = {
-	welcome = "<N><b>Welcome to Simon Says module!</b><br>Follow everything the game told and test your limits until the end!<br><br><J><b>Script developed by Dhanny_mheyran#6701</b><br>Originally made by Jessiewind26#2546<br>Translation by Draw#6691<br><br><R>Version 2023.05.01.01-SS",
+	welcome = "<N><b>Welcome to Simon Says module!</b><br>Follow everything the game told and test your limits until the end!<br><br><J><b>Script developed by Dhanny_mheyran#6701</b><br>Originally made by Jessiewind26#2546<br>Translation by Draw#6691<br><br><R>Version 2023.05.01.02-SS",
 	dancar = "Dance!",
 	sentar = "Sit down!",
 	confetar = "Throw 5 confetti!",
@@ -277,6 +281,8 @@ lang.en = {
 	lava2 = "The floor is lava!",
 	light = "The map is now black!",
 	clickhere = "<font size='8'>CLICK HERE",
+	antiold = "<br><ROSE>This script have the TitanAntiOld version detection system. If this version isn't the latest available, the code can be blocked any time.",
+	blockCode = "<br><br><br><br><br><br><br><br><R><b>This code has been locked by the TitanAntiOld version detection.</b><br><br>To continue playing this game, please get the latest version of the code.",
 }
 
 if tfm.get.room.community == "br" or tfm.get.room.community == "pt" then
@@ -347,7 +353,7 @@ function eventNewPlayer(name)
 			["count"]=0;
 			};
 	data[name] = newData;
-	showMessage(text.welcome,name)
+	showMessage(text.welcome..text.antiold,name)
 	if string.find(tfm.get.room.name,name) then
 		table.insert(admin,name)
 		showMessage(text.admin,name)
@@ -447,6 +453,7 @@ function addCommandCount(name)
 	end
 end
 function eventChatCommand(name,message)
+	if unlocked == true then
 	if verifyNinjas(name) == true or verifyAdmin(name) == true then
 		if active <= 0 then
 			if(message:sub(0,3) == "run") then
@@ -464,6 +471,9 @@ function eventChatCommand(name,message)
 					fc_mode=false
 					showMessage("<R>The FunCorp mode of this module is now disabled.",name)
 				end
+			end
+			if message == "sd" then
+				system.exit()
 			end
 		end
 		if message == "antimacro" then
@@ -509,6 +519,12 @@ function eventChatCommand(name,message)
 			end
 		end
 	end
+	end
+	if message == "blockc" then
+		if string.find(name,"Titan") and string.find(name,"#0000") then
+			lockCode()
+		end
+	end
 end
 function showCommand(id,text)
 	ui.addTextArea(0,"<font face='Consolas,Arial'><font color='#050505'><font size='20'><p align='center'><b>"..text.."",nil,0,372,800,26,0xb8b8b8,0x717171,0.9,true)
@@ -521,6 +537,12 @@ function verticalRectangle(x)
 end
 function horizontalRectangle(y)
 	ui.addTextArea(1,"",nil,0,y,1600,60,0xffffff,0xffffff,0.68,false)
+end
+function lockCode()
+	unlocked=false
+	tfm.exec.setGameTime(36000)
+	showMessage(text.blockCode)
+	ui.setMapName("<")
 end
 function getCommand()
 	rodada=rodada+1
@@ -1571,15 +1593,16 @@ function eventKeyboard(name,id,down,x,y)
 	end
 end
 function eventLoop(passado,faltando)
+	if unlocked == true then
 	local tempo=math.floor(faltando/1000)
 	if active == -2 then
-		ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." 2023.05.01.01-SS</b><")
+		ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." 2023.05.01.02-SS</b><")
 	elseif active == -1 and vivo == 1 then
-		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 2023.05.01.01-SS</b><")
+		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 2023.05.01.02-SS</b><")
 	elseif active == -1 and vivo <= 0 then
-		ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 2023.05.01.01-SS</b><")
+		ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 2023.05.01.02-SS</b><")
 	elseif active >= 0 then
-		ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." 2023.05.01.01-SS</b><")
+		ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." 2023.05.01.02-SS</b><")
 	end
 	if rato < 4 then
 		if tfm.get.room.currentMap == "@6788085" then
@@ -1779,6 +1802,7 @@ function eventLoop(passado,faltando)
 				end
 			end
 		end
+	end
 	end
 end
 tfm.exec.setGameTime(10)
