@@ -1,5 +1,5 @@
-﻿for _,f in next,{"PhysicalConsumables","AutoNewGame","AutoTimeLeft","AllShamanSkills","DebugCommand"} do
-		tfm.exec["disable"..f](true)
+for _,f in next,{"PhysicalConsumables","AutoNewGame","AutoTimeLeft","AllShamanSkills","DebugCommand"} do
+	tfm.exec["disable"..f](true)
 end
 changed=false; mode=""; id=50; map="@7930736"; xml2='';
 a1={500,1400}; a2={7500,6800}; b1={800,240}; b2={6360,5800}; c1={200,900}; c2={3800,3300}; d1={1500}; d2={4100};
@@ -63,7 +63,7 @@ function eventNewGame()
 end
 function eventChatCommand(n,m)
 	if m == "help" then
-		showMessage("<N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço. Caso o shaman morra, a partida é encerrada. Tenha cuidado com os objetos e os meteoros que caem do céu!<br><br><BL>Mapa criado por Threshlimit#0000 e Dhanny_mheyran#6701. Código desenvolvido por Morganadxana#0000, Lynet#8558, Digo20games#0000 e Puffezinhaq#0000.<br>Conceito original de Nettoork#0000.<br>Versão 6.0.1",n)
+		showMessage("<N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço. Caso o shaman morra, a partida é encerrada. Tenha cuidado com os objetos e os meteoros que caem do céu!<br><br><BL>Mapa criado por Threshlimit#0000 e Dhanny_mheyran#6701. Código desenvolvido por Morganadxana#0000, Lynet#8558, Digo20games#0000 e Puffezinhaq#0000.<br>Conceito original de Nettoork#0000.<br>Versão 6.1.0",n)
 	end
 	if m == "cancel" then
 		if verifyNinjas(n) == true then
@@ -87,9 +87,13 @@ function rodar(name)
 	tfm.exec.addImage("182d6e2305b.png","?1",math.random(-750,1850),math.random(-450,2650),name,-1,1)
 	tfm.exec.addImage("182d6e1e45c.png","?1",math.random(-750,1850),math.random(-450,2650),name)
 	tfm.exec.addImage("182d6e1e45c.png","?1",math.random(-750,1850),math.random(-450,2650),name,-1,1)
-	for j=0,3 do
+	tfm.exec.addImage("1883b125925.png","!1",690,2400,name)
+	tfm.exec.addImage("1883b11fa05.png","!1",1285,1500,name)
+	tfm.exec.addImage("1883b133513.png","!1",350,900,name)
+	tfm.exec.addImage("1883b12d793.png","!1",700,300,name)
+	for j=0,2 do
 		for i=0,3 do
-			tfm.exec.addImage("18164d398ff.png","?1",-800+(j*1080),-780+(i*1080),name)
+			tfm.exec.addImage("181b9de5c95.png","?1",-800+(j*1920),-780+(i*1080),name)
 		end
 	end
 	for a=0,2 do
@@ -193,18 +197,18 @@ function eventLoop(p,f)
 			end
 		end
 		if isf < 600 and isf >= 480 then
-			tfm.exec.addShamanObject(objects1[math.random(#objects1)], math.random(-400,2000), 1000, 0, 0, 0, false)
+			tfm.exec.addShamanObject(objects1[math.random(#objects1)], math.random(-400,2000), 1, 0, 0, 0, false)
 		elseif isf < 480 and isf >= 400 then
 			for i=1,2 do
-				tfm.exec.addShamanObject(objects2[math.random(#objects2)], math.random(-400,2000), 1000, 0, 0, 0, false)
+				tfm.exec.addShamanObject(objects2[math.random(#objects2)], math.random(-400,2000), 1, 0, 0, 0, false)
 			end
 		elseif isf < 400 and isf >= 340 then
 			for i=1,2 do
-				tfm.exec.addShamanObject(objects3[math.random(#objects3)], math.random(-400,2000), 1000, 0, 0, 0, false)
+				tfm.exec.addShamanObject(objects3[math.random(#objects3)], math.random(-400,2000), 1, 0, 0, 0, false)
 			end
 		elseif isf < 340 and isf >= 5 then
 			for i=1,3 do
-				tfm.exec.addShamanObject(objects4[math.random(#objects4)], math.random(-400,2000), 1000, 0, 0, 0, false)
+				tfm.exec.addShamanObject(objects4[math.random(#objects4)], math.random(-400,2000), 1, 0, 0, 0, false)
 			end
 		end
 		if isf == 300 then
@@ -215,22 +219,22 @@ function eventLoop(p,f)
 		end
 		if isf < 300 and isf >= 200 then
 			if isf % 3 == 0 then
-				tfm.exec.addPhysicObject(id, math.random(-300,1900), 1000, asteroid_1)
+				tfm.exec.addPhysicObject(id, math.random(-300,1900), 1, asteroid_1)
 				tfm.exec.addImage("182dc62db5c.png","+"..id.."",-23,-17,n,0.125,0.125)
 			end
 		elseif isf < 200 and isf >= 100 then
 			if isf % 4 == 0 then
-		 		tfm.exec.addPhysicObject(id, math.random(-300,1900), 1000, asteroid_2)
+		 		tfm.exec.addPhysicObject(id, math.random(-300,1900), 1, asteroid_2)
 		 		tfm.exec.addImage("182dc62db5c.png","+"..id.."",-46,-32,n,0.25,0.25)
 			end
 		elseif isf < 100 and isf >= 50 then
 			if isf % 5 == 0 then
-				tfm.exec.addPhysicObject(id, math.random(-300,1900), 1000, asteroid_3)
+				tfm.exec.addPhysicObject(id, math.random(-300,1900), 1, asteroid_3)
 				tfm.exec.addImage("182dc62db5c.png","+"..id.."",-92,-60,n,0.5,0.5)
 			end
 		elseif isf < 50 and isf >= 5 then
 			if isf % 6 == 0 then
-				tfm.exec.addPhysicObject(id, math.random(-300,1900), 1000, asteroid_4)
+				tfm.exec.addPhysicObject(id, math.random(-300,1900), 1, asteroid_4)
 				tfm.exec.addImage("182dc62db5c.png","+"..id.."",-184,n,nil)
 			end
 		end
@@ -248,7 +252,7 @@ end
 function eventNewPlayer(n)
 	if changed == true then
 		ui.setMapName("<b>RockerLaunch 6</b><N> - o céu é o limite! Pelo menos é o que parece...<")
-		showMessage("<VP>Bem-vindos ao RockerLaunch 6!<br><N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço! Digite !help para saber como jogar.<br><br><BL>Créditos para Lynet#8558, Puffezinhaq#0000, Morganadxana#0000, Digo20games#0000, Dhanny_mheyran#6701 e Threshlimit#0000. Conceito original de Nettoork#0000.<br><J>Versão 6.0.1",n)
+		showMessage("<VP>Bem-vindos ao RockerLaunch 6!<br><N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço! Digite !help para saber como jogar.<br><br><BL>Créditos para Lynet#8558, Puffezinhaq#0000, Morganadxana#0000, Digo20games#0000, Dhanny_mheyran#6701 e Threshlimit#0000. Conceito original de Nettoork#0000.<br><J>Versão 6.1.0",n)
 		tfm.exec.setPlayerScore(n,0,false)
 		tfm.exec.addImage("17ae4e48770.png","&1",590,370,n,0.5,0.5)
 	end
