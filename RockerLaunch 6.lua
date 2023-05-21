@@ -106,9 +106,9 @@ function rodar(name)
 	tfm.exec.addImage("1883b11fa05.png","!1",1285,2000,name)
 	tfm.exec.addImage("1883b133513.png","!1",350,1600,name)
 	tfm.exec.addImage("1883b12d793.png","!1",700,1200,name)
-	for j=0,3 do
+	for j=0,2 do
 		for i=0,3 do
-			tfm.exec.addImage("18164d398ff.png","?1",-800+(j*1080),-780+(i*1080),name)
+			tfm.exec.addImage("181b9de5c95.png","?1",-800+(j*1920),-780+(i*1080),name)
 		end
 	end
 	for a=0,2 do
