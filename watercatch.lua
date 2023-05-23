@@ -287,7 +287,7 @@ function eventChatCommand(name,message)
 			showMenu(name,0x949494,65,68,670,285,"Skins","")
 			showAvailableSharks(name)
 		else
-			if tfm.get.room.playerList[name].isShaman == true then
+			if tfm.get.room.playerList[name].isShaman == false then
 				showMessage("<R>As skins de tubarão serão exibidas quando você for shaman, e estiver dentro do rio!",name)
 				showMenu(name,0x949494,65,68,670,285,"Skins","")
 				showAvailableSharks(name)
