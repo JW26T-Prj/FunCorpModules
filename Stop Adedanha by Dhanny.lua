@@ -1,12 +1,12 @@
 -- STOP
--- Escrito por Ninguem - 31/08/2015 // Atualizado por Dhanny_mheyran#6701 - 23/03/2023
+-- Escrito por Ninguem - 31/08/2015 // Atualizado por Dhanny_mheyran#6701 - 31/05/2023
 -- Mínimo de 5 temas e máximo de 20 temas.
 -- FunCorp, caso você não queira visualizar as respostas dos jogadores, altere a variável SHOW (linha 10) para false.
 -- Para bloquear um jogador, digite !kick [nome#tag]. Digite o mesmo comando para desbloqueá-lo caso o mesmo já esteja bloqueado.
 
 ADM = {"Dhanny_mheyran#6701"} -- editar com seu nome aqui!
 ADMIN_ONLY = false -- troque para 'true' se você quiser que só os votos dos jogadores que estejam na tabela 'ADM' contem
-CAT = {"Nome","Animal","Objeto","Cor","Marca","TV/Filme/Anime/Desenho","Parte do Corpo Humano","Ator/Cantor/Celebridade","Comida/Bebida","País/Cidade/Estado","Profissão","Tem no Transformice","O(A) "..ADM[1].." é..."}
+CAT = {"Nome","Animal","Objeto","Cor","Marca","TV/Filme/Anime/Desenho","Parte do Corpo Humano","Ator/Cantor/Celebridade","Comida/Bebida","País/Cidade/Estado","Profissão","Apelido de Garçom","Jogador do Transformice","O(A) "..ADM[1].." é...","Qualquer Coisa"}
 SHOW = true
 MAXROUND = 5 -- número máximo de rounds
 
@@ -217,7 +217,7 @@ function selecionaPalavra()
 		end
 	end
 	ui.addTextArea(ID.cat, "<p align='center'><font size='30px'>" .. CAT[PALAVRA] .. " com " .. LETRA, nil, 5, 80, 790, 40, 1, 1, 0.9, true)
-	TEMPO = os.time() + 10000+(1750*#ESCOLHA)
+	TEMPO = os.time() + 15000+(1500*#ESCOLHA)
 	ui.addTextArea(ID.tempo, "<r><p align='center'><font size='25px'>--</font></p>", nil, 755, 358, 40, 40, 1, 1, 0.9, true)
 end
 
@@ -331,7 +331,7 @@ function eventPopupAnswer(id, p, resp)
 end
 
 function eventNewPlayer(p)
-	ui.setMapName("<b>STOP!</b> <N>Script editado por Dhanny_mheyran#6701 - 23/03/2023<")
+	ui.setMapName("<b>STOP!</b> <N>Script editado por Dhanny_mheyran#6701 - 31/05/2023<")
 	PLAYER[p] = {num = 0, pontos = 0, vitoria = 0, palavra = {}, banido = false}
 	for i, v in pairs(CAT) do
 		PLAYER[p].palavra[v] = ""
@@ -509,5 +509,5 @@ tfm.exec.disableAutoShaman(true)
 tfm.exec.disableAutoScore(true)
 tfm.exec.disableAutoNewGame(true)
 carregaMapa()
-ui.setMapName("<b>STOP!</b> <N>Script editado por Dhanny_mheyran#6701 - 23/03/2023<")
+ui.setMapName("<b>STOP!</b> <N>Script editado por Dhanny_mheyran#6701 - 31/05/2023<")
 atualizaCat(true)
