@@ -1,5 +1,5 @@
 -- STOP
--- Escrito por Ninguem - 31/08/2015 // Atualizado por Dhanny_mheyran#6701 - 31/05/2023
+-- Escrito por Ninguem - 31/08/2015 // Atualizado por Dhanny_mheyran#6701 - 13/06/2023
 -- Mínimo de 5 temas e máximo de 20 temas.
 -- FunCorp, caso você não queira visualizar as respostas dos jogadores, altere a variável SHOW (linha 10) para false.
 -- Para bloquear um jogador, digite !kick [nome#tag]. Digite o mesmo comando para desbloqueá-lo caso o mesmo já esteja bloqueado.
@@ -251,7 +251,7 @@ function eventChatCommand(p, cmd)
 		end
 	end
 	if cmd == "help" then
-		tfm.exec.chatMessage("<N>O module <b>Stop</b> é muito parecido com o jogo 'adedanha' da vida real. Temas serão sorteados e você terá que descobrir itens que se encaixem nos temas de acordo com a letra.<br><br>Primeiro, você escolherá um número de 1 a 10. Isto irá ser feito com todos os jogadores para sortear a letra utilizada na rodada.<br><br>Após a letra ser sorteada, você vai clicar nos temas e digitar o item correspondente que comece com a letra indicada. Faça isso com o máximo de temas possível.<br><br><VP>O primeiro a completar todos os temas pode digitar !stop. Isto vai fazer com que todos os outros parem de escrever.<br><br><J>Após o momento do stop, chega a hora de avaliar as respostas. Você deve clicar nas respostas INCORRETAS para que fiquem da cor <R>vermelha.<J> Isto vai garantir que pontos não sejam dados para pessoas que colocarem respostas inválidas.<br><br><R>Aviso importante: Os administradores da sala e do module podem ver as respostas de cada um. Portanto, não ouse em colocar respostas inapropriadas.<N><br><br>Pontuação por resposta:<br>- Resposta válida única: 10 pontos<br>- Resposta válida repetida: 5 pontos<br>- Resposta inválida: 0 pontos<br><br><ROSE>O vencedor é aquele que conseguir o maior número de pontos após um determinado número de rodadas.")
+		tfm.exec.chatMessage("<N>O<b>Stop</b> é muito parecido com o jogo 'adedanha' da vida real. <br><br>Primeiro, você escolherá um número de 1 a 10. Isto irá ser feito com todos os jogadores para sortear a letra utilizada na rodada.<br><br>Após a letra ser sorteada, você vai clicar nos temas e digitar o item correspondente que comece com a letra indicada. <br>O primeiro a completar todos os temas pode digitar !stop. Isto vai fazer com que todos os outros parem de escrever.<br><br><J>Após o momento do stop, chegou a hora de avaliar as respostas. Você deve clicar nas respostas INCORRETAS para que fiquem da cor <R>vermelha.<J> Isto vai garantir que pontos não sejam dados para pessoas que colocarem respostas inválidas.<br><br>Pontuação por resposta:<br>- Resposta válida única: 10 pontos<br>- Resposta válida repetida: 5 pontos<br>- Resposta inválida: 0 pontos<br><br><ROSE>O vencedor é aquele que conseguir o maior número de pontos após um determinado número de rodadas.")
 	end
 	if isAdm(p) and (cmd:sub(0,4) == "kick") then
 		banPlayer(cmd:sub(6))
@@ -331,7 +331,7 @@ function eventPopupAnswer(id, p, resp)
 end
 
 function eventNewPlayer(p)
-	ui.setMapName("<b>STOP!</b> <N>Script editado por Dhanny_mheyran#6701 - 31/05/2023<")
+	ui.setMapName("<b>STOP!</b> <N>Script editado por Dhanny_mheyran#6701 - 13/06/2023<")
 	PLAYER[p] = {num = 0, pontos = 0, vitoria = 0, palavra = {}, banido = false}
 	for i, v in pairs(CAT) do
 		PLAYER[p].palavra[v] = ""
@@ -492,7 +492,7 @@ function eventLoop(current, remaining)
 		end
 		if os.time() > TEMPO then
 			MODO = "espera"
-			TEMPO = os.time()+40000
+			TEMPO = os.time()+20000
 			ROUND = 1
 			zeraTudo(false, true)
 			atualizaPlayer(true)
@@ -509,5 +509,5 @@ tfm.exec.disableAutoShaman(true)
 tfm.exec.disableAutoScore(true)
 tfm.exec.disableAutoNewGame(true)
 carregaMapa()
-ui.setMapName("<b>STOP!</b> <N>Script editado por Dhanny_mheyran#6701 - 31/05/2023<")
+ui.setMapName("<b>STOP!</b> <N>Script editado por Dhanny_mheyran#6701 - 13/06/2023<")
 atualizaCat(true)
