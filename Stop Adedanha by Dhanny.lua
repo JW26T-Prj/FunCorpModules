@@ -1,12 +1,12 @@
 -- STOP
--- Escrito por Ninguem - 31/08/2015 // Atualizado por Dhanny_mheyran#6701 - 13/06/2023
+-- Escrito por Ninguem - 31/08/2015 // Atualizado por Dhanny_mheyran#6701 - 14/06/2023
 -- Mínimo de 5 temas e máximo de 20 temas.
 -- FunCorp, caso você não queira visualizar as respostas dos jogadores, altere a variável SHOW (linha 10) para false.
 -- Para bloquear um jogador, digite !kick [nome#tag]. Digite o mesmo comando para desbloqueá-lo caso o mesmo já esteja bloqueado.
 
 ADM = {"Dhanny_mheyran#6701"} -- editar com seu nome aqui!
 ADMIN_ONLY = false -- troque para 'true' se você quiser que só os votos dos jogadores que estejam na tabela 'ADM' contem
-CAT = {"Nome","Animal","Objeto","Cor","Marca","TV/Filme/Anime/Desenho","Parte do Corpo Humano","Ator/Cantor/Celebridade","Comida/Bebida","País/Cidade/Estado","Profissão","Apelido de Garçom","Jogador do Transformice","O(A) "..ADM[1].." é...","Qualquer Coisa"}
+CAT = {"Nome","Animal","Objeto","Cor","Marca","TV/Filme/Anime/Desenho","Parte do Corpo Humano","Ator/Cantor/Celebridade","Comida/Bebida","País/Cidade/Estado","Apelido de Garçom","Profissão","O(A) "..ADM[1].." é...","Qualquer Coisa"}
 SHOW = true
 MAXROUND = 5 -- número máximo de rounds
 
@@ -24,6 +24,20 @@ data = {};
 
 system.disableChatCommandDisplay("help")
 system.disableChatCommandDisplay("kick")
+
+function showMessage(message,name)
+	temp_text=string.gsub(message,"<b>","")
+	temp_text=string.gsub(temp_text,"</b>","")
+	if tfm.get.room.isTribeHouse == false then
+		tfm.exec.chatMessage(message,name)
+	elseif tfm.get.room.isTribeHouse == true then
+		if name == nil then
+			print("<ROSE>[Test Mode] : <br><BL>"..temp_text.."")
+		else
+			print("<ROSE>[Test Mode] - "..name.." : <br><BL>"..temp_text.."")
+		end
+	end
+end
 
 function carregaMapa()
 	tfm.exec.newGame("@7924777")
@@ -128,11 +142,11 @@ end
 function banPlayer(name)
 	if data[name] then
 		if data[name].banned == false then
-			tfm.exec.chatMessage("<R><b>"..name.."</b> foi impedido de jogar este module.")
+			showMessage("<R><b>"..name.."</b> foi impedido de jogar este module.")
 			data[name].banned=true
 			PLAYER[name].pontos=-65536
 		else
-			tfm.exec.chatMessage("<N><b>"..name.."</b> foi liberado para jogar este module.")
+			showMessage("<N><b>"..name.."</b> foi liberado para jogar este module.")
 			data[name].banned=false
 			PLAYER[name].pontos=0
 		end
@@ -212,8 +226,11 @@ function selecionaPalavra()
 			end
 		end
 		if string.len(v.palavra[CAT[PALAVRA]]) >= 2 then
-			tfm.exec.chatMessage(i.." - "..CAT[PALAVRA].." - "..v.palavra[CAT[PALAVRA]],"Alisson#3938")
-			tfm.exec.chatMessage(i.." - "..CAT[PALAVRA].." - "..v.palavra[CAT[PALAVRA]],"Aurelianlua#0000")
+			if tfm.get.room.isTribeHouse == false then
+				for _,p in next,{"Alisson#3938","Aurelianlua#0000","Viego#0345","Hecarimjhenx#0000"} do
+					showMessage(i.." - "..CAT[PALAVRA].." - "..v.palavra[CAT[PALAVRA]],p)
+				end
+			end
 		end
 	end
 	ui.addTextArea(ID.cat, "<p align='center'><font size='30px'>" .. CAT[PALAVRA] .. " com " .. LETRA, nil, 5, 80, 790, 40, 1, 1, 0.9, true)
@@ -246,12 +263,12 @@ function eventChatCommand(p, cmd)
 				atualizaSeleciona(i)
 			end
 			if SHOW == true then
-				tfm.exec.chatMessage("<R>Os administradores desta sala podem ver as respostas dos usuários. Respostas inapropriadas poderão ser retiradas da sala.")
+				showMessage("<R>Os administradores desta sala podem ver as respostas dos usuários. Respostas inapropriadas poderão ser retiradas da sala.")
 			end
 		end
 	end
 	if cmd == "help" then
-		tfm.exec.chatMessage("<N>O<b>Stop</b> é muito parecido com o jogo 'adedanha' da vida real. <br><br>Primeiro, você escolherá um número de 1 a 10. Isto irá ser feito com todos os jogadores para sortear a letra utilizada na rodada.<br><br>Após a letra ser sorteada, você vai clicar nos temas e digitar o item correspondente que comece com a letra indicada. <br>O primeiro a completar todos os temas pode digitar !stop. Isto vai fazer com que todos os outros parem de escrever.<br><br><J>Após o momento do stop, chegou a hora de avaliar as respostas. Você deve clicar nas respostas INCORRETAS para que fiquem da cor <R>vermelha.<J> Isto vai garantir que pontos não sejam dados para pessoas que colocarem respostas inválidas.<br><br>Pontuação por resposta:<br>- Resposta válida única: 10 pontos<br>- Resposta válida repetida: 5 pontos<br>- Resposta inválida: 0 pontos<br><br><ROSE>O vencedor é aquele que conseguir o maior número de pontos após um determinado número de rodadas.")
+		showMessage("<N>O<b>Stop</b> é muito parecido com o jogo 'adedanha' da vida real. <br><br>Primeiro, você escolherá um número de 1 a 10. Isto irá ser feito com todos os jogadores para sortear a letra utilizada na rodada.<br><br>Após a letra ser sorteada, você vai clicar nos temas e digitar o item correspondente que comece com a letra indicada. <br>O primeiro a completar todos os temas pode digitar !stop. Isto vai fazer com que todos os outros parem de escrever.<br><br><J>Após o momento do stop, chegou a hora de avaliar as respostas. Você deve clicar nas respostas INCORRETAS para que fiquem da cor <R>vermelha.<J> Isto vai garantir que pontos não sejam dados para pessoas que colocarem respostas inválidas.<br><br>Pontuação por resposta:<br>- Resposta válida única: 10 pontos<br>- Resposta válida repetida: 5 pontos<br>- Resposta inválida: 0 pontos<br><br><ROSE>O vencedor é aquele que conseguir o maior número de pontos após um determinado número de rodadas.",name)
 	end
 	if isAdm(p) and (cmd:sub(0,4) == "kick") then
 		banPlayer(cmd:sub(6))
@@ -278,7 +295,7 @@ function eventTextAreaCallback(id, p, cmd)
 					ui.addTextArea(i+30, string.format("<p align='center'><font size='28px'><a href='event:num %d'>%d", i, i), nil, 150+((i-1)*50), 350, 40, 40, 1, 1, 0.9, true)
 				end
 			else
-				tfm.exec.chatMessage("<R>São necessários no mínimo 5 temas para o jogo ser iniciado",p)
+				showMessage("<R>São necessários no mínimo 5 temas para o jogo ser iniciado",p)
 			end
 		elseif arg[1] == "num" then
 			PLAYER[p].num = tonumber(arg[2],10)
@@ -314,7 +331,7 @@ function eventPopupAnswer(id, p, resp)
 	if id == ID.add and resp ~= "" and MODO == "inicio" then
 		if not buscaItem(CAT, resp) then
 			if rawlen(CAT) > 20 then
-				tfm.exec.chatMessage("<R>Limite máximo de 20 temas atingido!",p)
+				showMessage("<R>Limite máximo de 20 temas atingido!",p)
 			else
 				table.insert(CAT, resp)
 				atualizaCat(false)
@@ -322,7 +339,7 @@ function eventPopupAnswer(id, p, resp)
 		end
 	elseif MODO == "round" and (string.upper(resp)):sub(1,1) == LETRA and string.len(resp) >= 2 and data[p].banned == false then
 		if checkPalavra(resp) == true then
-			tfm.exec.chatMessage("<R>Foi detectada uma palavra inapropriada na sua resposta.",p)
+			showMessage("<R>Foi detectada uma palavra inapropriada na sua resposta.",p)
 		else
 			PLAYER[p].palavra[CAT[id]] = stripChars(resp)
 			atualizaPalavras(p)
@@ -331,7 +348,7 @@ function eventPopupAnswer(id, p, resp)
 end
 
 function eventNewPlayer(p)
-	ui.setMapName("<b>STOP!</b> <N>Script editado por Dhanny_mheyran#6701 - 13/06/2023<")
+	ui.setMapName("<b>STOP!</b> <N>Script editado por Dhanny_mheyran#6701 - 14/06/2023<")
 	PLAYER[p] = {num = 0, pontos = 0, vitoria = 0, palavra = {}, banido = false}
 	for i, v in pairs(CAT) do
 		PLAYER[p].palavra[v] = ""
@@ -340,7 +357,7 @@ function eventNewPlayer(p)
 		atualizaPlayer(true)
 	end
 	tfm.exec.respawnPlayer(p)
-	tfm.exec.chatMessage("<ROSE>Digite !help caso não saiba jogar este jogo.",p)
+	showMessage("<ROSE>Digite !help caso não saiba jogar este jogo.",p)
 	ui.setBackgroundColor("#717171")
 	if not data[p] then
 		newData={
@@ -395,14 +412,14 @@ function eventLoop(current, remaining)
 	elseif MODO == "letra" then
 		if os.time() > TEMPO then
 			MODO = "round"
-			TEMPO = os.time()+30000+(4000*#CAT)
+			TEMPO = os.time()+45000+(2500*#CAT)
 			ui.removeTextArea(ID.cat, nil)
 			ui.addTextArea(ID.cat, string.format("<p align='center'>A letra é:\n<font size='50px'><rose>%s</rose></font></p>", LETRA), nil, 300, 30, 200, 80, 1, 1, 0.9, true)
 			for i, v in pairs(PLAYER) do
 				atualizaPalavras(i)
 			end
 			if SHOW == true then
-				tfm.exec.chatMessage("<R>Os administradores desta sala podem ver as respostas dos usuários. Respostas inapropriadas poderão ser retiradas da sala.")
+				showMessage("<R>Os administradores desta sala podem ver as respostas dos usuários. Respostas inapropriadas poderão ser retiradas da sala.")
 			end
 		end
 	elseif MODO == "round" then
@@ -453,7 +470,7 @@ function eventLoop(current, remaining)
 				zeraTudo(false, false)
 				atualizaPlayer(true)
 				if ROUND >= 2 then
-					tfm.exec.chatMessage("<VP>Todas as pontuações podem ser vistas na lista de jogadores da sala!")
+					showMessage("<VP>Todas as pontuações podem ser vistas na lista de jogadores da sala!")
 				end
 				ui.addTextArea(ID.tempo, "<r><p align='center'><font size='25px'>--</font></p>", nil, 755, 358, 40, 40, 1, 1, 0.9, true)
 				ui.addTextArea(ID.msg, "<r><p align='center'>Escolha um número</p>", nil, 150, 320, 490, 20, 1, 1, 0.9, true)
@@ -469,7 +486,7 @@ function eventLoop(current, remaining)
 				TEMPO = os.time()+30000
 				atualizaPlayer()
 				if ROUND >= 2 then
-					tfm.exec.chatMessage("<VP>Todas as pontuações podem ser vistas na lista de jogadores da sala!")
+					showMessage("<VP>Todas as pontuações podem ser vistas na lista de jogadores da sala!")
 				end
 				local maior = 0
 				local n = ""
@@ -509,5 +526,5 @@ tfm.exec.disableAutoShaman(true)
 tfm.exec.disableAutoScore(true)
 tfm.exec.disableAutoNewGame(true)
 carregaMapa()
-ui.setMapName("<b>STOP!</b> <N>Script editado por Dhanny_mheyran#6701 - 13/06/2023<")
+ui.setMapName("<b>STOP!</b> <N>Script editado por Dhanny_mheyran#6701 - 14/06/2023<")
 atualizaCat(true)
