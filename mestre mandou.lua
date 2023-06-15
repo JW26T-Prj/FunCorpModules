@@ -6,8 +6,8 @@
 -- https://raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/mestre%20mandou.lua
 -- This is a guarantee that you will receive all the latest updates and bugfixes.
 
--- Código do module Mestre Mandou, versão 2023.06.04.01-SS, desenvolvido por Dhanny_mheyran#6701.
--- Code of Simon Says module, version 2023.06.04.01-SS, developed by Dhanny_mheyran#6701.
+-- Código do module Mestre Mandou, versão 2023.06.14.01-SS, desenvolvido por Dhanny_mheyran#6701.
+-- Code of Simon Says module, version 2023.06.14.01-SS, developed by Dhanny_mheyran#6701.
 
 admin={""} -- Leia abaixo / Read below!
 
@@ -52,7 +52,7 @@ for _,f in next,{"command","pw","limit","run","fc","tc","ms","q","a","t","kill",
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><br><J><b>Script gerenciado por Dhanny_mheyran#6701</b><br>Originalmente criado por Jessiewind26#2546<br><br><R>Versão 2023.06.04.01-SS",
+	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><br><J><b>Script gerenciado por Dhanny_mheyran#6701</b><br>Originalmente criado por Jessiewind26#2546<br><br><R>Versão 2023.06.14.01-SS",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -167,7 +167,7 @@ lang.br = {
 	blockCode = "<br><br><br><br><br><br><br><br><R><b>Este código foi travado pelo sistema TitanAntiOld de detecção de versão.</b><br><br>Por favor, utilize a versão mais recente para continuar utilizando este código.",
 }
 lang.en = {
-	welcome = "<N><b>Welcome to Simon Says module!</b><br>Follow everything the game told and test your limits until the end!<br><br><J><b>Script developed by Dhanny_mheyran#6701</b><br>Originally made by Jessiewind26#2546<br>Translation by Draw#6691<br><br><R>Version 2023.06.04.01-SS",
+	welcome = "<N><b>Welcome to Simon Says module!</b><br>Follow everything the game told and test your limits until the end!<br><br><J><b>Script developed by Dhanny_mheyran#6701</b><br>Originally made by Jessiewind26#2546<br>Translation by Draw#6691<br><br><R>Version 2023.06.14.01-SS",
 	dancar = "Dance!",
 	sentar = "Sit down!",
 	confetar = "Throw 5 confetti!",
@@ -558,7 +558,7 @@ function getCommand()
 	end
 	if active == 3 then
 		showCommand(active,text.confetar)
-		tfm.exec.setGameTime(6)
+		tfm.exec.setGameTime(5)
 	end
 	if active == 4 then
 		showCommand(active,text.mouse)
@@ -566,7 +566,7 @@ function getCommand()
 	end
 	if active == 5 then
 		showCommand(active,text.beijos)
-		tfm.exec.setGameTime(13)
+		tfm.exec.setGameTime(11)
 	end
 	if active == 6 then
 		showCommand(active,text.dormir)
@@ -592,11 +592,11 @@ function getCommand()
 	end
 	if active == 11 then
 		showCommand(active,text.digitar)
-		tfm.exec.setGameTime(8)
+		tfm.exec.setGameTime(7)
 	end
 	if active == 12 then
 		showCommand(active,text.falar)
-		tfm.exec.setGameTime(8)
+		tfm.exec.setGameTime(9)
 		setAllAlive()
 	end
 	if active == 13 then
@@ -1367,6 +1367,7 @@ function eventPlayerWon(name)
 end
 function eventMouse(name,x,y)
 	if active == 4 then
+		data[name].count=data[name].count+1
 		addCommandCount(name)
 		if data[name].s >= 10 then
 			completeCommand(name)
@@ -1592,216 +1593,225 @@ function eventKeyboard(name,id,down,x,y)
 end
 function eventLoop(passado,faltando)
 	if unlocked == true then
-	local tempo=math.floor(faltando/1000)
-	if active == -2 then
-		ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." 2023.06.04.01-SS</b><")
-	elseif active == -1 and vivo == 1 then
-		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 2023.06.04.01-SS</b><")
-	elseif active == -1 and vivo <= 0 then
-		ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 2023.06.04.01-SS</b><")
-	elseif active >= 0 then
-		ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." 2023.06.04.01-SS</b><")
-	end
-	if rato < 4 then
-		if tfm.get.room.currentMap == "@6788085" then
-			active=-2
-			tfm.exec.setGameTime(8000)
-		else
-			if passado > 5000 then
-				tfm.exec.newGame("@6788085")
+		local tempo=math.floor(faltando/1000)
+		if active == -2 then
+			ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." 2023.06.14.01-SS</b><")
+		elseif active == -1 and vivo == 1 then
+			ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 2023.06.14.01-SS</b><")
+		elseif active == -1 and vivo <= 0 then
+			ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 2023.06.14.01-SS</b><")
+		elseif active >= 0 then
+			ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." 2023.06.14.01-SS</b><")
+		end
+		if rato < 4 then
+			if tfm.get.room.currentMap == "@3945599" then
+				active=-2
 				tfm.exec.setGameTime(8000)
-				showMessage("<R>"..text.mices.."",nil)
+			else
+				if passado > 5000 then
+					tfm.exec.newGame("@3945599")
+					tfm.exec.setGameTime(8000)
+					showMessage("<R>"..text.mices.."",nil)
+				end
 			end
 		end
-	end
-	if rato >= 4 and passado >= 4000 then
-		if tfm.get.room.currentMap == "@6788085" then
+		if rato >= 4 and passado >= 4000 then
+			if tfm.get.room.currentMap == "@3945599" then
+				tfm.exec.newGame(mapas[math.random(#mapas)])
+			end
+		end
+		if active < 0 and faltando <= 1000 and faltando >= 449 then
 			tfm.exec.newGame(mapas[math.random(#mapas)])
 		end
-	end
-	if active < 0 and faltando <= 1000 and faltando >= 449 then
-		tfm.exec.newGame(mapas[math.random(#mapas)])
-	end
-	if active == 96 and tempo == 6 then
-		active=666
-		showCommand(active,text.lava2)
-		tfm.exec.setGameTime(8)
-		tfm.exec.addPhysicObject(667, 400, 360, acids)
-		tfm.exec.addPhysicObject(666, 400, 350, lava)
-	end
-	if active == 0 and faltando < 4000 then
-		if rodada < rodadas then
-			sortearComandos()
-		else
-			active=-1
-			tfm.exec.setGameTime(10)
-			for name,player in next,tfm.get.room.playerList do
-				tfm.exec.giveCheese(true)
-				tfm.exec.playerVictory(true)
-			end
+		if active == 96 and tempo == 6 then
+			active=666
+			showCommand(active,text.lava2)
+			tfm.exec.setGameTime(8)
+			tfm.exec.addPhysicObject(667, 400, 360, acids)
+			tfm.exec.addPhysicObject(666, 400, 350, lava)
 		end
-	end
-	if active > 0 and faltando < 1 and rato >= 2 then
-		if active == 17 then
-			for name,player in next,tfm.get.room.playerList do
-				if tfm.get.room.playerList[name].isFacingRight == true then
-					tfm.exec.killPlayer(name)
-				end
-			end
-		end
-		if active == 18 then
-			for name,player in next,tfm.get.room.playerList do
-				if tfm.get.room.playerList[name].isFacingRight == false then
-					tfm.exec.killPlayer(name)
-				end
-			end
-		end
-		if active == 19 or active == 31 or active == 32 or active == 57 or active == 64 then
-			for name,player in next,tfm.get.room.playerList do
-				if player.y < 300 then
-					tfm.exec.killPlayer(name)
-				else
-					if player.x < xpos-10 or player.x > xpos+90 then
-						tfm.exec.killPlayer(name)
-					end
-				end
-			end
-		end
-		if active == 32 then
-			for name,player in next,tfm.get.room.playerList do
-				if player.y < 300 then
-					tfm.exec.killPlayer(name)
-				else
-					if player.x < xpos-10 or player.x > xpos+90 then
-						tfm.exec.killPlayer(name)
-					end
-				end
-			end
-		end
-		if active == 20 or active == 33 or active == 34 then
-			for name,player in next,tfm.get.room.playerList do
-				if player.x < xpos or player.x > xpos+80 then
-					tfm.exec.killPlayer(name)
-				end
-			end
-		end
-		if active == 21 or active == 46 or active == 80 then
-			for name,player in next,tfm.get.room.playerList do
-				if player.x > xpos and player.x < xpos+80 then
-					tfm.exec.killPlayer(name)
-				end
-			end
-		end
-		if active == 22 then
-			for name,player in next,tfm.get.room.playerList do
-				if player.y < ypos-10 or player.y > ypos+70 then
-					tfm.exec.killPlayer(name)
-				end
-			end
-		end
-		if active == 23 then
-			for name,player in next,tfm.get.room.playerList do
-				if player.y > ypos-10 and player.y < ypos+70 then
-					tfm.exec.killPlayer(name)
-				end
-			end
-		end
-		if active == 53 then
-			for name,player in next,tfm.get.room.playerList do
-				tfm.exec.freezePlayer(name,false)
-			end
-		end
-		if active == 82 then
-			for name,player in next,tfm.get.room.playerList do
-				if tfm.get.room.playerList[name].cheeses == 1 then
-					tfm.exec.killPlayer(name)
-				end
-			end
-		end
-		if active == 86 then
-			for name,player in next,tfm.get.room.playerList do
-				if tfm.get.room.playerList[name].y <= 147 then
-					tfm.exec.killPlayer(name)
-				end
-			end
-		end
-		if active == 87 then
-			for name,player in next,tfm.get.room.playerList do
-				if tfm.get.room.playerList[name].y >= 158 then
-					tfm.exec.killPlayer(name)
-				end
-			end
-		end
-		if active == 89 then
-			for name,player in next,tfm.get.room.playerList do
-				if player.y > 300 then
-					if player.x > xpos-10 and player.x < xpos+90 then
-						tfm.exec.killPlayer(name)
-					end
-				end
-			end
-		end
-		if active == 90 then
-			for name,player in next,tfm.get.room.playerList do
-				if tfm.get.room.playerList[name].isDead == false then
-					tfm.exec.attachBalloon(name, false)
-				end
-			end
-		end
-		for i=0,2 do
-			ui.removeTextArea(i,nil)
-		end
-		ui.removeTextArea(250,nil)
-		tfm.exec.setWorldGravity(0, 10)
-		for i=1,8 do
-			tfm.exec.removePhysicObject(i)
-		end
-		tfm.exec.removePhysicObject(666)
-		tfm.exec.removePhysicObject(667)
-		tfm.exec.removePhysicObject(2500)
-		for i=1,15 do
-			tfm.exec.removeBonus(i)
-		end
-		active=0
-		if rodada == 3 or rodada == 6 or rodada == 9 or rodada == 12 or rodada == 15 or rodada == 18 then
-			dificuldade=dificuldade+1
-		end
-		for name,player in next,tfm.get.room.playerList do
-			data[name].key=0
-			ui.removeTextArea(24,nil)
-			if data[name].c == 0 then
-				tfm.exec.killPlayer(name)
-			end
-			tfm.exec.setNameColor(name,0xc2c2da)
-			tfm.exec.setPlayerNightMode(false, name)
-		end
-		if fc_mode == false then
-			if vivo > 5 then
-				tfm.exec.setGameTime(13-dificuldade)
+		if active == 0 and faltando < 4000 then
+			if rodada < rodadas then
+				sortearComandos()
 			else
-				tfm.exec.setGameTime(11-dificuldade)
+				active=-1
+				tfm.exec.setGameTime(10)
+				for name,player in next,tfm.get.room.playerList do
+					tfm.exec.giveCheese(true)
+					tfm.exec.playerVictory(true)
+				end
 			end
-		else
-			tfm.exec.setGameTime(7)
 		end
-		getAlives()
-	end
-	if passado >= 10000 then
-		if anti_macro == true then
-			for name,player in next,tfm.get.room.playerList do
-				if data[name] and not tfm.get.room.playerList[name].isDead then
-					if tempo % 2 == 0 then
-						if data[name].count >= 29 then
+		if active > 0 and faltando < 1 and rato >= 2 then
+			if active == 17 then
+				for name,player in next,tfm.get.room.playerList do
+					if tfm.get.room.playerList[name].isFacingRight == true then
+						tfm.exec.killPlayer(name)
+					end
+				end
+			end
+			if active == 18 then
+				for name,player in next,tfm.get.room.playerList do
+					if tfm.get.room.playerList[name].isFacingRight == false then
+						tfm.exec.killPlayer(name)
+					end
+				end
+			end
+			if active == 19 or active == 31 or active == 32 or active == 57 or active == 64 then
+				for name,player in next,tfm.get.room.playerList do
+					if player.y < 300 then
+						tfm.exec.killPlayer(name)
+					else
+						if player.x < xpos-10 or player.x > xpos+90 then
 							tfm.exec.killPlayer(name)
-							showMessage("<R><b>"..name.."</b>"..text.macro.."")
 						end
-						data[name].count=0
+					end
+				end
+			end
+			if active == 32 then
+				for name,player in next,tfm.get.room.playerList do
+					if player.y < 300 then
+						tfm.exec.killPlayer(name)
+					else
+						if player.x < xpos-10 or player.x > xpos+90 then
+							tfm.exec.killPlayer(name)
+						end
+					end
+				end
+			end
+			if active == 20 or active == 33 or active == 34 then
+				for name,player in next,tfm.get.room.playerList do
+					if player.x < xpos or player.x > xpos+80 then
+						tfm.exec.killPlayer(name)
+					end
+				end
+			end
+			if active == 21 or active == 46 or active == 80 then
+				for name,player in next,tfm.get.room.playerList do
+					if player.x > xpos and player.x < xpos+80 then
+						tfm.exec.killPlayer(name)
+					end
+				end
+			end
+			if active == 22 then
+				for name,player in next,tfm.get.room.playerList do
+					if player.y < ypos-10 or player.y > ypos+70 then
+						tfm.exec.killPlayer(name)
+					end
+				end
+			end
+			if active == 23 then
+				for name,player in next,tfm.get.room.playerList do
+					if player.y > ypos-10 and player.y < ypos+70 then
+						tfm.exec.killPlayer(name)
+					end
+				end
+			end
+			if active == 53 then
+				for name,player in next,tfm.get.room.playerList do
+					tfm.exec.freezePlayer(name,false)
+				end
+			end
+			if active == 82 then
+				for name,player in next,tfm.get.room.playerList do
+					if tfm.get.room.playerList[name].cheeses == 1 then
+						tfm.exec.killPlayer(name)
+					end
+				end
+			end
+			if active == 86 then
+				for name,player in next,tfm.get.room.playerList do
+					if tfm.get.room.playerList[name].y <= 147 then
+						tfm.exec.killPlayer(name)
+					end
+				end
+			end
+			if active == 87 then
+				for name,player in next,tfm.get.room.playerList do
+					if tfm.get.room.playerList[name].y >= 158 then
+						tfm.exec.killPlayer(name)
+					end
+				end
+			end
+			if active == 89 then
+				for name,player in next,tfm.get.room.playerList do
+					if player.y > 300 then
+						if player.x > xpos-10 and player.x < xpos+90 then
+							tfm.exec.killPlayer(name)
+						end
+					end
+				end
+			end
+			if active == 90 then
+				for name,player in next,tfm.get.room.playerList do
+					if tfm.get.room.playerList[name].isDead == false then
+						tfm.exec.attachBalloon(name, false)
+					end
+				end
+			end
+			for i=0,2 do
+				ui.removeTextArea(i,nil)
+			end
+			ui.removeTextArea(250,nil)
+			tfm.exec.setWorldGravity(0, 10)
+			for i=1,8 do
+				tfm.exec.removePhysicObject(i)
+			end
+			tfm.exec.removePhysicObject(666)
+			tfm.exec.removePhysicObject(667)
+			tfm.exec.removePhysicObject(2500)
+			for i=1,15 do
+				tfm.exec.removeBonus(i)
+			end
+			active=0
+			if rodada == 3 or rodada == 6 or rodada == 9 or rodada == 12 or rodada == 15 or rodada == 18 then
+				dificuldade=dificuldade+1
+			end
+			for name,player in next,tfm.get.room.playerList do
+				data[name].key=0
+				ui.removeTextArea(24,nil)
+				if data[name].c == 0 then
+					tfm.exec.killPlayer(name)
+				end
+				tfm.exec.setNameColor(name,0xc2c2da)
+				tfm.exec.setPlayerNightMode(false, name)
+			end
+			if fc_mode == false then
+				if vivo > 5 then
+					tfm.exec.setGameTime(13-dificuldade)
+				else
+					tfm.exec.setGameTime(11-dificuldade)
+				end
+			else
+				tfm.exec.setGameTime(7)
+			end
+			getAlives()
+		end
+		if passado >= 10000 then
+			if anti_macro == true then
+				for name,player in next,tfm.get.room.playerList do
+					if data[name] and not tfm.get.room.playerList[name].isDead then
+						if tempo % 2 == 0 then
+							if data[name].count >= 29 then
+								tfm.exec.killPlayer(name)
+								showMessage("<R><b>"..name.."</b>"..text.macro.."")
+							end
+							data[name].count=0
+						end
+						if active == 4 then
+							if tempo % 2 == 0 then
+								if data[name].count >= 14 then
+									tfm.exec.killPlayer(name)
+									showMessage("<R><b>"..name.."</b>"..text.macro.."")
+								end
+								data[name].count=0
+							end
+						end
 					end
 				end
 			end
 		end
-	end
 	end
 end
 tfm.exec.setGameTime(10)
-tfm.exec.newGame("@6788085")
+tfm.exec.newGame("@3945599")
