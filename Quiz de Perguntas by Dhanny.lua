@@ -1,4 +1,4 @@
--- Script de Quiz de Perguntas feito por Dhanny_mheyran#6701, versão 2023.04.31.1-QP
+-- Script de Quiz de Perguntas feito por Dhanny_mheyran#6701, versão 2023.06.19.1-QP
 -- Créditos para Reksai_void2600#6638 pelo código original.
 admin={"Dhanny_mheyran#6701"} -- FunCorps, insiram seus nomes aqui!
 
@@ -469,8 +469,8 @@ perguntas1={
 "Qual destes municípios está localizado no Estado do Acre?","Plácido de Castro","Santo Antônio de Pádua",1,
 "O tungstênio, material utilizado nas lâmpadas fluorescentes e halógenas, possui qual número na Tabela Periódica?","59","74",2,
 "Qual o nome do lugar onde vive o Presidente da Argentina?","Casa Branca","Casa Rosada",2,
-"Qual destes monumentos não é considerado como uma das Sete Maravilhas do Mundo Moderno?","Coliseu de Roma","Torre Eiffel",2,
-"Qual destes monumentos não é considerado como uma das Sete Maravilhas do Mundo Antigo?","Grande Muralha da China","Grande Pirâmide de Gizé",1,
+"Qual destes monumentos é considerado como uma das Sete Maravilhas do Mundo Moderno?","Coliseu de Roma","Torre Eiffel",1,
+"Qual destes monumentos é considerado como uma das Sete Maravilhas do Mundo Antigo?","Grande Muralha da China","Grande Pirâmide de Gizé",2,
 "Em que ano foi exibido o primeiro capítulo da novela Carrossel no Brasil?","1991","2012",1,
 "Em que ano foi lançado o jogo Grand Chase?","2003","2007",1,
 "Quantos presidentes teve o Brasil desde a Redemocratização, em 1985?","7","8",2,
@@ -495,12 +495,25 @@ perguntas1={
 "Qual o nome do ex-presidente do Brasil cujo apelido era Jango?","João Goulart","Jânio Quadros",1,
 "Qual foi o primeiro planeta descoberto com a ajuda de um telescópio?","Júpiter","Urano",2,
 "A Primeira Guerra Mundial durou mais que a Segunda Guerra Mundial.","Verdadeiro","Falso",2,
-"Qual o nome da maior favela do Brasil?","Favela do Sol Nascente","Favela da Rocinha",1,
+"Qual o nome da maior favela do Brasil?","Favela da Rocinha","Favela do Sol Nascente",2,
 "Em qual ano foram lançados os primeiros Emojis Unicode, que podiam ser utilizados em vários dispositivos?","1993","2008",1,
 "A diabetes é uma doença causada pelo excesso do quê no sangue?","Açúcar","Sal",1,
 "Quantas estrelas existem na bandeira dos Estados Unidos?","48","50",2,
 "Em qual dia e mês do ano é comemorado o feriado de Tiradentes?","21 de Abril","21 de Junho",1,
 "Em qual país foi inventada a Calça Jeans?","Estados Unidos","Inglaterra",1,
+"Em qual continente fica localizado o México?","América do Norte","América Central",1,
+"Em qual ano foi lançada a primeira versão do sistema operacional Android?","2008","2010",1,
+"Segundo a Bíblia Sagrada, qual o nome do bandido que foi solto no episódio da crucificação de Jesus?","Pilatos","Barrabás",2,
+"Em qual ano foi fundada a empresa AMD, que hoje fabrica processadores, placas de vídeo e outros itens?","1969","1989",1,
+"Qual é a fórmula utilizada para o cálculo do Índice de Massa Corporal?","peso em kg x (altura em metros)²","peso em kg / (altura em metros)²",2,
+"O Brasil possui 3 dos 10 maiores rios do planeta Terra.","Verdadeiro","Falso",2,
+"O Feriado de Carnaval é sempre comemorado no mês de Fevereiro.","Verdadeiro","Falso",2,
+"Quantas luas possui o planeta Marte?","1","2",2,
+"O Estado de Minas Gerais é mais populoso do que o Rio de Janeiro.","Verdadeiro","Falso",1,
+"Amazonas é o estado com a maior população da região Norte do Brasil.","Verdadeiro","Falso",2,
+"O Gálio é um elemento químico que pode ficar líquido dependendo da temperatura ambiente.","Verdadeiro","Falso",1,
+"Qual é o maior continente do Planeta Terra?","América","Ásia",1,
+"Em que ano estreou o programa de televisão Fantástico?","1973","1987",1,
 }
 perguntas2={
 "Vai na sorte :)","ok","ok",1,
@@ -967,7 +980,7 @@ function eventPlayerLeft(name)
 end
 function eventLoop(p,f)
 	remain=math.floor(f/1000)
-	ui.setMapName("<N>Quiz - <VP><b>versão 2023.04.31.1-QP</b> <N>por <ROSE>Dhanny_mheyran#6701   <BL>|   <N>Ratos : <V>"..vivos.."/"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/"..limite.."<")
+	ui.setMapName("<N>Quiz - <VP><b>versão 2023.06.19.1-QP</b> <N>por <ROSE>Dhanny_mheyran#6701   <BL>|   <N>Ratos : <V>"..vivos.."/"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/"..limite.."<")
 	if remain < 2 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
