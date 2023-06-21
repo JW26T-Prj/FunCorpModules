@@ -6,8 +6,11 @@
 -- https://raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/mestre%20mandou.lua
 -- This is a guarantee that you will receive all the latest updates and bugfixes.
 
--- Código do module Mestre Mandou, versão 2023.06.14.01-SS, desenvolvido por Dhanny_mheyran#6701.
--- Code of Simon Says module, version 2023.06.14.01-SS, developed by Dhanny_mheyran#6701.
+-- Código do module Mestre Mandou, versão 2023.06.20.01-SS, desenvolvido por Dhanny_mheyran#6701.
+-- Code of Simon Says module, version 2023.06.20.01-SS, developed by Dhanny_mheyran#6701.
+
+-- Última versão do Mestre Mandou sob comando de Dhanny_mheyran#6701.
+-- Last version of Simon Says with Dhanny_mheyran#6701 as manager.
 
 admin={""} -- Leia abaixo / Read below!
 
@@ -46,13 +49,13 @@ acidg={type = 19,width = 30,height = 30}
 lava={type = 3,width = 2400,height = 100,miceCollision = false,groundCollision = false, foreground = true}
 acids={type = 19,width = 2400,height = 80,miceCollision = true,groundCollision = false}
 map_det={creator="",code=""}
-ninjas={"Dhanny_mheyran#6701","Alisson#3938","Forzaldenon#0000","Aurelianlua#0000","Viego#0345","Tryndavayron#0000","Varusofeyzan#0000","Skyymellu#0000"}
+ninjas={"Dhanny_mheyran#6701","Alisson#3938","Aurelianlua#0000","Viego#0345","Barodius#9562","Skyymellu#0000"}
 fc_mode=false; xpos=0; xpos2=0;
 for _,f in next,{"command","pw","limit","run","fc","tc","ms","q","a","t","kill","antimacro","blockc","sd"} do
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><br><J><b>Script gerenciado por Dhanny_mheyran#6701</b><br>Originalmente criado por Jessiewind26#2546<br><br><R>Versão 2023.06.14.01-SS",
+	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><br><J><b>Script gerenciado por Dhanny_mheyran#6701</b><br>Originalmente criado por Jessiewind26#2546<br><br><R>Versão 2023.06.20.01-SS",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -167,7 +170,7 @@ lang.br = {
 	blockCode = "<br><br><br><br><br><br><br><br><R><b>Este código foi travado pelo sistema TitanAntiOld de detecção de versão.</b><br><br>Por favor, utilize a versão mais recente para continuar utilizando este código.",
 }
 lang.en = {
-	welcome = "<N><b>Welcome to Simon Says module!</b><br>Follow everything the game told and test your limits until the end!<br><br><J><b>Script developed by Dhanny_mheyran#6701</b><br>Originally made by Jessiewind26#2546<br>Translation by Draw#6691<br><br><R>Version 2023.06.14.01-SS",
+	welcome = "<N><b>Welcome to Simon Says module!</b><br>Follow everything the game told and test your limits until the end!<br><br><J><b>Script developed by Dhanny_mheyran#6701</b><br>Originally made by Jessiewind26#2546<br>Translation by Draw#6691<br><br><R>Version 2023.06.20.01-SS",
 	dancar = "Dance!",
 	sentar = "Sit down!",
 	confetar = "Throw 5 confetti!",
@@ -1595,13 +1598,13 @@ function eventLoop(passado,faltando)
 	if unlocked == true then
 		local tempo=math.floor(faltando/1000)
 		if active == -2 then
-			ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." 2023.06.14.01-SS</b><")
+			ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." 2023.06.20.01-SS</b><")
 		elseif active == -1 and vivo == 1 then
-			ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 2023.06.14.01-SS</b><")
+			ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 2023.06.20.01-SS</b><")
 		elseif active == -1 and vivo <= 0 then
-			ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 2023.06.14.01-SS</b><")
+			ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 2023.06.20.01-SS</b><")
 		elseif active >= 0 then
-			ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." 2023.06.14.01-SS</b><")
+			ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." 2023.06.20.01-SS</b><")
 		end
 		if rato < 4 then
 			if tfm.get.room.currentMap == "@3945599" then
