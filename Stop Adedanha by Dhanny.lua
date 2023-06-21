@@ -1,10 +1,10 @@
 -- STOP
--- Escrito por Ninguem - 31/08/2015 // Atualizado por Dhanny_mheyran#6701 - 14/06/2023
+-- Escrito por Ninguem - 31/08/2015 // Atualizado por Akwimos#1937 - 21/06/2023
 -- Mínimo de 5 temas e máximo de 20 temas.
 -- FunCorp, caso você não queira visualizar as respostas dos jogadores, altere a variável SHOW (linha 10) para false.
 -- Para bloquear um jogador, digite !kick [nome#tag]. Digite o mesmo comando para desbloqueá-lo caso o mesmo já esteja bloqueado.
 
-ADM = {"Dhanny_mheyran#6701"} -- editar com seu nome aqui!
+ADM = {"Akwimos#1937"} -- editar com seu nome aqui!
 ADMIN_ONLY = false -- troque para 'true' se você quiser que só os votos dos jogadores que estejam na tabela 'ADM' contem
 CAT = {"Nome","Animal","Objeto","Cor","Marca","TV/Filme/Anime/Desenho","Parte do Corpo Humano","Ator/Cantor/Celebridade","Comida/Bebida","País/Cidade/Estado","Apelido de Garçom","Profissão","O(A) "..ADM[1].." é...","Qualquer Coisa"}
 SHOW = true
@@ -238,7 +238,7 @@ function selecionaPalavra()
 	ui.addTextArea(ID.tempo, "<r><p align='center'><font size='25px'>--</font></p>", nil, 755, 358, 40, 40, 1, 1, 0.9, true)
 end
 
-coisas = {"ROLA","VIAD","BUCET","PIROC","PAU","SEX","DEDAD","SAFAD","CARALH","JEB","PUNHET","PORR","PORN"}
+coisas = {"ROLA","VIAD","BUCET","PIR","PAU","SEX","DEDAD","SAFAD","CARALH","JEB","PUNHET","PORR","PORN","XOT","XEREC","XVIDE","XOXO"}
 
 function eventChatCommand(p, cmd)
 	if cmd == "stop" and MODO == "round" and os.time() > TEMPO then
@@ -348,7 +348,7 @@ function eventPopupAnswer(id, p, resp)
 end
 
 function eventNewPlayer(p)
-	ui.setMapName("<b>STOP!</b> <N>Script editado por Dhanny_mheyran#6701 - 14/06/2023<")
+	ui.setMapName("<b>STOP!</b> <N>Script editado por Akwimos#1937 - 21/06/2023<")
 	PLAYER[p] = {num = 0, pontos = 0, vitoria = 0, palavra = {}, banido = false}
 	for i, v in pairs(CAT) do
 		PLAYER[p].palavra[v] = ""
@@ -526,5 +526,5 @@ tfm.exec.disableAutoShaman(true)
 tfm.exec.disableAutoScore(true)
 tfm.exec.disableAutoNewGame(true)
 carregaMapa()
-ui.setMapName("<b>STOP!</b> <N>Script editado por Dhanny_mheyran#6701 - 14/06/2023<")
+ui.setMapName("<b>STOP!</b> <N>Script editado por Akwimos#1937 - 21/06/2023<")
 atualizaCat(true)
