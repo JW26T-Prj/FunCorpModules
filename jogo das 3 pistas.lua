@@ -1,5 +1,5 @@
--- Script de Jogo das 3 Pistas, originalmente feito por Jessiewind26#2546, e agora gerenciado por Hecarimjhenx#0000.
--- Adicione seu nome na variável 'admin' abaixo para ter acesso a todos os comandos.
+-- Script de Jogo das 3 Pistas, originalmente feito por Jessiewind26#2546, e atualmente gerenciado por Hecarimjhenx#0000.
+-- Adicione seu nome com #tag na variável 'admin' abaixo para ter acesso a todos os comandos.
 admin="";
 
 for _,f in next,{"AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand","AfkDeath","AllShamanSkills"} do
@@ -125,22 +125,22 @@ function eventLoop(p,f)
 	if valendo == true and f <= 39000 then
 		ui.addTextArea(3,"<font size='15'><p align='center'><font face='Consolas,Lucida Console'><N>"..text.c8p.." <b>"..dica8.."",nil,5,98,780,26,0x000001,0x000001,0.9,true)
 	end
-	ui.setMapName("<J>"..text.module.."   <G>|   <N>"..text.question.." : <V>"..pergunta.."/"..limite.."   <G>|   <N>"..text.time.." : <V>"..tempo.."s   <G>|   <N>"..text.version.." <VP><b>RTM 3212.031</b><")
+	ui.setMapName("<J>"..text.module.."   <G>|   <N>"..text.question.." : <V>"..pergunta.."/"..limite.."   <G>|   <N>"..text.time.." : <V>"..tempo.."s   <G>|   <N>"..text.version.." <VP><b>RTM 3313.032 LTS</b><")
 end
 function eventChatCommand(name,message)
 	if message == "skip" then
-		if name == "Hecarimjhenx#0000" or name == "Jannawindmax#0000" or name == "Forzaldenon#0000" or name == admin then
+		if name == "Hecarimjhenx#0000" or name == "Velkozdapic#0000" or name == "Viego#0345" or name == admin then
 			showMessage(text.cancel,nil)
 			tfm.exec.newGame(mapa)
 		end
 	end
 	if(message:sub(1,6) == "limite") then
-		if name == "Hecarimjhenx#0000" or name == "Jannawindmax#0000" or name == "Forzaldenon#0000" or name == admin then
+		if name == "Hecarimjhenx#0000" or name == "Velkozdapic#0000" or name == "Viego#0345" or name == admin then
 			limite=tonumber(message:sub(8))
 		end
 	end
 	if(message:sub(1,6) == "shaman") then
-		if name == "Hecarimjhenx#0000" or name == "Jannawindmax#0000" or name == "Forzaldenon#0000" or name == admin then
+		if name == "Hecarimjhenx#0000" or name == "Velkozdapic#0000" or name == "Viego#0345" or name == admin then
 			tfm.exec.setPlayerScore(message:sub(8),9999,false)
 			tfm.exec.newGame(mapa)
 		end
