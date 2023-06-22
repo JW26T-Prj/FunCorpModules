@@ -2,12 +2,12 @@
 Module authors : Morganadxana#0000
 (C) 2017-2023 Spectra Advanced Module Group
 
-Version : RTM 53740.223
-Compilation date : 05/24/2023 12:18 UTC
+Version : RTM 53841.224 LTS
+Compilation date : 06/22/2023 19:23 UTC
 Sending player : Morganadxana#0000
 
 Number of maps : 191
-Number of module special members : 11 ]]--
+Number of module special members : 10 ]]--
 
 _VERSION = "Lua 5.4"
 _AUTHOR = "Morganadxana#0000"
@@ -35,9 +35,8 @@ admins={"Ashearcher#0000",
 "Morganadxana#0000",
 "Geracionz#0000"}
 ninjas={"Viego#0345",
-"Forzaldenon#0000",
-"Alisson#3938",
-"Aurelianlua#0000"};
+"Barodius#9562",
+"Alisson#3938"};
 data={}
 
 lang = {}
@@ -311,7 +310,7 @@ function showRoomSettings(name)
 end
 
 function showLobbyText(name)
-	ui.addTextArea(402,"<p align='center'><font size='12'><b><font face='Courier New'><i>"..text.version.." RTM 53740.223 - "..text.comp_date.."05/24/2023 12:18 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,-10,380,820,36,0,0,1.0,true)
+	ui.addTextArea(402,"<p align='center'><font size='12'><b><font face='Courier New'><i>"..text.version.." RTM 53841.224 LTS - "..text.comp_date.."06/22/2023 19:23 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,-10,380,820,36,0,0,1.0,true)
 end
 
 function setLeaders()
@@ -394,7 +393,7 @@ function updateTextBar()
 	if mode == "end" then
 		ui.setMapName("<VP><b>"..text.ending.."</b>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	else
-		ui.setMapName("<N><b>#anvilwar</b>   <G>|   <VP>"..text.version.." <b>RTM 53740.223</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
+		ui.setMapName("<N><b>#anvilwar</b>   <G>|   <VP>"..text.version.." <b>RTM 53841.224 LTS</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	end
 end
 
@@ -1119,7 +1118,7 @@ function eventChatCommand(name,command)
 		end
 	else showMessage(text.wrong,name) end end
 	if command == "changelog" then
-		showMenu(name,0xa8f233,140,130,520,130,"#anvilwar Changelog - RTM 53740.223","• The cost of Permafrost powerup was reduzed from 20 to 16 points<br>• The cost of Night Mode powerup was reduzed from 15 to 12 points<br>• The cost of Anvil Rain powerup was reduzed from 25 to 20 points<br>• The default setting of ping checker is now WEAK")
+		showMenu(name,0xa8f233,140,130,520,80,"#anvilwar Changelog - RTM 53841.224 LTS","• Some internal changes")
 	end
 	if (command:sub(0,2) == "rv") then
 		if name == actual_player and general_time >= 30 then
