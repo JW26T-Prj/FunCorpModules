@@ -1,3 +1,5 @@
+-- Esta é a versão reduzida do RockerLaunch 6, sem a arte do dragão espacial.
+
 for _,f in next,{"PhysicalConsumables","AutoNewGame","AutoTimeLeft","AllShamanSkills","DebugCommand"} do
 	tfm.exec["disable"..f](true)
 end
@@ -11,7 +13,7 @@ objects1={1,3,6,7,35,39,60,89,95}
 objects2={1,2,3,6,7,35,39,45,46,54,60,85,89,90,95}
 objects3={1,2,3,4,6,7,10,23,35,39,40,45,46,54,60,61,68,69,85,89,90,95}
 objects4={2,4,10,39,40,45,46,54,61,67,68,69,90}
-managers={"Threshlimit#0000","Morganadxana#0000","Lynet#8558","Puffezinhaq#0000","Digo20games#0000","Forzaldenon#0000","Alisson#3938"}
+managers={"Threshlimit#0000","Morganadxana#0000","Lynet#8558","Puffezinhaq#0000","Digo20games#0000","Viego#0345","Alisson#3938"}
 system.disableChatCommandDisplay("cancel")
 system.disableChatCommandDisplay("set")
 system.disableChatCommandDisplay("help")
@@ -63,7 +65,7 @@ function eventNewGame()
 end
 function eventChatCommand(n,m)
 	if m == "help" then
-		showMessage("<N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço. Caso o shaman morra, a partida é encerrada. Tenha cuidado com os objetos e os meteoros que caem do céu!<br><br><BL>Mapa criado por Threshlimit#0000 e Dhanny_mheyran#6701. Código desenvolvido por Morganadxana#0000, Lynet#8558, Digo20games#0000 e Puffezinhaq#0000.<br>Conceito original de Nettoork#0000.<br>Versão 6.1.0",n)
+		showMessage("<N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço. Caso o shaman morra, a partida é encerrada. Tenha cuidado com os objetos e os meteoros que caem do céu!<br><br><BL>Mapa criado por Threshlimit#0000 e Dhanny_mheyran#6701. Código desenvolvido por Morganadxana#0000, Lynet#8558, Digo20games#0000 e Puffezinhaq#0000.<br>Conceito original de Nettoork#0000.<br>Versão 6.1.1",n)
 	end
 	if m == "cancel" then
 		if verifyNinjas(n) == true then
@@ -252,7 +254,7 @@ end
 function eventNewPlayer(n)
 	if changed == true then
 		ui.setMapName("<b>RockerLaunch 6</b><N> - o céu é o limite! Pelo menos é o que parece...<")
-		showMessage("<VP>Bem-vindos ao RockerLaunch 6!<br><N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço! Digite !help para saber como jogar.<br><br><BL>Créditos para Lynet#8558, Puffezinhaq#0000, Morganadxana#0000, Digo20games#0000, Dhanny_mheyran#6701 e Threshlimit#0000. Conceito original de Nettoork#0000.<br><J>Versão 6.1.0",n)
+		showMessage("<VP>Bem-vindos ao RockerLaunch 6!<br><N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço! Digite !help para saber como jogar.<br><br><BL>Créditos para Lynet#8558, Puffezinhaq#0000, Morganadxana#0000, Digo20games#0000, Dhanny_mheyran#6701 e Threshlimit#0000. Conceito original de Nettoork#0000.<br><J>Versão 6.1.1",n)
 		tfm.exec.setPlayerScore(n,0,false)
 		tfm.exec.addImage("17ae4e48770.png","&1",590,370,n,0.5,0.5)
 	end
