@@ -10,7 +10,7 @@ jogadores={assasinos={},detetives={},medicos={},vivos=0,lista={}}
 quant={assasinos=0,detetives=0,medicos=0,vitimas=0,vivos=0}
 limites={assasinos=0,detetives=0,medicos=0}
 modo="inicial"; contador=0; rodada=0; data={}; templist={};
-mapas={"@3110915","@3148619","@4411212","@4477478","@5832272","@3203198","@5113656","@6380942","@7730312","@7712670","@7896560"}
+mapas={"@3110915","@3148619","@3203198","@4411212","@4477478","@5832272","@3203198","@5113656","@6380942","@6390711","@7730312","@7712670"}
 system.disableChatCommandDisplay("help")
 function showMessage(message,name)
 	temp_text=string.gsub(message,"<b>","")
@@ -26,7 +26,7 @@ function showMessage(message,name)
 	end
 end
 function showDebugText(text)
-	for _,name in next,{"Zed#9431","Viego#0345","Aurelianlua#0000","Skyymellu#0000"} do
+	for _,name in next,{"Fosfus7heads#0000","Viego#0345","Aurelianlua#0000","Skyymellu#0000","Alisson#3938"} do
 		showMessage(text,name)
 	end
 end
@@ -53,7 +53,7 @@ function checkNickname(name)
 end
 function eventChatCommand(name,comando)
 	if comando == "reiniciar" then
-		if name == "Zed#9431" or name == "Aurelianlua#0000" or name == "Viego#0345" or name == "Skyymellu#0000" or name == admin then
+		if name == "Fosfus7heads#0000" or name == "Aurelianlua#0000" or name == "Viego#0345" or name == "Skyymellu#0000" or name == "Alisson#3938" or name == admin then
 			tfm.exec.newGame(mapas[math.random(#mapas)])
 		end
 	end
@@ -79,7 +79,7 @@ function eventNewGame()
 		end
 	end
 	rodada=0
-	ui.setMapName("<N><b>Cidade Dorme v3</b> <N>- gerenciado por <R>Zed#9431<")
+	ui.setMapName("<N><b>Cidade Dorme v3</b> <N>- gerenciado por <BL>Fosfus7heads#0000<")
 end
 function escolherAssasinos(name)
 	if data[name] and data[name].type == 0 then
@@ -107,7 +107,7 @@ function escolherDetetives(name)
 end
 function eventNewPlayer(name)
 	if not data[name] then
-		showMessage("<N><b>Bem-vindos ao module Cidade Dorme!</b><br>O objetivo deste module é: Descubra quem são os assassinos, desconfie e os mate!<br><VP>O jogo irá explicar todo seu funcionamento durante a partida.<br><br><J><b>Script gerenciado por Zed#9431</b><br>Conceito original por Spectra_phantom#6089",name)
+		showMessage("<N><b>Bem-vindos ao module Cidade Dorme!</b><br>O objetivo deste module é: Descubra quem são os assassinos, desconfie e os mate!<br><VP>O jogo irá explicar todo seu funcionamento durante a partida.<br><br><J><b>Script gerenciado por Fosfus7heads#0000</b><br>Conceito original por Spectra_phantom#6089",name)
 	end
 	data[name]={type=-1,morre=false}
 end
@@ -205,7 +205,7 @@ function eventLoop()
 			showMessage("<VP>O module não pode ser iniciado. <br>Certifique-se de que inseriu seu nome corretamente no nome da sala.<br><br>No caso de uma sala FunCorp, certifique-se que inseriu o nome corretamente no código.")
 			contador=-524288
 		else
-			showMessage("<N><b>Bem-vindos ao module Cidade Dorme!</b><br>O objetivo deste module é: Descubra quem são os assassinos, desconfie e os mate!<br><VP>O jogo irá explicar todo seu funcionamento durante a partida.<br><br><J><b>Script gerenciado por Zed#9431</b><br>Conceito original por Spectra_phantom#6089")
+			showMessage("<N><b>Bem-vindos ao module Cidade Dorme!</b><br>O objetivo deste module é: Descubra quem são os assassinos, desconfie e os mate!<br><VP>O jogo irá explicar todo seu funcionamento durante a partida.<br><br><J><b>Script gerenciado por Fosfus7heads#0000</b><br>Conceito original por Spectra_phantom#6089")
 		end
 	end
 	if contador == 10 then
