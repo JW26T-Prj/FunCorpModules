@@ -1,5 +1,5 @@
 -- Script Fall Racing, antes chamado de Queda Livre de Velocidade.
--- Originalmente feito por Haxhhhhhhhhh, antes gerenciado por Vaicntaefeto#0000 e Azirdeathray#0000, e atualmente no controle de Zed#9431.
+-- Originalmente feito por Haxhhhhhhhhh, antes gerenciado por Vaicntaefeto#0000, Azirdeathray#0000 e Zed#9431, e atualmente no controle de Titan50#0000.
 -- Atenção: Script com alta exigência de memória.
 
 for _,f in next,{"AutoNewGame","AutoShaman","AfkDeath","AutoScore","PhysicalConsumables","MortCommand","DebugCommand","MinimalistMode"} do
@@ -20,7 +20,7 @@ function showMessage(message,name)
 end
 function eventChatCommand(name,message)
 	if(message:sub(1,3) == "obj") then
-		if name == "Zed#9431" or name == "Yone#5530" or name == "Akwimos#1937" then
+		if name == "Titan50#0000" or name == "Viego#0345" or name == "D571#0000" then
 			objective=tonumber(message:sub(5))
 			showMessage("<J>Objective changed to: "..objective,name)
 		end
@@ -39,8 +39,8 @@ function eventNewGame()
 			ui.removeTextArea(0,nil)
 		end
 	else
-		ui.addTextArea(10,"<font face='Eras Demi ITC'><font color='#ff8000'><font size='39'>Fall Racing v2.5.2",nil,40,42,400,100,0,0,1.0,true)
-		ui.setMapName("<N>Welcome to <J>Fall Racing v2.5.2! <N>Script made by <R><b>Zed#9431</b>.<")
+		ui.addTextArea(10,"<font face='Eras Demi ITC'><font color='#ff8000'><font size='39'>Fall Racing v2.5.3",nil,40,42,400,100,0,0,1.0,true)
+		ui.setMapName("<N>Welcome to <J>Fall Racing v2.5.3! <N>Script made by <R><b>Titan50#0000</b>.<")
 		tfm.exec.setGameTime(60)
 	end
 end
@@ -48,7 +48,7 @@ function eventLoop(p,f)
 	if p >= 5000 and p <= 6000 and changed == false and enabled == true then
 		tfm.exec.newGame(xml2)
 		changed=true
-		ui.setMapName("<J>#fall v2.5.2   <BL>|   <J>"..creator.." <BL>- "..map.."   <BL>|   <J>Objective : <J>"..objective.." points<")
+		ui.setMapName("<J>#fall v2.5.3   <BL>|   <J>"..creator.." <BL>- "..map.."   <BL>|   <J>Objective : <J>"..objective.." points<")
 	end
 	if f <= 1 and enabled == true then
 		changed=false
@@ -103,9 +103,9 @@ function eventPlayerDied(name)
 end
 function eventNewPlayer(name)
 	if enabled == false then
-		ui.addTextArea(10,"<font face='Eras Demi ITC'><font color='#00ffff'><font size='39'>Fall Racing v2.5.2",nil,330,42,400,100,0,0,1.0,true)
-		ui.setMapName("<N>Welcome to <J>Fall Racing v2.5.2! <N>Script made by <R><b>Zed#9431</b>.<")
+		ui.addTextArea(10,"<font face='Eras Demi ITC'><font color='#00ffff'><font size='39'>Fall Racing v2.5.3",nil,330,42,400,100,0,0,1.0,true)
+		ui.setMapName("<N>Welcome to <J>Fall Racing v2.5.3! <N>Script managed by <R><b>Titan50#0000</b>.<")
 	end
-	showMessage("<J>Welcome to the #fall2 module!<br><br>The objective of this room is fall to the end of the map!<br>The player that score more points will win the game!<br><br><R>WARNING: This script require at least 1.6GB of RAM to work without problems.<J><br><br>Script made by Zed#9431",name)
+	showMessage("<J>Welcome to the #fall2 module!<br><br>The objective of this room is fall to the end of the map!<br>The player that score more points will win the game!<br><br><R>WARNING: This script require at least 1.6GB of RAM to work without problems.<J><br><br>Script managed by Titan50#0000",name)
 end
 tfm.exec.newGame(lobby)
