@@ -41,7 +41,7 @@ end
 
 function carregaMapa()
 	tfm.exec.newGame("@7924777")
-	ui.setBackgroundColor("#717171")
+	ui.setBackgroundColor("#212545")
 end
 
 function isAdm(p)
