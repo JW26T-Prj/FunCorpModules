@@ -1,4 +1,4 @@
--- Script do module Jogo da Forca, versão RTM 1004.002, desenvolvido por Rakan_raster#0000 e Xayah_raster#7598.
+-- Script do module Jogo da Forca, versão RTM 1105.003, desenvolvido por Xayah_raster#7598.
 
 for _,f in next,{"AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand","AllShamanSkills"} do
 	tfm.exec["disable"..f](true)
@@ -155,7 +155,7 @@ end
 function eventNewGame()
 	resetWord()
 	modo="aguardar"
-	ui.setMapName("<N>Jogo da Forca <J><b>RTM 1004.002</b> <N>- Script criado por <VP>Rakan_raster#0000<N> e <ROSE>Xayah_raster#7598<")
+	ui.setMapName("<N>Jogo da Forca <J><b>RTM 1105.003</b> <N>- Script criado por <ROSE>Xayah_raster#7598<")
 	for name,player in next,tfm.get.room.playerList do
 		if tfm.get.room.playerList[name].isShaman then
 			tfm.exec.setPlayerScore(name,-1,false)
@@ -167,9 +167,9 @@ function eventNewGame()
 end
 
 function eventNewPlayer(name)
-	ui.setMapName("<N>Jogo da Forca <J><b>RTM 1004.002</b> <N>- Script criado por <VP>Rakan_raster#0000<N> e <ROSE>Xayah_raster#7598<")
+	ui.setMapName("<N>Jogo da Forca <J><b>RTM 1105.003</b> <N>- Script criado por <ROSE>Xayah_raster#7598<")
 	tfm.exec.setPlayerScore(name,0,false)
-	showMessage("<br><br><br><p align='center'><N><b>Bem-vindos ao module Jogo da Forca!</b><br>O objetivo deste module é: Tentar descobrir a palavra definida pelo shaman errando o mínimo possível!<br><VP>Digite ! e uma letra do alfabeto para chutar.<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br><br><ROSE>Versão RTM 1004.002<br><br><p align='left'>",name)
+	showMessage("<br><br><br><p align='center'><N><b>Bem-vindos ao module Jogo da Forca!</b><br>O objetivo deste module é: Tentar descobrir a palavra definida pelo shaman errando o mínimo possível!<br><VP>Digite ! e uma letra do alfabeto para chutar.<br><br><J><b>Script desenvolvido por Xayah_raster#7598</b><br><br><ROSE>Versão RTM 1105.003<br><br><p align='left'>",name)
 end
 
 for name,player in next,tfm.get.room.playerList do
