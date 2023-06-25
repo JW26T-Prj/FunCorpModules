@@ -399,8 +399,7 @@ function completeCommand(name)
 	end
 end
 function eventNewGame()
-	map_det.code=tfm.get.room.currentMap
-	map_det.creator=tfm.get.room.xmlMapInfo.author
+	showMessage(text.submission,nil)
 	rodada=0; active=0; vivo=0; rato=0; dificuldade=1;
 	for i=0,2 do
 		ui.removeTextArea(i,nil)
@@ -1605,7 +1604,6 @@ function eventKeyboard(name,id,down,x,y)
 end
 function eventLoop(passado,faltando)
 	if unlocked == true then
-		local passou=math.floor(passado/500)
 		local tempo=math.floor(faltando/1000)
 		if active == -2 then
 			ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." 7.0</b><")
@@ -1632,9 +1630,6 @@ function eventLoop(passado,faltando)
 			if tfm.get.room.currentMap == "@7935706" then
 				tfm.exec.newGame(mapas[math.random(#mapas)])
 			end
-		end
-		if active >= 0 and passou == 180 then
-			showMessage(text.submission,nil)
 		end
 		if active < 0 and faltando <= 1000 and faltando >= 449 then
 			tfm.exec.newGame(mapas[math.random(#mapas)])
