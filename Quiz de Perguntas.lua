@@ -1,30 +1,13 @@
--- Script de Quiz de Perguntas feito por Dhanny_mheyran#6701, versão 2023.06.19.1-QP
--- Créditos para Reksai_void2600#6638 pelo código original.
-admin={"Dhanny_mheyran#6701"} -- FunCorps, insiram seus nomes aqui!
+-- Créditos para Reksai_void2600#6638 e Dhanny_mheyran#6701 pelo código original.
+admin={"Shun_kazami#7014"} -- FunCorps, insiram seus nomes aqui!
 
 tema=0 -- Edite conforme mostrado abaixo!
 
 -- NÃO MEXA EM NADA DEPOIS DESTA LINHA!
 
 -- Temas:
--- 0 = transformice
--- 1 = conhecimentos gerais
--- 2 = música
--- 3 = league of legends
--- 4 = futebol
+-- 0 = transformice, 1 = conhecimentos gerais, 2 = música, 3 = league of legends, 4 = futebol
 
--- Para sugestões de perguntas ou correções de bugs contate Dhanny_mheyran#6701.
-
-piso={type = 10,width = 330,height = 100,foregound = 1,friction = 1.0,restitution = 0.0,angle = 0,color = 0,miceCollision = true,groundCollision = true,dynamic = false}
-barreira={type = 14,width = 20,height = 240,foregound = 1,friction = 0.0,restitution = 0.0,angle = 0,color = 0x000000,miceCollision = true,groundCollision = true,dynamic = false}
-barreira2={type = 10,width = 20,height = 280,foregound = 1,friction = 0.0,restitution = 0.0,angle = 0,color = 0x000000,miceCollision = true,groundCollision = true,dynamic = false}
-for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand"} do
-	tfm.exec["disable"..f](true)
-end
-for _,g in next,{"setq","limite","tema","get","tc","ms","reset"} do
-	system.disableChatCommandDisplay(g)
-end
-ratos=0; vivos=0; set_q=0; questions_list={}; modo="inicial"; pergunta=0; rodada=0; limite=20; count=0; fixed_cnt=0;
 perguntas={
 "Vai na sorte :)","ok","ok",1,
 "Vai na sorte :)","ok","ok",2,
@@ -340,7 +323,7 @@ perguntas1={
 "Qual é o nome dado para as bactérias que precisam de oxigênio para se reproduzirem?","Aeróbicas","Anaeróbias",1,
 "Qual o nome da operação inversa da raiz quadrada?","Potenciação","Subtração",1,
 "Quantas estrelas existem no Sistema Solar?","1","O número é tão grande que nem cabe",1,
-"Quando uma estrela com 10 ou menos massas solares chega no final do seu tempo de vida, ela vira um(a)...","Buraco Negro","Anã Branca",2,
+"Quando uma estrela com 10 massas solares chega no final do seu tempo de vida, ela vira um(a)...","Buraco Negro","Anã Branca",1,
 "Quantos anos durou a Guerra dos Cem Anos?","100","116",2,
 "Existem milhares de jacarés e capivaras no fundo do Rio Amazonas.","Verdadeiro","Falso",2,
 "Qual a raiz quadrada de -16?","-4","Não existe",2,
@@ -514,6 +497,9 @@ perguntas1={
 "O Gálio é um elemento químico que pode ficar líquido dependendo da temperatura ambiente.","Verdadeiro","Falso",1,
 "Qual é o maior continente do Planeta Terra?","América","Ásia",1,
 "Em que ano estreou o programa de televisão Fantástico?","1973","1987",1,
+"Qual destes municípios fica localizado no estado do Rio Grande do Norte?","São Miguel do Gostoso","São Miguel do Araguaia",1,
+"Em que ano foi extinta a antiga rede social Orkut?","2013","2014",2,
+"Qual o nome da material utilizado para a produção de folhas de papel?","Sacarose","Celulose",2,
 }
 perguntas2={
 "Vai na sorte :)","ok","ok",1,
@@ -851,8 +837,18 @@ perguntas4={
 "A partir de qual ano a Copa Sul-Americana passou a ser disputada?","2002","2008",1,
 "Qual foi o único jogador a fazer 3 gols em um jogo de final de Copa Libertadores da América?","Riquelme","Thiago Neves",2,
 }
-mapa="@3161057"
-ninjas={"Reksai_void2600#6638","Alisson#3938","Forzaldenon#0000","Aurelianlua#0000","Viego#0345","Skyymellu#0000"}
+piso={type = 12,width = 400,height = 100,foregound = 1,friction = 1.0,restitution = 0.0,angle = 0,color = 0xffffff,miceCollision = true,groundCollision = true,dynamic = false}
+barreira={type = 14,width = 20,height = 140,foregound = 1,friction = 0.0,restitution = 0.0,angle = 0,color = 0xffffff,miceCollision = true,groundCollision = true,dynamic = false}
+barreira2={type = 12,width = 20,height = 140,foregound = 1,friction = 0.0,restitution = 0.0,angle = 0,color = 0xffffff,miceCollision = true,groundCollision = true,dynamic = false}
+for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand"} do
+	tfm.exec["disable"..f](true)
+end
+for _,g in next,{"setq","limite","tema","get","tc","ms","reset"} do
+	system.disableChatCommandDisplay(g)
+end
+ratos=0; vivos=0; set_q=0; questions_list={}; modo="inicial"; pergunta=0; rodada=0; limite=20; count=0; fixed_cnt=0;
+mapa="@7935894"
+ninjas={"Shun_kazami#7014","Alisson#3938","Aurelianlua#0000","Viego#0345","Skyymellu#0000","Eduardo379#8610"}
 actual_question={quest="",a1="",a2="",answer=nil}
 function verifyAdmin(name)
 	for i=1,rawlen(admin) do
@@ -868,13 +864,50 @@ function verifyNinjas(name)
 		end
 	end
 end
+function findString(object,tb)
+	for i=1,rawlen(tb) do
+		if tb[i] == object then
+			return true
+		end
+	end
+end
+function checkTema(number)
+	tt={}; for i=1,rawlen(perguntas)/4 do table.insert(tt,tostring(i)) end
+	if findString(tostring(number),tt) then
+		return true
+	end
+end
+function checkTema1(number)
+	tt={}; for i=1,rawlen(perguntas1)/4 do table.insert(tt,tostring(i)) end
+	if findString(tostring(number),tt) then
+		return true
+	end
+end
+function checkTema2(number)
+	tt={}; for i=1,rawlen(perguntas2)/4 do table.insert(tt,tostring(i)) end
+	if findString(tostring(number),tt) then
+		return true
+	end
+end
+function checkTema3(number)
+	tt={}; for i=1,rawlen(perguntas3)/4 do table.insert(tt,tostring(i)) end
+	if findString(tostring(number),tt) then
+		return true
+	end
+end
+function checkTema4(number)
+	tt={}; for i=1,rawlen(perguntas4)/4 do table.insert(tt,tostring(i)) end
+	if findString(tostring(number),tt) then
+		return true
+	end
+end
 function showMessage(message,name)
 	temp_text=string.gsub(message,"<b>","")
 	temp_text=string.gsub(temp_text,"</b>","")
 	if tfm.get.room.isTribeHouse == false then
 		tfm.exec.chatMessage(message,name)
 	elseif tfm.get.room.isTribeHouse == true then
-		ui.addTextArea(0,"<p align='center'><font size='15'>"..message.."",name,10,26,780,100,0x000001,0x494949,1.0,true)
+		ui.addTextArea(0,"<p align='center'><font size='15'>"..message.."",name,10,26,780,60,0x000001,0x494949,0.9,true)
 	end
 end
 function questionChanger(id,remove)
@@ -887,7 +920,7 @@ function eventNewGame()
 		vivos=vivos+1
 		if name:sub(1,1) == "*" then
 		   	tfm.exec.killPlayer(name)
-		   	showMessage("<R>Jogadores convidados (souris) não podem mais participar deste jogo. Faça login em uma conta para jogar.",name)
+		   	showMessage("<R>Jogadores convidados não podem mais participar deste jogo. Faça login em uma conta para jogar.",name)
 		end
 	end
 	if tema == 0 then
@@ -908,7 +941,7 @@ function eventNewGame()
 			table.insert(questions_list,i)
 		end
 	end
-	showMessage("<N><b>Quantidade de perguntas presentes: "..fixed_cnt.."</b><br><br><G>Agora vocês podem sugerir temas e perguntas para este script! Entre em contato com Dhanny_mheyran#6701 por mensagem privada no fórum, ou Dhanny#8316 no Discord, e envie suas perguntas.")
+	showMessage("<N><b>Quantidade de perguntas presentes: "..fixed_cnt.."</b>")
 	if tema <= 2 then
 		showMessage("<J>As perguntas deste tema foram, em sua maioria, feitas por Reksai_void2600#6638.")
 	elseif tema == 3 then
@@ -928,33 +961,44 @@ end
 function eventChatCommand(name,message)
 	if verifyNinjas(name) == true or verifyAdmin(name) == true then
 		if (message:sub(0,6) == "limite") then
-			limite=tonumber(message:sub(8))
-			showMessage("Limite de rodadas alterado para: "..message:sub(8).."")
-			questions_list={}; count=0;
-			reset()
+			tt={}; for i=5,30 do table.insert(tt,tostring(i)) end
+			if findString(message:sub(8),tt) then
+				limite=tonumber(message:sub(8))
+				showMessage("Limite de rodadas alterado para: "..message:sub(8).."")
+				questions_list={}; count=0;
+				reset()
+			end
 		end
 		if (message:sub(0,4) == "setq") then
-			set_q=tonumber(message:sub(6))
-			if tonumber(set_q) > rawlen(perguntas)/4 then
-				showMessage("Não pode!",name)
+			if tema == 0 and checkTema(message:sub(6)) then
+				set_q=tonumber(message:sub(6))
+			elseif tema == 1 and checkTema1(message:sub(6)) then
+				set_q=tonumber(message:sub(6))
+			elseif tema == 2 and checkTema2(message:sub(6)) then
+				set_q=tonumber(message:sub(6))
+			elseif tema == 3 and checkTema3(message:sub(6)) then
+				set_q=tonumber(message:sub(6))
+			elseif tema == 4 and checkTema4(message:sub(6)) then
+				set_q=tonumber(message:sub(6))
 			end
 		end
 		if (message:sub(0,3) == "get") then
 			local sn=((tonumber(message:sub(5))-1)*4)+1
-			if tema == 0 and tonumber(set_q) <= rawlen(perguntas)/4 then
+			if tema == 0 and checkTema(message:sub(5)) then
 				showMessage(perguntas[sn],name)
-			elseif tema == 1 and tonumber(set_q) <= rawlen(perguntas1)/4 then
+			elseif tema == 1 and checkTema1(message:sub(5)) then
 				showMessage(perguntas1[sn],name)
-			elseif tema == 2 and tonumber(set_q) <= rawlen(perguntas2)/4 then
+			elseif tema == 2 and checkTema2(message:sub(5)) then
 				showMessage(perguntas2[sn],name)
-			elseif tema == 3 and tonumber(set_q) <= rawlen(perguntas3)/4 then
+			elseif tema == 3 and checkTema3(message:sub(5)) then
 				showMessage(perguntas3[sn],name)
-			elseif tema == 4 and tonumber(set_q) <= rawlen(perguntas4)/4 then
+			elseif tema == 4 and checkTema4(message:sub(5)) then
 				showMessage(perguntas4[sn],name)
 			end
 		end
 		if (message:sub(0,4) == "tema") then
-			if message:sub(6) == "0" or message:sub(6) == "1" or message:sub(6) == "2" or message:sub(6) == "3" or message:sub(6) == "4" then
+			tt={}; for i=0,4 do table.insert(tt,tostring(i)) end
+			if findString(message:sub(6),tt) then
 				tema=tonumber(message:sub(6))
 				questions_list={}; count=0;
 				reset()
@@ -980,7 +1024,7 @@ function eventPlayerLeft(name)
 end
 function eventLoop(p,f)
 	remain=math.floor(f/1000)
-	ui.setMapName("<N>Quiz - <VP><b>versão 2023.06.19.1-QP</b> <N>por <ROSE>Dhanny_mheyran#6701   <BL>|   <N>Ratos : <V>"..vivos.."/"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/"..limite.."<")
+	ui.setMapName("<N>Quiz de Perguntas do <VP>Shun_kazami#7014   <BL>|   <N>Ratos : <V>"..vivos.."/"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/"..limite.."<")
 	if remain < 2 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
@@ -991,17 +1035,17 @@ function eventLoop(p,f)
 				tfm.exec.killPlayer(name)
 			end
 		end
-		tfm.exec.addPhysicObject(4, 400, 150, barreira2)
+		tfm.exec.addPhysicObject(4, 400, 70, barreira2)
 		tfm.exec.setGameTime(6)
 		if actual_question.answer == false then
 			tfm.exec.removePhysicObject(1)
-			ui.addTextArea(1,"<p align='center'><font size='18'><VP>"..actual_question.a1.."",nil,10,83,385,50,0,0,1.0,true)
-			ui.addTextArea(2,"<p align='center'><font size='18'>"..actual_question.a2.."",nil,405,83,385,50,0,0,1.0,true)
+			ui.addTextArea(1,"<p align='center'><font size='18'><VP>"..actual_question.a1.."",nil,10,346,385,50,0x010101,0x010101,0.95,true)
+			ui.addTextArea(2,"<p align='center'><font size='18'>"..actual_question.a2.."",nil,405,346,385,50,0x010101,0x010101,0.95,true)
 			modo="intervalo"
 		elseif actual_question.answer == true then
 			tfm.exec.removePhysicObject(0)
-			ui.addTextArea(1,"<p align='center'><font size='18'>"..actual_question.a1.."",nil,10,83,385,50,0,0,1.0,true)
-			ui.addTextArea(2,"<p align='center'><font size='18'><VP>"..actual_question.a2.."",nil,405,83,385,50,0,0,1.0,true)
+			ui.addTextArea(1,"<p align='center'><font size='18'>"..actual_question.a1.."",nil,10,346,385,50,0x010101,0x010101,0.95,true)
+			ui.addTextArea(2,"<p align='center'><font size='18'><VP>"..actual_question.a2.."",nil,405,346,385,50,0x010101,0x010101,0.95,true)
 			modo="intervalo"
 		end
 	end
@@ -1031,7 +1075,7 @@ function eventLoop(p,f)
 		end
 	end
 	if modo == "perguntar" and remain >= 1 then
-		ui.addTextArea(3,"<p align='center'><font size='21'>"..math.floor((f/1000)-1).."",nil,375,370,50,28,0x000001,0x494949,1.0,true)
+		ui.addTextArea(3,"<p align='center'><font size='21'>"..math.ceil((f/1000)-1).."",nil,375,370,50,28,0x000001,0x494949,1.0,true)
 	else
 		ui.removeTextArea(3,nil)
 	end
@@ -1057,17 +1101,17 @@ function eventLoop(p,f)
 end
 function randomQuests()
 	for name,player in next,tfm.get.room.playerList do
-		tfm.exec.movePlayer(name,400,216,false)
+		tfm.exec.movePlayer(name,400,130,false)
 	end
 	tfm.exec.setGameTime(17)
 	if rodada >= 13 then
 		tfm.exec.setGameTime(13)
 	end
 	tfm.exec.removePhysicObject(4)
-	tfm.exec.addPhysicObject(2, 385, 140, barreira)
-	tfm.exec.addPhysicObject(3, 415, 140, barreira)
-	tfm.exec.addPhysicObject(0, 220, 355, piso)
-	tfm.exec.addPhysicObject(1, 580, 355, piso)
+	tfm.exec.addPhysicObject(2, 385, 70, barreira)
+	tfm.exec.addPhysicObject(3, 415, 70, barreira)
+	tfm.exec.addPhysicObject(0, 200, 355, piso)
+	tfm.exec.addPhysicObject(1, 600, 355, piso)
 	modo="perguntar"
 	rodada=rodada+1
 	if tema == 0 then
@@ -1158,9 +1202,9 @@ function randomQuests()
 	set_q=0
 	length1=math.ceil(string.len(actual_question.a1)/27)
 	length2=math.ceil(string.len(actual_question.a2)/27)
-	ui.addTextArea(0,"<p align='center'><font size='15'>Pergunta: "..actual_question.quest.."",nil,10,26,780,100,0x000001,0x494949,1.0,true)
-	ui.addTextArea(1,"<p align='center'><font size='18'>"..actual_question.a1.."",nil,10,83,385,50,0,0,1.0,true)
-	ui.addTextArea(2,"<p align='center'><font size='18'>"..actual_question.a2.."",nil,405,83,385,50,0,0,1.0,true)
+	ui.addTextArea(0,"<p align='center'><font size='15'>Pergunta: "..actual_question.quest.."",nil,10,26,780,60,0x000001,0x494949,0.9,true)
+	ui.addTextArea(1,"<p align='center'><font size='18'>"..actual_question.a1.."",nil,10,346,385,50,0x010101,0x010101,0.95,true)
+	ui.addTextArea(2,"<p align='center'><font size='18'>"..actual_question.a2.."",nil,405,346,385,50,0x010101,0x010101,0.95,true)
 end
 function eventPlayerDied(name)
 	local i=0
