@@ -2,8 +2,17 @@
 -- Caso esta versão esteja pesada demais para os usuários, use a versão reduzida:
 -- https://github.com/JW26T-Prj/FunCorpModules/blob/master/RockerLaunch%206%20-%20Simplificada.lua
 
+admin={}; -- insira o nome dos FunCorps nesta tabela para habilitar algumas funções e comandos especiais.
+afkdeath=false; -- mude para 'true' para habilitar a morte dos ratos ausentes
+
+-- Comandos:
+-- !cancel - Pula a vez do shaman atual.
+-- !set [nick#tag] - Define o usuário selecionado como shaman.
+-- !fc [mensagem] ou !ms [mensagem] - Exibe uma mensagem em laranja. USO EXCLUSIVO PARA MEMBROS FunCorp!
+
+-- NÃO MUDE NADA DEPOIS DESTA LINHA!!
 for _,f in next,{"PhysicalConsumables","AutoNewGame","AutoTimeLeft","AllShamanSkills","DebugCommand","AutoScore"} do
-		tfm.exec["disable"..f](true)
+	tfm.exec["disable"..f](true)
 end
 changed=false; mode=""; id=50; xml2=''; passed=0;
 part1='<C><P L="1600" H="9400" D="x_deadmeat/x_pictos/d_10-fs8.png,-193,8710;x_deadmeat/x_pictos/d_10-fs8.png,162,8710;x_deadmeat/x_pictos/d_10-fs8.png,687,8712;x_deadmeat/x_pictos/d_10-fs8.png,924,8712;x_deadmeat/x_pictos/d_10-fs8.png,1562,8710" DS="m;800,8978,1100,8978,1400,8978,500,8978,200,8978" mc="" MEDATA=";;;;-0;0:::1-"/><Z><S><S T="6" X="800" Y="9485" L="2400" H="1000" P="0,0,0.3,0,0,0,0,0" N="" v="123000"/><S T="9" X="800" Y="9515" L="3000" H="1000" P="0,0,0,0,0,0,0,0" m="" archCheeseMax="0.1" archMax="0.15" linDampAcc="1" linDampMax="1"/></S><D><P X="373" Y="8991" T="0" P="1,0"/><P X="1406" Y="8986" T="0" P="1,0"/><P X="68" Y="8988" T="0" P="1,0"/><P X="1801" Y="8991" T="0" P="1,0"/><P X="1153" Y="8988" T="5" P="1,0"/><P X="1233" Y="8986" T="5" P="1,0"/><P X="596" Y="8994" T="5" P="1,0"/><P X="18" Y="8988" T="5" P="1,0"/><P X="363" Y="8991" T="13" P="1,0"/><P X="651" Y="8991" T="13" P="1,0"/><P X="1931" Y="8988" T="13" P="1,0"/><P X="1518" Y="8991" T="12" P="1,0"/><P X="1328" Y="8993" T="12" P="1,0"/><P X="1871" Y="8993" T="12" P="1,0"/><P X="503" Y="8986" T="12" P="1,0"/><P X="181" Y="8991" T="12" P="1,0"/><P X="898" Y="8988" T="18" C="57703E,E7C3D6" P="1,0"/><DC2 X="800" Y="8970"/></D><O/><L><VL n="Layer3"l="-1"/><JD P1="14,543"P2="46,590"c="010435,24,1,0"/><JD P1="46,587"P2="67,608"c="010435,24,1,0"/><JD P1="67,608"P2="135,656"c="010435,24,1,0"/><JD P1="-22,486"P2="88,602"c="010435,40,1,0"/><JD P1="-26,360"P2="19,502"c="010435,40,1,0"/><JD P1="-36,336"P2="-49,382"c="010435,40,1,0"/><JD P1="-50,383"P2="-46,430"c="010435,40,1,0"/><JD P1="-46,429"P2="-31,473"c="010435,40,1,0"/><JD P1="-31,473"P2="-20,493"c="010435,40,1,0"/><JD P1="-20,493"P2="-10,513"c="010435,40,1,0"/><JD P1="-10,514"P2="28,559"c="010435,40,1,0"/><JD P1="28,559"P2="49,580"c="010435,40,1,0"/><JD P1="-24,454"P2="-32,325"c="010435,40,1,0"/><JD P1="-30,326"P2="-8,286"c="010435,40,1,0"/><JD P1="-8,286"P2="27,251"c="010435,40,1,0"/><JD P1="27,251"P2="60,228"c="010435,40,1,0"/><JD P1="60,228"P2="101,209"c="010435,40,1,0"/><JD P1="102,208"P2="156,193"c="010435,40,1,0"/><JD P1="155,195"P2="194,189"c="010435,40,1,0"/><JD P1="180,193"P2="86,225"c="010435,40,1,0"/><JD P1="86,225"P2="-13,304"c="010435,40,1,0"/><JD P1="15,274"P2="-45,362"c="010435,40,1,0"/><JD P1="131,210"P2="73,240"c="010435,40,1,0"/><JD P1="72,240"P2="17,278"c="010435,40,1,0"/><JD P1="15,284"P2="-7,305"c="010435,40,1,0"/><JD P1="171,190"P2="208,187"c="010435,40,1,0"/><JD P1="213,179"P2="252,184"c="010435,24,1,0"/><JD P1="252,184"P2="295,196"c="010435,24,1,0"/><JD P1="295,196"P2="336,213"c="010435,24,1,0"/><JD P1="336,213"P2="391,257"c="010435,24,1,0"/><JD P1="391,257"P2="405,270"c="010435,24,1,0"/><JD P1="396,273"P2="372,251"c="010435,24,1,0"/><JD P1="372,251"P2="344,230"c="010435,24,1,0"/><JD P1="344,230"P2="310,211"c="010435,24,1,0"/><JD P1="310,211"P2="277,200"c="010435,24,1,0"/><JD P1="277,200"P2="220,191"c="010435,24,1,0"/><JD P1="208,195"P2="252,196"c="010435,24,1,0"/><JD P1="411,268"P2="474,326"c="010435,12,1,0"/><JD P1="468,332"P2="409,273"c="010435,12,1,0"/><JD P1="395,283"P2="411,302"c="470369,11,1,0"/><JD P1="412,304"P2="439,335"c="470369,11,1,0"/><JD P1="400,284"P2="427,318"c="470369,11,1,0"/><JD P1="434,333"P2="462,367"c="470369,8,1,0"/><JD P1="462,367"P2="488,391"c="470369,8,1,0"/><JD P1="438,334"P2="468,372"c="470369,8,1,0"/><JD P1="489,392"P2="509,405"c="470369,8,1,0"/><JD P1="511,405"P2="522,410"c="470369,6,1,0"/><JD P1="522,410"P2="538,413"c="470369,4,1,0"/><JD P1="525,410"P2="525,412"c="470369,4,1,0"/><JD P1="479,335"P2="509,362"c="470369,19,1,0"/><JD P1="477,336"P2="506,364"c="470369,19,1,0"/><JD P1="515,361"P2="531,371"c="470369,10,1,0"/><JD P1="533,371"P2="551,383"c="470369,7,1,0"/><JD P1="532,374"P2="563,388"c="470369,7,1,0"/><JD P1="563,388"P2="582,395"c="470369,7,1,0"/><JD P1="582,395"P2="609,400"c="470369,7,1,0"/><JD P1="611,400"P2="631,400"c="470369,5,1,0"/><JD P1="631,400"P2="655,397"c="470369,4,1,0"/><JD P1="508,370"P2="526,386"c="470369,10,1,0"/><JD P1="527,387"P2="552,405"c="470369,8,1,0"/><JD P1="552,405"P2="576,418"c="470369,8,1,0"/><JD P1="576,418"P2="596,426"c="470369,8,1,0"/><JD P1="598,426"P2="615,430"c="470369,6,1,0"/><JD P1="615,430"P2="631,431"c="470369,6,1,0"/><JD P1="633,431"P2="647,429"c="470369,4,1,0"/><VL n="Layer2"l="-1"/><JD P1="1371,272"P2="984,457"c="0a0340,125,1,0"/><JD P1="999,460"P2="1118,407"c="0a0340,125,1,0"/><JD P1="1118,407"P2="1338,301"c="0a0340,125,1,0"/><JD P1="1276,276"P2="1021,426"c="0a0340,125,1,0"/><JD P1="1341,304"P2="1423,316"c="0a0340,125,1,0"/><JD P1="1304,376"P2="1361,368"c="0a0340,7,1,0"/><JD P1="1310,382"P2="1341,372"c="0a0340,7,1,0"/><JD P1="1384,368"P2="1404,377"c="0a0340,7,1,0"/><JD P1="962,400"P2="995,371"c="0a0340,7,1,0"/><JD P1="769,603"P2="658,630"c="0a0340,80,1,0"/><JD P1="786,551"P2="593,613"c="0a0340,80,1,0"/><JD P1="664,568"P2="490,623"c="0a0340,80,1,0"/><JD P1="641,647"P2="523,660"c="0a0340,80,1,0"/><JD P1="523,660"P2="450,671"c="0a0340,80,1,0"/><JD P1="450,671"P2="338,679"c="0a0340,80,1,0"/><JD P1="338,679"P2="255,672"c="0a0340,80,1,0"/><JD P1="562,598"P2="453,620"c="0a0340,80,1,0"/><JD P1="452,620"P2="336,629"c="0a0340,80,1,0"/><JD P1="337,629"P2="249,621"c="0a0340,80,1,0"/><JD P1="341,626"P2="296,625"c="0a0340,80,1,0"/><JD P1="230,665"P2="175,648"c="0a0340,80,1,0"/><JD P1="238,619"P2="116,584"c="0a0340,80,1,0"/><JD P1="132,604"P2="155,635"c="0a0340,80,1,0"/><JD P1="134,565"P2="51,518"c="0a0340,40,1,0"/><JD P1="51,518"P2="89,582"c="0a0340,40,1,0"/><JD P1="46,512"P2="33,480"c="0a0340,40,1,0"/><JD P1="33,480"P2="86,539"c="0a0340,40,1,0"/><JD P1="20,474"P2="7,430"c="0a0340,20,1,0"/><JD P1="7,430"P2="-2,366"c="0a0340,20,1,0"/><JD P1="-2,366"P2="15,438"c="0a0340,20,1,0"/><JD P1="15,438"P2="45,490"c="0a0340,20,1,0"/><JD P1="13,420"P2="44,482"c="0a0340,20,1,0"/><JD P1="-4,369"P2="-6,350"c="0a0340,8,1,0"/><JD P1="-6,350"P2="-3,339"c="0a0340,8,1,0"/><JD P1="-3,339"P2="3,362"c="0a0340,8,1,0"/><JD P1="972,596"P2="1107,647"c="14085E,200,1,0"/><JD P1="971,665"P2="1024,683"c="14085E,200,1,0"/><JD P1="1052,690"P2="1107,699"c="14085E,200,1,0"/><JD P1="1108,700"P2="1158,691"c="14085E,200,1,0"/><JD P1="1158,691"P2="1281,644"c="14085E,200,1,0"/><JD P1="1070,629"P2="1156,644"c="14085E,200,1,0"/><JD P1="1177,643"P2="1259,637"c="14085E,200,1,0"/><JD P1="1290,629"P2="1446,565"c="14085E,200,1,0"/><JD P1="1478,509"P2="1488,496"c="14085E,200,1,0"/><JD P1="1488,496"P2="1507,449"c="14085E,200,1,0"/><JD P1="1515,406"P2="1517,375"c="14085E,200,1,0"/><JD P1="1506,342"P2="1490,317"c="14085E,200,1,0"/><JD P1="1425,365"P2="1428,393"c="14085E,50,1,0"/><JD P1="1427,383"P2="1404,441"c="14085E,50,1,0"/><JD P1="1404,441"P2="1359,504"c="14085E,50,1,0"/><JD P1="1359,502"P2="1320,531"c="14085E,50,1,0"/><JD P1="1259,735"P2="1363,721"c="14085E,50,1,0"/><JD P1="1363,721"P2="1430,710"c="14085E,50,1,0"/><JD P1="1404,688"P2="1540,616"c="14085E,50,1,0"/><JD P1="1547,600"P2="1581,585"c="14085E,20,1,0"/><JD P1="1581,585"P2="1606,577"c="14085E,20,1,0"/><JD P1="1606,577"P2="1617,576"c="14085E,20,1,0"/><JD P1="1620,579"P2="1621,580"c="14085E,20,1,0"/><JD P1="1621,580"P2="1621,592"c="14085E,20,1,0"/><JD P1="1621,592"P2="1611,618"c="14085E,20,1,0"/><JD P1="1611,618"P2="1545,691"c="14085E,20,1,0"/><JD P1="1541,691"P2="1520,769"c="14085E,20,1,0"/><JD P1="1540,646"P2="1507,748"c="14085E,20,1,0"/><JD P1="1584,592"P2="1538,693"c="14085E,20,1,0"/><JD P1="1558,609"P2="1610,592"c="14085E,20,1,0"/><JD P1="1611,590"P2="1561,663"c="14085E,20,1,0"/><JD P1="1555,627"P2="1541,660"c="14085E,20,1,0"/><JD P1="1566,669"P2="1532,716"c="14085E,20,1,0"/><JD P1="1512,722"P2="1507,734"c="14085E,20,1,0"/><JD P1="1530,714"P2="1509,786"c="14085E,20,1,0"/><JD P1="1507,748"P2="1494,787"c="14085E,20,1,0"/><JD P1="1525,757"P2="1539,769"c="14085E,20,1,0"/><JD P1="1535,751"P2="1544,767"c="14085E,8,1,0"/><JD P1="1545,769"P2="1552,761"c="14085E,8,1,0"/><JD P1="1552,761"P2="1553,756"c="14085E,8,1,0"/><JD P1="1553,757"P2="1550,770"c="14085E,8,1,0"/><JD P1="1553,754"P2="1552,749"c="14085E,5,1,0"/><JD P1="1507,796"P2="1511,799"c="14085E,8,1,0"/><JD P1="1511,799"P2="1525,777"c="14085E,8,1,0"/><JD P1="1530,774"P2="1528,790"c="14085E,8,1,0"/><JD P1="1518,789"P2="1526,790"c="14085E,8,1,0"/><JD P1="1523,785"P2="1523,786"c="14085E,8,1,0"/><JD P1="1485,793"P2="1487,819"c="14085E,8,1,0"/><JD P1="1488,819"P2="1493,824"c="14085E,8,1,0"/><JD P1="1489,818"P2="1492,782"c="14085E,8,1,0"/><JD P1="1494,796"P2="1485,790"c="14085E,8,1,0"/><JD P1="1548,701"P2="1540,727"c="14085E,8,1,0"/><JD P1="1444,701"P2="1465,711"c="14085E,15,1,0"/><JD P1="1465,711"P2="1485,780"c="14085E,15,1,0"/><JD P1="1287,750"P2="1302,752"c="14085E,15,1,0"/><JD P1="1302,752"P2="1416,736"c="14085E,15,1,0"/><JD P1="1416,736"P2="1462,732"c="14085E,15,1,0"/><JD P1="1456,716"P2="1488,844"c="14085E,15,1,0"/><JD P1="1450,721"P2="1469,807"c="14085E,22,1,0"/><JD P1="1383,738"P2="1456,755"c="14085E,22,1,0"/><JD P1="1417,743"P2="1449,782"c="14085E,22,1,0"/><JD P1="1449,782"P2="1490,834"c="14085E,22,1,0"/><JD P1="1484,829"P2="1499,864"c="14085E,22,1,0"/><JD P1="1480,774"P2="1521,874"c="14085E,22,1,0"/><JD P1="1503,869"P2="1561,881"c="14085E,22,1,0"/><JD P1="1561,881"P2="1559,869"c="14085E,22,1,0"/><JD P1="1558,869"P2="1524,869"c="14085E,22,1,0"/><JD P1="1522,852"P2="1532,849"c="14085E,22,1,0"/><JD P1="1532,849"P2="1533,862"c="14085E,22,1,0"/><JD P1="1539,864"P2="1547,894"c="14085E,22,1,0"/><JD P1="1530,879"P2="1563,896"c="14085E,22,1,0"/><JD'
@@ -26,14 +35,21 @@ objects1={1,3,6,7,35,39,60,89,95}
 objects2={1,2,3,6,7,35,39,45,46,54,60,85,89,90,95}
 objects3={1,2,3,4,6,7,10,23,35,39,40,45,46,54,60,61,68,69,85,89,90,95}
 objects4={2,4,10,39,40,45,46,54,61,67,68,69,90}
-managers={"Threshlimit#0000","Morganadxana#0000","Lynet#8558","Puffezinhaq#0000","Digo20games#0000","Viego#0345","Alisson#3938"}
-system.disableChatCommandDisplay("cancel")
-system.disableChatCommandDisplay("set")
-system.disableChatCommandDisplay("help")
+managers={"Threshlimit#0000","Morganadxana#0000","Lynet#8558","Puffezinhaq#0000","Digo20games#0000","Viego#0345","Alisson#3938"} -- contribuidores
+for _,f in next,{"cancel","set","get","help","fc","ms"} do
+	system.disableChatCommandDisplay(f)
+end
 
 function verifyNinjas(name)
 	for i=1,rawlen(managers) do
 		if managers[i] == name then
+			return true
+		end
+	end
+end
+function verifyAdmin(name)
+	for i=1,rawlen(admin) do
+		if admin[i] == name then
 			return true
 		end
 	end
@@ -66,6 +82,9 @@ function eventNewGame()
 			rodar(n)
 		end
 	else
+		if afkdeath == true then
+			tfm.exec.disableAfkDeath(true)
+		end
 		tfm.exec.setGameTime(5)
 		if changed == false then
 			xml2=tfm.get.room.xmlMapInfo.xml
@@ -78,19 +97,22 @@ function eventNewGame()
 end
 function eventChatCommand(n,m)
 	if m == "help" then
-		showMessage("<N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço. Caso o shaman morra, a partida é encerrada. Tenha cuidado com os objetos e os meteoros que caem do céu!<br><br><BL>Mapa criado por Threshlimit#0000 e Dhanny_mheyran#6701. Código desenvolvido por Morganadxana#0000, Lynet#8558, Digo20games#0000 e Puffezinhaq#0000.<br>Conceito original de Nettoork#0000.<br>Versão 6.1.2",n)
+		showMessage("<N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço. Caso o shaman morra, a partida é encerrada. Tenha cuidado com os objetos e os meteoros que caem do céu!<br><br><BL>Mapa criado por Threshlimit#0000 e Dhanny_mheyran#6701. Código desenvolvido por Morganadxana#0000, Lynet#8558, Digo20games#0000 e Puffezinhaq#0000.<br>Conceito original de Nettoork#0000.<br>Versão 6.2.0",n)
 	end
-	if m == "cancel" then
-		if verifyNinjas(n) == true then
+	if verifyNinjas(n) == true or verifyAdmin(n) == true then
+		if m == "cancel" then
 			tfm.exec.setGameTime(5)
 			showMessage("<R>Rodada cancelada! Iniciando uma nova rodada...")
 		end
-	end
-	if (m:sub(0,3) == "set") then
-		if verifyNinjas(n) == true then
-			tfm.exec.setPlayerScore(m:sub(5),4000,true)
-			tfm.exec.setGameTime(5)
-			showMessage("<R>Rodada cancelada! Iniciando uma nova rodada...")
+		if (m:sub(0,3) == "set") then
+			tfm.exec.setPlayerScore(m:sub(5),4444,true)
+			showMessage("<VP>Shaman definido para a próxima rodada: "..m:sub(5))
+		end
+		if (m:sub(0,3) == "get") then
+			tfm.exec.setPlayerScore(m:sub(5),32,true)
+		end
+		if (m:sub(0,2) == "tc") or (m:sub(0,2) == "ms") then
+			showMessage("<font color='#FF8547'>• [FunCorp - <b>"..n.."</b>] "..m:sub(4).."")
 		end
 	end
 end
@@ -273,7 +295,7 @@ end
 function eventNewPlayer(n)
 	if changed == true then
 		ui.setMapName("<b>RockerLaunch 6</b><N> - o céu é o limite! Pelo menos é o que parece...<")
-		showMessage("<VP>Bem-vindos ao RockerLaunch 6!<br><N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço! Digite !help para saber como jogar.<br><br><BL>Créditos para Lynet#8558, Puffezinhaq#0000, Morganadxana#0000, Digo20games#0000, Dhanny_mheyran#6701 e Threshlimit#0000. Conceito original de Nettoork#0000.<br><J>Versão 6.1.2",n)
+		showMessage("<VP>Bem-vindos ao RockerLaunch 6!<br><N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço! Digite !help para saber como jogar.<br><br><BL>Créditos para Lynet#8558, Puffezinhaq#0000, Morganadxana#0000, Digo20games#0000, Dhanny_mheyran#6701 e Threshlimit#0000. Conceito original de Nettoork#0000.<br><J>Versão 6.2.0",n)
 		tfm.exec.setPlayerScore(n,0,false)
 		tfm.exec.addImage("17ae4e48770.png","&1",590,370,n,0.5,0.5)
 	end
