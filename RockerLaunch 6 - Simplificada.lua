@@ -3,7 +3,7 @@
 for _,f in next,{"PhysicalConsumables","AutoNewGame","AutoTimeLeft","AllShamanSkills","DebugCommand"} do
 	tfm.exec["disable"..f](true)
 end
-changed=false; mode=""; id=50; map="@7930736"; xml2='';
+changed=false; mode=""; id=50; map="@7930736"; xml2=''; passed=0;
 a1={500,1400}; a2={7500,6800}; b1={800,240}; b2={6360,5800}; c1={200,900}; c2={3800,3300}; d1={1500}; d2={4100};
 asteroid_1={type = 12,width = 40,height = 20,foreground = false,friction = 3,restitution = 0.1,angle = 0, color = 0, miceCollision = true, groundCollision = true, dynamic = true, fixedRotation = false, mass = 2000}
 asteroid_2={type = 12,width = 80,height = 40,foreground = false,friction = 4,restitution = 0.15,angle = 0, color = 0, miceCollision = true, groundCollision = true, dynamic = true, fixedRotation = false, mass = 5000}
@@ -41,7 +41,7 @@ end
 function eventNewGame()
 	if changed == true then
 		id=50;
-		ui.setMapName("<b>RockerLaunch 6</b><N> - o céu é o limite! Pelo menos é o que parece... <VP>(VERSÃO REDUZIDA)<")
+		ui.setMapName("<b>RockerLaunch 6</b><N> - o céu é o limite! Pelo menos é o que parece... <VP>(versão reduzida)<")
 		tfm.exec.setGameTime(425)
 		showMessage("<J>O shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço!")
 		mode="building"
@@ -65,7 +65,7 @@ function eventNewGame()
 end
 function eventChatCommand(n,m)
 	if m == "help" then
-		showMessage("<N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço. Caso o shaman morra, a partida é encerrada. Tenha cuidado com os objetos e os meteoros que caem do céu!<br><br><BL>Mapa criado por Threshlimit#0000 e Dhanny_mheyran#6701. Código desenvolvido por Morganadxana#0000, Lynet#8558, Digo20games#0000 e Puffezinhaq#0000.<br>Conceito original de Nettoork#0000.<br>Versão 6.1.1",n)
+		showMessage("<N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço. Caso o shaman morra, a partida é encerrada. Tenha cuidado com os objetos e os meteoros que caem do céu!<br><br><BL>Mapa criado por Threshlimit#0000 e Dhanny_mheyran#6701. Código desenvolvido por Morganadxana#0000, Lynet#8558, Digo20games#0000 e Puffezinhaq#0000.<br>Conceito original de Nettoork#0000.<br>Versão 6.1.2",n)
 	end
 	if m == "cancel" then
 		if verifyNinjas(n) == true then
@@ -149,6 +149,7 @@ function eventLoop(p,f)
 		local m=math.floor(f/60000)
 		local s=math.floor((((m*60000)-f) * -1) / 1000)
 		remain=math.floor(f/1000)-302
+		passed=math.floor(p/1000)
 		local mr=math.floor(remain/60)
 		local sr=math.floor(((mr*60)-remain) * -1)
 		if s >= 10 then
@@ -253,8 +254,8 @@ else
 end
 function eventNewPlayer(n)
 	if changed == true then
-		ui.setMapName("<b>RockerLaunch 6</b><N> - o céu é o limite! Pelo menos é o que parece...<")
-		showMessage("<VP>Bem-vindos ao RockerLaunch 6!<br><N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço! Digite !help para saber como jogar.<br><br><BL>Créditos para Lynet#8558, Puffezinhaq#0000, Morganadxana#0000, Digo20games#0000, Dhanny_mheyran#6701 e Threshlimit#0000. Conceito original de Nettoork#0000.<br><J>Versão 6.1.1",n)
+		ui.setMapName("<b>RockerLaunch 6</b><N> - o céu é o limite! Pelo menos é o que parece... <VP>(versão reduzida)<")
+		showMessage("<VP>Bem-vindos ao RockerLaunch 6!<br><N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço! Digite !help para saber como jogar.<br><br><BL>Créditos para Lynet#8558, Puffezinhaq#0000, Morganadxana#0000, Digo20games#0000, Dhanny_mheyran#6701 e Threshlimit#0000. Conceito original de Nettoork#0000.<br><J>Versão 6.1.2",n)
 		tfm.exec.setPlayerScore(n,0,false)
 		tfm.exec.addImage("17ae4e48770.png","&1",590,370,n,0.5,0.5)
 	end
@@ -278,6 +279,9 @@ function eventPlayerDied(name)
 			tfm.exec.setGameTime(5)
 		elseif i==1 then
 			tfm.exec.setGameTime(30)
+		end
+		if passed >= 135 then
+			tfm.exec.setPlayerScore(name,1,true)
 		end
 	end
 end
