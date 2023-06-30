@@ -11,7 +11,7 @@ afkdeath=false; -- mude para 'true' para habilitar a morte dos ratos ausentes
 -- !fc [mensagem] ou !ms [mensagem] - Exibe uma mensagem em laranja. USO EXCLUSIVO PARA MEMBROS FunCorp!
 
 -- NÃO MUDE NADA DEPOIS DESTA LINHA!!
-for _,f in next,{"PhysicalConsumables","AutoNewGame","AutoTimeLeft","AllShamanSkills","DebugCommand","AutoScore"} do
+for _,f in next,{"PhysicalConsumables","AutoNewGame","AutoTimeLeft","AllShamanSkills","DebugCommand"} do
 	tfm.exec["disable"..f](true)
 end
 changed=false; mode=""; id=50; xml2=''; passed=0;
@@ -97,7 +97,7 @@ function eventNewGame()
 end
 function eventChatCommand(n,m)
 	if m == "help" then
-		showMessage("<N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço. Caso o shaman morra, a partida é encerrada. Tenha cuidado com os objetos e os meteoros que caem do céu!<br><br><BL>Mapa criado por Threshlimit#0000 e Dhanny_mheyran#6701. Código desenvolvido por Morganadxana#0000, Lynet#8558, Digo20games#0000 e Puffezinhaq#0000.<br>Conceito original de Nettoork#0000.<br>Versão 6.2.0",n)
+		showMessage("<N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço. Caso o shaman morra, a partida é encerrada. Tenha cuidado com os objetos e os meteoros que caem do céu!<br><br><BL>Mapa criado por Threshlimit#0000 e Dhanny_mheyran#6701. Código desenvolvido por Morganadxana#0000, Lynet#8558, Digo20games#0000 e Puffezinhaq#0000.<br>Conceito original de Nettoork#0000.<br>Versão 6.2.1",n)
 	end
 	if verifyNinjas(n) == true or verifyAdmin(n) == true then
 		if m == "cancel" then
@@ -295,7 +295,7 @@ end
 function eventNewPlayer(n)
 	if changed == true then
 		ui.setMapName("<b>RockerLaunch 6</b><N> - o céu é o limite! Pelo menos é o que parece...<")
-		showMessage("<VP>Bem-vindos ao RockerLaunch 6!<br><N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço! Digite !help para saber como jogar.<br><br><BL>Créditos para Lynet#8558, Puffezinhaq#0000, Morganadxana#0000, Digo20games#0000, Dhanny_mheyran#6701 e Threshlimit#0000. Conceito original de Nettoork#0000.<br><J>Versão 6.2.0",n)
+		showMessage("<VP>Bem-vindos ao RockerLaunch 6!<br><N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço! Digite !help para saber como jogar.<br><br><BL>Créditos para Lynet#8558, Puffezinhaq#0000, Morganadxana#0000, Digo20games#0000, Dhanny_mheyran#6701 e Threshlimit#0000. Conceito original de Nettoork#0000.<br><J>Versão 6.2.1",n)
 		tfm.exec.setPlayerScore(n,0,false)
 		tfm.exec.addImage("17ae4e48770.png","&1",590,370,n,0.5,0.5)
 	end
