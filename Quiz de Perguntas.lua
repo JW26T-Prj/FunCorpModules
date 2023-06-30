@@ -2,12 +2,15 @@
 admin={"Shun_kazami#7014"} -- FunCorps, insiram seus nomes aqui!
 
 tema=0 -- Edite conforme mostrado abaixo!
-
--- NÃO MEXA EM NADA DEPOIS DESTA LINHA!
-
--- Temas:
 -- 0 = transformice, 1 = conhecimentos gerais, 2 = música, 3 = league of legends, 4 = futebol
 
+-- Comandos:
+-- !tema [0-4] - Muda o tema das perguntas.
+-- !reset - Redefine a lista de perguntas e reinicia a rodada.
+-- !limite [5-30] - Altera o limite máximo de perguntas por rodada. Esta operação reinicia a rodada.
+-- !fc [mensagem] ou !ms [mensagem] - Exibe uma mensagem em laranja. USO EXCLUSIVO PARA MEMBROS FunCorp!
+
+-- NÃO MEXA EM NADA DEPOIS DESTA LINHA!
 perguntas={
 "Vai na sorte :)","ok","ok",1,
 "Vai na sorte :)","ok","ok",2,
@@ -479,7 +482,7 @@ perguntas1={
 "Qual foi o primeiro planeta descoberto com a ajuda de um telescópio?","Júpiter","Urano",2,
 "A Primeira Guerra Mundial durou mais que a Segunda Guerra Mundial.","Verdadeiro","Falso",2,
 "Qual o nome da maior favela do Brasil?","Favela da Rocinha","Favela do Sol Nascente",2,
-"Em qual ano foram lançados os primeiros Emojis Unicode, que podiam ser utilizados em vários dispositivos?","1993","2008",1,
+"Em qual ano foi lançada a codificação Unicode, que podia ser utilizada em vários dispositivos, e que inclui os famosos Emojis?","1991","2008",1,
 "A diabetes é uma doença causada pelo excesso do quê no sangue?","Açúcar","Sal",1,
 "Quantas estrelas existem na bandeira dos Estados Unidos?","48","50",2,
 "Em qual dia e mês do ano é comemorado o feriado de Tiradentes?","21 de Abril","21 de Junho",1,
@@ -492,7 +495,7 @@ perguntas1={
 "O Brasil possui 3 dos 10 maiores rios do planeta Terra.","Verdadeiro","Falso",2,
 "O Feriado de Carnaval é sempre comemorado no mês de Fevereiro.","Verdadeiro","Falso",2,
 "Quantas luas possui o planeta Marte?","1","2",2,
-"O Estado de Minas Gerais é mais populoso do que o Rio de Janeiro.","Verdadeiro","Falso",1,
+"O Estado de Minas Gerais é mais populoso do que o Estado do Rio de Janeiro.","Verdadeiro","Falso",1,
 "Amazonas é o estado com a maior população da região Norte do Brasil.","Verdadeiro","Falso",2,
 "O Gálio é um elemento químico que pode ficar líquido dependendo da temperatura ambiente.","Verdadeiro","Falso",1,
 "Qual é o maior continente do Planeta Terra?","América","Ásia",1,
@@ -500,6 +503,9 @@ perguntas1={
 "Qual destes municípios fica localizado no estado do Rio Grande do Norte?","São Miguel do Gostoso","São Miguel do Araguaia",1,
 "Em que ano foi extinta a antiga rede social Orkut?","2013","2014",2,
 "Qual o nome da material utilizado para a produção de folhas de papel?","Sacarose","Celulose",2,
+"Em que ano Vladimir Putin foi eleito presidente da Rússia pela primeira vez?","2004","2008",1,
+"Quais destes municípios fazem parte da chamada Baixada Fluminense?","Duque de Caxias, Nilópolis e Mesquita","Duque de Caxias, Nilópolis e Niterói",1,
+"Em que ano foi lançado o famoso programa de criação de documentos e edição de textos Microsoft Word?","1983","1989",1,
 }
 perguntas2={
 "Vai na sorte :)","ok","ok",1,
@@ -639,7 +645,7 @@ perguntas2={
 perguntas3={
 "Vai na sorte :)","ok","ok",1,
 "Vai na sorte :)","ok","ok",2,
-"Quantos dragões elementares existem no League of Legends?","6","7",2,
+"Quantos dragões elementares existem no League of Legends?","6","7",1,
 "'A morte, é como o vento. Está sempre ao meu lado.'","Yasuo","Zed",1,
 "Qual destes campeões teve seu braço cortado por Irelia durante a invasão Noxiana contra Ionia?","Jax","Swain",2,
 "Qual destes, por muito tempo, foi dublador do personagem Ezreal?","Fábio Lucindo","Luciano Amaral",1,
@@ -650,7 +656,7 @@ perguntas3={
 "Basicamente, do que é feita a tecnologia Hextec, utilizada no coração da Camille e no martelo do Jayce, por exemplo?","Magia Demaciana","Cristais Hextec",2,
 "Quantos títulos do Campeonato Brasileiro de League of Legends a PaiN Gaming possui?","3","4",1,
 "Qual destes campeões possui mais Skins? (excluindo cromas)","Darius","Blitzcrank",2,
-"Qual o nome do jogo lançado para consoles cujo objetivo final é derrotar Viego?","The Ruined King","Arcane",1,
+"Qual o nome do jogo lançado para consoles cujo objetivo final é derrotar Viego?","The Ruined King","The Mageseeker",1,
 "'O ciclo da vida e da morte continua. Nós viveremos e eles morrerão.'","Karthus","Nasus",2,
 "O Fizz é o único campeão do League of Legends que consegue sobreviver no mar.","Verdadeiro","Falso",2,
 "Em qual ano foi lançada a campeã Jinx?","2013","2014",1,
@@ -660,23 +666,23 @@ perguntas3={
 "Antes de ser tomada pela Névoa Negra, as Ilhas das Sombras antes se chamavam...","Ilhas das Guerras","Ilhas das Bênçãos",2,
 "Qual o nome da região de League of Legends que está mais situada ao norte, e ao mesmo tempo, é a mais gelada?","Demacia","Freljord",2,
 "Qual o nome da família responsável pela guarda de Demacia?","Stemmaguarda","Vastaya",1,
-"Twisted Fate nasceu de um povo com nome igual ao de um rio sitado ao noroeste do centro de Runeterra. Qual o nome desse rio?","Serpentina","Sentina",1,
+"A Riot Games, empresa responsável pelo jogo League of Legends, pertence a qual grande empresa?","Blizzard","Tencent",2,
 "Qual o nome do lugar localizado em Freljord onde acreditam que os Observadores estejam presos?","Institute of War","Howling Abyss",2,
 "Qual o nome da habilidade Ultimate (R) do Malzahar?","Investida do Vazio","Aperto Infero",2,
 "Qual o nome da habilidade Ultimate (R) da Miss Fortune?","Mandando Bala","Tapete Vermelho",1,
 "Qual é a descrição do Kassadin?","O Monstro do Vazio","O Andarilho do Vazio",2,
 "Qual o nome do ponto mais alto do Monte Targon?","Pico da Luz","Pico do Dragão",2,
-"Quais os nomes das duas irmãs que representam as tribos da Lua e do Sol, respectivamente?","Diana e Aphelios","Diana e Leona",2,
-"Qual o nome do modo alternativo do League of Legends no qual os 5 jogadores jogam com o mesmo campeão","URF","Todos por Um",2,
+"Quais os nomes das duas irmãs que representam os seguidores da Lua e do Sol, respectivamente?","Diana e Aphelios","Diana e Leona",2,
+"Qual o nome do modo alternativo do League of Legends no qual os jogadores dos times jogam com o mesmo campeão?","URF","Todos por Um",2,
 "Qual o nome da 'banda musical' de League of Legends de K-Pop?","Pentakill","K/DA",2,
 "O Mid Season Invitational de 2017 foi realizado em qual país?","China","Brasil",2,
 "O Disco Solar localizado no centro de Shurima, foi feito com ajuda de qual povo targoniano?","Lunari","Solari",2,
 "Uma das falas do Pantheon no jogo, faz referência a um comercial/meme famoso.","Panificadora Alfa","Churrasqueira Controle Remoto",1,
 "Qual campeão do League of Legends é responsável pela proteção das chamadas Runas Globais?","Ryze","Irelia",1,
 "'Regras foram feitas para serem quebradas. Igual prédios... Ou pessoas!'","Jinx","Katarina",1,
-"Qual o nome de dois dos três semideuses localizado no topo dos montes de Freljord?","Ornn e Volibear","Ornn e Sejuani",1,
+"Quais os nomes de dois dos três semideuses localizado no topo dos montes de Freljord?","Ornn e Volibear","Ornn e Sejuani",1,
 "Qual o nome do 'planeta' onde vivem todos os personagens de League of Legends?","Runeterra","Demacia",1,
-"Quantos campeões existem no League of Legends?","162","163",2,
+"Quantos campeões existem no League of Legends?","164","165",1,
 "O time do Cruzeiro já chegou a ter uma equipe competitiva de League of Legends.","Verdadeiro","Falso",1,
 "Ashe e Tryndamere são casados.","Verdadeiro","Falso",1,
 "Qual o nome da região onde majoritariamente ficam localizados os Vastayas?","Noxus","Ionia",2,
@@ -717,9 +723,9 @@ perguntas3={
 "Qual o nome do modelo de governo utilizado em Noxus, onde basicamente há três comandantes?","Trifarix","Quinlon",1,
 "Qual o nome da música tema do Campeonato Mundial de League of Legends de 2018?","Legends Never Die","Rise",2,
 "O Monte Targon é a única montanha existente em Runeterra.","Verdadeiro","Falso",2,
-"Quantos campeões do League of Legends conseguem voar por conta própria (sem ajuda de animais ou veículos adicionais)?","5","10",1,
+"Quantos campeões do League of Legends conseguem voar por conta própria, sem ajuda de animais ou veículos adicionais?","5","10",1,
 "Quantos campeões do League of Legends conseguem viver no mar?","3","4",2,
-"Quantas skins possui o campeão Yasuo? (excluindo cromas)","11","13",2,
+"Quantas skins possui o campeão Yasuo? (excluindo cromas)","14","15",1,
 "Qual o nome do local onde Zilean nasceu, e que posteriormente foi tomado pelo Vazio?","Bandópolis","Icathia",2,
 "Basicamente, qual é a única fala do Rammus no jogo?","Ok","Falou",1,
 "O campeão Ryze já passou por quantos Reworks desde seu lançamento?","2","3",1,
@@ -747,15 +753,20 @@ perguntas3={
 "Aurelion Sol e Shyvana são os únicos dragões presentes no universo de League of Legends.","Verdadeiro","Falso",2,
 "Qual é a descrição da Ahri?","A Raposa de Sete Caudas","A Raposa de Nove Caudas",2,
 "Todos os campeões do Vazio possuem um apóstrofo (') no nome.","Verdadeiro","Falso",2,
-"O campeão Malzahar é originado de qual lugar?","Icathia","Vazio",1,
+"O campeão Malzahar é originado de qual lugar?","Icathia","Ionia",1,
 "Quais os nomes dos 'bichinhos' que surgem na habilidade W do campeão Malzahar?","Observadores","Voidlings",2,
-"Qual o nome do material anti-magia na qual as construções de Demacia são construídas?","Petricita","Pedra-raiz",1,
+"Qual o nome do material no qual as construções de Demacia são construídas?","Petricita","Pedra-raiz",1,
 "Um acerto crítico no League of Legends equivale a qual porcentagem do dano tradicional?","175%","200%",1,
 "Qual é o item mais caro da loja do League of Legends?","Força da Trindade","Capuz da Morte de Rabadon",2,
 "Quantos feitiços de invocador existem no League of Legends?","10","11",2,
 "O Brasil nunca chegou até as quartas de final do mundial de League of Legends.","Verdadeiro","Falso",1,
 "Um partida de League of Legends é encerrada quando...","Todos os jogadores de um time morrem","O Nexus é destruído",2,
 "Qual a cor do cabelo do campeão Zed?","Branco","Preto",1,
+"A Katarina é a única personagem de League of Legends que possui cabelo vermelho.","Verdadeiro","Falso",2,
+"Quantos campeões Darkins existem no League of Legends?","4","5",1,
+"Qual o nome do lugar de onde é originado o campeão Viego?","Camavor","Ilhas das Sombras",1,
+"Qual o nome da 'moeda' no League of Legends que não precisa ser comprada?","Essência Azul","Gema",1,
+"O campeão Ezreal é originado de qual região do League of Legends?","Shurima","Piltover",2,
 }
 perguntas4={
 "Vai na sorte :)","ok","ok",1,
@@ -836,6 +847,10 @@ perguntas4={
 "Qual destes jogadores foi responsável por perder o último pênalti na decisão do Mundial de Clubes da FIFA de 2000, fazendo com que o Corinthians seja campeão?","Romário","Edmundo",2,
 "A partir de qual ano a Copa Sul-Americana passou a ser disputada?","2002","2008",1,
 "Qual foi o único jogador a fazer 3 gols em um jogo de final de Copa Libertadores da América?","Riquelme","Thiago Neves",2,
+"Qual o nome do jogador brasileiro que mais fez gols na Copa Libertadores da América?","Gabriel Barbosa","Ademir da Guia",1,
+"Qual o nome da operação criada em 2023 com o objetivo de investigar jogadores envolvidos em esquemas de apostas?","Operação Penalidade Máxima","Operação Cartão Vermelho",1,
+"Em qual país foi realizada a Copa do Mundo de 1974?","Argentina","Alemanha",2,
+"Quantas Copas do Mundo disputou a jogadora brasileira conhecida como Formiga?","5","7",2,
 }
 piso={type = 12,width = 400,height = 100,foregound = 1,friction = 1.0,restitution = 0.0,angle = 0,color = 0xffffff,miceCollision = true,groundCollision = true,dynamic = false}
 barreira={type = 14,width = 20,height = 140,foregound = 1,friction = 0.0,restitution = 0.0,angle = 0,color = 0xffffff,miceCollision = true,groundCollision = true,dynamic = false}
@@ -843,7 +858,7 @@ barreira2={type = 12,width = 20,height = 140,foregound = 1,friction = 0.0,restit
 for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand"} do
 	tfm.exec["disable"..f](true)
 end
-for _,g in next,{"setq","limite","tema","get","tc","ms","reset"} do
+for _,g in next,{"setq","limite","tema","get","fc","ms","reset"} do
 	system.disableChatCommandDisplay(g)
 end
 ratos=0; vivos=0; set_q=0; questions_list={}; modo="inicial"; pergunta=0; rodada=0; limite=20; count=0; fixed_cnt=0;
@@ -942,12 +957,10 @@ function eventNewGame()
 		end
 	end
 	showMessage("<N><b>Quantidade de perguntas presentes: "..fixed_cnt.."</b>")
-	if tema <= 2 then
-		showMessage("<J>As perguntas deste tema foram, em sua maioria, feitas por Reksai_void2600#6638.")
-	elseif tema == 3 then
-		showMessage("<J>As perguntas deste tema foram, em sua maioria, feitas por Spectra_phantom#6089.")
+	if tema == 3 then
+		showMessage("<J>As perguntas deste tema foram, em sua maioria, feitas por Spectra_phantom#6089, e revisadas por Shun_kazami#7014.")
 	elseif tema == 4 then
-		showMessage("<J>As perguntas deste tema foram, em sua maioria, feitas por Lucianattack#0000.")
+		showMessage("<J>As perguntas deste tema foram, em sua maioria, feitas por Lucianattack#0000, e revisadas por Shun_kazami#7014..")
 	end
 end
 function reset()
@@ -1004,7 +1017,7 @@ function eventChatCommand(name,message)
 				reset()
 			end
 		end
-		if (message:sub(0,2) == "tc") or (message:sub(0,2) == "ms") then
+		if (message:sub(0,2) == "fc") or (message:sub(0,2) == "ms") then
 			showMessage("<font color='#ff8000'>• [FunCorp - <b>"..name.."</b>] "..message:sub(4).."")
 		end
 		if message == "reset" then
