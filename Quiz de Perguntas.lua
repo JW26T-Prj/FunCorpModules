@@ -506,6 +506,13 @@ perguntas1={
 "Em que ano Vladimir Putin foi eleito presidente da Rússia pela primeira vez?","2004","2008",1,
 "Quais destes municípios fazem parte da chamada Baixada Fluminense?","Duque de Caxias, Nilópolis e Mesquita","Duque de Caxias, Nilópolis e Niterói",1,
 "Em que ano foi lançado o famoso programa de criação de documentos e edição de textos Microsoft Word?","1983","1989",1,
+"Qual o nome do primeiro computador produzido pela Apple, em 1976?","Apple Lisa","Apple 1",2,
+"Na informática, 1 kilobyte (KB) equivale a quantos bytes?","1000","1024",2,
+"Qual o nome do festival famoso que ocorre no meio do ano, na região Norte do Brasil?","Festival de Parintins","Festival de Cannes",1,
+"Qual é a capital do estado do Mato Grosso do Sul?","Cuiabá","Campo Grande",2,
+"Em qual dia e mês do ano é comemorado o feriado de Nossa Senhora Aparecida?","12 de Outubro","15 de Novembro",1,
+"Qual o nome dado para a parte mais baixa de um navio, onde fica depositada a água da chuva, infiltrações ou mar agitado, por exemplo?","Porão","Sentina",2,
+"A Estação Espacial Internacional fica localizada a quantos km acima do nível do mar, aproximadamente?","400 km","500 km",1,
 }
 perguntas2={
 "Vai na sorte :)","ok","ok",1,
@@ -641,6 +648,8 @@ perguntas2={
 "'Seu corpo é fruto proibido, é chave de todo pecado, e da libido...' Qual o nome desta música?","Olhar 43","Liberdade",1,
 "Qual o nome do vocalista do grupo RPM?","Paulo Gustavo","Paulo Ricardo",2,
 "Qual o nome da vocalista principal da banda Evanescence?","Amy Lee","Amy Winehouse",1,
+"Qual o nome do primeiro álbum da banda Novo Som sem o principal baixista e compositor, Lenílton?","Vale a Pena Sonhar","Estação da Luz",1,
+"Qual o nome da banda cuja Rita Lee era vocalista e ficou famosa?","Os Brothers","Os Mutantes",2,
 }
 perguntas3={
 "Vai na sorte :)","ok","ok",1,
@@ -732,7 +741,7 @@ perguntas3={
 "Não existem campeões dentro do League of Legends que consigam sobreviver no espaço.","Verdadeiro","Falso",2,
 "Quantos continentes existem em Runeterra?","2","3",1,
 "Qual o nome da música tema do Campeonato Mundial de League of Legends de 2020?","Warriors","Take Over",2,
-"Quantos elos existem no League of Legends?","8","9",2,
+"Quantos elos existem no League of Legends?","9","10",2,
 "Katarina e Cassiopeia são irmãs.","Verdadeiro","Falso",1,
 "Xayah e Rakan são da mesma raça.","Verdadeiro","Falso",1,
 "O Campeonato Mundial de League of Legends já foi realizado no Brasil.","Verdadeiro","Falso",2,
