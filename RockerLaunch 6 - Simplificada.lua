@@ -18,10 +18,11 @@ asteroid_1={type = 12,width = 40,height = 20,foreground = false,friction = 3,res
 asteroid_2={type = 12,width = 80,height = 40,foreground = false,friction = 4,restitution = 0.15,angle = 0, color = 0, miceCollision = true, groundCollision = true, dynamic = true, fixedRotation = false, mass = 5000}
 asteroid_3={type = 12,width = 160,height = 80,foreground = false,friction = 5,restitution = 0.2,angle = 0, color = 0, miceCollision = true, groundCollision = true, dynamic = true, fixedRotation = false, mass = 15000}
 asteroid_4={type = 12,width = 320,height = 160,foreground = false,friction = 7,restitution = 0.25,angle = 0, color = 0, miceCollision = true, groundCollision = true, dynamic = true, fixedRotation = false, mass = 30000}
-objects1={1,3,6,7,35,39,60,89,95}
-objects2={1,2,3,6,7,35,39,45,46,54,60,85,89,90,95}
-objects3={1,2,3,4,6,7,10,23,35,39,40,45,46,54,60,61,68,69,85,89,90,95}
-objects4={2,4,10,39,40,45,46,54,61,67,68,69,90}
+ajuda="<VP>Bem-vindos ao RockerLaunch 6!<br><N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço! Digite !help para saber como jogar.<br><br><BL>Créditos para Lynet#8558, Puffezinhaq#0000, Morganadxana#0000, Digo20games#0000, Dhanny_mheyran#6701 e Threshlimit#0000. Conceito original de Nettoork#0000.<br><J>Versão 6.3"
+objects1={1,3,6,23,33,39,60,65}
+objects2={1,3,6,23,33,39,60,65,2,68,69}
+objects3={1,3,6,23,33,39,60,65,2,68,69,4,7,10,17,35,85,90}
+objects4={1,3,6,23,33,39,60,65,2,68,69,4,7,10,17,35,85,90,40,61,67}
 managers={"Threshlimit#0000","Morganadxana#0000","Lynet#8558","Puffezinhaq#0000","Digo20games#0000","Viego#0345","Alisson#3938"} -- contribuidores
 for _,f in next,{"cancel","set","get","help","fc","ms"} do
 	system.disableChatCommandDisplay(f)
@@ -84,7 +85,7 @@ function eventNewGame()
 end
 function eventChatCommand(n,m)
 	if m == "help" then
-		showMessage("<N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço. Caso o shaman morra, a partida é encerrada. Tenha cuidado com os objetos e os meteoros que caem do céu!<br><br><BL>Mapa criado por Threshlimit#0000 e Dhanny_mheyran#6701. Código desenvolvido por Morganadxana#0000, Lynet#8558, Digo20games#0000 e Puffezinhaq#0000.<br>Conceito original de Nettoork#0000.<br>Versão 6.2.1",n)
+		showMessage(ajuda,n)
 	end
 	if verifyNinjas(n) == true or verifyAdmin(n) == true then
 		if m == "cancel" then
@@ -104,7 +105,7 @@ function eventChatCommand(n,m)
 	end
 end
 function rodar(name)
-	tfm.exec.addImage("18756e4d3d0.png","?1",100,8667,name)
+	tfm.exec.addImage("18756e4d3d0.png","?1",100,8267,name)
 	ui.setBackgroundColor("#000000")
 	for c=1,14 do tfm.exec.addImage("182d6e197bb.png","?1",math.random(-700,2200),math.random(-150,3400),name) end
 	tfm.exec.addImage("182d6e2305b.png","?1",math.random(-750,1850),math.random(-450,2650),name)
@@ -121,12 +122,12 @@ function rodar(name)
 		end
 	end
 	for a=0,2 do
-		tfm.exec.addImage("1860ee4bc27.png","?1",-800+(a*1762),9000,name,1,1,0,1)
-		tfm.exec.addImage("1860ee4bc27.png","!1",-800+(a*1762),9000,name,1,1,0,0.6)
+		tfm.exec.addImage("1860ee4bc27.png","?1",-800+(a*1762),8600,name,1,1,0,1)
+		tfm.exec.addImage("1860ee4bc27.png","!1",-800+(a*1762),8600,name,1,1,0,0.6)
 	end
 	for b=0,4 do
-		tfm.exec.addImage("1860ee46b2e.jpg","?1",-800+(b*690),9332,name,1,1,0,1)
-		tfm.exec.addImage("1860ee41de2.png","!1",-800+(b*690),9332,name,1,1,0,1)
+		tfm.exec.addImage("1860ee46b2e.jpg","?1",-800+(b*690),8932,name,1,1,0,1)
+		tfm.exec.addImage("1860ee41de2.png","!1",-800+(b*690),8932,name,1,1,0,1)
 	end
 	for i=0,5 do
 		tfm.exec.addImage("181ba85ccc2.png","!1",math.random(-400,1500),math.random(5300,7200),name)
@@ -161,8 +162,8 @@ function rodar(name)
 	tfm.exec.addImage("1877322de4e.png","?1",1265,7600,name)
 	tfm.exec.addImage("1877322de4e.png","?1",880,6280,name)
 	tfm.exec.addImage("1877322de4e.png","?1",420,4950,name,-1)
-	tfm.exec.addImage("18773217882.png","?1",-900,8350,name,1,1,0,0.8)
-	tfm.exec.addImage("18773217882.png","?1",2900,8350,name,-1,1,0,0.8)
+	tfm.exec.addImage("18773217882.png","?1",-900,7950,name,1,1,0,0.8)
+	tfm.exec.addImage("18773217882.png","?1",2900,7950,name,-1,1,0,0.8)
 	tfm.exec.addImage("18756e48371.png","?1",-800,2800,name,8,9.6)
 end
 function eventLoop(p,f)
@@ -223,15 +224,15 @@ function eventLoop(p,f)
 		end
 		if isf < 600 and isf >= 480 then
 			tfm.exec.addShamanObject(objects1[math.random(#objects1)], math.random(-400,2000), 1, 0, 0, 0, false)
-		elseif isf < 480 and isf >= 400 then
+		elseif isf < 480 and isf >= 360 then
 			for i=1,2 do
 				tfm.exec.addShamanObject(objects2[math.random(#objects2)], math.random(-400,2000), 1, 0, 0, 0, false)
 			end
-		elseif isf < 400 and isf >= 340 then
+		elseif isf < 360 and isf >= 300 then
 			for i=1,2 do
 				tfm.exec.addShamanObject(objects3[math.random(#objects3)], math.random(-400,2000), 1, 0, 0, 0, false)
 			end
-		elseif isf < 340 and isf >= 5 then
+		elseif isf < 300 and isf >= 10 then
 			for i=1,3 do
 				tfm.exec.addShamanObject(objects4[math.random(#objects4)], math.random(-400,2000), 1, 0, 0, 0, false)
 			end
@@ -257,13 +258,13 @@ function eventLoop(p,f)
 				tfm.exec.addPhysicObject(id, math.random(-300,1900), 1, asteroid_3)
 				tfm.exec.addImage("182dc62db5c.png","+"..id.."",-92,-60,n,0.5,0.5)
 			end
-		elseif isf < 50 and isf >= 5 then
+		elseif isf < 50 and isf >= 10 then
 			if isf % 6 == 0 then
 				tfm.exec.addPhysicObject(id, math.random(-300,1900), 1, asteroid_4)
 				tfm.exec.addImage("182dc62db5c.png","+"..id.."",-184,n,nil)
 			end
 		end
-else
+	else
 		if f <= 1 then
 			changed=true
 			tfm.exec.newGame(xml2,false)
@@ -277,9 +278,10 @@ end
 function eventNewPlayer(n)
 	if changed == true then
 		ui.setMapName("<b>RockerLaunch 6</b><N> - o céu é o limite! Pelo menos é o que parece... <VP>(versão reduzida)<")
-		showMessage("<VP>Bem-vindos ao RockerLaunch 6!<br><N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço! Digite !help para saber como jogar.<br><br><BL>Créditos para Lynet#8558, Puffezinhaq#0000, Morganadxana#0000, Digo20games#0000, Dhanny_mheyran#6701 e Threshlimit#0000. Conceito original de Nettoork#0000.<br><J>Versão 6.2.1",n)
+		showMessage(ajuda,n)
 		tfm.exec.setPlayerScore(n,0,false)
 		tfm.exec.addImage("17ae4e48770.png","&1",590,370,n,0.5,0.5)
+		rodar(n)
 	end
 end
 function eventPlayerDied(name)
