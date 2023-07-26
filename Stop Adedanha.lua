@@ -1,10 +1,10 @@
 -- STOP
--- Escrito por Ninguem - 31/08/2015 // Atualizado por Akwimos#1937 - 25/07/2023
+-- Escrito por Ninguem - 31/08/2015 // Atualizado por Akwimos#1937 e Shun_kazami#7014 - 25/07/2023
 -- Mínimo de 5 temas e máximo de 20 temas.
 -- FunCorp, caso você não queira visualizar as respostas dos jogadores, altere a variável SHOW (linha 10) para false.
 -- Para bloquear um jogador, digite !kick [nome#tag]. Digite o mesmo comando para desbloqueá-lo caso o mesmo já esteja bloqueado.
 
-ADM = {"Akwimos#1937"} -- editar com seu nome aqui!
+ADM = {"Akwimos#1937","Shun_kazami#7014"} -- editar com seu(s) nome(s) aqui!
 ADMIN_ONLY = false -- troque para 'true' se você quiser que só os votos dos jogadores que estejam na tabela 'ADM' contem
 CAT = {"Nome","Animal","Objeto","Cor","Marca","TV/Filme/Anime/Desenho","Parte do Corpo Humano","Ator/Cantor/Celebridade","Comida/Bebida","País/Cidade/Estado","Apelido de Garçom","Profissão","O(A) "..ADM[1].." é...","Qualquer Coisa"}
 SHOW = true
