@@ -1,5 +1,5 @@
 -- STOP
--- Escrito por Ninguem - 31/08/2015 // Atualizado por Akwimos#1937 - 21/06/2023
+-- Escrito por Ninguem - 31/08/2015 // Atualizado por Akwimos#1937 - 25/07/2023
 -- Mínimo de 5 temas e máximo de 20 temas.
 -- FunCorp, caso você não queira visualizar as respostas dos jogadores, altere a variável SHOW (linha 10) para false.
 -- Para bloquear um jogador, digite !kick [nome#tag]. Digite o mesmo comando para desbloqueá-lo caso o mesmo já esteja bloqueado.
@@ -40,8 +40,16 @@ function showMessage(message,name)
 end
 
 function carregaMapa()
-	tfm.exec.newGame("@7924777")
-	ui.setBackgroundColor("#212545")
+	tfm.exec.newGame("@7938319")
+	ui.setBackgroundColor("#1E2906")
+end
+
+function findString(object,tb)
+	for i=1,rawlen(tb) do
+		if tb[i] == object then
+			return true
+		end
+	end
 end
 
 function isAdm(p)
@@ -77,6 +85,8 @@ function stripChars(str)
 	end
 	tableAccents["ç"] = "c"
 	tableAccents["ñ"] = "n"
+	tableAccents["Ç"] = "c"
+	tableAccents["Ñ"] = "n"
 	local normalizedString = ''
 	for strChar in string.gmatch(str, "([%z\1-\127\194-\244][\128-\191]*)") do
 		if tableAccents[strChar] ~= nil then
@@ -348,7 +358,7 @@ function eventPopupAnswer(id, p, resp)
 end
 
 function eventNewPlayer(p)
-	ui.setMapName("<b>STOP!</b> <N>Script editado por Akwimos#1937 - 21/06/2023<")
+	ui.setMapName("<b>STOP!</b> <N>Script editado por Akwimos#1937 e Shun_kazami#7014 - 25/07/2023<")
 	PLAYER[p] = {num = 0, pontos = 0, vitoria = 0, palavra = {}, banido = false}
 	for i, v in pairs(CAT) do
 		PLAYER[p].palavra[v] = ""
@@ -358,7 +368,7 @@ function eventNewPlayer(p)
 	end
 	tfm.exec.respawnPlayer(p)
 	showMessage("<ROSE>Digite !help caso não saiba jogar este jogo.",p)
-	ui.setBackgroundColor("#717171")
+	ui.setBackgroundColor("#1E2906")
 	if not data[p] then
 		newData={
 			["banned"]=false;
@@ -525,6 +535,7 @@ tfm.exec.disableAfkDeath(true)
 tfm.exec.disableAutoShaman(true)
 tfm.exec.disableAutoScore(true)
 tfm.exec.disableAutoNewGame(true)
+if tfm.get.room.isTribeHouse == false then tfm.exec.setRoomMaxPlayers(35) end
 carregaMapa()
-ui.setMapName("<b>STOP!</b> <N>Script editado por Akwimos#1937 - 21/06/2023<")
+ui.setMapName("<b>STOP!</b> <N>Script editado por Akwimos#1937 e Shun_kazami#7014 - 25/07/2023<")
 atualizaCat(true)
