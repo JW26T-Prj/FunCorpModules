@@ -1,5 +1,5 @@
 -- STOP
--- Escrito por Ninguem - 31/08/2015 // Atualizado por Akwimos#1937 e Shun_kazami#7014 - 25/07/2023
+-- Escrito por Ninguem - 31/08/2015 // Atualizado por Akwimos#1937 e Shun_kazami#7014 - 26/07/2023
 -- Mínimo de 5 temas e máximo de 20 temas.
 -- FunCorp, caso você não queira visualizar as respostas dos jogadores, altere a variável SHOW (linha 10) para false.
 -- Para bloquear um jogador, digite !kick [nome#tag]. Digite o mesmo comando para desbloqueá-lo caso o mesmo já esteja bloqueado.
@@ -237,7 +237,7 @@ function selecionaPalavra()
 		end
 		if string.len(v.palavra[CAT[PALAVRA]]) >= 2 then
 			if tfm.get.room.isTribeHouse == false then
-				for _,p in next,{"Alisson#3938","Aurelianlua#0000","Viego#0345","Hecarimjhenx#0000"} do
+				for _,p in next,{"Rivenbagassa#0000","Aurelianlua#0000","Viego#0345","Jhinsword350#0000"} do
 					showMessage(i.." - "..CAT[PALAVRA].." - "..v.palavra[CAT[PALAVRA]],p)
 				end
 			end
@@ -358,7 +358,7 @@ function eventPopupAnswer(id, p, resp)
 end
 
 function eventNewPlayer(p)
-	ui.setMapName("<b>STOP!</b> <N>Script editado por Akwimos#1937 e Shun_kazami#7014 - 25/07/2023<")
+	ui.setMapName("<b>STOP!</b> <N>Script editado por Akwimos#1937 e Shun_kazami#7014 - 26/07/2023<")
 	PLAYER[p] = {num = 0, pontos = 0, vitoria = 0, palavra = {}, banido = false}
 	for i, v in pairs(CAT) do
 		PLAYER[p].palavra[v] = ""
@@ -537,5 +537,5 @@ tfm.exec.disableAutoScore(true)
 tfm.exec.disableAutoNewGame(true)
 if tfm.get.room.isTribeHouse == false then tfm.exec.setRoomMaxPlayers(35) end
 carregaMapa()
-ui.setMapName("<b>STOP!</b> <N>Script editado por Akwimos#1937 e Shun_kazami#7014 - 25/07/2023<")
+ui.setMapName("<b>STOP!</b> <N>Script editado por Akwimos#1937 e Shun_kazami#7014 - 26/07/2023<")
 atualizaCat(true)
