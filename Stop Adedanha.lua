@@ -4,8 +4,8 @@
 -- FunCorp, caso você não queira visualizar as respostas dos jogadores, altere a variável SHOW (linha 10) para false.
 -- Para bloquear um jogador, digite !kick [nome#tag]. Digite o mesmo comando para desbloqueá-lo caso o mesmo já esteja bloqueado.
 
-ADM = {"Akwimos#1937","Shun_kazami#7014"} -- editar com seu(s) nome(s) aqui!
-ADMIN_ONLY = false -- troque para 'true' se você quiser que só os votos dos jogadores que estejam na tabela 'ADM' contem
+ADM = {"Shun_kazami#7014"} -- editar com seu(s) nome(s) aqui!
+ADMIN_ONLY = false -- (RECOMENDADO) troque para 'true' se você quiser que só os votos dos jogadores que estejam na tabela 'ADM' contem
 CAT = {"Nome","Animal","Objeto","Cor","Marca","TV/Filme/Anime/Desenho","Parte do Corpo Humano","Ator/Cantor/Celebridade","Comida/Bebida","País/Cidade/Estado","Apelido de Garçom","Profissão","O(A) "..ADM[1].." é...","Qualquer Coisa"}
 SHOW = true
 MAXROUND = 5 -- número máximo de rounds
@@ -244,38 +244,42 @@ function selecionaPalavra()
 		end
 	end
 	ui.addTextArea(ID.cat, "<p align='center'><font size='30px'>" .. CAT[PALAVRA] .. " com " .. LETRA, nil, 5, 80, 790, 40, 1, 1, 0.9, true)
-	TEMPO = os.time() + 15000+(1500*#ESCOLHA)
+	TEMPO = os.time() + 12000+(2000*#ESCOLHA)
 	ui.addTextArea(ID.tempo, "<r><p align='center'><font size='25px'>--</font></p>", nil, 755, 358, 40, 40, 1, 1, 0.9, true)
 end
 
-coisas = {"ROLA","VIAD","BUCET","PIR","PAU","SEX","DEDAD","SAFAD","CARALH","JEB","PUNHET","PORR","PORN","XOT","XEREC","XVIDE","XOXO"}
+function stop(p)
+	local cont = 0
+	for i, v in pairs(PLAYER[p].palavra) do
+		cont = v ~= "" and cont + 1 or cont
+	end
+	if cont == #CAT then
+		ui.removeTextArea(ID.stop, nil)
+		ui.removeTextArea(ID.cat, nil)
+		ui.removeTextArea(1246, nil)
+		ui.removeTextArea(1247, nil)
+		for i=1, #CAT do
+			ui.removeTextArea(i+1000, nil)
+		end
+		MODO = "fim"
+		PALAVRA = 1
+		ui.addTextArea(ID.msg, "<p align='center'>Clique nas palavras ERRADAS e marque de <r>vermelho <n>para anular seus pontos.", nil, 5, 50, 790, 20, 1, 1, 0.9, true)
+		ESCOLHA = {}
+		selecionaPalavra()
+		for i, v in pairs(PLAYER) do
+			atualizaSeleciona(i)
+		end
+		if SHOW == true then
+			showMessage("<R>Os administradores desta sala podem ver as respostas dos usuários. Respostas inapropriadas poderão ser retiradas da sala.")
+		end
+	end
+end
+
+coisas = {"ROLA","VIAD","BUCET","PIRO","PAU","SEX","DEDAD","SAFAD","CARALH","JEB","PUNHET","PORR","PORN","XOT","XEREC","XVIDE","XOXO"}
 
 function eventChatCommand(p, cmd)
 	if cmd == "stop" and MODO == "round" and os.time() > TEMPO then
-		local cont = 0
-		for i, v in pairs(PLAYER[p].palavra) do
-			cont = v ~= "" and cont + 1 or cont
-		end
-		if cont == #CAT then
-			ui.removeTextArea(ID.stop, nil)
-			ui.removeTextArea(ID.cat, nil)
-			ui.removeTextArea(1246, nil)
-			ui.removeTextArea(1247, nil)
-			for i=1, #CAT do
-				ui.removeTextArea(i+1000, nil)
-			end
-			MODO = "fim"
-			PALAVRA = 1
-			ui.addTextArea(ID.msg, "<p align='center'>Clique nas palavras ERRADAS e marque de <r>vermelho <n>para anular seus pontos.", nil, 5, 50, 790, 20, 1, 1, 0.9, true)
-			ESCOLHA = {}
-			selecionaPalavra()
-			for i, v in pairs(PLAYER) do
-				atualizaSeleciona(i)
-			end
-			if SHOW == true then
-				showMessage("<R>Os administradores desta sala podem ver as respostas dos usuários. Respostas inapropriadas poderão ser retiradas da sala.")
-			end
-		end
+		stop(p)
 	end
 	if cmd == "help" then
 		showMessage("<N>O<b>Stop</b> é muito parecido com o jogo 'adedanha' da vida real. <br><br>Primeiro, você escolherá um número de 1 a 10. Isto irá ser feito com todos os jogadores para sortear a letra utilizada na rodada.<br><br>Após a letra ser sorteada, você vai clicar nos temas e digitar o item correspondente que comece com a letra indicada. <br>O primeiro a completar todos os temas pode digitar !stop. Isto vai fazer com que todos os outros parem de escrever.<br><br><J>Após o momento do stop, chegou a hora de avaliar as respostas. Você deve clicar nas respostas INCORRETAS para que fiquem da cor <R>vermelha.<J> Isto vai garantir que pontos não sejam dados para pessoas que colocarem respostas inválidas.<br><br>Pontuação por resposta:<br>- Resposta válida única: 10 pontos<br>- Resposta válida repetida: 5 pontos<br>- Resposta inválida: 0 pontos<br><br><ROSE>O vencedor é aquele que conseguir o maior número de pontos após um determinado número de rodadas.",p)
