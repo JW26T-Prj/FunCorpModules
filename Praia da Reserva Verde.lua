@@ -30,20 +30,15 @@ function showNPCs(name)
 	tfm.exec.addNPC("Camille Sanders",{title = 257, look = "1;44,40,87,3,62,91,37,52,0",x = 8586,y = 760,female = true,lookLeft = false,lookAtPlayer = true,interactive = true},name)
 end
 function showWater(name)
-	for i=0,1 do
-		tfm.exec.addImage("189749dd379.png", "?1", -600+(i*4000), 1390, nil, 1, 1, 0, 1)
-		tfm.exec.addImage("189749dd379.png", "?1", 3400+(i*4000), 1390, nil, -1, 1, 0, 1)
-	end
-	tfm.exec.addImage("189749ce857.png", "?1", -600, 2183, nil, 5, 5, 0, 1)
+for i=0,5 do
+ 	tfm.exec.addImage("1897a810bb2.png", "!-1023", -1200+(i*2400), 1385, nil, 1, 1, 0, 1)
+end
+for i=0,11 do
+		tfm.exec.addImage("1897a80b341.png", "!-1024", -1200+(i*1200), 1400, nil, 5, 1, 0, 1)
+		tfm.exec.addImage("1897a80b341.png", "!-1024", -1200+(i*1200), 6400, nil, 5, -1, 0, 1)
+end
 	tfm.exec.addImage("1883b1394a4.png","!1",2500,100,name,0.5,0.5)
 	tfm.exec.addImage("17be536e980.png","?1",-800,3680,name)
-	for _,b in next,{0,2,4} do
-		tfm.exec.addImage("183d7db795c.png","?1",-800+(b*1920),1405,name,1,1,0,0.25)
-	end
-	for _,c in next,{1,3,5} do
-		tfm.exec.addImage("183d7db795c.png","?1",1120+(c*1920),1405,name,-1,1,0,0.25)
-	end
-	tfm.exec.addImage("18974709fd1.png", "!1", -600, 1350, nil, 6.5, 10, 0, 1)
 	for h=0,4 do
 		tfm.exec.addImage("1803e8e2250.jpg","?1",-1200+(h*2169),1050,name,1,0.75,0,1)
 	end
@@ -91,7 +86,7 @@ function eventTalkToNPC(name, npc)
 	elseif npc == "Katarina Worlynder" then
 		showMessage("<V>[Katarina Worlynder] <N>Sou a engenheira que ajudei a construir toda a parte elétrica desta praia, que é 100% ecológica.<br><br>Utilizamos energia renovável para alimentar o bar e as tirolesas, e ao mesmo tempo proteger o meio ambiente. Não é lindo?",name)
 	elseif npc == "Mayra Flowers" then
-		showMessage("<V>[Mayra Flowers] <N>Muuuuuuuu! <font face='Segoe UI Symbol'>(●'◡'●)<font face='Verdana'>",name)
+		showMessage("<V>[Mayra Flowers] <N>Muuuuuuuu! <font face='Segoe UI Symbol'>(●'◡'●) 🐄<font face='Verdana'>",name)
 	elseif npc == "Aaron Grand" then
 		showMessage("<V>[Aaron Grand] <N>Esta é a Torre do Nascer do Sol. O lugar mais alto da praia. Daqui dá para ver absolutamente tudo. Incluindo o pôr do sol que é lindo.<br><br>Se eu fosse você, nunca mais sairia daqui. Tenho um baita medo de mar...",name)
 	elseif npc == "Daniel Winngs" then
@@ -136,7 +131,7 @@ function eventNewPlayer(name)
 	if changed == true then
 		ui.setMapName("Praia da Reserva Verde - <ROSE>Morgana's Mechanical Maps<")
 	end
-	showMessage("<VP><b>Bem-vindo(a) a Praia da Reserva Verde.</b><br><br><p align='left'><N>Este é um mapa-script de praia bem grande e com diversos recursos para se divertir. Aproveite e curta!<br><br><R>Aviso: Este mapa pode consumir até 1,8GB de RAM dependendo de casos específicos.<br><br><ROSE><b>Mapa feito por Morganadxana#0000.</b><br><J>Agradecimentos especiais para <b>Draw#6691, Soft#1388, Viincenzo#9526, Lacoste#8972, Lipersz#9863, Spectra_phantom#6089, Threshlimit#0000, Star#8558 e Lanadelrey#4862.</b><br><br><N>Deseja usar este mapa-script no cafofo de sua tribo? Use o link a seguir:<br><N><VP>raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/Praia%20da%20Reserva%20Verde.lua<br><br><N>Revisão 1.6",name)
+	showMessage("<VP><b>Bem-vindo(a) a Praia da Reserva Verde.</b><br><br><p align='left'><N>Este é um mapa-script de praia bem grande e com diversos recursos para se divertir. Aproveite e curta!<br><br><R>Aviso: Este mapa pode consumir até 1,8GB de RAM dependendo de casos específicos.<br><br><ROSE><b>Mapa feito por Morganadxana#0000.</b><br><J>Agradecimentos especiais para <b>Draw#6691, Soft#1388, Viincenzo#9526, Lacoste#8972, Lipersz#9863, Spectra_phantom#6089, Threshlimit#0000, Star#8558 e Lanadelrey#4862.</b><br><br><N>Deseja usar este mapa-script no cafofo de sua tribo? Use o link a seguir:<br><N><VP>raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/Praia%20da%20Reserva%20Verde.lua<br><br><N>Revisão 1.7",name)
 end
 function eventLoop(p,f)
 	if changed == true then
