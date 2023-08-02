@@ -2,12 +2,12 @@
 Module authors : Morganadxana#0000
 (C) 2017-2023 Spectra Advanced Module Group
 
-Version : RTM 53942.225
-Compilation date : 08/02/2023 14:59 UTC
+Version : RTM 53943.226
+Compilation date : 08/02/2023 22:32 UTC
 Sending player : Morganadxana#0000
 
 Number of maps : 191
-Number of module special members : 10 ]]--
+Number of module special members : 11 ]]--
 
 _VERSION = "Lua 5.4"
 _AUTHOR = "Morganadxana#0000"
@@ -28,17 +28,10 @@ settings={time=180,plimit=16,map_mode=0,map_select="@7412348",g_powerups=true,sh
 mode="lobby"
 divider="　　　　　　　　　";
 images_id={};
-playersList={}; helpers={}; mods={
-"Dinamarquers#0000",
-"Flaysama#5935",
-"Chavestomil#0000"};
-admins={"Ashearcher#0000",
-"Spectra_phantom#6089",
-"Morganadxana#0000",
-"Geracionz#0000"}
-ninjas={"Viego#0345",
-"Barodius#9562",
-"Leblanc#5342"};
+playersList={}; helpers={};
+mods={"Dinamarquers#0000","Flaysama#5935","Chavestomil#0000"};
+admins={"Ashearcher#0000","Spectra_phantom#6089","Morganadxana#0000","Geracionz#0000"};
+ninjas={"Viego#0345","Barodius#9562","Leblanc#5342","Dharak#7603"};
 data={}
 
 lang = {}
@@ -310,7 +303,7 @@ function showRoomSettings(name)
 end
 
 function showLobbyText(name)
-	ui.addTextArea(402,"<p align='center'><font size='12'><b><font face='Courier New'><i>"..text.version.." RTM 53942.225 - "..text.comp_date.."08/02/2023 14:59 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,-10,380,820,36,0,0,1.0,true)
+	ui.addTextArea(402,"<p align='center'><font size='12'><b><font face='Courier New'><i>"..text.version.." RTM 53943.226 - "..text.comp_date.."08/02/2023 22:32 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,-10,380,820,36,0,0,1.0,true)
 end
 
 function setLeaders()
@@ -394,7 +387,7 @@ function updateTextBar()
 	if mode == "end" then
 		ui.setMapName("<VP><b>"..text.ending.."</b>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	else
-		ui.setMapName("<N><b>#anvilwar</b>   <G>|   <VP>"..text.version.." <b>RTM 53942.225</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
+		ui.setMapName("<N><b>#anvilwar</b>   <G>|   <VP>"..text.version.." <b>RTM 53943.226</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	end
 end
 
@@ -699,22 +692,22 @@ function eventKeyboard(name,code,down,x,y)
 	if mode == "shoot" and actual_player == name and enabled == true then
 		if code == 32 then
 			if data[name].team == 1 then
-				spawnAnvil(10,x,y-55,(data[name].angle)*-1,(2.5+data[name].power*1.2),-5-(data[name].power*0.3),false)
+				spawnAnvil(10,x,y-55,(data[name].angle)*-1,(2.5+data[name].power*1.6),-5-(data[name].power*0.3),false)
 				if data[name].powerup == 1 then
-					id=spawnAnvil(10,x+45,y-55,(data[name].angle)*-1,(2.5+data[name].power*1.2),-5-(data[name].power*0.3),false)
+					id=spawnAnvil(10,x+45,y-55,(data[name].angle)*-1,(2.5+data[name].power*1.6),-5-(data[name].power*0.3),false)
 				elseif data[name].powerup == 2 then
 					for i=1,2 do
-						spawnAnvil(10,x+(45*i),y-55,(data[name].angle)*-1,(2.5+data[name].power*1.2),-5-(data[name].power*0.3),false)
+						spawnAnvil(10,x+(45*i),y-55,(data[name].angle)*-1,(2.5+data[name].power*1.6),-5-(data[name].power*0.3),false)
 					end
 				end
 				tfm.exec.playSound("bouboum/x_explosion_3.mp3", 90)
 			elseif data[name].team == 2 then
-				spawnAnvil(10,x,y-55,(data[name].angle)*-1,(2.5+data[name].power*1.2)*-1,-5-(data[name].power*0.3),false)
+				spawnAnvil(10,x,y-55,(data[name].angle)*-1,(2.5+data[name].power*1.6)*-1,-5-(data[name].power*0.3),false)
 				if data[name].powerup == 1 then
-					spawnAnvil(10,x+45,y-55,(data[name].angle)*-1,(2.5+data[name].power*1.2)*-1,-5-(data[name].power*0.3),false)
+					spawnAnvil(10,x+45,y-55,(data[name].angle)*-1,(2.5+data[name].power*1.6)*-1,-5-(data[name].power*0.3),false)
 				elseif data[name].powerup == 2 then
 					for i=1,2 do
-						spawnAnvil(10,x+(45*i),y-55,(data[name].angle)*-1,(2.5+data[name].power*1.2)*-1,-5-(data[name].power*0.3),false)
+						spawnAnvil(10,x+(45*i),y-55,(data[name].angle)*-1,(2.5+data[name].power*1.6)*-1,-5-(data[name].power*0.3),false)
 					end
 				end
 				tfm.exec.playSound("bouboum/x_explosion_3.mp3", 90)
@@ -1121,7 +1114,7 @@ function eventChatCommand(name,command)
 		end
 	else showMessage(text.wrong,name) end end
 	if command == "changelog" then
-		showMenu(name,0xa8f233,140,130,520,105,"#anvilwar Changelog - RTM 53942.225","• Fixes on the scoreboard<br>• Some text changes<br>• Added commands for FunCorp members")
+		showMenu(name,0xa8f233,140,130,520,115,"#anvilwar Changelog - RTM 53943.226","• Fixes on the scoreboard<br>• Some text changes<br>• Added commands for FunCorp members<br>• Changes on anvils physics")
 	end
 	if (command:sub(0,2) == "rv") then
 		if name == actual_player and general_time >= 30 then
