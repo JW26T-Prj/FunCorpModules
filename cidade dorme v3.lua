@@ -53,7 +53,7 @@ function checkNickname(name)
 end
 function eventChatCommand(name,comando)
 	if comando == "reiniciar" then
-		if name == "Fosfus7heads#0000" or name == "Aurelianlua#0000" or name == "Viego#0345" or name == "Skyymellu#0000" or name == "Alisson#3938" or name == admin then
+		if name == "Fosfus7heads#0000" or name == "Aurelianlua#0000" or name == "Viego#0345" or name == "Skyymellu#0000" or name == "Patrick_mahomes#1795" or name == admin then
 			tfm.exec.newGame(mapas[math.random(#mapas)])
 		end
 	end
@@ -79,7 +79,7 @@ function eventNewGame()
 		end
 	end
 	rodada=0
-	ui.setMapName("<N><b>Cidade Dorme v3</b> <N>- gerenciado por <BL>Fosfus7heads#0000<")
+	ui.setMapName("<N><b>Cidade Dorme v3</b> <N>- gerenciado por <R>Patrick_mahomes#1795<")
 end
 function escolherAssasinos(name)
 	if data[name] and data[name].type == 0 then
@@ -205,7 +205,7 @@ function eventLoop()
 			showMessage("<VP>O module não pode ser iniciado. <br>Certifique-se de que inseriu seu nome corretamente no nome da sala.<br><br>No caso de uma sala FunCorp, certifique-se que inseriu o nome corretamente no código.")
 			contador=-524288
 		else
-			showMessage("<N><b>Bem-vindos ao module Cidade Dorme!</b><br>O objetivo deste module é: Descubra quem são os assassinos, desconfie e os mate!<br><VP>O jogo irá explicar todo seu funcionamento durante a partida.<br><br><J><b>Script gerenciado por Fosfus7heads#0000</b><br>Conceito original por Spectra_phantom#6089")
+			showMessage("<N><b>Bem-vindos ao module Cidade Dorme!</b><br>O objetivo deste module é: Descubra quem são os assassinos, desconfie e os mate!<br><VP>O jogo irá explicar todo seu funcionamento durante a partida.<br><br><J><b>Script gerenciado por Patrick_mahomes#1795</b><br>Conceito original por Spectra_phantom#6089")
 		end
 	end
 	if contador == 10 then
