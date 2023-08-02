@@ -16,11 +16,11 @@ function showMessage(message,name)
 	end
 end
 function eventNewPlayer(name)
-	showMessage("<J>Module temporário: Defilante Evolution v1.1<br><N>Vá até o final do mapa e chegue antes de todo mundo!<br>Digite !help para ver a ajuda.<br><ROSE>Module criado por Fosfus7heads#0000.",name)
+	showMessage("<J>Module temporário: Defilante Evolution v1.2<br><N>Vá até o final do mapa e chegue antes de todo mundo!<br>Digite !help para ver a ajuda.<br><ROSE>Module gerenciado por Shun_kazami#7014.",name)
 end
 function eventChatCommand(name,message)
 	if message == "new" then
-		if name == "Fosfus7heads#0000" then
+		if name == "Shun_kazami#7014" then
 		if valendo == false then
 			tempo=60
 			disparador=true
@@ -31,7 +31,7 @@ function eventChatCommand(name,message)
 		end
 	end
 	if(message:sub(1,3) == "obj") then
-		if name == "Fosfus7heads#0000" then
+		if name == "Shun_kazami#7014" then
 			objetivo=tonumber(message:sub(5))
 			showMessage("<J>Objetivo da partida alterado para: "..objetivo,nil)
 		end
@@ -66,7 +66,7 @@ function eventLoop(p,f)
 			tfm.exec.newGame('@6973961')
 			showMessage("<b>Parabéns!</b> <CH>"..winner.." <N>venceu a partida com "..tfm.get.room.playerList[winner].score.." pontos!")
 			ui.addTextArea(4785,"<font color='#000001'><font size='48'><font face='Comic Sans MS'>Defilante Evolution",nil,170,50,680,100,0,0,1.0,true)
-			ui.addTextArea(4784,"<font color='#000001'><font size='20'>Script feito por Fosfus7heads#0000",nil,240,120,420,100,0,0,1.0,true)
+			ui.addTextArea(4784,"<font color='#000001'><font size='20'>Script feito por Shun_kazami#7014",nil,240,120,420,100,0,0,1.0,true)
 			if p > 10000 then
 				ui.removeTextArea(100,nil)
 				ui.removeTextArea(1244,nil)
@@ -138,7 +138,7 @@ function eventNewGame()
 end
 	if valendo == false then
 		tempo=60
-		eventChatCommand("Fosfus7heads#0000","new")
+		eventChatCommand("Shun_kazami#7014","new")
 	end
 	pos=0
 end
@@ -149,4 +149,4 @@ end
 
 tfm.exec.newGame('@6973961')
 ui.addTextArea(4785,"<font color='#000001'><font size='48'><font face='Comic Sans MS'>Defilante Evolution",nil,170,50,680,100,0,0,1.0,true)
-ui.addTextArea(4784,"<font color='#000001'><font size='20'>Script feito por Fosfus7heads#0000",nil,240,120,420,100,0,0,1.0,true)
+ui.addTextArea(4784,"<font color='#000001'><font size='20'>Script feito por Shun_kazami#7014",nil,240,120,420,100,0,0,1.0,true)
