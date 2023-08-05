@@ -18,12 +18,12 @@ asteroid_1={type = 12,width = 40,height = 20,foreground = false,friction = 3,res
 asteroid_2={type = 12,width = 80,height = 40,foreground = false,friction = 4,restitution = 0.15,angle = 0, color = 0, miceCollision = true, groundCollision = true, dynamic = true, fixedRotation = false, mass = 5000}
 asteroid_3={type = 12,width = 160,height = 80,foreground = false,friction = 5,restitution = 0.2,angle = 0, color = 0, miceCollision = true, groundCollision = true, dynamic = true, fixedRotation = false, mass = 15000}
 asteroid_4={type = 12,width = 320,height = 160,foreground = false,friction = 7,restitution = 0.25,angle = 0, color = 0, miceCollision = true, groundCollision = true, dynamic = true, fixedRotation = false, mass = 30000}
-ajuda="<VP>Bem-vindos ao RockerLaunch 6!<br><N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço! Digite !help para saber como jogar.<br><br><BL>Créditos para Lynet#8558, Puffezinhaq#0000, Morganadxana#0000, Digo20games#0000, Dhanny_mheyran#6701 e Threshlimit#0000. Conceito original de Nettoork#0000.<br><J>Versão 6.3"
+ajuda="<VP>Bem-vindos ao RockerLaunch 6!<br><N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço! Digite !help para saber como jogar.<br><br><BL>Créditos para Lynet#8558, Puffezinhaq#0000, Morganadxana#0000, Digo20games#0000, Dhanny_mheyran#6701 e Threshlimit#0000. Conceito original de Nettoork#0000.<br><J>Versão 6.4"
 objects1={1,3,6,23,33,39,60,65}
 objects2={1,3,6,23,33,39,60,65,2,68,69}
 objects3={1,3,6,23,33,39,60,65,2,68,69,4,7,10,17,35,85,90}
 objects4={1,3,6,23,33,39,60,65,2,68,69,4,7,10,17,35,85,90,40,61,67}
-managers={"Threshlimit#0000","Morganadxana#0000","Lynet#8558","Puffezinhaq#0000","Digo20games#0000","Viego#0345","Alisson#3938"} -- contribuidores
+managers={"Morganadxana#0000","Lynet#8558","Puffezinhaq#0000","Digo20games#0000","Viego#0345","Leblanc#5342","Irelia#7317"} -- contribuidores
 for _,f in next,{"cancel","set","get","help","fc","ms"} do
 	system.disableChatCommandDisplay(f)
 end
@@ -213,7 +213,7 @@ function eventLoop(p,f)
 		if f >= 5000 then
 			if p > 123000 and mode == "building" then
 				mode="fly"
-				showMessage("<R>Tempo esgotado! Está na hora de voar!<br><ROSE><b>Atenção! Objetos voadores estão caindo do céu!</b>")
+				showMessage("<R>Tempo esgotado! Está na hora de voar!")
 				for n,player in pairs(tfm.get.room.playerList) do
 					tfm.exec.attachBalloon(n,false)
 					if tfm.get.room.playerList[n].isShaman then
@@ -222,46 +222,51 @@ function eventLoop(p,f)
 				end
 			end
 		end
-		if isf < 600 and isf >= 480 then
+		if isf == 540 then
+			showMessage("<ROSE><b>Atenção! Objetos voadores estão caindo do céu!</b>")
+		end
+		if isf < 540 and isf >= 450 then
 			tfm.exec.addShamanObject(objects1[math.random(#objects1)], math.random(-400,2000), 1, 0, 0, 0, false)
-		elseif isf < 480 and isf >= 360 then
+		elseif isf < 450 and isf >= 360 then
 			for i=1,2 do
 				tfm.exec.addShamanObject(objects2[math.random(#objects2)], math.random(-400,2000), 1, 0, 0, 0, false)
 			end
-		elseif isf < 360 and isf >= 300 then
+		elseif isf < 360 and isf >= 240 then
 			for i=1,2 do
 				tfm.exec.addShamanObject(objects3[math.random(#objects3)], math.random(-400,2000), 1, 0, 0, 0, false)
 			end
-		elseif isf < 300 and isf >= 10 then
+		elseif isf < 240 and isf >= 10 then
 			for i=1,3 do
 				tfm.exec.addShamanObject(objects4[math.random(#objects4)], math.random(-400,2000), 1, 0, 0, 0, false)
 			end
 		end
-		if isf == 300 then
+		if isf == 240 then
 			showMessage("<R><b>Atenção!</b> Meteoros estão caindo do céu!")
 		end
 		if isf == 100 then
 			showMessage("<R><b>Os meteoros estão gigantes! Tenham muito cuidado!</b>")
 		end
-		if isf < 300 and isf >= 200 then
-			if isf % 3 == 0 then
-				tfm.exec.addPhysicObject(id, math.random(-300,1900), 1, asteroid_1)
-				tfm.exec.addImage("182dc62db5c.png","+"..id.."",-23,-17,n,0.125,0.125)
-			end
-		elseif isf < 200 and isf >= 100 then
-			if isf % 4 == 0 then
-		 		tfm.exec.addPhysicObject(id, math.random(-300,1900), 1, asteroid_2)
-		 		tfm.exec.addImage("182dc62db5c.png","+"..id.."",-46,-32,n,0.25,0.25)
-			end
-		elseif isf < 100 and isf >= 50 then
-			if isf % 5 == 0 then
-				tfm.exec.addPhysicObject(id, math.random(-300,1900), 1, asteroid_3)
-				tfm.exec.addImage("182dc62db5c.png","+"..id.."",-92,-60,n,0.5,0.5)
-			end
-		elseif isf < 50 and isf >= 10 then
-			if isf % 6 == 0 then
-				tfm.exec.addPhysicObject(id, math.random(-300,1900), 1, asteroid_4)
-				tfm.exec.addImage("182dc62db5c.png","+"..id.."",-184,n,nil)
+		if p >= 150000 then
+			if isf < 240 and isf >= 160 then
+				if isf % 3 == 0 then
+					tfm.exec.addPhysicObject(id, math.random(-300,1900), 1, asteroid_1)
+					tfm.exec.addImage("182dc62db5c.png","+"..id.."",-23,-17,n,0.125,0.125)
+				end
+			elseif isf < 160 and isf >= 100 then
+				if isf % 4 == 0 then
+		 			tfm.exec.addPhysicObject(id, math.random(-300,1900), 1, asteroid_2)
+		 			tfm.exec.addImage("182dc62db5c.png","+"..id.."",-46,-32,n,0.25,0.25)
+				end
+			elseif isf < 100 and isf >= 50 then
+				if isf % 5 == 0 then
+					tfm.exec.addPhysicObject(id, math.random(-300,1900), 1, asteroid_3)
+					tfm.exec.addImage("182dc62db5c.png","+"..id.."",-92,-60,n,0.5,0.5)
+				end
+			elseif isf < 50 and isf >= 10 then
+				if isf % 6 == 0 then
+					tfm.exec.addPhysicObject(id, math.random(-300,1900), 1, asteroid_4)
+					tfm.exec.addImage("182dc62db5c.png","+"..id.."",-184,n,nil)
+				end
 			end
 		end
 	else
@@ -302,7 +307,7 @@ function eventPlayerDied(name)
 		if i==0 then
 			tfm.exec.setGameTime(5)
 		elseif i==1 then
-			tfm.exec.setGameTime(30)
+			tfm.exec.setGameTime(20)
 		end
 		if passed >= 135 then
 			tfm.exec.setPlayerScore(name,1,true)
