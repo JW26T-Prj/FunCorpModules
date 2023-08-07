@@ -4,7 +4,10 @@ end
 debug.disableEventLog(true)
 system.disableChatCommandDisplay("reset")
 tfm.exec.newGame("@7917999")
-changed=false; xml2='';
+changed=false; xml2=''; data={};
+for i=0,8 do
+	system.disableChatCommandDisplay(tostring(i))
+end
 
 function showMessage(message,name)
 	temp_text=string.gsub(message,"<b>","")
@@ -65,6 +68,75 @@ function eventChatCommand(name,message)
 		if name == "Morganadxana#0000" or name == "Ashearcher#0000" then
 			tfm.exec.newGame(xml2,false)
 			ui.removeTextArea(0,nil)
+		end
+	end
+	if message == "0" then
+		tfm.exec.removeImage(data[name].id)
+		data[name].s=0
+	end
+	for i=1,8 do
+		if message == tostring(i) then
+			data[name].s=i
+		end
+	end
+end
+function eventKeyboard(name,key,down,x,y)
+	if key >= 0 and key <= 3 then
+		if data[name] and data[name].s > 0 then
+			if key == 2 then
+				tfm.exec.removeImage(data[name].id)
+				displayShark(name,data[name].s,false)
+			elseif key == 0 then
+				tfm.exec.removeImage(data[name].id)
+				displayShark(name,data[name].s,true)
+			end
+		end
+	end
+end
+function displayShark(name,type,reverse)
+	if data[name].s == 1 then
+		data[name].id=tfm.exec.addImage("189746ed93c.png", "$"..name.."", -80, -69, nil, 0.25, 0.25)
+	elseif data[name].s == 2 then
+		if reverse == true then
+			data[name].id=tfm.exec.addImage("1860ee201fd.png","$"..name.."", -185, -40, nil, 1, 1)
+		else
+			data[name].id=tfm.exec.addImage("1860ee201fd.png","$"..name.."", 185, -40, nil, -1, 1)
+		end
+	elseif data[name].s == 3 then
+		if reverse == false then
+			data[name].id=tfm.exec.addImage("1883efa1974.png","$"..name.."", -230, -55, nil)
+		else
+			data[name].id=tfm.exec.addImage("1883efa1974.png","$"..name.."", 230, -55, nil, -1, 1)
+		end
+	elseif data[name].s == 4 then
+		if reverse == false then
+			data[name].id=tfm.exec.addImage("1883efb5982.png","$"..name.."", -300, -80, nil)
+		else
+			data[name].id=tfm.exec.addImage("1883efb5982.png","$"..name.."", 300, -80, nil, -1, 1)
+		end
+	elseif data[name].s == 5 then
+		if reverse == false then
+			data[name].id=tfm.exec.addImage("185c2e9722e.png", "$"..name.."", 54, -70, nil, -1, 1)
+		else
+			data[name].id=tfm.exec.addImage("185c2e9722e.png", "$"..name.."", -54, -70, nil)
+		end
+	elseif data[name].s == 6 then
+		if reverse == false then
+			data[name].id=tfm.exec.addImage("18756e28db6.png", "$"..name.."", -150, -48, nil,0.5,0.5)
+		else
+			data[name].id=tfm.exec.addImage("18756e28db6.png", "$"..name.."", 150, -48, nil,-0.5,0.5)
+		end
+	elseif data[name].s == 7 then
+		if reverse == false then
+			data[name].id=tfm.exec.addImage("18756e2e178.png", "$"..name.."", -140, -60, nil,0.5,0.5)
+		else
+			data[name].id=tfm.exec.addImage("18756e2e178.png", "$"..name.."", 128, -60, nil,-0.5,0.5)
+		end
+	elseif data[name].s == 8 then
+		if reverse == false then
+			data[name].id=tfm.exec.addImage("18756e333d5.png", "$"..name.."", -150, -55, nil,0.5,0.5)
+		else
+			data[name].id=tfm.exec.addImage("18756e333d5.png", "$"..name.."", 150, -55, nil,-0.5,0.5)
 		end
 	end
 end
@@ -131,7 +203,14 @@ function eventNewPlayer(name)
 	if changed == true then
 		ui.setMapName("Praia da Reserva Verde - <ROSE>Morgana's Mechanical Maps<")
 	end
-	showMessage("<VP><b>Bem-vindo(a) a Praia da Reserva Verde.</b><br><br><p align='left'><N>Este é um mapa-script de praia bem grande e com diversos recursos para se divertir. Aproveite e curta!<br><br><R>Aviso: Este mapa pode consumir até 1,8GB de RAM dependendo de casos específicos.<br><br><ROSE><b>Mapa feito por Morganadxana#0000.</b><br><J>Agradecimentos especiais para <b>Draw#6691, Soft#1388, Viincenzo#9526, Lacoste#8972, Lipersz#9863, Spectra_phantom#6089, Threshlimit#0000, Star#8558 e Lanadelrey#4862.</b><br><br><N>Deseja usar este mapa-script no cafofo de sua tribo? Use o link a seguir:<br><N><VP>raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/Praia%20da%20Reserva%20Verde.lua<br><br><N>Revisão 1.7",name)
+	showMessage("<VP><b>Bem-vindo(a) a Praia da Reserva Verde.</b><br><br><p align='left'><N>Este é um mapa-script de praia bem grande e com diversos recursos para se divertir. Aproveite e curta!<br><br><R>Aviso: Este mapa pode consumir até 1,8GB de RAM dependendo de casos específicos.<br><br><ROSE><b>Mapa feito por Morganadxana#0000.</b><br><J>Agradecimentos especiais para <b>Draw#6691, Soft#1388, Viincenzo#9526, Lacoste#8972, Lipersz#9863, Spectra_phantom#6089, Threshlimit#0000, Star#8558 e Lanadelrey#4862.</b><br><br><N>Deseja usar este mapa-script no cafofo de sua tribo? Use o link a seguir:<br><N><VP>raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/Praia%20da%20Reserva%20Verde.lua<br><br><N>Revisão 2.0<br><br<BL>Digite ! juntamente com um número (ex.: !1) para virar um animal marinho.",name)
+	newData={
+		["s"]=0; ["id"]=-1;
+	};
+	data[name] = newData;
+	for i=0,3 do
+		system.bindKeyboard(name,i,true,true)
+	end
 end
 function eventLoop(p,f)
 	if changed == true then
