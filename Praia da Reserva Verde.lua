@@ -34,11 +34,11 @@ function showNPCs(name)
 end
 function showWater(name)
 for i=0,5 do
- 	tfm.exec.addImage("1897a810bb2.png", "!-1023", -1200+(i*2400), 1385, nil, 1, 1, 0, 1)
+ 	tfm.exec.addImage("1897a810bb2.png", "!-1023", -1200+(i*2400), 1385, name, 1, 1, 0, 1)
 end
 for i=0,11 do
-		tfm.exec.addImage("1897a80b341.png", "!-1024", -1200+(i*1200), 1400, nil, 5, 1, 0, 1)
-		tfm.exec.addImage("1897a80b341.png", "!-1024", -1200+(i*1200), 6400, nil, 5, -1, 0, 1)
+		tfm.exec.addImage("1897a80b341.png", "!-1024", -1200+(i*1200), 1400, name, 5, 1, 0, 1)
+		tfm.exec.addImage("1897a80b341.png", "!-1024", -1200+(i*1200), 6400, name, 5, -1, 0, 1)
 end
 	tfm.exec.addImage("1883b1394a4.png","!1",2500,100,name,0.5,0.5)
 	tfm.exec.addImage("17be536e980.png","?1",-800,3680,name)
@@ -98,45 +98,45 @@ function displayShark(name,type,reverse)
 		data[name].id=tfm.exec.addImage("189746ed93c.png", "$"..name.."", -80, -69, nil, 0.25, 0.25)
 	elseif data[name].s == 2 then
 		if reverse == true then
-			data[name].id=tfm.exec.addImage("1860ee201fd.png","$"..name.."", -185, -40, nil, 1, 1)
+			data[name].id=tfm.exec.addImage("1860ee201fd.png","$"..name.."", -185, -35, nil, 1, 1)
 		else
-			data[name].id=tfm.exec.addImage("1860ee201fd.png","$"..name.."", 185, -40, nil, -1, 1)
+			data[name].id=tfm.exec.addImage("1860ee201fd.png","$"..name.."", 185, -35, nil, -1, 1)
 		end
 	elseif data[name].s == 3 then
 		if reverse == false then
-			data[name].id=tfm.exec.addImage("1883efa1974.png","$"..name.."", -230, -55, nil)
+			data[name].id=tfm.exec.addImage("1883efa1974.png","$"..name.."", -230, -50, nil)
 		else
-			data[name].id=tfm.exec.addImage("1883efa1974.png","$"..name.."", 230, -55, nil, -1, 1)
+			data[name].id=tfm.exec.addImage("1883efa1974.png","$"..name.."", 230, -50, nil, -1, 1)
 		end
 	elseif data[name].s == 4 then
 		if reverse == false then
-			data[name].id=tfm.exec.addImage("1883efb5982.png","$"..name.."", -300, -80, nil)
+			data[name].id=tfm.exec.addImage("1883efb5982.png","$"..name.."", -300, -75, nil)
 		else
-			data[name].id=tfm.exec.addImage("1883efb5982.png","$"..name.."", 300, -80, nil, -1, 1)
+			data[name].id=tfm.exec.addImage("1883efb5982.png","$"..name.."", 300, -75, nil, -1, 1)
 		end
 	elseif data[name].s == 5 then
 		if reverse == false then
-			data[name].id=tfm.exec.addImage("185c2e9722e.png", "$"..name.."", 54, -70, nil, -1, 1)
+			data[name].id=tfm.exec.addImage("185c2e9722e.png", "$"..name.."", 54, -65, nil, -1, 1)
 		else
-			data[name].id=tfm.exec.addImage("185c2e9722e.png", "$"..name.."", -54, -70, nil)
+			data[name].id=tfm.exec.addImage("185c2e9722e.png", "$"..name.."", -54, -65, nil)
 		end
 	elseif data[name].s == 6 then
 		if reverse == false then
-			data[name].id=tfm.exec.addImage("18756e28db6.png", "$"..name.."", -150, -48, nil,0.5,0.5)
+			data[name].id=tfm.exec.addImage("18756e28db6.png", "$"..name.."", -150, -43, nil,0.5,0.5)
 		else
-			data[name].id=tfm.exec.addImage("18756e28db6.png", "$"..name.."", 150, -48, nil,-0.5,0.5)
+			data[name].id=tfm.exec.addImage("18756e28db6.png", "$"..name.."", 150, -43, nil,-0.5,0.5)
 		end
 	elseif data[name].s == 7 then
 		if reverse == false then
-			data[name].id=tfm.exec.addImage("18756e2e178.png", "$"..name.."", -140, -60, nil,0.5,0.5)
+			data[name].id=tfm.exec.addImage("18756e2e178.png", "$"..name.."", -140, -55, nil,0.5,0.5)
 		else
-			data[name].id=tfm.exec.addImage("18756e2e178.png", "$"..name.."", 128, -60, nil,-0.5,0.5)
+			data[name].id=tfm.exec.addImage("18756e2e178.png", "$"..name.."", 128, -55, nil,-0.5,0.5)
 		end
 	elseif data[name].s == 8 then
 		if reverse == false then
-			data[name].id=tfm.exec.addImage("18756e333d5.png", "$"..name.."", -150, -55, nil,0.5,0.5)
+			data[name].id=tfm.exec.addImage("18756e333d5.png", "$"..name.."", -150, -50, nil,0.5,0.5)
 		else
-			data[name].id=tfm.exec.addImage("18756e333d5.png", "$"..name.."", 150, -55, nil,-0.5,0.5)
+			data[name].id=tfm.exec.addImage("18756e333d5.png", "$"..name.."", 150, -50, nil,-0.5,0.5)
 		end
 	end
 end
