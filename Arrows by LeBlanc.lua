@@ -1,4 +1,4 @@
-﻿-- Module #arrows, versão v1.0, desenvolvido por Leblanc#5342.
+-- Module #arrows, versão v1.1, desenvolvido por Leblanc#5342.
 
 -- Se estiver rodando este código em uma sala FunCorp, insira os nicknames dos membros abaixo.
 admin={"Leblanc#5342"} -- Insira os nomes aqui! // Insert the nicknames here!
@@ -17,7 +17,7 @@ for _,f in next,{"fc","reset"} do
 end
 modo="inicial"; lang={}; map="@7938991"; ratos=0; vivos=0; round=0; level=0; imgs={}; data={}; symbol={"⇦","⇧","⇨","⇩"}; keys={};
 lang.br = {
-	welcome = "<ROSE><b>Bem-vindo ao module #arrows!</b><br><N>O objetivo deste module é ser rápido e preciso, usando o teclado para responder a sequência de setas que aparecerá na sua tela!<br><br><VP>Module criado por Leblanc#5342. Ideia original de Shun_kazami#7014.<br><BL><b>Versão 1.0</b>",
+	welcome = "<ROSE><b>Bem-vindo ao module #arrows!</b><br><N>O objetivo deste module é ser rápido e preciso, usando o teclado para responder a sequência de setas que aparecerá na sua tela!<br><br><VP>Module criado por Leblanc#5342. Ideia original de Shun_kazami#7014.<br><BL><b>Versão 1.1</b>",
 	starting = "<J>Atenção! O jogo será iniciado em 5 segundos!",
 	wrong = "<R>Você errou!",
 	accept = "<VP>Parabéns! Você conseguiu avançar desta fase!",
@@ -29,7 +29,7 @@ lang.br = {
 	iswinner = " é o grande vencedor!",
 }
 lang.en = {
-	welcome = "<ROSE><b>Welcome to the #arrows module!</b><br><N>The goal of this module is to use your keyboard to follow the sequence of arrows that will show on your screen! You need to be fast!<br><br><VP>Module developed by Leblanc#5342. Original idea from Shun_kazami#7014.<br><BL><b>Version 1.0</b>",
+	welcome = "<ROSE><b>Welcome to the #arrows module!</b><br><N>The goal of this module is to use your keyboard to follow the sequence of arrows that will show on your screen! You need to be fast!<br><br><VP>Module developed by Leblanc#5342. Original idea from Shun_kazami#7014.<br><BL><b>Version 1.1</b>",
 	starting = "<J>The game will be started in 5 seconds!",
 	wrong = "<R>Oh no! Wrong key!",
 	accept = "<VP>Congratulations! You passed this round!",
@@ -92,35 +92,35 @@ function exibeSetas()
 		for i=1,5 do
 			direction=math.random(0,3)
 			table.insert(keys,tonumber(direction))
-			ui.addTextArea(i,"<font size='90'><font color='#ffffff'><font face='Segoe UI Emoji,Segoe UI Symbol'>"..symbol[direction+1].."",nil,75+(i*100),150,100,110,0,0,1.0,true)
+			ui.addTextArea(i,"<font size='90'><font color='#ffffff'><font face='Segoe UI Emoji,Segoe UI Symbol'>"..symbol[direction+1].."",nil,75+(i*100),150,100,110,0,0,1.1,true)
 		end
 	elseif level >= 3 and level <= 4 then
 		for i=1,10 do
 			direction=math.random(0,3)
 			table.insert(keys,tonumber(direction))
-			ui.addTextArea(i,"<font size='90'><font color='#ffffff'><font face='Segoe UI Emoji,Segoe UI Symbol'>"..symbol[direction+1].."",nil,-35+(i*75),150,100,110,0,0,1.0,true)
+			ui.addTextArea(i,"<font size='90'><font color='#ffffff'><font face='Segoe UI Emoji,Segoe UI Symbol'>"..symbol[direction+1].."",nil,-35+(i*75),150,100,110,0,0,1.1,true)
 		end
 	elseif level >= 5 and level <= 6 then
 		for i=1,10 do
 			direction=math.random(0,3)
 			table.insert(keys,tonumber(direction))
-			ui.addTextArea(i,"<font size='90'><font color='#ffffff'><font face='Segoe UI Emoji,Segoe UI Symbol'>"..symbol[direction+1].."",nil,-35+(i*75),120,100,110,0,0,1.0,true)
+			ui.addTextArea(i,"<font size='90'><font color='#ffffff'><font face='Segoe UI Emoji,Segoe UI Symbol'>"..symbol[direction+1].."",nil,-35+(i*75),120,100,110,0,0,1.1,true)
 		end
 		for i=11,15 do
 			direction=math.random(0,3)
 			table.insert(keys,tonumber(direction))
-			ui.addTextArea(i,"<font size='90'><font color='#ffffff'><font face='Segoe UI Emoji,Segoe UI Symbol'>"..symbol[direction+1].."",nil,75+((-10+i)*100),190,100,110,0,0,1.0,true)
+			ui.addTextArea(i,"<font size='90'><font color='#ffffff'><font face='Segoe UI Emoji,Segoe UI Symbol'>"..symbol[direction+1].."",nil,75+((-10+i)*100),190,100,110,0,0,1.1,true)
 		end
 	elseif level >= 7 then
 		for i=1,10 do
 			direction=math.random(0,3)
 			table.insert(keys,tonumber(direction))
-			ui.addTextArea(i,"<font size='90'><font color='#ffffff'><font face='Segoe UI Emoji,Segoe UI Symbol'>"..symbol[direction+1].."",nil,-35+(i*75),120,100,110,0,0,1.0,true)
+			ui.addTextArea(i,"<font size='90'><font color='#ffffff'><font face='Segoe UI Emoji,Segoe UI Symbol'>"..symbol[direction+1].."",nil,-35+(i*75),120,100,110,0,0,1.1,true)
 		end
 		for i=11,20 do
 			direction=math.random(0,3)
 			table.insert(keys,tonumber(direction))
-			ui.addTextArea(i,"<font size='90'><font color='#ffffff'><font face='Segoe UI Emoji,Segoe UI Symbol'>"..symbol[direction+1].."",nil,-35+((-10+i)*75),190,100,110,0,0,1.0,true)
+			ui.addTextArea(i,"<font size='90'><font color='#ffffff'><font face='Segoe UI Emoji,Segoe UI Symbol'>"..symbol[direction+1].."",nil,-35+((-10+i)*75),190,100,110,0,0,1.1,true)
 		end
 	end
 	if level == 1 then tfm.exec.setGameTime(10);
@@ -166,7 +166,7 @@ function eventLoop(pass,rem)
 	end
 	if remain <= 1 then
 		if modo == "espera" or modo == "inicial" then
-			if round >= 40 then
+			if round > 40 then
 				showMessage(text.end1..vivos..text.end2)
 				for name,player in next,tfm.get.room.playerList do
 					if tfm.get.room.playerList[name].isDead == false then
@@ -176,7 +176,10 @@ function eventLoop(pass,rem)
 				end
 				modo="fim";
 			end
-			if round > 10 and vivos == 1 and ratos > 1 then
+			if vivos == 0 then
+				modo="fim";
+				showMessage(text.nowinners)
+			elseif round > 10 and vivos == 1 and ratos > 1 then
 				modo="fim";
 				for name,player in next,tfm.get.room.playerList do
 					if tfm.get.room.playerList[name].isDead == false then
@@ -185,8 +188,7 @@ function eventLoop(pass,rem)
 						tfm.exec.playerVictory(name)
 					end
 				end
-			end
-			if vivos > 1 and round < 40 then
+			elseif vivos >= 1 and round <= 40 then
 				if round % 5 == 0 then
 					if level < 8 then
 						if round == 10 then
@@ -198,29 +200,21 @@ function eventLoop(pass,rem)
 					end
 				end
 				exibeSetas();
-			elseif vivos == 0 then
+			else
+				for name,player in next,tfm.get.room.playerList do
+					if tfm.get.room.playerList[name].isDead == false then
+						tfm.exec.giveCheese(name)
+						tfm.exec.playerVictory(name)
+					end
+				end
 				modo="fim";
-				showMessage(text.nowinners)
-			end
-			if vivos == 1 and round <= 10 then
-				if round % 5 == 0 then
-					if level < 8 then
-						if round == 10 then
-							showMessage(text.winners)
-						end
-						tfm.exec.setGameTime(5)
-						level=level+1;
-						if level > 1 then showMessage(text.increase); end
-					end
-				end
-				exibeSetas();
 			end
 		end
 	end
 	if remain <= 1 and modo == "fim" then
 		reset();
 	end
-	ui.setMapName("<ROSE>#arrows - Leblanc#5342   <G>|   <N>Round : <V>"..round.."/40   <G>|   <N>Mice : <V>"..vivos.."/"..ratos.."   <G>|   <N>"..text.difficulty.." : <V>"..level.."   <G>|   <J>v1.0<")
+	ui.setMapName("<ROSE>#arrows - Leblanc#5342   <G>|   <N>Round : <V>"..round.."/40   <G>|   <N>Mice : <V>"..vivos.."/"..ratos.."   <G>|   <N>"..text.difficulty.." : <V>"..level.."   <G>|   <J>v1.1<")
 end
 function eventNewGame()
 	ratos=0; vivos=0;
