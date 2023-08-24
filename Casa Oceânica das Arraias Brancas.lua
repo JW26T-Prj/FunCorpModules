@@ -1,4 +1,4 @@
-﻿admin={""} -- Insiram seus nicknames aqui!
+admin={""} -- Insiram seus nicknames aqui!
 
 -- NÃO MEXA EM NADA A PARTIR DESTA LINHA!!
 for _,f in next,{"AutoNewGame","AfkDeath","AutoShaman","MinimalistMode","PhysicalConsumables"} do
@@ -6,7 +6,7 @@ for _,f in next,{"AutoNewGame","AfkDeath","AutoShaman","MinimalistMode","Physica
 end
 for i=0,13 do system.disableChatCommandDisplay(tostring(i)); end
 system.disableChatCommandDisplay("mode");
-for _,i in next,{"d1","d2","d3"} do	system.disableChatCommandDisplay(i); end
+for _,i in next,{"d1","d2","d3"} do system.disableChatCommandDisplay(i); end
 debug.disableEventLog(true)
 map_depth=1;
 
@@ -24,6 +24,10 @@ function showMessage(message,name)
 	else
 		ui.addPopup(0,0,temp_text,name,250,75,400,true)
 	end
+end
+
+function showNPCs(name)
+	tfm.exec.addNPC("Mayra Flowers",{title = 1, look = "112;0,4,0,74_212121+d2d2d2,39,39,44,0,1",x = 5205,y = 727,female = true,lookLeft = true,lookAtPlayer = true,interactive = true},name)
 end
 
 function verifyAdmin(name)
@@ -62,7 +66,7 @@ function showWater(name)
 	end
 	tfm.exec.addImage("189749ce857.png", "?1", -1200, 1400, name, 8, 6, 0, 1)
 	tfm.exec.addImage("189749ce857.png", "!-1023", -1200, 1934, name, 8, 6, 0, 0.6)
-	tfm.exec.addImage("1897a80b341.png", "!-1023", -1200, 1834, name, 30, 1.1,0,0.75)
+	tfm.exec.addImage("1897a80b341.png", "!-1023", -1200, 1834, name, 44, 1.1,0,0.75)
 	for i=0,6 do
 		tfm.exec.addImage("189746fe3a4.png", "!0", -1200+(i*2000), 2995-y_factor, name, 1, 1, 0, 1)
 		tfm.exec.addImage("189746fe3a4.png", "!0", -1200+(i*2000), 3720-y_factor, name, 1, -3, 0, 1)
@@ -206,6 +210,12 @@ function displayShark(name,type,reverse)
 	end
 end
 
+function eventTalkToNPC(name, npc)
+	if npc == "Mayra Flowers" then
+		showMessage("<V>[Mayra Flowers] <N>Muuuuuuuu! <font face='Segoe UI Symbol'>(●'◡'●) 🐄 <font face='Verdana'>",name)
+	end
+end
+
 function eventChatCommand(name,message)
 	if changed == true then
 		if message == "0" then
@@ -230,8 +240,8 @@ function eventChatCommand(name,message)
 					tfm.exec.removeImage(data[name].backId3[i],true)
 				end end
 				for i=0,5 do for j=0,1 do table.insert(data[name].backId3,tfm.exec.addImage("181b9de5c95.png","?1",-1200+(i*1920),-1050+(j*1080),name,1,1,0,0.15)) end end
-				for _,h in next,{0,2,4} do table.insert(data[name].backId3,tfm.exec.addImage("18773217882.png","?1",-1200+(h*1900),888,name,1,1,0,0.2)); end
-				for _,h in next,{1,3} do table.insert(data[name].backId3,tfm.exec.addImage("18773217882.png","?1",700+(h*1900),888,name,-1,1,0,0.2)) end
+				for _,h in next,{0,2,4} do table.insert(data[name].backId3,tfm.exec.addImage("18773217882.png","?1",-1200+(h*1900),888,name,1,1,0,0.15)); end
+				for _,h in next,{1,3} do table.insert(data[name].backId3,tfm.exec.addImage("18773217882.png","?1",700+(h*1900),888,name,-1,1,0,0.15)) end
 				data[name].backId2 = tfm.exec.addImage("1883b1394a4.png","!1",1040,-330,name,1,1,0,0.4)
 				data[name].backId1 = tfm.exec.addImage("17e937f4f5a.png","?1",-800,16500,name,72,-3.6,0,0.75)
 			end
@@ -244,9 +254,9 @@ function eventChatCommand(name,message)
 						tfm.exec.removeImage(data[name].backId3[i],true)
 				end end
 				for i=0,5 do for j=0,1 do table.insert(data[name].backId3,tfm.exec.addImage("181b9de5c95.png","?1",-1200+(i*1920),-1050+(j*1080),name,1,1,0,1.5)) end end
-				for _,h in next,{0,2,4} do table.insert(data[name].backId3,tfm.exec.addImage("18773217882.png","?1",-1200+(h*1900),888,name,1,1,0,0.1)); end
-				for _,h in next,{1,3} do table.insert(data[name].backId3,tfm.exec.addImage("18773217882.png","?1",700+(h*1900),888,name,-1,1,0,0.1)) end
-				data[name].backId2 = tfm.exec.addImage("1883b125925.png", "?1", 1800, 500,name,1,1)
+				for _,h in next,{0,2,4} do table.insert(data[name].backId3,tfm.exec.addImage("18773217882.png","?1",-1200+(h*1900),888,name,1,1,0,0.05)); end
+				for _,h in next,{1,3} do table.insert(data[name].backId3,tfm.exec.addImage("18773217882.png","?1",700+(h*1900),888,name,-1,1,0,0.05)) end
+				data[name].backId2 = tfm.exec.addImage("1883b125925.png", "?1", 1800, 500,name,1,1,0,2)
 				data[name].backId1 = tfm.exec.addImage("17fe3741e5f.jpg","?1",0,50,name,13,12,0,1)
 			end
 			night=2		
@@ -322,9 +332,10 @@ function eventNewPlayer(name)
 			system.bindKeyboard(name,i,true,true)
 		end
 		ui.setMapName("<N>Casa Oceânica das Arraias Brancas - <ROSE>Morgana's Mechanical Maps<")
-		showMessage("<VP><b>Bem-vindo(a) a Casa Oceânica das Arraias Brancas.</b><br><br><p align='left'><N>Este é um mapa-script cujo intuito é simular uma casa-resort de luxo no meio do oceano. Aproveite e curta!<br><br><ROSE><b>Mapa feito por Morganadxana#0000.</b><br><J>Agradecimentos especiais para <b>Lynet#8558, Shun_kazami#7014, Maramara4#0000, Lacoste#8972, Irelia#7317, Some#2636, Jeancrazzy#0000 e Bielzinnfx#3859.</b><br><br><N>Deseja usar este mapa-script no cafofo de sua tribo? Use o link a seguir:<br><N><VP>raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/Casa%20Oce%C3%A2nica%20das%20Arraias%20Brancas.lua<br><br><N>Revisão 1.0<br><br<BL>Digite ! juntamente com um número de 1 a 13 (ex.: !1) para virar um animal marinho.",name)
+		showMessage("<VP><b>Bem-vindo(a) a Casa Oceânica das Arraias Brancas.</b><br><br><p align='left'><N>Este é um mapa-script cujo intuito é simular uma casa-resort de luxo no meio do oceano. Aproveite e curta!<br><br><ROSE><b>Mapa feito por Morganadxana#0000.</b><br><J>Agradecimentos especiais para <b>Lynet#8558, Shun_kazami#7014, Maramara4#0000, Lacoste#8972, Irelia#7317, Some#2636, Jeancrazzy#0000 e Bielzinnfx#3859.</b><br><br><N>Deseja usar este mapa-script no cafofo de sua tribo? Use o link a seguir:<br><N><VP>raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/Casa%20Oce%C3%A2nica%20das%20Arraias%20Brancas.lua<br><br><N>Revisão 1.0.1<br><br<BL>Digite ! juntamente com um número de 0 a 13 (ex.: !1) para virar um animal marinho.",name)
 		ui.setBackgroundColor("#000000")
 		showWater(name)
+		showNPCs(name)
 		if string.find(tfm.get.room.name,name) then
 			table.insert(admin,name)
 		end
@@ -348,7 +359,7 @@ function eventLoop(p,r)
 						tfm.exec.setPlayerGravityScale(name,0.95)
 					end
 				else
-					tfm.exec.setPlayerGravityScale(name,1-(tfm.get.room.playerList[name].y-1300)*0.00042)
+					tfm.exec.setPlayerGravityScale(name,1)
 				end
 			end
 		end
