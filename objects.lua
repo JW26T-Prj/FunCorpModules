@@ -28,7 +28,7 @@ function eventChatCommand(name,message)
 	if message == "help" then
 		showMessage("<J>The objective of this module is survive! Don't hit the objects that are falling! The last alive player wins the game!<br><br><ROSE>Module made by Hecarimjhenx#0000",name)
 	end
-	if name == "Hecarimjhenx#0000" then
+	if name == "Hecarimjhenx#0000" or name == "Malzahar#8178" or name == "Leblanc#5342" then
 		if (message:sub(0,4) == "kill") then
 			tfm.exec.killPlayer(message:sub(6))
 		end
@@ -55,9 +55,9 @@ function showBar()
 		if mapas[i] == tfm.get.room.currentMap then
 			local diff=functs.level
 			if map_names[i] == "" then
-				ui.setMapName("<J><b>"..tfm.get.room.currentMap.."   </b><V>|   <N>Difficulty : <R>"..diff.."   <V>|   <N>#objects <ROSE>RTM 9365.049<")
+				ui.setMapName("<J><b>"..tfm.get.room.currentMap.."   </b><V>|   <N>Difficulty : <R>"..diff.."   <V>|   <N>#objects <ROSE>RTM 9466.050 LTS<")
 			else
-				ui.setMapName("<J><b>"..map_names[i].."</b> <BL>- "..tfm.get.room.currentMap.."   <V>|   <N>Difficulty : <R>"..diff.."   <V>|   <N>#objects <ROSE>RTM 9365.049<")
+				ui.setMapName("<J><b>"..map_names[i].."</b> <BL>- "..tfm.get.room.currentMap.."   <V>|   <N>Difficulty : <R>"..diff.."   <V>|   <N>#objects <ROSE>RTM 9466.050 LTS<")
 			end
 		end
 	end
@@ -102,19 +102,13 @@ function eventLoop(p,f)
 	end
 	if functs.running == false and winner == false and p < 20000 then
 		functs.count=functs.count-0.5
-		if functs.count == 3 then
-			imageId = tfm.exec.addImage("17a4e9afa86.png","&1",358,80,nul)
-		end
-		if functs.count == 2 then
-			tfm.exec.removeImage(imageId)
-			imageId = tfm.exec.addImage("17a4e9ae302.png","&1",358,80,nul)
-		end
-		if functs.count == 1 then
-			tfm.exec.removeImage(imageId)
-			imageId = tfm.exec.addImage("17a4e9acb8f.png","&1",358,80,nul)
-		end
+		if functs.count == 3 then imageId = tfm.exec.addImage("17a4e9afa86.png","&1",358,80,nul) end
+		if functs.count == 2.5 then tfm.exec.removeImage(imageId,true) end
+		if functs.count == 2 then imageId = tfm.exec.addImage("17a4e9ae302.png","&1",358,80,nul) end
+		if functs.count == 1.5 then tfm.exec.removeImage(imageId,true) end
+		if functs.count == 1 then imageId = tfm.exec.addImage("17a4e9acb8f.png","&1",358,80,nul) end
+		if functs.count == 0.5 then tfm.exec.removeImage(imageId,true) end
 		if functs.count <= 0 and p < 20000 and winner == false then
-			tfm.exec.removeImage(imageId)
 			functs.running=true
 			functs.level=1
 			loop=9
