@@ -18,7 +18,7 @@ asteroid_1={type = 12,width = 40,height = 20,foreground = false,friction = 3,res
 asteroid_2={type = 12,width = 80,height = 40,foreground = false,friction = 4,restitution = 0.15,angle = 0, color = 0, miceCollision = true, groundCollision = true, dynamic = true, fixedRotation = false, mass = 5000}
 asteroid_3={type = 12,width = 160,height = 80,foreground = false,friction = 5,restitution = 0.2,angle = 0, color = 0, miceCollision = true, groundCollision = true, dynamic = true, fixedRotation = false, mass = 15000}
 asteroid_4={type = 12,width = 320,height = 160,foreground = false,friction = 7,restitution = 0.25,angle = 0, color = 0, miceCollision = true, groundCollision = true, dynamic = true, fixedRotation = false, mass = 30000}
-ajuda="<VP>Bem-vindos ao RockerLaunch 6!<br><N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço! Digite !help para saber como jogar.<br><br><BL>Créditos para Lynet#8558, Puffezinhaq#0000, Morganadxana#0000, Digo20games#0000, Dhanny_mheyran#6701 e Threshlimit#0000. Conceito original de Nettoork#0000.<br><J>Versão 6.5.0"
+ajuda="<VP>Bem-vindos ao RockerLaunch 6!<br><N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço! Digite !help para saber como jogar.<br><br><BL>Créditos para Lynet#8558, Puffezinhaq#0000, Morganadxana#0000, Digo20games#0000, Dhanny_mheyran#6701 e Threshlimit#0000. Conceito original de Nettoork#0000.<br><J>Versão 6.5.1"
 objects1={1,3,6,23,33,39,60,65}
 objects2={1,3,6,23,33,39,60,65,2,68,69}
 objects3={1,3,6,23,33,39,60,65,2,68,69,4,7,10,17,35,85,90}
@@ -171,7 +171,7 @@ function eventLoop(p,f)
 		local isf=math.floor(f/500)
 		local m=math.floor(f/60000)
 		local s=math.floor((((m*60000)-f) * -1) / 1000)
-		remain=math.floor(f/1000)-302
+		remain=math.floor(f/1000)-280
 		passed=math.floor(p/1000)
 		local mr=math.floor(remain/60)
 		local sr=math.floor(((mr*60)-remain) * -1)
@@ -198,11 +198,11 @@ function eventLoop(p,f)
 		if p > 123000 then
 			id=id+1;
 			if mode == "fly" then
-				for n,player in pairs(tfm.get.room.playerList) do
-					if player.y < 100 and p > 123000 and mode=="fly" then
-						if not tfm.get.room.playerList[n].isDead then
-							tfm.exec.giveCheese(n)
-							tfm.exec.playerVictory(n)
+				for name,player in next,tfm.get.room.playerList do
+					if tfm.get.room.playerList[name].y < 111 and p > 123000 and isf >= 3 and mode=="fly" then
+						if not tfm.get.room.playerList[name].isDead then
+							tfm.exec.giveCheese(name)
+							tfm.exec.playerVictory(name)
 							tfm.exec.setGameTime(20)
 						end
 						mode="ending"
