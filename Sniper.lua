@@ -20,19 +20,13 @@ function eventLoop(p,f)
 	if enabled == true then
 		remain=remain-0.5
 	end	
-	if remain == 3 then
-		imageId = tfm.exec.addImage("17a4e9afa86.png",":1",358,280,nul)
-	end
-	if remain == 2 then
-		tfm.exec.removeImage(imageId)
-		imageId = tfm.exec.addImage("17a4e9ae302.png",":1",358,280,nul)
-	end
-	if remain == 1 then
-		tfm.exec.removeImage(imageId)
-		imageId = tfm.exec.addImage("17a4e9acb8f.png",":1",358,280,nul)
-	end
+	if remain == 3 then imageId = tfm.exec.addImage("17a4e9afa86.png",":1",358,280,nul) end
+	if remain == 2.5 then tfm.exec.removeImage(imageId,true) end
+	if remain == 2 then imageId = tfm.exec.addImage("17a4e9ae302.png",":1",358,280,nul) end
+	if remain == 1.5 then tfm.exec.removeImage(imageId,true) end
+	if remain == 1 then imageId = tfm.exec.addImage("17a4e9acb8f.png",":1",358,280,nul) end
+	if remain == 0.5 then tfm.exec.removeImage(imageId,true) end
 	if remain == 0 then
-		tfm.exec.removeImage(imageId)
 		imageId = tfm.exec.addImage("17a4e9ab41f.png",":1",303,280,nul)
 		enabled=true;
 	end
@@ -40,7 +34,7 @@ function eventLoop(p,f)
 		ui.removeTextArea(0,nil)
 		enabled=false
 		remain=10
-		tfm.exec.removeImage(imageId)
+		tfm.exec.removeImage(imageId,true)
 	end
 	vivos=vivo-1
 end
@@ -87,7 +81,7 @@ end
 function eventNewPlayer(name)
 	tfm.exec.bindKeyboard(name,40,true,true)
 	tfm.exec.bindKeyboard(name,83,true,true)
-	tfm.exec.chatMessage("<VP><b>Sniper!</b><br><N>Sobreviva às bigornas do shaman! Criado por Hecarimjhenx#0000.<br><br>versão 1.8: mudança de comando",name)
+	tfm.exec.chatMessage("<VP><b>Sniper!</b><br><N>Sobreviva às bigornas do shaman! Criado por Hecarimjhenx#0000.<br><br>versão 1.8.1: pequenas mudanças nas imagens",name)
 end
 for name,player in pairs(tfm.get.room.playerList) do
 	eventNewPlayer(name)
