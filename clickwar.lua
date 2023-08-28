@@ -7,7 +7,7 @@ end
 sudden=false; powerups=true; winner=""; data={}; players_table={}; increase=0; intensity=40; nightmode=false; night=0; mices=0; remain=10; last_win=""; times=1; imageId=-1;
 map_det={creator="",code=""}
 enabled=false
-tfm.exec.setRoomMaxPlayers(30)
+if tfm.get.room.isTribeHouse == false then tfm.exec.setRoomMaxPlayers(30) end
 function showMessage(message,name)
 	temp_text=string.gsub(message,"<b>","")
 	temp_text=string.gsub(temp_text,"</b>","")
@@ -87,7 +87,7 @@ function eventChatCommand(name,message)
 		showMessage("The data on the ranking is temporary and will be erased when the room is finished or rebooted.",name)
 	end
 	if message == "pw" then
-		if name == "Hecarimjhenx#0000" then
+		if name == "Hecarimjhenx#0000" or name == "Leblanc#5342" or name == "Viego#0345" then
 			if powerups == true then
 				powerups=false
 			else
@@ -96,7 +96,7 @@ function eventChatCommand(name,message)
 		end
 	end
 	if message == "help" then
-		menuShow(name,"Help","The objetive of this module is kill the other players using the mouse to generate spirits.<br><br>At moment, 6 powerups are available:<br>F1 = Fast Spirits (700 points)<br>F2 = Double Power (700 points)<br>F3 = Box Meteor (550 points)<br>F4 = Night Mode (400 points)<br>F5 = Ultra Explosion (800 points)<br>F6 = Stone Meteor (750 points)<br><br>Module made by Hecarimjhenx#0000. Version RTM 6150.031 LTS",180)
+		menuShow(name,"Help","The objetive of this module is kill the other players using the mouse to generate spirits.<br><br>At moment, 6 powerups are available:<br>F1 = Fast Spirits (700 points)<br>F2 = Double Power (700 points)<br>F3 = Box Meteor (550 points)<br>F4 = Night Mode (400 points)<br>F5 = Ultra Explosion (800 points)<br>F6 = Stone Meteor (750 points)<br><br>Module made by Hecarimjhenx#0000. Version RTM 6251.032",180)
 	end
 	if message == "powerups" then
 		menuShow(name,"Powerups List","<b>F1 - Fast Spirits - 700 points</b><br>Allows you to use spirits without the default timeout.<br><b>F2 - Double Power - 700 points</b><br>Double the power of your anvils, independently of actual intensity.<br><b>F3 - Box Meteor - 550 points</b><br>Spawns a meteor of large box on the map.<br><b>F4 - Night Mode - 400 points</b><br>Blacks out the map for 2 seconds.<br><b>F5 - Ultra Explosion - 800 points</b><br>Spawns a huge amount of spirits around the map.<br><b>F6 - Stone Meteor - 750 points</b><br>Spawns a lot of stones falling from the top of map.",180)
@@ -158,7 +158,7 @@ function eventNewGame()
 		data[name].pcount=0
 		if name:sub(1,1) == "*" then
 			tfm.exec.killPlayer(name)
-			showMessage("<R>Souris aren't allowed to play on this module. Create an account or log in to play Clickwar.",name)
+			showMessage("<R>Souris aren't allowed to play on this module. Create an account or log in to play ClickWar.",name)
 		end
 	end
 	showMessage("<N>Loading current map information...<br><b>Current Map :</b> <V>"..map_det.code.."<br><N><b>Author :</b> <V>"..map_det.creator.."")
@@ -189,12 +189,12 @@ function eventLoop(pass,falt)
 	if falt < 60000 and sudden == false and falt > 50000 then
 		showMessage("<R><b>Ultra hard mode enabled!</b>",nil)
 		imageId = tfm.exec.addImage("17a4e9a853d.png",":1",240,40,nul)
-		remain=-0.5
-		ui.addTextArea(1,"",nil,-1000,-1000,3000,3000,0x000001,0x000001,0.7,false)
+		remain=-2.5
+		ui.addTextArea(1,"",nil,-1000,-1000,3000,3000,0x000001,0x000001,0.65,false)
 		sudden=true;
 	end
 	if falt < 40000 and sudden == true and falt > 19000 then
-		ui.addTextArea(1,"",nil,-1000,-1000,3000,3000,0x000001,0x000001,0.8,false)
+		ui.addTextArea(1,"",nil,-1000,-1000,3000,3000,0x000001,0x000001,0.775,false)
 	end
 	if falt < 20000 and sudden == true and falt > 9000 then
 		ui.addTextArea(1,"",nil,-1000,-1000,3000,3000,0x000001,0x000001,0.9,false)
@@ -203,30 +203,24 @@ function eventLoop(pass,falt)
 		tfm.exec.newGame("#10")
 	end
 	if prox == false then
-		ui.setMapName("<N>ClickWar <J>RTM <b>6150.031 LTS</b>   <G>|   <N>Intensity: <V>"..intensity.."   <G>|   <VP>Module made by <b>Hecarimjhenx#0000</b><")
+		ui.setMapName("<N>ClickWar <J>RTM <b>6251.032</b>   <G>|   <N>Intensity: <V>"..intensity.."   <G>|   <VP>Module made by <b>Hecarimjhenx#0000</b><")
 	else
 		ui.setMapName("<b>"..winner.."</b> <N>wons the match! Next match on "..math.floor(falt/1000).." seconds.<")
 	end
 	remain=remain-0.5
-	if remain == 3 then
-		imageId = tfm.exec.addImage("17a4e9afa86.png",":1",358,80,nul)
-	end
-	if remain == 2 then
-		tfm.exec.removeImage(imageId)
-		imageId = tfm.exec.addImage("17a4e9ae302.png",":1",358,80,nul)
-	end
-	if remain == 1 then
-		tfm.exec.removeImage(imageId)
-		imageId = tfm.exec.addImage("17a4e9acb8f.png",":1",358,80,nul)
-	end
+	if remain == 3 then imageId = tfm.exec.addImage("17a4e9afa86.png",":1",358,80,nul) end
+	if remain == 2.5 then tfm.exec.removeImage(imageId,true) end
+	if remain == 2 then imageId = tfm.exec.addImage("17a4e9ae302.png",":1",358,80,nul) end
+	if remain == 1.5 then tfm.exec.removeImage(imageId,true) end
+	if remain == 1 then imageId = tfm.exec.addImage("17a4e9acb8f.png",":1",358,80,nul) end
+	if remain == 0.5 then tfm.exec.removeImage(imageId,true) end
 	if remain == 0 then
-		tfm.exec.removeImage(imageId)
 		imageId = tfm.exec.addImage("17a4e9ab41f.png",":1",303,80,nul)
-		remain=-3.5
+		remain=-3
 		enabled=true;
 	end
-	if remain == -4 then
-		tfm.exec.removeImage(imageId)
+	if remain == -4.5 then
+		tfm.exec.removeImage(imageId,true)
 	end
 	for name,player in pairs(tfm.get.room.playerList) do
 		data[name].time=data[name].time+1
