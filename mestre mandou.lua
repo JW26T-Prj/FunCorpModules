@@ -12,7 +12,7 @@ admin={""} -- Leia abaixo / Read below!
 -- If you are running this code into a FunCorp room, insert the FunCorp names above and type !tc to enable some additional commands and functions.
 
 -- Comandos para uso de membros FunCorp e do dono da sala:
--- !command [número de 1 a 105] - Executa um comando manualmente.
+-- !command [número de 1 a 108] - Executa um comando manualmente.
 -- !tc ou !ms [texto] - Exibe uma mensagem na cor laranja.
 -- !run [@número] - Executa o mapa especificado.
 -- !kill [nick#tag] - Mata o jogador especificado.
@@ -34,20 +34,19 @@ for _,f in next,{"AutoShaman","AutoNewGame","AutoTimeLeft","DebugCommand"} do
 end
 mapas={"@6788174","@6788154","@6788715","@6788728","@6789271","@6790527","@6791838","@6789356","@6822331","@7290275","@7686598","@7750148","@7688066","@6788183","@6784965","@6789235","@6789853","@6790385","@6791944","@6801706","@6792470","@6806109","@6821950","@6866406","@6866437","@6885971","@5328362","@5957905","@7055459","@7214363","@6792516","@6825340","@6788693","@6789272","@6799996","@6803018","@6859175","@6907177","@7404327","@7382263","@6885799","@6790912","@6833993","@7721192","@7309605","@6788861","@6789249","@6790484","@7921432","@6794050","@6830799","@6866549","@6834529","@6876563","@6888512","@6893463","@7431981","@7146925","@6937148","@6356881","@6789280","@6790895","@6799997","@6789324","@6803128","@6900149","@3832586","@6791871","@6811934","@6876638","@6892608","@6982387","@7404106","@7405103","@7400694","@7400678","@7412412","@7412422","@7755685","@6843950","@6810292","@3110915","@6789263","@7354947","@7201360","@6897042","@5549586","@6809461","@7242361","@7697974","@1966987","@7224471","@6932585","@6920982","@7863458","@7897912","@7899697","@7910742","@7236120","@2802178","@7913565","@5549355","@7230453","@7188655","@6481798","@7938319"}
 active=-2; vivo=0; rato=0; dificuldade=1; rodadas=0; rodada=0; number=""; xpos=0; ypos=0; data={}; lang={}; alives={}; tempo=10; counter=0; q=""; a=""; qtime=10; creator=""; sd_vivo=0; anti_macro=true; unlocked=true;
-fc_cmds={1,2,4,5,6,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,28,30,31,32,33,34,35,36,40,41,43,45,46,47,48,49,50,51,53,56,57,58,59,61,62,65,66,67,69,71,75,76,77,78,80,81,82,83,84,85,86,87,88,89,91,92,93,94,95,96,97,99,100,101,102,104,105}
+fc_cmds={1,2,4,5,6,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,28,30,31,32,33,34,35,36,40,41,43,45,46,47,48,49,50,51,53,56,57,58,59,61,62,65,66,67,69,71,75,76,77,78,80,81,82,83,84,85,86,87,88,89,91,92,93,94,95,96,97,99,100,101,102,104,105,106,108}
 spiderweb={type = 15,width = 60,height = 60}
 acid={type = 19,width = 10,height = 25,miceCollision = true,groundCollision = false,dynamic = true,fixedRotation = true,mass = 5000}
 acidg={type = 19,width = 30,height = 30}
 lava={type = 3,width = 2400,height = 100,miceCollision = false,groundCollision = false, foreground = true}
 acids={type = 19,width = 2400,height = 80,miceCollision = true,groundCollision = false}
-map_det={creator="",code=""}
-ninjas={"Jessiewind26#2546","Malzahar#8178","Viego#0345","Leblanc#5342","Irelia#7317","Skyymellu#0000","Viego#0345","Lacoste#8972"}
+ninjas={"Jessiewind26#2546","Malzahar#8178","Leblanc#5342","Irelia#7317","Skyymellu#0000","Viego#0345","Lacoste#8972"}
 fc_mode=false; xpos=0; xpos2=0;
 for _,f in next,{"command","pw","limit","run","fc","tc","ms","q","a","t","kill","antimacro","blockc","sd"} do
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><br><VP><b>Module criado e gerenciado por Jessiewind26#2546</b><br>O criador original está de volta para casa!</b><br><br><R>Versão 7.2.3",
+	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><br><VP><b>Module criado e gerenciado por Jessiewind26#2546</b><br>O criador original está de volta para casa!</b><br><br><R>Versão 7.3.0",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -150,6 +149,7 @@ lang.br = {
 	caps = "Pressione a tecla CAPS LOCK 10 vezes",
 	acid = "Cuidado com o ácido!",
 	water = "Saia da água, ou seja engolido por ela!",
+	lava = "Saia da lava, ou seja engolido por ela!",
 	nowater = "Fique dentro da água!",
 	select = "<VP>O modo de comando seletivo está ativo nesta sala.",
 	newcreator = "Qual é o novo nome do criador deste module?",
@@ -164,12 +164,13 @@ lang.br = {
 	move = "Se mexam!",
 	clickhere = "<font size='8'>CLIQUE AQUI",
 	apple = "Está chovendo maçãs!",
+	cn = "Está chovendo canhões!",
 	people = "Há quantos humanos aqui nesta sala?",
 	blockCode = "<br><br><br><br><br><br><br><br><R><b>Este código foi travado pelo sistema TitanAntiOld de detecção de versão.</b><br><br>Por favor, utilize a versão mais recente para continuar utilizando este código.",
 	submission = "<br><J>As avaliações de mapas do Mestre Mandou estão abertas!<br><VP><b>h t t p s://shorturl.at/uCOUX</b><br><BL>(remova os espaços do link)<br>",
 }
 lang.en = {
-	welcome = "<N><b>Welcome to Simon Says module!</b><br>Follow everything the game told and test your limits until the end!<br><br><VP><b>Script made and developed by Jessiewind26#2546</b><br>Translation by Draw#6691<br><br><R>Version 7.2.3",
+	welcome = "<N><b>Welcome to Simon Says module!</b><br>Follow everything the game told and test your limits until the end!<br><br><VP><b>Script made and developed by Jessiewind26#2546</b><br>Translation by Draw#6691<br><br><R>Version 7.3.0",
 	dancar = "Dance!",
 	sentar = "Sit down!",
 	confetar = "Throw 5 confetti!",
@@ -273,6 +274,7 @@ lang.en = {
 	tribe = "Type the name of your tribe! (if you have)",
 	acid = "Caution with the acid grounds!",
 	water = "Get out of the water!",
+	lava = "Get out of the lava!",
 	nowater = "Stay into the water!",
 	select = "<VP>The selective command mode is now enabled.",
 	newcreator = "Who's the new nickname of the module creator?",
@@ -286,6 +288,7 @@ lang.en = {
 	ndurma = "Dont sleep!",
 	clickhere = "<font size='8'>CLICK HERE",
 	apple = "Apple rain!",
+	cn = "Cannon rain!",
 	people = "How much humans are in this room?",
 	move = "Move your mice!",
 	blockCode = "<br><br><br><br><br><br><br><br><R><b>This code has been locked by the TitanAntiOld version detection.</b><br><br>To continue playing this game, please get the latest version of the code.",
@@ -371,7 +374,7 @@ function eventNewPlayer(name)
 	if string.find(tfm.get.room.name,name) then
 		table.insert(admin,name)
 		showMessage(text.admin,name)
-		showMessage("<br>Available commands: <br>!command [1-105] - Run a command manually.<br>!run [@code] - Run the specified map.<br> !kill [player#tag] - Kill the specified player.<br>!limit [number] - Limit the number of maximum players on the room.<br> !pw [password] - Lock the room with a password.<br>!antimacro = Enable or disable the anti-macro system.",name)
+		showMessage("<br>Available commands: <br>!command [1-108] - Run a command manually.<br>!run [@code] - Run the specified map.<br> !kill [player#tag] - Kill the specified player.<br>!limit [number] - Limit the number of maximum players on the room.<br> !pw [password] - Lock the room with a password.<br>!antimacro = Enable or disable the anti-macro system.",name)
 	end
 end
 for name,player in next,tfm.get.room.playerList do
@@ -446,7 +449,7 @@ function sortearComandos()
 	if fc_mode == true then
 		active=tonumber(fc_cmds[math.random(#fc_cmds)])
 	else
-		active=math.random(1,105)
+		active=math.random(1,108)
 	end
 	sd_vivo=0
 	getCommand()
@@ -475,7 +478,7 @@ function eventChatCommand(name,message)
 					active=0
 				end
 				if(message:sub(0,7) == "command") then
-					tt={}; for i=1,105 do table.insert(tt,tostring(i)) end
+					tt={}; for i=1,110 do table.insert(tt,tostring(i)) end
 					if findString(message:sub(9),tt) then
 						active=tonumber(message:sub(9))
 						getCommand()
@@ -483,7 +486,7 @@ function eventChatCommand(name,message)
 				end
 			end
 			if(message:sub(0,5) == "limit") then
-				tt={}; for i=1,50 do table.insert(tt,tostring(i)) end
+				tt={}; for i=2,50 do table.insert(tt,tostring(i)) end
 				if findString(message:sub(7),tt) then
 					tfm.exec.setRoomMaxPlayers(tonumber(message:sub(7)))
 				end
@@ -496,9 +499,6 @@ function eventChatCommand(name,message)
 					fc_mode=false
 					showMessage("<R>The FunCorp mode of this module is now disabled.",name)
 				end
-			end
-			if message == "sd" then
-				system.exit()
 			end
 			if message == "antimacro" then
 				if anti_macro == true then
@@ -518,18 +518,11 @@ function eventChatCommand(name,message)
 					showMessage("<font color='#FF8547'>• [FunCorp - <b>"..name.."</b>] "..message:sub(4).."")
 				end
 			end
-			if(message:sub(0,1) == "q") then
-				q=message:sub(3)
-			end
-			if(message:sub(0,1) == "a") then
-				a=message:sub(3)
-			end
-			if(message:sub(0,1) == "t") then
-				qtime=tonumber(message:sub(3))
-			end
-			if(message:sub(0,4) == "kill") then
-				tfm.exec.killPlayer(message:sub(6))
-			end
+			if message == "sd" then	system.exit(); end
+			if(message:sub(0,1) == "q") then q=message:sub(3); end
+			if(message:sub(0,1) == "a") then a=message:sub(3); end
+			if(message:sub(0,1) == "t") then qtime=tonumber(message:sub(3)); end
+			if(message:sub(0,4) == "kill") then	tfm.exec.killPlayer(message:sub(6)); end
 			if(message:sub(0,2) == "pw") then
 				tfm.exec.setRoomPassword(tostring(message:sub(4)))
 				if message:sub(4) == "" then
@@ -1140,11 +1133,33 @@ function getCommand()
 		whiteSquare(xpos)
 	end
 	if active == 106 then
+		showCommand(active,text.cn)
+		tfm.exec.setGameTime(5)
+		setAllAlive()
+		for i=1,15 do
+			tfm.exec.addShamanObject(17,i*50,64,0,0,0,false)
+		end
+	end
+	if active == 107 then
+		showCommand(active,text.lava)
+		tfm.exec.setGameTime(5)
+		setAllAlive()
+		tfm.exec.addPhysicObject(2500, 700, 587, {type = 3,width = 3000,height = 860,foregound = true,friction = 0.0,restitution = 0.0,angle = 0,color = 0x0040ff,miceCollision = false,groundCollision = false,dynamic = false})
+	end
+	if active == 108 then
+		showCommand(active,text.collect)
+		tfm.exec.setGameTime(8)
+		setAllAlive()
+		for i=1,12 do
+			tfm.exec.addPhysicObject(i, math.random(50,750), 50, acid)
+		end
+	end
+	if active == 109 then
 		showCommand(active,q)
 		tfm.exec.setGameTime(qtime)
 		setAllAlive()
 	end
-	if active == 107 then
+	if active == 110 then
 		showCommand(active,q)
 		tfm.exec.setGameTime(qtime)
 	end
@@ -1219,7 +1234,7 @@ function eventChatMessage(name,message)
 		end
 	end
 	if active == 76 then
-		if string.upper(message) == "ATELIER801" or string.upper(message) == "ATELIER 801" then
+		if string.lower(message) == "atelier801" or string.lower(message) == "atelier 801" then
 			completeCommand(name)
 		end
 	end
@@ -1244,7 +1259,7 @@ function eventChatMessage(name,message)
 			completeCommand(name)
 		end
 	end
-	if active == 107 then
+	if active == 110 then
 		if string.upper(message) == string.upper(a) then
 			completeCommand(name)
 		end
@@ -1691,13 +1706,13 @@ function eventLoop(passado,faltando)
 	if unlocked == true then
 		local tempo=math.floor(faltando/1000)
 		if active == -2 then
-			ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." 7.2.3</b><")
+			ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." 7.3.0</b><")
 		elseif active == -1 and vivo >= 1 then
-			ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.2.3</b><")
+			ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.3.0</b><")
 		elseif active == -1 and vivo <= 0 then
-			ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.2.3</b><")
+			ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.3.0</b><")
 		elseif active >= 0 then
-			ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." 7.2.3</b><")
+			ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." 7.3.0</b><")
 		end
 		if rato < 4 then
 			if tfm.get.room.currentMap == "@7935706" then
@@ -1818,7 +1833,7 @@ function eventLoop(passado,faltando)
 					end
 				end
 			end
-			if active == 87 then
+			if active == 87 or active == 107 then
 				for name,player in next,tfm.get.room.playerList do
 					if tfm.get.room.playerList[name].y >= 158 then
 						tfm.exec.killPlayer(name)
