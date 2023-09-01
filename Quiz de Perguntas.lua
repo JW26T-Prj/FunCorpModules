@@ -128,7 +128,7 @@ perguntas={
 "Qual título é desbloqueado quando você consegue 1 bootcamp?","Principiante","Recruta",2,
 "Qual foi a maior quantidade de pessoas logadas no Transformice, aproximadamente?","100000","85000",2,
 "Qual os nicks dos criadores do Transformice?","Melibellule e Tigrounette","Mellibellule e Galaktine",1,
-"Quem é o gerenciador atual do module #pictionary?","Shamousey#0015","Bolodefchoco#0095",1,
+"Quem é o gerenciador atual do module #parkour?","Shamousey#0015","Nettoork#0000",2,
 "Quem é o criador do module O Chão é Lava?","Sett#6442","Osicat#0000",2,
 "Qual o limite de consumíveis que podem ser armazenados no inventário?","80","200",1,
 "Qual o nome do fun-site no qual você pode acessar um Ranking dos ratos?","Cheese For Mice","Viprin Drawing Editor",1,
@@ -513,6 +513,8 @@ perguntas1={
 "Em qual dia e mês do ano é comemorado o feriado de Nossa Senhora Aparecida?","12 de Outubro","15 de Novembro",1,
 "Qual o nome dado para a parte mais baixa de um navio, onde fica depositada a água da chuva, infiltrações ou mar agitado, por exemplo?","Porão","Sentina",2,
 "A Estação Espacial Internacional fica localizada a quantos km acima do nível do mar, aproximadamente?","400 km","500 km",1,
+"Qual o nome do planeta-anão situado no Cinturão de Asteroides, com características similares a de Plutão?","Kuiper","Ceres",2,
+"Um segundo é equivalente a quantos minutos?","60","1/60",2,
 }
 perguntas2={
 "Vai na sorte :)","ok","ok",1,
@@ -650,6 +652,12 @@ perguntas2={
 "Qual o nome da vocalista principal da banda Evanescence?","Amy Lee","Amy Winehouse",1,
 "Qual o nome do primeiro álbum da banda Novo Som sem o principal baixista e compositor, Lenílton?","Vale a Pena Sonhar","Estação da Luz",1,
 "Qual o nome da banda cuja Rita Lee era vocalista e ficou famosa?","Os Brothers","Os Mutantes",2,
+"'Você partiu meu coração' é uma música de qual cantor?","Nego do Borel","MC Kevinho",1,
+"'Porto Solidão' é uma música de qual cantor?","Tim Maia","Jessé",2,
+"Complete a música: Quero vê-la sorrir, quero vê-la ...","Cantar","Contar",1,
+"Behemoth é uma banda de Metal originada de qual país?","Turquia","Holanda",1,
+"Qual destes álbuns foi o segundo gravado pela banda Fruto Sagrado, em 1993?","O que a Gente Faz Fala Muito Mais do que só Falar","Na Contramão do Sistema",2,
+"Paul Stanley é o nome do vocalista que se destacou por qual banda?","Kiss","System of a Down",2,
 }
 perguntas3={
 "Vai na sorte :)","ok","ok",1,
@@ -872,7 +880,7 @@ for _,g in next,{"setq","limite","tema","get","fc","ms","reset"} do
 end
 ratos=0; vivos=0; set_q=0; questions_list={}; modo="inicial"; pergunta=0; rodada=0; limite=20; count=0; fixed_cnt=0;
 mapa="@7935894"
-ninjas={"Shun_kazami#7014","Alisson#3938","Aurelianlua#0000","Viego#0345","Skyymellu#0000","Eduardo379#8610"}
+ninjas={"Shun_kazami#7014","Alisson#3938","Aurelianlua#0000","Leblanc#5342","Skyymellu#0000","Eduardo379#8610"}
 actual_question={quest="",a1="",a2="",answer=nil}
 function verifyAdmin(name)
 	for i=1,rawlen(admin) do
