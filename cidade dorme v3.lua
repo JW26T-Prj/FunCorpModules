@@ -26,7 +26,7 @@ function showMessage(message,name)
 	end
 end
 function showDebugText(text)
-	for _,name in next,{"Fosfus7heads#0000","Viego#0345","Aurelianlua#0000","Skyymellu#0000","Alisson#3938"} do
+	for _,name in next,{"Leblanc#5342","Viego#0345","Aurelianlua#0000","Skyymellu#0000","Patrick_mahomes#1795"} do
 		showMessage(text,name)
 	end
 end
@@ -53,7 +53,7 @@ function checkNickname(name)
 end
 function eventChatCommand(name,comando)
 	if comando == "reiniciar" then
-		if name == "Fosfus7heads#0000" or name == "Aurelianlua#0000" or name == "Viego#0345" or name == "Skyymellu#0000" or name == "Patrick_mahomes#1795" or name == admin then
+		if name == "Leblanc#5342" or name == "Aurelianlua#0000" or name == "Viego#0345" or name == "Skyymellu#0000" or name == "Patrick_mahomes#1795" or name == admin then
 			tfm.exec.newGame(mapas[math.random(#mapas)])
 		end
 	end
@@ -224,7 +224,7 @@ function eventLoop()
 		end
 		definirLimites()
 		if jogadores.vivos >= 5 then
-			showMessage("<J>Estamos sorteando as funções dos jogadores! Por favor, aguardem...<br><br><ROSE><b>POR FAVOR, NINGUÉM REVELE SUAS FUNÇÕES PORQUE ESTRAGA O JOGO!!</b>")
+			showMessage("<J>Estamos sorteando as funções dos jogadores! Por favor, aguardem...<br><br><ROSE><b>POR FAVOR, NÃO REVELEM AS SUAS FUNÇÕES, ISSO ESTRAGA O JOGO!!</b>")
 		else
 			showMessage("<R>Ratos ativos insuficientes na sala. Reiniciando o código...")
 			contador=990
