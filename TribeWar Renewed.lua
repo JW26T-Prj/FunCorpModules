@@ -232,10 +232,12 @@ function eventNewPlayer(name)
 	end
 	if mode == "game" then
 		if data[name] then
-			if string.len(data[name].tribe) <= 1 and string.len(tfm.get.room.playerList[name].tribeName) > 1 then
-				data[name].tribe=tfm.get.room.playerList[name].tribeName;
-				showMessage(text.tribelock1..tfm.get.room.playerList[name].tribeName..text.tribelock2)
-				table.insert(tribes,{tfm.get.room.playerList[name].tribeName, 0})
+			if string.len(data[name].tribe) <= 1 then
+				if not tfm.get.room.playerList[name].tribeId == nil then
+					data[name].tribe=tfm.get.room.playerList[name].tribeName;
+					showMessage(text.tribelock1..tfm.get.room.playerList[name].tribeName..text.tribelock2)
+					table.insert(tribes,{tfm.get.room.playerList[name].tribeName, 0})
+				end
 			end
 		end
 	end
@@ -264,9 +266,11 @@ function eventNewGame()
 		for name,_ in next,tfm.get.room.playerList do
 			alives=alives+1
 			if data[name] then
-				if string.len(data[name].tribe) <= 1 and string.len(tfm.get.room.playerList[name].tribeName) > 1 then
-					data[name].tribe=tfm.get.room.playerList[name].tribeName;
-					showMessage(text.tribelock1..tfm.get.room.playerList[name].tribeName..text.tribelock2)
+				if string.len(data[name].tribe) <= 1 then
+					if not tfm.get.room.playerList[name].tribeId == nil then
+						data[name].tribe=tfm.get.room.playerList[name].tribeName;
+						showMessage(text.tribelock1..tfm.get.room.playerList[name].tribeName..text.tribelock2)
+					end
 				end
 			end					
 			if not data[name] then
@@ -274,8 +278,6 @@ function eventNewGame()
 			elseif data[name] and data[name].banned == true then
 				tfm.exec.killPlayer(name); showMessage(text.isbanned);
 			elseif data[name] and string.len(data[name].tribe) <= 1 then
-				tfm.exec.killPlayer(name)
-			elseif data[name] and string.len(tfm.get.room.playerList[name].tribeName) <= 1 then
 				tfm.exec.killPlayer(name)
 			elseif data[name] then
 				if not tfm.get.room.playerList[name].tribeName == data[name].tribe then
