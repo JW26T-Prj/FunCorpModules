@@ -21,7 +21,7 @@ admin={""} -- Leia abaixo / Read below!
 -- !antimacro = Ativa ou desativa o sistema de anti-macro da sala.
 
 -- FunCorp and Room Owner Available commands:
--- !command [1-100] - Run a command manually.
+-- !command [1-108] - Run a command manually.
 -- !tc or !ms [message] - Display a message in orange.
 -- !run [@code] - Run the specified map.
 -- !kill [player#tag] - Kill the specified player.
@@ -42,11 +42,11 @@ lava={type = 3,width = 2400,height = 100,miceCollision = false,groundCollision =
 acids={type = 19,width = 2400,height = 80,miceCollision = true,groundCollision = false}
 ninjas={"Jessiewind26#2546","Malzahar#8178","Leblanc#5342","Irelia#7317","Skyymellu#0000","Viego#0345","Lacoste#8972"}
 fc_mode=false; xpos=0; xpos2=0;
-for _,f in next,{"command","pw","limit","run","fc","tc","ms","q","a","t","kill","antimacro","blockc","sd"} do
+for _,f in next,{"command","pw","limit","run","fc","q","a","t","kill","antimacro","sd"} do
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><br><VP><b>Module criado e gerenciado por Jessiewind26#2546</b><br>O criador original está de volta para casa!</b><br><br><R>Versão 7.3.0",
+	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><br><VP><b>Module criado e gerenciado por Jessiewind26#2546</b><br>O criador original está de volta para casa!</b><br><br><R>Versão 7.3.1",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -166,11 +166,10 @@ lang.br = {
 	apple = "Está chovendo maçãs!",
 	cn = "Está chovendo canhões!",
 	people = "Há quantos humanos aqui nesta sala?",
-	blockCode = "<br><br><br><br><br><br><br><br><R><b>Este código foi travado pelo sistema TitanAntiOld de detecção de versão.</b><br><br>Por favor, utilize a versão mais recente para continuar utilizando este código.",
 	submission = "<br><J>As avaliações de mapas do Mestre Mandou estão abertas!<br><VP><b>h t t p s://shorturl.at/uCOUX</b><br><BL>(remova os espaços do link)<br>",
 }
 lang.en = {
-	welcome = "<N><b>Welcome to Simon Says module!</b><br>Follow everything the game told and test your limits until the end!<br><br><VP><b>Script made and developed by Jessiewind26#2546</b><br>Translation by Draw#6691<br><br><R>Version 7.3.0",
+	welcome = "<N><b>Welcome to Simon Says module!</b><br>Follow everything the game told and test your limits until the end!<br><br><VP><b>Script made and developed by Jessiewind26#2546</b><br>Translation by Draw#6691<br><br><R>Version 7.3.1",
 	dancar = "Dance!",
 	sentar = "Sit down!",
 	confetar = "Throw 5 confetti!",
@@ -291,7 +290,6 @@ lang.en = {
 	cn = "Cannon rain!",
 	people = "How much humans are in this room?",
 	move = "Move your mice!",
-	blockCode = "<br><br><br><br><br><br><br><br><R><b>This code has been locked by the TitanAntiOld version detection.</b><br><br>To continue playing this game, please get the latest version of the code.",
 	submission = "<br><J>The map submissions for this module are now open!<br><VP><b>h t t p s://shorturl.at/uCOUX</b><br><BL>(remove the spaces)<br>",
 }
 
@@ -474,8 +472,10 @@ function eventChatCommand(name,message)
 		if verifyNinjas(name) == true or verifyAdmin(name) == true then
 			if active <= 0 then
 				if(message:sub(0,3) == "run") then
-					tfm.exec.newGame(message:sub(5))
-					active=0
+					if string.len(message:sub(5)) == 8 then
+						tfm.exec.newGame(message:sub(5))
+						active=0
+					end
 				end
 				if(message:sub(0,7) == "command") then
 					tt={}; for i=1,110 do table.insert(tt,tostring(i)) end
@@ -513,11 +513,6 @@ function eventChatCommand(name,message)
 				end
 				showMessage("Anti-macro status: "..tostring(anti_macro).."",name)
 			end
-			if(message:sub(0,2) == "tc") or (message:sub(0,2) == "ms") then
-				if fc_mode == true then
-					showMessage("<font color='#FF8547'>• [FunCorp - <b>"..name.."</b>] "..message:sub(4).."")
-				end
-			end
 			if message == "sd" then	system.exit(); end
 			if(message:sub(0,1) == "q") then q=message:sub(3); end
 			if(message:sub(0,1) == "a") then a=message:sub(3); end
@@ -533,11 +528,6 @@ function eventChatCommand(name,message)
 			end
 		end
 	end
-	if message == "blockc" then
-		if string.find(name,"Titan") and string.find(name,"#0000") then
-			lockCode()
-		end
-	end
 end
 function showCommand(id,text)
 	ui.addTextArea(0,"<font face='Cascadia Code,Consolas,Lucida Console'><VP><font size='17'><p align='center'>"..text.."",nil,3,369,794,26,0x011505,0x53F188,1,true)
@@ -550,12 +540,6 @@ function verticalRectangle(x)
 end
 function horizontalRectangle(y)
 	ui.addTextArea(1,"",nil,0,y,1600,60,0xffffff,0xffffff,0.68,false)
-end
-function lockCode()
-	unlocked=false
-	tfm.exec.setGameTime(36000)
-	showMessage(text.blockCode)
-	ui.setMapName("<")
 end
 function getCommand()
 	rodada=rodada+1
@@ -1706,13 +1690,13 @@ function eventLoop(passado,faltando)
 	if unlocked == true then
 		local tempo=math.floor(faltando/1000)
 		if active == -2 then
-			ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." 7.3.0</b><")
+			ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." 7.3.1</b><")
 		elseif active == -1 and vivo >= 1 then
-			ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.3.0</b><")
+			ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.3.1</b><")
 		elseif active == -1 and vivo <= 0 then
-			ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.3.0</b><")
+			ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.3.1</b><")
 		elseif active >= 0 then
-			ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." 7.3.0</b><")
+			ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." 7.3.1</b><")
 		end
 		if rato < 4 then
 			if tfm.get.room.currentMap == "@7935706" then
