@@ -6,6 +6,7 @@ admin="" -- Insira seu nome aqui, FunCorp! / Insert your nickname here, FunCorp!
 -- Comandos/Commands:
 -- !start = Inicia uma nova partida. Você precisa estar na tela inicial para fazer isso.
 -- !reset = Descarta a partida atual e retorna para a tela inicial.
+-- !skip = Pula para o próximo mapa.
 -- !rounds [5-25] = Define o número de rodadas de cada partida. (padrão: 15)
 -- !mapmode [0-3] = Escolhe o tipo de mapa que será executado.
 -- No comando acima, insira 0 para RACING, 1 para BOOTCAMP, 2 para VANILLA e 3 para MIX. (padrão: racing)
@@ -16,6 +17,7 @@ admin="" -- Insira seu nome aqui, FunCorp! / Insert your nickname here, FunCorp!
 
 -- !start = Start a new game. You need to stay into the lobby screen to do this.
 -- !reset = Discard the current match and go back to the lobby screen.
+-- !skip = Skip to the next map.
 -- !rounds [5-25] = Set the number of rounds for each match. (default: 15)
 -- !mapmode [0-3] = Set the map category. (default: racing)
 -- With the above command, insert 0 for RACING, 1 for BOOTCAMP, 2 for VANILLA and 3 for MIX.
@@ -28,7 +30,7 @@ admin="" -- Insira seu nome aqui, FunCorp! / Insert your nickname here, FunCorp!
 for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","PhysicalConsumables","AfkDeath","MortCommand","DebugCommand"} do
 	tfm.exec["disable"..f]()
 end
-for _,g in next,{"start","reset","rounds","mapmode","maptime","kill","ban","ms","tc","help","ranking"} do
+for _,g in next,{"start","reset","rounds","mapmode","maptime","kill","ban","ms","tc","help","skip"} do
 	system.disableChatCommandDisplay(g)
 end
 lang={}; data={}; rounds=15; mode="lobby"; maps="racing"; map_time=60; lobby_map="@7404327"; winner_map="@7928188"; round=-1; alives=0; position=1; remain_int=0;
@@ -116,13 +118,6 @@ function showMenu(name,color,x,y,width,height,title,content)
 		ui.addTextArea(1002,"<font color='#f8d802'><font size='14'><p align='center'><i><b>"..title.."",name,x+5,y+5,width-11,22,0x101010,0x101010,0.95,true)
 		ui.addTextArea(1003,"<font color='#ff2300'><font size='14'><b><a href='event:close'>X</a>",name,x+width-25,y+5,width-10,20,0,0,0.95,true)
 	end
-end
-function eventRanking(name)
-	str=""
-	for k,v in ipairs(tribes) do
-		str=str.."<font size='12'><N><b>#"..k.."</b> - <VP>"..v[1].." - <J><b>"..v[2].."</b>"..text.points.."<br>"
-	end
-	showMenu(name,0xffffff,200,100,400,200,"Match Ranking",str)
 end
 function findID(object)
 	for i=1,rawlen(tribes) do
@@ -380,6 +375,9 @@ function eventChatCommand(name,command)
 		if command == "reset" then
 			lobby()
 		end
+		if command == "skip" then
+			changeMap();
+		end
 		if (command:sub(0,4) == "kill") and mode == "game" then
 			tfm.exec.killPlayer(command:sub(6))
 		end
@@ -405,11 +403,6 @@ function eventChatCommand(name,command)
 	end
 	if command == "help" then
 		showMessage(text.help,name)
-	end
-	if command == "ranking" and mode == "game" then
-		if data[name].opened == false then
-			eventRanking(name)
-		end
 	end
 end
 function eventLoop(release,remain)
