@@ -334,9 +334,13 @@ function eventPlayerDied(name)
 end
 function lockTribes()
 	for name,_ in next,tfm.get.room.playerList do
-		if data[name] and string.len(tfm.get.room.playerList[name].tribeName) > 1 then
-			data[name].tribe=tfm.get.room.playerList[name].tribeName;
-			showMessage(text.tribelock1..tfm.get.room.playerList[name].tribeName..text.tribelock2,name)
+		if data[name] then
+			if tfm.get.room.playerList[name].tribeId == nil then
+				showMessage(text.notribe,name)
+			else
+				data[name].tribe=tfm.get.room.playerList[name].tribeName;
+				showMessage(text.tribelock1..tfm.get.room.playerList[name].tribeName..text.tribelock2,name)
+			end
 		else
 			showMessage(text.notribe,name)
 		end
