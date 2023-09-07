@@ -2,11 +2,11 @@
 Module authors : Spectra_phantom#6089
 (C) 2017-2023 Spectra Advanced Module Group
 
-Version : RTM 55047.230
-Compilation date : 09/05/2023 02:37 UTC
+Version : RTM 55148.231
+Compilation date : 09/07/2023 13:19 UTC
 Sending player : Spectra_phantom#6089
 
-Number of maps : 194
+Number of maps : 195
 Number of module special members : 11 ]]--
 
 _VERSION = "Lua 5.4"
@@ -14,8 +14,8 @@ _AUTHOR = "Spectra_phantom#6089"
 
 funcorps={} -- If you are a FunCorp member, please insert your nicknames (with #tag) here.
 
-maps={"@7467262","@7463118","@7436867","@7412348","@7467977","@7470456","@7480017","@7433435","@7483583","@7485139","@7486518","@7486596","@7486946","@7487828","@7488212","@7487008","@7493568","@7375714","@7495286","@7495744","@7497388","@7501996","@7511352","@7522536","@7522330","@7521998","@7540655","@7532950","@7542639","@7114424","@7546132","@7546118","@7545653","@7543543","@7547908","@7544349","@7553313","@7554201","@7554203","@7554206","@7559566","@7560668","@7557788","@7559595","@7560873","@7562374","@7577539","@7596259","@7596249","@7599725","@7600421","@7648431","@7648852","@7648907","@7648899","@7658998","@7659642","@7663560","@7497808","@7489867","@5943895","@7666256","@3941375","@3956702","@4550664","@7678628","@3133327","@6947287","@7678921","@7679763","@7684909","@7672711","@3161494","@3996861","@7689921","@7685324","@7685127","@7695537","@7695654","@7693917","@7697503","@7723407","@5358451","@5451175","@6025712","@7727464","@7689192","@6198267","@6201091","@6244376","@6822539","@6879247","@7032584","@7760006","@7690854","@7686080","@7686207","@7685181","@7679443","@7802671","@7736985","@7495020","@7498659","@7543661","@7804689","@7804694","@7804362","@6759094","@4431434","@7807504","@7808946","@7809120","@7811210","@7811555","@7816639","@7818453","@7823992","@4084781","@7825615","@7826036","@7826050","@7826892","@7497395","@7512948","@7555653","@7688028","@7655209","@7690671","@7845674","@7845680","@7845682","@7845738","@7859139","@7845709","@7844985","@7859144","@7860343","@7860623","@7860498","@7863972","@7803705","@7845724","@7866585","@7834953","@7866596","@7703547","@7795869","@7869247","@7844978","@7869610","@7654290","@7876838","@7879243","@7664077","@7760487","@7802869","@7808177","@7882449","@7882451","@7882453","@7882454","@7882456","@7882458","@7879251","@7748874","@7891576","@7891577","@7891578","@7892788","@7902610","@7904039","@7869352","@7869389","@7841404","@7922465","@7919510","@7919518","@7919522","@7920813","@7922467","@7921968","@7922249","@7922362","@7922698","@7923483","@7922924","@7920975","@7926144","@7923482","@7930770","@7939243","@7939245","@7939272","@7940628"}
-map_names={"The Dual-Sided Fight Area","No Name","Inside the Castle","Hell and Water","A very simple waterfall","No Name","The Frozen Arena","The Golden Flying Arena","The Beach Test Map 1","Inside the Theasure Cave","A random fall map","No Name","The first #anvilwar map","The Beach Test Map 2","No Name","No Name","The Six Attributes","Inside the Ocean","No Name","No Name","No Name","No Name","The Stone Platforms","Inside the Hell","Testing Spaceship","Inside the Volcano","The Dance of Anvils on Stone","On the Space Tower","On the Edge of Void (Remaked)","No Name","On the Seabed","The Palace of Swords","The Castle of Fire","No Name","The Example of Map","Fitting The Anvil","The Beach Test Map 3","Dead Maze Map #1","Dead Maze Map #2","Dead Maze Map #3","The Clouds Under Trampoline","Dead Maze Map #4","No Name","Anvilwar Prison","The Pyramid of Grass","Arena of Darkness","No Name","The Limit of Waters","Black and White","On the Edge of the Space (v2)","Above the Sea Level (v3)","Dark Side of The Moon","Stairway to Heaven","Reversed Colors","Underwater Pression","The Darkin Blade","Testing Purposes","Christmas Frozen Cave","No Name","No Name","Default Water Force","Expert Lava Maze","Lava Links","Time of Revenge (v2)","Trampoline Test","Basketball of Death","Football Soccer Anvilwar","Destruction in Two Levels","The Forest","No Name","Island of Anvils","The Limit of Heaven","Giant and Crazy","Lava Battle Arena","Go and Back","Terrifying Love","Terror Christmas","Ninja Degrees","Chocoland","Cage","No Name","On the Edge of The Abyss","Pier of Columns","The Floor is Lava","Hybrid Grounds","The Flying Water","Natural Cloud Maze","Winter and Spring","Extended Grass Test","The Palace of Lava","Chocolate Maze","The Beach Test Map 4","Between Liquids","Soccer Teams #1","May the force Be with You","Don't Jump! #1","Autumn","Falling Walnuts","Ancient Egypt","Testing Acid Floors","Above the Earth Level","No Name","No Name","Do Not Hit The Anvil","Natural Landscape","Apocalypse","Look the Explosion!","The Beach Test Map 5","Love in Vain","Floating Acid","Moving Bridges","This is a Test","Only Two Grounds","Aim of Death","What The Hell","Discover of Seven Seas","Rotating Motors","Ultimate Acid Maze","The Anvils are Strange","Ghost Dimension","Animal Fury #1","Released Things","No Name","No Name","This is a Terror","No Name","No Name","Escape from Nyan Cat","Sharingan Eye","Zombie Attack","Destructed Zone","Eye of Black Hole","Soccer Teams #2","No Name","No Name","The Beach Test Map 6","The Beach Test Map 7","Vexos Arena","Releasing Anvils","The Hug of Agony","Try a Little More","No Name","No Name","No Name","Land of Spirits","No Name","No Name","No Name","No Name","Tobi - Akatsuki","Water Backgrounds","Up and Down","Watcher","Stranger Things","The Beach Test Map 8","Circle Compression","Gradient Colors","Background Reflection","Locked Dimensions","Now I See","Legacy Mansion","Water Equilibrium","Terrific Alternative","No Name","The Frozen Witch","Animal Fury #2","The Beach Test Map 9","Object Alchemy","Don't Jump! #2","The Bridge of Death","Balancing Things","Uzumaki Boruto Eyes","Namikaze Minato","Dragon Eyes","No Name","Stone Overriding","The Beach Test Map 10","Extreme Stone Maze","Neathian Guardian","No Name","No Name","No Name","Halloween","Soccer Teams #3","PSG","Apple VS Android","Unaligned Dimension","Siren Equilibrium","Nike","The Star Forger #1","Blade of The Exile","The Dancer of Blades","The Star Forger #2","The Tidecaller"}
+maps={"@7467262","@7463118","@7436867","@7412348","@7467977","@7470456","@7480017","@7433435","@7483583","@7485139","@7486518","@7486596","@7486946","@7487828","@7488212","@7487008","@7493568","@7375714","@7495286","@7495744","@7497388","@7501996","@7511352","@7522536","@7522330","@7521998","@7540655","@7532950","@7542639","@7940082","@7114424","@7546132","@7546118","@7545653","@7543543","@7547908","@7544349","@7553313","@7554201","@7554203","@7554206","@7559566","@7560668","@7557788","@7559595","@7560873","@7562374","@7577539","@7596259","@7596249","@7599725","@7600421","@7648431","@7648852","@7648907","@7648899","@7658998","@7659642","@7663560","@7497808","@7489867","@5943895","@7666256","@3941375","@3956702","@4550664","@7678628","@3133327","@6947287","@7678921","@7679763","@7684909","@7672711","@3161494","@3996861","@7689921","@7685324","@7685127","@7695537","@7695654","@7693917","@7697503","@7723407","@5358451","@5451175","@6025712","@7727464","@7689192","@6198267","@6201091","@6244376","@6822539","@6879247","@7032584","@7760006","@7690854","@7686080","@7686207","@7685181","@7679443","@7802671","@7736985","@7495020","@7498659","@7543661","@7804689","@7804694","@7804362","@6759094","@4431434","@7807504","@7808946","@7809120","@7811210","@7811555","@7816639","@7818453","@7823992","@4084781","@7825615","@7826036","@7826050","@7826892","@7497395","@7512948","@7555653","@7688028","@7655209","@7690671","@7845674","@7845680","@7845682","@7845738","@7859139","@7845709","@7844985","@7859144","@7860343","@7860623","@7860498","@7863972","@7803705","@7845724","@7866585","@7834953","@7866596","@7703547","@7795869","@7869247","@7844978","@7869610","@7654290","@7876838","@7879243","@7664077","@7760487","@7802869","@7808177","@7882449","@7882451","@7882453","@7882454","@7882456","@7882458","@7879251","@7748874","@7891576","@7891577","@7891578","@7892788","@7902610","@7904039","@7869352","@7869389","@7841404","@7922465","@7919510","@7919518","@7919522","@7920813","@7922467","@7921968","@7922249","@7922362","@7922698","@7923483","@7922924","@7920975","@7926144","@7923482","@7930770","@7939243","@7939245","@7939272","@7940628"}
+map_names={"The Dual-Sided Fight Area","No Name","Inside the Castle","Hell and Water","A very simple waterfall","No Name","The Frozen Arena","The Golden Flying Arena","The Beach Test Map 1","Inside the Theasure Cave","A random fall map","No Name","The first #anvilwar map","The Beach Test Map 2","No Name","No Name","The Six Attributes","Inside the Ocean","No Name","No Name","No Name","No Name","The Stone Platforms","Inside the Hell","Testing Spaceship","Inside the Volcano","The Dance of Anvils on Stone","On the Space Tower","On the Edge of Void (Remaked)","The Bridge of Death","No Name","On the Seabed","The Palace of Swords","The Castle of Fire","No Name","The Example of Map","Fitting The Anvil","The Beach Test Map 3","Dead Maze Map #1","Dead Maze Map #2","Dead Maze Map #3","The Clouds Under Trampoline","Dead Maze Map #4","No Name","Anvilwar Prison","The Pyramid of Grass","Arena of Darkness","No Name","The Limit of Waters","Black and White","On the Edge of the Space (v2)","Above the Sea Level (v3)","Dark Side of The Moon","Stairway to Heaven","Reversed Colors","Underwater Pression","The Darkin Blade","Testing Purposes","Christmas Frozen Cave","No Name","No Name","Default Water Force","Expert Lava Maze","Lava Links","Time of Revenge (v2)","Trampoline Test","Basketball of Death","Football Soccer Anvilwar","Destruction in Two Levels","The Forest","No Name","Island of Anvils","The Limit of Heaven","Giant and Crazy","Lava Battle Arena","Go and Back","Terrifying Love","Terror Christmas","Ninja Degrees","Chocoland","Cage","No Name","On the Edge of The Abyss","Pier of Columns","The Floor is Lava","Hybrid Grounds","The Flying Water","Natural Cloud Maze","Winter and Spring","Extended Grass Test","The Palace of Lava","Chocolate Maze","The Beach Test Map 4","Between Liquids","Soccer Teams #1","May the force Be with You","Don't Jump! #1","Autumn","Falling Walnuts","Ancient Egypt","Testing Acid Floors","Above the Earth Level","No Name","No Name","Do Not Hit The Anvil","Natural Landscape","Apocalypse","Look the Explosion!","The Beach Test Map 5","Love in Vain","Floating Acid","Moving Bridges","This is a Test","Only Two Grounds","Aim of Death","What The Hell","Discover of Seven Seas","Rotating Motors","Ultimate Acid Maze","The Anvils are Strange","Ghost Dimension","Animal Fury #1","Released Things","No Name","No Name","This is a Terror","No Name","No Name","Escape from Nyan Cat","Sharingan Eye","Zombie Attack","Destructed Zone","Eye of Black Hole","Soccer Teams #2","No Name","No Name","The Beach Test Map 6","The Beach Test Map 7","Vexos Arena","Releasing Anvils","The Hug of Agony","Try a Little More","No Name","No Name","No Name","Land of Spirits","No Name","No Name","No Name","No Name","Tobi - Akatsuki","Water Backgrounds","Up and Down","Watcher","Stranger Things","The Beach Test Map 8","Circle Compression","Gradient Colors","Background Reflection","Locked Dimensions","Now I See","Legacy Mansion","Water Equilibrium","Terrific Alternative","No Name","The Frozen Witch","Animal Fury #2","The Beach Test Map 9","Object Alchemy","Don't Jump! #2","No Name","Balancing Things","Uzumaki Boruto Eyes","Namikaze Minato","Dragon Eyes","No Name","Stone Overriding","The Beach Test Map 10","Extreme Stone Maze","Neathian Guardian","No Name","No Name","No Name","Halloween","Soccer Teams #3","PSG","Apple VS Android","Unaligned Dimension","Siren Equilibrium","Nike","The Star Forger #1","Blade of The Exile","The Dancer of Blades","The Star Forger #2","The Tidecaller"}
 objects={1,2,3,4,6,7,10,23,33,34,39,45,46,54,60,61,65,68,69,90,95}
 players_red={}; alives_red={};
 players_blue={}; alives_blue={};
@@ -24,7 +24,7 @@ current_map=""; actual_player="";
 enabled=false; powerups=false; permafrost=false; night_mode=false; gravity=false; change=false; custom_mode=false;
 mices=0; loop=0; turns=0; needs=0; turn=0; choose_time=20; time_passed=0; time_remain=0; current_red=0; current_blue=0; ping_check=1; sudden_death=false; old_limit=40;
 points_loop=0; pf_time=0; general_time=0; total_time=0; map_id=0; set_player=""; set_map="-1"; def_map=-1; red_cap=""; blue_cap=""; temp_name=""; bar_text="";
-settings={time=180,plimit=16,map_mode=0,map_select="@7412348",g_powerups=true,shoot_time=16,anti_kami=false,sd_switch=true,bg_switch=false}
+settings={time=180,plimit=16,map_mode=0,map_select="@7412348",g_powerups=true,shoot_time=16,anti_kami=false,sd_switch=true,bg_switch=false,cap_lifes=2}
 mode="lobby"
 divider="　　　　　　　　　";
 images_id={};
@@ -94,7 +94,7 @@ lang.br = {
 	cap_text = "foi escolhido para ser o líder do seu time.",
 	cap = "<J><b>Você foi escolhido como o líder do time.</b><N><br>Digite !leader para saber as funcionalidades e os benefícios de ser o líder do seu time.",
 	leader = "Os líderes dos times <b>são escolhidos aleatoriamente</b> e possui as seguintes vantagens em relação aos outros jogadores:<br><br>• Recebe 50% a mais de quantidade de pontos e AnvilCoins em relação aos outros jogadores<br>• Pode reviver jogadores mortos do seu time usando !rv [jogador]<br>• Pode transferir seus pontos para outro jogador do seu time usando !tp [jogador]<br>• Possui 20% a mais de tempo para atirar do que os outros jogadores<br>• Pode voltar a vida uma vez se morto.",
-	legacy = "<N>Conheça todas as salas dentro do modo #anvilwar:<br><br><J><b>Fuja do tubarão (shaman) e sobreviva dentro do oceano!</b><br><VP>/sala #anvilwar00watercatch<br><br><J><b>Um mapa-script tipo village, porém de praia!</b><br><VP>/sala #anvilwar00beach<br><br><J><b>Um mapa-script para quem gosta de aventuras radicais e natureza!</b><br><VP>/sala #anvilwar00naturalpark<br><br><J><b>Teste suas habilidades de WJ escalando a montanha!</b><br><VP>/sala #anvilwar00mountain",
+	legacy = "<N>Conheça todas as salas dentro do modo #anvilwar:<br><br><J><b>Fuja do tubarão (shaman) e sobreviva dentro do oceano!</b><br><VP>/sala #anvilwar00watercatch<br><br><J><b>A resposta é verdadeira ou falsa? Descubra nesta sala!</b><br><VP>/sala #anvilwar00truefalse",
 	disabled = "Este comando foi desabilitado por um administrador.",
 	gametime = "Tempo",
 	timeup = "<ROSE>Tempo esgotado! Este será o último tiro!",
@@ -111,8 +111,8 @@ lang.br = {
 	bgtext = "<N>O modo Meninos contra Meninas está habilitado. Meninos precisam entrar no time azul, enquanto meninas precisam entrar no time vermelho.",
 	wrong = "Você não possui permissão para usar este comando",
 	tmaperror = "O comando !testmap foi descontinuado. Para rodar um mapa personalizado, use o comando !settings e crie uma partida personalizada.",
-	life1 = "<VP>O capitão do time <BL>azul <VP>foi morto, e agora possui apenas <b>1</b> vida",
-	life2 = "<VP>O capitão do time <R>vermelho <VP>foi morto, e agora possui apenas <b>1</b> vida",
+	life1 = "<VP>O capitão do time <BL>azul <VP>foi morto, e agora possui apenas ", life3 = " vida(s).",
+	life2 = "<VP>O capitão do time <R>vermelho <VP>foi morto, e agora possui apenas ",
 }
 lang.en = {
 	version = "Version",
@@ -190,8 +190,8 @@ lang.en = {
 	bgtext = "<N>The Boys against Girls mode is now active. Boys need to join the blue team, and girls need to join the red team.",
 	wrong = "You don't have permission to use this command",
 	tmaperror = "The !testmap command was discontinued. To run a custom map, create a custom match using the !settings command.",
-	life1 = "<VP>The capitain of the <BL>blue <VP>was killed. (S)he has now <b>1</b> life",
-	life2 = "<VP>The capitain of the <R>red <VP>was killed. (S)he has now <b>1</b> life",
+	life1 = "<VP>The capitain of the <BL>blue <VP>was killed. (S)he has now ", life3 = " life(s).",
+	life2 = "<VP>The capitain of the <R>red <VP>was killed. (S)he has now ",
 }
 if tfm.get.room.isTribeHouse == true then
 	text = lang.en
@@ -293,12 +293,12 @@ function showRoomSettings(name)
 		elseif settings.map_mode == 1 then
 			string1="@code"
 		end
-		showMenu(name,0x405401,200,125,400,235,""..tfm.get.room.name.." Room Settings","<p align='center'>Custom Room Mode : <b>"..tostring(custom_mode).."</b> <a href='event:cmode'>[change]</a></p><br>------------------ CUSTOM ROOM SETTINGS ------------------<br>Game Time : <b>"..tostring(settings.time).."</b> sec <a href='event:ctimea'>[-]</a> <a href='event:ctimeb'>[+]</a><br>Max Players/Team : <b>"..tostring(settings.plimit).."</b> <a href='event:cplayersa'>[-]</a> <a href='event:cplayersb'>[+]</a><br>Map Mode : <b>"..string1.."</b> <a href='event:cmap'>[change]</a><br>Map @code (for @CODE mode) : <b>"..tostring(settings.map_select).."</b> <a href='event:cmapcode'>[change]</a><br>Powerups : <b>"..tostring(settings.g_powerups).."</b> <a href='event:cpowerups'>[change]</a><br>Shooting Time : <b>"..tostring(settings.shoot_time).."</b> sec <a href='event:cstimea'>[-]</a> <a href='event:cstimeb'>[+]</a><br>Anti-Kamikaze Mode : <b>"..tostring(settings.anti_kami).."</b> <a href='event:ckami'>[change]</a><br>Sudden Death : <b>"..tostring(settings.sd_switch).."</b> <a href='event:csd'>[change]</a><br>Boys against Girls mode : <b>"..tostring(settings.bg_switch).."</b> <a href='event:bgd'>[change]</a>")
+		showMenu(name,0x405401,200,125,400,250,""..tfm.get.room.name.." Room Settings","<p align='center'>Custom Room Mode : <b>"..tostring(custom_mode).."</b> <a href='event:cmode'>[change]</a></p><br>------------------ CUSTOM ROOM SETTINGS ------------------<br>Game Time : <b>"..tostring(settings.time).."</b> sec <a href='event:ctimea'>[-]</a> <a href='event:ctimeb'>[+]</a><br>Max Players/Team : <b>"..tostring(settings.plimit).."</b> <a href='event:cplayersa'>[-]</a> <a href='event:cplayersb'>[+]</a><br>Map Mode : <b>"..string1.."</b> <a href='event:cmap'>[change]</a><br>Map @code (for @CODE mode) : <b>"..tostring(settings.map_select).."</b></a><br>Powerups : <b>"..tostring(settings.g_powerups).."</b> <a href='event:cpowerups'>[change]</a><br>Shooting Time : <b>"..tostring(settings.shoot_time).."</b> sec <a href='event:cstimea'>[-]</a> <a href='event:cstimeb'>[+]</a><br>Anti-Kamikaze Mode : <b>"..tostring(settings.anti_kami).."</b> <a href='event:ckami'>[change]</a><br>Sudden Death : <b>"..tostring(settings.sd_switch).."</b> <a href='event:csd'>[change]</a><br>Boys against Girls mode : <b>"..tostring(settings.bg_switch).."</b> <a href='event:bgd'>[change]</a><br>Team Leader Lifes : <b>"..tostring(settings.cap_lifes).."</b> <a href='event:clifesa'>[-]</a> <a href='event:clifesb'>[+]</a>")
 	end
 end
 
 function showLobbyText(name)
-	ui.addTextArea(402,"<p align='center'><font size='12'><b><font face='Courier New'><i>"..text.version.." RTM 55047.230 - "..text.comp_date.."09/05/2023 02:37 UTC - "..text.uploaded.."Spectra_phantom#6089</i>",name,-10,380,820,36,0,0,1.0,true)
+	ui.addTextArea(402,"<p align='center'><font size='12'><b><font face='Courier New'><i>"..text.version.." RTM 55148.231 - "..text.comp_date.."09/07/2023 13:19 UTC - "..text.uploaded.."Spectra_phantom#6089</i>",name,-10,380,820,36,0,0,1.0,true)
 end
 
 function setLeaders()
@@ -308,7 +308,11 @@ function setLeaders()
 		showMessage(""..red_cap.." "..text.cap_text.."")
 		showMessage(""..blue_cap.." "..text.cap_text.."")
 		if rawlen(alives_red) >= 2 and rawlen(alives_blue) >= 2 then
-			data[red_cap].lives=2; data[blue_cap].lives=2;
+			if custom_mode == false then
+				data[red_cap].lives=2; data[blue_cap].lives=2;
+			elseif custom_mode == true then
+				data[red_cap].lives=settings.cap_lifes; data[blue_cap].lives=settings.cap_lifes;
+			end
 		end
 		showMessage(text.cap,red_cap)
 		showMessage(text.cap,blue_cap)
@@ -382,7 +386,7 @@ function updateTextBar()
 	if mode == "end" then
 		ui.setMapName("<VP><b>"..text.ending.."</b>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	else
-		ui.setMapName("<N><b>#anvilwar</b>   <G>|   <VP>"..text.version.." <b>RTM 55047.230</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
+		ui.setMapName("<N><b>#anvilwar</b>   <G>|   <VP>"..text.version.." <b>RTM 55148.231</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	end
 end
 
@@ -517,6 +521,11 @@ function detectVictory()
 	end
 end
 
+function showMainText(name)
+	ui.addTextArea(405,"<i><font size='72'><font color='#202020'>#anvilwar",name,213,19,400,128,0,0,0.95,true)
+	ui.addTextArea(404,"<i><font size='72'>#anvilwar",name,210,16,400,128,0,0,0.95,true)
+end
+
 function updatePlayerList()
 	text1=""; text2="";
 	for id,name in next,players_red do
@@ -609,6 +618,7 @@ function eventNewPlayer(name)
 				ui.setBackgroundColor("#000000")
 				showTeams(name)
 				showLobbyText(name)
+				showMainText(name)
 				tfm.exec.respawnPlayer(name)
 			end
 		end
@@ -674,7 +684,7 @@ function nightMode()
 	end
 end
 
-function setScores(name,points)
+function setScores(name,points,offset)
 	if offset == false then
 		data[name].score=points
 	else
@@ -898,12 +908,14 @@ function eventPlayerDied(name)
 				if data[name].team == 2 then
 					tfm.exec.movePlayer(name,1000,205,false,0,0,false)
 					data[name].killed=false
-					showMessage(text.life1)
+					showMessage(text.life1..data[name].lives..text.life3)
+					setScores(name,2,false)
 				end
 				if data[name].team == 1 then
 					tfm.exec.movePlayer(name,600,205,false,0,0,false)
 					data[name].killed=false
-					showMessage(text.life2)
+					showMessage(text.life2..data[name].lives..text.life3)
+					setScores(name,2,false)
 				end
 			end
 		end
@@ -930,7 +942,6 @@ function eventPlayerDied(name)
 		else
 			if data[name].lives <= 0 then
 				data[name].current_coins=math.floor(data[name].current_coins/3)
-				setScores(name,math.floor(data[name].current_coins/2)*-1,true)
 				data[name].killeds=data[name].killeds+1
 				setScores(name,0,false)
 			elseif data[name].lives > 0 then
@@ -938,14 +949,14 @@ function eventPlayerDied(name)
 				if data[name].team == 2 then
 					tfm.exec.movePlayer(name,1000,205,false,0,0,false)
 					data[name].killed=false
-					showMessage(text.life1)
-					setScores(name,math.floor(data[name].current_coins/2)*-1,true)
+					showMessage(text.life1..data[name].lives..text.life3)
+					setScores(name,2,false)
 				end
 				if data[name].team == 1 then
 					tfm.exec.movePlayer(name,600,205,false,0,0,false)
 					data[name].killed=false
-					showMessage(text.life2)
-					setScores(name,math.floor(data[name].current_coins/2)*-1,true)
+					showMessage(text.life2..data[name].lives..text.life3)
+					setScores(name,2,false)
 				end
 			end
 		end
@@ -992,6 +1003,7 @@ function lobby()
 		tfm.exec.freezePlayer(name,false)
 		removeImagePlayers(name)
 		showLobbyText(name)
+		showMainText(name)
 		removeScoreboard(name)
 		if data[name] then
 			for i=1000,1011 do
@@ -1020,7 +1032,7 @@ function eventNewGame()
 	ui.setBackgroundColor("#000000")
 	set_map="-1"; def_map=-1; turns=0;
 	if mode == "wait1" then
-		for i=400,403 do ui.removeTextArea(i,nil) end
+		for i=400,405 do ui.removeTextArea(i,nil) end
 		mode="wait2"
 		tfm.exec.setGameTime(20)
 		moveTeams()
@@ -1109,7 +1121,7 @@ function eventChatCommand(name,command)
 		end
 	else showMessage(text.wrong,name) end end
 	if command == "changelog" then
-		showMenu(name,0xa8f233,140,130,520,140,"#anvilwar Changelog - RTM 55047.230","• Fixes on the scoreboard<br>• Some text changes<br>• Added commands for FunCorp members<br>• Changes on anvils physics<br>• Added 4 new maps<br>• The score increasing was slightly reduced")
+		showMenu(name,0xa8f233,140,130,520,160,"#anvilwar Changelog - RTM 55148.231","• Fixes on the scoreboard<br>• Some text changes<br>• Added commands for FunCorp members<br>• Changes on anvils physics<br>• Added 4 new maps<br>• The score increasing was slightly reduced<br>• Changes on !settings commands")
 	end
 	if (command:sub(0,2) == "rv") then
 		if name == actual_player and general_time >= 30 then
@@ -1653,7 +1665,7 @@ function eventTextAreaCallback(id,name,callback)
 		showRoomSettings(name)
 	end
 	if callback == "ctimea" then
-		if settings.time > 150 then settings.time=settings.time-10 end
+		if settings.time > 120 then settings.time=settings.time-10 end
 		showRoomSettings(name)
 	end
 	if callback == "ctimeb" then
@@ -1676,11 +1688,19 @@ function eventTextAreaCallback(id,name,callback)
 		showRoomSettings(name)
 	end
 	if callback == "cstimea" then
-		if settings.shoot_time > 8 then settings.shoot_time=settings.shoot_time-1 end
+		if settings.shoot_time > 6 then settings.shoot_time=settings.shoot_time-1 end
 		showRoomSettings(name)
 	end
 	if callback == "cstimeb" then
 		if settings.shoot_time < 30 then settings.shoot_time=settings.shoot_time+1 end
+		showRoomSettings(name)
+	end
+	if callback == "clifesa" then
+		if settings.cap_lifes > 1 then settings.cap_lifes=settings.cap_lifes-1 end
+		showRoomSettings(name)
+	end
+	if callback == "clifesb" then
+		if settings.cap_lifes < 3 then settings.cap_lifes=settings.cap_lifes+1 end
 		showRoomSettings(name)
 	end
 	if callback == "ckami" then
