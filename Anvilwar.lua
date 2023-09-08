@@ -2,20 +2,20 @@
 Module authors : Spectra_phantom#6089
 (C) 2017-2023 Spectra Advanced Module Group
 
-Version : RTM 55148.231
-Compilation date : 09/07/2023 13:19 UTC
+Version : RTM 55249.232
+Compilation date : 09/08/2023 13:31 UTC
 Sending player : Spectra_phantom#6089
 
-Number of maps : 195
-Number of module special members : 11 ]]--
+Number of maps : 198
+Number of module special members : 10 ]]--
 
 _VERSION = "Lua 5.4"
 _AUTHOR = "Spectra_phantom#6089"
 
 funcorps={} -- If you are a FunCorp member, please insert your nicknames (with #tag) here.
 
-maps={"@7467262","@7463118","@7436867","@7412348","@7467977","@7470456","@7480017","@7433435","@7483583","@7485139","@7486518","@7486596","@7486946","@7487828","@7488212","@7487008","@7493568","@7375714","@7495286","@7495744","@7497388","@7501996","@7511352","@7522536","@7522330","@7521998","@7540655","@7532950","@7542639","@7940082","@7114424","@7546132","@7546118","@7545653","@7543543","@7547908","@7544349","@7553313","@7554201","@7554203","@7554206","@7559566","@7560668","@7557788","@7559595","@7560873","@7562374","@7577539","@7596259","@7596249","@7599725","@7600421","@7648431","@7648852","@7648907","@7648899","@7658998","@7659642","@7663560","@7497808","@7489867","@5943895","@7666256","@3941375","@3956702","@4550664","@7678628","@3133327","@6947287","@7678921","@7679763","@7684909","@7672711","@3161494","@3996861","@7689921","@7685324","@7685127","@7695537","@7695654","@7693917","@7697503","@7723407","@5358451","@5451175","@6025712","@7727464","@7689192","@6198267","@6201091","@6244376","@6822539","@6879247","@7032584","@7760006","@7690854","@7686080","@7686207","@7685181","@7679443","@7802671","@7736985","@7495020","@7498659","@7543661","@7804689","@7804694","@7804362","@6759094","@4431434","@7807504","@7808946","@7809120","@7811210","@7811555","@7816639","@7818453","@7823992","@4084781","@7825615","@7826036","@7826050","@7826892","@7497395","@7512948","@7555653","@7688028","@7655209","@7690671","@7845674","@7845680","@7845682","@7845738","@7859139","@7845709","@7844985","@7859144","@7860343","@7860623","@7860498","@7863972","@7803705","@7845724","@7866585","@7834953","@7866596","@7703547","@7795869","@7869247","@7844978","@7869610","@7654290","@7876838","@7879243","@7664077","@7760487","@7802869","@7808177","@7882449","@7882451","@7882453","@7882454","@7882456","@7882458","@7879251","@7748874","@7891576","@7891577","@7891578","@7892788","@7902610","@7904039","@7869352","@7869389","@7841404","@7922465","@7919510","@7919518","@7919522","@7920813","@7922467","@7921968","@7922249","@7922362","@7922698","@7923483","@7922924","@7920975","@7926144","@7923482","@7930770","@7939243","@7939245","@7939272","@7940628"}
-map_names={"The Dual-Sided Fight Area","No Name","Inside the Castle","Hell and Water","A very simple waterfall","No Name","The Frozen Arena","The Golden Flying Arena","The Beach Test Map 1","Inside the Theasure Cave","A random fall map","No Name","The first #anvilwar map","The Beach Test Map 2","No Name","No Name","The Six Attributes","Inside the Ocean","No Name","No Name","No Name","No Name","The Stone Platforms","Inside the Hell","Testing Spaceship","Inside the Volcano","The Dance of Anvils on Stone","On the Space Tower","On the Edge of Void (Remaked)","The Bridge of Death","No Name","On the Seabed","The Palace of Swords","The Castle of Fire","No Name","The Example of Map","Fitting The Anvil","The Beach Test Map 3","Dead Maze Map #1","Dead Maze Map #2","Dead Maze Map #3","The Clouds Under Trampoline","Dead Maze Map #4","No Name","Anvilwar Prison","The Pyramid of Grass","Arena of Darkness","No Name","The Limit of Waters","Black and White","On the Edge of the Space (v2)","Above the Sea Level (v3)","Dark Side of The Moon","Stairway to Heaven","Reversed Colors","Underwater Pression","The Darkin Blade","Testing Purposes","Christmas Frozen Cave","No Name","No Name","Default Water Force","Expert Lava Maze","Lava Links","Time of Revenge (v2)","Trampoline Test","Basketball of Death","Football Soccer Anvilwar","Destruction in Two Levels","The Forest","No Name","Island of Anvils","The Limit of Heaven","Giant and Crazy","Lava Battle Arena","Go and Back","Terrifying Love","Terror Christmas","Ninja Degrees","Chocoland","Cage","No Name","On the Edge of The Abyss","Pier of Columns","The Floor is Lava","Hybrid Grounds","The Flying Water","Natural Cloud Maze","Winter and Spring","Extended Grass Test","The Palace of Lava","Chocolate Maze","The Beach Test Map 4","Between Liquids","Soccer Teams #1","May the force Be with You","Don't Jump! #1","Autumn","Falling Walnuts","Ancient Egypt","Testing Acid Floors","Above the Earth Level","No Name","No Name","Do Not Hit The Anvil","Natural Landscape","Apocalypse","Look the Explosion!","The Beach Test Map 5","Love in Vain","Floating Acid","Moving Bridges","This is a Test","Only Two Grounds","Aim of Death","What The Hell","Discover of Seven Seas","Rotating Motors","Ultimate Acid Maze","The Anvils are Strange","Ghost Dimension","Animal Fury #1","Released Things","No Name","No Name","This is a Terror","No Name","No Name","Escape from Nyan Cat","Sharingan Eye","Zombie Attack","Destructed Zone","Eye of Black Hole","Soccer Teams #2","No Name","No Name","The Beach Test Map 6","The Beach Test Map 7","Vexos Arena","Releasing Anvils","The Hug of Agony","Try a Little More","No Name","No Name","No Name","Land of Spirits","No Name","No Name","No Name","No Name","Tobi - Akatsuki","Water Backgrounds","Up and Down","Watcher","Stranger Things","The Beach Test Map 8","Circle Compression","Gradient Colors","Background Reflection","Locked Dimensions","Now I See","Legacy Mansion","Water Equilibrium","Terrific Alternative","No Name","The Frozen Witch","Animal Fury #2","The Beach Test Map 9","Object Alchemy","Don't Jump! #2","No Name","Balancing Things","Uzumaki Boruto Eyes","Namikaze Minato","Dragon Eyes","No Name","Stone Overriding","The Beach Test Map 10","Extreme Stone Maze","Neathian Guardian","No Name","No Name","No Name","Halloween","Soccer Teams #3","PSG","Apple VS Android","Unaligned Dimension","Siren Equilibrium","Nike","The Star Forger #1","Blade of The Exile","The Dancer of Blades","The Star Forger #2","The Tidecaller"}
+maps={"@7467262","@7463118","@7436867","@7412348","@7467977","@7470456","@7480017","@7433435","@7483583","@7485139","@7486518","@7486596","@7486946","@7487828","@7488212","@7487008","@7493568","@7375714","@7495286","@7495744","@7497388","@7501996","@7511352","@7522536","@7522330","@7521998","@7540655","@7532950","@7542639","@7940082","@7114424","@7546132","@7546118","@7545653","@7543543","@7547908","@7544349","@7553313","@7554201","@7554203","@7554206","@7559566","@7560668","@7557788","@7559595","@7560873","@7562374","@7577539","@7596259","@7596249","@7599725","@7600421","@7648431","@7648852","@7648907","@7648899","@7658998","@7659642","@7663560","@7497808","@7489867","@5943895","@7666256","@3941375","@3956702","@4550664","@7678628","@3133327","@6947287","@7678921","@7679763","@7684909","@7672711","@3161494","@3996861","@7689921","@7685324","@7685127","@7695537","@7695654","@7693917","@7697503","@7723407","@5358451","@5451175","@6025712","@7727464","@7689192","@6198267","@6201091","@6244376","@6822539","@6879247","@7032584","@7760006","@7690854","@7686080","@7686207","@7685181","@7679443","@7802671","@7736985","@7495020","@7498659","@7543661","@7804689","@7804694","@7804362","@6759094","@4431434","@7807504","@7808946","@7809120","@7811210","@7811555","@7816639","@7818453","@7823992","@4084781","@7825615","@7826036","@7826050","@7826892","@7497395","@7512948","@7555653","@7688028","@7655209","@7690671","@7845674","@7845680","@7845682","@7845738","@7859139","@7845709","@7844985","@7859144","@7860343","@7860623","@7860498","@7863972","@7803705","@7845724","@7866585","@7834953","@7866596","@7703547","@7795869","@7869247","@7844978","@7869610","@7654290","@7876838","@7879243","@7664077","@7760487","@7802869","@7808177","@7882449","@7882451","@7882453","@7882454","@7882456","@7882458","@7879251","@7748874","@7891576","@7891577","@7891578","@7892788","@7902610","@7904039","@7869352","@7869389","@7841404","@7922465","@7919510","@7919518","@7919522","@7920813","@7922467","@7921968","@7922249","@7922362","@7922698","@7923483","@7922924","@7920975","@7926144","@7923482","@7930770","@7939243","@7939245","@7939272","@7940628","@7941546","@7941548","@7941562"}
+map_names={"The Dual-Sided Fight Area","No Name","Inside the Castle","Hell and Water","A very simple waterfall","No Name","The Frozen Arena","The Golden Flying Arena","The Beach Test Map 1","Inside the Theasure Cave","A random fall map","No Name","The first #anvilwar map","The Beach Test Map 2","No Name","No Name","The Six Attributes","Inside the Ocean","No Name","No Name","No Name","No Name","The Stone Platforms","Inside the Hell","Testing Spaceship","Inside the Volcano","The Dance of Anvils on Stone","On the Space Tower","On the Edge of The Void","The Bridge of Death","No Name","On the Seabed","The Palace of Swords","The Castle of Fire","No Name","The Example of Map","Fitting The Anvil","The Beach Test Map 3","Dead Maze Map #1","Dead Maze Map #2","Dead Maze Map #3","The Clouds Under Trampoline","Dead Maze Map #4","No Name","Anvilwar Prison","The Pyramid of Grass","Arena of Darkness","No Name","The Limit of Waters","Black and White","On the Edge of the Space (v2)","Above the Sea Level (v3)","Dark Side of The Moon","Stairway to Heaven","Reversed Colors","Underwater Pression","The Darkin Blade","Testing Purposes","Christmas Frozen Cave","No Name","No Name","Default Water Force","Expert Lava Maze","Lava Links","Time of Revenge (v2)","Trampoline Test","Basketball of Death","Football Soccer Anvilwar","Destruction in Two Levels","The Forest","No Name","Island of Anvils","The Limit of Heaven","Giant and Crazy","Lava Battle Arena","Go and Back","Terrifying Love","Terror Christmas","Ninja Degrees","Chocoland","Cage","No Name","On the Edge of The Abyss","Pier of Columns","The Floor is Lava","Hybrid Grounds","The Flying Water","Natural Cloud Maze","Winter and Spring","Extended Grass Test","The Palace of Lava","Chocolate Maze","The Beach Test Map 4","Between Liquids","Soccer Teams #1","May the force Be with You","Don't Jump! #1","Autumn","Falling Walnuts","Ancient Egypt","Testing Acid Floors","Above the Earth Level","No Name","No Name","Do Not Hit The Anvil","Natural Landscape","Apocalypse","Look the Explosion!","The Beach Test Map 5","Love in Vain","Floating Acid","Moving Bridges","This is a Test","Only Two Grounds","Aim of Death","What The Hell","Discover of Seven Seas","Rotating Motors","Ultimate Acid Maze","The Anvils are Strange","Ghost Dimension","Animal Fury #1","Released Things","No Name","No Name","This is a Terror","No Name","No Name","Escape from Nyan Cat","Sharingan Eye","Zombie Attack","Destructed Zone","Eye of Black Hole","Soccer Teams #2","No Name","No Name","The Beach Test Map 6","The Beach Test Map 7","Vexos Arena","Releasing Anvils","The Hug of Agony","Try a Little More","No Name","No Name","No Name","Land of Spirits","No Name","No Name","No Name","No Name","Tobi - Akatsuki","Water Backgrounds","Up and Down","Watcher","Stranger Things","The Beach Test Map 8","Circle Compression","Gradient Colors","Background Reflection","Locked Dimensions","Now I See","Legacy Mansion","Water Equilibrium","Terrific Alternative","No Name","The Frozen Witch","Animal Fury #2","The Beach Test Map 9","Object Alchemy","Don't Jump! #2","No Name","Balancing Things","Uzumaki Boruto Eyes","Namikaze Minato","Dragon Eyes","No Name","Stone Overriding","The Beach Test Map 10","Extreme Stone Maze","Neathian Guardian","No Name","No Name","No Name","Halloween","Soccer Teams #3","PSG","Apple VS Android","Unaligned Dimension","Siren Equilibrium","Nike","The Star Forger #1","Blade of The Exile","The Dancer of Blades","The Star Forger #2","The Tidecaller","Soccer Teams #4","Don't Jump! #3","Blade of The Ruined King"}
 objects={1,2,3,4,6,7,10,23,33,34,39,45,46,54,60,61,65,68,69,90,95}
 players_red={}; alives_red={};
 players_blue={}; alives_blue={};
@@ -30,8 +30,8 @@ divider="　　　　　　　　　";
 images_id={};
 playersList={}; helpers={};
 mods={"Dinamarquers#0000","Flaysama#5935","Chavestomil#0000"};
-admins={"Ashearcher#0000","Spectra_phantom#6089","Geracionz#0000"};
-ninjas={"Viego#0345","Barodius#9562","Leblanc#5342","Dharak#7603"};
+admins={"Spectra_phantom#6089","Geracionz#0000"};
+ninjas={"Viego#0345","Barodius#9562","Leblanc#5342","Dharak#7603","Samira#4387"};
 data={}
 
 lang = {}
@@ -71,7 +71,7 @@ lang.br = {
 	powerups = "<font size='11.5'><b>Tecla '1' - Disparo Duplo</b><br>Este powerup faz você atirar duas bigornas de uma vez.<br><b>Nível Mínimo:  1  /  Pontuação: 8pts</b><br><br><b>Tecla '2' - Disparo Triplo</b><br>Este powerup faz você atirar três bigornas de uma vez.<br><b>Nível Mínimo:  2  /  Pontuação: 12pts</b><br><br><b>Tecla '3' - Olha a Explosão</b><br>Este powerup permite a você criar uma explosão em um local do time inimigo.<br><b>Nível Mínimo:  3  /  Pontuação: 26pts</b><br><br><b>Tecla '4' - Congelamento</b><br>Este powerup congela todos os jogadores do time inimigo por um tempo limitado.<br><b>Nível Mínimo:  3  /  Pontuação: 16pts</b><br><p align='right'><a href='event:pw2'>Ir à Página 2</a>",
 	commands = "<font size='11.5'>!commands (ou <b>B</b>) - Mostra esta caixa de texto.<br>!anvils - Mostra as bigornas disponíveis para compra<br>!help (ou <b>H</b>) - Mostra a ajuda do jogo.<br>!tc [mensagem] - Envia uma mensagem que aparece apenas para os jogadores do seu time.<br>!powerups (ou <b>U</b>) - Mostra os powerups disponíveis e seus respectivos custos.<br>!p [usuário] (ou <b>P</b>) - Mostra o perfil do usuário especificado. Digite apenas !p para ver o seu perfil.<br>!ranking (ou <b>R</b>) - Mostra o ranking dos jogadores na sala.",
 	help = "<font size='12'><b>Bem-vindo ao #anvilwar!</b><br>O objetivo deste module é matar os jogadores do time adversário usando bigornas.<br><br>O jogo é simples de ser jogado. Quando for sua vez, use as teclas <b>Z e X</b> para mudar a potência do seu tiro e as teclas <b>C e V</b> para mudar o ângulo. Use a <b>BARRA DE ESPAÇO</b> para atirar.<br>O time que conseguir eliminar todos os jogadores do outro time vencerá o jogo!<br><br>Quando você joga ou ganha partidas, você vai receber <J><b>AnvilCoins</b><N>. Esta é a moeda do jogo. Ela pode ser usada para comprar novas bigornas.<br>Divirta-se e que vença o melhor time!<br><br><N><R><b>Administradores:</b><N>Spectra_phantom#6089 e Geracionz#0000<br><VP><b>Contribuidores:</b><N> Flaysama#5935, Chavestomil#0000 e Dinamarquers#0000<br><J><b>Tradutores:</b><N> Patrick_mahomes#1795 (BR)",
-	adcommands = "<font size='11.5'><N>!fc [mensagem] - Exibe uma mensagem na cor laranja (apenas para membros da equipe FunCorp).<br>!pw [senha] - Adiciona uma senha na sala. Digite apenas !pw para remover a senha.<br>!reset - Cancela a partida atual e retorna à tela inicial.<br>!limit [número] - Altera o limite de jogadores da sala.<br>!lc [0-3] - Altera a configuração do verificador de latência dos jogadores.<br>!settings - Altera as configurações da sala.",
+	adcommands = "<font size='11.5'><N>!fc [mensagem] - Exibe uma mensagem na cor laranja (apenas para membros da equipe FunCorp).<br>!pw [senha] - Adiciona uma senha na sala. Digite apenas !pw para remover a senha.<br>!reset - Cancela a partida atual e retorna à tela inicial.<br>!limit [número] - Altera o limite de jogadores da sala.<br>!lc [0-4] - Altera a configuração do verificador de latência dos jogadores.<br>!settings - Altera as configurações da sala.",
 	seconds = " segundos.",
 	leave = "Sair",
 	join = "Entrar",
@@ -94,7 +94,7 @@ lang.br = {
 	cap_text = "foi escolhido para ser o líder do seu time.",
 	cap = "<J><b>Você foi escolhido como o líder do time.</b><N><br>Digite !leader para saber as funcionalidades e os benefícios de ser o líder do seu time.",
 	leader = "Os líderes dos times <b>são escolhidos aleatoriamente</b> e possui as seguintes vantagens em relação aos outros jogadores:<br><br>• Recebe 50% a mais de quantidade de pontos e AnvilCoins em relação aos outros jogadores<br>• Pode reviver jogadores mortos do seu time usando !rv [jogador]<br>• Pode transferir seus pontos para outro jogador do seu time usando !tp [jogador]<br>• Possui 20% a mais de tempo para atirar do que os outros jogadores<br>• Pode voltar a vida uma vez se morto.",
-	legacy = "<N>Conheça todas as salas dentro do modo #anvilwar:<br><br><J><b>Fuja do tubarão (shaman) e sobreviva dentro do oceano!</b><br><VP>/sala #anvilwar00watercatch<br><br><J><b>A resposta é verdadeira ou falsa? Descubra nesta sala!</b><br><VP>/sala #anvilwar00truefalse",
+	legacy = "<N>Conheça todas as salas dentro do modo #anvilwar:<br><br><J><b>Fuja do tubarão (shaman) e sobreviva dentro do oceano!</b><br><VP>/sala #anvilwar00watercatch<br><br><J><b>A resposta é verdadeira ou falsa? Descubra nesta sala!</b><br><VP>/sala #anvilwar00truefalse<br><br><N>As avaliações de mapas do #anvilwar estão abertas!<br><J>atelier801.com/topic?f=6&t=894824&p=1#m1",
 	disabled = "Este comando foi desabilitado por um administrador.",
 	gametime = "Tempo",
 	timeup = "<ROSE>Tempo esgotado! Este será o último tiro!",
@@ -149,7 +149,7 @@ lang.en = {
 	ac = "You currently have ",
 	powerups = "<font size='11.5'><b>Key '1' - Double Shoot</b><br>This powerup makes you shoot 2 anvils at once.<br><b>Required Level: 1  /  Required Score: 8pts</b><br><br><b>Key '2' - Triple Shoot</b><br>This powerup makes you shoot 3 anvils at once.<br><b>Required Level: 2  /  Required Score: 12pts</b><br><br><b>Key '3' - Explosion</b><br>This powerup allows you to create an explosion on the enemy team area.<br><b>Required Level: 3  /  Required Score: 26pts</b><br><br><b>Key '4' - Permafrost</b><br>This powerup freezes all enemy team players by a limited time.<br><b>Required Level: 3  /  Required Score: 16pts</b><br><p align='right'><a href='event:pw2'>Go to Page 2</a>",
 	commands = "<font size='11.5'>!commands (or <b>B</b> key) - Display this message box.<br>!anvils - Show available #anvilwar anvils to buy.<br>!help (or <b>H</b> key) - Display the game help.<br>!tc [message] - Send a message that is visible only for players of your team.<br>!powerups (or <b>U</b> key) - Show all available powerups and their respective costs.<br>!p [username] (or <b>P</b> key) - Show the profile of the specified user. Type !p only to see your profile.<br>!ranking (or <b>R</b> key) - Show the room ranking.",
-	adcommands = "<font size='11.5'><N>!fc [text] - Shows a text in orange. (only for FunCorp members)<br>!pw [password] - Locks the room with a password. Use only !pw to clear the password.<br>!reset - Cancel the current match and returns to the lobby screen.<br>!limit [number] - Change the limit of mices on the room.<br>!lc [0-3] - Change the level of the player's latency checker.<br>!settings - Change the room settings.",
+	adcommands = "<font size='11.5'><N>!fc [text] - Shows a text in orange. (only for FunCorp members)<br>!pw [password] - Locks the room with a password. Use only !pw to clear the password.<br>!reset - Cancel the current match and returns to the lobby screen.<br>!limit [number] - Change the limit of mices on the room.<br>!lc [0-4] - Change the level of the player's latency checker.<br>!settings - Change the room settings.",
 	help = "<font size='12'><b>Welcome to #anvilwar!</b><br>The objective of this module is kill all the players of other team using anvils.<br><br>The module is very easy to play. When reaches your turn, use <b>Z and X</b> keys to change the intensity of the anvil shoot and <b>C and V</b> keys to change the angle of the anvil. Use the <b>SPACEBAR</b> to shoot.<br>The team that kill all players of other team will win the game!<br><br>When you kill players or win matches, you will receive <J><b>AnvilCoins</b><N>. This is the money of #anvilwar module. It can be used to unlock custom anvils.<br>Enjoy the module and may the best team wins!<br><br><N><R><b>Administrators:</b><N> Spectra_phantom#6089 and Geracionz#0000<br><VP><b>Contributors:</b><N> Flaysama#5935, Chavestomil#0000 and Dinamarquers#0000<br><J><b>Translators:</b><N> Patrick_mahomes#1795 (BR)",
 	seconds = " seconds.",
 	leave = "Leave",
@@ -173,7 +173,7 @@ lang.en = {
 	cap_text = "was selected to be the leader of your team.",
 	cap = "<J><b>You are now the team leader.</b><N><br>Type !leader to know all the functions and benefits of team leaders.",
 	leader = "The team leaders <b>are randomly choosed</b> and have various advantages and benefits:<br><br>• Will receive 50% more points and AnvilCoins regarding to the other players<br>• Can revive dead team players using the !rv [player] command<br>• Can transfer your powerup score to other team players using the !tp [player] command<br>• Have 20% more shooting time<br>• Will be revived once if was killed.",
-	legacy = "",
+	legacy = "<N>#anvilwar Map Submissions are now open!<br><J>atelier801.com/topic?f=6&t=894824&p=1#m1",
 	disabled = "This command was disabled by an administrator.",
 	gametime = "Game Time",
 	timeup = "<ROSE>Time is up! This will be the last shoot!",
@@ -206,10 +206,8 @@ end
 for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand","MortCommand","AfkDeath"} do
 	tfm.exec["disable"..f](true)
 end
-for _,g in next,{"help","sync","pw","kill","commands","adcommands","powerups","p","limit","ranking","t","T","tc","TC","Tc","tC","fc","anvils","set","testmap","defmap","leader","rv","tp","changelog","get","lc","settings"} do
-	system.disableChatCommandDisplay(g)
-end
-if not tfm.get.room.isTribeHouse then tfm.exec.setRoomMaxPlayers(40) end
+system.disableChatCommandDisplay(nil, true)
+if tfm.get.room.isTribeHouse == false then tfm.exec.setRoomMaxPlayers(40) end
 
 function tableSearch(table,element)
 	for i=1,rawlen(table) do
@@ -298,7 +296,7 @@ function showRoomSettings(name)
 end
 
 function showLobbyText(name)
-	ui.addTextArea(402,"<p align='center'><font size='12'><b><font face='Courier New'><i>"..text.version.." RTM 55148.231 - "..text.comp_date.."09/07/2023 13:19 UTC - "..text.uploaded.."Spectra_phantom#6089</i>",name,-10,380,820,36,0,0,1.0,true)
+	ui.addTextArea(402,"<p align='center'><font size='12'><b><font face='Courier New'><i>"..text.version.." RTM 55249.232 - "..text.comp_date.."09/08/2023 13:31 UTC - "..text.uploaded.."Spectra_phantom#6089</i>",name,-10,380,820,36,0,0,1.0,true)
 end
 
 function setLeaders()
@@ -386,7 +384,7 @@ function updateTextBar()
 	if mode == "end" then
 		ui.setMapName("<VP><b>"..text.ending.."</b>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	else
-		ui.setMapName("<N><b>#anvilwar</b>   <G>|   <VP>"..text.version.." <b>RTM 55148.231</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
+		ui.setMapName("<N><b>#anvilwar</b>   <G>|   <VP>"..text.version.." <b>RTM 55249.232</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	end
 end
 
@@ -524,6 +522,8 @@ end
 function showMainText(name)
 	ui.addTextArea(405,"<i><font size='72'><font color='#202020'>#anvilwar",name,213,19,400,128,0,0,0.95,true)
 	ui.addTextArea(404,"<i><font size='72'>#anvilwar",name,210,16,400,128,0,0,0.95,true)
+	ui.addTextArea(407,"<i><font size='12'><font color='#202020'>!help - Game help    |    !commands - Game commands    |    !ranking - Room ranking    |    !powerups - Game powerups",name,38,363,760,30,0,0,0.95,true)
+	ui.addTextArea(406,"<i><font size='12'>!help - Game help    |    !commands - Game commands    |    !ranking - Room ranking    |    !powerups - Game powerups",name,35,360,760,30,0,0,0.95,true)
 end
 
 function updatePlayerList()
@@ -583,6 +583,12 @@ function checkPing(name)
 			end
 		elseif ping_check == 3 then
 			if tfm.get.room.playerList[name].averageLatency >= 500 then
+				return true
+			else
+				return false
+			end
+		elseif ping_check == 4 then
+			if tfm.get.room.playerList[name].averageLatency >= 250 then
 				return true
 			else
 				return false
@@ -1022,7 +1028,7 @@ function lobby()
 		end
 	end
 	permafrost=false; night_mode=false;
-	showMessage("<VP>"..text.legacy.."")
+	showMessage(text.legacy)
 	if custom_mode == true then
 		showMessage(text.custom)
 	end
@@ -1032,7 +1038,7 @@ function eventNewGame()
 	ui.setBackgroundColor("#000000")
 	set_map="-1"; def_map=-1; turns=0;
 	if mode == "wait1" then
-		for i=400,405 do ui.removeTextArea(i,nil) end
+		for i=400,407 do ui.removeTextArea(i,nil) end
 		mode="wait2"
 		tfm.exec.setGameTime(20)
 		moveTeams()
@@ -1075,9 +1081,6 @@ function eventChatCommand(name,command)
 			showMessage("<R>User not found",nome)
 		end
 	end
-	if (command:sub(0,2) == "fc") then if data[name].ranking >= 4 then
-		showMessage("<font color='#FF8547'>• [FunCorp - <b>"..name.."</b>] "..message:sub(4).."")
-	else showMessage(text.wrong,name) end end
 	if (command:sub(0,4) == "sync") then if data[name].ranking >= 3 then
 		tfm.exec.setPlayerSync(command:sub(6))
 		showMessage("Sync: "..command:sub(6).."",name)
@@ -1103,7 +1106,7 @@ function eventChatCommand(name,command)
 		end
 	else showMessage(text.wrong,name) end end
 	if (command:sub(0,2) == "lc") then if data[name].ranking >= 3 then
-		if tostring(command:sub(4)) == "0" or tostring(command:sub(4)) == "1" or tostring(command:sub(4)) == "2" or tostring(command:sub(4)) == "3" then
+		if tostring(command:sub(4)) == "0" or tostring(command:sub(4)) == "1" or tostring(command:sub(4)) == "2" or tostring(command:sub(4)) == "3" or tostring(command:sub(4)) == "4" then
 			level=tonumber(command:sub(4))
 			if level == 0 then
 				ping_check=0
@@ -1117,19 +1120,21 @@ function eventChatCommand(name,command)
 			elseif level == 3 then
 				ping_check=3
 				showMessage("The player's latency checker is now set to STRICT. Players with average latency greater than 500 ms cannot enter into the teams.")
+			elseif level == 4 then
+				ping_check=4
+				showMessage("The player's latency checker is now set to SEVERE. Players with average latency greater than 250 ms cannot enter into the teams.")
 			end
 		end
 	else showMessage(text.wrong,name) end end
 	if command == "changelog" then
-		showMenu(name,0xa8f233,140,130,520,160,"#anvilwar Changelog - RTM 55148.231","• Fixes on the scoreboard<br>• Some text changes<br>• Added commands for FunCorp members<br>• Changes on anvils physics<br>• Added 4 new maps<br>• The score increasing was slightly reduced<br>• Changes on !settings commands")
+		showMenu(name,0xa8f233,140,130,520,186,"#anvilwar Changelog - RTM 55249.232","• Fixes on the scoreboard<br>• Some text changes<br>• Added commands for FunCorp members<br>• Changes on anvils physics<br>• Added 6 new maps<br>• The score increasing was slightly reduced<br>• Changes on !settings commands<br>• Re-added the link to the map submissions<br>• Reviving score was increased from 30 to 35 points")
 	end
 	if (command:sub(0,2) == "rv") then
-		if name == actual_player and general_time >= 30 then
+		if name == actual_player and general_time >= 35 then
 			if name == red_cap or name == blue_cap then
 				temp_name=command:sub(4)
-				print(temp_name)
 				if data[temp_name] then
-					if data[name].score >= 30 then
+					if data[name].score >= 35 then
 						if tfm.get.room.playerList[temp_name].isDead == true then
 							tfm.exec.respawnPlayer(temp_name)
 							if data[temp_name].team == 2 then
@@ -1141,7 +1146,7 @@ function eventChatCommand(name,command)
 								data[temp_name].killed=false
 							end
 							showMessage("<J>"..text.revived..""..temp_name.."")
-							setScores(name,-30,true)
+							setScores(name,-35,true)
 						end
 					else
 						showMessage(text.p10,name)
