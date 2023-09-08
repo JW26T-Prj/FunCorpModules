@@ -8,13 +8,13 @@ for _,f in next,{"help","ajuda","tc","kill","powerups","creditos","changelog","r
 end
 if tfm.get.room.isTribeHouse == false then tfm.exec.setRoomMaxPlayers(40) end
 
-shaman=""; alives=0; cannons=12; z=0; data={}; lang={}; mode="load"; changed=false; loop=0; timer=0; xml=''; time_passed=0; time_remain=1024;
+shaman=""; alives=0; cannons=24; z=0; data={}; lang={}; mode="load"; changed=false; loop=0; timer=0; xml=''; time_passed=0; time_remain=1024;
 active_imgs={}; active_imgs2={}; powerups_x={}; powerups_y={}; powerups_types={}; oxygen_x={}; oxygen_y={}; id=0; round=0;
 
 lang.br = {
 	welcome = "<font color='#0080ff'><b>Bem-vindos ao module #watercatch!</b><br><VP>Fuja do shaman (tubarão) e sobreviva no perigoso mar!<br><J>Digite !help para ver a ajuda deste module.<br><br><N>Module ",
-	changelog = "• Mudanças no comando do module",
-	help = "O objetivo é bem simples: <b>Fugir do shaman</b>, se escondendo dentro do mar e tomando cuidado para não morrer afogado!<br><R><b>Shamans, não esqueçam de se mexer, ou irão morrer AFK!</b><br><br><VP>Os círculos marcados por <N>'?'<VP> são powerups, que geram efeitos aleatórios nos ratos.<J><br>Estes powerups podem ser acionados pressionando ESPAÇO em cima deles.<br><N>Você pode ver os possíveis efeitos dos powerups indo no Menu e clicando em Powerups.<br><br><N>Caso você seja shaman, você tem um limite de <b>12</b> objetos que podem ser utilizados. Exceder este limite fará com que a partida acabe.",
+	changelog = "• Redução de 10% no tamanho do mapa<br>• Aumento do número de objetos de 12 para 24",
+	help = "O objetivo é bem simples: <b>Fugir do shaman</b>, se escondendo dentro do mar e tomando cuidado para não morrer afogado!<br><R><b>Shamans, não esqueçam de se mexer, ou irão morrer AFK!</b><br><br><VP>Os círculos marcados por <N>'?'<VP> são powerups, que geram efeitos aleatórios nos ratos.<J><br>Estes powerups podem ser acionados pressionando ESPAÇO em cima deles.<br><N>Você pode ver os possíveis efeitos dos powerups indo no Menu e clicando em Powerups.<br><br><N>Caso você seja shaman, você tem um limite de <b>24</b> objetos que podem ser utilizados. Exceder este limite fará com que a partida acabe.",
 	powerups = "<font size='11'>Os seguintes powerups estão disponíveis no momento:<br><ROSE><b>• VAMPIRO</b><N><br>Transforma seu rato em um vampiro, forçando você a ir para fora do mar.<br><ROSE><b>• ESCURIDÃO</b><N><br>Reduz drasticamente o campo de visão do seu rato.<br><ROSE><b>• AFUNDAR</b><N><br>Cria uma curta anomalia que puxa todos os ratos em direção ao fundo do mar.<br><ROSE><b>• MEEP</b><N><br>Te dá o poder de usar o Meep!<br><ROSE><b>• SUFOCO</b><N><br>Diminui o seu nível de oxigênio. Caso seu nível de oxigênio esteja muito baixo e você pegue este powerup, você morrerá afogado.<br><ROSE><b>• CONGELAR</b><N><br>Congela o seu rato.<br><ROSE><b>• QUEIJO</b><N><br>Dá queijo para o seu rato. Caso você esteja dentro do mar, você provavelmente será levado para o fundo dele.",
 	thecredits = "As seguintes pessoas ajudaram no desenvolvimento deste module:<br><br><ROSE><b>• Shun_kazami#7014</b><N> - Desenvolvimento do do mapa<br><ROSE><b>• Spectra_phantom#6089</b><N> - Ideia original, criação das artes, desenvolvimento do mapa e do código<br><ROSE><b>• Lynet#8558</b><N> - análise de avaliação e envio das imagens<br><ROSE><b>• Perdiaconta#2529</b><N> - análise de avaliação<br><ROSE><b>• Lacoste#8972</b><N> - análise de avaliação<br><ROSE><b>• Maramara4#0000</b><N> - análise de avaliação<br><ROSE><b>• Yuh#0748</b><N> - análise de avaliação<br><ROSE><b>• Rafaelmorai#0000</b><N> - análise de avaliação",
 	shark = "Tubarão",
@@ -51,8 +51,8 @@ lang.br = {
 }
 lang.en = {
 	welcome = "<font color='#0080ff'><b>Welcome to the #watercatch module!</b><br><VP>Run away from the shark (shaman) and survive in the dangerous sea!<br><J>Type !help to see the game help.<br><br><N>Module ",
-	changelog = "• Changes on module ownership",
-	help = "The goal is very simple: <b>Run away from the shaman</b>, hiding in the sea and keeping caution to don't drown!<br><R><b>Shamans, don't forget to move, or they will dead by AFK!</b><br><br><VP>The circles marked with <N>'?'<VP> are powerups, that generate random effects to your mice.<J><br>These powerups can be activated pressing SPACEBAR on top of them.<br><N>You can see all the possible effects of the powerups going to the Menu and pressing 'Powerups'.<br><br><N>If you are the shaman, you cannot invoke more than <b>12</b> objects, or you will lose your shaman turn.",
+	changelog = "• Reduction of 10% on the map size<br>• The shaman objects number was increased from 12 to 24",
+	help = "The goal is very simple: <b>Run away from the shaman</b>, hiding in the sea and keeping caution to don't drown!<br><R><b>Shamans, don't forget to move, or they will dead by AFK!</b><br><br><VP>The circles marked with <N>'?'<VP> are powerups, that generate random effects to your mice.<J><br>These powerups can be activated pressing SPACEBAR on top of them.<br><N>You can see all the possible effects of the powerups going to the Menu and pressing 'Powerups'.<br><br><N>If you are the shaman, you cannot invoke more than <b>24</b> objects, or you will lose your shaman turn.",
 	powerups = "<font size='11'>The following powerups are available at moment:<br><ROSE><b>• VAMPIRE</b><N><br>Turns your mouse into a vampire, forcing you out of the sea.<br><ROSE><b>• DARKNESS</b><N><br>Drastically reduces your mouse's field of view.<br><ROSE><b>• SUBMERGE</b><N><br>Create an anomaly that pushes all the mices to the seabed.<br><ROSE><b>• MEEP</b><N><br>Gives the MEEP ability!<br><ROSE><b>• SUFFOCATE</b><N><br>Reduces your oxygen level. If your oxygen level is very low and you enable this powerup, you will drown in the sea.<br><ROSE><b>• FREEZE</b><N><br>Freeze your mice.<br><ROSE><b>• CHEESE</b><N><br>Give cheese to your mice. If you are in the sea and enable this powerup, you will go to the seabed.",
 	thecredits = "The following people helped with the development of this module:<br><br><ROSE><b>• Shun_kazami#7014</b><N> - Map development<br><ROSE><b>• Spectra_phantom#6089</b><N> - Original idea, art creation, map and code development<br><ROSE><b>• Lynet#8558</b><N> - evaluation analysis and image sending<br><ROSE><b>• Perdiaconta#2529</b><N> - evaluation analysis<br><ROSE><b>• Lacoste#8972</b><N> - evaluation analysis<br><ROSE><b>• Maramara4#0000</b><N> - evaluation analysis<br><ROSE><b>• Yuh#0748</b><N> - evaluation analysis<br><ROSE><b>• Rafaelmorai#0000</b><N> - evaluation analysis",
 	shark = "Shark",
@@ -251,7 +251,7 @@ function showWater(name)
 	tfm.exec.addImage("1877322de4e.png", "?1",916,-47,name,-1,1)
 	tfm.exec.addImage("189746f8a21.png", "?1",-80,1650,name,1,1,-0.1)
 	tfm.exec.addImage("189746c6144.png", "?1",7120,1395,name)
-	tfm.exec.addImage("1860ee201fd.png", "!1",520,2308,name)
+	tfm.exec.addImage("1860ee201fd.png", "!1",520,2108,name)
 	tfm.exec.addImage("189746ed93c.png", "+24", -90, -90, name,0.3,0.3)
 	tfm.exec.addImage("1860ee29c2f.png", "+25", -35, -90, name)
 	tfm.exec.addImage("1860ee29c2f.png", "+26", -35, -90, name)
@@ -262,8 +262,8 @@ function showWater(name)
  		tfm.exec.addImage("1897a810bb2.png", "!-1023", -1200+(i*2400), 535, name, 1, 1, 0, 1)
 	end
 	for i=0,4 do
-		tfm.exec.addImage("189746fe3a4.png", "?-1", -1200+(i*2000), 2340, name, 1, 1, 0, 1)
-		tfm.exec.addImage("189746fe3a4.png", "?-1", -1200+(i*2000), 2880, name, 1, -2, 0, 1)
+		tfm.exec.addImage("189746fe3a4.png", "?-1", -1200+(i*2000), 2140, name, 1, 1, 0, 1)
+		tfm.exec.addImage("189746fe3a4.png", "?-1", -1200+(i*2000), 2680, name, 1, -2, 0, 1)
 	end
 	for i=0,11 do
 		tfm.exec.addImage("1897a80b341.png", "!-1024", -1200+(i*840), 500, name, 3.5, 0.8, 0, 1)
@@ -325,17 +325,17 @@ function moveShaman()
 end
 function checkOxygenZones(name)
 	if tfm.get.room.playerList[name].x >= 195 and tfm.get.room.playerList[name].x <= 335 then
-		if tfm.get.room.playerList[name].y >= 2250 and tfm.get.room.playerList[name].y <= 2320 then
+		if tfm.get.room.playerList[name].y >= 2050 and tfm.get.room.playerList[name].y <= 2120 then
 			return true
 		end
 	end
 	if  tfm.get.room.playerList[name].x >= 7460 and tfm.get.room.playerList[name].x <= 7600 then
-		if tfm.get.room.playerList[name].y >= 2235 and tfm.get.room.playerList[name].y <= 2305 then
+		if tfm.get.room.playerList[name].y >= 2035 and tfm.get.room.playerList[name].y <= 2105 then
 			return true
 		end
 	end
 	if tfm.get.room.playerList[name].x >= 3933 and tfm.get.room.playerList[name].x <= 1853 then
-		if tfm.get.room.playerList[name].y >= 1570 and tfm.get.room.playerList[name].y <= 1610 then
+		if tfm.get.room.playerList[name].y >= 1370 and tfm.get.room.playerList[name].y <= 1410 then
 			return true
 		end
 	end
@@ -356,7 +356,7 @@ function eventChatCommand(name,message)
 		showAvailableSharks(name)
 	end
 	if message == "changelog" then
-		showMenu(name,0xf0f0f0,140,130,520,100,"#watercatch Changelog - v6.0.1",text.changelog)
+		showMenu(name,0xf0f0f0,140,130,520,100,"#watercatch Changelog - v6.0.2",text.changelog)
 	end
 	if (message:sub(0,2)== "tc") then
 		if tfm.get.room.playerList[name].isShaman == false then
@@ -368,9 +368,6 @@ function eventChatCommand(name,message)
 		end
 	end
 	if name == "Shun_kazami#7014" or name == "Leblanc#5342" or name == "Spectra_phantom#6089" or verifyAdmin(name) == true then
-		if (message:sub(0,3) == "msg") then
-			showMessage("<VP>• [FunCorp - <b>"..name.."</b>] "..message:sub(5).."")
-		end
 		if (message:sub(0,4) == "kill") then
 			tfm.exec.killPlayer(message:sub(6))
 		end
@@ -467,13 +464,13 @@ function activateOxygen(name,number)
 	tfm.exec.removeImage(active_imgs2[number])
 end
 function genJail(x,y)
-	id=id+1; tfm.exec.addPhysicObject(id, x+387, y-114, {type = 12, width = 800, height = 10, foreground = false, friction = 0, restitution = 1.5, angle = -5, color = 0xffffffff, miceCollision = false, groundCollision = true, dynamic = false})
+	id=id+1; tfm.exec.addPhysicObject(id, x+387, y-14, {type = 12, width = 800, height = 10, foreground = false, friction = 0, restitution = 1.5, angle = -5, color = 0xffffffff, miceCollision = false, groundCollision = true, dynamic = false})
 	id=id+1; tfm.exec.addPhysicObject(id, x, y, {type = 12, width = 10, height = 168, foreground = false, friction = 0, restitution = 1.5, angle = -5, color = 0xffffffff, miceCollision = false, groundCollision = true, dynamic = false})
 	id=id+1; tfm.exec.addPhysicObject(id, x+436, y+125, {type = 12, width = 868, height = 10, foreground = false, friction = 0, restitution = 5, angle = 5, color = 0xffffffff, miceCollision = false, groundCollision = true, dynamic = false})
-	id=id+1; tfm.exec.addPhysicObject(id, x+800, y+10, {type = 12, width = 10, height = 340, foreground = false, friction = 0, restitution = 3, angle = -25, color = 0xffffffff, miceCollision = false, groundCollision = true, dynamic = false})
+	id=id+1; tfm.exec.addPhysicObject(id, x+700, y+10, {type = 12, width = 10, height = 340, foreground = false, friction = 0, restitution = 3, angle = -25, color = 0xffffffff, miceCollision = false, groundCollision = true, dynamic = false})
 end
 function genJail2(x,y)
-	id=id+1; tfm.exec.addPhysicObject(id, x+648, y-103, {type = 12, width = 1323, height = 10, foreground = false, friction = 0, restitution = 1.5, angle = -2, color = 0xffffffff, miceCollision = false, groundCollision = true, dynamic = false})
+	id=id+1; tfm.exec.addPhysicObject(id, x+648, y-3, {type = 12, width = 1323, height = 10, foreground = false, friction = 0, restitution = 1.5, angle = -2, color = 0xffffffff, miceCollision = false, groundCollision = true, dynamic = false})
 	id=id+1; tfm.exec.addPhysicObject(id, x, y, {type = 12, width = 10, height = 168, foreground = false, friction = 0, restitution = 1.5, angle = -5, color = 0xffffffff, miceCollision = false, groundCollision = true, dynamic = false})
 	id=id+1; tfm.exec.addPhysicObject(id, x+701, y+148, {type = 12, width = 1400, height = 10, foreground = false, friction = 0, restitution = 5, angle = 5, color = 0xffffffff, miceCollision = false, groundCollision = true, dynamic = false})
 	id=id+1; tfm.exec.addPhysicObject(id, x+1352, y+43, {type = 12, width = 10, height = 349, foreground = false, friction = 0, restitution = 3, angle = -15, color = 0xffffffff, miceCollision = false, groundCollision = true, dynamic = false})
@@ -536,16 +533,16 @@ function eventNewGame()
 	end
 	if changed == true then
 		tfm.exec.addPhysicObject(131, 0, 1000, {type = 12, width = 10, height = 4000, foreground = false, friction = 0, restitution = 0, angle = 0, color = 0xffffffff, miceCollision = true, groundCollision = true, dynamic = false})
-		tfm.exec.addPhysicObject(132, 8000, 1000, {type = 12, width = 10, height = 4000, foreground = false, friction = 0, restitution = 0, angle = 0, color = 0xffffffff, miceCollision = true, groundCollision = true, dynamic = false})
+		tfm.exec.addPhysicObject(132, 7750, 1000, {type = 12, width = 10, height = 4000, foreground = false, friction = 0, restitution = 0, angle = 0, color = 0xffffffff, miceCollision = true, groundCollision = true, dynamic = false})
 		ui.removeTextArea(0,nil)
-		z=-1; cannons=12; alives=0; mode="hide";
+		z=-1; cannons=24; alives=0; mode="hide";
 		ui.removeTextArea(22,nil)
 		for n,p in next,tfm.get.room.playerList do
 			tfm.exec.giveMeep(n,false)
 			tfm.exec.removeImage(data[n].shark_id)
 			tfm.exec.changePlayerSize(n,1)
 			ui.addTextArea(299,"<p align='center'><a href='event:hide_menu'><font size='18'>Menu",n,365,25,70,24,0x000001,0x000001,0.75,true)
-			ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> <VP><b>v6.0.1</b><N> - "..text.madeby.." <R><b>Spectra_phantom#6089</b><")
+			ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> <VP><b>v6.0.2</b><N> - "..text.madeby.." <R><b>Spectra_phantom#6089</b><")
 			if n:sub(1,1) == "*" then
 				tfm.exec.killPlayer(n)
 				showMessage(text.nosouris,name)
@@ -575,7 +572,7 @@ function eventNewGame()
 		end
 		tfm.exec.setGameTime(60)
 	end
-	genJail(541,2652); genJail(1541,2622); genJail(2541,2702); genJail2(4041,2752); genJail2(5941,2692);
+	genJail(541,2452); genJail(1541,2422); genJail(2541,2502); genJail2(4041,2552); genJail2(5941,2492);
 end
 function showMenu(name,color,x,y,width,height,title,content)
 	if data[name].opened == false then
@@ -636,7 +633,7 @@ function eventLoop(p,r)
 	time_passed=math.ceil(p/500)
 	time_remain=math.ceil(r/500)
 	if changed == true then
-		ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> <VP><b>v6.0.1</b><N> - "..text.madeby.." <R><b>Spectra_phantom#6089</b><")
+		ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> <VP><b>v6.0.2</b><N> - "..text.madeby.." <R><b>Spectra_phantom#6089</b><")
 		local m=math.floor(r/60000)
 		local s=math.floor((((m*60000)-r) * -1) / 1000)
 		ui.addTextArea(-1,"<font size='30'><font color='#222222'><font face='Calisto MT,Times New Roman'><b>"..m..":"..s.."</b>",n,267,368,125,54,0,0,1.0,true)
@@ -803,7 +800,7 @@ function eventNewPlayer(name)
 	data[name] = newData;
 	showWater(name)
 	ui.addTextArea(299,"<p align='center'><a href='event:hide_menu'><font size='18'>Menu",name,365,25,70,24,0x000001,0x000001,0.75,true)
-	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> <VP><b>v6.0.1</b><N> - "..text.madeby.." <R><b>Spectra_phantom#6089</b><")
+	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> <VP><b>v6.0.2</b><N> - "..text.madeby.." <R><b>Spectra_phantom#6089</b><")
 	showMessage(text.welcome..text.madeby.." Spectra_phantom#6089.",name)
 	tfm.exec.setPlayerScore(name,0,false)
 end
