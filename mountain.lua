@@ -9,12 +9,12 @@ data={}; lang={}; loop=0; map_count=0; event_selected=0; running=false; pass_int
 map="@7901662"; xml2=''
 ground={type = 12,width = 10,height = 210,foregound = 1,friction = 0.0,restitution = 1.0,angle = 0,color = 0xffffff,miceCollision = true,groundCollision = true,dynamic = false}
 powerups={wind=false,meteor=false,gravity=false,cheese=false}
-events_pt={"Fúria da Tormenta","Chuva de Meteoros","Anomalia Gravitacional","Queijo para Todos"}
-events_en={"Wind Fury","Meteor Rain","Gravity Anomaly","Cheese for All"}
-power_d={p2={6,8,10,12},p3={12,14,16,18,20,22}}
+events_pt={"Fúria da Tormenta","Chuva de Caixas","Anomalia Gravitacional","Queijo para Todos"}
+events_en={"Wind Fury","Box Rain","Gravity Anomaly","Cheese for All"}
+power_d={p2={8,10,12,14},p3={12,14,16,18,20,22}}
 lang.br = {
-	mapname = "<N><b>#mountain</b>  <V>-  <N>versão <ROSE>v1.2.0   <G>|   <N>Desenvolvido por <J>Barodius#9562<",
-	enter = "<N>Bem-vindo ao module <J><b>#mountain!</b><br><N>Você tem 3 minutos para escalar a grande montanha que há pelo caminho!<br><br><ROSE>Versão v1.2.0 - desenvolvido por Barodius#9562<br><VP>O module foi atualizado! Para descobrir as novidades, digite !changelog.",
+	mapname = "<N><b>#mountain</b>  <V>-  <N>versão <ROSE>v1.2.1   <G>|   <N>Desenvolvido por <J>Barodius#9562<",
+	enter = "<N>Bem-vindo ao module <J><b>#mountain!</b><br><N>Você tem pouco mais que 3 minutos para escalar a grande montanha que há pelo caminho!<br><br><ROSE>Versão v1.2.1 - desenvolvido por Barodius#9562<br><VP>O module foi atualizado! Para descobrir as novidades, digite !changelog.",
 	newgame = "<N>Caso não saiba o que fazer neste module, digite <b>!help</b>.",
 	getready = "<J>Se prepare! A estrada para a montanha será liberada em breve!",
 	start = "<VP><b>E que comece a batalha!</b>",
@@ -35,13 +35,13 @@ lang.br = {
 	reached7 = " <VP>chegou até o topo da montanha!<br><N>Ele(a) agora se integra nas estrelas e passa a brilhar como nunca!",
 	nowinners = "<R>Não há vencedores!",
 	help = "<p align='center'><VP><b>Bem-vindo ao module #mountain.</b><br><br><p align='left'><N>Este modo é bem simples. O objetivo é subir o máximo possível a grande montanha que há pela frente.<br><br>No entanto, os deuses da montanha estão furiosos, e podem atacar com vários contratempos.<br><br>A partida acaba depois de 3 minutos, quando todos os ratos morrem ou quando alguém chega no pico da montanha.<br><br><ROSE>Quaisquer bugs ou problemas reporte para Barodius#9562.",
-	powerups = "<G>• Fúria da Tormenta: <N>Correntes de vento começam a pairar em volta da montanha.<br><G>• Chuva de Meteoros: <N>Meteoros começam a cair do céu, fazendo com que você caia.<br><G>• Anomalia Gravitacional: <N>Um campo gravítico intenso aparece na montanha, alterando de forma aleatória a gravidade do mapa.<br><G>• Queijo para Todos: <N>Todos os jogadores recebem queijo.",
+	powerups = "<G>• Fúria da Tormenta: <N>Correntes de vento começam a pairar em volta da montanha.<br><G>• Chuva de Caixas: <N>Caixas começam a cair do céu, fazendo com que você caia.<br><G>• Anomalia Gravitacional: <N>Um campo gravítico intenso aparece na montanha, alterando de forma aleatória a gravidade do mapa.<br><G>• Queijo para Todos: <N>Todos os jogadores recebem queijo.",
 	credits = "As seguintes pessoas ajudaram no desenvolvimento deste module:<br><br><ROSE><b>• Barodius#9562</b><N> - Desenvolvedor do código<br><ROSE><b>• Akwimos#1937</b><N> - Tradução do código para o Inglês<br><ROSE><b>• Spectra_phantom#6089</b><N> - Criação das artes",
 	memory_error = "<R>Aviso: Não há mais memória disponível para o Transformice. Para continuar jogando este module, saia do jogo e entre novamente.",
 }
 lang.en = {
-	mapname = "<N><b>#mountain</b>  <V>-  <N>version <ROSE>v1.2.0   <G>|   <N>Developed by <J>Barodius#9562<",
-	enter = "<N>Welcome to the <J><b>#mountain</b> module!<br><N>You have 3 minutes to scale the big mountain that is on your way!<br><ROSE>Version v1.2.0 - developed by Barodius#9562<br><V>Translation by Rakan_raster#0000<br><VP>If you want to see the latest updates, type !changelog.",
+	mapname = "<N><b>#mountain</b>  <V>-  <N>version <ROSE>v1.2.1   <G>|   <N>Developed by <J>Barodius#9562<",
+	enter = "<N>Welcome to the <J><b>#mountain</b> module!<br><N>You have about 3 minutes to scale the big mountain that is on your way!<br><ROSE>Version v1.2.1 - developed by Barodius#9562<br><V>Translation by Rakan_raster#0000<br><VP>If you want to see the latest updates, type !changelog.",
 	newgame = "<N>If you don't know about this module, please type <b>!help</b>.",
 	getready = "<J>Get ready! The road to the mountain will be opened!",
 	start = "<VP><b>Go!</b>",
@@ -62,7 +62,7 @@ lang.en = {
 	reached7 = " <VP>reached the top of the mountain!<br><N>(S)he now is part of the stars and will bright many more!",
 	nowinners = "<R>No winners!",
 	help = "<p align='center'><VP><b>Welcome to the #mountain module.</b><br><br><p align='left'><N>This game is very simple. The objective is scale the big mountain that is in front of you.<br><br>However, the mountain gods are furious, and can attack you with various events.<br><br>The match will end after 3 minutes, when there is no more alive mices or when someone reaches the top of the mountain.<br><br><ROSE>Bugs and problems? Report to Barodius#9562.",
-	powerups = "<G>• Wind Fury: <N>Strong winds hover around the mountain.<br><G>• Meteor Rain: <N>Some meteors will fall from the heaven, making you go down.<br><G>• Gravity Anomaly: <N>A strong gravitational field appears on the mountain, randomly changing the gravity of the map.<br><G>• Cheese For All: <N>All the players will have cheese.",
+	powerups = "<G>• Wind Fury: <N>Strong winds hover around the mountain.<br><G>• Box Rain: <N>Some boxes will fall from the heaven, making you go down.<br><G>• Gravity Anomaly: <N>A strong gravitational field appears on the mountain, randomly changing the gravity of the map.<br><G>• Cheese For All: <N>All the players will have cheese.",
 	credits = "The following players helped on this module:<br><br><ROSE><b>• Barodius#9562</b><N> - Code developer<br><ROSE><b>• Akwimos#1937</b><N> - English translation<br><ROSE><b>• Spectra_phantom#6089</b><N> - Image creation",
 	memory_error = "<R>Warning: There's no more available memory for Transformice. To continue playing this game, log out of your account and enter again.",
 }
@@ -142,13 +142,13 @@ function eventChatCommand(name,command)
 		showMenu(name,0x808080,150,120,500,250,"Help",text.help)
 	end
 	if command == "powerups" then
-		showMenu(name,0xf2a267,150,120,500,160,"Powerups",text.powerups)
+		showMenu(name,0xf2a267,150,120,500,140,"Powerups",text.powerups)
 	end
 	if command == "creditos" then
 		showMenu(name,0xb6e980,140,90,520,130,"Credits",text.credits)
 	end
 	if command == "changelog" then
-		showMenu(name,0x2578f6,140,60,520,280,"Changelog","<font size='11'>[v1.2.0]:<br>• Changes on the ownership<br><br>[v1.1.3]:<br>• Almost all NPCs was removed<br><br>[v1.1.2]:<br>• Addiction of new NPC<br><br>[v1.1.1]:<br>• Addiction of various decorations on the map<br><br>[v1.1.0]:<br>• Added cloud images<br>• Some modifications on the map<br><br>[v1.0.9]:<br>• Some modifications on the map")
+		showMenu(name,0x2578f6,140,60,520,245,"Changelog","<font size='11'>[v1.2.1]:<br>• The powerup 'Meteor Rain' was changed to 'Box Rain'<br>• Some changes on timers and match time<br><br>[v1.2.0]:<br>• Changes on the ownership<br><br>[v1.1.3]:<br>• Almost all NPCs was removed<br><br>[v1.1.2]:<br>• Addiction of new NPC<br><br>[v1.1.1]:<br>• Addiction of various decorations on the map")
 	end
 end
 function eventNewPlayer(name)
@@ -186,7 +186,7 @@ end
 function eventTextAreaCallback(id,name,callback)
 	if callback == "show_menu" then
 		ui.addTextArea(299,"<p align='center'><a href='event:hide_menu'><font size='18'>Menu",name,365,25,70,24,0x000001,0x000001,0.75,true)
-		ui.addTextArea(298,"<p align='center'><a href='event:help'>Ajuda</a><br><a href='event:powerups'>Powerups</a><br><a href='event:cred'>Créditos</a><br><a href='event:change'>Changelog</a>",name,355,57,90,60,0x000001,0x000001,0.80,true)
+		ui.addTextArea(298,"<p align='center'><a href='event:help'>Help</a><br><a href='event:powerups'>Powerups</a><br><a href='event:cred'>Credits</a><br><a href='event:change'>Changelog</a>",name,355,57,90,60,0x000001,0x000001,0.80,true)
 	end
 	if callback == "hide_menu" then
 		ui.addTextArea(299,"<p align='center'><a href='event:show_menu'><font size='18'>Menu",name,365,25,70,24,0x000001,0x000001,0.75,true)
@@ -216,7 +216,7 @@ function eventNewGame()
 	if changed == true then
 		resetEvents()
 		running=false; map_count=map_count+1; run_int=0; pass_int=0; event_int=0; endgame=false; vencedor="";
-		tfm.exec.setGameTime(246)
+		tfm.exec.setGameTime(236)
 		for i=0,1 do
 			tfm.exec.addPhysicObject(i, 180+(i*5680), 10475, ground)
 		end
@@ -280,8 +280,8 @@ function eventLoop(passado,faltando)
 			loop=loop+1
 			if loop == 4 then
 				for i=1,2 do
-					x=math.random(2600,3400)
-					tfm.exec.addShamanObject(85, x, 0, 0, 0, 0, false)
+					x=math.random(2500,3500)
+					tfm.exec.addShamanObject(1, x, 0, 0, 0, 0, false)
 				end
 				loop=0
 			end
@@ -299,7 +299,7 @@ function eventLoop(passado,faltando)
 			end
 		end
 		run_int=run_int+0.5
-		if run_int == 28 and falt_int >= 48 then
+		if run_int == 25 and falt_int >= 48 then
 			event_selected=math.random(1,4)
 			if event_selected == 2 then
 				event_int=power_d.p2[math.random(#power_d.p2)]
@@ -314,7 +314,7 @@ function eventLoop(passado,faltando)
 				showMessage("<VP>"..text.event1.." <V><b>"..events_en[event_selected].."</b> <VP>"..text.event2.."<J><b>"..event_int.."</b> <VP>"..text.event3.."")
 			end
 		end
-		if run_int == 33 and falt_int >= 48 then
+		if run_int == 30 and falt_int >= 48 then
 			if tfm.get.room.community == "br" or tfm.get.room.community == "pt" then
 				showMessage("<VP>"..text.event1.." <V><b>"..events_pt[event_selected].."</b><VP>"..text.event4.."")
 			else
