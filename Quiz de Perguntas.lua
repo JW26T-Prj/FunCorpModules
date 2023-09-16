@@ -514,7 +514,11 @@ perguntas1={
 "Qual o nome dado para a parte mais baixa de um navio, onde fica depositada a água da chuva, infiltrações ou mar agitado, por exemplo?","Porão","Sentina",2,
 "A Estação Espacial Internacional fica localizada a quantos km acima do nível do mar, aproximadamente?","400 km","500 km",1,
 "Qual o nome do planeta-anão situado no Cinturão de Asteroides, com características similares a de Plutão?","Kuiper","Ceres",2,
-"Um segundo é equivalente a quantos minutos?","60","1/60",2,
+"Um segundo é equivalente a quantos minutos?","60","0,01666...",2,
+"Qual o nome dado para as pessoas que são do estado do Rio Grande do Norte?","Norte-Rio-Grandense","Rio-Norte-Grandense",1,
+"Em qual região do Brasil fica localizado o estado do Tocantins?","Norte","Nordeste",1,
+"Qual é o estado mais novo que existe no Brasil?","Mato Grosso do Sul","Tocantins",2,
+"Qual o nome da igreja conhecida por ter como líder o pastor Valdomiro Santiago?","Igreja Universal do Reino de Deus","Igreja Mundial do Poder de Deus",2,
 }
 perguntas2={
 "Vai na sorte :)","ok","ok",1,
@@ -784,6 +788,7 @@ perguntas3={
 "Qual o nome do lugar de onde é originado o campeão Viego?","Camavor","Ilhas das Sombras",1,
 "Qual o nome da 'moeda' no League of Legends que não precisa ser comprada?","Essência Azul","Gema",1,
 "O campeão Ezreal é originado de qual região do League of Legends?","Shurima","Piltover",2,
+"Qual o nome da facção situada em Noxus cuja líder é LeBlanc?","Rosa Negra","Ferromancia",1,
 }
 perguntas4={
 "Vai na sorte :)","ok","ok",1,
@@ -880,7 +885,7 @@ for _,g in next,{"setq","limite","tema","get","fc","ms","reset"} do
 end
 ratos=0; vivos=0; set_q=0; questions_list={}; modo="inicial"; pergunta=0; rodada=0; limite=20; count=0; fixed_cnt=0;
 mapa="@7935894"
-ninjas={"Shun_kazami#7014","Alisson#3938","Aurelianlua#0000","Leblanc#5342","Skyymellu#0000","Eduardo379#8610"}
+ninjas={"Shun_kazami#7014","Irelia#7317","Aurelianlua#0000","Leblanc#5342","Skyymellu#0000","Eduardo379#8610"}
 actual_question={quest="",a1="",a2="",answer=nil}
 function verifyAdmin(name)
 	for i=1,rawlen(admin) do
