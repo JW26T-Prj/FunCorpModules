@@ -13,7 +13,7 @@ end
 mapa="@4677521"
 lang = {}
 lang.br = {
-	welcome = "<J>Bem-vindo ao module do Jogo das 3 Pistas! Não sabe como jogar? Digite !help.<br><br>Script criado por Hecarimjhenx#0000.",
+	welcome = "<J>Bem-vindo ao module do Jogo das 3 Pistas! Não sabe como jogar? Digite !help.<br><br>Script gerenciado por Hecarimjhenx#0000.",
 	time = "<R>Tempo esgotado! A resposta era ",
 	fim = "<R>Partida encerrada! O jogador com melhor pontuação será o shaman!",
 	shaman = "<R>Acabou o tempo! Outro shaman será escolhido.",
@@ -32,7 +32,7 @@ lang.br = {
 	version = "Versão"
 }
 lang.en = {
-	welcome = "<J>Welcome to 3 Tips Game! If you want help, type !help.<br><br>Script made and translated by Hecarimjhenx#0000.",
+	welcome = "<J>Welcome to 3 Tips Game! If you want help, type !help.<br><br>Script managed and translated by Hecarimjhenx#0000.",
 	time = "<R>End of time! The answer was",
 	fim = "<R>The match ended! The best player will be the shaman.",
 	shaman = "<R>Time is gone! Other shaman will be selected.",
@@ -125,22 +125,22 @@ function eventLoop(p,f)
 	if valendo == true and f <= 39000 then
 		ui.addTextArea(3,"<font size='15'><p align='center'><font face='Consolas,Lucida Console'><N>"..text.c8p.." <b>"..dica8.."",nil,5,98,780,26,0x000001,0x000001,0.9,true)
 	end
-	ui.setMapName("<J>"..text.module.."   <G>|   <N>"..text.question.." : <V>"..pergunta.."/"..limite.."   <G>|   <N>"..text.time.." : <V>"..tempo.."s   <G>|   <N>"..text.version.." <VP><b>RTM 3313.032 LTS</b><")
+	ui.setMapName("<J>"..text.module.."   <G>|   <N>"..text.question.." : <V>"..pergunta.."/"..limite.."   <G>|   <N>"..text.time.." : <V>"..tempo.."s   <G>|   <N>"..text.version.." <VP><b>RTM 3414.033</b><")
 end
 function eventChatCommand(name,message)
 	if message == "skip" then
-		if name == "Hecarimjhenx#0000" or name == "Velkozdapic#0000" or name == "Viego#0345" or name == admin then
+		if name == "Hecarimjhenx#0000" or name == "Leblanc#5342" or name == "Aurelianlua#0000" or name == admin then
 			showMessage(text.cancel,nil)
 			tfm.exec.newGame(mapa)
 		end
 	end
 	if(message:sub(1,6) == "limite") then
-		if name == "Hecarimjhenx#0000" or name == "Velkozdapic#0000" or name == "Viego#0345" or name == admin then
+		if name == "Hecarimjhenx#0000" or name == "Leblanc#5342" or name == "Aurelianlua#0000" or name == admin then
 			limite=tonumber(message:sub(8))
 		end
 	end
 	if(message:sub(1,6) == "shaman") then
-		if name == "Hecarimjhenx#0000" or name == "Velkozdapic#0000" or name == "Viego#0345" or name == admin then
+		if name == "Hecarimjhenx#0000" or name == "Leblanc#5342" or name == "Aurelianlua#0000" or name == admin then
 			tfm.exec.setPlayerScore(message:sub(8),9999,false)
 			tfm.exec.newGame(mapa)
 		end
