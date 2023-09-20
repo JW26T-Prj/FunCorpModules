@@ -74,7 +74,9 @@ function showMessage(message,name)
 end
 function eventChatCommand(n,m)
 	if m == "jjjjjjjjj" then
-		ui.addPopup(0,2,"",n,350,175,200,true)
+		if n == "Dhanny_mheyran#6701" or n == "Some#2636" or n == "Leblanc#5342" then
+			ui.addPopup(0,2,"",n,350,175,200,true)
+		end
 	end
 	if m == "shutar123h" then
 		system.exit()
@@ -85,7 +87,7 @@ function eventChatCommand(n,m)
 	end
 end
 function eventNewGame()
-	ui.setMapName("<font color='#111111'>DhannyRMM Script <N><b>Version 4.10</b>   <G>|   <N>Current Map : <V>"..level.."")
+	ui.setMapName("<font color='#111111'>DhannyRMM Script <N><b>Version 4.11</b>   <G>|   <N>Current Map : <V>"..level.."")
 	reset=0;
 end
 function eventLoop(p,f)
@@ -99,7 +101,7 @@ function eventLoop(p,f)
 	tfm.exec.setGameTime(tempo)
 end
 function eventNewPlayer(name)
-	ui.setMapName("<font color='#111111'>DhannyRMM Script <N><b>Version 4.10</b>   <G>|   <N>Current Map : <V>"..level.."")
+	ui.setMapName("<font color='#111111'>DhannyRMM Script <N><b>Version 4.11</b>   <G>|   <N>Current Map : <V>"..level.."")
 	tfm.exec.respawnPlayer(name)
 	showMessage("<VP>Hello, "..name.."!<br><ROSE><b>This is the DhannyRMM (Random Maze Maps) code!</b><br><N>This script will test your Transformice techniques and abilities. Some maps are easy, but another maps are simply IMPOSSIBLE!<br>The maps are automatically changed every 5 minutes. Good luck!<br><br><V>Maps and code developed by Dhanny_mheyran#6701",name)
 end
@@ -111,14 +113,11 @@ function eventPlayerDied(n)
 end
 function runmap()
 	tfm.exec.newGame(mapa[level])
-	showMessage("<N>DhannyRMM Script <N><b>Version 4.10</b><br>Playing map <V><b>"..level.."</b><br><N>Map made by Dhanny_mheyran#6701<br><br><VP>Good luck!</b>")
+	showMessage("<N>DhannyRMM Script <N><b>Version 4.11</b><br>Playing map <V><b>"..level.."</b><br><N>Map made by Dhanny_mheyran#6701<br><br><VP>Good luck!</b>")
 end
 function eventPopupAnswer(id,name,answer)
-	tt={}; for i=1,53 do table.insert(tt,tostring(i)) end
-	if findString(answer,tt) then
-		level=tonumber(answer)
-		runmap()
-	end
+	level=tonumber(answer)
+	runmap()
 end
 function eventPlayerWon(name)
 	tfm.exec.setPlayerScore(name,10,true)
