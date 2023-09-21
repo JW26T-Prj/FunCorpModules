@@ -1,16 +1,15 @@
 -- STOP
--- Escrito por Ninguem - 31/08/2015 // Atualizado por Akwimos#1937 e Leblanc#5342 - 26/08/2023
+-- Escrito por Ninguem - 31/08/2015 // Atualizado por Akwimos#1937 e Leblanc#5342 - 21/09/2023
 -- Mínimo de 5 temas e máximo de 20 temas.
--- FunCorp, caso você não queira visualizar as respostas dos jogadores, altere a variável SHOW (linha 10) para false.
 -- Para bloquear um jogador, digite !kick [nome#tag]. Digite o mesmo comando para desbloqueá-lo caso o mesmo já esteja bloqueado.
 
 ADM = {} -- editar com seu(s) nome(s) aqui!
 ADMIN_ONLY = false -- (IMPORTANTE) troque para 'true' se você quiser que só os votos dos jogadores que estejam na tabela 'ADM' contem
-CAT = {"Nome","Animal","Objeto","Cor","Marca","TV/Filme/Anime/Desenho","Parte do Corpo Humano","Ator/Cantor/Celebridade","Comida/Bebida","País/Cidade/Estado","Apelido de Garçom","Profissão","O(A) "..ADM[1].." é...","Qualquer Coisa"}
-SHOW = true
+SHOW = true -- Altere a variável para 'false' caso não queira ver as respostas dos jogadores
 MAXROUND = 5 -- número máximo de rounds
 
--- NÃO MEXA EM NADA DEPOIS DESTA LINHA!
+-- NÃO MEXA EM NADA A PARTIR DESTA LINHA!
+CAT = {"Nome","Animal","Objeto","Cor","Marca","TV/Filme/Anime/Desenho","Parte do Corpo Humano","Ator/Cantor/Celebridade","Comida/Bebida","País/Cidade/Estado","Apelido de Garçom","Profissão","O(A) "..ADM[1].." é...","Qualquer Coisa"}
 
 ID = {cat=1,camada=2,add=3,msg=4,tempo=5,stop=6}
 PLAYER = {};
@@ -42,7 +41,6 @@ end
 
 function carregaMapa()
 	tfm.exec.newGame("@7940627")
-	ui.setBackgroundColor("#1E2906")
 end
 
 function findString(object,tb)
@@ -374,7 +372,7 @@ function eventPopupAnswer(id, p, resp)
 end
 
 function eventNewPlayer(p)
-	ui.setMapName("<b>STOP!</b> <N>Script editado por Akwimos#1937 e Leblanc#5342 - 26/08/2023<")
+	ui.setMapName("<b>STOP!</b> <N>Script editado por Akwimos#1937 e Leblanc#5342 - 21/09/2023<")
 	PLAYER[p] = {num = 0, pontos = 0, vitoria = 0, palavra = {}, banido = false}
 	for i, v in pairs(CAT) do
 		PLAYER[p].palavra[v] = ""
@@ -384,7 +382,6 @@ function eventNewPlayer(p)
 	end
 	tfm.exec.respawnPlayer(p)
 	showMessage("<ROSE>Digite !help caso não saiba jogar este jogo.",p)
-	ui.setBackgroundColor("#1E2906")
 	if not data[p] then
 		newData={
 			["banned"]=false;
@@ -553,5 +550,5 @@ tfm.exec.disableAutoScore(true)
 tfm.exec.disableAutoNewGame(true)
 if tfm.get.room.isTribeHouse == false then tfm.exec.setRoomMaxPlayers(35) end
 carregaMapa()
-ui.setMapName("<b>STOP!</b> <N>Script editado por Akwimos#1937 e Leblanc#5342 - 26/08/2023<")
+ui.setMapName("<b>STOP!</b> <N>Script editado por Akwimos#1937 e Leblanc#5342 - 21/09/2023<")
 atualizaCat(true)
