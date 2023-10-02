@@ -1,4 +1,4 @@
--- Module #arrows, versão v1.2, desenvolvido por Leblanc#5342.
+-- Module #arrows, versão v1.3, desenvolvido por Leblanc#5342.
 
 -- Se estiver rodando este código em uma sala FunCorp, insira os nicknames dos membros abaixo.
 admin={"Leblanc#5342"} -- Insira os nomes aqui! // Insert the nicknames here!
@@ -17,7 +17,7 @@ for _,f in next,{"fc","reset","change"} do
 end
 modo="inicial"; lang={}; map="@7938991"; ratos=0; vivos=0; round=0; level=0; imgs={}; data={}; symbol={"⇦","⇧","⇨","⇩"}; symbol_l={"&lt;","^",">","v"}; keys={};
 lang.br = {
-	welcome = "<ROSE><b>Bem-vindo ao module #arrows!</b><br><N>O objetivo deste module é ser rápido e preciso, usando o teclado para responder a sequência de setas que aparecerá na sua tela!<br><br><VP>Module criado por Leblanc#5342. Ideia original de Shun_kazami#7014.<br><BL><b>Versão 1.2</b>",
+	welcome = "<ROSE><b>Bem-vindo ao module #arrows!</b><br><N>O objetivo deste module é ser rápido e preciso, usando o teclado para responder a sequência de setas que aparecerá na sua tela!<br><br><VP>Module criado por Leblanc#5342. Ideia original de Shun_kazami#7014.<br><BL><b>Versão 1.3</b>",
 	starting = "<J>Atenção! O jogo será iniciado em 5 segundos!",
 	wrong = "<R>Você errou!",
 	accept = "<VP>Parabéns! Você conseguiu avançar desta fase!",
@@ -30,7 +30,7 @@ lang.br = {
 	legacy = "<J>Caso não esteja conseguindo ver as setas corretamente, digite !change. Este comando mudará a forma como as setas são exibidas na tela.",
 }
 lang.en = {
-	welcome = "<ROSE><b>Welcome to the #arrows module!</b><br><N>The goal of this module is to use your keyboard to follow the sequence of arrows that will show on your screen! You need to be fast!<br><br><VP>Module developed by Leblanc#5342. Original idea from Shun_kazami#7014.<br><BL><b>Version 1.2</b>",
+	welcome = "<ROSE><b>Welcome to the #arrows module!</b><br><N>The goal of this module is to use your keyboard to follow the sequence of arrows that will show on your screen! You need to be fast!<br><br><VP>Module developed by Leblanc#5342. Original idea from Shun_kazami#7014.<br><BL><b>Version 1.3</b>",
 	starting = "<J>The game will be started in 5 seconds!",
 	wrong = "<R>Oh no! Wrong key!",
 	accept = "<VP>Congratulations! You passed this round!",
@@ -94,9 +94,6 @@ function updateTimeBar()
 end
 function exibeSetas()
 	round=round+1; modo="jogar"; keys={};
-	if round == 1 then
-		showMessage(text.legacy)
-	end
 	for name,player in next,tfm.get.room.playerList do
 		if tfm.get.room.playerList[name].isDead == false then
 			data[name].c=1; data[name].s=0;
@@ -108,9 +105,9 @@ function exibeSetas()
 			table.insert(keys,tonumber(direction))
 			for name,player in next,tfm.get.room.playerList do
 				if data[name].legacy == false then
-					ui.addTextArea(i,"<font size='90'><font color='#ffffff'><font face='Segoe UI Emoji,Segoe UI Symbol'>"..symbol[direction+1].."",name,75+(i*100),150,100,110,0,0,1.2,true)
+					ui.addTextArea(i,"<font size='90'><font color='#ffffff'><font face='Segoe UI Emoji,Segoe UI Symbol'>"..symbol[direction+1].."",name,75+(i*100),150,100,110,0,0,1.3,true)
 				else
-					ui.addTextArea(i,"<font size='90'><font color='#ffffff'><font face='Segoe UI Emoji,Segoe UI Symbol'>"..symbol_l[direction+1].."",name,75+(i*100),150,110,110,0,0,1.2,true)
+					ui.addTextArea(i,"<font size='90'><font color='#ffffff'><font face='Segoe UI Emoji,Segoe UI Symbol'>"..symbol_l[direction+1].."",name,75+(i*100),150,110,110,0,0,1.3,true)
 				end
 			end
 		end
@@ -120,9 +117,9 @@ function exibeSetas()
 			table.insert(keys,tonumber(direction))
 			for name,player in next,tfm.get.room.playerList do
 				if data[name].legacy == false then
-					ui.addTextArea(i,"<font size='90'><font color='#ffffff'><font face='Segoe UI Emoji,Segoe UI Symbol'>"..symbol[direction+1].."",name,-35+(i*75),150,100,110,0,0,1.2,true)
+					ui.addTextArea(i,"<font size='90'><font color='#ffffff'><font face='Segoe UI Emoji,Segoe UI Symbol'>"..symbol[direction+1].."",name,-35+(i*75),150,100,110,0,0,1.3,true)
 				else
-					ui.addTextArea(i,"<font size='90'><font color='#ffffff'><font face='Segoe UI Emoji,Segoe UI Symbol'>"..symbol_l[direction+1].."",name,-35+(i*75),150,110,110,0,0,1.2,true)
+					ui.addTextArea(i,"<font size='90'><font color='#ffffff'><font face='Segoe UI Emoji,Segoe UI Symbol'>"..symbol_l[direction+1].."",name,-35+(i*75),150,110,110,0,0,1.3,true)
 				end
 			end
 		end
@@ -132,9 +129,9 @@ function exibeSetas()
 			table.insert(keys,tonumber(direction))
 			for name,player in next,tfm.get.room.playerList do
 				if data[name].legacy == false then
-					ui.addTextArea(i,"<font size='90'><font color='#ffffff'><font face='Segoe UI Emoji,Segoe UI Symbol'>"..symbol[direction+1].."",name,-35+(i*75),120,100,110,0,0,1.2,true)
+					ui.addTextArea(i,"<font size='90'><font color='#ffffff'><font face='Segoe UI Emoji,Segoe UI Symbol'>"..symbol[direction+1].."",name,-35+(i*75),120,100,110,0,0,1.3,true)
 				else
-					ui.addTextArea(i,"<font size='90'><font color='#ffffff'><font face='Segoe UI Emoji,Segoe UI Symbol'>"..symbol_l[direction+1].."",name,-35+(i*75),120,110,110,0,0,1.2,true)
+					ui.addTextArea(i,"<font size='90'><font color='#ffffff'><font face='Segoe UI Emoji,Segoe UI Symbol'>"..symbol_l[direction+1].."",name,-35+(i*75),120,110,110,0,0,1.3,true)
 				end
 			end
 		end
@@ -143,9 +140,9 @@ function exibeSetas()
 			table.insert(keys,tonumber(direction))
 			for name,player in next,tfm.get.room.playerList do
 				if data[name].legacy == false then
-					ui.addTextArea(i,"<font size='90'><font color='#ffffff'><font face='Segoe UI Emoji,Segoe UI Symbol'>"..symbol[direction+1].."",name,75+((-10+i)*100),190,100,110,0,0,1.2,true)
+					ui.addTextArea(i,"<font size='90'><font color='#ffffff'><font face='Segoe UI Emoji,Segoe UI Symbol'>"..symbol[direction+1].."",name,75+((-10+i)*100),190,100,110,0,0,1.3,true)
 				else
-					ui.addTextArea(i,"<font size='90'><font color='#ffffff'><font face='Segoe UI Emoji,Segoe UI Symbol'>"..symbol_l[direction+1].."",name,75+((-10+i)*100),190,110,110,0,0,1.2,true)
+					ui.addTextArea(i,"<font size='90'><font color='#ffffff'><font face='Segoe UI Emoji,Segoe UI Symbol'>"..symbol_l[direction+1].."",name,75+((-10+i)*100),190,110,110,0,0,1.3,true)
 				end
 			end
 		end
@@ -155,9 +152,9 @@ function exibeSetas()
 			table.insert(keys,tonumber(direction))
 			for name,player in next,tfm.get.room.playerList do
 				if data[name].legacy == false then
-					ui.addTextArea(i,"<font size='90'><font color='#ffffff'><font face='Segoe UI Emoji,Segoe UI Symbol'>"..symbol[direction+1].."",name,-35+(i*75),120,100,110,0,0,1.2,true)
+					ui.addTextArea(i,"<font size='90'><font color='#ffffff'><font face='Segoe UI Emoji,Segoe UI Symbol'>"..symbol[direction+1].."",name,-35+(i*75),120,100,110,0,0,1.3,true)
 				else
-					ui.addTextArea(i,"<font size='90'><font color='#ffffff'><font face='Segoe UI Emoji,Segoe UI Symbol'>"..symbol_l[direction+1].."",name,-35+(i*75),120,110,110,0,0,1.2,true)
+					ui.addTextArea(i,"<font size='90'><font color='#ffffff'><font face='Segoe UI Emoji,Segoe UI Symbol'>"..symbol_l[direction+1].."",name,-35+(i*75),120,110,110,0,0,1.3,true)
 				end
 			end
 		end
@@ -166,9 +163,9 @@ function exibeSetas()
 			table.insert(keys,tonumber(direction))
 			for name,player in next,tfm.get.room.playerList do
 				if data[name].legacy == false then
-					ui.addTextArea(i,"<font size='90'><font color='#ffffff'><font face='Segoe UI Emoji,Segoe UI Symbol'>"..symbol[direction+1].."",name,-35+((-10+i)*75),190,100,110,0,0,1.2,true)
+					ui.addTextArea(i,"<font size='90'><font color='#ffffff'><font face='Segoe UI Emoji,Segoe UI Symbol'>"..symbol[direction+1].."",name,-35+((-10+i)*75),190,100,110,0,0,1.3,true)
 				else
-					ui.addTextArea(i,"<font size='90'><font color='#ffffff'><font face='Segoe UI Emoji,Segoe UI Symbol'>"..symbol_l[direction+1].."",name,-35+((-10+i)*75),190,110,110,0,0,1.2,true)
+					ui.addTextArea(i,"<font size='90'><font color='#ffffff'><font face='Segoe UI Emoji,Segoe UI Symbol'>"..symbol_l[direction+1].."",name,-35+((-10+i)*75),190,110,110,0,0,1.3,true)
 				end
 			end
 		end
@@ -210,7 +207,7 @@ function eventLoop(pass,rem)
 		end
 		ui.removeTextArea(100,nil)
 		modo="espera";
-		tfm.exec.setGameTime(10-level)
+		tfm.exec.setGameTime(8-level)
 		for i=1,20 do
 			ui.removeTextArea(i,nil)
 		end
@@ -233,7 +230,7 @@ function eventLoop(pass,rem)
 				if vivos <= 0 then
 					modo="fim";
 					showMessage(text.nowinners)
-				elseif round > 10 and vivos == 1 and ratos >= 2 then
+				elseif round > 5 and vivos == 1 and ratos >= 2 then
 					modo="fim";
 					for name,player in next,tfm.get.room.playerList do
 						if tfm.get.room.playerList[name].isDead == false then
@@ -244,7 +241,7 @@ function eventLoop(pass,rem)
 					end
 				elseif vivos >= 1 then
 					if round % 5 == 0 and level < 8 then
-						if round == 10 then
+						if round == 5 then
 							showMessage(text.winners)
 						end
 						tfm.exec.setGameTime(5)
@@ -267,7 +264,7 @@ function eventLoop(pass,rem)
 	if remain <= 1 and modo == "fim" then
 		reset();
 	end
-	ui.setMapName("<ROSE>#arrows by Leblanc#5342   <G>|   <N>Round : <V>"..round.."   <G>|   <N>"..text.mices.." : <V>"..vivos.."/"..ratos.."   <G>|   <N>"..text.difficulty.." : <V>"..level.."   <G>|   <J>v1.2<")
+	ui.setMapName("<ROSE>#arrows by Leblanc#5342   <G>|   <N>Round : <V>"..round.."   <G>|   <N>"..text.mices.." : <V>"..vivos.."/"..ratos.."   <G>|   <N>"..text.difficulty.." : <V>"..level.."   <G>|   <J>v1.3<")
 end
 function eventNewGame()
 	for name,player in next,tfm.get.room.playerList do
@@ -276,6 +273,7 @@ function eventNewGame()
 		end
 	end
 	countVivos();
+	showMessage(text.legacy)
 end
 function eventPlayerDied(name)
 	countVivos();
@@ -295,10 +293,11 @@ function eventNewPlayer(name)
 		system.bindKeyboard(name, i, false, true)
 	end
 	tfm.exec.setPlayerScore(name,0,false)
+	ui.setBackgroundColor("#111111")
 	countVivos();
 end
 function eventKeyboard(name, key, down)
-	if key <= 3 and modo == "jogar" and data[name].c <= rawlen(keys) and data[name].s == 0 then
+	if key <= 3 and modo == "jogar" and data[name].c <= rawlen(keys) and data[name].s == 0 and tfm.get.room.playerList[name].isDead == false then
 		if key == keys[tonumber(data[name].c)] then
 			ui.removeTextArea(data[name].c,name)
 			if data[name].c == rawlen(keys) then
