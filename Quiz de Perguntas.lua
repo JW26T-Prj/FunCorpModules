@@ -46,7 +46,7 @@ perguntas={
 "Quantos queijos custa a exportação de um mapa como cafofo da tribo?","5","40",1,
 "Quantos jogos a Atelier 801 tem atualmente?","5","6",2,
 "Qual é a fricção e a restituição, respectivamente, de um piso de chocolate?","20 e 0","0 e 20",1,
-"Qual destes usuários é responsável pelo module #anvilwar?","Spectra_phantom#6089","Morganadxana#0000",2,
+"Qual destes usuários é responsável pelo module #anvilwar?","Spectra_phantom#6089","Morganadxana#0000",1,
 "Qual destes usuários é responsável pelo module #batata?","Laagaadoo#0000","Ikke#0095",1,
 "Qual destes comandos é utilizado para a inserção de um código especial da Japan Expo?","/lua","/code",2,
 "A habilidade 'Meep!' faz parte de qual árvore de Habilidades?","Selvagem","Físico",1,
@@ -224,7 +224,7 @@ perguntas={
 "Apenas membros da Module Team podem carregar modules nas salas do Transformice.","Verdadeiro","Falso",2,
 "Quantos servidores host da Atelier801 existem no Brasil?","0","1",1,
 "Qual é a margem máxima offscreen de largura e altura no qual os ratos podem permanecer vivos?","400px por lado","800px por lado",1,
-"Quantos modules oficiais existem no Transformice?","43","45",2,
+"Quantos modules oficiais existem no Transformice?","45","46",2,
 "Qual é a resolução de tela padrão na qual o Transformice funciona?","800x600","1024x768",1,
 "Qual a função da habilidade de shaman 'Arquiteto'?","Remover um objeto invocado","Alterar a transparência de um objeto invocado",2,
 "Quanto tempo dura um mapa normal no Transformice, sem o uso de powerups?","2 minutos","2 minutos e 30 segundos",1,
@@ -259,6 +259,8 @@ perguntas={
 "A partir de qual ano o Transformice ficou disponível para download na Steam?","2015","2016",1,
 "É possível usar totem quando shaman, mesmo quando você não está no Modo Difícil.","Verdadeiro","Falso",2,
 "Depois de quanto tempo os ratos congelados desaparecem em salas oficiais?","10 segundos","15 segundos",1,
+"O sistema operacional mínimo para executar o Transformice atualmente é o Windows 2000.","Verdadeiro","Falso",1,
+"É possível modificar a água no Transformice para que os ratos que desçam mais fundo tenham mais dificuldade de descer.","Verdadeiro","Falso",2,
 }
 perguntas1={
 "Vai na sorte :)","ok","ok",1,
