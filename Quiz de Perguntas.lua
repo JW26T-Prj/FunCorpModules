@@ -533,6 +533,8 @@ perguntas1={
 "Quais destes rios são afluentes do Rio Amazonas?","Rio Madeira, Negro, Solimões e Japurá","Rio Madeira, Negro, Solimões e Araguaia",1,
 "Qual o nome do autor original da Prece de Cáritas, uma das principais preces espíritas do mundo?","Alan Kardec","Alan Turing",1,
 "Qual o nome do fenômeno onde há um aquecimento das águas do Oceano Pacífico, causando mudanças intensas no clima do mundo?","El Niño","La Niña",1,
+"Qual é o maior animal terrestre do Planeta Terra?","Baleia Azul","Elefante-africano",2,
+"Em qual ano foi lançado o primeiro aparelho celular com câmera do mundo?","2001","2005",1,
 }
 perguntas2={
 "Vai na sorte :)","ok","ok",1,
@@ -717,7 +719,7 @@ perguntas3={
 "'Regras foram feitas para serem quebradas. Igual prédios... Ou pessoas!'","Jinx","Katarina",1,
 "Quais os nomes de dois dos três semideuses localizado no topo dos montes de Freljord?","Ornn e Volibear","Ornn e Sejuani",1,
 "Qual o nome do 'planeta' onde vivem todos os personagens de League of Legends?","Runeterra","Demacia",1,
-"Quantos campeões existem no League of Legends?","164","165",1,
+"Quantos campeões existem no League of Legends?","166","168",1,
 "O time do Cruzeiro já chegou a ter uma equipe competitiva de League of Legends.","Verdadeiro","Falso",1,
 "Ashe e Tryndamere são casados.","Verdadeiro","Falso",1,
 "Qual o nome da região onde majoritariamente ficam localizados os Vastayas?","Noxus","Ionia",2,
@@ -783,7 +785,7 @@ perguntas3={
 "Não existem campeões do vazio que são humanos.","Verdadeiro","Falso",2,
 "Qual o nome do torneio de meio de temporada do League of Legends?","Worlds","Mid-Season Invitacional",2,
 "Quais os nomes das duas principals religiões existentes no Monte Targon?","Lunari e Solari","Lunari e Soraka",1,
-"A dubladora brasileira da personagem Nilah é a mesma que dubla a personagem Korra, em Avatar.","Verdadeiro","Falso",1,
+"Em que ano foi lançado o campeão Yasuo?","2013","2015",1,
 "O campeão Tahm Kench é um...","Sapo","Peixe-bagre",2,
 "Aurelion Sol e Shyvana são os únicos dragões presentes no universo de League of Legends.","Verdadeiro","Falso",2,
 "Qual é a descrição da Ahri?","A Raposa de Sete Caudas","A Raposa de Nove Caudas",2,
@@ -803,6 +805,8 @@ perguntas3={
 "Qual o nome da 'moeda' no League of Legends que não precisa ser comprada?","Essência Azul","Gema",1,
 "O campeão Ezreal é originado de qual região do League of Legends?","Shurima","Piltover",2,
 "Qual o nome da facção situada em Noxus cuja líder é LeBlanc?","Rosa Negra","Ferromancia",1,
+"A região de Ixtal, localizada no Oeste do continente de Shurima, é formada principalmente por gelo.","Verdadeiro","Falso,2,
+"A campeã Riven é originada de qual região?","Noxus","Ionia",1,
 }
 perguntas4={
 "Vai na sorte :)","ok","ok",1,
