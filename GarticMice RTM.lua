@@ -86,7 +86,7 @@ function eventNewGame()
 			ui.addTextArea(6006, "<p align='center'><font size='12'><a href='event:apagar'><font color='#f21212'><font face='Segoe UI Symbol'>✗ Apagar</a></p>", n, 340, 375, 65, 20, 0x100101, 0x100101)
 			ui.addTextArea(6017, "<p align='center'><font size='12'><a href='event:dica'><font color='#f2f2f2'><font face='Segoe UI Symbol'>⚐ Dica</a></p>", n, 520, 375, 65, 20, 0x101010, 0x101010)
 			ui.addTextArea(6013, "<p align='center'><font size='12'><a href='event:pular'><font color='#f21212'><font face='Segoe UI Symbol'>⍇ Pular</a></p>", n, 430, 375, 65, 20, 0x100101, 0x100101) end end
-	ui.setMapName("<ROSE><b>GarticMice</b> <BL>- <N>Versão RTM 3219.014 por <BL>Hecarimjhenx#0000<")
+	ui.setMapName("<ROSE><b>GarticMice</b> <BL>- <N>Versão RTM 3320.015 LTS por <BL>Hecarimjhenx#0000<")
 	ui.setShamanName("") end
 function eventSummoningEnd(name)
 	showMessage("<VP>Você não precisa invocar objetos para desenhar, basta clicar na tela.",name) end
@@ -103,7 +103,7 @@ function eventTextAreaCallback(ids, name, callback)
 			novo=novo-1
 			sortearpalavra()
 			tfm.exec.setGameTime((faltando/1000)+10) end end
-			showMessage(""..palavra.."","Forzaldenon#0000")
+			showMessage(""..palavra.."","Malzahar#8178")
 			showMessage(""..palavra.."","Viego#0345")
 			showMessage(""..palavra.."","Hecarimjhenx#0000") end
 	if callback == "O7i" then
@@ -205,7 +205,7 @@ function eventNewPlayer(n)
 	for i=65,87 do
 		tfm.exec.bindKeyboard(n,i,true)	end
 	tfm.exec.respawnPlayer(n)
-	showMessage("<N><b>Bem-vindos ao module GarticMice!</b><br>O objetivo deste module é descobrir o que o shaman está desenhando para se tornar o shaman!<br><VP>Não é necessário usar setas para desenhar e todas as palavras não possuem acentos!<br><br><J><b>Script gerenciado por Hecarimjhenx#0000</b><br>Conceito original de Chavestomil#0000<br><br><ROSE>Versão RTM 3219.014<br><p align='left'>",n) end
+	showMessage("<N><b>Bem-vindos ao module GarticMice!</b><br>O objetivo deste module é descobrir o que o shaman está desenhando para se tornar o shaman!<br><VP>Não é necessário usar setas para desenhar e todas as palavras não possuem acentos!<br><br><J><b>Script gerenciado por Hecarimjhenx#0000</b><br>Conceito original de Chavestomil#0000<br><br><ROSE>Versão RTM 3320.015 LTS<br><p align='left'>",n) end
 for name,player in pairs(tfm.get.room.playerList) do
 	eventNewPlayer(name)
 	tfm.exec.setPlayerScore(name,0,false) end
