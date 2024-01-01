@@ -1,15 +1,15 @@
 -- STOP
--- Escrito por Ninguem - 31/08/2015 // Atualizado por Akwimos#1937 e Leblanc#5342 - 10/10/2023
+-- Escrito por Ninguem - 31/08/2015 // Atualizado por Akwimos#1937 e Leblanc#5342 - 01/01/2024
 -- Mínimo de 5 temas e máximo de 20 temas.
 -- Para bloquear um jogador, digite !kick [nome#tag]. Digite o mesmo comando para desbloqueá-lo caso o mesmo já esteja bloqueado.
 
-ADM = {} -- editar com seu(s) nome(s) aqui!
-ADMIN_ONLY = false -- (IMPORTANTE) troque para 'true' se você quiser que só os votos dos jogadores que estejam na tabela 'ADM' contem
+ADM = {} --[[ IMPORTANTE: edite com seu(s) nome(s) aqui! Exemplo: ADM = {"Leblanc#5342"} ]]--
+ADMIN_ONLY = false -- IMPORTANTE: troque para 'true' se você quiser que só os votos dos jogadores que estejam na tabela 'ADM' contem
 SHOW = true -- Altere a variável para 'false' caso não queira ver as respostas dos jogadores
 MAXROUND = 5 -- número máximo de rounds
 
 -- NÃO MEXA EM NADA A PARTIR DESTA LINHA!
-CAT = {"Nome","Animal","Objeto","Cor","Marca","TV/Filme/Anime/Desenho","Parte do Corpo Humano","Ator/Cantor/Celebridade","Comida/Bebida","País/Cidade/Estado","Apelido de Garçom","Profissão","O(A) "..ADM[1].." é...","Qualquer Coisa"}
+CAT = {"Nome","Animal","Objeto","Cor","Marca","TV/Filme/Anime/Desenho","Parte do Corpo","Ator/Cantor/Celebridade","Comida/Bebida","País/Cidade/Estado","Apelido de Garçom","Profissão","O(A) "..ADM[1].." é...","Qualquer Coisa"}
 
 ID = {cat=1,camada=2,add=3,msg=4,tempo=5,stop=6}
 PLAYER = {};
@@ -40,7 +40,7 @@ function showMessage(message,name)
 end
 
 function carregaMapa()
-	tfm.exec.newGame("@7943220")
+	tfm.exec.newGame("@7947132")
 end
 
 function findString(object,tb)
@@ -243,7 +243,7 @@ function selecionaPalavra()
 		end
 	end
 	ui.addTextArea(ID.cat, "<p align='center'><font size='30px'>" .. CAT[PALAVRA] .. " com " .. LETRA, nil, 5, 80, 790, 40, 1, 1, 0.9, true)
-	TEMPO = os.time() + 12000+(2000*#ESCOLHA)
+	TEMPO = os.time() + 15000+(1500*#ESCOLHA)
 	ui.addTextArea(ID.tempo, "<r><p align='center'><font size='25px'>--</font></p>", nil, 755, 358, 40, 40, 1, 1, 0.9, true)
 end
 
@@ -361,7 +361,7 @@ function eventPopupAnswer(id, p, resp)
 				atualizaCat(false)
 			end
 		end
-	elseif MODO == "round" and (string.upper(resp)):sub(1,1) == LETRA and string.len(resp) >= 2 and data[p].banned == false then
+	elseif MODO == "round" and (string.upper(resp)):sub(1,1) == LETRA and string.len(resp) >= 2 and string.len(resp) <= 26 and data[p].banned == false then
 		if checkPalavra(resp) == true then
 			showMessage("<R>Foi detectada uma palavra inapropriada na sua resposta.",p)
 		else
@@ -372,7 +372,7 @@ function eventPopupAnswer(id, p, resp)
 end
 
 function eventNewPlayer(p)
-	ui.setMapName("<b>STOP!</b> <N>Script editado por Akwimos#1937 e Leblanc#5342 - 10/10/2023<")
+	ui.setMapName("<b>STOP!</b> <N>Script editado por Akwimos#1937 e Leblanc#5342 - 01/01/2024<")
 	PLAYER[p] = {num = 0, pontos = 0, vitoria = 0, palavra = {}, banido = false}
 	for i, v in pairs(CAT) do
 		PLAYER[p].palavra[v] = ""
@@ -550,5 +550,5 @@ tfm.exec.disableAutoScore(true)
 tfm.exec.disableAutoNewGame(true)
 if tfm.get.room.isTribeHouse == false then tfm.exec.setRoomMaxPlayers(35) end
 carregaMapa()
-ui.setMapName("<b>STOP!</b> <N>Script editado por Akwimos#1937 e Leblanc#5342 - 10/10/2023<")
+ui.setMapName("<b>STOP!</b> <N>Script editado por Akwimos#1937 e Leblanc#5342 - 01/01/2024<")
 atualizaCat(true)
