@@ -68,7 +68,8 @@ function eventNewGame()
 	for name,player in pairs(tfm.get.room.playerList) do
 		if name:sub(1,1) == "*" then
 			tfm.exec.killPlayer(name)
-			tfm.exec.chatMessage("<R>Você precisa estar logado no Transformice para poder jogar.",name)
+			tfm.exec.chatMessage("<R>Você precisa estar logado no Transformice para poder participar deste jogo.",name)
+			tfm.exec.setPlayerScore(name,-1,false)
 		end
 		if tfm.get.room.playerList[name].isShaman then
 			shaman=name
@@ -81,7 +82,7 @@ end
 function eventNewPlayer(name)
 	tfm.exec.bindKeyboard(name,40,true,true)
 	tfm.exec.bindKeyboard(name,83,true,true)
-	tfm.exec.chatMessage("<VP><b>Sniper!</b><br><N>Sobreviva às bigornas do shaman! Criado por Hecarimjhenx#0000.<br><br>versão 1.8.1: pequenas mudanças nas imagens",name)
+	tfm.exec.chatMessage("<VP><b>Sniper!</b><br><N>Sobreviva às bigornas do shaman! Criado por Hecarimjhenx#0000.<br><br>versão 1.8.2: mudanças internas",name)
 end
 for name,player in pairs(tfm.get.room.playerList) do
 	eventNewPlayer(name)
