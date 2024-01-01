@@ -21,9 +21,7 @@ TEMPO = false
 LETRA = ""
 data = {};
 
-system.disableChatCommandDisplay("help")
-system.disableChatCommandDisplay("kick")
-system.disableChatCommandDisplay("def")
+system.disableChatCommandDisplay(nil,true)
 
 function showMessage(message,name)
 	temp_text=string.gsub(message,"<b>","")
