@@ -82,7 +82,7 @@ end
 function eventNewPlayer(name)
 	tfm.exec.bindKeyboard(name,40,true,true)
 	tfm.exec.bindKeyboard(name,83,true,true)
-	tfm.exec.chatMessage("<VP><b>Sniper!</b><br><N>Sobreviva às bigornas do shaman! Criado por Hecarimjhenx#0000.<br><br>versão 1.8.2: mudanças internas",name)
+	tfm.exec.chatMessage("<VP><b>Sniper!</b><br><N>Sobreviva às bigornas do shaman! Criado por Patrick_mahomes#1795.<br><br>versão 1.8.3: mudanças internas",name)
 end
 for name,player in pairs(tfm.get.room.playerList) do
 	eventNewPlayer(name)
