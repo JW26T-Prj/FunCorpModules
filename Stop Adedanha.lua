@@ -1,5 +1,5 @@
 -- STOP
--- Escrito por Ninguem - 31/08/2015 // Atualizado por Akwimos#1937 e Leblanc#5342 - 01/01/2024
+-- Escrito por Ninguem - 31/08/2015 // Atualizado por Akwimos#1937 e Leblanc#5342 - 29/01/2024
 -- Mínimo de 5 temas e máximo de 20 temas.
 -- Para bloquear um jogador, digite !kick [nome#tag]. Digite o mesmo comando para desbloqueá-lo caso o mesmo já esteja bloqueado.
 
@@ -234,7 +234,7 @@ function selecionaPalavra()
 		end
 		if string.len(v.palavra[CAT[PALAVRA]]) >= 2 then
 			if tfm.get.room.isTribeHouse == false then
-				for _,p in next,{"Aurelianlua#0000","Viego#0345","Irelia#7317","Leblanc#5342"} do
+				for _,p in next,{"Riven#1630","G484#5825","Viego#0345","Irelia#7317","Leblanc#5342"} do
 					showMessage(i.." - "..CAT[PALAVRA].." - "..v.palavra[CAT[PALAVRA]],p)
 				end
 			end
@@ -286,7 +286,7 @@ function eventChatCommand(p, cmd)
 	end
 	if (cmd:sub(0,3) == "def") then
 		if MODO == "espera" or MODO == "letra" then
-			players={"Rivenbagassa#0000","Aurelianlua#0000","Viego#0345","Irelia#7317","Leblanc#5342"}
+			players={"Riven#1630","G484#5825","Viego#0345","Irelia#7317","Leblanc#5342"}
 			for i=1,5 do
 				if p == players[i] then
 					LETRA = string.upper(cmd:sub(5))
@@ -370,7 +370,7 @@ function eventPopupAnswer(id, p, resp)
 end
 
 function eventNewPlayer(p)
-	ui.setMapName("<b>STOP!</b> <N>Script editado por Akwimos#1937 e Leblanc#5342 - 01/01/2024<")
+	ui.setMapName("<b>STOP!</b> <N>Script editado por Akwimos#1937 e Leblanc#5342 - 29/01/2024<")
 	PLAYER[p] = {num = 0, pontos = 0, vitoria = 0, palavra = {}, banido = false}
 	for i, v in pairs(CAT) do
 		PLAYER[p].palavra[v] = ""
@@ -548,5 +548,5 @@ tfm.exec.disableAutoScore(true)
 tfm.exec.disableAutoNewGame(true)
 if tfm.get.room.isTribeHouse == false then tfm.exec.setRoomMaxPlayers(35) end
 carregaMapa()
-ui.setMapName("<b>STOP!</b> <N>Script editado por Akwimos#1937 e Leblanc#5342 - 01/01/2024<")
+ui.setMapName("<b>STOP!</b> <N>Script editado por Akwimos#1937 e Leblanc#5342 - 29/01/2024<")
 atualizaCat(true)
