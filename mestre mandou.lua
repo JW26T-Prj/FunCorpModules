@@ -12,7 +12,7 @@ admin={""} -- Leia abaixo / Read below!
 -- If you are running this code into a FunCorp room, insert the FunCorp names above and type !tc to enable some additional commands and functions.
 
 -- Comandos para uso de membros FunCorp e do dono da sala:
--- !command [número de 1 a 108] - Executa um comando manualmente.
+-- !command [número de 1 a 109] - Executa um comando manualmente.
 -- !run [@número] - Executa o mapa especificado.
 -- !kill [nick#tag] - Mata o jogador especificado.
 -- !limit [número] - Altera o limite de jogadores na sala.
@@ -20,7 +20,7 @@ admin={""} -- Leia abaixo / Read below!
 -- !antimacro = Ativa ou desativa o sistema de anti-macro da sala.
 
 -- FunCorp and Room Owner Available commands:
--- !command [1-108] - Run a command manually.
+-- !command [1-109] - Run a command manually.
 -- !run [@code] - Run the specified map.
 -- !kill [player#tag] - Kill the specified player.
 -- !limit [number] - Limit the number of maximum players on the room.
@@ -34,7 +34,7 @@ for _,f in next,{"AutoShaman","AutoNewGame","AutoTimeLeft","DebugCommand"} do
 end
 mapas={"@6788174","@6788154","@6788715","@6788728","@6789271","@6790527","@6791838","@6789356","@6822331","@7290275","@7686598","@7750148","@7688066","@6788183","@6784965","@6789235","@6789853","@6790385","@6791944","@6801706","@6792470","@6806109","@6821950","@6866406","@6866437","@6885971","@5328362","@5957905","@7055459","@7214363","@6792516","@6825340","@6788693","@6789272","@6799996","@6803018","@6859175","@6907177","@7404327","@7382263","@6885799","@6790912","@6833993","@7721192","@7309605","@6788861","@6789249","@6790484","@7921432","@6794050","@6830799","@6866549","@6834529","@6876563","@6888512","@6893463","@7431981","@7146925","@6937148","@6356881","@6789280","@6790895","@6799997","@6789324","@6803128","@6900149","@3832586","@6791871","@6811934","@6876638","@6892608","@6982387","@7404106","@7405103","@7400694","@7400678","@7412412","@7412422","@7755685","@6843950","@6810292","@3110915","@6789263","@7354947","@7201360","@6897042","@5549586","@6809461","@7242361","@7697974","@1966987","@7224471","@6932585","@6920982","@7863458","@7897912","@7899697","@7910742","@7236120","@2802178","@7913565","@5549355","@7230453","@7188655","@6481798","@7938319","@6810588","@7904062","@7216097"}
 active=-2; vivo=0; rato=0; dificuldade=1; rodadas=0; rodada=0; number=""; xpos=0; ypos=0; data={}; lang={}; alives={}; tempo=10; counter=0; q=""; a=""; qtime=10; creator=""; sd_vivo=0; anti_macro=true; unlocked=true;
-fc_cmds={1,2,4,5,6,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,28,30,31,32,33,34,35,36,40,41,43,45,46,47,48,49,50,51,53,56,57,58,59,61,62,65,66,67,69,71,75,76,77,78,80,81,82,83,84,85,86,87,88,89,91,92,93,94,95,96,97,99,100,101,102,104,105,106,108}
+fc_cmds={1,2,4,5,6,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,28,30,31,32,33,34,35,36,40,41,43,45,46,47,48,49,50,51,53,56,57,58,59,61,62,65,66,67,69,71,75,76,77,78,80,81,82,83,84,85,86,87,88,89,91,92,93,94,95,96,97,99,100,101,102,104,105,106,108,109}
 spiderweb={type = 15,width = 60,height = 60}
 acid={type = 19,width = 10,height = 25,miceCollision = true,groundCollision = false,dynamic = true,fixedRotation = true,mass = 5000}
 acidg={type = 19,width = 30,height = 30}
@@ -43,7 +43,7 @@ acids={type = 19,width = 2400,height = 80,miceCollision = true,groundCollision =
 fc_mode=false; xpos=0; xpos2=0;
 system.disableChatCommandDisplay(nil,true)
 lang.br = {
-	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><br><VP><b>Module criado e gerenciado por Jessiewind26#2546</b><br><br><R>Versão 7.6",
+	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><br><VP><b>Module criado e gerenciado por Jessiewind26#2546</b><br><br><R>Versão 7.7",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -124,6 +124,7 @@ lang.br = {
 	seq6 = "Dance e chore!",
 	seq7 = "Dance, dê um beijo e fique com raiva!",
 	seq8 = "Dê um beijo, durma e chore!",
+	seq9 = "Durma, pule e taque um confete!",
 	spider = "Cuidado com as teias de aranha!",
 	key2 = "Pressione F4!",
 	clap = "Bata palmas 5 vezes!",
@@ -163,12 +164,12 @@ lang.br = {
 	apple = "Está chovendo maçãs!",
 	cn = "Está chovendo canhões!",
 	people = "Há quantos humanos aqui nesta sala?",
-	submission = "<br><J>As avaliações de mapas do Mestre Mandou estão abertas!<br><VP><b>h t t p s://atelier801.com/topic?f=796133&t=915772&p=1</b><br><BL>(remova os espaços do link)<br>",
+	submission = "<br><J>As avaliações de mapas do Mestre Mandou estão abertas!<br><VP><b>atelier801.com/topic?f=796133&t=915772&p=1</b><br>",
 	verify = "<VP>Para que possamos verificar a estabilidade do module e coletar estatísticas, a partir deste momento, todas as informações desta sala estão sendo registradas no banco de dados interno do module.",
 	ten = "<J>Em 2024, o module Mestre Mandou completa 10 anos! E uma grande novidade está chegando no module...",
 }
 lang.en = {
-	welcome = "<N><b>Welcome to Simon Says module!</b><br>Follow everything the game told and test your limits until the end!<br><br><VP><b>Script made and developed by Jessiewind26#2546</b><br>Translation by Draw#6691<br><br><R>Version 7.6",
+	welcome = "<N><b>Welcome to Simon Says module!</b><br>Follow everything the game told and test your limits until the end!<br><br><VP><b>Script made and developed by Jessiewind26#2546</b><br>Translation by Draw#6691<br><br><R>Version 7.7",
 	dancar = "Dance!",
 	sentar = "Sit down!",
 	confetar = "Throw 5 confetti!",
@@ -249,6 +250,7 @@ lang.en = {
 	seq6 = "Dance and cry!",
 	seq7 = "Dance, give a kiss and get angry!",
 	seq8 = "Give a kiss, sleep and cry!",
+	seq9 = "Sleep, jump and throw confetti!",
 	spider = "Watch out at the cobwebs!",
 	key2 = "Press F4!",
 	clap = "Clap 5 times!",
@@ -289,7 +291,7 @@ lang.en = {
 	cn = "Cannon rain!",
 	people = "How much humans are in this room?",
 	move = "Move your mice!",
-	submission = "<br><J>The map submissions for this module are now open!<br><VP><b>h t t p s://atelier801.com/topic?f=796133&t=915772&p=1</b><br><BL>(remove the spaces)<br>",
+	submission = "<br><J>The map submissions for this module are now open!<br><VP><b>atelier801.com/topic?f=796133&t=915772&p=1</b><br>",
 	verify = "<VP>From this moment on, all information from this room is being recorded in the module's internal database.",
 	ten = "<J>In 2024, the Simon Says module turns 10 years old! And a lot of big news are coming...",
 }
@@ -300,7 +302,7 @@ else
 	text = lang.en
 end
 
-ninjas={"Jessiewind26#2546","Leblanc#5342","Dharak#7603","Belveth#9739","Lacoste#8972","Malzahar#8178","Skyymellu#0000"}
+ninjas={"Jessiewind26#2546","Cassiopeia#1749","Nucadorfoda#0000","Samira#4387","Lacoste#8972","Malzahar#8178","Skyymellu#0000"}
 
 function findString(object,tb)
 	for i=1,rawlen(tb) do
@@ -369,6 +371,8 @@ function eventNewPlayer(name)
 			["c"]=0;
 			["s"]=0;
 			["count"]=0;
+			["imageid"]=-1;
+			["imaget"]=10;
 			};
 	data[name] = newData;
 	showMessage(text.welcome,name)
@@ -377,9 +381,7 @@ function eventNewPlayer(name)
 		showMessage(text.admin,name)
 		showMessage("<br>Available commands: <br>!command [1-108] - Run a command manually.<br>!run [@code] - Run the specified map.<br> !kill [player#tag] - Kill the specified player.<br>!limit [number] - Limit the number of maximum players on the room.<br> !pw [password] - Lock the room with a password.<br>!antimacro = Enable or disable the anti-macro system.",name)
 	end
-end
-for name,player in next,tfm.get.room.playerList do
-	eventNewPlayer(name)
+	data[name].imageid = tfm.exec.addImage("18d5c7e867c.png","!1",150,65,name); data[name].imaget=10;
 end
 function eventPlayerDied(name)
 	vivo=0
@@ -450,7 +452,7 @@ function sortearComandos()
 	if fc_mode == true then
 		active=tonumber(fc_cmds[math.random(#fc_cmds)])
 	else
-		active=math.random(1,108)
+		active=math.random(1,109)
 	end
 	sd_vivo=0
 	getCommand()
@@ -481,7 +483,7 @@ function eventChatCommand(name,message)
 					end
 				end
 				if(message:sub(0,7) == "command") then
-					tt={}; for i=1,110 do table.insert(tt,tostring(i)) end
+					tt={}; for i=1,111 do table.insert(tt,tostring(i)) end
 					if findString(message:sub(9),tt) then
 						active=tonumber(message:sub(9))
 						getCommand()
@@ -1160,11 +1162,15 @@ function getCommand()
 		end
 	end
 	if active == 109 then
+		showCommand(active,text.seq9)
+		tfm.exec.setGameTime(10)
+	end
+	if active == 110 then
 		showCommand(active,q)
 		tfm.exec.setGameTime(qtime)
 		setAllAlive()
 	end
-	if active == 110 then
+	if active == 111 then
 		showCommand(active,q)
 		tfm.exec.setGameTime(qtime)
 	end
@@ -1473,6 +1479,14 @@ function eventEmotePlayed(name,id)
 			tfm.exec.killPlayer(name)
 		end
 	end
+	if active == 110 then
+		if id == 6 and data[name].s == 0 then
+			data[name].s=1
+		end
+		if id == 9 and data[name].s == 2 then
+			completeCommand(name)
+		end			
+	end
 end
 function eventPlayerWon(name)
 	if vivo >= 2 then
@@ -1717,18 +1731,34 @@ function eventKeyboard(name,id,down,x,y)
 			end
 		end
 	end
+	if active == 110 then
+		if id == 38 or id == 87 then
+			if data[name].s == 1 then
+				data[name].s=2
+			end
+		end
+	end
 end
 function eventLoop(passado,faltando)
 	if unlocked == true then
 		local tempo=math.floor(faltando/1000)
+		for name,player in next,tfm.get.room.playerList do
+			if data[name] and data[name].imageid >= 0 then
+				data[name].imaget=data[name].imaget-1
+				if data[name].imaget <= 0 then
+					tfm.exec.removeImage(data[name].imageid,true)
+					data[name].imageid=-1
+				end
+			end
+		end
 		if active == -2 then
-			ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." 7.6</b><")
+			ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." 7.7</b><")
 		elseif active == -1 and vivo >= 1 then
-			ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.6</b><")
+			ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.7</b><")
 		elseif active == -1 and vivo <= 0 then
-			ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.6</b><")
+			ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.7</b><")
 		elseif active >= 0 then
-			ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." 7.6</b><")
+			ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." 7.7</b><")
 		end
 		if rato < 4 then
 			if tfm.get.room.currentMap == "@7935706" then
@@ -1937,3 +1967,6 @@ function eventLoop(passado,faltando)
 	end
 end
 tfm.exec.newGame("@7935706")
+for name,player in next,tfm.get.room.playerList do
+	eventNewPlayer(name)
+end
