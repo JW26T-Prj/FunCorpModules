@@ -688,7 +688,7 @@ perguntas3={
 "Qual destes, por muito tempo, foi dublador do personagem Ezreal?","Fábio Lucindo","Luciano Amaral",1,
 "Qual destas dubladoras é responsável pelas vozes da personagem Lissandra?","Juliana Fernandes","Alessandra Araújo",2,
 "Qual era a dupla famosa por fazer vários roubos em Águas de Sentina?","Graves e Twisted Fate","Graves e Pyke",1,
-"Quantos campeões dragões existem no League of Legends?","1","2",2,
+"Quantos campeões dragões existem no League of Legends?","2","3",2,
 "Qual o nome do subcontinente localizado ao leste de Shurima, completo basicamente por florestas?","Ionia","Ixtal",2,
 "Basicamente, do que é feita a tecnologia Hextec, utilizada no coração da Camille e no martelo do Jayce, por exemplo?","Magia Demaciana","Cristais Hextec",2,
 "Quantos títulos do Campeonato Brasileiro de League of Legends a PaiN Gaming possui?","3","4",1,
@@ -719,7 +719,7 @@ perguntas3={
 "'Regras foram feitas para serem quebradas. Igual prédios... Ou pessoas!'","Jinx","Katarina",1,
 "Quais os nomes de dois dos três semideuses localizado no topo dos montes de Freljord?","Ornn e Volibear","Ornn e Sejuani",1,
 "Qual o nome do 'planeta' onde vivem todos os personagens de League of Legends?","Runeterra","Demacia",1,
-"Quantos campeões existem no League of Legends?","166","168",1,
+"Quantos campeões existem no League of Legends?","167","168",1,
 "O time do Cruzeiro já chegou a ter uma equipe competitiva de League of Legends.","Verdadeiro","Falso",1,
 "Ashe e Tryndamere são casados.","Verdadeiro","Falso",1,
 "Qual o nome da região onde majoritariamente ficam localizados os Vastayas?","Noxus","Ionia",2,
@@ -903,7 +903,7 @@ for _,g in next,{"setq","limite","tema","get","fc","ms","reset"} do
 end
 ratos=0; vivos=0; set_q=0; questions_list={}; modo="inicial"; pergunta=0; rodada=0; limite=20; count=0; fixed_cnt=0;
 mapa="@7935894"
-ninjas={"Shun_kazami#7014","Irelia#7317","Aurelianlua#0000","Leblanc#5342","Skyymellu#0000","Eduardo379#8610"}
+ninjas={"Shun_kazami#7014","Irelia#7317","Cassiopeia#1749","Skyymellu#0000","Eduardo379#8610"}
 actual_question={quest="",a1="",a2="",answer=nil}
 function verifyAdmin(name)
 	for i=1,rawlen(admin) do
