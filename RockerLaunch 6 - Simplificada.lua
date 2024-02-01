@@ -6,7 +6,6 @@ afkdeath=true; -- mude para 'false' para desativar a morte dos ratos ausentes
 -- Comandos:
 -- !cancel - Pula a vez do shaman atual.
 -- !set [nick#tag] - Define o usuário selecionado como shaman.
--- !fc [mensagem] ou !ms [mensagem] - Exibe uma mensagem em laranja. USO EXCLUSIVO PARA MEMBROS FunCorp!
 
 -- NÃO MUDE NADA DEPOIS DESTA LINHA!!
 for _,f in next,{"PhysicalConsumables","AutoNewGame","AutoTimeLeft","AllShamanSkills","DebugCommand"} do
@@ -18,13 +17,13 @@ asteroid_1={type = 12,width = 40,height = 20,foreground = false,friction = 3,res
 asteroid_2={type = 12,width = 80,height = 40,foreground = false,friction = 4,restitution = 0.15,angle = 0, color = 0, miceCollision = true, groundCollision = true, dynamic = true, fixedRotation = false, mass = 5000}
 asteroid_3={type = 12,width = 160,height = 80,foreground = false,friction = 5,restitution = 0.2,angle = 0, color = 0, miceCollision = true, groundCollision = true, dynamic = true, fixedRotation = false, mass = 15000}
 asteroid_4={type = 12,width = 320,height = 160,foreground = false,friction = 7,restitution = 0.25,angle = 0, color = 0, miceCollision = true, groundCollision = true, dynamic = true, fixedRotation = false, mass = 30000}
-ajuda="<VP>Bem-vindos ao RockerLaunch 6!<br><N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço! Digite !help para saber como jogar.<br><br><BL>Créditos para Lynet#8558, Puffezinhaq#0000, Digo20games#0000, Dhanny_mheyran#6701 e Threshlimit#0000. Conceito original de Nettoork#0000.<br><J>Versão 6.5.3"
+ajuda="<VP>Bem-vindos ao RockerLaunch 6!<br><N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço! Digite !help para saber como jogar.<br><br><BL>Créditos para Lynet#8558, Puffezinhaq#0000, Digo20games#0000, Dhanny_mheyran#6701 e Threshlimit#0000. Conceito original de Nettoork#0000.<br><J>Versão 6.6"
 objects1={1,3,6,23,33,39,60,65}
 objects2={1,3,6,23,33,39,60,65,2,68,69}
 objects3={1,3,6,23,33,39,60,65,2,68,69,4,7,10,17,35,85,90}
 objects4={1,3,6,23,33,39,60,65,2,68,69,4,7,10,17,35,85,90,40,61,67}
-managers={"Weslen#2420","Belveth#9739","Puffezinhaq#0000","Barodius#9562","Leblanc#5342","Fabia_sheen#2561"} -- contribuidores
-for _,f in next,{"cancel","set","get","help","fc","ms"} do
+managers={"Rakan#3159","Belveth#9739","Puffezinhaq#0000","Barodius#9562","Cassiopeia#1749","Fabia_sheen#2561"} -- contribuidores
+for _,f in next,{"cancel","set","get","help"} do
 	system.disableChatCommandDisplay(f)
 end
 
@@ -99,9 +98,6 @@ function eventChatCommand(n,m)
 		if (m:sub(0,3) == "get") then
 			tfm.exec.setPlayerScore(m:sub(5),32,true)
 		end
-		if (m:sub(0,2) == "tc") or (m:sub(0,2) == "ms") then
-			showMessage("<font color='#FF8547'>• [FunCorp - <b>"..n.."</b>] "..m:sub(4).."")
-		end
 	end
 end
 function rodar(name)
@@ -121,14 +117,10 @@ function rodar(name)
 			tfm.exec.addImage("181b9de5c95.png","?1",-800+(j*1920),-780+(i*1080),name)
 		end
 	end
-	for a=0,2 do
-		tfm.exec.addImage("1860ee4bc27.png","?1",-800+(a*1762),8600,name,1,1,0,1)
-		tfm.exec.addImage("1860ee4bc27.png","!1",-800+(a*1762),8600,name,1,1,0,0.6)
-	end
-	for b=0,4 do
-		tfm.exec.addImage("1860ee46b2e.jpg","?1",-800+(b*690),8932,name,1,1,0,1)
-		tfm.exec.addImage("1860ee41de2.png","!1",-800+(b*690),8932,name,1,1,0,1)
-	end
+	tfm.exec.addImage("189749dd379.png", "?1", -1200, 8610, name, 1, 1, 0, 1)
+	tfm.exec.addImage("189749dd379.png", "!1", -1200, 8610, name, 1, 1, 0, 0.9)
+	tfm.exec.addImage("189749dd379.png", "?1", 2800, 8610, name, -1, 1, 0, 1)
+	tfm.exec.addImage("189749dd379.png", "!1", 2800, 8610, name, -1, 1, 0, 0.9)
 	for i=0,5 do
 		tfm.exec.addImage("181ba85ccc2.png","!1",math.random(-400,1500),math.random(5300,7200),name)
 	end
