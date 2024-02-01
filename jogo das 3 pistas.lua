@@ -1,5 +1,5 @@
--- Script de Jogo das 3 Pistas, originalmente feito por Jessiewind26#2546, e atualmente gerenciado por Hecarimjhenx#0000.
--- Adicione seu nome com #tag na variável 'admin' abaixo para ter acesso a todos os comandos.
+-- Script de Jogo das 3 Pistas, originalmente feito por Jessiewind26#2546, e atualmente gerenciado por Leblanc#5342.
+-- IMPORTANTE: adicione seu nick com #tag na variável 'admin' abaixo para ter acesso a todos os comandos.
 admin="";
 
 for _,f in next,{"AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand","AfkDeath","AllShamanSkills"} do
@@ -13,7 +13,7 @@ end
 mapa="@4677521"
 lang = {}
 lang.br = {
-	welcome = "<J>Bem-vindo ao module do Jogo das 3 Pistas! Não sabe como jogar? Digite !help.<br><br>Script gerenciado por Hecarimjhenx#0000.",
+	welcome = "<J>Bem-vindo ao module do Jogo das 3 Pistas! Não sabe como jogar? Digite !help.<br><br>Script gerenciado por Leblanc#5342.",
 	time = "<R>Tempo esgotado! A resposta era ",
 	fim = "<R>Partida encerrada! O jogador com melhor pontuação será o shaman!",
 	shaman = "<R>Acabou o tempo! Outro shaman será escolhido.",
@@ -22,17 +22,18 @@ lang.br = {
 	c8p = "Dica valendo 8 pontos:",
 	module = "Jogo das 3 Pistas",
 	cancel = "<R>Rodada cancelada.",
-	question = "<VP>Pressione G para fazer uma pergunta.",
+	questions = "<br><br><VP>Pressione G para fazer uma pergunta.<br><br>",
 	help = "<J>Como jogar:<br>Quando você tiver jogando, o shaman te dará 3 dicas. Se você acertar a pergunta, você ganha um número de pontos específico, dependendo de quanto tempo você demorou para responder. Quem tiver mais pontos no final vira o shaman do jogo.",
 	win = "acertou a resposta! A resposta era",
 	cancelled = "<R>O shaman não pode falar nada no chat durante seu turno.",
 	responder = "<ROSE>Podem responder agora!",
+	insertanswer = "Insira a RESPOSTA: ",
 	question = "Pergunta",
 	time = "Tempo",
 	version = "Versão"
 }
 lang.en = {
-	welcome = "<J>Welcome to 3 Tips Game! If you want help, type !help.<br><br>Script managed and translated by Hecarimjhenx#0000.",
+	welcome = "<J>Welcome to 3 Tips Game! If you want help, type !help.<br><br>Script managed and translated by Leblanc#5342.",
 	time = "<R>End of time! The answer was",
 	fim = "<R>The match ended! The best player will be the shaman.",
 	shaman = "<R>Time is gone! Other shaman will be selected.",
@@ -41,11 +42,12 @@ lang.en = {
 	c8p = "Tip for 8 points:",
 	module = "3 Tips Game",
 	cancel = "<R>Cancelled match.",
-	question = "<VP>Press G to make a question.",
+	questions = "<br><br><VP>Press G to make a question.<br><br>",
 	help = "<J>How to Play:<br>When you is playing, the shaman will make 3 tips. If you discover the answer, you win points, depending of time remaining to win. At final of the match, the player that get more points will be the shaman.",
 	win = "discovered the answer! The answer was",
 	cancelled = "<R>The shaman can't type nothing on the chat.",
 	responder = "<ROSE>You can answer now!",
+	insertanswer = "Insert the ANSWER: ",
 	question = "Question",
 	time = "Time",
 	version = "Version"
@@ -125,22 +127,22 @@ function eventLoop(p,f)
 	if valendo == true and f <= 39000 then
 		ui.addTextArea(3,"<font size='15'><p align='center'><font face='Consolas,Lucida Console'><N>"..text.c8p.." <b>"..dica8.."",nil,5,98,780,26,0x000001,0x000001,0.9,true)
 	end
-	ui.setMapName("<J>"..text.module.."   <G>|   <N>"..text.question.." : <V>"..pergunta.."/"..limite.."   <G>|   <N>"..text.time.." : <V>"..tempo.."s   <G>|   <N>"..text.version.." <VP><b>RTM 3414.033</b><")
+	ui.setMapName("<J>"..text.module.."   <G>|   <N>"..text.question.." : <V>"..pergunta.."/"..limite.."   <G>|   <N>"..text.time.." : <V>"..tempo.."s   <G>|   <N>"..text.version.." <VP><b>RTM 3515.034 LTS</b><")
 end
 function eventChatCommand(name,message)
 	if message == "skip" then
-		if name == "Hecarimjhenx#0000" or name == "Leblanc#5342" or name == "Aurelianlua#0000" or name == admin then
+		if name == "Leblanc#5342" or name == "Riven#1630" or name == "Aurelianlua#0000" or name == admin then
 			showMessage(text.cancel,nil)
 			tfm.exec.newGame(mapa)
 		end
 	end
 	if(message:sub(1,6) == "limite") then
-		if name == "Hecarimjhenx#0000" or name == "Leblanc#5342" or name == "Aurelianlua#0000" or name == admin then
+		if name == "Leblanc#5342" or name == "Riven#1630" or name == "Aurelianlua#0000" or name == admin then
 			limite=tonumber(message:sub(8))
 		end
 	end
 	if(message:sub(1,6) == "shaman") then
-		if name == "Hecarimjhenx#0000" or name == "Leblanc#5342" or name == "Aurelianlua#0000" or name == admin then
+		if name == "Leblanc#5342" or name == "Riven#1630" or name == "Aurelianlua#0000" or name == admin then
 			tfm.exec.setPlayerScore(message:sub(8),9999,false)
 			tfm.exec.newGame(mapa)
 		end
@@ -167,7 +169,7 @@ function eventNewGame()
 		if tfm.get.room.playerList[name].isShaman then
 			if data[name] then
 				data[name].played=1
-				showMessage(text.question,name)
+				showMessage(text.questions,name)
 			end
 		end
 		tfm.exec.bindKeyboard(name,71,true,true)
@@ -210,28 +212,28 @@ function eventKeyboard(name,key)
 end
 function eventPopupAnswer(id,name,answer)
 	if tfm.get.room.playerList[name].isShaman then
-	if id == 0 and string.len(answer) <= 80 and string.len(answer) >= 3 then
-		dica10=answer
-		ui.addPopup(1,2,text.c9p,name,350,125,200,true)
-	end
-	if id == 1 and string.len(answer) <= 80 and string.len(answer) >= 3 then
-		dica9=answer
-		ui.addPopup(2,2,text.c8p,name,350,125,200,true)
-	end
-	if id == 2 and string.len(answer) <= 80 and string.len(answer) >= 3 then
-		dica8=answer
-		ui.addPopup(3,2,"Insert the ANSWER:",name,350,125,200,true)
-	end
-	if id == 3 then
-		if string.len(answer) >= 2 and string.len(answer) <= 60 and string.len(answer) >= 3 then
-			pergunta=pergunta+1
-			resposta=string.upper(answer)
-			tfm.exec.setGameTime(64)
-			valendo=true
-		else
-			ui.addPopup(3,2,"Insert the ANSWER:",name,350,125,200,true)
+		if id == 0 and string.len(answer) <= 80 and string.len(answer) >= 3 then
+			dica10=answer
+			ui.addPopup(1,2,text.c9p,name,350,125,200,true)
 		end
-	end
+		if id == 1 and string.len(answer) <= 80 and string.len(answer) >= 3 then
+			dica9=answer
+			ui.addPopup(2,2,text.c8p,name,350,125,200,true)
+		end
+		if id == 2 and string.len(answer) <= 80 and string.len(answer) >= 3 then
+			dica8=answer
+			ui.addPopup(3,2,text.insertanswer,name,350,125,200,true)
+		end
+		if id == 3 then
+			if string.len(answer) >= 2 and string.len(answer) <= 60 and string.len(answer) >= 3 then
+				pergunta=pergunta+1
+				resposta=string.upper(answer)
+				tfm.exec.setGameTime(64)
+				valendo=true
+			else
+				ui.addPopup(3,2,text.insertanswer,name,350,125,200,true)
+			end
+		end
 	end
 end
 function eventPlayerDied(name)
