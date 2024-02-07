@@ -1,4 +1,4 @@
--- Module #arrows, versão v1.3.1, desenvolvido por Leblanc#5342.
+-- Module #arrows, versão v1.3.2, desenvolvido por Leblanc#5342.
 
 -- Se estiver rodando este código em uma sala FunCorp, insira os nicknames dos membros abaixo.
 admin={"Leblanc#5342"} -- Insira os nomes aqui! // Insert the nicknames here!
@@ -16,26 +16,26 @@ for _,f in next,{"reset","change"} do
 end
 modo="inicial"; lang={}; map="@7938991"; ratos=0; vivos=0; round=0; level=0; imgs={}; data={}; symbol={"⇦","⇧","⇨","⇩"}; symbol_l={"&lt;","^",">","v"}; keys={};
 lang.br = {
-	welcome = "<ROSE><b>Bem-vindo ao module #arrows!</b><br><N>O objetivo deste module é ser rápido e preciso, usando o teclado para responder a sequência de setas que aparecerá na sua tela!<br><br><VP>Module criado por Leblanc#5342. Ideia original de Shun_kazami#7014.<br><BL><b>Versão 1.3.1</b>",
+	welcome = "<ROSE><b>Bem-vindo ao module #arrows!</b><br><N>O objetivo deste module é ser rápido e preciso, usando o teclado para responder a sequência de setas que aparecerá na sua tela!<br><br><VP>Module criado por Leblanc#5342. Ideia original de Shun_kazami#7014.<br><BL><b>Versão 1.3.2</b>",
 	starting = "<J>Atenção! O jogo será iniciado em 5 segundos!",
 	wrong = "<R>Você errou!",
 	accept = "<VP>Parabéns! Você conseguiu avançar desta fase!",
 	notime = "<R>Tempo esgotado!", difficulty = "Dificuldade", mices = "Ratos", 
 	increase = "<J>O grau de dificuldade agora está maior!",
-	end1 = "<VP><b>Fim de jogo! </b>", end2 = " ratos sobreviveram! Iniciando nova partida..",
+	end1 = "<VP><b>Fim de jogo! </b>", end2 = " ratos sobreviveram! Iniciando nova partida...",
 	nowinners = "Não houveram vencedores! Iniciando nova partida...",
 	winners = "A partir de agora, caso sobre somente um rato, este será declarado o vencedor!",
 	iswinner = " é o grande vencedor!",
 	legacy = "<J>Caso não esteja conseguindo ver as setas corretamente, digite !change. Este comando mudará a forma como as setas são exibidas na tela.",
 }
 lang.en = {
-	welcome = "<ROSE><b>Welcome to the #arrows module!</b><br><N>The goal of this module is to use your keyboard to follow the sequence of arrows that will show on your screen! You need to be fast!<br><br><VP>Module developed by Leblanc#5342. Original idea from Shun_kazami#7014.<br><BL><b>Version 1.3.1</b>",
+	welcome = "<ROSE><b>Welcome to the #arrows module!</b><br><N>The goal of this module is to use your keyboard to follow the sequence of arrows that will show on your screen! You need to be fast!<br><br><VP>Module developed by Leblanc#5342. Original idea from Shun_kazami#7014.<br><BL><b>Version 1.3.2</b>",
 	starting = "<J>The game will be started in 5 seconds!",
 	wrong = "<R>Oh no! Wrong key!",
 	accept = "<VP>Congratulations! You passed this round!",
 	notime = "<R>Time is up!", difficulty = "Difficulty", mices = "Mice",
 	increase = "<J>The difficulty level was increased!",
-	end1 = "<VP><b>Game over! </b>", end2 = " mices survived! Starting new match..",
+	end1 = "<VP><b>Game over! </b>", end2 = " mices survived! Starting new match...",
 	nowinners = "No winners! Starting new round...",
 	winners = "From now on, if only one mice survive, (s)he will be declared as winner!",
 	iswinner = " won the game!",
@@ -104,9 +104,9 @@ function exibeSetas()
 			table.insert(keys,tonumber(direction))
 			for name,player in next,tfm.get.room.playerList do
 				if data[name].legacy == false then
-					ui.addTextArea(i,"<font size='90'><font color='#ffffff'><font face='Segoe UI Emoji,Segoe UI Symbol'>"..symbol[direction+1].."",name,75+(i*100),150,100,110,0,0,1.3.1,true)
+					ui.addTextArea(i,"<font size='90'><font color='#ffffff'><font face='Segoe UI Emoji,Segoe UI Symbol'>"..symbol[direction+1].."",name,75+(i*100),150,100,110,0,0,1,true)
 				else
-					ui.addTextArea(i,"<font size='90'><font color='#ffffff'><font face='Segoe UI Emoji,Segoe UI Symbol'>"..symbol_l[direction+1].."",name,75+(i*100),150,110,110,0,0,1.3.1,true)
+					ui.addTextArea(i,"<font size='90'><font color='#ffffff'><font face='Segoe UI Emoji,Segoe UI Symbol'>"..symbol_l[direction+1].."",name,75+(i*100),150,110,110,0,0,1,true)
 				end
 			end
 		end
@@ -116,9 +116,9 @@ function exibeSetas()
 			table.insert(keys,tonumber(direction))
 			for name,player in next,tfm.get.room.playerList do
 				if data[name].legacy == false then
-					ui.addTextArea(i,"<font size='90'><font color='#ffffff'><font face='Segoe UI Emoji,Segoe UI Symbol'>"..symbol[direction+1].."",name,-35+(i*75),150,100,110,0,0,1.3.1,true)
+					ui.addTextArea(i,"<font size='90'><font color='#ffffff'><font face='Segoe UI Emoji,Segoe UI Symbol'>"..symbol[direction+1].."",name,-35+(i*75),150,100,110,0,0,1,true)
 				else
-					ui.addTextArea(i,"<font size='90'><font color='#ffffff'><font face='Segoe UI Emoji,Segoe UI Symbol'>"..symbol_l[direction+1].."",name,-35+(i*75),150,110,110,0,0,1.3.1,true)
+					ui.addTextArea(i,"<font size='90'><font color='#ffffff'><font face='Segoe UI Emoji,Segoe UI Symbol'>"..symbol_l[direction+1].."",name,-35+(i*75),150,110,110,0,0,1,true)
 				end
 			end
 		end
@@ -128,9 +128,9 @@ function exibeSetas()
 			table.insert(keys,tonumber(direction))
 			for name,player in next,tfm.get.room.playerList do
 				if data[name].legacy == false then
-					ui.addTextArea(i,"<font size='90'><font color='#ffffff'><font face='Segoe UI Emoji,Segoe UI Symbol'>"..symbol[direction+1].."",name,-35+(i*75),120,100,110,0,0,1.3.1,true)
+					ui.addTextArea(i,"<font size='90'><font color='#ffffff'><font face='Segoe UI Emoji,Segoe UI Symbol'>"..symbol[direction+1].."",name,-35+(i*75),120,100,110,0,0,1,true)
 				else
-					ui.addTextArea(i,"<font size='90'><font color='#ffffff'><font face='Segoe UI Emoji,Segoe UI Symbol'>"..symbol_l[direction+1].."",name,-35+(i*75),120,110,110,0,0,1.3.1,true)
+					ui.addTextArea(i,"<font size='90'><font color='#ffffff'><font face='Segoe UI Emoji,Segoe UI Symbol'>"..symbol_l[direction+1].."",name,-35+(i*75),120,110,110,0,0,1,true)
 				end
 			end
 		end
@@ -139,9 +139,9 @@ function exibeSetas()
 			table.insert(keys,tonumber(direction))
 			for name,player in next,tfm.get.room.playerList do
 				if data[name].legacy == false then
-					ui.addTextArea(i,"<font size='90'><font color='#ffffff'><font face='Segoe UI Emoji,Segoe UI Symbol'>"..symbol[direction+1].."",name,75+((-10+i)*100),190,100,110,0,0,1.3.1,true)
+					ui.addTextArea(i,"<font size='90'><font color='#ffffff'><font face='Segoe UI Emoji,Segoe UI Symbol'>"..symbol[direction+1].."",name,75+((-10+i)*100),190,100,110,0,0,1,true)
 				else
-					ui.addTextArea(i,"<font size='90'><font color='#ffffff'><font face='Segoe UI Emoji,Segoe UI Symbol'>"..symbol_l[direction+1].."",name,75+((-10+i)*100),190,110,110,0,0,1.3.1,true)
+					ui.addTextArea(i,"<font size='90'><font color='#ffffff'><font face='Segoe UI Emoji,Segoe UI Symbol'>"..symbol_l[direction+1].."",name,75+((-10+i)*100),190,110,110,0,0,1,true)
 				end
 			end
 		end
@@ -151,9 +151,9 @@ function exibeSetas()
 			table.insert(keys,tonumber(direction))
 			for name,player in next,tfm.get.room.playerList do
 				if data[name].legacy == false then
-					ui.addTextArea(i,"<font size='90'><font color='#ffffff'><font face='Segoe UI Emoji,Segoe UI Symbol'>"..symbol[direction+1].."",name,-35+(i*75),120,100,110,0,0,1.3.1,true)
+					ui.addTextArea(i,"<font size='90'><font color='#ffffff'><font face='Segoe UI Emoji,Segoe UI Symbol'>"..symbol[direction+1].."",name,-35+(i*75),120,100,110,0,0,1,true)
 				else
-					ui.addTextArea(i,"<font size='90'><font color='#ffffff'><font face='Segoe UI Emoji,Segoe UI Symbol'>"..symbol_l[direction+1].."",name,-35+(i*75),120,110,110,0,0,1.3.1,true)
+					ui.addTextArea(i,"<font size='90'><font color='#ffffff'><font face='Segoe UI Emoji,Segoe UI Symbol'>"..symbol_l[direction+1].."",name,-35+(i*75),120,110,110,0,0,1,true)
 				end
 			end
 		end
@@ -162,9 +162,9 @@ function exibeSetas()
 			table.insert(keys,tonumber(direction))
 			for name,player in next,tfm.get.room.playerList do
 				if data[name].legacy == false then
-					ui.addTextArea(i,"<font size='90'><font color='#ffffff'><font face='Segoe UI Emoji,Segoe UI Symbol'>"..symbol[direction+1].."",name,-35+((-10+i)*75),190,100,110,0,0,1.3.1,true)
+					ui.addTextArea(i,"<font size='90'><font color='#ffffff'><font face='Segoe UI Emoji,Segoe UI Symbol'>"..symbol[direction+1].."",name,-35+((-10+i)*75),190,100,110,0,0,1,true)
 				else
-					ui.addTextArea(i,"<font size='90'><font color='#ffffff'><font face='Segoe UI Emoji,Segoe UI Symbol'>"..symbol_l[direction+1].."",name,-35+((-10+i)*75),190,110,110,0,0,1.3.1,true)
+					ui.addTextArea(i,"<font size='90'><font color='#ffffff'><font face='Segoe UI Emoji,Segoe UI Symbol'>"..symbol_l[direction+1].."",name,-35+((-10+i)*75),190,110,110,0,0,1,true)
 				end
 			end
 		end
@@ -260,7 +260,7 @@ function eventLoop(pass,rem)
 	if remain <= 1 and modo == "fim" then
 		reset();
 	end
-	ui.setMapName("<ROSE>#arrows by Leblanc#5342   <G>|   <N>Round : <V>"..round.."   <G>|   <N>"..text.mices.." : <V>"..vivos.."/"..ratos.."   <G>|   <N>"..text.difficulty.." : <V>"..level.."   <G>|   <J>v1.3.1<")
+	ui.setMapName("<ROSE>#arrows by Leblanc#5342   <G>|   <N>Round : <V>"..round.."   <G>|   <N>"..text.mices.." : <V>"..vivos.."/"..ratos.."   <G>|   <N>"..text.difficulty.." : <V>"..level.."   <G>|   <J>v1.3.2<")
 end
 function eventNewGame()
 	for name,player in next,tfm.get.room.playerList do
