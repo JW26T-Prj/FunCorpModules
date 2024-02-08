@@ -1,12 +1,13 @@
 -- Script Fall Racing, antes chamado de Queda Livre de Velocidade.
--- Originalmente feito por Haxhhhhhhhhh, antes gerenciado por Vaicntaefeto#0000, Azirdeathray#0000 e Zed#9431, e atualmente no controle de Titan50#0000.
+-- Originalmente feito por Haxhhhhhhhhh, antes gerenciado por Vaicntaefeto#0000, Azirdeathray#0000, Zed#9431 e Titan50#0000.
+-- Atualmente no controle de Barodius#9562.
 -- Atenção: Script com alta exigência de memória.
 
 for _,f in next,{"AutoNewGame","AutoShaman","AfkDeath","AutoScore","PhysicalConsumables","MortCommand","DebugCommand","MinimalistMode"} do
 	tfm.exec["disable"..f](true)
 end
-if not tfm.get.room.isTribeHouse then tfm.exec.setRoomMaxPlayers(25) end
-xml2=''; creator=""; position=0; objective=50; enabled=false; map="";
+if not tfm.get.room.isTribeHouse then tfm.exec.setRoomMaxPlayers(20) end
+xml2=''; creator=""; position=0; objective=40; enabled=false; map="";
 mapas={"@7411648","@7568910","@7410842","@7568917","@7568919","@7568922","@7568923","@7568928","@7568964","@7568967","@7568965","@7354962","@7569413","@7721624","@6621726","@6316396"}
 system.disableChatCommandDisplay("obj")
 lobby="@7405103"
@@ -20,7 +21,7 @@ function showMessage(message,name)
 end
 function eventChatCommand(name,message)
 	if(message:sub(1,3) == "obj") then
-		if name == "Titan50#0000" or name == "Viego#0345" or name == "D571#0000" then
+		if name == "Barodius#9562" or name == "Riven#1630" or name == "Skyymellu#0000" then
 			objective=tonumber(message:sub(5))
 			showMessage("<J>Objective changed to: "..objective,name)
 		end
@@ -39,8 +40,8 @@ function eventNewGame()
 			ui.removeTextArea(0,nil)
 		end
 	else
-		ui.addTextArea(10,"<font face='Eras Demi ITC'><font color='#ff8000'><font size='39'>Fall Racing v2.5.3",nil,40,42,400,100,0,0,1.0,true)
-		ui.setMapName("<N>Welcome to <J>Fall Racing v2.5.3! <N>Script made by <R><b>Titan50#0000</b>.<")
+		ui.addTextArea(10,"<font face='Eras Demi ITC'><font color='#ff8000'><font size='39'>Fall Racing v2.5.4",nil,40,42,400,100,0,0,1.0,true)
+		ui.setMapName("<N>Welcome to <J>Fall Racing v2.5.4! <N>Script managed by <BL><b>Barodius#9562</b>.<")
 		tfm.exec.setGameTime(60)
 	end
 end
@@ -48,7 +49,7 @@ function eventLoop(p,f)
 	if p >= 5000 and p <= 6000 and changed == false and enabled == true then
 		tfm.exec.newGame(xml2)
 		changed=true
-		ui.setMapName("<J>#fall v2.5.3   <BL>|   <J>"..creator.." <BL>- "..map.."   <BL>|   <J>Objective : <J>"..objective.." points<")
+		ui.setMapName("<J>#fall v2.5.4   <BL>|   <J>"..creator.." <BL>- "..map.."   <BL>|   <J>Objective : <J>"..objective.." points<")
 	end
 	if f <= 1 and enabled == true then
 		changed=false
@@ -103,8 +104,8 @@ function eventPlayerDied(name)
 end
 function eventNewPlayer(name)
 	if enabled == false then
-		ui.addTextArea(10,"<font face='Eras Demi ITC'><font color='#00ffff'><font size='39'>Fall Racing v2.5.3",nil,330,42,400,100,0,0,1.0,true)
-		ui.setMapName("<N>Welcome to <J>Fall Racing v2.5.3! <N>Script managed by <R><b>Titan50#0000</b>.<")
+		ui.addTextArea(10,"<font face='Eras Demi ITC'><font color='#00ffff'><font size='39'>Fall Racing v2.5.4",nil,330,42,400,100,0,0,1.0,true)
+		ui.setMapName("<N>Welcome to <J>Fall Racing v2.5.4! <N>Script managed by <R><b>Barodius#9562</b>.<")
 	end
 	showMessage("<J>Welcome to the #fall2 module!<br><br>The objective of this room is fall to the end of the map!<br>The player that score more points will win the game!<br><br><R>WARNING: This script require at least 1.6GB of RAM to work without problems.<J><br><br>Script managed by Titan50#0000",name)
 end
