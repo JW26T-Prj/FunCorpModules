@@ -1,5 +1,4 @@
--- SCRIPT EXCLUSIVO DE SHUN_KAZAMI#7014 (antigo membro da Spectra Advanced Module Group)
--- Versão ORIGINAL do Corrida das Perguntas (vulgo #bolodefchoco00perguntas) importado diretamente do criador original (Haxhhhhhhhhh).
+-- Versão ORIGINAL do Corrida das Perguntas (atual #perguntas) importado diretamente do criador original (Haxhhhhhhhhh).
 for _,f in next,{"AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand","AfkDeath","AllShamanSkills"} do
 	tfm.exec["disable"..f](true)
 end
@@ -35,34 +34,34 @@ function eventChatCommand(name,message)
 			trocarMapa()
 		end
 	end
-	if name == "Shun_kazami#7014" or name == "Spectra_phantom#6089" or name == admin then
-	if(message:sub(0,3) == "def") then
-		tfm.exec.setPlayerScore(message:sub(5),10,false)
-		trocarMapa()
-	end
+	if name == "Shun_kazami#7014" or name == "Viego#0345" or name == "Sett#6442" or name == admin then
+		if(message:sub(0,3) == "def") then
+			tfm.exec.setPlayerScore(message:sub(5),10,false)
+			trocarMapa()
+		end
 	end
 end
 function eventChatMessage(name,message)
 	if string.upper(message) == string.upper(palavra) and not tfm.get.room.playerList[name].isShaman then
-			data[name].p=data[name].p+1
-			palavra=""
-			pergunta=""
-			tfm.exec.setPlayerScore(name,1,true)
-			if data[name].p == 1 then
-				tfm.exec.movePlayer(name,700,360,false,1,1,false)
-			elseif data[name].p == 2 then
-				tfm.exec.movePlayer(name,900,360,false,1,1,false)
-			elseif data[name].p == 3 then
-				tfm.exec.movePlayer(name,1100,360,false,1,1,false)
-			elseif data[name].p == 4 then
-				tfm.exec.movePlayer(name,1300,360,false,1,1,false)
-			elseif data[name].p == 5 then
-				tfm.exec.movePlayer(name,1500,360,false,1,1,false)
-			end
-			ui.removeTextArea(2,NIL)
-			tfm.exec.chatMessage("<VP>"..name.." respondeu corretamente! A resposta era "..string.upper(message).."")
-			tfm.exec.setGameTime(60)
+		data[name].p=data[name].p+1
+		palavra=""
+		pergunta=""
+		tfm.exec.setPlayerScore(name,1,true)
+		if data[name].p == 1 then
+			tfm.exec.movePlayer(name,700,360,false,1,1,false)
+		elseif data[name].p == 2 then
+			tfm.exec.movePlayer(name,900,360,false,1,1,false)
+		elseif data[name].p == 3 then
+			tfm.exec.movePlayer(name,1100,360,false,1,1,false)
+		elseif data[name].p == 4 then
+			tfm.exec.movePlayer(name,1300,360,false,1,1,false)
+		elseif data[name].p == 5 then
+			tfm.exec.movePlayer(name,1500,360,false,1,1,false)
 		end
+		ui.removeTextArea(2,NIL)
+		tfm.exec.chatMessage("<VP>"..name.." respondeu corretamente! A resposta era "..string.upper(message).."")
+		tfm.exec.setGameTime(60)
+	end
 end
 function eventPopupAnswer(id,name,answer)
 	if id == 0 then
@@ -81,7 +80,7 @@ function eventPopupAnswer(id,name,answer)
 	end	
 end
 function eventNewPlayer(name)
-	ui.setMapName("Corrida de Perguntas v10.8, gerenciado por Shun_kazami#7014.<")
+	ui.setMapName("Corrida de Perguntas v10.9, gerenciado por Shun_kazami#7014.<")
 	tfm.exec.respawnPlayer(name)
 	tfm.exec.chatMessage("<N>Script de Corrida das Perguntas, importado diretamente da versão original feita por Haxhhhhhhhhh.<br><VP><b>Versão 10.8</b><br><br><N>Atualmente administrado por Shun_kazami#7014, mapa feito também por Shun_kazami#7014.<br><br><ROSE>Proibida reutilização ou cópia sem autorização do criador.",name)
 	if not data[name] then
@@ -118,7 +117,7 @@ end
 function eventNewGame()
 	palavra=""
 	ui.removeTextArea(2,NIL)
-	ui.setMapName("Corrida de Perguntas v10.8, gerenciado por Shun_kazami#7014.<")
+	ui.setMapName("Corrida de Perguntas v10.9, gerenciado por Shun_kazami#7014.<")
 	for id,name in pairs(players_table) do
 		data[name].p=0
 	end
