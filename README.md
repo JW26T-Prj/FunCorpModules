@@ -1,4 +1,4 @@
-# Welcome to the Jessiewind26's Funcorp Modules folder.
+# Welcome to the Jessiewind26's Public Modules folder.
 
 **From day February 05, 2024, all modules managed by Spectra_phantom#6089 have several restrictions for FunCorp members. If a FunCorp member try to run one of your modules, the game can be turned off anytime.**
 
@@ -8,6 +8,7 @@ These codes are intended to be used with FunCorp members, but other players will
 To add a code to this folder, please contact one of the following users into Discord:
 - ventusjessegleen
 - shunkazami_cg
+- spectraphantom37
 
 Into Transformice, contact Jessiewind26#2546, or Shun_kazami#7014.
 
