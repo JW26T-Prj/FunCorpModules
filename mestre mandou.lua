@@ -43,7 +43,7 @@ acids={type = 19,width = 2400,height = 80,miceCollision = true,groundCollision =
 fc_mode=false; xpos=0; xpos2=0;
 system.disableChatCommandDisplay(nil,true)
 lang.br = {
-	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><br><VP><b>Module criado e gerenciado por Jessiewind26#2546</b><br><br><R>Versão 7.7.1",
+	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><br><VP><b>Module criado e gerenciado por Jessiewind26#2546</b><br><br><R>Versão 7.7.2",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -165,11 +165,11 @@ lang.br = {
 	cn = "Está chovendo canhões!",
 	people = "Há quantos humanos aqui nesta sala?",
 	submission = "<br><J>As avaliações de mapas do Mestre Mandou estão abertas!<br><VP><b>atelier801.com/topic?f=796133&t=915772&p=1</b><br>",
-	verify = "<VP>Para que possamos verificar a estabilidade do module e coletar estatísticas, a partir deste momento, todas as informações desta sala estão sendo registradas no banco de dados interno do module.",
-	ten = "<J>Em 2024, o module Mestre Mandou completa 10 anos! E uma grande novidade está chegando no module...",
+	verify = "<J>Para que possamos verificar a estabilidade do module e coletar estatísticas, a partir deste momento, todas as informações desta sala estão sendo registradas no banco de dados interno do module.",
+	ten = "<VP>Em 2024, o module Mestre Mandou completa 10 anos! E uma grande novidade está chegando no module...",
 }
 lang.en = {
-	welcome = "<N><b>Welcome to Simon Says module!</b><br>Follow everything the game told and test your limits until the end!<br><br><VP><b>Script made and developed by Jessiewind26#2546</b><br>Translation by Draw#6691<br><br><R>Version 7.7.1",
+	welcome = "<N><b>Welcome to Simon Says module!</b><br>Follow everything the game told and test your limits until the end!<br><br><VP><b>Script made and developed by Jessiewind26#2546</b><br>Translation by Draw#6691<br><br><R>Version 7.7.2",
 	dancar = "Dance!",
 	sentar = "Sit down!",
 	confetar = "Throw 5 confetti!",
@@ -292,8 +292,8 @@ lang.en = {
 	people = "How much humans are in this room?",
 	move = "Move your mice!",
 	submission = "<br><J>The map submissions for this module are now open!<br><VP><b>atelier801.com/topic?f=796133&t=915772&p=1</b><br>",
-	verify = "<VP>From this moment on, all information from this room is being recorded in the module's internal database.",
-	ten = "<J>In 2024, the Simon Says module turns 10 years old! And a lot of big news are coming...",
+	verify = "<J>From this moment on, all information from this room is being recorded in the module's internal database.",
+	ten = "<VP>In 2024, the Simon Says module turns 10 years old! And a lot of big news are coming...",
 }
 
 if tfm.get.room.community == "br" or tfm.get.room.community == "pt" then
@@ -1479,7 +1479,7 @@ function eventEmotePlayed(name,id)
 			tfm.exec.killPlayer(name)
 		end
 	end
-	if active == 110 then
+	if active == 109 then
 		if id == 6 and data[name].s == 0 then
 			data[name].s=1
 		end
@@ -1752,13 +1752,13 @@ function eventLoop(passado,faltando)
 			end
 		end
 		if active == -2 then
-			ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." 7.7.1</b><")
+			ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." 7.7.2</b><")
 		elseif active == -1 and vivo >= 1 then
-			ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.7.1</b><")
+			ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.7.2</b><")
 		elseif active == -1 and vivo <= 0 then
-			ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.7.1</b><")
+			ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.7.2</b><")
 		elseif active >= 0 then
-			ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." 7.7.1</b><")
+			ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." 7.7.2</b><")
 		end
 		if rato < 4 then
 			if tfm.get.room.currentMap == "@7935706" then
