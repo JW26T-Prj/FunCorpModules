@@ -535,6 +535,7 @@ perguntas1={
 "Qual o nome do fenômeno onde há um aquecimento das águas do Oceano Pacífico, causando mudanças intensas no clima do mundo?","El Niño","La Niña",1,
 "Qual é o maior animal terrestre do Planeta Terra?","Baleia Azul","Elefante-africano",2,
 "Em qual ano foi lançado o primeiro aparelho celular com câmera do mundo?","2001","2005",1,
+"Qual é o nome do apresentador de televisão conhecido como Ratinho?","Carlos Alberto Massa","Carlos Roberto Massa",2,
 }
 perguntas2={
 "Vai na sorte :)","ok","ok",1,
