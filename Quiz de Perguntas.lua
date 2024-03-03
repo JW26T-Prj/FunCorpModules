@@ -806,7 +806,7 @@ perguntas3={
 "Qual o nome da 'moeda' no League of Legends que não precisa ser comprada?","Essência Azul","Gema",1,
 "O campeão Ezreal é originado de qual região do League of Legends?","Shurima","Piltover",2,
 "Qual o nome da facção situada em Noxus cuja líder é LeBlanc?","Rosa Negra","Ferromancia",1,
-"A região de Ixtal, localizada no Oeste do continente de Shurima, é formada principalmente por gelo.","Verdadeiro","Falso,2,
+"A região de Ixtal, localizada no Oeste do continente de Shurima, é formada principalmente por gelo.","Verdadeiro","Falso",2,
 "A campeã Riven é originada de qual região?","Noxus","Ionia",1,
 }
 perguntas4={
