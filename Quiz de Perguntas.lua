@@ -8,7 +8,6 @@ tema=0 -- Edite conforme mostrado abaixo!
 -- !tema [0-4] - Muda o tema das perguntas.
 -- !reset - Redefine a lista de perguntas e reinicia a rodada.
 -- !limite [5-30] - Altera o limite máximo de perguntas por rodada. Esta operação reinicia a rodada.
--- !fc [mensagem] ou !ms [mensagem] - Exibe uma mensagem em laranja. USO EXCLUSIVO PARA MEMBROS FunCorp!
 
 -- NÃO MEXA EM NADA DEPOIS DESTA LINHA!
 perguntas={
@@ -899,12 +898,12 @@ barreira2={type = 12,width = 20,height = 140,foregound = 1,friction = 0.0,restit
 for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand"} do
 	tfm.exec["disable"..f](true)
 end
-for _,g in next,{"setq","limite","tema","get","fc","ms","reset"} do
+for _,g in next,{"setq","limite","tema","get","reset"} do
 	system.disableChatCommandDisplay(g)
 end
 ratos=0; vivos=0; set_q=0; questions_list={}; modo="inicial"; pergunta=0; rodada=0; limite=20; count=0; fixed_cnt=0;
 mapa="@7935894"
-ninjas={"Shun_kazami#7014","Irelia#7317","Cassiopeia#1749","Skyymellu#0000","Eduardo379#8610"}
+ninjas={"Shun_kazami#7014","Irelia#7317","Cassiopeia#1749","Skyymellu#0000"}
 actual_question={quest="",a1="",a2="",answer=nil}
 function verifyAdmin(name)
 	for i=1,rawlen(admin) do
@@ -998,7 +997,9 @@ function eventNewGame()
 		end
 	end
 	showMessage("<N><b>Quantidade de perguntas presentes: "..fixed_cnt.."</b>")
-	if tema == 3 then
+	if tema >= 0 and tema <= 2 then
+		showMessage("<J>As perguntas deste tema foram, em sua maioria, feitas por Reksai_void2600#6638, e revisadas por Shun_kazami#7014.")
+	elseif tema == 3 then
 		showMessage("<J>As perguntas deste tema foram, em sua maioria, feitas por Spectra_phantom#6089, e revisadas por Shun_kazami#7014.")
 	elseif tema == 4 then
 		showMessage("<J>As perguntas deste tema foram, em sua maioria, feitas por Lucianattack#0000, e revisadas por Shun_kazami#7014..")
@@ -1058,9 +1059,6 @@ function eventChatCommand(name,message)
 				reset()
 			end
 		end
-		if (message:sub(0,2) == "fc") or (message:sub(0,2) == "ms") then
-			showMessage("<font color='#ff8000'>• [FunCorp - <b>"..name.."</b>] "..message:sub(4).."")
-		end
 		if message == "reset" then
 			questions_list={}; count=0;
 			reset()
@@ -1078,7 +1076,7 @@ function eventPlayerLeft(name)
 end
 function eventLoop(p,f)
 	remain=math.floor(f/1000)
-	ui.setMapName("<N>Quiz de Perguntas do <VP>Shun_kazami#7014   <BL>|   <N>Ratos : <V>"..vivos.."/"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/"..limite.."<")
+	ui.setMapName("<N>Quiz de Perguntas by <VP>Shun_kazami#7014   <BL>|   <N>Ratos : <V>"..vivos.."/"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/"..limite.."<")
 	if remain < 2 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
