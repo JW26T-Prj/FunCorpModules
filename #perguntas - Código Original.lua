@@ -1,9 +1,11 @@
 -- Versão ORIGINAL do Corrida das Perguntas (atual #perguntas) importado diretamente do criador original (Haxhhhhhhhhh).
+blackmode=false -- Altere para 'true' caso queira utilizar o mapa com fundo preto
+
+-- NÃO MEXA EM NADA A PARTIR DESTA LINHA!
 for _,f in next,{"AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand","AfkDeath","AllShamanSkills"} do
 	tfm.exec["disable"..f](true)
 end
-tfm.exec.setRoomMaxPlayers(30)
-blackmode=false -- Altere para 'true' caso queira utilizar o mapa com fundo preto
+tfm.exec.setRoomMaxPlayers(35)
 
 mapa5="@7722950"; mapa6="@7881966"; admin=""; palavra=""; pergunta=""; data={}; players_table={};
 system.disableChatCommandDisplay("def")
@@ -34,7 +36,7 @@ function eventChatCommand(name,message)
 			trocarMapa()
 		end
 	end
-	if name == "Shun_kazami#7014" or name == "Viego#0345" or name == "Sett#6442" or name == admin then
+	if name == "Shun_kazami#7014" or name == "Viego#0345" or name == "Samira#4387" or name == admin then
 		if(message:sub(0,3) == "def") then
 			tfm.exec.setPlayerScore(message:sub(5),10,false)
 			trocarMapa()
@@ -80,7 +82,7 @@ function eventPopupAnswer(id,name,answer)
 	end	
 end
 function eventNewPlayer(name)
-	ui.setMapName("Corrida de Perguntas v10.9, gerenciado por Shun_kazami#7014.<")
+	ui.setMapName("Corrida de Perguntas v10.10, gerenciado por Shun_kazami#7014.<")
 	tfm.exec.respawnPlayer(name)
 	tfm.exec.chatMessage("<N>Script de Corrida das Perguntas, importado diretamente da versão original feita por Haxhhhhhhhhh.<br><VP><b>Versão 10.8</b><br><br><N>Atualmente administrado por Shun_kazami#7014, mapa feito também por Shun_kazami#7014.<br><br><ROSE>Proibida reutilização ou cópia sem autorização do criador.",name)
 	if not data[name] then
@@ -117,7 +119,7 @@ end
 function eventNewGame()
 	palavra=""
 	ui.removeTextArea(2,NIL)
-	ui.setMapName("Corrida de Perguntas v10.9, gerenciado por Shun_kazami#7014.<")
+	ui.setMapName("Corrida de Perguntas v10.10, gerenciado por Shun_kazami#7014.<")
 	for id,name in pairs(players_table) do
 		data[name].p=0
 	end
