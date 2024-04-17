@@ -43,7 +43,7 @@ acids={type = 19,width = 2400,height = 80,miceCollision = true,groundCollision =
 fc_mode=false; xpos=0; xpos2=0;
 system.disableChatCommandDisplay(nil,true)
 lang.br = {
-	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><br><VP><b>Module criado e gerenciado por Jessiewind26#2546</b><br><br><R>Versão 7.8.1",
+	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><br><VP><b>Module criado e gerenciado por Jessiewind26#2546</b><br><br><R>Versão 7.8.2",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -169,7 +169,7 @@ lang.br = {
 	ten = "<VP>Em 2024, o module Mestre Mandou completa 10 anos! E uma grande atualização está chegando...",
 }
 lang.en = {
-	welcome = "<N><b>Welcome to Simon Says module!</b><br>Follow everything the game told and test your limits until the end!<br><br><VP><b>Script made and developed by Jessiewind26#2546</b><br>Translation by Draw#6691<br><br><R>Version 7.8.1",
+	welcome = "<N><b>Welcome to Simon Says module!</b><br>Follow everything the game told and test your limits until the end!<br><br><VP><b>Script made and developed by Jessiewind26#2546</b><br>Translation by Draw#6691<br><br><R>Version 7.8.2",
 	dancar = "Dance!",
 	sentar = "Sit down!",
 	confetar = "Throw 5 confetti!",
@@ -419,7 +419,6 @@ function completeCommand(name)
 	end
 end
 function eventNewGame()
-	showMessage(text.submission,nil)
 	rodada=0; active=0; vivo=0; rato=0; dificuldade=1;
 	for i=0,2 do
 		ui.removeTextArea(i,nil)
@@ -533,11 +532,6 @@ function eventChatCommand(name,message)
 					showMessage("Password changed to: "..message:sub(4).."",name)
 				end
 			end
-		end
-	end
-	if message == "get" then
-		for i=1,rawlen(ninjas) do
-			showMessage(ninjas[i],name)
 		end
 	end
 	if(message:sub(0,5) == "stmsg") then
@@ -1193,7 +1187,6 @@ function eventChatMessage(name,message)
 		if message == "2024" then
 			completeCommand(name)
 		elseif message == "2023" then
-			showMessage("Hoje é um novo dia, de um novo tempo que começou",name)
 			tfm.exec.killPlayer(name)
 		end
 	end
@@ -1268,7 +1261,7 @@ function eventChatMessage(name,message)
 		end
 	end
 	if active == 101 then
-		if string.find(string.lower(message),"z") then
+		if string.find(string.lower(message),"zz") then
 			tfm.exec.killPlayer(name)
 		end
 	end
@@ -1748,13 +1741,13 @@ function eventLoop(passado,faltando)
 			end
 		end
 		if active == -2 then
-			ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." 7.8.1</b><")
+			ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." 7.8.2</b><")
 		elseif active == -1 and vivo >= 1 then
-			ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.8.1</b><")
+			ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.8.2</b><")
 		elseif active == -1 and vivo <= 0 then
-			ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.8.1</b><")
+			ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.8.2</b><")
 		elseif active >= 0 then
-			ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." 7.8.1</b><")
+			ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." 7.8.2</b><")
 		end
 		if rato < 4 then
 			if tfm.get.room.currentMap == "@7935706" then
@@ -1773,7 +1766,7 @@ function eventLoop(passado,faltando)
 				tfm.exec.newGame(mapas[math.random(#mapas)],nil)
 			end
 		end
-		if active < 0 and faltando <= 1000 and faltando >= 449 then
+		if active < 0 and faltando <= 1000 and faltando >= 400 then
 			tfm.exec.newGame(mapas[math.random(#mapas)])
 		end
 		if active == 96 and tempo == 6 then
