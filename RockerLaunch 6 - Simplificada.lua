@@ -2,6 +2,7 @@
 
 admin={}; -- insira o nome dos FunCorps nesta tabela para habilitar algumas funções e comandos especiais.
 afkdeath=true; -- mude para 'false' para desativar a morte dos ratos ausentes
+barrier=false; -- mude para 'true' para incluir barreiras invisíveis nos cantos do mapa, evitando que as construções se destruam ao sair do mapa
 
 -- Comandos:
 -- !cancel - Pula a vez do shaman atual.
@@ -13,16 +14,16 @@ for _,f in next,{"PhysicalConsumables","AutoNewGame","AutoTimeLeft","AllShamanSk
 end
 changed=false; mode=""; id=50; map="@7930736"; xml2=''; passed=0;
 a1={500,1400}; a2={7500,6800}; b1={800,240}; b2={6360,5800}; c1={200,900}; c2={3800,3300}; d1={1500}; d2={4100};
+bar={type = 14,width = 10,height = 4000,foreground = false,friction = 0,restitution = 0,angle = 0, color = 0, miceCollision = true, groundCollision = true, dynamic = false}
 asteroid_1={type = 12,width = 40,height = 20,foreground = false,friction = 3,restitution = 0.1,angle = 0, color = 0, miceCollision = true, groundCollision = true, dynamic = true, fixedRotation = false, mass = 2000}
 asteroid_2={type = 12,width = 80,height = 40,foreground = false,friction = 4,restitution = 0.15,angle = 0, color = 0, miceCollision = true, groundCollision = true, dynamic = true, fixedRotation = false, mass = 5000}
 asteroid_3={type = 12,width = 160,height = 80,foreground = false,friction = 5,restitution = 0.2,angle = 0, color = 0, miceCollision = true, groundCollision = true, dynamic = true, fixedRotation = false, mass = 15000}
 asteroid_4={type = 12,width = 320,height = 160,foreground = false,friction = 7,restitution = 0.25,angle = 0, color = 0, miceCollision = true, groundCollision = true, dynamic = true, fixedRotation = false, mass = 30000}
-ajuda="<VP>Bem-vindos ao RockerLaunch 6!<br><N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço! Digite !help para saber como jogar.<br><br><BL>Créditos para Lynet#8558, Puffezinhaq#0000, Digo20games#0000, Dhanny_mheyran#6701 e Threshlimit#0000. Conceito original de Nettoork#0000.<br><J>Versão 6.7"
-objects1={1,3,6,23,33,39,60,65}
+ajuda="<VP>Bem-vindos ao RockerLaunch 6!<br><N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço! Digite !help para saber como jogar.<br><br><BL>Créditos para Lynet#8558, Puffezinhaq#0000, Digo20games#0000, Dhanny_mheyran#6701 e Threshlimit#0000. Conceito original de Nettoork#0000.<br><J>Versão 6.8"objects1={1,3,6,23,33,39,60,65}
 objects2={1,3,6,23,33,39,60,65,2,68,69}
 objects3={1,3,6,23,33,39,60,65,2,68,69,4,7,10,17,35,85,90}
 objects4={1,3,6,23,33,39,60,65,2,68,69,4,7,10,17,35,85,90,40,61,67}
-managers={"Rakan#3159","Belveth#9739","G484#5825","Skyymellu#0000","Cassiopeia#1749","Fabia_sheen#2561"} -- contribuidores
+managers={"Rakan#3159","Belveth#9739","G484#5825","Skyymellu#0000","Cassiopeia#1749"} -- contribuidores
 for _,f in next,{"cancel","set","get","help"} do
 	system.disableChatCommandDisplay(f)
 end
@@ -67,6 +68,12 @@ function eventNewGame()
 				tfm.exec.setShamanMode(n,0)
 			end
 			rodar(n)
+		end
+		if barrier == true then
+			for i=0,1 do
+				tfm.exec.addPhysicObject(2048+i, 0, 2750+(4000*i), bar)
+				tfm.exec.addPhysicObject(2060+i, 1600, 2750+(4000*i), bar)
+			end
 		end
 	else
 		if afkdeath == true then
@@ -257,7 +264,7 @@ function eventLoop(p,f)
 			elseif isf < 50 and isf >= 10 then
 				if isf % 6 == 0 then
 					tfm.exec.addPhysicObject(id, math.random(-300,1900), 1, asteroid_4)
-					tfm.exec.addImage("182dc62db5c.png","+"..id.."",-184,n,nil)
+					tfm.exec.addImage("182dc62db5c.png","+"..id.."",-184,-90,n,nil)
 				end
 			end
 		end
@@ -274,7 +281,7 @@ function eventLoop(p,f)
 end
 function eventNewPlayer(n)
 	if changed == true then
-		ui.setMapName("<b>RockerLaunch 6</b><N> - o céu é o limite! Pelo menos é o que parece... <VP>(versão reduzida)<")
+		ui.setMapName("<b>RockerLaunch 6</b><N> - o céu é o limite! <VP>(versão reduzida)<")
 		showMessage(ajuda,n)
 		tfm.exec.setPlayerScore(n,0,false)
 		tfm.exec.addImage("17ae4e48770.png","&1",590,370,n,0.5,0.5)
