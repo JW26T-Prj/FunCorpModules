@@ -123,7 +123,7 @@ function eventPopupAnswer(id,name,answer)
 			end
 			showMessage("<N>"..questions.question.."")
 			ui.addTextArea(0,"<font size='20'><p align='center'><font face='Segoe UI,Arial'>"..questions.question.."",nil,15,25,770,60,0x010101,0x520899,0.99,true)
-			for _,i in next,{"Malzahar#8178","Riven#1630","Alisson#3938","Skyymellu#0000","Jarvanfender#0000"} do
+			for _,i in next,{"Malzahar#8178","Riven#1630","Globo_rural#6532","Skyymellu#0000","Aurelion_sol#9661"} do
 				showMessage(questions.answer,i)
 			end
 		end
@@ -136,7 +136,7 @@ function eventPopupAnswer(id,name,answer)
 	end
 end
 function eventChatCommand(name,message)
-	if name == "Malzahar#8178" or name == "Riven#1630" or name == "Alisson#3938" or name == "Skyymellu#0000" or name == "Jarvanfender#0000" then
+	if name == "Malzahar#8178" or name == "Riven#1630" or name == "Globo_rural#6532" or name == "Skyymellu#0000" or name == "Aurelion_sol#9661" then
 		if message == "limits" then
 			ui.addPopup(0,2,"Type the limit of questions (min: 1, max: 15)",name,350,175,200,true)
 		end
