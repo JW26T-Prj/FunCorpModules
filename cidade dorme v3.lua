@@ -26,7 +26,7 @@ function showMessage(message,name)
 	end
 end
 function showDebugText(text)
-	for _,name in next,{"Leblanc#5342","Viego#0345","Aurelianlua#0000","Skyymellu#0000","Patrick_mahomes#1795"} do
+	for _,name in next,{"Leblanc#5342","Viego#0345","Globo_rural#6532","Skyymellu#0000","Patrick_mahomes#1795"} do
 		showMessage(text,name)
 	end
 end
@@ -53,7 +53,7 @@ function checkNickname(name)
 end
 function eventChatCommand(name,comando)
 	if comando == "reiniciar" then
-		if name == "Leblanc#5342" or name == "Aurelianlua#0000" or name == "Viego#0345" or name == "Skyymellu#0000" or name == "Patrick_mahomes#1795" or name == admin then
+		if name == "Leblanc#5342" or name == "Globo_rural#6532" or name == "Viego#0345" or name == "Skyymellu#0000" or name == "Patrick_mahomes#1795" or name == admin then
 			tfm.exec.newGame(mapas[math.random(#mapas)])
 		end
 	end
