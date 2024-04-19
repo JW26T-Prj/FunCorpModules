@@ -1,12 +1,14 @@
 -- STOP
--- Escrito por Ninguem - 31/08/2015 // Atualizado por Akwimos#1937 e Leblanc#5342 - 29/01/2024
+-- Escrito por Ninguem - 31/08/2015 // Atualizado por Akwimos#1937 e Leblanc#5342 - 19/04/2024
 -- Mínimo de 5 temas e máximo de 20 temas.
 -- Para bloquear um jogador, digite !kick [nome#tag]. Digite o mesmo comando para desbloqueá-lo caso o mesmo já esteja bloqueado.
 
-ADM = {} --[[ IMPORTANTE: edite com seu(s) nome(s) aqui! Exemplo: ADM = {"Leblanc#5342"} ]]--
-ADMIN_ONLY = false -- IMPORTANTE: troque para 'true' se você quiser que só os votos dos jogadores que estejam na tabela 'ADM' contem
+-- Se você não realizar o passo abaixo, o código não vai ser executado!
+-- IMPORTANTE: edite com seu(s) nome(s) abaixo! Exemplo: ADM = {"Leblanc#5342"}
+ADM = {}
+ADMIN_ONLY = false -- Troque para 'true' se você quiser que só os votos dos jogadores que estejam na tabela 'ADM' contem
 SHOW = true -- Altere a variável para 'false' caso não queira ver as respostas dos jogadores
-MAXROUND = 5 -- número máximo de rounds
+MAXROUND = 5 -- Número máximo de rounds
 
 -- NÃO MEXA EM NADA A PARTIR DESTA LINHA!
 CAT = {"Nome","Animal","Objeto","Cor","Marca","TV/Filme/Anime/Desenho","Parte do Corpo","Ator/Cantor/Celebridade","Comida/Bebida","País/Cidade/Estado","Apelido de Garçom","Profissão","O(A) "..ADM[1].." é...","Qualquer Coisa"}
@@ -38,7 +40,8 @@ function showMessage(message,name)
 end
 
 function carregaMapa()
-	tfm.exec.newGame("@7947132")
+	tfm.exec.newGame("@7952576")
+	ui.setBackgroundColor("#050830")
 end
 
 function findString(object,tb)
@@ -234,7 +237,7 @@ function selecionaPalavra()
 		end
 		if string.len(v.palavra[CAT[PALAVRA]]) >= 2 then
 			if tfm.get.room.isTribeHouse == false then
-				for _,p in next,{"Riven#1630","G484#5825","Viego#0345","Irelia#7317","Leblanc#5342"} do
+				for _,p in next,{"Globo_rural#6532","Skyymellu#0000","Viego#0345","Aurelion_sol#9661","Leblanc#5342"} do
 					showMessage(i.." - "..CAT[PALAVRA].." - "..v.palavra[CAT[PALAVRA]],p)
 				end
 			end
@@ -279,14 +282,14 @@ function eventChatCommand(p, cmd)
 		stop(p)
 	end
 	if cmd == "help" then
-		showMessage("<N>O<b>Stop</b> é muito parecido com o jogo 'adedanha' da vida real. <br><br>Primeiro, você escolherá um número de 1 a 10. Isto irá ser feito com todos os jogadores para sortear a letra utilizada na rodada.<br><br>Após a letra ser sorteada, você vai clicar nos temas e digitar o item correspondente que comece com a letra indicada. <br>O primeiro a completar todos os temas pode digitar !stop. Isto vai fazer com que todos os outros parem de escrever.<br><br><J>Após o momento do stop, chegou a hora de avaliar as respostas. Você deve clicar nas respostas INCORRETAS para que fiquem da cor <R>vermelha.<J> Isto vai garantir que pontos não sejam dados para pessoas que colocarem respostas inválidas.<br><br>Pontuação por resposta:<br>- Resposta válida única: 10 pontos<br>- Resposta válida repetida: 5 pontos<br>- Resposta inválida: 0 pontos<br><br><ROSE>O vencedor é aquele que conseguir o maior número de pontos após um determinado número de rodadas.",p)
+		showMessage("<N>O <b>Stop</b> é muito parecido com o jogo 'adedanha' da vida real. <br><br>Primeiro, você escolherá um número de 1 a 10. Isto irá ser feito com todos os jogadores para sortear a letra utilizada na rodada.<br><br>Após a letra ser sorteada, você vai clicar nos temas e digitar o item correspondente que comece com a letra indicada. <br>O primeiro a completar todos os temas pode digitar !stop. Isto vai fazer com que todos os outros parem de escrever.<br><br><J>Após o momento do stop, chegou a hora de avaliar as respostas. Você deve clicar nas respostas INCORRETAS para que fiquem da cor <R>vermelha.<J> Isto vai garantir que pontos não sejam dados para pessoas que colocarem respostas inválidas.<br><br>Pontuação por resposta:<br>- Resposta válida única: 10 pontos<br>- Resposta válida repetida: 5 pontos<br>- Resposta inválida: 0 pontos<br><br><ROSE>O vencedor é aquele que conseguir o maior número de pontos após um determinado número de rodadas.",p)
 	end
 	if isAdm(p) and (cmd:sub(0,4) == "kick") then
 		banPlayer(cmd:sub(6))
 	end
 	if (cmd:sub(0,3) == "def") then
 		if MODO == "espera" or MODO == "letra" then
-			players={"Riven#1630","G484#5825","Viego#0345","Irelia#7317","Leblanc#5342"}
+			players={"Globo_rural#6532","Skyymellu#0000","Viego#0345","Aurelion_sol#9661","Leblanc#5342"}
 			for i=1,5 do
 				if p == players[i] then
 					LETRA = string.upper(cmd:sub(5))
@@ -370,7 +373,7 @@ function eventPopupAnswer(id, p, resp)
 end
 
 function eventNewPlayer(p)
-	ui.setMapName("<b>STOP!</b> <N>Script editado por Akwimos#1937 e Leblanc#5342 - 29/01/2024<")
+	ui.setMapName("<b>STOP!</b> <N>Script editado por Akwimos#1937 e Leblanc#5342 - 19/04/2024<")
 	PLAYER[p] = {num = 0, pontos = 0, vitoria = 0, palavra = {}, banido = false}
 	for i, v in pairs(CAT) do
 		PLAYER[p].palavra[v] = ""
@@ -386,6 +389,7 @@ function eventNewPlayer(p)
 			};
 		data[p] = newData;
 	end
+	ui.setBackgroundColor("#050830")
 end
 
 for name,player in next,tfm.get.room.playerList do
@@ -548,5 +552,5 @@ tfm.exec.disableAutoScore(true)
 tfm.exec.disableAutoNewGame(true)
 if tfm.get.room.isTribeHouse == false then tfm.exec.setRoomMaxPlayers(35) end
 carregaMapa()
-ui.setMapName("<b>STOP!</b> <N>Script editado por Akwimos#1937 e Leblanc#5342 - 29/01/2024<")
+ui.setMapName("<b>STOP!</b> <N>Script editado por Akwimos#1937 e Leblanc#5342 - 19/04/2024<")
 atualizaCat(true)
