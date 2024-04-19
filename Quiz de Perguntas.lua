@@ -903,7 +903,7 @@ for _,g in next,{"setq","limite","tema","get","reset"} do
 end
 ratos=0; vivos=0; set_q=0; questions_list={}; modo="inicial"; pergunta=0; rodada=0; limite=20; count=0; fixed_cnt=0;
 mapa="@7935894"
-ninjas={"Shun_kazami#7014","Irelia#7317","Cassiopeia#1749","Skyymellu#0000"}
+ninjas={"Shun_kazami#7014","Globo_rural#6532","Irelia#7317","Skyymellu#0000"}
 actual_question={quest="",a1="",a2="",answer=nil}
 function verifyAdmin(name)
 	for i=1,rawlen(admin) do
