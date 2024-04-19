@@ -127,22 +127,22 @@ function eventLoop(p,f)
 	if valendo == true and f <= 39000 then
 		ui.addTextArea(3,"<font size='15'><p align='center'><font face='Consolas,Lucida Console'><N>"..text.c8p.." <b>"..dica8.."",nil,5,98,780,26,0x000001,0x000001,0.9,true)
 	end
-	ui.setMapName("<J>"..text.module.."   <G>|   <N>"..text.question.." : <V>"..pergunta.."/"..limite.."   <G>|   <N>"..text.time.." : <V>"..tempo.."s   <G>|   <N>"..text.version.." <VP><b>RTM 3515.034 LTS</b><")
+	ui.setMapName("<J>"..text.module.."   <G>|   <N>"..text.question.." : <V>"..pergunta.."/"..limite.."   <G>|   <N>"..text.time.." : <V>"..tempo.."s   <G>|   <N>"..text.version.." <VP><b>RTM 3616.035</b><")
 end
 function eventChatCommand(name,message)
 	if message == "skip" then
-		if name == "Leblanc#5342" or name == "Riven#1630" or name == "Aurelianlua#0000" or name == admin then
+		if name == "Leblanc#5342" or name == "Riven#1630" or name == "Alisson#3938" or name == admin then
 			showMessage(text.cancel,nil)
 			tfm.exec.newGame(mapa)
 		end
 	end
 	if(message:sub(1,6) == "limite") then
-		if name == "Leblanc#5342" or name == "Riven#1630" or name == "Aurelianlua#0000" or name == admin then
+		if name == "Leblanc#5342" or name == "Riven#1630" or name == "Alisson#3938" or name == admin then
 			limite=tonumber(message:sub(8))
 		end
 	end
 	if(message:sub(1,6) == "shaman") then
-		if name == "Leblanc#5342" or name == "Riven#1630" or name == "Aurelianlua#0000" or name == admin then
+		if name == "Leblanc#5342" or name == "Riven#1630" or name == "Alisson#3938" or name == admin then
 			tfm.exec.setPlayerScore(message:sub(8),9999,false)
 			tfm.exec.newGame(mapa)
 		end
