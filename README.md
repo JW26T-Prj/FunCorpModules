@@ -8,7 +8,6 @@ These codes are intended to be used with FunCorp members, but other players will
 To add a code to this folder, please contact one of the following users into Discord:
 - ventusjessegleen
 - shunkazami_cg
-- spectraphantom37
 
 Into Transformice, contact Jessiewind26#2546, or Shun_kazami#7014.
 
