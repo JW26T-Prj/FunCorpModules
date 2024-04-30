@@ -6,10 +6,10 @@
 -- https://raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/mestre%20mandou.lua
 -- This is a guarantee that you will receive all the latest updates and bugfixes.
 
-admin={""} -- Leia abaixo / Read below!
+admin={""} -- insira o nome dos FunCorps aqui! / insert the FunCorp names here!
 
--- Se estiver rodando este código em uma sala FunCorp, insira o nome dos FunCorps acima e digite !fc para habilitar algumas funções e comandos especiais.
--- If you are running this code into a FunCorp room, insert the FunCorp names above and type !tc to enable some additional commands and functions.
+-- Se estiver rodando este código em uma sala FunCorp, digite !fc para habilitar algumas funções e comandos especiais.
+-- If you are running this code into a FunCorp room, type !tc to enable some additional commands and functions.
 
 -- Comandos para uso de membros FunCorp e do dono da sala:
 -- !command [número de 1 a 109] - Executa um comando manualmente.
@@ -43,7 +43,7 @@ acids={type = 19,width = 2400,height = 80,miceCollision = true,groundCollision =
 fc_mode=false; xpos=0; xpos2=0;
 system.disableChatCommandDisplay(nil,true)
 lang.br = {
-	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><br><VP><b>Module criado e gerenciado por Jessiewind26#2546</b><br><br><R>Versão 7.8.3",
+	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><br><VP><b>Module criado e gerenciado por Jessiewind26#2546</b><br><br><R>Versão 7.8.4",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -169,7 +169,7 @@ lang.br = {
 	ten = "<VP>Em 2024, o module Mestre Mandou completa 10 anos! E uma grande atualização está chegando...",
 }
 lang.en = {
-	welcome = "<N><b>Welcome to Simon Says module!</b><br>Follow everything the game told and test your limits until the end!<br><br><VP><b>Script made and developed by Jessiewind26#2546</b><br>Translation by Draw#6691<br><br><R>Version 7.8.3",
+	welcome = "<N><b>Welcome to Simon Says module!</b><br>Follow everything the game told and test your limits until the end!<br><br><VP><b>Script made and developed by Jessiewind26#2546</b><br>Translation by Draw#6691<br><br><R>Version 7.8.4",
 	dancar = "Dance!",
 	sentar = "Sit down!",
 	confetar = "Throw 5 confetti!",
@@ -190,7 +190,7 @@ lang.en = {
 	ano = "What year are we in?",
 	vesquerda = "Stay turned to the left!",
 	vdireita = "Stay turned to the right!",
-	quadradoa = "Stay on the blue square",
+	quadradoa = "Stay on the blue square!",
 	quadradov = "Stay on the red square!",
 	quadrado = "Stay on the white square!",
 	nquadrado = "Dont stay on the white square!",
@@ -224,7 +224,7 @@ lang.en = {
 	area = "Find out where is the hidden text and click on it!",
 	dancing = "It's party time!",
 	freeze = "Everyone STOP!",
-	transform = "Dance 7and sleep!",
+	transform = "Dance and sleep!",
 	down1 = "Get down 3 times!",
 	down2 = "Get down 10 times!",
 	mestre = "Simon Says",
@@ -467,7 +467,7 @@ function addCommandCount(name)
 	data[name].s=data[name].s+1
 	if data[name].c == 0 then
 		if tfm.get.room.playerList[name].isDead == false then
-			ui.addTextArea(24,"<font size='32'><p align='center'><VP>"..data[name].s.."",name,360,25,80,45,0x000001,0x004011,0.8,true)
+			ui.addTextArea(24,"<font size='32'><p align='center'><N>"..data[name].s.."",name,360,25,80,45,0x000001,0x404040,0.8,true)
 		end
 	end
 end
@@ -1052,11 +1052,11 @@ function getCommand()
 	end
 	if active == 92 then
 		showCommand(active,text.preesquerda100)
-		tfm.exec.setGameTime(17)
+		tfm.exec.setGameTime(18)
 	end
 	if active == 93 then
 		showCommand(active,text.predireita100)
-		tfm.exec.setGameTime(17)
+		tfm.exec.setGameTime(18)
 	end
 	if active == 94 then
 		showCommand(active,text.collect)
@@ -1139,7 +1139,7 @@ function getCommand()
 	end
 	if active == 107 then
 		showCommand(active,text.lava)
-		tfm.exec.setGameTime(5)
+		tfm.exec.setGameTime(7)
 		setAllAlive()
 		tfm.exec.addPhysicObject(2500, 700, 587, {type = 3,width = 3000,height = 860,foregound = true,friction = 0.0,restitution = 0.0,angle = 0,color = 0x0040ff,miceCollision = false,groundCollision = false,dynamic = false})
 	end
@@ -1741,13 +1741,13 @@ function eventLoop(passado,faltando)
 			end
 		end
 		if active == -2 then
-			ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." 7.8.3</b><")
+			ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." 7.8.4</b><")
 		elseif active == -1 and vivo >= 1 then
-			ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.8.3</b><")
+			ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.8.4</b><")
 		elseif active == -1 and vivo <= 0 then
-			ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.8.3</b><")
+			ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.8.4</b><")
 		elseif active >= 0 then
-			ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." 7.8.3</b><")
+			ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." 7.8.4</b><")
 		end
 		if rato < 4 then
 			if tfm.get.room.currentMap == "@7935706" then
