@@ -1,7 +1,5 @@
 # Welcome to the Jessiewind26's Public Modules folder.
 
-**From day February 05, 2024, all modules managed by Spectra_phantom#6089 have several restrictions for FunCorp members. If a FunCorp member try to run one of your modules, the game can be turned off anytime.**
-
 This folder contain all the scripts made by the old Spectra Advanced Module Group folder and the codes that players sent to the folder administrators.
 These codes are intended to be used with FunCorp members, but other players will not have problems using the codes.
 
