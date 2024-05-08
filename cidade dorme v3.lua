@@ -107,7 +107,7 @@ function escolherDetetives(name)
 end
 function eventNewPlayer(name)
 	if not data[name] then
-		showMessage("<N><b>Bem-vindos ao module Cidade Dorme!</b><br>O objetivo deste module é: Descubra quem são os assassinos, desconfie e os mate!<br><VP>O jogo irá explicar todo seu funcionamento durante a partida.<br><br><J><b>Script gerenciado por Fosfus7heads#0000</b><br>Conceito original por Spectra_phantom#6089",name)
+		showMessage("<N><b>Bem-vindos ao module Cidade Dorme!</b><br>O objetivo deste module é: Descubra quem são os assassinos, desconfie e os mate!<br><VP>O jogo irá explicar todo seu funcionamento durante a partida.<br><br><J><b>Script gerenciado por Patrick_mahomes#1795</b><br>Conceito original por Spectra_phantom#6089",name)
 	end
 	data[name]={type=-1,morre=false}
 end
@@ -211,7 +211,7 @@ function eventLoop()
 	if contador == 10 then
 		showMessage("<VP>Digite !help caso não saiba como funciona este jogo.")
 	end
-	if contador == 35 then
+	if contador == 25 then
 		jogadores.lista={}
 		templist={}
 		for name,player in next,tfm.get.room.playerList do
@@ -230,7 +230,7 @@ function eventLoop()
 			contador=990
 		end
 	end
-	if contador == 40 then
+	if contador == 35 then
 		sortearAssasinos()
 		modo="aguardando"
 		for name,player in next,tfm.get.room.playerList do
@@ -299,13 +299,13 @@ function eventLoop()
 	end
 	if contador == 120 then
 		if quant.assasinos == 0 and quant.detetives == 0 then
-			showMessage("<N><b>Todos os assasinos e detetives foram mortos! Temos um empate!</b><br><br>Próxima partida começando em 30 segundos.")
+			showMessage("<N><b>Todos os assasinos e detetives foram mortos! Temos um empate!</b><br><br>Próxima partida começando em 15 segundos.")
 			contador=985
 		elseif quant.assasinos == 0 then
-			showMessage("<VP><b>Não há mais assasinos vivos! Os jogadores remanescentes venceram!</b><br><br>Próxima partida começando em 30 segundos.")
+			showMessage("<VP><b>Não há mais assasinos vivos! Os jogadores remanescentes venceram!</b><br><br>Próxima partida começando em 15 segundos.")
 			contador=985
 		elseif quant.detetives == 0 then
-			showMessage("<R><b>Não há mais detetives vivos! Os assasinos vivos venceram!</b><br><br>Próxima partida começando em 30 segundos.")
+			showMessage("<R><b>Não há mais detetives vivos! Os assasinos vivos venceram!</b><br><br>Próxima partida começando em 15 segundos.")
 			contador=985
 		else
 			showMessage("<VP>Agora é hora dos detetives escolherem quem eles acham que são os assasinos.")
@@ -345,20 +345,20 @@ function eventLoop()
 	end
 	if contador == 160 then
 		if quant.assasinos == 0 and quant.detetives == 0 then
-			showMessage("<N><b>Todos os assasinos e detetives foram mortos! Temos um empate!</b><br><br>Próxima partida começando em 30 segundos.")
+			showMessage("<N><b>Todos os assasinos e detetives foram mortos! Temos um empate!</b><br><br>Próxima partida começando em 15 segundos.")
 			contador=985
 		elseif quant.assasinos == 0 then
-			showMessage("<VP><b>Não há mais assasinos vivos! Os jogadores remanescentes venceram!</b><br><br>Próxima partida começando em 30 segundos.")
+			showMessage("<VP><b>Não há mais assasinos vivos! Os jogadores remanescentes venceram!</b><br><br>Próxima partida começando em 15 segundos.")
 			contador=985
 		elseif quant.detetives == 0 then
-			showMessage("<R><b>Não há mais detetives vivos! Os assasinos vivos venceram!</b><br><br>Próxima partida começando em 30 segundos.")
+			showMessage("<R><b>Não há mais detetives vivos! Os assasinos vivos venceram!</b><br><br>Próxima partida começando em 15 segundos.")
 			contador=985
 		else
 			showMessage("<VP>Terminamos esta rodada por aqui. Vamos continuar a brincadeira! hehehehehe")
 			contador=42
 		end
 	end
-	if contador >= 1015 then
+	if contador >= 1000 then
 		tfm.exec.newGame(mapas[math.random(#mapas)])
 	end
 end
