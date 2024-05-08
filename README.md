@@ -3,7 +3,7 @@
 This folder contain all the scripts made by the old Spectra Advanced Module Group folder and the codes that players sent to the folder administrators.
 These codes are intended to be used with FunCorp members, but other players will not have problems using the codes.
 
-To add a code to this folder, please contact one of the following users into Discord:
+To add a code to this folder, report an issue or comment anything about the codes, please contact one of the following users into Discord:
 - ventusjessegleen
 - shunkazami_cg
 
