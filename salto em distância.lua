@@ -21,7 +21,7 @@ function updateBar()
 	ui.setMapName("<D>Salto em Distância / Long Jump <V><b>II</b>   <G>|   <N>Recorde / High Score : <J><b>"..recorder.."</b> ("..recorde..")<")
 end
 function eventChatCommand(n,m)
-	if n == "Patrick_mahomes#1795" or n == "Leblanc#5342" or n == "Dhanny_mheyran#6701" or n == "Belveth#9739" or n == admin then
+	if n == "Patrick_mahomes#1795" or n == "Globo_rural#6532" or n == "Belveth#9739" or n == admin then
 		if m == "reset" then
 			showMessage("Todas as pontuações e o recorde foram reiniciados.<br>All scores and the high score have been removed.",nil)
 			recorde=0
@@ -81,7 +81,7 @@ function eventNewPlayer(n)
 		end
 		ui.setBackgroundColor("#000000")
 		tfm.exec.setPlayerScore(n,0,false)
-		showMessage("<VP>Jogo de salto em distância feito por (New Long Jump module made by) Patrick_mahomes#1795, Akwimos#1937, Dhanny_mheyran#6701 e Threshlimit#0000. <b>Versão / Version 2.4</b><br><br><BL>Imagens enviadas por (Pictures sent by) Spectra_phantom#6089, Morganadxana#0000<br><br><N>Digite /mort para retornar ao ponto inicial sempre que necessário.<br>Type /mort to return to the start point when necessary",n)
+		showMessage("<VP>Jogo de salto em distância feito por (New Long Jump module made by) Patrick_mahomes#1795, Akwimos#1937, Dhanny_mheyran#6701 e Threshlimit#0000. <b>Versão / Version 2.5</b><br><br><BL>Imagens enviadas por (Pictures sent by) Spectra_phantom#6089, Morganadxana#0000<br><br><N>Digite /mort para retornar ao ponto inicial sempre que necessário.<br>Type /mort to return to the start point when necessary",n)
 		for a=1,5 do tfm.exec.addImage("182d6e2305b.png","?1",math.random(100,20000),math.random(-850,700),n) end
 		for b=1,5 do tfm.exec.addImage("182d6e2305b.png","?1",math.random(100,20000),math.random(-850,700),n,-1,1) end
 		for c=1,7 do tfm.exec.addImage("182d6e1e45c.png","?1",math.random(100,20000),math.random(-850,700),n) end
