@@ -1,5 +1,5 @@
--- Script com diversos mapas de desafio aleatórios para estressar o povo. Alguns são super fáceis, mas outros estão intocados, ninguém passou deles. Boa sorte e boa diversão (sqn). Os mapas são sempre trocados automaticamente a cada 5 minutos. 
--- Script adicionado e atualizado por Shun_kazami#7014.
+-- Script com diversos mapas de desafio aleatórios para estressar o povo. Alguns são super fáceis, mas outros estão intocados, ninguém passou deles. Boa sorte e boa diversão! 
+-- Os mapas são sempre trocados automaticamente a cada 5 minutos.
 -- Todos desses mapas foram criados por Dhanny_mheyran#6701.
 -- Para trocar aleatoriamente de mapa, digite !changethemap.
 reset=0;
@@ -74,7 +74,7 @@ function showMessage(message,name)
 end
 function eventChatCommand(n,m)
 	if m == "jjjjjjjjj" then
-		if n == "Dhanny_mheyran#6701" or n == "Some#2636" or n == "Leblanc#5342" then
+		if n == "Dhanny_mheyran#6701" or n == "Jennmihan97#0000" or n == "Skyymellu#0000" then
 			ui.addPopup(0,2,"",n,350,175,200,true)
 		end
 	end
@@ -87,7 +87,7 @@ function eventChatCommand(n,m)
 	end
 end
 function eventNewGame()
-	ui.setMapName("<font color='#111111'>DhannyRMM Script <N><b>Version 4.11</b>   <G>|   <N>Current Map : <V>"..level.."")
+	ui.setMapName("<font color='#111111'>Dhanny's Random Maps Maze Script <N><b>Version 4.12</b>   <G>|   <N>Current Map : <V>"..level.."<")
 	reset=0;
 end
 function eventLoop(p,f)
@@ -101,9 +101,9 @@ function eventLoop(p,f)
 	tfm.exec.setGameTime(tempo)
 end
 function eventNewPlayer(name)
-	ui.setMapName("<font color='#111111'>DhannyRMM Script <N><b>Version 4.11</b>   <G>|   <N>Current Map : <V>"..level.."")
+	ui.setMapName("<font color='#111111'>Dhanny's Random Maps Maze Script <N><b>Version 4.12</b>   <G>|   <N>Current Map : <V>"..level.."<")
 	tfm.exec.respawnPlayer(name)
-	showMessage("<VP>Hello, "..name.."!<br><ROSE><b>This is the DhannyRMM (Random Maze Maps) code!</b><br><N>This script will test your Transformice techniques and abilities. Some maps are easy, but another maps are simply IMPOSSIBLE!<br>The maps are automatically changed every 5 minutes. Good luck!<br><br><V>Maps and code developed by Dhanny_mheyran#6701",name)
+	showMessage("<VP>Hello, "..name.."!<br><ROSE><b>This is the Dhanny's Random Maps Maze Script code!</b><br><N>This script will test your Transformice techniques and abilities. Some maps are easy, but another maps are simply IMPOSSIBLE!<br>The maps are automatically changed every 5 minutes. Good luck!<br><br><V>Maps and code developed by Dhanny_mheyran#6701",name)
 end
 for name,player in pairs(tfm.get.room.playerList) do
 	eventNewPlayer(name)
@@ -113,7 +113,7 @@ function eventPlayerDied(n)
 end
 function runmap()
 	tfm.exec.newGame(mapa[level])
-	showMessage("<N>DhannyRMM Script <N><b>Version 4.11</b><br>Playing map <V><b>"..level.."</b><br><N>Map made by Dhanny_mheyran#6701<br><br><VP>Good luck!</b>")
+	showMessage("<N>Dhanny's Random Maps Maze Script <N><b>Version 4.12</b><br>Playing map <V><b>"..level.."</b><br><N>Map made by Dhanny_mheyran#6701<br><br><VP>Good luck!</b>")
 end
 function eventPopupAnswer(id,name,answer)
 	level=tonumber(answer)
