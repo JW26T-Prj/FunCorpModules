@@ -4,15 +4,15 @@ end
 system.disableChatCommandDisplay(nil, true)
 if tfm.get.room.isTribeHouse == false then tfm.exec.setRoomMaxPlayers(40) end
 
-shaman=""; alives=0; cannons=24; z=0; data={}; lang={}; mode="load"; changed=false; loop=0; timer=0; xml=''; time_passed=0; time_remain=1024;
+shaman=""; alives=0; cannons=15; z=0; data={}; lang={}; mode="load"; changed=false; loop=0; timer=0; xml=''; time_passed=0; time_remain=1024;
 active_imgs={}; active_imgs2={}; powerups_x={}; powerups_y={}; powerups_types={}; oxygen_x={}; oxygen_y={}; id=0; round=0;
 
 lang.br = {
 	welcome = "<font color='#0080ff'><b>Bem-vindos ao module #watercatch!</b><br><VP>Fuja do shaman (tubarão) e sobreviva no perigoso mar!<br><J>Digite !help para ver a ajuda deste module.<br><br><N>Module ",
-	changelog = "• Adição de tela de entrada<br>• Restrições de uso para usuários FunCorp",
-	help = "O objetivo é bem simples: <b>Fugir do shaman</b>, se escondendo dentro do mar e tomando cuidado para não morrer afogado!<br><R><b>Shamans, não esqueçam de se mexer, ou irão morrer AFK!</b><br><br><VP>Os círculos marcados por <N>'?'<VP> são powerups, que geram efeitos aleatórios nos ratos.<J><br>Estes powerups podem ser acionados pressionando ESPAÇO em cima deles.<br><N>Você pode ver os possíveis efeitos dos powerups indo no Menu e clicando em Powerups.<br><br><N>Caso você seja shaman, você tem um limite de <b>24</b> objetos que podem ser utilizados. Exceder este limite fará com que a partida acabe.",
+	changelog = "• Mudanças no comando do module<br>• Remoção da imagem de boas-vindas<br>• Redução do número de objetos utilizáveis pelo shaman de 24 para 15",
+	help = "O objetivo é bem simples: <b>Fugir do shaman</b>, se escondendo dentro do mar e tomando cuidado para não morrer afogado!<br><R><b>Shamans, não esqueçam de se mexer, ou irão morrer AFK!</b><br><br><VP>Os círculos marcados por <N>'?'<VP> são powerups, que geram efeitos aleatórios nos ratos.<J><br>Estes powerups podem ser acionados pressionando ESPAÇO em cima deles.<br><N>Você pode ver os possíveis efeitos dos powerups indo no Menu e clicando em Powerups.<br><br><N>Caso você seja shaman, você tem um limite de <b>15</b> objetos que podem ser utilizados. Exceder este limite fará com que a partida acabe.",
 	powerups = "<font size='11'>Os seguintes powerups estão disponíveis no momento:<br><ROSE><b>• VAMPIRO</b><N><br>Transforma seu rato em um vampiro, forçando você a ir para fora do mar.<br><ROSE><b>• ESCURIDÃO</b><N><br>Reduz drasticamente o campo de visão do seu rato.<br><ROSE><b>• AFUNDAR</b><N><br>Cria uma curta anomalia que puxa todos os ratos em direção ao fundo do mar.<br><ROSE><b>• MEEP</b><N><br>Te dá o poder de usar o Meep!<br><ROSE><b>• SUFOCO</b><N><br>Diminui o seu nível de oxigênio. Caso seu nível de oxigênio esteja muito baixo e você pegue este powerup, você morrerá afogado.<br><ROSE><b>• CONGELAR</b><N><br>Congela o seu rato.<br><ROSE><b>• QUEIJO</b><N><br>Dá queijo para o seu rato. Caso você esteja dentro do mar, você provavelmente será levado para o fundo dele.",
-	thecredits = "As seguintes pessoas ajudaram no desenvolvimento deste module:<br><br><ROSE><b>• Shun_kazami#7014</b><N> - Desenvolvimento do do mapa<br><ROSE><b>• Spectra_phantom#6089</b><N> - Ideia original, criação das artes, desenvolvimento do mapa e do código<br><ROSE><b>• Lynet#8558</b><N> - análise de avaliação e envio das imagens<br><ROSE><b>• Perdiaconta#2529</b><N> - análise de avaliação<br><ROSE><b>• Lacoste#8972</b><N> - análise de avaliação<br><ROSE><b>• Maramara4#0000</b><N> - análise de avaliação<br><ROSE><b>• Yuh#0748</b><N> - análise de avaliação<br><ROSE><b>• Rafaelmorai#0000</b><N> - análise de avaliação",
+	thecredits = "As seguintes pessoas ajudaram no desenvolvimento deste module:<br><br><ROSE><b>• Shun_kazami#7014</b><N> - Desenvolvimento do do mapa<br><ROSE><b>• Rakan#3159</b><N> - Ideia original, criação das artes e do mapa<br><ROSE><b>• Lynet#8558</b><N> - análise de avaliação e envio das imagens<br><ROSE><b>• Perdiaconta#2529</b><N> - análise de avaliação<br><ROSE><b>• Lacoste#8972</b><N> - análise de avaliação<br><ROSE><b>• Maramara4#0000</b><N> - análise de avaliação<br><ROSE><b>• Yuh#0748</b><N> - análise de avaliação<br><ROSE><b>• Rafaelmorai#0000</b><N> - análise de avaliação",
 	shark = "Tubarão",
 	whale = "Baleia",
 	pdn = "Peixe Diabo-Negro",
@@ -42,15 +42,15 @@ lang.br = {
 	goshaman = "<J><b>O shaman foi liberado! Salvem-se quem puder!</b><br><br><ROSE>Use o comando !tc [mensagem] para falar no chat sem que o shaman saiba.<br><br><VP>Tenha cuidado! As águas-vivas presentes no mar matam os ratos que as tocarem!",
 	timeup = "Tempo esgotado!", survived = "ratos sobreviveram! Iniciando nova partida...",
 	using = "Você está agora usando a skin", disabled = "<N>Você desativou as skins de tubarão.",
-	alivemice = "Ratos Vivos", remaint = "Tempo Restante",
+	alivemice = "Ratos vivos", remaint = "Tempo restante",
 	remain60 = "<ROSE>Restam 60 segundos!", remain30 = "<ROSE>Restam 30 segundos!", 
 }
 lang.en = {
 	welcome = "<font color='#0080ff'><b>Welcome to the #watercatch module!</b><br><VP>Run away from the shark (shaman) and survive in the dangerous sea!<br><J>Type !help to see the game help.<br><br><N>Module ",
-	changelog = "• New entering screen!<br>• Restrictions for FunCorp members",
-	help = "The goal is very simple: <b>Run away from the shaman</b>, hiding in the sea and keeping caution to don't drown!<br><R><b>Shamans, don't forget to move, or they will dead by AFK!</b><br><br><VP>The circles marked with <N>'?'<VP> are powerups, that generate random effects to your mice.<J><br>These powerups can be activated pressing SPACEBAR on top of them.<br><N>You can see all the possible effects of the powerups going to the Menu and pressing 'Powerups'.<br><br><N>If you are the shaman, you cannot invoke more than <b>24</b> objects, or you will lose your shaman turn.",
+	changelog = "• New module owner<br>• Remotion of welcome image<br>• Reduction of usable shaman objects from 24 to 15",
+	help = "The goal is very simple: <b>Run away from the shaman</b>, hiding in the sea and keeping caution to don't drown!<br><R><b>Shamans, don't forget to move, or they will dead by AFK!</b><br><br><VP>The circles marked with <N>'?'<VP> are powerups, that generate random effects to your mice.<J><br>These powerups can be activated pressing SPACEBAR on top of them.<br><N>You can see all the possible effects of the powerups going to the Menu and pressing 'Powerups'.<br><br><N>If you are the shaman, you cannot invoke more than <b>15</b> objects, or you will lose your shaman turn.",
 	powerups = "<font size='11'>The following powerups are available at moment:<br><ROSE><b>• VAMPIRE</b><N><br>Turns your mouse into a vampire, forcing you out of the sea.<br><ROSE><b>• DARKNESS</b><N><br>Drastically reduces your mouse's field of view.<br><ROSE><b>• SUBMERGE</b><N><br>Create an anomaly that pushes all the mices to the seabed.<br><ROSE><b>• MEEP</b><N><br>Gives the MEEP ability!<br><ROSE><b>• SUFFOCATE</b><N><br>Reduces your oxygen level. If your oxygen level is very low and you enable this powerup, you will drown in the sea.<br><ROSE><b>• FREEZE</b><N><br>Freeze your mice.<br><ROSE><b>• CHEESE</b><N><br>Give cheese to your mice. If you are in the sea and enable this powerup, you will go to the seabed.",
-	thecredits = "The following people helped with the development of this module:<br><br><ROSE><b>• Shun_kazami#7014</b><N> - Map development<br><ROSE><b>• Spectra_phantom#6089</b><N> - Original idea, art creation, map and code development<br><ROSE><b>• Lynet#8558</b><N> - evaluation analysis and image sending<br><ROSE><b>• Perdiaconta#2529</b><N> - evaluation analysis<br><ROSE><b>• Lacoste#8972</b><N> - evaluation analysis<br><ROSE><b>• Maramara4#0000</b><N> - evaluation analysis<br><ROSE><b>• Yuh#0748</b><N> - evaluation analysis<br><ROSE><b>• Rafaelmorai#0000</b><N> - evaluation analysis",
+	thecredits = "The following people helped with the development of this module:<br><br><ROSE><b>• Shun_kazami#7014</b><N> - Map development<br><ROSE><b>• Spectra_phantom#6089</b><N> - Original idea, art creation and creation of map<br><ROSE><b>• Lynet#8558</b><N> - evaluation analysis and image sending<br><ROSE><b>• Perdiaconta#2529</b><N> - evaluation analysis<br><ROSE><b>• Lacoste#8972</b><N> - evaluation analysis<br><ROSE><b>• Maramara4#0000</b><N> - evaluation analysis<br><ROSE><b>• Yuh#0748</b><N> - evaluation analysis<br><ROSE><b>• Rafaelmorai#0000</b><N> - evaluation analysis",
 	shark = "Shark",
 	whale = "Whale",
 	pdn = "Black Devil Fish",
@@ -80,7 +80,7 @@ lang.en = {
 	goshaman = "<J><b>The shaman was released! Salvem-se quem puder!</b><br><br><ROSE>Use the !tc [text] command to talk with other players, without the shaman influence.<br><br><VP>Take care! The jellyfish present in the sea kill the mice that touch them!",
 	timeup = "Time is up!", survived = "mices survived! Starting new round...",
 	using = "You are now using the following skin:", disabled = "<N>You disabled the shark skins.",
-	alivemice = "Alive Mices", remaint = "Remaining Time",
+	alivemice = "Alive mices", remaint = "Remaining time",
 	remain60 = "<ROSE>60 seconds remaining!", remain30 = "<ROSE>30 seconds remaining!", 
 }
 
@@ -345,7 +345,7 @@ function eventChatCommand(name,message)
 		showAvailableSharks(name)
 	end
 	if message == "changelog" then
-		showMenu(name,0xf0f0f0,140,130,520,105,"#watercatch Changelog - v6.0.4",text.changelog)
+		showMenu(name,0xf0f0f0,140,130,520,110,"#watercatch Changelog - v6.1",text.changelog)
 	end
 	if (message:sub(0,2)== "tc") then
 		if tfm.get.room.playerList[name].isShaman == false then
@@ -356,7 +356,7 @@ function eventChatCommand(name,message)
 			end
 		end
 	end
-	if name == "Shun_kazami#7014" or name == "Leblanc#5342" or name == "Spectra_phantom#6089" then
+	if name == "Shun_kazami#7014" or name == "Leblanc#5342" or name == "Rakan#3159" then
 		if (message:sub(0,4) == "kill") then
 			tfm.exec.killPlayer(message:sub(6))
 		end
@@ -527,14 +527,14 @@ function eventNewGame()
 		tfm.exec.addPhysicObject(131, 0, 1000, {type = 12, width = 10, height = 4000, foreground = false, friction = 0, restitution = 0, angle = 0, color = 0xffffffff, miceCollision = true, groundCollision = true, dynamic = false})
 		tfm.exec.addPhysicObject(132, 7750, 1000, {type = 12, width = 10, height = 4000, foreground = false, friction = 0, restitution = 0, angle = 0, color = 0xffffffff, miceCollision = true, groundCollision = true, dynamic = false})
 		ui.removeTextArea(0,nil)
-		z=-1; cannons=24; alives=0; mode="hide";
+		z=-1; cannons=15; alives=0; mode="hide";
 		ui.removeTextArea(22,nil)
 		for n,p in next,tfm.get.room.playerList do
 			tfm.exec.giveMeep(n,false)
 			tfm.exec.removeImage(data[n].shark_id)
 			tfm.exec.changePlayerSize(n,1)
 			ui.addTextArea(299,"<p align='center'><a href='event:hide_menu'><font size='18'>Menu",n,365,25,70,24,0x000001,0x000001,0.75,true)
-			ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> <VP><b>v6.0.4</b><N> - "..text.madeby.." <R><b>Spectra_phantom#6089</b><")
+			ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> <VP><b>v6.1</b><N> - "..text.madeby.." <R><b>Rakan#3159</b><")
 			if n:sub(1,1) == "*" then
 				tfm.exec.killPlayer(n)
 				showMessage(text.nosouris,name)
@@ -625,16 +625,7 @@ function eventLoop(p,r)
 	time_passed=math.ceil(p/500)
 	time_remain=math.ceil(r/500)
 	if changed == true then
-		for name,player in next,tfm.get.room.playerList do
-			if data[name] and data[name].imageid2 >= 0 then
-				data[name].imaget=data[name].imaget-1
-				if data[name].imaget <= 0 then
-					tfm.exec.removeImage(data[name].imageid2,true)
-					data[name].imageid2=-1
-				end
-			end
-		end
-		ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> <VP><b>v6.0.4</b><N> - "..text.madeby.." <R><b>Spectra_phantom#6089</b><")
+		ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> <VP><b>v6.1</b><N> - "..text.madeby.." <R><b>Rakan#3159</b><")
 		local m=math.floor(r/60000)
 		local s=math.floor((((m*60000)-r) * -1) / 1000)
 		ui.addTextArea(-1,"<font size='30'><font color='#222222'><font face='Calisto MT,Times New Roman'><b>"..m..":"..s.."</b>",n,267,368,125,54,0,0,1.0,true)
@@ -796,15 +787,14 @@ function eventLoop(p,r)
 end
 function eventNewPlayer(name)
 	newData={
-		["o"]=99; ["i"]=0; ["t"]=0; ["c"]=0; ["opened"]=false; ["imageid"]=-1; ["imaget"]=-1; ["imageid2"]=-1; ["shark_id"]=0; ["shark"]=0; ["active_imgs"]={};
+		["o"]=99; ["i"]=0; ["t"]=0; ["c"]=0; ["opened"]=false; ["imageid"]=-1; ["shark_id"]=0; ["shark"]=0; ["active_imgs"]={};
 	};
 	data[name] = newData;
 	showWater(name)
 	ui.addTextArea(299,"<p align='center'><a href='event:hide_menu'><font size='18'>Menu",name,365,25,70,24,0x000001,0x000001,0.75,true)
-	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> <VP><b>v6.0.4</b><N> - "..text.madeby.." <R><b>Spectra_phantom#6089</b><")
-	showMessage(text.welcome..text.madeby.." Spectra_phantom#6089.",name)
+	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> <VP><b>v6.1</b><N> - "..text.madeby.." <R><b>Rakan#3159</b><")
+	showMessage(text.welcome..text.madeby.." Rakan#3159.",name)
 	tfm.exec.setPlayerScore(name,0,false)
-	data[name].imageid2 = tfm.exec.addImage("18d5c7f248f.png","~-1",150,65,name); data[name].imaget=10;
 end
 for name,player in next,tfm.get.room.playerList do
 	eventNewPlayer(name)
