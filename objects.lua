@@ -26,9 +26,9 @@ function showMessage(message,name)
 end
 function eventChatCommand(name,message)
 	if message == "help" then
-		showMessage("<J>The objective of this module is survive! Don't hit the objects that are falling! The last alive player wins the game!<br><br><ROSE>Module made by Spectra_phantom#6089",name)
+		showMessage("<J>The objective of this module is survive! Don't hit the objects that are falling! The last alive player wins the game!<br><br><ROSE>Module managed by Rakan#3159",name)
 	end
-	if name == "Spectra_phantom#6089" or name == "Malzahar#8178" or name == "Skyymellu#0000" or name == "Cassiopeia#1749" then
+	if name == "Rakan#3159" or name == "Shun_kazami#7014" or name == "Skyymellu#0000" or name == "Cassiopeia#1749" then
 		if (message:sub(0,4) == "kill") then
 			tfm.exec.killPlayer(message:sub(6))
 		end
@@ -58,9 +58,9 @@ function showBar()
 		if mapas[i] == tfm.get.room.currentMap then
 			local diff=functs.level
 			if map_names[i] == "" then
-				ui.setMapName("<J><b>"..tfm.get.room.currentMap.."   </b><V>|   <N>Difficulty : <R>"..diff.."   <V>|   <N>#objects <ROSE>RTM 9668.052 LTS<")
+				ui.setMapName("<J><b>"..tfm.get.room.currentMap.."   </b><V>|   <N>Difficulty : <R>"..diff.."   <V>|   <N>#objects <ROSE>RTM 9769.053<")
 			else
-				ui.setMapName("<J><b>"..map_names[i].."</b> <BL>- "..tfm.get.room.currentMap.."   <V>|   <N>Difficulty : <R>"..diff.."   <V>|   <N>#objects <ROSE>RTM 9668.052 LTS<")
+				ui.setMapName("<J><b>"..map_names[i].."</b> <BL>- "..tfm.get.room.currentMap.."   <V>|   <N>Difficulty : <R>"..diff.."   <V>|   <N>#objects <ROSE>RTM 9769.053<")
 			end
 		end
 	end
@@ -84,7 +84,7 @@ function throw()
 	tfm.exec.addShamanObject(0,position,100,0,0,1,false)
 end
 function eventNewPlayer(name)
-	showMessage("<J><b>Welcome to #objects!</b><br><br>The objective of this module is survive! Don't hit the objects that are falling! The last alive player wins the game!<br><br><ROSE>Module made by Spectra_phantom#6089<br><br><R>This game have several restrictions when loaded by FunCorp players.",name)
+	showMessage("<J><b>Welcome to #objects!</b><br><br>The objective of this module is survive! Don't hit the objects that are falling! The last alive player wins the game!<br><br><ROSE>Module developed by Rakan#3159",name)
 end
 for name,player in pairs(tfm.get.room.playerList) do
 	eventNewPlayer(name)
