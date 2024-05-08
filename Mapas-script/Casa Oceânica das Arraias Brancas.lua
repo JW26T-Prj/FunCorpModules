@@ -332,7 +332,7 @@ function eventNewPlayer(name)
 			system.bindKeyboard(name,i,true,true)
 		end
 		ui.setMapName("<N>Casa Oceânica das Arraias Brancas - <ROSE>Morgana's Mechanical Maps<")
-		showMessage("<VP><b>Bem-vindo(a) a Casa Oceânica das Arraias Brancas.</b><br><br><p align='left'><N>Este é um mapa-script cujo intuito é simular uma casa-resort de luxo no meio do oceano. Aproveite e curta!<br><br><ROSE><b>Mapa feito por Morganadxana#0000.</b><br><J>Agradecimentos especiais para <b>Lynet#8558, Shun_kazami#7014, Maramara4#0000, Lacoste#8972, Irelia#7317, Some#2636, Jeancrazzy#0000 e Bielzinnfx#3859.</b><br><br><N>Deseja usar este mapa-script no cafofo de sua tribo? Use o link a seguir:<br><N><VP>raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/Casa%20Oce%C3%A2nica%20das%20Arraias%20Brancas.lua<br><br><N>Revisão 1.0.1<br><br<BL>Digite ! juntamente com um número de 0 a 13 (ex.: !1) para virar um animal marinho.",name)
+		showMessage("<VP><b>Bem-vindo(a) a Casa Oceânica das Arraias Brancas.</b><br><br><p align='left'><N>Este é um mapa-script cujo intuito é simular uma casa-resort de luxo no meio do oceano. Aproveite e curta!<br><br><ROSE><b>Mapa feito por Morganadxana#0000.</b><br><J>Agradecimentos especiais para <b>Lynet#8558, Shun_kazami#7014, Maramara4#0000, Lacoste#8972, Irelia#7317, Some#2636, Jeancrazzy#0000 e Bielzinnfx#3859.</b><br><br><N>Deseja usar este mapa-script no cafofo de sua tribo? Use o link a seguir:<br><N><VP>raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/Mapas-script/Casa%20Oceânica%20das%20Arraias%20Brancas.lua<br><br><N>Revisão 1.1<br><br<BL>Digite ! juntamente com um número de 0 a 13 (ex.: !1) para virar um animal marinho.",name)
 		ui.setBackgroundColor("#000000")
 		showWater(name)
 		showNPCs(name)

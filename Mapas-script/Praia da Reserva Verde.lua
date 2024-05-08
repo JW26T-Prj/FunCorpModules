@@ -65,7 +65,7 @@ end
 end
 function eventChatCommand(name,message)
 	if message == "reset" then
-		if name == "Morganadxana#0000" or name == "Ashearcher#0000" then
+		if name == "Morganadxana#0000" or name == "Samira#4387" then
 			tfm.exec.newGame(xml2,false)
 			ui.removeTextArea(0,nil)
 		end
@@ -203,7 +203,7 @@ function eventNewPlayer(name)
 	if changed == true then
 		ui.setMapName("Praia da Reserva Verde - <ROSE>Morgana's Mechanical Maps<")
 	end
-	showMessage("<VP><b>Bem-vindo(a) a Praia da Reserva Verde.</b><br><br><p align='left'><N>Este é um mapa-script de praia bem grande e com diversos recursos para se divertir. Aproveite e curta!<br><br><R>Aviso: Este mapa pode consumir até 1,8GB de RAM dependendo de casos específicos.<br><br><ROSE><b>Mapa feito por Morganadxana#0000.</b><br><J>Agradecimentos especiais para <b>Draw#6691, Soft#1388, Viincenzo#9526, Lacoste#8972, Lipersz#9863, Spectra_phantom#6089, Threshlimit#0000, Star#8558 e Lanadelrey#4862.</b><br><br><N>Deseja usar este mapa-script no cafofo de sua tribo? Use o link a seguir:<br><N><VP>raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/Praia%20da%20Reserva%20Verde.lua<br><br><N>Revisão 2.0<br><br<BL>Digite ! juntamente com um número (ex.: !1) para virar um animal marinho.",name)
+	showMessage("<VP><b>Bem-vindo(a) a Praia da Reserva Verde.</b><br><br><p align='left'><N>Este é um mapa-script de praia bem grande e com diversos recursos para se divertir. Aproveite e curta!<br><br><R>Aviso: Este mapa pode consumir até 1,8GB de RAM dependendo de casos específicos.<br><br><ROSE><b>Mapa feito por Morganadxana#0000.</b><br><J>Agradecimentos especiais para <b>Draw#6691, Soft#1388, Viincenzo#9526, Lacoste#8972, Lipersz#9863, Spectra_phantom#6089, Threshlimit#0000, Star#8558 e Lanadelrey#4862.</b><br><br><N>Deseja usar este mapa-script no cafofo de sua tribo? Use o link a seguir:<br><N><VP>raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/Mapas-script/Praia%20da%20Reserva%20Verde.lua<br><br><N>Revisão 2.1<br><br<BL>Digite ! juntamente com um número (ex.: !1) para virar um animal marinho.",name)
 	newData={
 		["s"]=0; ["id"]=-1;
 	};
@@ -213,15 +213,7 @@ function eventNewPlayer(name)
 	end
 end
 function eventLoop(p,f)
-	if changed == true then
-		for name,player in next,tfm.get.room.playerList do
-			if p >= 6000 then
-				if tfm.get.room.playerList[name].y <= 400 and tfm.get.room.playerList[name].x <= 800 and not tfm.get.room.playerList[name].isDead then
-					showMessage("<R>Aviso: Não há mais memória disponível para o Transformice. Para poder entrar neste mapa, saia do jogo e entre novamente.",name)
-				end
-			end
-		end
-	else
+	if changed == false then
 		if f <= 1 then
 			changed=true
 			tfm.exec.newGame(xml2,false)
