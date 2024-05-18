@@ -1,8 +1,14 @@
-Este código foi removido temporariamente.
-Motivo: Estou preparando uma versão especial do Mestre Mandou em comemoração aos 10 anos do module! Aguarde novidades!
+Este código foi movido para o seguinte arquivo:
+https://github.com/JW26T-Prj/FunCorpModules/blob/master/Mestre%20Mandou%20-%20Simon%20Says.lua
 
-This code has been temporarily removed.
-Reason: I'm preparing a special version of the Simon Says to celebrate the module's 10th anniversary! Wait for news!
+This code has been moved to the following file:
+https://github.com/JW26T-Prj/FunCorpModules/blob/master/Mestre%20Mandou%20-%20Simon%20Says.lua
 
-Este código se ha eliminado temporalmente.
-Motivo: ¡Estoy preparando una versión especial de Simon Says para celebrar el décimo aniversario del módulo! ¡Espera noticias!
+Este código se ha movido al siguiente archivo:
+https://github.com/JW26T-Prj/FunCorpModules/blob/master/Mestre%20Mandou%20-%20Simon%20Says.lua
+
+Bu kod aşağıdaki dosyaya taşındı:
+https://github.com/JW26T-Prj/FunCorpModules/blob/master/Mestre%20Mandou%20-%20Simon%20Says.lua
+
+Dieser code wurde in die folgende Datei verschoben:
+https://github.com/JW26T-Prj/FunCorpModules/blob/master/Mestre%20Mandou%20-%20Simon%20Says.lua
