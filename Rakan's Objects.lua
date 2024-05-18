@@ -49,7 +49,7 @@ function eventNewGame()
 	for name,player in pairs(tfm.get.room.playerList) do
 		if name:sub(1,1) == "*" then
 		   	tfm.exec.killPlayer(name)
-		   	showMessage("<R>Souris aren't allowed to play on this module. Create an account or log in to play Objects.",name)
+		   	showMessage("<R>Souris aren't allowed to play on this module. Create an account or log in to play.",name)
 		end
 	end
 end
@@ -58,9 +58,9 @@ function showBar()
 		if mapas[i] == tfm.get.room.currentMap then
 			local diff=functs.level
 			if map_names[i] == "" then
-				ui.setMapName("<J><b>"..tfm.get.room.currentMap.."   </b><V>|   <N>Difficulty : <R>"..diff.."   <V>|   <N>#objects <ROSE>RTM 9769.053<")
+				ui.setMapName("<J><b>"..tfm.get.room.currentMap.."   </b><V>|   <N>Difficulty : <R>"..diff.."   <V>|   <N>Rakan's Objects<")
 			else
-				ui.setMapName("<J><b>"..map_names[i].."</b> <BL>- "..tfm.get.room.currentMap.."   <V>|   <N>Difficulty : <R>"..diff.."   <V>|   <N>#objects <ROSE>RTM 9769.053<")
+				ui.setMapName("<J><b>"..map_names[i].."</b> <BL>- "..tfm.get.room.currentMap.."   <V>|   <N>Difficulty : <R>"..diff.."   <V>|   <N>Rakan's Objects<")
 			end
 		end
 	end
@@ -84,7 +84,7 @@ function throw()
 	tfm.exec.addShamanObject(0,position,100,0,0,1,false)
 end
 function eventNewPlayer(name)
-	showMessage("<J><b>Welcome to #objects!</b><br><br>The objective of this module is survive! Don't hit the objects that are falling! The last alive player wins the game!<br><br><ROSE>Module developed by Rakan#3159",name)
+	showMessage("<J><b>Welcome to Rakan's Objects!</b><br><br>The objective of this module is survive! Don't hit the objects that are falling! The last alive player wins the game!<br><br><ROSE>Module developed by Rakan#3159",name)
 end
 for name,player in pairs(tfm.get.room.playerList) do
 	eventNewPlayer(name)
