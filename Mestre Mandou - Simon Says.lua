@@ -1,6 +1,6 @@
--- Antes de rodar este cÛdigo em uma sala, verifique se esta vers„o coincide com a vers„o mais recente presente abaixo:
+-- Antes de rodar este c√≥digo em uma sala, verifique se esta vers√£o coincide com a vers√£o mais recente presente abaixo:
 -- https://github.com/JW26T-Prj/FunCorpModules/blob/master/Mestre%20Mandou%20-%20Simon%20Says.lua
--- Isto vai garantir que vocÍ receba sempre as ˙ltimas atualizaÁıes e correÁıes de bugs.
+-- Isto vai garantir que voc√™ receba sempre as √∫ltimas atualiza√ß√µes e corre√ß√µes de bugs.
 
 -- Warning: Before running this code into a room, check if this version is the same than the latest version located here:
 -- https://github.com/JW26T-Prj/FunCorpModules/blob/master/Mestre%20Mandou%20-%20Simon%20Says.lua
@@ -8,14 +8,14 @@
 
 admin={""} -- insira o nome dos FunCorps aqui! / insert the FunCorp names here!
 
--- Se estiver rodando este cÛdigo em uma sala FunCorp, digite !fc para habilitar algumas funÁıes e comandos especiais.
+-- Se estiver rodando este c√≥digo em uma sala FunCorp, digite !fc para habilitar algumas fun√ß√µes e comandos especiais.
 -- If you are running this code into a FunCorp room, type !tc to enable some additional commands and functions.
 
 -- Comandos para uso de membros FunCorp e do dono da sala:
--- !command [n˙mero de 1 a 133] - Executa um comando manualmente.
--- !run [@n˙mero] - Executa o mapa especificado.
+-- !command [n√∫mero de 1 a 133] - Executa um comando manualmente.
+-- !run [@n√∫mero] - Executa o mapa especificado.
 -- !kill [nick#tag] - Mata o jogador especificado.
--- !limit [n˙mero] - Altera o limite de jogadores na sala.
+-- !limit [n√∫mero] - Altera o limite de jogadores na sala.
 -- !pw [password] - Adiciona uma senha na sala.
 
 -- FunCorp and Room Owner Available commands:
@@ -25,7 +25,7 @@ admin={""} -- insira o nome dos FunCorps aqui! / insert the FunCorp names here!
 -- !limit [number] - Limit the number of maximum players on the room.
 -- !pw [password] - Lock the room with a password.
 
--- N√O MEXA EM NADA A PARTIR DESTA LINHA! / DON'T CHANGE ANYTHING BELOW THIS LINE!
+-- N√ÉO MEXA EM NADA A PARTIR DESTA LINHA! / DON'T CHANGE ANYTHING BELOW THIS LINE!
 
 for _,f in next,{"AutoShaman","AutoNewGame","AutoTimeLeft","DebugCommand"} do
 	tfm.exec["disable"..f](true)
@@ -47,35 +47,35 @@ acids3={type = 19,width = 10,height = 800,miceCollision = true,groundCollision =
 fc_mode=false; xpos=0; xpos2=0;
 system.disableChatCommandDisplay(nil,true)
 lang.br = {
-	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>Siga tudo o que o jogo mandar e teste seus limites atÈ o fim!<br><br><VP><b>Module criado e gerenciado por Jessiewind26#2546</b><br><br><R>Vers„o 7.9<br>EdiÁ„o especial de anivers·rio de 10 anos",
+	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>Siga tudo o que o jogo mandar e teste seus limites at√© o fim!<br><br><VP><b>Module criado e gerenciado por Jessiewind26#2546</b><br><br><R>Vers√£o 7.9<br>Edi√ß√£o especial de anivers√°rio de 10 anos",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
 	mouse = "Clique na tela 10 vezes!",
-	beijos = "DÍ 10 beijos!",
-	dormir = "VocÍs est„o com sono. Durmam para descansar.",
-	raiva = "Tigrounette È do mal! Fiquem com raiva dele!",
-	chorem = "VocÍs n„o ganharam queijo :( Chorem!",
-	nchorem = "N„o chorem!",
-	esquerda = "N„o v· para a esquerda!",
-	direita = "N„o v· para a direita!",
-	numero = "Digite o seguinte n˙mero: ",
+	beijos = "D√™ 10 beijos!",
+	dormir = "Voc√™s est√£o com sono. Durmam para descansar.",
+	raiva = "Tigrounette √© do mal! Fiquem com raiva dele!",
+	chorem = "Voc√™s n√£o ganharam queijo :( Chorem!",
+	nchorem = "N√£o chorem!",
+	esquerda = "N√£o v√° para a esquerda!",
+	direita = "N√£o v√° para a direita!",
+	numero = "Digite o seguinte n√∫mero: ",
 	digitar = "Digite qualquer coisa e mande para mim.",
-	falar = "N„o falem nada!",
-	pular = "N„o pulem!",
-	mexer = "N„o se mexam!",
-	bandeira = "Balance a bandeira de qualquer paÌs!",
+	falar = "N√£o falem nada!",
+	pular = "N√£o pulem!",
+	mexer = "N√£o se mexam!",
+	bandeira = "Balance a bandeira de qualquer pa√≠s!",
 	ano = "Em que ano estamos?",
 	vesquerda = "Fique virado para a esquerda!",
 	vdireita = "Fique virado para a direita!",
 	quadradoa = "Fique no quadrado azul!",
 	quadradov = "Fique no quadrado vermelho!",
 	quadrado = "Fique no quadrado branco!",
-	nquadrado = "N„o fique no quadrado branco!",
-	retangulo = "Fique dentro do ret‚ngulo branco!",
-	retangulov = "Fique dentro do ret‚ngulo vermelho!",
-	nretangulo = "N„o fique dentro do ret‚ngulo branco!",
-	nretangulov = "N„o fique dentro do ret‚ngulo vermelho!",
+	nquadrado = "N√£o fique no quadrado branco!",
+	retangulo = "Fique dentro do ret√¢ngulo branco!",
+	retangulov = "Fique dentro do ret√¢ngulo vermelho!",
+	nretangulo = "N√£o fique dentro do ret√¢ngulo branco!",
+	nretangulov = "N√£o fique dentro do ret√¢ngulo vermelho!",
 	preesquerda15 = "Pressione 15 vezes a tecla para ESQUERDA!",
 	predireita15 = "Pressione 15 vezes a tecla para DIREITA!",
 	preesquerda30 = "Pressione 30 vezes a tecla para ESQUERDA!",
@@ -84,9 +84,9 @@ lang.br = {
 	predireita60 = "Pressione 60 vezes a tecla para DIREITA!",
 	preesquerda100 = "Pressione 100 vezes a tecla para ESQUERDA!",
 	predireita100 = "Pressione 100 vezes a tecla para DIREITA!",
-	espaco = "Pressione a barra de espaÁo 20 vezes!",
-	nome = "Digite o seu nome no jogo (com #n˙mero).",
-	ndance = "N„o dance!",
+	espaco = "Pressione a barra de espa√ßo 20 vezes!",
+	nome = "Digite o seu nome no jogo (com #n√∫mero).",
+	ndance = "N√£o dance!",
 	key1 = "Pressione a tecla Delete!",
 	action1 = "Dance, sente e durma!",
 	laugh = "Agora RIAM!",
@@ -95,13 +95,13 @@ lang.br = {
 	noob = "Digite: EU SOU NOOB",
 	action2 = "Chore depois ria!",
 	jump = "Pulem!",
-	number = "Digite o seguinte n˙mero: ",
+	number = "Digite o seguinte n√∫mero: ",
 	key = "Pressione qualquer tecla!",
 	jump2 = "Pulem 5 vezes!",
 	jump3 = "Pulem 15 vezes!",
-	action3 = "DÍ um beijo depois chore!",
-	area = "Descubra onde est· o texto escondido e clique nele!",
-	dancing = "… hora da festa!",
+	action3 = "D√™ um beijo depois chore!",
+	area = "Descubra onde est√° o texto escondido e clique nele!",
+	dancing = "√â hora da festa!",
 	freeze = "Todo mundo parado!",
 	transform = "Dance e durma!",
 	down1 = "Abaixem 3 vezes!",
@@ -112,87 +112,87 @@ lang.br = {
 	mice = "Ratos",
 	round = "Rodada",
 	help = "Ajuda",
-	hcontent = "O objetivo deste module È muito simples:<br><b>Siga tudo o que o jogo mandar e teste seus limites atÈ o fim!</b><br><br>Tenha cuidado, pois alguns comandos podem te matar de surpresa, portanto, È preciso ficar muito esperto!<br><br><BL>Module criado e gerenciado por Jessiewind26#2546",
+	hcontent = "O objetivo deste module √© muito simples:<br><b>Siga tudo o que o jogo mandar e teste seus limites at√© o fim!</b><br><br>Tenha cuidado, pois alguns comandos podem te matar de surpresa, portanto, √© preciso ficar muito esperto!<br><br><BL>Module criado e gerenciado por Jessiewind26#2546",
 	mices = "Esta sala requer pelo menos 4 ratos.",
 	difficulty = "Dificuldade",
 	segundos = "segundos.",
-	fim = "Partida encerrada! PrÛxima partida iniciando em ",
-	dofim = "NinguÈm ganhou... PrÛxima partida iniciando em ",
+	fim = "Partida encerrada! Pr√≥xima partida iniciando em ",
+	dofim = "Ningu√©m ganhou... Pr√≥xima partida iniciando em ",
 	playingmap = "Rodando mapa",
 	created = "criado por",
 	abaixar = "Abaixem e se levantem!",
-	action = "FaÁam qualquer aÁ„o!",
-	naction = "N„o faÁam nenhuma aÁ„o!",
-	math = "Quanto È 1+1?",
-	math1 = "Quanto È 2+2?",
-	math2 = "Quanto È 3-4?",
+	action = "Fa√ßam qualquer a√ß√£o!",
+	naction = "N√£o fa√ßam nenhuma a√ß√£o!",
+	math = "Quanto √© 1+1?",
+	math1 = "Quanto √© 2+2?",
+	math2 = "Quanto √© 3-4?",
 	ds = "Dance e sente!",
 	seq4 = "Dance, sente, durma e bata palmas!",
 	seq5 = "Dance, bata palmas e ria!",
 	seq6 = "Dance e chore!",
-	seq7 = "Dance, dÍ um beijo e fique com raiva!",
-	seq8 = "DÍ um beijo, durma e chore!",
+	seq7 = "Dance, d√™ um beijo e fique com raiva!",
+	seq8 = "D√™ um beijo, durma e chore!",
 	seq9 = "Durma, pule e taque um confete!",
-	seq10 = "DÍ um beijo, solte um confete e dance!",
-	seq11 = "Ria, dance, durma, chore e coloque a m„o no rosto!",
+	seq10 = "D√™ um beijo, solte um confete e dance!",
+	seq11 = "Ria, dance, durma, chore e coloque a m√£o no rosto!",
 	seq12 = "Fique com raiva, sente, solte um confete, dance e sente de novo!",
-	seq13 = "Dance, sente, durma, ria, chore, dÍ um beijo e pule!",
+	seq13 = "Dance, sente, durma, ria, chore, d√™ um beijo e pule!",
 	spider = "Cuidado com as teias de aranha!",
-	spider1 = "Essa n„o! Uma aranha passou no mapa e o encheu de teias!",
+	spider1 = "Essa n√£o! Uma aranha passou no mapa e o encheu de teias!",
 	key2 = "Pressione F4!",
 	clap = "Bata palmas 5 vezes!",
-	completed = "VocÍ completou o comando com sucesso!",
+	completed = "Voc√™ completou o comando com sucesso!",
 	rain = "Chuva de ovelhas!",
 	skull = "Cuidado com as caveiras!",
 	gravity = "A gravidade foi alterada!",
-	version = "Vers„o",
-	black = "Um buraco negro surgiu e est· puxando todos vocÍs!",
-	creator = "Quem È o criador deste module?",
-	sister = "Quem È a irm„ do criador deste module?",
-	counts = "H· quantos ratos nesta sala?",
-	counts_alive = "H· quantos ratos vivos nesta sala?",
-	facepalm = "Coloque a m„o no rosto 5 vezes!",
-	enterprise = "Qual È a empresa que criou o Transformice?",
-	collect = "Cuidado com a chuva ·cida!",
-	balls = "Est· chovendo bolas!",
-	explosion = "Olha a explos„o!",
-	queijo = "Todos os ratos que estiverem com queijo v„o morrer!",
+	version = "Vers√£o",
+	black = "Um buraco negro surgiu e est√° puxando todos voc√™s!",
+	creator = "Quem √© o criador deste module?",
+	sister = "Quem √© a irm√£ do criador deste module?",
+	counts = "H√° quantos ratos nesta sala?",
+	counts_alive = "H√° quantos ratos vivos nesta sala?",
+	facepalm = "Coloque a m√£o no rosto 5 vezes!",
+	enterprise = "Qual √© a empresa que criou o Transformice?",
+	collect = "Cuidado com a chuva √°cida!",
+	balls = "Est√° chovendo bolas!",
+	explosion = "Olha a explos√£o!",
+	queijo = "Todos os ratos que estiverem com queijo v√£o morrer!",
 	caps = "Pressione a tecla CAPS LOCK 10 vezes",
-	acid = "Cuidado com o ·cido!",
-	water = "Saia da ·gua, ou seja engolido por ela!",
+	acid = "Cuidado com o √°cido!",
+	water = "Saia da √°gua, ou seja engolido por ela!",
 	lava = "Saia da lava, ou seja engolido por ela!",
-	nowater = "Fique dentro da ·gua!",
-	select = "<VP>O modo de comando seletivo est· ativo nesta sala.",
-	newcreator = "Qual È o novo nome do criador deste module?",
-	funcorp = "O modo FunCorp deste jogo est· habilitado.",
-	admin = "VocÍ È o administrador desta sala.<br><br>Se vocÍ for um membro FunCorp, digite !fc para habilitar o modo FunCorp.",
+	nowater = "Fique dentro da √°gua!",
+	select = "<VP>O modo de comando seletivo est√° ativo nesta sala.",
+	newcreator = "Qual √© o novo nome do criador deste module?",
+	funcorp = "O modo FunCorp deste jogo est√° habilitado.",
+	admin = "Voc√™ √© o administrador desta sala.<br><br>Se voc√™ for um membro FunCorp, digite !fc para habilitar o modo FunCorp.",
 	balloon = "Voar, voar, subir, subir...",
-	lava1 = "Cuidado! O ch„o est· se transformando em lava!",
-	lava2 = "O ch„o È lava!",
-	lava3 = "Cuidado! O ch„o est· se transformando em ·cido!",
+	lava1 = "Cuidado! O ch√£o est√° se transformando em lava!",
+	lava2 = "O ch√£o √© lava!",
+	lava3 = "Cuidado! O ch√£o est√° se transformando em √°cido!",
 	light = "Acabou a luz!",
-	ndurma = "N„o durma!",
+	ndurma = "N√£o durma!",
 	move = "Se mexam!",
 	clickhere = "<font size='8'>CLIQUE AQUI",
-	apple = "Est· chovendo maÁ„s!",
-	cn = "Est· chovendo canhıes!",
-	people = "H· quantos humanos aqui nesta sala?",
-	fall = "ATEN«√O! O dano de queda est· habilitado!",
-	collide = "ATEN«√O! A colis„o com os ratos est· habilitada!",
-	ufo = "Cuidado! Os ratos est„o sendo abduzidos!",
+	apple = "Est√° chovendo ma√ß√£s!",
+	cn = "Est√° chovendo canh√µes!",
+	people = "H√° quantos humanos aqui nesta sala?",
+	fall = "ATEN√á√ÉO! O dano de queda est√° habilitado!",
+	collide = "ATEN√á√ÉO! A colis√£o com os ratos est√° habilitada!",
+	ufo = "Cuidado! Os ratos est√£o sendo abduzidos!",
 	emoji = "Utilize um emoticon!",
-	emoji1 = "Utilize os seguintes emoticons em sequÍncia: 1 4 7 5 9 2 8 6",
-	emoji2 = "Utilize os seguintes emoticons em sequÍncia: 5 9 6 1 7 3 4 8",
-	meep = "O MEEP est· habilitado!",
-	portal = "Tenham cuidado! Entrar no portal te levar· para a morte!",
+	emoji1 = "Utilize os seguintes emoticons em sequ√™ncia: 1 4 7 5 9 2 8 6",
+	emoji2 = "Utilize os seguintes emoticons em sequ√™ncia: 5 9 6 1 7 3 4 8",
+	meep = "O MEEP est√° habilitado!",
+	portal = "Tenham cuidado! Entrar no portal te levar√° para a morte!",
 	vampires = "Todos os ratos foram transformados em vampiros!",
 	kills = "Se matem!",
-	catch = "Pegue o '+1' antes que ele desapareÁa!",
-	raster = "ATEN«√O! As ·reas em vermelho ser„o tomadas pelo ·cido!",
-	space = "Os ratos agora est„o no espaÁo!",
-	chicken = "Est· chovendo galinhas!",
-	submission = "<br><J>As avaliaÁıes de mapas do Mestre Mandou est„o abertas!<br><VP><b>atelier801.com/topic?f=796133&t=915772&p=1</b><br>",
-	verify = "<J>Para que possamos verificar a estabilidade do module e coletar estatÌsticas, a partir deste momento, todas as informaÁıes desta sala est„o sendo registradas no banco de dados interno do module.",
+	catch = "Pegue o '+1' antes que ele desapare√ßa!",
+	raster = "ATEN√á√ÉO! As √°reas em vermelho ser√£o tomadas pelo √°cido!",
+	space = "Os ratos agora est√£o no espa√ßo!",
+	chicken = "Est√° chovendo galinhas!",
+	submission = "<br><J>As avalia√ß√µes de mapas do Mestre Mandou est√£o abertas!<br><VP><b>atelier801.com/topic?f=796133&t=915772&p=1</b><br>",
+	verify = "<J>Para que possamos verificar a estabilidade do module e coletar estat√≠sticas, a partir deste momento, todas as informa√ß√µes desta sala est√£o sendo registradas no banco de dados interno do module.",
 }
 lang.en = {
 	welcome = "<N><b>Welcome to Simon Says module!</b><br>Follow everything the game told and test your limits until the end!<br><br><VP><b>Script made and developed by Jessiewind26#2546</b><br>Translation by Draw#6691<br><br><R>Version 7.9<br>10 Year Anniversary Special Edition",
@@ -1436,7 +1436,7 @@ function eventChatMessage(name,message)
 		end
 	end
 	if active == 59 then
-		if string.find(string.upper(message),"BUA") or string.find(string.upper(message),"BU¡") or string.find(message,":(") then
+		if string.find(string.upper(message),"BUA") or string.find(string.upper(message),"BU√Å") or string.find(message,":(") then
 			tfm.exec.killPlayer(name)
 		end
 	end
