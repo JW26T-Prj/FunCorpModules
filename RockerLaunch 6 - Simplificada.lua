@@ -19,7 +19,8 @@ asteroid_1={type = 12,width = 40,height = 20,foreground = false,friction = 3,res
 asteroid_2={type = 12,width = 80,height = 40,foreground = false,friction = 4,restitution = 0.15,angle = 0, color = 0, miceCollision = true, groundCollision = true, dynamic = true, fixedRotation = false, mass = 5000}
 asteroid_3={type = 12,width = 160,height = 80,foreground = false,friction = 5,restitution = 0.2,angle = 0, color = 0, miceCollision = true, groundCollision = true, dynamic = true, fixedRotation = false, mass = 15000}
 asteroid_4={type = 12,width = 320,height = 160,foreground = false,friction = 6,restitution = 0.25,angle = 0, color = 0, miceCollision = true, groundCollision = true, dynamic = true, fixedRotation = false, mass = 30000}
-ajuda="<VP>Bem-vindos ao RockerLaunch 6!<br><N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço! Digite !help para saber como jogar.<br><br><BL>Créditos para Lynet#8558, Puffezinhaq#0000, Digo20games#0000, Dhanny_mheyran#6701 e Threshlimit#0000. Conceito original de Nettoork#0000.<br><J>Versão 6.8.1"objects1={1,3,6,23,33,39,60,65}
+ajuda="<VP>Bem-vindos ao RockerLaunch 6!<br><N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço! Digite !help para saber como jogar.<br><br><BL>Créditos para Lynet#8558, Puffezinhaq#0000, Digo20games#0000, Dhanny_mheyran#6701 e Threshlimit#0000. Conceito original de Nettoork#0000.<br><J>Versão 6.9"
+objects1={1,3,6,23,33,39,60,65}
 objects2={1,3,6,23,33,39,60,65,2,68,69}
 objects3={1,3,6,23,33,39,60,65,2,68,69,4,7,10,17,35,85,90}
 objects4={1,3,6,23,33,39,60,65,2,68,69,4,7,10,17,35,85,90,40,61,67}
@@ -116,9 +117,11 @@ function rodar(name)
 	tfm.exec.addImage("182d6e1e45c.png","?1",math.random(-750,1850),math.random(-450,2650),name)
 	tfm.exec.addImage("182d6e1e45c.png","?1",math.random(-750,1850),math.random(-450,2650),name,-1,1)
 	tfm.exec.addImage("1883b125925.png","!1",690,2400,name)
-	tfm.exec.addImage("1883b11fa05.png","!1",1285,1500,name)
-	tfm.exec.addImage("1883b133513.png","!1",350,900,name)
-	tfm.exec.addImage("1883b12d793.png","!1",700,300,name)
+	tfm.exec.addImage("1883b11fa05.png","!1",1285,1800,name)
+	tfm.exec.addImage("1883b133513.png","!1",350,1300,name)
+	tfm.exec.addImage("1883b12d793.png","!1",700,800,name)
+	tfm.exec.addImage("18f7d33850e.png","!1",550,200,name)
+	tfm.exec.addImage("18f7d331f77.png","?1",1789,1125,name,-1)
 	for j=0,2 do
 		for i=0,3 do
 			tfm.exec.addImage("181b9de5c95.png","?1",-800+(j*1920),-780+(i*1080),name)
@@ -152,6 +155,9 @@ function rodar(name)
 	for g=1,rawlen(d1) do
 		tfm.exec.addImage("18756e23bc8.png","?1",d1[g],d2[g],name,-1,1)
 	end
+	tfm.exec.addImage("18f7d334e57.png","?1",180,3430,name)
+	tfm.exec.addImage("18f7d334e57.png","?1",1181,2862,name,-1)
+	tfm.exec.addImage("18f7d330a8a.png","?1",-34,988,name)
 	tfm.exec.addImage("18773209c5b.png","?1",840,7250,name)
 	tfm.exec.addImage("18773209c5b.png","?1",275,6350,name,-1)
 	tfm.exec.addImage("1877321eda8.png","?1",365,7050,name,-1)
