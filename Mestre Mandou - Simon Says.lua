@@ -47,7 +47,7 @@ acids3={type = 19,width = 10,height = 800,miceCollision = true,groundCollision =
 fc_mode=false; xpos=0; xpos2=0;
 system.disableChatCommandDisplay(nil,true)
 lang.br = {
-	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><br><VP><b>Module criado e gerenciado por Jessiewind26#2546</b><br><br><R>Versão 7.9.2<br>Edição especial de aniversário de 10 anos",
+	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><br><VP><b>Module criado e gerenciado por Jessiewind26#2546</b><br><br><R>Versão 7.9.3",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -195,7 +195,7 @@ lang.br = {
 	verify = "<J>Para que possamos verificar a estabilidade do module e coletar estatísticas, a partir deste momento, todas as informações desta sala estão sendo registradas no banco de dados interno do module.",
 }
 lang.en = {
-	welcome = "<N><b>Welcome to Simon Says module!</b><br>Follow everything the game told and test your limits until the end!<br><br><VP><b>Script made and developed by Jessiewind26#2546</b><br>Translation by Draw#6691<br><br><R>Version 7.9.2<br>10 Year Anniversary Special Edition",
+	welcome = "<N><b>Welcome to Simon Says module!</b><br>Follow everything the game told and test your limits until the end!<br><br><VP><b>Script made and developed by Jessiewind26#2546</b><br>Translation by Draw#6691<br><br><R>Version 7.9.3",
 	dancar = "Dance!",
 	sentar = "Sit down!",
 	confetar = "Throw 5 confetti!",
@@ -350,7 +350,7 @@ else
 	text = lang.en
 end
 
-ninjas={"Jessiewind26#2546","Irelia#7317","Lacoste#8972","Riven#1630","Globo_rural#6532","Qiyana#2797","Skyymellu#0000","Rakan#3159"}
+ninjas={"Jessiewind26#2546","Irelia#7317","G484#5825","Riven#1630","Globo_rural#6532","Qiyana#2797","Skyymellu#0000","Rakan#3159"}
 
 function findString(object,tb)
 	for i=1,rawlen(tb) do
@@ -561,9 +561,6 @@ function eventChatCommand(name,message)
 				unlocked=false
 				tfm.exec.setGameTime(36000)
 			end
-			if(message:sub(0,4) == "jjjj") then
-				showMessage("<VP>• [Jessie] "..message:sub(6))
-			end
 		end
 		if verifyNinjas(name) == true or verifyAdmin(name) == true then
 			if active <= 0 then
@@ -598,9 +595,6 @@ function eventChatCommand(name,message)
 			end
 			if message == "verify" then showMessage(text.verify); end
 			if message == "sd" then	system.exit(); end
-			if message == "cavalinho" then showMessage("<J>Essa mulher enlouqueceu<br>Ela quer montar em cima de mim<br>Ela pirou de vez<br>Tá pensando que eu sou seu cavalinho<br>E eu vou só dizendo assim<br>Vai, vai<br><br>E vai no cavalinho<br>Vai, vai, vai, vai<br>E vai no cavalinho<br>Vai, vai, vai, vai<br>Vai no cavalinho<br>Vai, vai, vai, vai"); end
-			if message == "vasco" then showMessage("<font color='#ffffff'>Vamos todos cantar de coração<br>A Cruz de Malta é o meu pendão<br>Tu tens o nome do heroico português<br>Vasco da Gama, a tua fama assim se fez<br><br>Tua imensa torcida é bem feliz<br>Norte-Sul, Norte-Sul deste Brasil<br>Tua estrela, na terra a brilhar<br>Ilumina o mar<br><br>No atletismo, és um braço<br>No remo, és imortal<br>No futebol, és um traço<br>De união Brasil-Portugal<br><br>No atletismo, és um braço<br>No remo, és imortal<br>No futebol, és um traço<br>De união Brasil-Portugal"); end
-			if message == "aurelionsol" then showMessage("<font color='#0526C3'<b>Naturalmente...</b>"); end
 			if(message:sub(0,1) == "q") then q=message:sub(3); end
 			if(message:sub(0,1) == "a") then a=message:sub(3); end
 			if(message:sub(0,1) == "t") then qtime=tonumber(message:sub(3)); end
@@ -2122,13 +2116,13 @@ function eventLoop(passado,faltando)
 			end
 		end
 		if active == -2 then
-			ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." 7.9.2</b><")
+			ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." 7.9.3</b><")
 		elseif active == -1 and vivo >= 1 then
-			ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.9.2</b><")
+			ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.9.3</b><")
 		elseif active == -1 and vivo <= 0 then
-			ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.9.2</b><")
+			ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.9.3</b><")
 		elseif active >= 0 then
-			ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." 7.9.2</b><")
+			ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." 7.9.3</b><")
 		end
 		if rato < 4 then
 			if tfm.get.room.currentMap == "@7935706" then
