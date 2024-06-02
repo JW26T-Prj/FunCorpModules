@@ -33,7 +33,7 @@ function showWater(name)
 end
 function eventChatCommand(name,message)
 	if message == "reset" then
-		if name == "Morganadxana#0000" or name == "Samira#4387" then
+		if name == "Morganadxana#0000" or name == "Leblanc#5342" or name == "Irelia#7317" then
 			tfm.exec.newGame(xml2,false)
 			ui.removeTextArea(0,nil)
 		end
