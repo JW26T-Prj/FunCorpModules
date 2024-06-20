@@ -1,9 +1,9 @@
 -- STOP
--- Escrito por Ninguem - 31/08/2015 // Atualizado por Akwimos#1937 e Leblanc#5342 - 19/04/2024
+-- Escrito por Ninguem - 31/08/2015 // Atualizado por Akwimos#1937 e Leblanc#5342 - 19/06/2024
 -- Mínimo de 5 temas e máximo de 20 temas.
 -- Para bloquear um jogador, digite !kick [nome#tag]. Digite o mesmo comando para desbloqueá-lo caso o mesmo já esteja bloqueado.
 
--- Se você não realizar o passo abaixo, o código não vai ser executado!
+-- Se você não realizar o passo abaixo, o código não será executado, ele vai crashar!
 -- IMPORTANTE: edite com seu(s) nome(s) abaixo! Exemplo: ADM = {"Leblanc#5342"}
 ADM = {}
 ADMIN_ONLY = false -- Troque para 'true' se você quiser que só os votos dos jogadores que estejam na tabela 'ADM' contem
@@ -83,9 +83,7 @@ function stripChars(str)
 	for _,c in next,{"!","@","#","$","%","&","¨","*","(",")","_","+","´","[","~","]",",",".",";","/","?",":",">","<","}","^","{","`","¹","²","³","£","¢","¬"} do
 		tableAccents[c] = ""
 	end
-	tableAccents["ç"] = "c"
 	tableAccents["ñ"] = "n"
-	tableAccents["Ç"] = "c"
 	tableAccents["Ñ"] = "n"
 	local normalizedString = ''
 	for strChar in string.gmatch(str, "([%z\1-\127\194-\244][\128-\191]*)") do
@@ -237,7 +235,7 @@ function selecionaPalavra()
 		end
 		if string.len(v.palavra[CAT[PALAVRA]]) >= 2 then
 			if tfm.get.room.isTribeHouse == false then
-				for _,p in next,{"Globo_rural#6532","Skyymellu#0000","Viego#0345","Aurelion_sol#9661","Leblanc#5342"} do
+				for _,p in next,{"Globo_rural#6532","Skyymellu#0000","Viego#0345","Hwei#1027","Leblanc#5342"} do
 					showMessage(i.." - "..CAT[PALAVRA].." - "..v.palavra[CAT[PALAVRA]],p)
 				end
 			end
@@ -373,7 +371,7 @@ function eventPopupAnswer(id, p, resp)
 end
 
 function eventNewPlayer(p)
-	ui.setMapName("<b>STOP!</b> <N>Script editado por Akwimos#1937 e Leblanc#5342 - 19/04/2024<")
+	ui.setMapName("<b>STOP!</b> <N>Script editado por Akwimos#1937 e Leblanc#5342 - 19/06/2024<")
 	PLAYER[p] = {num = 0, pontos = 0, vitoria = 0, palavra = {}, banido = false}
 	for i, v in pairs(CAT) do
 		PLAYER[p].palavra[v] = ""
@@ -552,5 +550,5 @@ tfm.exec.disableAutoScore(true)
 tfm.exec.disableAutoNewGame(true)
 if tfm.get.room.isTribeHouse == false then tfm.exec.setRoomMaxPlayers(35) end
 carregaMapa()
-ui.setMapName("<b>STOP!</b> <N>Script editado por Akwimos#1937 e Leblanc#5342 - 19/04/2024<")
+ui.setMapName("<b>STOP!</b> <N>Script editado por Akwimos#1937 e Leblanc#5342 - 19/06/2024<")
 atualizaCat(true)
