@@ -1,4 +1,4 @@
--- Module #arrows, versão v1.3.3, desenvolvido por Leblanc#5342.
+-- Module #arrows, versão v1.4, desenvolvido por Leblanc#5342.
 
 -- Se estiver rodando este código em uma sala FunCorp, insira os nicknames dos membros abaixo.
 admin={"Leblanc#5342"} -- Insira os nomes aqui! // Insert the nicknames here!
@@ -16,7 +16,7 @@ for _,f in next,{"reset","change"} do
 end
 modo="inicial"; lang={}; map="@7938991"; ratos=0; vivos=0; round=0; level=0; imgs={}; data={}; symbol={"⇦","⇧","⇨","⇩"}; symbol_l={"&lt;","^",">","v"}; keys={};
 lang.br = {
-	welcome = "<ROSE><b>Bem-vindo ao module #arrows!</b><br><N>O objetivo deste module é ser rápido e preciso, usando o teclado para responder a sequência de setas que aparecerá na sua tela!<br><br><VP>Module criado por Leblanc#5342. Ideia original de Shun_kazami#7014.<br><BL><b>Versão 1.3.3</b>",
+	welcome = "<ROSE><b>Bem-vindo ao module #arrows!</b><br><N>O objetivo deste module é ser rápido e preciso, usando o teclado para responder a sequência de setas que aparecerá na sua tela!<br><br><VP>Module criado por Leblanc#5342. Ideia original de Shun_kazami#7014.<br><BL><b>Versão 1.4</b>",
 	starting = "<J>Atenção! O jogo será iniciado em 5 segundos!",
 	wrong = "<R>Você errou!",
 	accept = "<VP>Parabéns! Você conseguiu avançar desta fase!",
@@ -29,7 +29,7 @@ lang.br = {
 	legacy = "<J>Caso não esteja conseguindo ver as setas corretamente, digite !change. Este comando mudará a forma como as setas são exibidas na tela.",
 }
 lang.en = {
-	welcome = "<ROSE><b>Welcome to the #arrows module!</b><br><N>The goal of this module is to use your keyboard to follow the sequence of arrows that will show on your screen! You need to be fast!<br><br><VP>Module developed by Leblanc#5342. Original idea from Shun_kazami#7014.<br><BL><b>Version 1.3.3</b>",
+	welcome = "<ROSE><b>Welcome to the #arrows module!</b><br><N>The goal of this module is to use your keyboard to follow the sequence of arrows that will show on your screen! You need to be fast!<br><br><VP>Module developed by Leblanc#5342. Original idea from Shun_kazami#7014.<br><BL><b>Version 1.4</b>",
 	starting = "<J>The game will be started in 5 seconds!",
 	wrong = "<R>Oh no! Wrong key!",
 	accept = "<VP>Congratulations! You passed this round!",
@@ -41,8 +41,23 @@ lang.en = {
 	iswinner = " won the game!",
 	legacy = "<J>If you are not seeing the arrows correctly, type !change. This will change the way that the arrows will be displayed.",
 }
+lang.es = {
+	welcome = "<ROSE><b>¡Bienvenidos al módulo #arrows!</b><br><N>¡El objetivo de este módulo es usar su teclado para seguir la secuencia de flechas que se mostrarán en su pantalla! ¡Tienes que ser rápido!<br><br><VP>Módulo hecho por Leblanc#5342. Idea original por Shun_kazami#7014.<br><BL><b>Versión 1.4</b>",
+	starting = "<J>¡El juego comenzará en 5 segundos!",
+	wrong = "<R>Oh no! Wrong key!",
+	accept = "<VP>¡Oh, no! ¡Tecla incorrecta!",
+	notime = "<R>El tiempo ha terminado!", difficulty = "Dificuldade", mices = "Ratón",
+	increase = "<J>¡El nivel de dificultad aumentó!",
+	end1 = "<VP><b>¡Juego terminado! </b>", end2 = " ratones sobrevivieron! Empezando nuevo partido...",
+	nowinners = "¡Sin ganadores! Empezando nueva ronda...",
+	winners = "De ahora en adelante, si solo sobrevive un ratón, ¡será declarado ganador!",
+	iswinner = " ganó el juego.",
+	legacy = "<J>Si no ve las flechas correctamente, escriba !change. Esto cambiará la forma en que se mostrarán las flechas.",
+}
 if tfm.get.room.community == "br" or tfm.get.room.community == "pt" then
 	text = lang.br
+elseif tfm.get.room.community == "es" then
+	text = lang.es
 else
 	text = lang.en
 end
@@ -260,7 +275,7 @@ function eventLoop(pass,rem)
 	if remain <= 1 and modo == "fim" then
 		reset();
 	end
-	ui.setMapName("<ROSE>#arrows by Leblanc#5342   <G>|   <N>Round : <V>"..round.."   <G>|   <N>"..text.mices.." : <V>"..vivos.."/"..ratos.."   <G>|   <N>"..text.difficulty.." : <V>"..level.."   <G>|   <J>v1.3.3<")
+	ui.setMapName("<ROSE>#arrows by Leblanc#5342   <G>|   <N>Round : <V>"..round.."   <G>|   <N>"..text.mices.." : <V>"..vivos.."/"..ratos.."   <G>|   <N>"..text.difficulty.." : <V>"..level.."   <G>|   <J>v1.4<")
 end
 function eventNewGame()
 	ui.setBackgroundColor("#111111")
