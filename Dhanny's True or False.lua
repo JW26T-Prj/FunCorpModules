@@ -11,7 +11,7 @@ tfm.exec.setRoomMaxPlayers(35)
 limits={questions=10,time=7,mices_alive=0}
 questions={question="",answer="",round=0}
 current_mode=""; answer_time=20; remain_time=0;
-game_map='<C><P Ca="" aie="" mc="" G="0,12.5" /><Z><S><S P="0,0,0.3,0.2,0,0,0,0" L="32" o="b0643" X="400" c="4" Y="153" T="12" H="107" /><S H="208" L="400" o="4a0591" X="640" c="3" Y="186" T="12" P="0,0,0,0,0,0,0,0" /><S P="0,0,0,0,0,0,0,0" L="400" o="4a0591" X="160" c="3" Y="186" T="12" H="208" /><S P="0,0,0,0.2,0,0,0,0" L="10" o="32095c" X="419" c="3" Y="149" T="12" H="115" /><S H="115" L="10" o="32095c" X="381" c="3" Y="149" T="12" P="0,0,0,0.2,0,0,0,0" /><S L="680" o="6c1ebc" H="20" X="400" Y="390" T="12" P="0,0,0,0,0,0,0,0" /><S P="0,0,0,0.2,0,0,0,0" L="20" o="32095c" X="370" c="3" Y="190" T="12" H="200" /><S H="200" L="20" o="32095c" X="430" c="3" Y="190" T="12" P="0,0,0,0.2,0,0,0,0" /><S H="20" L="800" o="4a0591" X="400" c="3" Y="90" T="12" P="0,0,0,0,0,0,0,0" /><S H="400" L="60" o="3b0374" X="30" c="3" Y="200" T="12" P="0,0,0,0.2,0,0,0,0" /><S L="80" o="32095c" H="80" X="400" Y="245" T="12" P="0,0,0,0,0,0,0,0" /><S P="0,0,0,0.2,0,0,0,0" L="60" o="3b0374" X="770" c="3" Y="200" T="12" H="400" /><S H="56" L="40" o="6c1ebc" X="400" c="3" Y="352" T="12" P="0,0,0,0,0,0,0,0" /></S><D><DS Y="65" X="400" /><DC Y="190" X="400" /></D><O /></Z></C>'
+game_map='<C><P mc="" aie="" Ca="" G="0,12.5" /><Z><S><S H="107" L="32" o="525252" X="400" c="4" Y="153" T="12" P="0,0,0.3,0.2,0,0,0,0" /><S P="0,0,0,0,0,0,0,0" L="400" o="a9a9a9" X="640" c="3" Y="186" T="12" H="208" /><S H="208" L="400" o="a9a9a9" X="160" c="3" Y="186" T="12" P="0,0,0,0,0,0,0,0" /><S H="115" L="10" o="525252" X="419" c="3" Y="149" T="12" P="0,0,0,0.2,0,0,0,0" /><S P="0,0,0,0.2,0,0,0,0" L="10" o="525252" X="381" c="3" Y="149" T="12" H="115" /><S P="0,0,0,0,0,0,0,0" L="680" o="747474" X="400" Y="390" T="12" H="20" /><S H="200" L="20" o="fdfdfd" X="370" c="3" Y="190" T="12" P="0,0,0,0.2,0,0,0,0" /><S P="0,0,0,0.2,0,0,0,0" L="20" o="fdfdfd" X="430" c="3" Y="190" T="12" H="200" /><S P="0,0,0,0,0,0,0,0" L="800" o="fdfdfd" X="400" c="3" Y="90" T="12" H="20" /><S P="0,0,0,0.2,0,0,0,0" L="60" o="747474" X="30" c="3" Y="200" T="12" H="400" /><S P="0,0,0,0,0,0,0,0" L="80" o="fdfdfd" X="400" Y="245" T="12" H="80" /><S H="400" L="60" o="747474" X="770" c="3" Y="200" T="12" P="0,0,0,0.2,0,0,0,0" /><S P="0,0,0,0,0,0,0,0" L="40" o="a9a9a9" X="400" c="3" Y="352" T="12" H="56" /></S><D><DS Y="65" X="400" /><DC Y="190" X="400" /></D><O /></Z></C>'
 function showMessage(message,name)
 	temp_text=string.gsub(message,"<b>","")
 	temp_text=string.gsub(temp_text,"</b>","")
@@ -47,14 +47,15 @@ function eventNewGame()
 		if name:sub(1,1) == "*" then
 			tfm.exec.killPlayer(name)
 			tfm.exec.setPlayerScore(name,-10,true)
-			showMessage("<R>Souris cannot play this module. Create an account or log in to play True or False.",name)
+			showMessage("<R>Guest players cannot play this module. Create an account or log in to play True or False.",name)
 		end
 	end
 	questions.round=0
 end
 function eventNewPlayer(name)
 	tfm.exec.setPlayerScore(name,0,false)
-	ui.setMapName("<N>True or False - updated version by <ROSE><b>Malzahar#8178</b><")
+	ui.setBackGroundColor("#202020")
+	ui.setMapName("<VP>True or False")
 	showTrueFalse(name)
 end
 for name,player in next,tfm.get.room.playerList do
@@ -70,13 +71,13 @@ function reset()
 	tfm.exec.setGameTime(60)
 	current_mode="waiting"
 	for name,player in next,tfm.get.room.playerList do
-		tfm.exec.addImage("18756e48371.png","?2",0,-140,name,2,3)
+		ui.setBackGroundColor("#202020")
 		if tfm.get.room.playerList[name].isShaman then
 			tfm.exec.setPlayerScore(name,-1,false)
 		end
 		showTrueFalse(name)
 	end
-	ui.setMapName("<N>True or False - updated version by <ROSE><b>Malzahar#8178</b><")
+	ui.setMapName("<VP>True or False")
 end
 function isTrue()
 	showMessage("<VP>The answer is TRUE!")
@@ -123,7 +124,7 @@ function eventPopupAnswer(id,name,answer)
 			end
 			showMessage("<N>"..questions.question.."")
 			ui.addTextArea(0,"<font size='20'><p align='center'><font face='Segoe UI,Arial'>"..questions.question.."",nil,15,25,770,60,0x010101,0x520899,0.99,true)
-			for _,i in next,{"Malzahar#8178","Riven#1630","Globo_rural#6532","Skyymellu#0000","Aurelion_sol#9661"} do
+			for _,i in next,{"Dhanny_mheyran#6701","Lacoste#8972","Globo_rural#6532","Skyymellu#0000","Hwei#1027"} do
 				showMessage(questions.answer,i)
 			end
 		end
@@ -136,7 +137,7 @@ function eventPopupAnswer(id,name,answer)
 	end
 end
 function eventChatCommand(name,message)
-	if name == "Malzahar#8178" or name == "Riven#1630" or name == "Globo_rural#6532" or name == "Skyymellu#0000" or name == "Aurelion_sol#9661" then
+	if name == "Dhanny_mheyran#6701" or name == "Lacoste#8972" or name == "Globo_rural#6532" or name == "Skyymellu#0000" or name == "Hwei#1027" then
 		if message == "limits" then
 			ui.addPopup(0,2,"Type the limit of questions (min: 1, max: 15)",name,350,175,200,true)
 		end
