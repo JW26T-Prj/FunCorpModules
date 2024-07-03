@@ -54,7 +54,7 @@ function eventNewGame()
 end
 function eventNewPlayer(name)
 	tfm.exec.setPlayerScore(name,0,false)
-	ui.setBackGroundColor("#202020")
+	ui.setBackgroundColor("#202020")
 	ui.setMapName("<VP>True or False")
 	showTrueFalse(name)
 end
@@ -71,7 +71,7 @@ function reset()
 	tfm.exec.setGameTime(60)
 	current_mode="waiting"
 	for name,player in next,tfm.get.room.playerList do
-		ui.setBackGroundColor("#202020")
+		ui.setBackgroundColor("#202020")
 		if tfm.get.room.playerList[name].isShaman then
 			tfm.exec.setPlayerScore(name,-1,false)
 		end
