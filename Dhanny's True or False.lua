@@ -210,22 +210,28 @@ function eventLoop(time,remaining)
 	if remaining <= 1 and current_mode == "answer" then
 		if questions.answer == "yes" then
 			for name,player in next,tfm.get.room.playerList do
-				if player.x > 400 then
-					tfm.exec.killPlayer(name)
-				else
-					tfm.exec.movePlayer(name,400,65)
+				if not tfm.get.room.playerList[name].isShaman then
+					if player.x > 400 then
+						tfm.exec.killPlayer(name)
+					else
+						tfm.exec.movePlayer(name,400,65)
+					end
 				end
 			end
 		else
 			for name,player in next,tfm.get.room.playerList do
-				if player.x < 400 then
-					tfm.exec.killPlayer(name)
-				else
-					tfm.exec.movePlayer(name,400,65)
+				if not tfm.get.room.playerList[name].isShaman then
+					if player.x < 400 then
+						tfm.exec.killPlayer(name)
+					else
+						tfm.exec.movePlayer(name,400,65)
+					end
 				end
 			end
 		end
-		tfm.exec.removePhysicObject(2)
+		for i=2,3 do
+			tfm.exec.removePhysicObject(i)
+		end
 		current_mode="waiting"
 		tfm.exec.setGameTime(60)
 	end
