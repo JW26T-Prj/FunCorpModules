@@ -4,9 +4,9 @@ end
 for _,G in next,{"DebugCommand","AutoScore","AutoNewGame","AfkDeath","PhysicalConsumables","AllShamanSkills"} do
 	tfm.exec["disable"..G](true)
 end
-blue_ground={type = 12,width = 380,height = 100,foregound = 0,friction = 0.0,restitution = 0.0,angle = 0,color = 0x6C1EBC,miceCollision = true,groundCollision = false,dynamic = true, fixedRotation = true, mass = 999999}
-red_ground={type = 12,width = 380,height = 100,foregound = 0,friction = 0.0,restitution = 0.0,angle = 0,color = 0x6C1EBC,miceCollision = true,groundCollision = false,dynamic = true, fixedRotation = true, mass = 999999}
-center_ground={type = 12,width = 20,height = 300,foregound = 0,friction = 0.0,restitution = 0.0,angle = 0,color = 0x6C1EBC,miceCollision = true,groundCollision = true,dynamic = false}
+blue_ground={type = 12,width = 380,height = 100,foregound = 0,friction = 0.0,restitution = 0.0,angle = 0,color = 0xFFFFFF,miceCollision = true,groundCollision = false,dynamic = true, fixedRotation = true, mass = 999999}
+red_ground={type = 12,width = 380,height = 100,foregound = 0,friction = 0.0,restitution = 0.0,angle = 0,color = 0xFFFFFF,miceCollision = true,groundCollision = false,dynamic = true, fixedRotation = true, mass = 999999}
+center_ground={type = 12,width = 20,height = 300,foregound = 0,friction = 0.0,restitution = 0.0,angle = 0,color = 0xFFFFFF,miceCollision = true,groundCollision = true,dynamic = false}
 tfm.exec.setRoomMaxPlayers(35)
 limits={questions=10,time=7,mices_alive=0}
 questions={question="",answer="",round=0}
@@ -124,7 +124,7 @@ function eventPopupAnswer(id,name,answer)
 			end
 			showMessage("<N>"..questions.question.."")
 			ui.addTextArea(0,"<font size='20'><p align='center'><font face='Segoe UI,Arial'>"..questions.question.."",nil,15,25,770,60,0x010101,0x520899,0.99,true)
-			for _,i in next,{"Dhanny_mheyran#6701","Lacoste#8972","Globo_rural#6532","Skyymellu#0000","Hwei#1027"} do
+			for _,i in next,{"Dhanny_mheyran#6701","Lacoste#8972","Viego#0345","Skyymellu#0000","Hwei#1027"} do
 				showMessage(questions.answer,i)
 			end
 		end
@@ -137,7 +137,7 @@ function eventPopupAnswer(id,name,answer)
 	end
 end
 function eventChatCommand(name,message)
-	if name == "Dhanny_mheyran#6701" or name == "Lacoste#8972" or name == "Globo_rural#6532" or name == "Skyymellu#0000" or name == "Hwei#1027" then
+	if name == "Dhanny_mheyran#6701" or name == "Lacoste#8972" or name == "Viego#0345" or name == "Skyymellu#0000" or name == "Hwei#1027" then
 		if message == "limits" then
 			ui.addPopup(0,2,"Type the limit of questions (min: 1, max: 15)",name,350,175,200,true)
 		end
