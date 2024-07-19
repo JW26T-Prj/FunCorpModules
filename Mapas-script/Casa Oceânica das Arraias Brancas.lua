@@ -8,7 +8,6 @@ for i=0,13 do system.disableChatCommandDisplay(tostring(i)); end
 system.disableChatCommandDisplay("mode");
 for _,i in next,{"d1","d2","d3"} do system.disableChatCommandDisplay(i); end
 debug.disableEventLog(true)
-map_depth=1;
 
 xml=''; changed=false; night=0; a1={4505,265,2925,4066}; a2={1529,1493,1742,1862}; a3={3517,6260,1711,4423}; a4={1622,1551,1537,1864};
 b1={888,2520,3095,4692,6810}; c1={560,1378,2048,2802,3307,4555,5369,6004,6750}; d1={1024,1536,2560,3072,4608,5120,6656,7168};
@@ -47,15 +46,13 @@ function verifyNinjas(name)
 end
 
 function showWater(name)
-	y_factor=0
-	if map_depth == 1 then y_factor=700; elseif map_depth == 2 then y_factor=0; elseif map_depth == 3 then y_factor=-700; end
-	tfm.exec.addImage("189746c6144.png","!1",2840,2588-y_factor,name)
-	tfm.exec.addImage("189746f8a21.png","!1",6836,2679-y_factor,name)
-	for d=1,rawlen(c1) do tfm.exec.addImage("189746d76aa.png","?1",c1[d],2847-y_factor,name); end
-	for d=1,rawlen(d1) do tfm.exec.addImage("189746e4cb8.png","!-1",d1[d],2770-y_factor,name); end
+	tfm.exec.addImage("189746c6144.png","!1",2840,2588,name)
+	tfm.exec.addImage("189746f8a21.png","!1",6836,2679,name)
+	for d=1,rawlen(c1) do tfm.exec.addImage("189746d76aa.png","?1",c1[d],2847,name); end
+	for d=1,rawlen(d1) do tfm.exec.addImage("189746e4cb8.png","!-1",d1[d],2770,name); end
 	for d=1,rawlen(a2) do tfm.exec.addImage("18a053a43b9.png","?1",a1[d],a2[d],name,-1,1); end
 	for d=1,rawlen(a4) do tfm.exec.addImage("18a053a43b9.png","?1",a3[d],a4[d],name); end
-	for d=1,rawlen(b1) do tfm.exec.addImage("189746d10d2.png","!1",b1[d],2903-y_factor,name); end
+	for d=1,rawlen(b1) do tfm.exec.addImage("189746d10d2.png","!1",b1[d],2903,name); end
 	for _,i in next,{0,2,4} do
 		tfm.exec.addImage("189749dd379.png", "?1", -1200+(i*2000), 1295, name, 1, 0.8, 0, 1)
 		tfm.exec.addImage("189749dd379.png", "!-1", -1200+(i*2000), 1295, name, 1, 0.8, 0, 0.65)
@@ -68,10 +65,10 @@ function showWater(name)
 	tfm.exec.addImage("189749ce857.png", "!-1023", -1200, 1934, name, 8, 6, 0, 0.6)
 	tfm.exec.addImage("1897a80b341.png", "!-1023", -1200, 1834, name, 44, 1.2,0,0.75)
 	for i=0,6 do
-		tfm.exec.addImage("189746fe3a4.png", "!0", -1200+(i*2000), 2995-y_factor, name, 1, 1, 0, 1)
-		tfm.exec.addImage("189746fe3a4.png", "!0", -1200+(i*2000), 3720-y_factor, name, 1, -3, 0, 1)
+		tfm.exec.addImage("189746fe3a4.png", "!0", -1200+(i*2000), 2995, name, 1, 1, 0, 1)
+		tfm.exec.addImage("189746fe3a4.png", "!0", -1200+(i*2000), 3720, name, 1, -3, 0, 1)
 	end
-	for i=0,1 do tfm.exec.addImage("17be536e980.png","!1",-1200+(i*5200),2280-y_factor,name,1,1,0,0.75); end
+	for i=0,1 do tfm.exec.addImage("17be536e980.png","!1",-1200+(i*5200),2280,name,1,1,0,0.75); end
 	for i=1,2 do
 		tfm.exec.addImage("181ba85ccc2.png","!1",math.random(-50,2300),math.random(-50,630),name)
 		tfm.exec.addImage("181ba85ccc2.png","!1",math.random(5300,7500),math.random(-50,630),name)
@@ -97,15 +94,7 @@ end
 function resetMap()
 	if xml == '' then
 		tfm.exec.disableAutoShaman(true)
-		if map_depth == 1 then
-			tfm.exec.newGame("@7940458")
-		elseif map_depth == 2 then
-			tfm.exec.newGame("@7940307")
-		elseif map_depth == 3 then
-			tfm.exec.newGame("@7940460")
-		else
-			system.exit()
-		end
+		tfm.exec.newGame("@7956637")
 		ui.addTextArea(0,"",nil,-800,-400,2400,1200,0x6a7495,0x6a7495,1.0,true)
 		ui.setMapName("Carregando mapa. Por favor, aguarde...<")
 		changed=false
@@ -219,7 +208,7 @@ end
 function eventChatCommand(name,message)
 	if changed == true then
 		if message == "0" then
-		tfm.exec.setPlayerGravityScale(name,1)
+		tfm.exec.setPlayerGravityScale(name,0.9)
 		tfm.exec.killPlayer(name);
 	end
 	for i=1,13 do
@@ -290,7 +279,7 @@ function eventChatCommand(name,message)
 end
 
 function eventPlayerDied(name)
-	tfm.exec.setPlayerGravityScale(name,1)
+	tfm.exec.setPlayerGravityScale(name,0.9)
 	if changed == true then
 		tfm.exec.changePlayerSize(name,1)
 		tfm.exec.setPlayerCollision(name,1)
@@ -322,7 +311,6 @@ end
 function eventNewPlayer(name)
 	if changed == true then
 		tfm.exec.respawnPlayer(name)
-		tfm.exec.setPlayerGravityScale(name,1)
 		tfm.exec.changePlayerSize(name,1)
 		newData={
 			["s"]=0; ["id"]=-1; ["backId1"]=-1; ["backId2"]=-1; ["backId3"]={};
@@ -332,7 +320,7 @@ function eventNewPlayer(name)
 			system.bindKeyboard(name,i,true,true)
 		end
 		ui.setMapName("<N>Casa Oceânica das Arraias Brancas - <ROSE>Morgana's Mechanical Maps<")
-		showMessage("<VP><b>Bem-vindo(a) a Casa Oceânica das Arraias Brancas.</b><br><br><p align='left'><N>Este é um mapa-script cujo intuito é simular uma casa-resort de luxo no meio do oceano. Aproveite e curta!<br><br><ROSE><b>Mapa feito por Morganadxana#0000.</b><br><J>Agradecimentos especiais para <b>Lynet#8558, Shun_kazami#7014, Maramara4#0000, Lacoste#8972, Irelia#7317, Some#2636, Jeancrazzy#0000 e Bielzinnfx#3859.</b><br><br><N>Deseja usar este mapa-script no cafofo de sua tribo? Use o link a seguir:<br><N><VP>raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/Mapas-script/Casa%20Oceânica%20das%20Arraias%20Brancas.lua<br><br><N>Revisão 1.2<br><br<BL>Digite ! juntamente com um número de 0 a 13 (ex.: !1) para virar um animal marinho.",name)
+		showMessage("<VP><b>Bem-vindo(a) a Casa Oceânica das Arraias Brancas.</b><br><br><p align='left'><N>Este é um mapa-script cujo intuito é simular uma casa-resort de luxo no meio do oceano. Aproveite e curta!<br><br><ROSE><b>Mapa feito por Morganadxana#0000.</b><br><J>Agradecimentos especiais para <b>Lynet#8558, Shun_kazami#7014, Maramara4#0000, Lacoste#8972, Irelia#7317, Some#2636, Jeancrazzy#0000 e Bielzinnfx#3859.</b><br><br><N>Deseja usar este mapa-script no cafofo de sua tribo? Use o link a seguir:<br><N><VP>raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/Mapas-script/Casa%20Oceânica%20das%20Arraias%20Brancas.lua<br><br><N>Revisão 1.3<br><br<BL>Digite ! juntamente com um número de 0 a 13 (ex.: !1) para virar um animal marinho.",name)
 		ui.setBackgroundColor("#000000")
 		showWater(name)
 		showNPCs(name)
@@ -343,27 +331,6 @@ function eventNewPlayer(name)
 end
 
 function eventLoop(p,r)
-	if p >= 5500 and changed == true then
-		for name,_ in next,tfm.get.room.playerList do
-			if data[name] then
-				if data[name].s == 0 then
-					if tfm.get.room.playerList[name].y >= 1310 then
-						tfm.exec.setPlayerGravityScale(name,1-(tfm.get.room.playerList[name].y-1300)*0.00365)
-					else
-						tfm.exec.setPlayerGravityScale(name,1)
-					end
-				elseif data[name].s == 2 or data[name].s == 9 or data[name].s == 12 or data[name].s == 13 then
-					if tfm.get.room.playerList[name].y >= 1308 then
-						tfm.exec.setPlayerGravityScale(name,1-(tfm.get.room.playerList[name].y-1300)*0.007)
-					else
-						tfm.exec.setPlayerGravityScale(name,0.95)
-					end
-				else
-					tfm.exec.setPlayerGravityScale(name,1)
-				end
-			end
-		end
-	end
 	if p >= 5500 and changed == false then
 		resetMap()
 	end
