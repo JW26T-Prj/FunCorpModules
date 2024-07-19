@@ -204,6 +204,13 @@ function eventLoop(time,remaining)
 		else
 			isFalse()
 		end
+		for name,player in next,tfm.get.room.playerList do
+			if not tfm.get.room.playerList[name].isShaman then
+				if player.x >= 370 and player.x <= 430 then
+					tfm.exec.killPlayer(name)
+				end
+			end
+		end
 		tfm.exec.setGameTime(7)
 		current_mode="answer"
 	end
