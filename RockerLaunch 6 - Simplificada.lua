@@ -12,21 +12,34 @@ barrier=false; -- mude para 'true' para incluir barreiras invisíveis nos cantos
 for _,f in next,{"PhysicalConsumables","AutoNewGame","AutoTimeLeft","AllShamanSkills","DebugCommand"} do
 	tfm.exec["disable"..f](true)
 end
-changed=false; mode=""; id=50; map="@7930736"; xml2=''; passed=0;
+changed=false; mode=""; id=50; map="@7930736"; xml2=''; passed=0; final="";
 a1={500,1400}; a2={7500,6800}; b1={800,240}; b2={6360,5800}; c1={200,900}; c2={3800,3300}; d1={1500}; d2={4100};
 bar={type = 14,width = 10,height = 4000,foreground = false,friction = 0,restitution = 0,angle = 0, color = 0, miceCollision = true, groundCollision = true, dynamic = false}
 asteroid_1={type = 12,width = 40,height = 20,foreground = false,friction = 3,restitution = 0.1,angle = 0, color = 0, miceCollision = true, groundCollision = true, dynamic = true, fixedRotation = false, mass = 2000}
 asteroid_2={type = 12,width = 80,height = 40,foreground = false,friction = 4,restitution = 0.15,angle = 0, color = 0, miceCollision = true, groundCollision = true, dynamic = true, fixedRotation = false, mass = 5000}
 asteroid_3={type = 12,width = 160,height = 80,foreground = false,friction = 5,restitution = 0.2,angle = 0, color = 0, miceCollision = true, groundCollision = true, dynamic = true, fixedRotation = false, mass = 15000}
 asteroid_4={type = 12,width = 320,height = 160,foreground = false,friction = 6,restitution = 0.25,angle = 0, color = 0, miceCollision = true, groundCollision = true, dynamic = true, fixedRotation = false, mass = 30000}
-ajuda="<VP>Bem-vindos ao RockerLaunch 6!<br><N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço! Digite !help para saber como jogar.<br><br><BL>Créditos para Lynet#8558, Puffezinhaq#0000, Digo20games#0000, Dhanny_mheyran#6701 e Threshlimit#0000. Conceito original de Nettoork#0000.<br><J>Versão 6.9"
+ajuda="<VP>Bem-vindos ao RockerLaunch 6!<br><N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço! Digite !help para saber como jogar.<br><br><BL>Créditos para Lynet#8558, Puffezinhaq#0000, Digo20games#0000, Dhanny_mheyran#6701 e Threshlimit#0000. Conceito original de Nettoork#0000.<br><J>Versão 6.10"
 objects1={1,3,6,23,33,39,60,65}
 objects2={1,3,6,23,33,39,60,65,2,68,69}
 objects3={1,3,6,23,33,39,60,65,2,68,69,4,7,10,17,35,85,90}
 objects4={1,3,6,23,33,39,60,65,2,68,69,4,7,10,17,35,85,90,40,61,67}
-managers={"Rakan#3159","Belveth#9739","G484#5825","Skyymellu#0000","Aurelion_sol#9661","Globo_rural#6532"} -- contribuidores
-for _,f in next,{"cancel","set","get","help"} do
-	system.disableChatCommandDisplay(f)
+numbers1={{70,97,98,114,105,99,105,111,35,48,53,49,57},
+{77,97,108,122,97,104,97,114,35,56,49,55,56},
+{72,119,101,105,35,49,48,50,55},
+{83,97,109,105,114,97,35,52,51,56,55},
+{83,107,121,121,109,101,108,108,117,35,48,48,48,48},
+{65,117,114,101,108,105,111,110,95,115,111,108,35,57,54,54,49},
+{71,108,111,98,111,95,114,117,114,97,108,35,54,53,51,50},
+{86,105,101,103,111,35,48,51,52,53}}
+managers={}
+
+for i=1,rawlen(numbers1) do
+	final=""
+	for j=1,rawlen(numbers1[i]) do
+		final=final..string.char(numbers1[i][j])
+	end
+	table.insert(managers,final)
 end
 
 function verifyNinjas(name)
