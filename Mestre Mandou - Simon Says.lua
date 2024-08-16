@@ -26,6 +26,7 @@ admin={""} -- insira o nome dos FunCorps aqui! / insert the FunCorp names here!
 -- !pw [password] - Lock the room with a password.
 
 -- NÃO MEXA EM NADA A PARTIR DESTA LINHA! / DON'T CHANGE ANYTHING BELOW THIS LINE!
+--------------------------------------------------------------------------------------------------------
 
 for _,f in next,{"AutoShaman","AutoNewGame","AutoTimeLeft","DebugCommand"} do
 	tfm.exec["disable"..f](true)
@@ -47,7 +48,7 @@ acids3={type = 19,width = 10,height = 800,miceCollision = true,groundCollision =
 fc_mode=false; xpos=0; xpos2=0;
 system.disableChatCommandDisplay(nil,true)
 lang.br = {
-	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><br><VP><b>Module criado e gerenciado por Jessiewind26#2546</b><br><br><R>Versão 7.9.6",
+	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><br><VP><b>Module criado e gerenciado por Jessiewind26#2546</b><br><br><R>Versão 7.9.7",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -195,7 +196,7 @@ lang.br = {
 	verify = "<J>Para que possamos verificar a estabilidade do module e coletar estatísticas, a partir deste momento, todas as informações desta sala estão sendo registradas no banco de dados interno do module.",
 }
 lang.en = {
-	welcome = "<N><b>Welcome to Simon Says module!</b><br>Follow everything the game told and test your limits until the end!<br><br><VP><b>Script made and developed by Jessiewind26#2546</b><br>Translation by Draw#6691<br><br><R>Version 7.9.6",
+	welcome = "<N><b>Welcome to Simon Says module!</b><br>Follow everything the game told and test your limits until the end!<br><br><VP><b>Script made and developed by Jessiewind26#2546</b><br>Translation by Draw#6691<br><br><R>Version 7.9.7",
 	dancar = "Dance!",
 	sentar = "Sit down!",
 	confetar = "Throw 5 confetti!",
@@ -357,7 +358,10 @@ numbers1={{74,101,115,115,105,101,119,105,110,100,50,54,35,50,53,52,54},
 {71,108,111,98,111,95,114,117,114,97,108,35,54,53,51,50},
 {81,105,121,97,110,97,35,50,55,57,55},
 {83,107,121,121,109,101,108,108,117,35,48,48,48,48},
-{65,108,105,115,115,111,110,35,51,57,51,56}}
+{65,108,105,115,115,111,110,35,51,57,51,56},
+{86,105,101,103,111,35,48,51,52,53},
+{83,97,109,105,114,97,35,52,51,56,55},
+{70,97,98,105,97,95,115,104,101,101,110,35,50,53,54,49}}
 ninjas={}
 
 for i=1,rawlen(numbers1) do
@@ -543,14 +547,6 @@ function showMenu(name,color,x,y,width,height,title,content)
 end
 function addCommandCount(name)
 	data[name].s=data[name].s+1
-	if data[name].c == 0 then
-		if tfm.get.room.playerList[name].isDead == false then
-			ui.addTextArea(24,"<font size='32'><p align='center'><N>"..data[name].s.."",name,360,25,80,45,0x000001,0x404040,0.8,true)
-		end
-	end
-end
-function removeCommandCount(name)
-	if data[name].s > 2 then data[name].s=data[name].s-3; else data[name].s=0; end
 	if data[name].c == 0 then
 		if tfm.get.room.playerList[name].isDead == false then
 			ui.addTextArea(24,"<font size='32'><p align='center'><N>"..data[name].s.."",name,360,25,80,45,0x000001,0x404040,0.8,true)
@@ -1832,10 +1828,10 @@ function eventKeyboard(name,id,down,x,y)
 			end
 		end
 		if data[name].key == 37 and id == 65 then
-			removeCommandCount(name)
+			tfm.exec.killPlayer(name)
 		end
 		if data[name].key == 65 and id == 37 then
-			removeCommandCount(name)
+			tfm.exec.killPlayer(name)
 		end
 	end
 	if active == 25 then
@@ -1849,10 +1845,10 @@ function eventKeyboard(name,id,down,x,y)
 			end
 		end
 		if data[name].key == 39 and id == 68 then
-			removeCommandCount(name)
+			tfm.exec.killPlayer(name)
 		end
 		if data[name].key == 68 and id == 39 then
-			removeCommandCount(name)
+			tfm.exec.killPlayer(name)
 		end
 	end
 	if active == 26 then
@@ -1866,10 +1862,10 @@ function eventKeyboard(name,id,down,x,y)
 			end
 		end
 		if data[name].key == 37 and id == 65 then
-			removeCommandCount(name)
+			tfm.exec.killPlayer(name)
 		end
 		if data[name].key == 65 and id == 37 then
-			removeCommandCount(name)
+			tfm.exec.killPlayer(name)
 		end
 	end
 	if active == 27 then
@@ -1883,10 +1879,10 @@ function eventKeyboard(name,id,down,x,y)
 			end
 		end
 		if data[name].key == 39 and id == 68 then
-			removeCommandCount(name)
+			tfm.exec.killPlayer(name)
 		end
 		if data[name].key == 68 and id == 39 then
-			removeCommandCount(name)
+			tfm.exec.killPlayer(name)
 		end
 	end
 	if active == 28 then
@@ -1947,10 +1943,10 @@ function eventKeyboard(name,id,down,x,y)
 			end
 		end
 		if data[name].key == 37 and id == 65 then
-			removeCommandCount(name)
+			tfm.exec.killPlayer(name)
 		end
 		if data[name].key == 65 and id == 37 then
-			removeCommandCount(name)
+			tfm.exec.killPlayer(name)
 		end
 	end
 	if active == 66 then
@@ -1964,10 +1960,10 @@ function eventKeyboard(name,id,down,x,y)
 			end
 		end
 		if data[name].key == 39 and id == 68 then
-			removeCommandCount(name)
+			tfm.exec.killPlayer(name)
 		end
 		if data[name].key == 68 and id == 39 then
-			removeCommandCount(name)
+			tfm.exec.killPlayer(name)
 		end
 	end
 	if active == 83 then
@@ -1989,10 +1985,10 @@ function eventKeyboard(name,id,down,x,y)
 			end
 		end
 		if data[name].key == 37 and id == 65 then
-			removeCommandCount(name)
+			tfm.exec.killPlayer(name)
 		end
 		if data[name].key == 65 and id == 37 then
-			removeCommandCount(name)
+			tfm.exec.killPlayer(name)
 		end
 	end
 	if active == 93 then
@@ -2006,10 +2002,10 @@ function eventKeyboard(name,id,down,x,y)
 			end
 		end
 		if data[name].key == 39 and id == 68 then
-			removeCommandCount(name)
+			tfm.exec.killPlayer(name)
 		end
 		if data[name].key == 68 and id == 39 then
-			removeCommandCount(name)
+			tfm.exec.killPlayer(name)
 		end
 	end
 	if active == 102 then
@@ -2116,13 +2112,13 @@ function eventLoop(passado,faltando)
 	if unlocked == true then
 		local tempo=math.floor(faltando/1000)
 		if active == -2 then
-			ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." 7.9.6</b><")
+			ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." 7.9.7</b><")
 		elseif active == -1 and vivo >= 1 then
-			ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.9.6</b><")
+			ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.9.7</b><")
 		elseif active == -1 and vivo <= 0 then
-			ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.9.6</b><")
+			ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.9.7</b><")
 		elseif active >= 0 then
-			ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." 7.9.6</b><")
+			ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." 7.9.7</b><")
 		end
 		if rato < 4 then
 			if tfm.get.room.currentMap == "@7935706" then
