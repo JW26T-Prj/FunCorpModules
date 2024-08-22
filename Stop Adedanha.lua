@@ -1,5 +1,5 @@
 -- STOP
--- Escrito por Ninguem - 31/08/2015 // Atualizado por Akwimos#1937 e Leblanc#5342 - 21/08/2024
+-- Escrito por Ninguem - 31/08/2015 // Atualizado por Akwimos#1937 e Leblanc#5342 - 22/08/2024
 -- Mínimo de 5 temas e máximo de 20 temas.
 -- Para bloquear um jogador, digite !kick [nome#tag]. Digite o mesmo comando para desbloqueá-lo caso o mesmo já esteja bloqueado.
 
@@ -13,7 +13,7 @@ MAXROUND = 5 -- Número máximo de rounds
 -- NÃO MEXA EM NADA A PARTIR DESTA LINHA!
 ----------------------------------------------------------------------------------------------------
 
-CAT = {"Nome","Animal","Objeto","Cor","Marca","TV/Filme/Anime/Desenho","Parte do Corpo","Ator/Cantor/Celebridade","Comida/Bebida","País/Cidade/Estado","Apelido de Garçom","Profissão","O(A) "..ADM[1].." é...","Qualquer Coisa"}
+CAT = {"Nome","Animal","Objeto","Cor","Marca","TV/Filme/Anime/Desenho","Parte do Corpo","Ator/Cantor/Celebridade","Comida/Bebida","País/Cidade/Estado","Apelido de Garçom","Profissão","O Tigrounette é..."}
 
 ID = {cat=1,camada=2,add=3,msg=4,tempo=5,stop=6}
 PLAYER = {};
@@ -24,8 +24,9 @@ PALAVRA = 1
 TEMPO = false
 LETRA = ""
 MAPA = "@7958330"
+BAR_TEXT = "<b>STOP!</b> <N>Script editado por Akwimos#1937 e Leblanc#5342 - 22/08/2024<"
 data = {};
-final = "";
+final = ""
 numbers={{71,108,111,98,111,95,114,117,114,97,108,35,54,53,51,50},
 {83,107,121,121,109,101,108,108,117,35,48,48,48,48},
 {86,105,101,103,111,35,48,51,52,53},
@@ -123,13 +124,13 @@ function stripChars(str)
 end
 
 function atualizaCat(first)
-	local txt = "<p align='center'><font size='14px'>Selecione as categorias.</font></p>\n\n"
+	local txt = "<p align='center'><font size='14px'>Selecione as categorias.</font></p>"
 	for i, v in pairs(CAT) do
 		txt = txt .. string.format("<j>"..i.." - %s <r><a href='event:del %s'>[remover]</a>\n", v, v)
 	end
 	txt = txt .. "<vp>- <a href='event:add'>Adicionar</a>\n\n<rose><p align='center'><font size='16px'><a href='event:start'>Começar</a></p></font>"
 	for i, v in pairs(ADM) do
-		ui.addTextArea(ID.cat, txt, v, 250, 30, 300, 360, 1, 1, 0.9, true)
+		ui.addTextArea(ID.cat, txt, v, 250, 42, 300, 330, 1, 0xFFCB2F, 0.85, true)
 	end
 end
 
@@ -144,7 +145,7 @@ function atualizaPlayer()
 	if cont == total + 15 then
 		TEMPO = os.time()+5000
 	end
-	ui.addTextArea(ID.cat, txt, nil, 300, 25, 200, 20, 1, 1, 0.9, true)
+	ui.addTextArea(ID.cat, txt, nil, 300, 25, 200, 20, 1, 1, 0.85, true)
 end
 
 function split(txt)
@@ -213,13 +214,13 @@ function atualizaPalavras(p)
 	if data[p].banned == false then
 		local cont = 0
 		for i, v in pairs(CAT) do
-			ui.addTextArea(i+1000, string.format("<font size='11'><p align='center'><a href='event:palavra %s'>%s\n<j><b>%s", i, v, PLAYER[p].palavra[v]), p, ((i-1)%5)*160+5, math.floor((i-1)/5)*62+120, 150, 57, 1, 1, 0.9, true)
+			ui.addTextArea(i+1000, string.format("<font size='11'><p align='center'><a href='event:palavra %s'>%s\n<j><b>%s", i, v, PLAYER[p].palavra[v]), p, ((i-1)%5)*160+5, math.floor((i-1)/5)*62+120, 150, 57, 1, 0xFFCB2F, 0.85, true)
 			if PLAYER[p].palavra[v] ~= "" then
 				cont = cont + 1
 			end
 		end
 		if cont == #CAT then
-			ui.addTextArea(ID.stop, "<p align='center'>Você foi muito rápido! Tempo para pedir stop: <r>" .. math.floor((TEMPO - os.time())/1000), p, 5, 375, 790, 20, 1, 1, 0.9, true)
+			ui.addTextArea(ID.stop, "<p align='center'>Você foi muito rápido! Tempo para pedir stop: <r>" .. math.floor((TEMPO - os.time())/1000), p, 5, 375, 790, 20, 1, 0xFFCB2F, 0.85, true)
 		end
 	end
 end
@@ -227,7 +228,7 @@ end
 function atualizaSeleciona(p)
 	if data[p].banned == false then
 		for i, v in ipairs(ESCOLHA) do
-			ui.addTextArea(i+1000, string.format("<p align='center'><a href='event:escolha %d'><%s>%s", i, PLAYER[p].escolha[i] and "vp" or "r", v.p), p, ((i-1)%5)*160+5, math.floor((i-1)/5)*40+130, 150, 30, 1, 1, 0.9, true)
+			ui.addTextArea(i+1000, string.format("<p align='center'><a href='event:escolha %d'><%s>%s", i, PLAYER[p].escolha[i] and "vp" or "r", v.p), p, ((i-1)%5)*160+5, math.floor((i-1)/5)*40+130, 150, 30, 1, 0xFFCB2F, 0.85, true)
 		end
 	end
 end
@@ -267,9 +268,9 @@ function selecionaPalavra()
 			end
 		end
 	end
-	ui.addTextArea(ID.cat, "<p align='center'><font size='30px'>" .. CAT[PALAVRA] .. " com " .. LETRA, nil, 5, 80, 790, 40, 1, 1, 0.9, true)
+	ui.addTextArea(ID.cat, "<p align='center'><font size='30px'>" .. CAT[PALAVRA] .. " com " .. LETRA, nil, 5, 80, 790, 40, 1, 0xFFCB2F, 0.85, true)
 	TEMPO = os.time() + 15000+(1500*#ESCOLHA)
-	ui.addTextArea(ID.tempo, "<r><p align='center'><font size='25px'>--</font></p>", nil, 755, 358, 40, 40, 1, 1, 0.9, true)
+	ui.addTextArea(ID.tempo, "<r><p align='center'><font size='25px'>--</font></p>", nil, 755, 358, 40, 40, 1, 0xFFCB2F, 0.85, true)
 end
 
 function stop(p)
@@ -287,7 +288,7 @@ function stop(p)
 		end
 		MODO = "fim"
 		PALAVRA = 1
-		ui.addTextArea(ID.msg, "<p align='center'>Clique nas palavras ERRADAS e marque de <r>vermelho <n>para anular seus pontos.", nil, 5, 50, 790, 20, 1, 1, 0.9, true)
+		ui.addTextArea(ID.msg, "<p align='center'>Clique nas palavras ERRADAS e marque de <r>vermelho <n>para anular seus pontos.", nil, 5, 50, 790, 20, 1, 0xFFCB2F, 0.85, true)
 		ESCOLHA = {}
 		selecionaPalavra()
 		for i, v in pairs(PLAYER) do
@@ -335,10 +336,10 @@ function eventTextAreaCallback(id, p, cmd)
 				TEMPO = os.time()+15000
 				zeraTudo(true, true)
 				atualizaPlayer(true)
-				ui.addTextArea(ID.tempo, "<r><p align='center'><font size='25px'>--</font></p>", nil, 755, 358, 40, 40, 1, 1, 0.9, true)
-				ui.addTextArea(ID.msg, "<r><p align='center'>Escolha um número</p>", nil, 150, 320, 490, 20, 1, 1, 0.9, true)
+				ui.addTextArea(ID.tempo, "<r><p align='center'><font size='25px'>--</font></p>", nil, 755, 358, 40, 40, 1, 0xFFCB2F, 0.85, true)
+				ui.addTextArea(ID.msg, "<r><p align='center'>Escolha um número</p>", nil, 150, 320, 490, 20, 1, 0xFFCB2F, 0.85, true)
 				for i=1, 10 do
-					ui.addTextArea(i+30, string.format("<p align='center'><font size='28px'><a href='event:num %d'>%d", i, i), nil, 150+((i-1)*50), 350, 40, 40, 1, 1, 0.9, true)
+					ui.addTextArea(i+30, string.format("<p align='center'><font size='28px'><a href='event:num %d'>%d", i, i), nil, 150+((i-1)*50), 350, 40, 40, 1, 0xFFCB2F, 0.85, true)
 				end
 			else
 				showMessage("<R>São necessários no mínimo 5 temas para o jogo ser iniciado",p)
@@ -358,7 +359,7 @@ function eventTextAreaCallback(id, p, cmd)
 			if data[p].banned == false then
 				PLAYER[p].escolha[tonumber(arg[2],10)] = PLAYER[p].escolha and not PLAYER[p].escolha[tonumber(arg[2],10)] or false
 				if PLAYER[p].escolha then
-					ui.addTextArea(tonumber(arg[2],10)+1000, string.format("<p align='center'><a href='event:escolha %d'><%s>%s", tonumber(arg[2],10), PLAYER[p].escolha and PLAYER[p].escolha[tonumber(arg[2],10)] and "vp" or "r", ESCOLHA[tonumber(arg[2],10)] and ESCOLHA[tonumber(arg[2],10)].p or ""), p, ((tonumber(arg[2],10)-1)%5)*160+5, math.floor((tonumber(arg[2],10)-1)/5)*40+130, 150, 30, 1, 1, 0.9, true)
+					ui.addTextArea(tonumber(arg[2],10)+1000, string.format("<p align='center'><a href='event:escolha %d'><%s>%s", tonumber(arg[2],10), PLAYER[p].escolha and PLAYER[p].escolha[tonumber(arg[2],10)] and "vp" or "r", ESCOLHA[tonumber(arg[2],10)] and ESCOLHA[tonumber(arg[2],10)].p or ""), p, ((tonumber(arg[2],10)-1)%5)*160+5, math.floor((tonumber(arg[2],10)-1)/5)*40+130, 150, 30, 1, 0xFFCB2F, 0.85, true)
 				end
 			end
 		end
@@ -376,7 +377,7 @@ end
 function eventPopupAnswer(id, p, resp)
 	if id == ID.add and resp ~= "" and MODO == "inicio" then
 		if not buscaItem(CAT, resp) then
-			if rawlen(CAT) > 20 then
+			if rawlen(CAT) >= 20 then
 				showMessage("<R>Limite máximo de 20 temas atingido!",p)
 			else
 				table.insert(CAT, resp)
@@ -394,7 +395,7 @@ function eventPopupAnswer(id, p, resp)
 end
 
 function eventNewPlayer(p)
-	ui.setMapName("<b>STOP!</b> <N>Script editado por Akwimos#1937 e Leblanc#5342 - 21/08/2024<")
+	ui.setMapName(BAR_TEXT)
 	PLAYER[p] = {num = 0, pontos = 0, vitoria = 0, palavra = {}, banido = false}
 	for i, v in pairs(CAT) do
 		PLAYER[p].palavra[v] = ""
@@ -447,7 +448,7 @@ function eventLoop(current, remaining)
 			end
 			txt = txt .. "\n<p align='center'><rose>Soma: " .. cont
 			LETRA = string.char(cont%26 == 0 and 90 or cont%26+64)
-			ui.addTextArea(ID.cat, txt, nil, 300, 25, 200, 285, 1, 1, 0.9, true)
+			ui.addTextArea(ID.cat, txt, nil, 300, 25, 200, 285, 1, 1, 0.85, true)
 			ui.removeTextArea(ID.tempo)
 			TEMPO = os.time()+10000
 			for i=1, 10 do
@@ -460,7 +461,7 @@ function eventLoop(current, remaining)
 			MODO = "round"
 			TEMPO = os.time()+45000+(2500*#CAT)
 			ui.removeTextArea(ID.cat, nil)
-			ui.addTextArea(ID.cat, string.format("<p align='center'>A letra é:\n<font size='50px'><rose>%s</rose></font></p>", LETRA), nil, 300, 30, 200, 80, 1, 1, 0.9, true)
+			ui.addTextArea(ID.cat, string.format("<p align='center'>A letra é:\n<font size='50px'><rose>%s</rose></font></p>", LETRA), nil, 300, 30, 200, 80, 1, 0xFFCB2F, 0.85, true)
 			for i, v in pairs(PLAYER) do
 				atualizaPalavras(i)
 			end
@@ -518,10 +519,10 @@ function eventLoop(current, remaining)
 				if ROUND >= 2 then
 					showMessage("<VP>Todas as pontuações podem ser vistas na lista de jogadores da sala!")
 				end
-				ui.addTextArea(ID.tempo, "<r><p align='center'><font size='25px'>--</font></p>", nil, 755, 358, 40, 40, 1, 1, 0.9, true)
-				ui.addTextArea(ID.msg, "<r><p align='center'>Escolha um número</p>", nil, 150, 320, 490, 20, 1, 1, 0.9, true)
+				ui.addTextArea(ID.tempo, "<r><p align='center'><font size='25px'>--</font></p>", nil, 755, 358, 40, 40, 1, 0xFFCB2F, 0.85, true)
+				ui.addTextArea(ID.msg, "<r><p align='center'>Escolha um número</p>", nil, 150, 320, 490, 20, 1, 0xFFCB2F, 0.85, true)
 				for i=1, 10 do
-					ui.addTextArea(i+30, string.format("<p align='center'><font size='28px'><a href='event:num %d'>%d", i, i), nil, 150+((i-1)*50), 350, 40, 40, 1, 1, 0.9, true)
+					ui.addTextArea(i+30, string.format("<p align='center'><font size='28px'><a href='event:num %d'>%d", i, i), nil, 150+((i-1)*50), 350, 40, 40, 1, 0xFFCB2F, 0.85, true)
 				end
 				for i, v in pairs(ESCOLHA) do
 					ui.removeTextArea(i+1000, nil)
@@ -559,9 +560,9 @@ function eventLoop(current, remaining)
 			ROUND = 1
 			zeraTudo(false, true)
 			atualizaPlayer(true)
-			ui.addTextArea(ID.msg, "<r><p align='center'>Escolha um número</p>", nil, 150, 320, 490, 20, 1, 1, 0.9, true)
+			ui.addTextArea(ID.msg, "<r><p align='center'>Escolha um número</p>", nil, 150, 320, 490, 20, 1, 0xFFCB2F, 0.85, true)
 			for i=1, 10 do
-				ui.addTextArea(i+30, string.format("<p align='center'><font size='28px'><a href='event:num %d'>%d", i, i), nil, 150+((i-1)*50), 350, 40, 40, 1, 1, 0.9, true)
+				ui.addTextArea(i+30, string.format("<p align='center'><font size='28px'><a href='event:num %d'>%d", i, i), nil, 150+((i-1)*50), 350, 40, 40, 1, 0xFFCB2F, 0.85, true)
 			end
 		end
 	end
@@ -573,5 +574,5 @@ tfm.exec.disableAutoScore(true)
 tfm.exec.disableAutoNewGame(true)
 if tfm.get.room.isTribeHouse == false then tfm.exec.setRoomMaxPlayers(35) end
 carregaMapa()
-ui.setMapName("<b>STOP!</b> <N>Script editado por Akwimos#1937 e Leblanc#5342 - 21/08/2024<")
+ui.setMapName(BAR_TEXT)
 atualizaCat(true)
