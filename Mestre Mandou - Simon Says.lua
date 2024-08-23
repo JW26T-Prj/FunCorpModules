@@ -31,8 +31,8 @@ admin={""} -- insira o nome dos FunCorps aqui! / insert the FunCorp names here!
 for _,f in next,{"AutoShaman","AutoNewGame","AutoTimeLeft","DebugCommand"} do
 	tfm.exec["disable"..f](true)
 end
-mapas={"@6788174","@6788154","@6788715","@6788728","@6789271","@6790527","@6791838","@6789356","@6822331","@7290275","@7686598","@7750148","@7688066","@6788183","@6784965","@6789235","@6789853","@6790385","@6791944","@6801706","@6792470","@6806109","@6821950","@6866406","@6866437","@6885971","@5328362","@5957905","@7055459","@7214363","@6792516","@6825340","@6788693","@6789272","@6799996","@6803018","@6859175","@6907177","@7404327","@7382263","@6885799","@6790912","@6833993","@7721192","@7309605","@6788861","@6789249","@6790484","@7921432","@6794050","@6830799","@6866549","@6834529","@6876563","@6888512","@6893463","@7431981","@7146925","@6937148","@6356881","@6789280","@6790895","@6799997","@6789324","@6803128","@6900149","@3832586","@6791871","@6811934","@6876638","@6892608","@6982387","@7404106","@7405103","@7400694","@7400678","@7412412","@7412422","@7755685","@6843950","@6810292","@3110915","@6789263","@7354947","@7201360","@6897042","@5549586","@6809461","@7242361","@7697974","@1966987","@7224471","@6932585","@6920982","@7863458","@7897912","@7899697","@7910742","@7236120","@2802178","@7913565","@5549355","@7230453","@7188655","@6481798","@7938319","@6810588","@7904062","@7216097","@7951509","@7368748","@7737497"}
-active=-2; vivo=0; rato=0; dificuldade=1; rodadas=0; rodada=0; number=""; count=0; xpos=0; pid=-1; ypos=0; data={}; grounds={}; images={}; lang={}; alives={}; final=""; tempo=10; counter=0; q=""; a=""; qtime=10; creator=""; sd_vivo=0; unlocked=true;
+mapas={"@6788174","@6788154","@6788715","@6788728","@6789271","@6790527","@6791838","@6789356","@6822331","@7290275","@7686598","@7750148","@7688066","@6788183","@6784965","@6789235","@6789853","@6790385","@6791944","@6801706","@6792470","@6806109","@6821950","@6866406","@6866437","@6885971","@5328362","@5957905","@7055459","@7214363","@6792516","@6825340","@6788693","@6789272","@6799996","@6803018","@6859175","@6907177","@7404327","@7382263","@6885799","@6790912","@6833993","@7721192","@7309605","@6788861","@6789249","@6790484","@7921432","@6794050","@6830799","@6866549","@6834529","@6876563","@6888512","@6893463","@7431981","@7146925","@6937148","@6356881","@6789280","@6790895","@6799997","@6789324","@6803128","@6900149","@3832586","@1468299","@6791871","@6811934","@6876638","@6892608","@6982387","@7404106","@7405103","@7400694","@7400678","@7412412","@7412422","@7755685","@6843950","@6810292","@3110915","@6789263","@7354947","@7201360","@6897042","@5549586","@6809461","@7242361","@7697974","@1966987","@7224471","@6932585","@6920982","@7863458","@7897912","@7899697","@7910742","@7236120","@2802178","@7913565","@5549355","@7230453","@7188655","@6481798","@7938319","@6810588","@7904062","@7216097","@7951509","@7368748","@7737497","@7950420"}
+active=-2; vivo=0; rato=0; dificuldade=1; rodadas=0; rodada=0; number=""; count=0; xpos=0; pid=-1; ypos=0; data={}; grounds={}; images={}; lang={}; alives={}; final=""; tempo=10; counter=0; q=""; a=""; qtime=10; creator=""; sd_vivo=0; lobby_map="@7935706"; unlocked=true;
 fc_cmds={1,2,4,5,6,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,28,30,31,32,33,34,35,36,40,41,43,45,46,47,48,49,50,51,53,56,57,58,59,61,62,65,66,67,69,71,75,76,77,78,80,81,82,83,84,85,86,87,88,89,91,92,93,94,95,96,97,99,100,101,102,104,105,106,108,109,110,111,112,113,114,115,116,117,118,119,120,122,123,124,126,127,128,130,132}
 spiderweb={type = 15,width = 60,height = 60}
 cobweb={type = 15,width = 2400,height = 1200,miceCollision = false,groundCollision = false}
@@ -48,7 +48,7 @@ acids3={type = 19,width = 10,height = 800,miceCollision = true,groundCollision =
 fc_mode=false; xpos=0; xpos2=0;
 system.disableChatCommandDisplay(nil,true)
 lang.br = {
-	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><br><VP><b>Module criado e gerenciado por Jessiewind26#2546</b><br><br><R>Versão 7.9.7",
+	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><br><VP><b>Module criado e gerenciado por Jessiewind26#2546</b><br><br><R>Versão 7.9.8",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -196,7 +196,7 @@ lang.br = {
 	verify = "<J>Para que possamos verificar a estabilidade do module e coletar estatísticas, a partir deste momento, todas as informações desta sala estão sendo registradas no banco de dados interno do module.",
 }
 lang.en = {
-	welcome = "<N><b>Welcome to Simon Says module!</b><br>Follow everything the game told and test your limits until the end!<br><br><VP><b>Script made and developed by Jessiewind26#2546</b><br>Translation by Draw#6691<br><br><R>Version 7.9.7",
+	welcome = "<N><b>Welcome to Simon Says module!</b><br>Follow everything the game told and test your limits until the end!<br><br><VP><b>Script made and developed by Jessiewind26#2546</b><br>Translation by Draw#6691<br><br><R>Version 7.9.8",
 	dancar = "Dance!",
 	sentar = "Sit down!",
 	confetar = "Throw 5 confetti!",
@@ -240,7 +240,7 @@ lang.en = {
 	action1 = "Dance, sit and sleep!",
 	laugh = "Laugh now!",
 	laugh2 = "Who laughs now dies.",
-	stone = "Watch out the rock!",
+	stone = "Watch out the rocks!",
 	noob = "Type: I AM A NOOB",
 	action2 = "Cry and then laugh!",
 	jump = "Jump!",
@@ -258,7 +258,7 @@ lang.en = {
 	mestre = "Simon Says",
 	map = "Map",
 	time = "Time",
-	mice = "Mouses",
+	mice = "Mice",
 	round = "Round",
 	help = "Help",
 	hcontent = "The objective of this module is very simple:<br><b>Follow everything that the game says and test your limits to the maximum!</b><br><br>Take care, because some commands can surprise you and kill your mice, so, you have to be very smart!<br><br><BL>Module made and developed by Jessiewind26#2546",
@@ -620,6 +620,7 @@ function eventChatCommand(name,message)
 end
 function showCommand(id,text)
 	ui.addTextArea(0,"<font face='Cascadia Code,Consolas,Lucida Console'><font color='#ffffff'><font size='17'><p align='center'>"..text.."",nil,3,367,794,28,0x121213,0x686A69,1,true)
+	showMessage("<p align='center'><N>-= "..text.." =-</p>")
 end
 function whiteSquare(x)
 	ui.addTextArea(1,"",nil,x,320,80,65,0xffffff,0xffffff,0.68,false)
@@ -1292,7 +1293,7 @@ function getCommand()
 	end
 	if active == 120 then
 		showCommand(active,text.portal)
-		tfm.exec.setGameTime(16)
+		tfm.exec.setGameTime(22)
 		setAllAlive()
 		table.insert(grounds,tfm.exec.addShamanObject(2700, 400, -4054))
 	end
@@ -2112,28 +2113,28 @@ function eventLoop(passado,faltando)
 	if unlocked == true then
 		local tempo=math.floor(faltando/1000)
 		if active == -2 then
-			ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." 7.9.7</b><")
+			ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." 7.9.8</b><")
 		elseif active == -1 and vivo >= 1 then
-			ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.9.7</b><")
+			ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.9.8</b><")
 		elseif active == -1 and vivo <= 0 then
-			ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.9.7</b><")
+			ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.9.8</b><")
 		elseif active >= 0 then
-			ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." 7.9.7</b><")
+			ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." 7.9.8</b><")
 		end
 		if rato < 4 then
-			if tfm.get.room.currentMap == "@7935706" then
+			if tfm.get.room.currentMap == lobby_map then
 				active=-2
 				tfm.exec.setGameTime(8000)
 			else
 				if passado > 5000 then
-					tfm.exec.newGame("@7935706")
+					tfm.exec.newGame(lobby_map)
 					tfm.exec.setGameTime(8000)
 					showMessage("<R>"..text.mices.."",nil)
 				end
 			end
 		end
 		if rato >= 4 and passado >= 15000 then
-			if tfm.get.room.currentMap == "@7935706" then
+			if tfm.get.room.currentMap == lobby_map then
 				tfm.exec.newGame(mapas[math.random(#mapas)],nil)
 			end
 		end
@@ -2176,7 +2177,7 @@ function eventLoop(passado,faltando)
 		end
 		if active == 116 and tempo <= 15 and tempo >= 9 then
 			count=count+1
-			table.insert(grounds,tfm.exec.addPhysicObject(count, 0, 405-count*10, upacid))
+			table.insert(grounds,tfm.exec.addPhysicObject(count, 800, 405-count*10, upacid))
 		end
 		if active == 120 and tempo % 2 == 0 and tempo >= 2 then
 			tfm.exec.removeObject(pid)
@@ -2350,7 +2351,7 @@ function eventLoop(passado,faltando)
 				tfm.exec.removeBonus(i)
 			end
 			active=0
-			if rodada == 6 or rodada == 8 or rodada == 10 or rodada == 12 or rodada == 14 or rodada == 16 then
+			if rodada == 3 or rodada == 6 or rodada == 9 or rodada == 12 or rodada == 15 or rodada == 18 then
 				dificuldade=dificuldade+1
 			end
 			for name,player in next,tfm.get.room.playerList do
@@ -2375,7 +2376,7 @@ function eventLoop(passado,faltando)
 		end
 	end
 end
-tfm.exec.newGame("@7935706")
+tfm.exec.newGame(lobby_map)
 for name,player in next,tfm.get.room.playerList do
 	eventNewPlayer(name)
 end
