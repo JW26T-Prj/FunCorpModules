@@ -18,10 +18,10 @@ function showMessage(message,name)
 	end
 end
 function updateBar()
-	ui.setMapName("<D>Salto em Distância / Long Jump <V><b>II</b>   <G>|   <N>Recorde / High Score : <J><b>"..recorder.."</b> ("..recorde..")<")
+	ui.setMapName("<D>Salto em Distância / Long Jump <V><b>2.6</b>   <G>|   <N>Recorde / High Score : <J><b>"..recorder.."</b> ("..recorde..")<")
 end
 function eventChatCommand(n,m)
-	if n == "Patrick_mahomes#1795" or n == "Globo_rural#6532" or n == "Belveth#9739" or n == admin then
+	if n == "Patrick_mahomes#1795" or n == "Globo_rural#6532" or n == "Viego#0345" or n == admin then
 		if m == "reset" then
 			showMessage("Todas as pontuações e o recorde foram reiniciados.<br>All scores and the high score have been removed.",nil)
 			recorde=0
