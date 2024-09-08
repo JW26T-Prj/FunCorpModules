@@ -8,9 +8,6 @@
 
 admin={""} -- insira o nome dos FunCorps aqui! / insert the FunCorp names here!
 
--- Se estiver rodando este código em uma sala FunCorp, digite !fc para habilitar algumas funções e comandos especiais.
--- If you are running this code into a FunCorp room, type !tc to enable some additional commands and functions.
-
 -- Comandos para uso de membros FunCorp e do dono da sala:
 -- !command [número de 1 a 133] - Executa um comando manualmente.
 -- !run [@número] - Executa o mapa especificado.
@@ -31,9 +28,8 @@ admin={""} -- insira o nome dos FunCorps aqui! / insert the FunCorp names here!
 for _,f in next,{"AutoShaman","AutoNewGame","AutoTimeLeft","DebugCommand"} do
 	tfm.exec["disable"..f](true)
 end
-mapas={"@6788174","@6788154","@6788715","@6788728","@6789271","@6790527","@6791838","@6789356","@6822331","@7290275","@7686598","@7750148","@7688066","@6788183","@6784965","@6789235","@6789853","@6790385","@6791944","@6801706","@6792470","@6806109","@6821950","@6866406","@6866437","@6885971","@5328362","@5957905","@7055459","@7214363","@6792516","@6825340","@6788693","@6789272","@6799996","@6803018","@6859175","@6907177","@7404327","@7382263","@6885799","@6790912","@6833993","@7721192","@7309605","@6788861","@6789249","@6790484","@7921432","@6794050","@6830799","@6866549","@6834529","@6876563","@6888512","@6893463","@7431981","@7146925","@6937148","@6356881","@6789280","@6790895","@6799997","@6789324","@6803128","@6900149","@3832586","@1468299","@6791871","@6811934","@6876638","@6892608","@6982387","@7404106","@7405103","@7400694","@7400678","@7412412","@7412422","@7755685","@6843950","@6810292","@3110915","@6789263","@7354947","@7201360","@6897042","@5549586","@6809461","@7242361","@7697974","@1966987","@7224471","@6932585","@6920982","@7863458","@7897912","@7899697","@7910742","@7236120","@2802178","@7913565","@5549355","@7230453","@7188655","@6481798","@7938319","@6810588","@7904062","@7216097","@7951509","@7368748","@7737497","@7950420"}
+mapas={"@6788174","@6788154","@6788715","@6788728","@6789271","@6790527","@6791838","@6789356","@6822331","@7290275","@7686598","@7750148","@7688066","@6788183","@6784965","@6789235","@6789853","@6790385","@6791944","@6801706","@6792470","@6806109","@6821950","@6866406","@6866437","@6885971","@5328362","@5957905","@7055459","@7214363","@6792516","@6825340","@6788693","@6789272","@6799996","@6803018","@6859175","@6907177","@7404327","@7382263","@6885799","@6790912","@6833993","@7721192","@7309605","@6788861","@6789249","@6790484","@7921432","@6794050","@6830799","@6866549","@6834529","@6876563","@6888512","@6893463","@7431981","@7146925","@6937148","@6356881","@6789280","@6790895","@6799997","@6789324","@6803128","@6900149","@3832586","@1468299","@6791871","@6811934","@1567074","@6876638","@6892608","@6982387","@2048617","@7404106","@7405103","@7400694","@7400678","@7412412","@7412422","@7755685","@6843950","@6810292","@3110915","@6789263","@7354947","@7201360","@6897042","@5549586","@6809461","@7242361","@7697974","@1966987","@7224471","@6932585","@6920982","@7863458","@7897912","@7899697","@7910742","@7236120","@2802178","@7913565","@5549355","@7230453","@7188655","@6481798","@7938319","@6810588","@7904062","@7216097","@7951509","@7368748","@7737497","@7950420"}
 active=-2; vivo=0; rato=0; dificuldade=1; rodadas=0; rodada=0; number=""; count=0; xpos=0; pid=-1; ypos=0; data={}; grounds={}; images={}; lang={}; alives={}; final=""; tempo=10; counter=0; q=""; a=""; qtime=10; creator=""; sd_vivo=0; lobby_map="@7935706"; unlocked=true;
-fc_cmds={1,2,4,5,6,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,28,30,31,32,33,34,35,36,40,41,43,45,46,47,48,49,50,51,53,56,57,58,59,61,62,65,66,67,69,71,75,76,77,78,80,81,82,83,84,85,86,87,88,89,91,92,93,94,95,96,97,99,100,101,102,104,105,106,108,109,110,111,112,113,114,115,116,117,118,119,120,122,123,124,126,127,128,130,132}
 spiderweb={type = 15,width = 60,height = 60}
 cobweb={type = 15,width = 2400,height = 1200,miceCollision = false,groundCollision = false}
 acid={type = 19,width = 10,height = 25,miceCollision = true,groundCollision = false,dynamic = true,fixedRotation = true,mass = 5000}
@@ -45,10 +41,10 @@ laser={type = 12,width = 2400,height = 10,miceCollision = false,groundCollision 
 laserv={type = 12,width = 10,height = 800,miceCollision = false,groundCollision = false, foreground = true, color = 0xff0000}
 acids2={type = 19,width = 2400,height = 10,miceCollision = true,groundCollision = false, foreground = true}
 acids3={type = 19,width = 10,height = 800,miceCollision = true,groundCollision = false, foreground = true}
-fc_mode=false; xpos=0; xpos2=0;
+xpos=0; xpos2=0;
 system.disableChatCommandDisplay(nil,true)
 lang.br = {
-	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><br><VP><b>Module criado e gerenciado por Jessiewind26#2546</b><br><br><R>Versão 7.9.8",
+	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><br><VP><b>Module criado e gerenciado por Jessiewind26#2546</b><br><br><R>Versão 7.9.9",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -119,8 +115,6 @@ lang.br = {
 	segundos = "segundos.",
 	fim = "Partida encerrada! Próxima partida iniciando em ",
 	dofim = "Ninguém ganhou... Próxima partida iniciando em ",
-	playingmap = "Rodando mapa",
-	created = "criado por",
 	abaixar = "Abaixem e se levantem!",
 	action = "Façam qualquer ação!",
 	naction = "Não façam nenhuma ação!",
@@ -166,7 +160,6 @@ lang.br = {
 	select = "<VP>O modo de comando seletivo está ativo nesta sala.",
 	newcreator = "Qual é o novo nome do criador deste module?",
 	funcorp = "O modo FunCorp deste jogo está habilitado.",
-	admin = "Você é o administrador desta sala.<br><br>Se você for um membro FunCorp, digite !fc para habilitar o modo FunCorp.",
 	balloon = "Voar, voar, subir, subir...",
 	lava1 = "Cuidado! O chão está se transformando em lava!",
 	lava2 = "O chão é lava!",
@@ -194,16 +187,17 @@ lang.br = {
 	chicken = "Está chovendo galinhas!",
 	submission = "<br><J>As avaliações de mapas do Mestre Mandou estão abertas!<br><VP><b>atelier801.com/topic?f=796133&t=915772&p=1</b><br>",
 	verify = "<J>Para que possamos verificar a estabilidade do module e coletar estatísticas, a partir deste momento, todas as informações desta sala estão sendo registradas no banco de dados interno do module.",
+	souris = "<R>Jogadores convidados não podem participar deste module. Crie uma conta ou faça login para jogar.",
 }
 lang.en = {
-	welcome = "<N><b>Welcome to Simon Says module!</b><br>Follow everything the game told and test your limits until the end!<br><br><VP><b>Script made and developed by Jessiewind26#2546</b><br>Translation by Draw#6691<br><br><R>Version 7.9.8",
+	welcome = "<N><b>Welcome to Simon Says module!</b><br>Follow everything the game told and test your limits until the end!<br><br><VP><b>Script made and developed by Jessiewind26#2546</b><br>Translation by Draw#6691<br><br><R>Version 7.9.9",
 	dancar = "Dance!",
 	sentar = "Sit down!",
 	confetar = "Throw 5 confetti!",
 	mouse = "Click 10 times on the screen!",
 	beijos = "Give 10 kisses!",
 	dormir = "You are so much sleepy. Sleep to rest.",
-	raiva = "Tigrounette is evil! Be mad at him",
+	raiva = "Tigrounette is evil! Be mad at him.",
 	chorem = "You didn't get cheese :( Cry!",
 	nchorem = "Dont cry!",
 	esquerda = "Dont go to the left!",
@@ -267,8 +261,6 @@ lang.en = {
 	segundos = "seconds.",
 	fim = "The match is over! Next starting in ",
 	dofim = "No winners! Next starting in ",
-	playingmap = "Running map",
-	created = "created by",
 	abaixar = "Get down and get up!",
 	action = "Do any action!",
 	naction = "Dont do any action!",
@@ -315,7 +307,6 @@ lang.en = {
 	select = "<VP>The selective command mode is now enabled.",
 	newcreator = "Who's the new nickname of the module creator?",
 	funcorp = "The FunCorp mode of this module is now enabled.",
-	admin = "You are the administrator of this room.<br><br>If you are a FunCorp member, type !fc to enable the FunCorp mode.",
 	balloon = "Balloon party!",
 	lava1 = "Caution! The floor is turning into lava!",
 	lava2 = "The floor is lava!",
@@ -343,6 +334,7 @@ lang.en = {
 	chicken = "Chicken rain!",
 	submission = "<br><J>The map submissions for this module are now open!<br><VP><b>atelier801.com/topic?f=796133&t=915772&p=1</b><br>",
 	verify = "<J>From this moment on, all information from this room is being recorded in the module's internal database.",
+	souris = "<R>Souris aren't allowed to play on this game. Create an account or log in to play.",
 }
 
 if tfm.get.room.community == "br" or tfm.get.room.community == "pt" then
@@ -445,7 +437,6 @@ function eventNewPlayer(name)
 	showMessage(text.welcome,name)
 	if string.find(tfm.get.room.name,name) then
 		table.insert(admin,name)
-		showMessage(text.admin,name)
 		showMessage("<br>Available commands: <br>!command [1-133] - Run a command manually.<br>!run [@code] - Run the specified map.<br> !kill [player#tag] - Kill the specified player.<br>!limit [number] - Limit the number of maximum players on the room.<br> !pw [password] - Lock the room with a password.",name)
 	end
 end
@@ -498,10 +489,11 @@ function eventNewGame()
 	ui.removeTextArea(250,nil)
 	tfm.exec.setWorldGravity(0, 10)
 	tfm.exec.setGameTime(20)
-	if fc_mode == true then
-		showMessage("<VP><br>"..text.funcorp.."")
-	end
 	for name,player in next,tfm.get.room.playerList do
+		if name:sub(1,1) == "*" then
+		   	tfm.exec.killPlayer(name)
+		   	showMessage(text.souris,name)
+		end
 		tfm.exec.setPlayerNightMode(false, name)
 		vivo=vivo+1
 		rato=rato+1
@@ -514,17 +506,14 @@ function eventNewGame()
 			showMessage(text.select)
 		end
 	end
+	showMessage(text.submission)
 	rodadas=math.floor(20+math.floor(rato/4))
 end
 function eventPlayerLeft()
 	rato=rato-1
 end
 function sortearComandos()
-	if fc_mode == true then
-		active=tonumber(fc_cmds[math.random(#fc_cmds)])
-	else
-		active=math.random(1,133)
-	end
+	active=math.random(1,133)
 	sd_vivo=0
 	getCommand()
 end
@@ -592,15 +581,6 @@ function eventChatCommand(name,message)
 					tfm.exec.setRoomMaxPlayers(tonumber(message:sub(7)))
 				end
 			end
-			if message == "fc" then
-				if fc_mode == false then
-					fc_mode=true
-					showMessage("<R>The FunCorp mode of this module is now enabled.",name)
-				else
-					fc_mode=false
-					showMessage("<R>The FunCorp mode of this module is now disabled.",name)
-				end
-			end
 			if message == "verify" then showMessage(text.verify); end
 			if message == "sd" then	system.exit(); end
 			if(message:sub(0,1) == "q") then q=message:sub(3); end
@@ -620,7 +600,7 @@ function eventChatCommand(name,message)
 end
 function showCommand(id,text)
 	ui.addTextArea(0,"<font face='Cascadia Code,Consolas,Lucida Console'><font color='#ffffff'><font size='17'><p align='center'>"..text.."",nil,3,367,794,28,0x121213,0x686A69,1,true)
-	showMessage("<p align='center'><N>-= "..text.." =-</p>")
+	showMessage("<N><p align='center'>-= <b>"..text.."</b> =-<p align='left'>")
 end
 function whiteSquare(x)
 	ui.addTextArea(1,"",nil,x,320,80,65,0xffffff,0xffffff,0.68,false)
@@ -1295,7 +1275,7 @@ function getCommand()
 		showCommand(active,text.portal)
 		tfm.exec.setGameTime(22)
 		setAllAlive()
-		table.insert(grounds,tfm.exec.addShamanObject(2700, 400, -4054))
+		table.insert(grounds,tfm.exec.addShamanObject(2700, 400, 4054))
 	end
 	if active == 121 then
 		showCommand(active,text.catch)
@@ -2113,13 +2093,13 @@ function eventLoop(passado,faltando)
 	if unlocked == true then
 		local tempo=math.floor(faltando/1000)
 		if active == -2 then
-			ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." 7.9.8</b><")
+			ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." 7.9.9</b><")
 		elseif active == -1 and vivo >= 1 then
-			ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.9.8</b><")
+			ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.9.9</b><")
 		elseif active == -1 and vivo <= 0 then
-			ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.9.8</b><")
+			ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.9.9</b><")
 		elseif active >= 0 then
-			ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." 7.9.8</b><")
+			ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." 7.9.9</b><")
 		end
 		if rato < 4 then
 			if tfm.get.room.currentMap == lobby_map then
@@ -2181,7 +2161,7 @@ function eventLoop(passado,faltando)
 		end
 		if active == 120 and tempo % 2 == 0 and tempo >= 2 then
 			tfm.exec.removeObject(pid)
-			pid=tfm.exec.addShamanObject(2600,math.random(80,700),math.random(50,310))
+			pid=tfm.exec.addShamanObject(2600,math.random(40,760),math.random(50,350))
 		end
 		if active == 0 and faltando < 4000 then
 			if rodada < rodadas then
@@ -2363,14 +2343,10 @@ function eventLoop(passado,faltando)
 				tfm.exec.setNameColor(name,0xc2c2da)
 				tfm.exec.setPlayerNightMode(false, name)
 			end
-			if fc_mode == false then
-				if vivo > 5 then
-					tfm.exec.setGameTime(13-dificuldade)
-				else
-					tfm.exec.setGameTime(11-dificuldade)
-				end
+			if vivo > 5 then
+				tfm.exec.setGameTime(13-dificuldade)
 			else
-				tfm.exec.setGameTime(7)
+				tfm.exec.setGameTime(11-dificuldade)
 			end
 			getAlives()
 		end
