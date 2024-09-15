@@ -7,6 +7,8 @@
 -- This is a guarantee that you will receive all the latest updates and bugfixes.
 
 admin={""} -- insira o nome dos FunCorps aqui! / insert the FunCorp names here!
+-- Caso estejam tentando rodar este código no cafofo de tribo, insira seus nomes acima para que o código possa ser executado.
+-- If you are trying to run this code in your tribehouse, enter your names above so the code can be executed.
 
 -- Comandos para uso de membros FunCorp e do dono da sala:
 -- !command [número de 1 a 133] - Executa um comando manualmente.
@@ -29,7 +31,7 @@ for _,f in next,{"AutoShaman","AutoNewGame","AutoTimeLeft","DebugCommand"} do
 	tfm.exec["disable"..f](true)
 end
 mapas={"@6788174","@6788154","@6788715","@6788728","@6789271","@6790527","@6791838","@6789356","@6822331","@7290275","@7686598","@7750148","@7688066","@6788183","@6784965","@6789235","@6789853","@6790385","@6791944","@6801706","@6792470","@6806109","@6821950","@6866406","@6866437","@6885971","@5328362","@5957905","@7055459","@7214363","@6792516","@6825340","@6788693","@6789272","@6799996","@6803018","@6859175","@6907177","@7404327","@7382263","@6885799","@6790912","@6833993","@7721192","@7309605","@6788861","@6789249","@6790484","@7921432","@6794050","@6830799","@6866549","@6834529","@6876563","@6888512","@6893463","@7431981","@7146925","@6937148","@6356881","@6789280","@6790895","@6799997","@6789324","@6803128","@6900149","@3832586","@1468299","@6791871","@6811934","@1567074","@6876638","@6892608","@6982387","@2048617","@7404106","@7405103","@7400694","@7400678","@7412412","@7412422","@7755685","@6843950","@6810292","@3110915","@6789263","@7354947","@7201360","@6897042","@5549586","@6809461","@7242361","@7697974","@1966987","@7224471","@6932585","@6920982","@7863458","@7897912","@7899697","@7910742","@7236120","@2802178","@7913565","@5549355","@7230453","@7188655","@6481798","@7938319","@6810588","@7904062","@7216097","@7951509","@7368748","@7737497","@7950420"}
-active=-2; vivo=0; rato=0; dificuldade=1; rodadas=0; rodada=0; number=""; count=0; xpos=0; pid=-1; ypos=0; data={}; grounds={}; images={}; lang={}; alives={}; final=""; tempo=10; counter=0; q=""; a=""; qtime=10; creator=""; sd_vivo=0; lobby_map="@7935706"; unlocked=true;
+active=-2; vivo=0; rato=0; dificuldade=1; rodadas=0; rodada=0; number=""; count=0; xpos=0; pid=-1; ypos=0; data={}; grounds={}; images={}; lang={}; alives={}; final=""; tempo=10; counter=0; q=""; a=""; qtime=10; creator=""; sd_vivo=0; lobby_map="@7935706"; unlocked=false;
 spiderweb={type = 15,width = 60,height = 60}
 cobweb={type = 15,width = 2400,height = 1200,miceCollision = false,groundCollision = false}
 acid={type = 19,width = 10,height = 25,miceCollision = true,groundCollision = false,dynamic = true,fixedRotation = true,mass = 5000}
@@ -44,7 +46,7 @@ acids3={type = 19,width = 10,height = 800,miceCollision = true,groundCollision =
 xpos=0; xpos2=0;
 system.disableChatCommandDisplay(nil,true)
 lang.br = {
-	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><br><VP><b>Module criado e gerenciado por Jessiewind26#2546</b><br><br><R>Versão 7.9.10",
+	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><br><VP><b>Module criado e gerenciado por Jessiewind26#2546</b><br><br><R>Versão 7.10.0",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -190,7 +192,7 @@ lang.br = {
 	souris = "<R>Jogadores convidados não podem participar deste module. Crie uma conta ou faça login para jogar.",
 }
 lang.en = {
-	welcome = "<N><b>Welcome to Simon Says module!</b><br>Follow everything the game told and test your limits until the end!<br><br><VP><b>Script made and developed by Jessiewind26#2546</b><br>Translation by Draw#6691<br><br><R>Version 7.9.10",
+	welcome = "<N><b>Welcome to Simon Says module!</b><br>Follow everything the game told and test your limits until the end!<br><br><VP><b>Script made and developed by Jessiewind26#2546</b><br>Translation by Draw#6691<br><br><R>Version 7.10.0",
 	dancar = "Dance!",
 	sentar = "Sit down!",
 	confetar = "Throw 5 confetti!",
@@ -385,6 +387,12 @@ function verifyNinjas(name)
 		if ninjas[i] == name then
 			return true
 		end
+	end
+end
+function selectLanguage()
+	for _,name in next,admin do
+		ui.addTextArea(2001,"<font size='15'><p align='center'><a href='event:pt'>PT",name,370,150,40,23,0x000001,0x505050,0.98,true)
+		ui.addTextArea(2002,"<font size='15'><p align='center'><a href='event:en'>EN",name,370,180,40,23,0x000001,0x505050,0.98,true)
 	end
 end
 function showMessage(message,name)
@@ -1387,6 +1395,28 @@ function eventTextAreaCallback(id,name,callback)
 		completeCommand(name)
 		ui.removeTextArea(250,name)
 	end
+	if callback == "pt" then
+		for _,i in next,{2001,2002} do
+			ui.removeTextArea(i,nil)
+		end
+		text = lang.br
+		unlocked=true;
+		tfm.exec.newGame(lobby_map)
+		for name,player in next,tfm.get.room.playerList do
+			eventNewPlayer(name)
+		end
+	end
+	if callback == "en" then
+		for _,i in next,{2001,2002} do
+			ui.removeTextArea(i,nil)
+		end
+		text = lang.en
+		unlocked=true;
+		tfm.exec.newGame(lobby_map)
+		for name,player in next,tfm.get.room.playerList do
+			eventNewPlayer(name)
+		end
+	end
 end
 function eventChatMessage(name,message)
 	if active == 11 then
@@ -2099,13 +2129,13 @@ function eventLoop(passado,faltando)
 	if unlocked == true then
 		local tempo=math.floor(faltando/1000)
 		if active == -2 then
-			ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." 7.9.10</b><")
+			ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." 7.10.0</b><")
 		elseif active == -1 and vivo >= 1 then
-			ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.9.10</b><")
+			ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.10.0</b><")
 		elseif active == -1 and vivo <= 0 then
-			ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.9.10</b><")
+			ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.10.0</b><")
 		elseif active >= 0 then
-			ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." 7.9.10</b><")
+			ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." 7.10.0</b><")
 		end
 		if rato < 4 then
 			if tfm.get.room.currentMap == lobby_map then
@@ -2350,15 +2380,25 @@ function eventLoop(passado,faltando)
 				tfm.exec.setPlayerNightMode(false, name)
 			end
 			if vivo > 5 then
-				tfm.exec.setGameTime(13-dificuldade)
+				tfm.exec.setGameTime(14-dificuldade)
 			else
-				tfm.exec.setGameTime(11-dificuldade)
+				tfm.exec.setGameTime(12-dificuldade)
 			end
 			getAlives()
 		end
 	end
 end
-tfm.exec.newGame(lobby_map)
-for name,player in next,tfm.get.room.playerList do
-	eventNewPlayer(name)
+if tfm.get.room.isTribeHouse == false then
+	if tfm.get.room.community == "br" or tfm.get.room.community == "pt" then
+		text = lang.br
+	else
+		text = lang.en
+	end
+	unlocked=true;
+	tfm.exec.newGame(lobby_map)
+	for name,player in next,tfm.get.room.playerList do
+		eventNewPlayer(name)
+	end
+else
+	selectLanguage()
 end
