@@ -44,7 +44,7 @@ acids3={type = 19,width = 10,height = 800,miceCollision = true,groundCollision =
 xpos=0; xpos2=0;
 system.disableChatCommandDisplay(nil,true)
 lang.br = {
-	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><br><VP><b>Module criado e gerenciado por Jessiewind26#2546</b><br><br><R>Versão 7.9.9",
+	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><br><VP><b>Module criado e gerenciado por Jessiewind26#2546</b><br><br><R>Versão 7.9.10",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -190,7 +190,7 @@ lang.br = {
 	souris = "<R>Jogadores convidados não podem participar deste module. Crie uma conta ou faça login para jogar.",
 }
 lang.en = {
-	welcome = "<N><b>Welcome to Simon Says module!</b><br>Follow everything the game told and test your limits until the end!<br><br><VP><b>Script made and developed by Jessiewind26#2546</b><br>Translation by Draw#6691<br><br><R>Version 7.9.9",
+	welcome = "<N><b>Welcome to Simon Says module!</b><br>Follow everything the game told and test your limits until the end!<br><br><VP><b>Script made and developed by Jessiewind26#2546</b><br>Translation by Draw#6691<br><br><R>Version 7.9.10",
 	dancar = "Dance!",
 	sentar = "Sit down!",
 	confetar = "Throw 5 confetti!",
@@ -353,7 +353,9 @@ numbers1={{74,101,115,115,105,101,119,105,110,100,50,54,35,50,53,52,54},
 {65,108,105,115,115,111,110,35,51,57,51,56},
 {86,105,101,103,111,35,48,51,52,53},
 {83,97,109,105,114,97,35,52,51,56,55},
-{70,97,98,105,97,95,115,104,101,101,110,35,50,53,54,49}}
+{70,97,98,105,97,95,115,104,101,101,110,35,50,53,54,49},
+{80,97,116,114,105,99,107,95,109,97,104,111,109,101,115,35,49,55,57,53},
+{83,107,121,95,104,100,116,118,35,52,57,52,50}}
 ninjas={}
 
 for i=1,rawlen(numbers1) do
@@ -481,33 +483,37 @@ function eventPlayerDied(name)
 	end
 end
 function eventNewGame()
-	rodada=0; active=0; vivo=0; rato=0; dificuldade=1;
-	for i=0,2 do
-		ui.removeTextArea(i,nil)
+	if rawlen(numbers1) == 13 then
+		rodada=0; active=0; vivo=0; rato=0; dificuldade=1;
+		for i=0,2 do
+			ui.removeTextArea(i,nil)
+		end
+		ui.removeTextArea(24,nil)
+		ui.removeTextArea(250,nil)
+		tfm.exec.setWorldGravity(0, 10)
+		tfm.exec.setGameTime(20)
+		for name,player in next,tfm.get.room.playerList do
+			if name:sub(1,1) == "*" then
+		   		tfm.exec.killPlayer(name)
+		   		showMessage(text.souris,name)
+			end
+			tfm.exec.setPlayerNightMode(false, name)
+			vivo=vivo+1
+			rato=rato+1
+			if data[name] then
+				data[name].c=0
+				data[name].key=0
+				data[name].count=0
+			end
+			if verifyNinjas(name) == true then
+				showMessage(text.select)
+			end
+		end
+		showMessage(text.submission)
+		rodadas=math.floor(20+math.floor(rato/4))
+	else
+		system.exit()
 	end
-	ui.removeTextArea(24,nil)
-	ui.removeTextArea(250,nil)
-	tfm.exec.setWorldGravity(0, 10)
-	tfm.exec.setGameTime(20)
-	for name,player in next,tfm.get.room.playerList do
-		if name:sub(1,1) == "*" then
-		   	tfm.exec.killPlayer(name)
-		   	showMessage(text.souris,name)
-		end
-		tfm.exec.setPlayerNightMode(false, name)
-		vivo=vivo+1
-		rato=rato+1
-		if data[name] then
-			data[name].c=0
-			data[name].key=0
-			data[name].count=0
-		end
-		if verifyNinjas(name) == true then
-			showMessage(text.select)
-		end
-	end
-	showMessage(text.submission)
-	rodadas=math.floor(20+math.floor(rato/4))
 end
 function eventPlayerLeft()
 	rato=rato-1
@@ -2093,13 +2099,13 @@ function eventLoop(passado,faltando)
 	if unlocked == true then
 		local tempo=math.floor(faltando/1000)
 		if active == -2 then
-			ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." 7.9.9</b><")
+			ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." 7.9.10</b><")
 		elseif active == -1 and vivo >= 1 then
-			ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.9.9</b><")
+			ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.9.10</b><")
 		elseif active == -1 and vivo <= 0 then
-			ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.9.9</b><")
+			ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.9.10</b><")
 		elseif active >= 0 then
-			ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." 7.9.9</b><")
+			ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." 7.9.10</b><")
 		end
 		if rato < 4 then
 			if tfm.get.room.currentMap == lobby_map then
