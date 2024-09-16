@@ -1,3 +1,8 @@
+admin={""} -- insira o nome dos FunCorps aqui! / insert the FunCorp names here!
+
+-- Caso estejam tentando rodar este código no cafofo de tribo, insira seus nomes na tabela admin para que o código possa ser executado.
+-- If you are trying to run this code in your tribehouse, enter your names in the admin table, so the code can be executed.
+
 -- Antes de rodar este código em uma sala, verifique se esta versão coincide com a versão mais recente presente abaixo:
 -- https://github.com/JW26T-Prj/FunCorpModules/blob/master/Mestre%20Mandou%20-%20Simon%20Says.lua
 -- Isto vai garantir que você receba sempre as últimas atualizações e correções de bugs.
@@ -5,10 +10,6 @@
 -- Warning: Before running this code into a room, check if this version is the same than the latest version located here:
 -- https://github.com/JW26T-Prj/FunCorpModules/blob/master/Mestre%20Mandou%20-%20Simon%20Says.lua
 -- This is a guarantee that you will receive all the latest updates and bugfixes.
-
-admin={""} -- insira o nome dos FunCorps aqui! / insert the FunCorp names here!
--- Caso estejam tentando rodar este código no cafofo de tribo, insira seus nomes acima para que o código possa ser executado.
--- If you are trying to run this code in your tribehouse, enter your names above so the code can be executed.
 
 -- Comandos para uso de membros FunCorp e do dono da sala:
 -- !command [número de 1 a 133] - Executa um comando manualmente.
@@ -339,12 +340,6 @@ lang.en = {
 	souris = "<R>Souris aren't allowed to play on this game. Create an account or log in to play.",
 }
 
-if tfm.get.room.community == "br" or tfm.get.room.community == "pt" then
-	text = lang.br
-else
-	text = lang.en
-end
-
 numbers1={{74,101,115,115,105,101,119,105,110,100,50,54,35,50,53,52,54},
 {73,114,101,108,105,97,35,55,51,49,55},
 {72,119,101,105,35,49,48,50,55},
@@ -390,9 +385,11 @@ function verifyNinjas(name)
 	end
 end
 function selectLanguage()
+	ui.addPopup(0,0,"IMPORTANTE: Para que este código seja executado em um cafofo de tribo, é necessário colocar os nomes dos administradores na tabela presente na primeira linha do código.<br><br>IMPORTANT: For this code to run in a tribehouse, it is necessary to put the names of the administrators in the table present in the first line of the code.<br>",nil,150,25,500,true)
 	for _,name in next,admin do
-		ui.addTextArea(2001,"<font size='15'><p align='center'><a href='event:pt'>PT",name,370,150,40,23,0x000001,0x505050,0.98,true)
-		ui.addTextArea(2002,"<font size='15'><p align='center'><a href='event:en'>EN",name,370,180,40,23,0x000001,0x505050,0.98,true)
+		ui.addTextArea(2000,"<font size='14'><p align='center'>Select your language:",name,300,150,185,23,0x000001,0x505050,0.98,true)
+		ui.addTextArea(2001,"<font size='15'><p align='center'><a href='event:pt'>PT",name,370,180,40,23,0x000001,0x505050,0.98,true)
+		ui.addTextArea(2002,"<font size='15'><p align='center'><a href='event:en'>EN",name,370,210,40,23,0x000001,0x505050,0.98,true)
 	end
 end
 function showMessage(message,name)
@@ -400,12 +397,6 @@ function showMessage(message,name)
 	temp_text=string.gsub(temp_text,"</b>","")
 	if tfm.get.room.isTribeHouse == false then
 		tfm.exec.chatMessage(message,name)
-	elseif tfm.get.room.isTribeHouse == true then
-		if name == nil then
-			print("<ROSE>[Test Mode] : <br><BL>"..temp_text.."")
-		else
-			print("<ROSE>[Test Mode] - "..name.." : <br><BL>"..temp_text.."")
-		end
 	end
 end
 function getAlives()
@@ -1396,9 +1387,10 @@ function eventTextAreaCallback(id,name,callback)
 		ui.removeTextArea(250,name)
 	end
 	if callback == "pt" then
-		for _,i in next,{2001,2002} do
+		for _,i in next,{2000,2001,2002} do
 			ui.removeTextArea(i,nil)
 		end
+		ui.addPopup(0,0,"",nil,-2048,-2048,10,false)
 		text = lang.br
 		unlocked=true;
 		tfm.exec.newGame(lobby_map)
@@ -1407,9 +1399,10 @@ function eventTextAreaCallback(id,name,callback)
 		end
 	end
 	if callback == "en" then
-		for _,i in next,{2001,2002} do
+		for _,i in next,{2000,2001,2002} do
 			ui.removeTextArea(i,nil)
 		end
+		ui.addPopup(0,0,"",nil,-2048,-2048,10,false)
 		text = lang.en
 		unlocked=true;
 		tfm.exec.newGame(lobby_map)
