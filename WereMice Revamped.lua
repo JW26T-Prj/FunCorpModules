@@ -18,7 +18,6 @@ admin={""}
 
 -- NÃO MEXA EM NADA A PARTIR DESTA LINHA! / DON'T CHANGE ANYTHING BELOW THIS LINE!
 --------------------------------------------------------------------------------------------------------
-
 for _,f in next,{"AfkDeath","AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand","MortCommand"} do
 	tfm.exec["disable"..f](true)
 end
@@ -354,7 +353,7 @@ function eventNewPlayer(name)
 			showMessage(text.welcome,name)
 		end
 		if tfm.get.room.isTribeHouse == true then
-			ui.addTextArea(3000,"<p align='right'><font size='11'>",nil,470,30,320,190,0x101010,0x59251a,0.70,true)
+			ui.addTextArea(3000,"<p align='right'><font size='11'>",name,470,30,320,190,0x101010,0x59251a,0.70,true)
 			ui.addTextArea(4000,"<p align='right'><font size='11'>",name,470,235,320,90,0x101010,0x59251a,0.70,true)
 		end
 	end
