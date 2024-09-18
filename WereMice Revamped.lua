@@ -2,7 +2,7 @@ admin={""}
 -- Insira o nome dos FunCorps ou dos gerenciadores de sala acima!
 -- Insert the FunCorp or room managers names above!
 
--- WereMice Revamped - Jungle 
+-- WereMice Revamped
 -- Feito por / made by Patrick_mahomes#1795
 -- Agradecimentos a Spectra_phantom pela ideia original do jogo.
 -- Thanks to Spectra_phantom#6089 to the original idea.
@@ -24,21 +24,21 @@ end
 jogadores={assassinos={},detetives={},medicos={},vivos=0,lista={}}
 quant={assassinos=0,detetives=0,medicos=0,vitimas=0,vivos=0}
 limites={assassinos=0,detetives=0,medicos=0}
-modo="inicial"; contador=0; count=0; contador_display=15; mapa="@7959521"; rodada=0; data={}; templist={}; ninjas={}; lang={}; display=""; unlocked=false;
+modo="inicial"; contador=0; count=0; contador_display=15; mapa="@7896560"; rodada=0; data={}; templist={}; ninjas={}; lang={}; display=""; unlocked=false;
 system.disableChatCommandDisplay(nil,true)
 
 lang.br = {
 	draw = "\n\n<N><b>Todos os assassinos e detetives foram mortos! Temos um empate!</b>\n\nPróxima partida começando em 15 segundos.",
 	win1 = "\n\n<VP><b>Não há mais assassinos vivos! Os jogadores remanescentes venceram!</b>\n\nPróxima partida começando em 15 segundos.",
 	win2 = "\n\n<R><b>Não há mais detetives vivos! Os assassinos vivos venceram!</b>\n\nPróxima partida começando em 15 segundos.",
-	help = "<VP><b>Bem-vindo ao jogo WereMice Revamped: Jungle.</b>\n\n<N>Neste jogo você deverá descobrir quem são os assassinos e impedir que eles matem todos os detetives ou todas as vítimas.\n\nO jogo consiste basicamente em quatro classes de jogadores:\n<R>• assassinos: <N>São aqueles que irão tentar matar os outros ratos, não importando suas funções.\n<BL>• Médicos: <N>São aqueles que irão tentar salvar os jogadores dos assassinos.\n<VP>• Detetives: <N>São aqueles que irão tentar descobrir e matar os assassinos.\n<J>• Vítimas: <N>Ficam só rezando pra não serem mortos.\n\nO jogo acaba sempre quando todos os assassinos, detetives ou vítimas são mortos.",
+	help = "<VP><b>Bem-vindo ao jogo WereMice Revamped.</b>\n\n<N>Neste jogo você deverá descobrir quem são os assassinos e impedir que eles matem todos os detetives ou todas as vítimas.\n\nO jogo consiste basicamente em quatro classes de jogadores:\n<R>• assassinos: <N>São aqueles que irão tentar matar os outros ratos, não importando suas funções.\n<BL>• Médicos: <N>São aqueles que irão tentar salvar os jogadores dos assassinos.\n<VP>• Detetives: <N>São aqueles que irão tentar descobrir e matar os assassinos.\n<J>• Vítimas: <N>Ficam só rezando pra não serem mortos.\n\nO jogo acaba sempre quando todos os assassinos, detetives ou vítimas são mortos.",
 	reset = "<ROSE>Digite !reset quando a sala tiver com 5 ratos ou mais para começar ou reiniciar a partida.",
-	bar = "<N><b>WereMice Revamped - Jungle</b><N>: descubra os assassinos ou seja morto por eles!<",
+	bar = "<ROSE><b>WereMice Revamped</b><N>: descubra os assassinos ou seja morto por eles!<",
 	f1 = "<VP>Você foi escolhido(a) como assassino(a).\n\nSua função será matar os outros jogadores. Quando chegar sua vez, digite o nome do rato que deseja matar (com a #tag) na janela de texto que vai aparecer.\n",
 	f2 = "<VP>Você foi escolhido(a) como médico(a).\n\nSua função será salvar os outros jogadores. Quando chegar sua vez, digite o nome do rato que deseja salvar (com a #tag) na janela de texto que vai aparecer.\n",
 	f3 = "<VP>Você foi escolhido(a) como detetive.\n\nSua função será de tentar descobrir quem são os assassinos e matar eles. Quando chegar sua vez, digite o nome do rato que deseja salvar (com a #tag) na janela de texto que vai aparecer.\n",
 	f4 = "<VP>Você foi escolhido como vítima.",
-	welcome = "<N><b>Bem-vindos ao jogo WereMice Revamped: Jungle!</b>\nO objetivo deste jogo é sobreviver! Descubra quem são os assassinos, desconfie e os mate!\n<VP>O jogo irá explicar todo seu funcionamento durante a partida, mas caso não saiba jogar, digite !help.",
+	welcome = "<N><b>Bem-vindos ao jogo WereMice Revamped!</b>\nO objetivo deste jogo é sobreviver! Descubra quem são os assassinos, desconfie e os mate!\n<VP>O jogo irá explicar todo seu funcionamento durante a partida, mas caso não saiba jogar, digite !help.",
 	nostart = "<VP>O jogo não pode ser iniciado. \nCertifique-se de que inseriu seu nome corretamente no nome da sala.\n\nNo caso de uma sala FunCorp, certifique-se que inseriu o nome corretamente no código.",
 	type = "<VP>Digite !help caso não saiba como funciona este jogo.",
 	t1 = "Assassinos", t2 = "Médicos", t3 = "Detetives", round = "Rodada",
@@ -66,14 +66,14 @@ lang.en = {
 	draw = "\n\n<N><b>All killers and detectives are died!	It's a draw!</b>\n\nNext match starting in 15 seconds.",
 	win1 = "\n\n<VP><b>All killers are died! The players win the game!</b>\n\nNext match starting in 15 seconds.",
 	win2 = "\n\n<R><b>All detectives are died! The killers win the game!</b>\n\nNext match starting in 15 seconds.",
-	help = "<VP><b>Welcome to WereMice Revamped: Jungle.</b>\n\n<N>In this game you must find out who the killers are and prevent them from killing all the detectives or all the victims.\n\nThe game basically consists of four classes of players:\n<R>• Killers: <N>They are the ones who will try to kill the other rats, no matter what their functions are.\n<BL>• Doctors: <N>They are the ones who will try to save the players from the assassins.\n<VP>• Detectives: <N>They are the ones who will try to discover and kill the killers.\n<J>• Victims: <N>They just keep praying not to be killed.\n\nThe game always ends when all killers, detectives or victims are killed.",
+	help = "<VP><b>Welcome to WereMice Revamped.</b>\n\n<N>In this game you must find out who the killers are and prevent them from killing all the detectives or all the victims.\n\nThe game basically consists of four classes of players:\n<R>• Killers: <N>They are the ones who will try to kill the other rats, no matter what their functions are.\n<BL>• Doctors: <N>They are the ones who will try to save the players from the assassins.\n<VP>• Detectives: <N>They are the ones who will try to discover and kill the killers.\n<J>• Victims: <N>They just keep praying not to be killed.\n\nThe game always ends when all killers, detectives or victims are killed.",
 	reset = "<ROSE>Type !reset when the room has 5 or more players to start or restart the game.",
-	bar = "<N><b>WereMice Revamped: Jungle</b> <N>- discover the killers or be killed by them!<",
+	bar = "<N><b>WereMice Revamped</b> <N>- discover the killers or be killed by them!<",
 	f1 = "<VP>You have been chosen as killer.\n\nYour job will be to kill the other players. When it's your turn, type the name of the player you want to kill (with the #tag) in the text popup that will appear.\n",
 	f2 = "<VP>You have been chosen as doctor.\n\nYour job will be to save the other players. When it's your turn, type the name of the player you want to save (with the #tag) in the text popup that will appear.\n",
 	f3 = "<VP>You have been chosen as detective.\n\nYour job will be to try to find out who the killers are and kill them. When it's your turn, type the name of the player that you think is a killer (with the #tag) in the text popup that will appear.\n",
 	f4 = "<VP>You have been chosen as victim.",
-	welcome = "<N><b>Welcome to WereMice Revamped: Jungle!</b>\nThe goal of this game is to survive! Find out who the killers are, be suspicious and kill them!\n<VP>The game will explain how it works during the match, but if you don't know how to play, type !help.",
+	welcome = "<N><b>Welcome to WereMice Revamped!</b>\nThe goal of this game is to survive! Find out who the killers are, be suspicious and kill them!\n<VP>The game will explain how it works during the match, but if you don't know how to play, type !help.",
 	nostart = "<VP>The game cannot be started.\nMake sure you entered your name correctly in the room name.\n\nIf you are trying to run this on a FunCorp, make sure you entered the name correctly in the code.",
 	type = "<VP>Type !help if you don't know how this game works.",
 	t1 = "Killers", t2 = "Doctors", t3 = "Detectives", round = "Round",
@@ -300,7 +300,6 @@ function eventNewGame()
 		if unlocked == true then
 			contador=0; count=0;
 			tfm.exec.setGameTime(40)
-			ui.setBackgroundColor("#5A6B51")
 			ui.setMapName(text.bar)
 			jogadores={assassinos={},detetives={},medicos={},vivos=0,lista={}}
 			quant={assassinos=0,detetives=0,medicos=0}
@@ -347,7 +346,6 @@ function escolherDetetives(name)
 end
 function eventNewPlayer(name)
 	if unlocked == true then
-		ui.setBackgroundColor("#5A6B51")
 		data[name]={type=-1;area="";morre=false}
 		if data[name] then
 			showMessage(text.welcome,name)
@@ -377,9 +375,19 @@ function eventPlayerLeft(name)
 	end
 end
 function definirLimites()
-	limites.assassinos=1+math.floor((jogadores.vivos-5)/6);
-	limites.medicos=1+math.floor((jogadores.vivos-5)/8);
-	limites.detetives=1+math.floor((jogadores.vivos-5)/6);
+	if jogadores.vivos < 8 then
+		limites.assasinos=1; limites.medicos=1; limites.detetives=1;
+	elseif jogadores.vivos >= 8 and jogadores.vivos < 14 then
+		limites.assasinos=2; limites.medicos=1; limites.detetives=2;
+	elseif jogadores.vivos >= 14 and jogadores.vivos < 20 then
+		limites.assasinos=3; limites.medicos=2; limites.detetives=3;
+	elseif jogadores.vivos >= 20 and jogadores.vivos < 26 then
+		limites.assasinos=4; limites.medicos=3; limites.detetives=4;
+	elseif jogadores.vivos >= 26 and jogadores.vivos < 32 then
+		limites.assasinos=5; limites.medicos=3; limites.detetives=5;
+	elseif jogadores.vivos >= 32 then
+		limites.assasinos=6; limites.medicos=4; limites.detetives=5;
+	end
 end
 function sortearDetetives()
 	for i=1,limites.detetives do
