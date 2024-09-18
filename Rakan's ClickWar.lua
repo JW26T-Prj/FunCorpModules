@@ -1,11 +1,10 @@
 for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","AutoScore","PhysicalConsumables","DebugCommand","MinimalistMode"} do
 	tfm.exec["disable"..f](true)
 end
-for _,g in next,{"p","rank","help"} do
+for _,g in next,{"p","pw","help","powerups"} do
 system.disableChatCommandDisplay(g,true)
 end
 sudden=false; powerups=true; winner=""; data={}; players_table={}; increase=0; intensity=40; nightmode=false; night=0; mices=0; remain=10; last_win=""; times=1; imageId=-1;
-map_det={creator="",code=""}
 enabled=false
 if tfm.get.room.isTribeHouse == false then tfm.exec.setRoomMaxPlayers(30) end
 function showMessage(message,name)
@@ -13,12 +12,6 @@ function showMessage(message,name)
 	temp_text=string.gsub(temp_text,"</b>","")
 	if tfm.get.room.isTribeHouse == false then
 		tfm.exec.chatMessage(message,name)
-	elseif tfm.get.room.isTribeHouse == true then
-		if name == nil then
-			print("<ROSE>[Test Mode] : <br><BL>"..temp_text.."")
-		else
-			print("<ROSE>[Test Mode] - "..name.." : <br><BL>"..temp_text.."")
-		end
 	end
 end
 function split(t,s)
@@ -28,44 +21,15 @@ function split(t,s)
 	end
 	return a
 end
-function eventRanking(name)
-	local sc = {}
-	for id, name in pairs(players_table) do
-		sc[#sc+1] = {n=name,s=data[name].score,f=data[name].wins}
+function menuShow(name,color,x,y,width,height,title,content)
+	if data[name].opened == false then
+		data[name].opened=true
+		ui.addTextArea(1004,"",name,-1000,-600,2800,1600,0x000001,0x000001,0.65,true)
+		ui.addTextArea(1001,"",name,x+5,y+5,width,height,color,color,0.95,true)
+		ui.addTextArea(1000,"<font size='13'><i><br><br>"..content.."",name,x,y,width,height,0x151515,color,0.95,true)
+		ui.addTextArea(1002,"<font color='#f8d802'><font size='14'><p align='center'><i><b>"..title.."",name,x+5,y+5,width-11,22,0x101010,0x101010,0.95,true)
+		ui.addTextArea(1003,"<font color='#ff2300'><font size='14'><b><a href='event:close'>X</a>",name,x+width-25,y+5,width-10,20,0,0,0.95,true)
 	end
-	table.sort(sc,function(a,b) return a.s>b.s end)
-	str1 = ''
-	str2 = ''
-	str3 = ''
-	for k,v in pairs(sc) do
-		if k < 9 then
-			if str ~= '' then
-				str1=str1.."<br><N>"..k.."    <VP>"..v.n..""
-				str2=str2.."<br><b><N>"..v.s.."</b>"
-				str3=str3.."<br><N>"..v.f..""
-			else
-				str1="<J>"..k.."    <VP>"..v.n..""
-				str2="<J><b>"..v.s.."</b>"
-				str3="<J>"..v.f..""
-			end
-		end
-	end
-	ui.addTextArea(9000,"<B><J><font size='15'><font face='Verdana'><p align='center'>Temporary Ranking",name,150,130,500,30,0x212121,0x363634,1.0,true)
-	ui.addTextArea(9007,"<font size='12'><font face='Consolas'>#N   Name                                     Score      Wins",name,150,165,500,150,0x151515,0x3F3F3D,1.0,true)
-	ui.addTextArea(9006,"<font size='16'><font face='Verdana'><p align='center'><R><a href='event:closep'>X</a>",name,620,130,30,27,0,0,1.0,true)
-	ui.addTextArea(9005,"<B><font size='12'><font face='Consolas'>"..str1,name,150,165,480,220,0,0,nil,true)
-	ui.addTextArea(9004,"<p align='right'><font size='12'><font face='Consolas'>"..str2,name,454,165,60,220,0,0,nil,true)
-	ui.addTextArea(9003,"<p align='right'><font size='12'><font face='Consolas'>"..str3,name,522,165,60,220,0,0,nil,true)
-end
-function menuShow(name,title,content,height)
-	ui.addTextArea(9000,"<B><J><font size='15'><font face='Verdana'><p align='center'>"..title.."",name,150,130,500,30,0x212121,0x363634,1.0,true)
-	ui.addTextArea(9007,"<font size='12'><font face='Verdana'>"..content.."",name,150,165,500,height,0x151515,0x3F3F3D,1.0,true)
-	ui.addTextArea(9006,"<font size='16'><font face='Verdana'><p align='center'><R><a href='event:closep'>X</a>",name,620,130,30,27,0,0,1.0,true)
-end
-function menuShow2(name,title,content,height)
-	ui.addTextArea(9000,"<B><J><font size='15'><font face='Verdana'><p align='center'>"..title.."",name,250,130,300,30,0x212121,0x363634,1.0,true)
-	ui.addTextArea(9007,"<font size='12'><font face='Verdana'>"..content.."",name,250,165,300,height,0x151515,0x3F3F3D,1.0,true)
-	ui.addTextArea(9006,"<font size='16'><font face='Verdana'><p align='center'><R><a href='event:closep'>X</a>",name,520,130,30,27,0,0,1.0,true)
 end
 function eventChatCommand(name,message)
 	local arg = split(message, " ")
@@ -77,17 +41,11 @@ function eventChatCommand(name,message)
 		end
 
 		if tfm.get.room.playerList[nome] then
-			menuShow2(nome,nome,"<font size='12'><b>Score: "..data[nome].score.."</b><br><br>Wins: "..data[nome].wins.."<br>Matches: "..data[nome].matches.."",75)
-		else
-			showMessage("Function not allowed",name)
+			menuShow(nome,0x686868,240,130,320,105,nome,"<font size='12'><b>Score: "..data[nome].score.."</b><br><br>Wins: "..data[nome].wins.."<br>Matches: "..data[nome].matches.."")
 		end
 	end
-	if message == "rank" then
-		eventRanking(name)
-		showMessage("The data on the ranking is temporary and will be erased when the room is finished or rebooted.",name)
-	end
 	if message == "pw" then
-		if name == "Gus_grav#7473" or name == "Leblanc#5342" or name == "Viego#0345" then
+		if name == "Rakan#3159" or name == "Nurzak#7525" or name == "Viego#0345" or name == "Skyymellu#0000" then
 			if powerups == true then
 				powerups=false
 			else
@@ -96,24 +54,24 @@ function eventChatCommand(name,message)
 		end
 	end
 	if message == "help" then
-		menuShow(name,"Help","The objetive of this module is kill the other players using the mouse to generate spirits.<br><br>At moment, 6 powerups are available:<br>F1 = Fast Spirits (700 points)<br>F2 = Double Power (700 points)<br>F3 = Box Meteor (550 points)<br>F4 = Night Mode (400 points)<br>F5 = Ultra Explosion (800 points)<br>F6 = Stone Meteor (750 points)<br><br>Module made by Gus_grav#7473. Version RTM 6352.033 LTS",180)
+		menuShow(name,0x686868,140,100,520,240,"Help","The objetive of this module is kill the other players using the mouse to generate spirits.<br><br>At moment, 6 powerups are available:<br>F1 = Fast Spirits (700 points)<br>F2 = Double Power (700 points)<br>F3 = Box Meteor (550 points)<br>F4 = Night Mode (400 points)<br>F5 = Ultra Explosion (800 points)<br>F6 = Stone Meteor (750 points)<br><br>Module made by Rakan#3159.")
 	end
 	if message == "powerups" then
-		menuShow(name,"Powerups List","<b>F1 - Fast Spirits - 700 points</b><br>Allows you to use spirits without the default timeout.<br><b>F2 - Double Power - 700 points</b><br>Double the power of your anvils, independently of actual intensity.<br><b>F3 - Box Meteor - 550 points</b><br>Spawns a meteor of large box on the map.<br><b>F4 - Night Mode - 400 points</b><br>Blacks out the map for 2 seconds.<br><b>F5 - Ultra Explosion - 800 points</b><br>Spawns a huge amount of spirits around the map.<br><b>F6 - Stone Meteor - 750 points</b><br>Spawns a lot of stones falling from the top of map.",180)
+		menuShow(name,0x686868,140,100,520,240,"Powerups List","<b>F1 - Fast Spirits - 700 points</b><br>Allows you to use spirits without the default timeout.<br><b>F2 - Double Power - 700 points</b><br>Double the power of your anvils, independently of actual intensity.<br><b>F3 - Box Meteor - 550 points</b><br>Spawns a meteor of large box on the map.<br><b>F4 - Night Mode - 400 points</b><br>Blacks out the map for 2 seconds.<br><b>F5 - Ultra Explosion - 800 points</b><br>Spawns a huge amount of spirits around the map.<br><b>F6 - Stone Meteor - 750 points</b><br>Spawns a lot of stones falling from the top of map.")
 	end
 end
 function eventNewPlayer(name)
 	system.bindMouse(name)
 	if not data[name] then
 		table.insert(players_table,name)
-		data[name]={time=0,matches=0,wins=0,score=0,p1=false,p2=false,pcount=0,imageid=0,imaget=3}
+		data[name]={time=0,matches=0,wins=0,score=0,p1=false,p2=false,pcount=0,imageid=0,imaget=3,opened=false}
 	end
 	ui.addTextArea(299,"<p align='center'><a href='event:show_menu'><font size='18'>Menu",name,5,25,70,24,0x000001,0x000001,0.75,true)
 	for _,i in next,{72,82,85,112,113,114,115,116,117,123} do
 		tfm.exec.bindKeyboard(name,i,true,true)
 	end
 	system.bindMouse(name,true)
-	showMessage("<VP><b>Welcome to module #clickwar!</b><br><N>Use the mouse to generate explosions and kill other mices!<br><br>Module developed by Gus_grav#7473.",name)
+	showMessage("<VP><b>Welcome to module Rakan's ClickWar!</b><br><N>Use the mouse to generate explosions and kill other mices!<br><br>Module developed by Rakan#3159.",name)
 end
 for name,player in pairs(tfm.get.room.playerList) do
 	eventNewPlayer(name)
@@ -142,8 +100,6 @@ function eventMouse(name,x,y)
 	end
 end
 function eventNewGame()
-	map_det.code=tfm.get.room.currentMap
-	map_det.creator=tfm.get.room.xmlMapInfo.author
 	tfm.exec.removeImage(imageId)
 	ui.removeTextArea(1,nil)
 	sudden=false
@@ -156,10 +112,9 @@ function eventNewGame()
 		data[name].pcount=0
 		if name:sub(1,1) == "*" then
 			tfm.exec.killPlayer(name)
-			showMessage("<R>Souris aren't allowed to play on this module. Create an account or log in to play ClickWar.",name)
+			showMessage("<R>Souris aren't allowed to play on this module. Create an account or log in to play this game.",name)
 		end
 	end
-	showMessage("<N>Loading current map information...<br><b>Current Map :</b> <V>"..map_det.code.."<br><N><b>Author :</b> <V>"..map_det.creator.."")
 end
 function eventLoop(pass,falt)
 	if nightmode == true then
@@ -201,7 +156,7 @@ function eventLoop(pass,falt)
 		tfm.exec.newGame("#10")
 	end
 	if prox == false then
-		ui.setMapName("<N>ClickWar <J>RTM <b>6352.033 LTS</b>   <G>|   <N>Intensity: <V>"..intensity.."   <G>|   <VP>Module made by <b>Gus_grav#7473</b><")
+		ui.setMapName("<J><b>"..tfm.get.room.currentMap.."</b>   <G>|   <N>Intensity: <V>"..intensity.."   <G>|   <VP>Rakan's ClickWar</b><")
 	else
 		ui.setMapName("<b>"..winner.."</b> <N>wons the match! Next match on "..math.floor(falt/1000).." seconds.<")
 	end
@@ -300,40 +255,26 @@ end
 function eventTextAreaCallback(id,name,callback)
 	if callback == "show_menu" then
 		ui.addTextArea(299,"<p align='center'><a href='event:hide_menu'><font size='18'>Menu",name,5,25,70,24,0x000001,0x000001,0.75,true)
-		ui.addTextArea(298,"<p align='center'><a href='event:help'>Help</a><br><a href='event:profile'>Profile</a><br><a href='event:ranking'>Ranking</a><br><a href='event:powerups'>Powerups</a>",name,5,55,90,60,0x000001,0x000001,0.80,true)
+		ui.addTextArea(298,"<p align='center'><a href='event:help'>Help</a><br><a href='event:profile'>Profile</a><br><a href='event:powerups'>Powerups</a>",name,5,55,90,48,0x000001,0x000001,0.80,true)
 	end
 	if callback == "hide_menu" then
 		ui.addTextArea(299,"<p align='center'><a href='event:show_menu'><font size='18'>Menu",name,5,25,70,24,0x000001,0x000001,0.75,true)
 		ui.removeTextArea(298,name)
 	end
-	if callback == "ranking" then
-		eventChatCommand(name,"rank")
-	end
 	if callback == "profile" then
 		showMessage("Use the !p command to view your profile and !p [user] to view the profile of specified user.",name)
 	end
-	if callback == "fechar" then
-		for id=8000,8010 do
-			ui.removeTextArea(id,name)
+	if callback == "close" then
+		for _,i in next,{1000,1001,1002,1003,1004,1005,1006,1007,1008,1009,1010,1011} do
+			ui.removeTextArea(i,name)
 		end
+		data[name].opened=false
 	end
 	if callback == "help" then
 		eventChatCommand(name,"help")
 	end
 	if callback == "powerups" then
 		eventChatCommand(name,"powerups")
-	end
-	if callback == "close" then
-		for id=8000,8010 do
-			ui.removeTextArea(id,name)
-			ui.removeTextArea(6969+id,name)
-			ui.removeTextArea(7979+id,name)
-		end
-	end
-	if callback == "closep" then
-		for id=9000,9010 do
-			ui.removeTextArea(id,name)
-		end
 	end
 end
 function eventKeyboard(name,key,down,x,y)
