@@ -1,4 +1,4 @@
-for _,f in next,{"AutoScore","AutoNewGame","AutoTimeLeft","AutoScore","MortCommand","AfkDeath","DebugCommand","MinimalistMode"} do
+for _,f in next,{"AutoScore","AutoShaman","AutoNewGame","AutoTimeLeft","PhysicalConsumables","AutoScore","MortCommand","AfkDeath","DebugCommand","MinimalistMode"} do
 	tfm.exec["disable"..f](true)
 end
 for _,g in next,{"obj","bonus","new","perfil","p","rank"} do
