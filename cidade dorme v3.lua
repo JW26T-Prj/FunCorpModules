@@ -1,1 +1,0 @@
--- Este código passará por um rework completo e será lançado com outro nome em breve. Aguardem novidades!
