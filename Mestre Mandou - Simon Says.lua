@@ -1,8 +1,3 @@
-admin={""} -- insira o nome dos FunCorps aqui! / insert the FunCorp names here!
-
--- Caso estejam tentando rodar este código no cafofo de tribo, insira seus nomes na tabela admin para que o código possa ser executado.
--- If you are trying to run this code in your tribehouse, enter your names in the admin table, so the code can be executed.
-
 -- Antes de rodar este código em uma sala, verifique se esta versão coincide com a versão mais recente presente abaixo:
 -- https://github.com/JW26T-Prj/FunCorpModules/blob/master/Mestre%20Mandou%20-%20Simon%20Says.lua
 -- Isto vai garantir que você receba sempre as últimas atualizações e correções de bugs.
@@ -10,6 +5,10 @@ admin={""} -- insira o nome dos FunCorps aqui! / insert the FunCorp names here!
 -- Warning: Before running this code into a room, check if this version is the same than the latest version located here:
 -- https://github.com/JW26T-Prj/FunCorpModules/blob/master/Mestre%20Mandou%20-%20Simon%20Says.lua
 -- This is a guarantee that you will receive all the latest updates and bugfixes.
+
+admin={""} -- insira o nome dos FunCorps aqui! / insert the FunCorp names here!
+-- Caso estejam tentando rodar este código no cafofo de tribo, insira seus nomes na tabela acima para que o código possa ser executado.
+-- If you are trying to run this code in your tribehouse, enter your names in the table, so the code can be executed.
 
 -- Comandos para uso de membros FunCorp e do dono da sala:
 -- !command [número de 1 a 133] - Executa um comando manualmente.
@@ -47,7 +46,7 @@ acids3={type = 19,width = 10,height = 800,miceCollision = true,groundCollision =
 xpos=0; xpos2=0;
 system.disableChatCommandDisplay(nil,true)
 lang.br = {
-	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><br><VP><b>Module criado e gerenciado por Jessiewind26#2546</b><br><br><R>Versão 7.10.0",
+	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><br><VP><b>Module criado e gerenciado por Jessiewind26#2546</b><br><br><R>Versão 7.10.1",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -87,7 +86,7 @@ lang.br = {
 	espaco = "Pressione a barra de espaço 20 vezes!",
 	nome = "Digite o seu nome no jogo (com #número).",
 	ndance = "Não dance!",
-	key1 = "Pressione a tecla Delete!",
+	key1 = "Não se abaixe!",
 	action1 = "Dance, sente e durma!",
 	laugh = "Agora RIAM!",
 	laugh2 = "Quem rir agora vai morrer.",
@@ -193,7 +192,7 @@ lang.br = {
 	souris = "<R>Jogadores convidados não podem participar deste module. Crie uma conta ou faça login para jogar.",
 }
 lang.en = {
-	welcome = "<N><b>Welcome to Simon Says module!</b><br>Follow everything the game told and test your limits until the end!<br><br><VP><b>Script made and developed by Jessiewind26#2546</b><br>Translation by Draw#6691<br><br><R>Version 7.10.0",
+	welcome = "<N><b>Welcome to Simon Says module!</b><br>Follow everything the game told and test your limits until the end!<br><br><VP><b>Script made and developed by Jessiewind26#2546</b><br>Translation by Draw#6691<br><br><R>Version 7.10.1",
 	dancar = "Dance!",
 	sentar = "Sit down!",
 	confetar = "Throw 5 confetti!",
@@ -233,7 +232,7 @@ lang.en = {
 	espaco = "Press the space bar 20 times!",
 	nome = "Type your nickname in game (with #number).",
 	ndance = "Dont dance!",
-	key1 = "Press the delete key!",
+	key1 = "Dont turn down!",
 	action1 = "Dance, sit and sleep!",
 	laugh = "Laugh now!",
 	laugh2 = "Who laughs now dies.",
@@ -385,7 +384,9 @@ function verifyNinjas(name)
 	end
 end
 function selectLanguage()
-	ui.addPopup(0,0,"IMPORTANTE: Para que este código seja executado em um cafofo de tribo, é necessário colocar os nomes dos administradores na tabela presente na primeira linha do código.<br><br>IMPORTANT: For this code to run in a tribehouse, it is necessary to put the names of the administrators in the table present in the first line of the code.<br>",nil,150,25,500,true)
+	if rawlen(admin) == 0 then
+		ui.addPopup(0,0,"IMPORTANTE: Para que este código seja executado em um cafofo de tribo, é necessário colocar os nomes dos administradores na tabela presente na primeira linha do código.<br><br>IMPORTANT: For this code to run in a tribehouse, it is necessary to put the names of the administrators in the table present in the first line of the code.<br>",nil,150,25,500,true)
+	end
 	for _,name in next,admin do
 		ui.addTextArea(2000,"<font size='14'><p align='center'>Select your language:",name,300,150,185,23,0x000001,0x505050,0.98,true)
 		ui.addTextArea(2001,"<font size='15'><p align='center'><a href='event:pt'>PT",name,370,180,40,23,0x000001,0x505050,0.98,true)
@@ -429,11 +430,11 @@ function eventNewPlayer(name)
 	tfm.exec.bindKeyboard(name,115,false,true)
 	system.bindMouse(name,true)
 	newData={
-			["c"]=0;
-			["s"]=0;
-			["count"]=0;
-			["opened"]=true;
-			};
+		["c"]=0;
+		["s"]=0;
+		["count"]=0;
+		["opened"]=true;
+		};
 	data[name] = newData;
 	showMessage(text.welcome,name)
 	if string.find(tfm.get.room.name,name) then
@@ -816,6 +817,7 @@ function getCommand()
 	if active == 38 then
 		showCommand(active,text.key1)
 		tfm.exec.setGameTime(8)
+		setAllAlive()
 	end
 	if active == 39 then
 		showCommand(active,text.action1)
@@ -1909,8 +1911,8 @@ function eventKeyboard(name,id,down,x,y)
 		end
 	end
 	if active == 38 then
-		if id == 46 then
-			completeCommand(name)
+		if id == 40 or id == 83 then
+			tfm.exec.killPlayer(name)
 		end
 	end
 	if active == 45 then
@@ -2122,13 +2124,13 @@ function eventLoop(passado,faltando)
 	if unlocked == true then
 		local tempo=math.floor(faltando/1000)
 		if active == -2 then
-			ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." 7.10.0</b><")
+			ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." 7.10.1</b><")
 		elseif active == -1 and vivo >= 1 then
-			ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.10.0</b><")
+			ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.10.1</b><")
 		elseif active == -1 and vivo <= 0 then
-			ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.10.0</b><")
+			ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.10.1</b><")
 		elseif active >= 0 then
-			ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." 7.10.0</b><")
+			ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." 7.10.1</b><")
 		end
 		if rato < 4 then
 			if tfm.get.room.currentMap == lobby_map then
