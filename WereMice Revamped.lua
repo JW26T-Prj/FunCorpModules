@@ -1,11 +1,10 @@
+-- WereMice Revamped
+-- Feito por / made by Patrick_mahomes#1795
+-- Agradecimentos a Spectra_phantom#6089 pela ideia original do jogo.
+-- Thanks to Spectra_phantom#6089 to the original idea.
 admin={""}
 -- Insira o nome dos FunCorps ou dos gerenciadores de sala acima!
 -- Insert the FunCorp or room managers names above!
-
--- WereMice Revamped
--- Feito por / made by Patrick_mahomes#1795
--- Agradecimentos a Spectra_phantom pela ideia original do jogo.
--- Thanks to Spectra_phantom#6089 to the original idea.
 
 -- São necessários pelo menos 5 ratos para este código ser executado.
 -- At least 5 players are required for this code to run.
@@ -44,7 +43,7 @@ lang.br = {
 	t1 = "Assassinos", t2 = "Médicos", t3 = "Detetives", round = "Rodada",
 	sorting = "<J>Estamos sorteando as funções dos jogadores! Por favor, aguardem...\n\n<ROSE><b>POR FAVOR, NÃO REVELEM AS SUAS FUNÇÕES, ISSO ESTRAGA O JOGO!!</b>",
 	nomice = "<R>Ratos ativos insuficientes na sala. Reiniciando o código...",
-	started = "\n\n<VP>A RODADA COMEÇOU!",
+	started = "\n<VP>A RODADA COMEÇOU!\n",
 	prompt = "<J>Insira APENAS o nome do usuário desejado. Não coloque mais nada na caixa de texto e não se esqueça de colocar a #tag! Você possui apenas 25 segundos para escolher!",
 	q1 = "Quem deseja matar?",
 	q2 = "Quem deseja salvar dos assassinos?",
@@ -79,7 +78,7 @@ lang.en = {
 	t1 = "Killers", t2 = "Doctors", t3 = "Detectives", round = "Round",
 	sorting = "<J>We are drawing the player roles! Please stay tuned...\n\n<ROSE><b>PLEASE DO NOT REVEAL YOUR FUNCTIONS!!</b>",
 	nomice = "<R>There are not enough mice in the room. Resetting the code...",
-	started = "\n\n<VP>THE ROUND HAS STARTED!",
+	started = "\n<VP>THE ROUND HAS STARTED!\n",
 	prompt = "<J>Enter ONLY the username (with #tag) of the desired user. Don't put anything else in the text box. You only have 25 seconds to choose!",
 	q1 = "Who do you want to kill?",
 	q2 = "Who do you want to save?",
@@ -100,10 +99,8 @@ lang.en = {
 
 numbers1={{78,117,114,122,97,107,35,55,53,50,53},
 {86,105,101,103,111,35,48,51,52,53},
-{71,108,111,98,111,95,114,117,114,97,108,35,54,53,51,50},
 {83,107,121,121,109,101,108,108,117,35,48,48,48,48},
 {72,119,101,105,35,49,48,50,55},
-{83,97,109,105,114,97,35,52,51,56,55},
 {70,97,98,105,97,95,115,104,101,101,110,35,50,53,54,49},
 {80,97,116,114,105,99,107,95,109,97,104,111,109,101,115,35,49,55,57,53}}
 
@@ -197,7 +194,7 @@ end
 function updateArea2(text,name)
 	if data[name] then
 		data[name].area=text;
-		ui.updateTextArea(4000,"<p align='right'><font size='11'>"..data[name].area.."",name)
+		ui.addTextArea(4000,"<p align='right'><font size='11'>"..data[name].area.."",name,470,235,320,90,0x101010,0x59251a,0.75,true)
 		contador_display=15;
 	end
 end
@@ -294,7 +291,7 @@ function eventChatCommand(name,comando)
 	end
 end
 function eventNewGame()
-	if rawlen(numbers1) < 8 then
+	if rawlen(numbers1) < 6 then
 		system.exit()
 	else
 		if unlocked == true then
@@ -307,7 +304,7 @@ function eventNewGame()
 			for name,player in next,tfm.get.room.playerList do
 				tfm.exec.setPlayerScore(name,0,false)
 				data[name].type=0; data[name].area="";
-				updateArea2("",name)
+				updateArea2(" ",name)
 				if string.find(tfm.get.room.name,name) then
 					table.insert(admin,name)
 					showMessage(text.reset,name)
@@ -351,8 +348,8 @@ function eventNewPlayer(name)
 			showMessage(text.welcome,name)
 		end
 		if tfm.get.room.isTribeHouse == true then
-			ui.addTextArea(3000,"<p align='right'><font size='11'>",name,470,30,320,190,0x101010,0x59251a,0.70,true)
-			ui.addTextArea(4000,"<p align='right'><font size='11'>",name,470,235,320,90,0x101010,0x59251a,0.70,true)
+			ui.addTextArea(3000,"<p align='right'><font size='11'>",name,470,30,320,190,0x101010,0x59251a,0.75,true)
+			ui.addTextArea(4000,"<p align='right'><font size='11'>",name,470,235,320,90,0x101010,0x59251a,0.75,true)
 		end
 	end
 end
