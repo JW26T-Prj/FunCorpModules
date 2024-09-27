@@ -2,9 +2,9 @@
 -- Feito por / made by Patrick_mahomes#1795
 -- Agradecimentos a Spectra_phantom#6089 pela ideia original do jogo.
 -- Thanks to Spectra_phantom#6089 to the original idea.
-admin={""}
--- Insira o nome dos FunCorps ou dos gerenciadores de sala acima!
--- Insert the FunCorp or room managers names above!
+admin={}
+-- Insira o nome dos FunCorps ou dos gerenciadores de sala acima! (exemplo: admin={"Patrick_mahomes#1795"} )
+-- Insert the FunCorp or room managers names above! (e.g. admin={"Patrick_mahomes#1795"} )
 
 -- São necessários pelo menos 5 ratos para este código ser executado.
 -- At least 5 players are required for this code to run.
@@ -23,14 +23,15 @@ end
 jogadores={assassinos={},detetives={},medicos={},vivos=0,lista={}}
 quant={assassinos=0,detetives=0,medicos=0,vitimas=0,vivos=0}
 limites={assassinos=0,detetives=0,medicos=0}
-modo="inicial"; contador=0; count=0; contador_display=15; mapa="@7896560"; rodada=0; data={}; templist={}; ninjas={}; lang={}; display=""; unlocked=false;
+modo="inicial"; contador=0; count=0; contador_display=15; rodada=0; data={}; templist={}; ninjas={}; lang={}; display=""; unlocked=false;
+mapas={"@7896560","@7959702","@7959756"}
 system.disableChatCommandDisplay(nil,true)
 
 lang.br = {
 	draw = "\n\n<N><b>Todos os assassinos e detetives foram mortos! Temos um empate!</b>\n\nPróxima partida começando em 15 segundos.",
 	win1 = "\n\n<VP><b>Não há mais assassinos vivos! Os jogadores remanescentes venceram!</b>\n\nPróxima partida começando em 15 segundos.",
 	win2 = "\n\n<R><b>Não há mais detetives vivos! Os assassinos vivos venceram!</b>\n\nPróxima partida começando em 15 segundos.",
-	help = "<VP><b>Bem-vindo ao jogo WereMice Revamped.</b>\n\n<N>Neste jogo você deverá descobrir quem são os assassinos e impedir que eles matem todos os detetives ou todas as vítimas.\n\nO jogo consiste basicamente em quatro classes de jogadores:\n<R>• assassinos: <N>São aqueles que irão tentar matar os outros ratos, não importando suas funções.\n<BL>• Médicos: <N>São aqueles que irão tentar salvar os jogadores dos assassinos.\n<VP>• Detetives: <N>São aqueles que irão tentar descobrir e matar os assassinos.\n<J>• Vítimas: <N>Ficam só rezando pra não serem mortos.\n\nO jogo acaba sempre quando todos os assassinos, detetives ou vítimas são mortos.",
+	help = "<VP><b>Bem-vindo ao jogo WereMice Revamped.</b>\n\n<N>Neste jogo você deverá descobrir quem são os assassinos e impedir que eles matem todos os detetives ou todas as vítimas.\n\nO jogo consiste basicamente em quatro classes de jogadores:\n<R>• assassinos: <N>São aqueles que irão tentar matar os outros ratos, não importando suas funções.\n<BL>• Médicos: <N>São aqueles que irão tentar salvar os jogadores dos assassinos.\n<VP>• Detetives: <N>São aqueles que irão tentar descobrir e matar os assassinos.\n<J>• Vítimas: <N>Ficam só rezando pra não serem mortos.\n\nO jogo acaba sempre quando todos os assassinos ou detetives são mortos.",
 	reset = "<ROSE>Digite !reset quando a sala tiver com 5 ratos ou mais para começar ou reiniciar a partida.",
 	bar = "<ROSE><b>WereMice Revamped</b><N>: descubra os assassinos ou seja morto por eles!<",
 	f1 = "<VP>Você foi escolhido(a) como assassino(a).\n\nSua função será matar os outros jogadores. Quando chegar sua vez, digite o nome do rato que deseja matar (com a #tag) na janela de texto que vai aparecer.\n",
@@ -48,7 +49,7 @@ lang.br = {
 	q1 = "Quem deseja matar?",
 	q2 = "Quem deseja salvar dos assassinos?",
 	q3 = "Quem você acha que é o assassino?",
-	out1 = "<VP>Tempo esgotado! Hora da verdade! Vamos ver quem morreu...", out2 = "<VP>Tempo esgotado!", out3 = "<VP>E agora? Será que algum assassino morreu? Descobriremos agora!",
+	out1 = "<VP>Tempo esgotado! Hora da verdade! Vamos ver quem morreu...", out2 = "<VP>Tempo esgotado!", out3 = "<VP>Tempo esgotado! Será que algum assassino morreu? Descobriremos agora!",
 	s1 = "<R>Os assassinos mataram a vítima <b>", s2 = "<J>FOGO AMIGO! Os assassinos mataram o assassino <b>",
 	s3 = "<R>Os assassinos mataram o médico <b>", s4 = "<R>Os assassinos mataram o detetive <b>",
 	nodeath = "<VP>Ufa! Ninguém foi morto!",
@@ -65,7 +66,7 @@ lang.en = {
 	draw = "\n\n<N><b>All killers and detectives are died!	It's a draw!</b>\n\nNext match starting in 15 seconds.",
 	win1 = "\n\n<VP><b>All killers are died! The players win the game!</b>\n\nNext match starting in 15 seconds.",
 	win2 = "\n\n<R><b>All detectives are died! The killers win the game!</b>\n\nNext match starting in 15 seconds.",
-	help = "<VP><b>Welcome to WereMice Revamped.</b>\n\n<N>In this game you must find out who the killers are and prevent them from killing all the detectives or all the victims.\n\nThe game basically consists of four classes of players:\n<R>• Killers: <N>They are the ones who will try to kill the other rats, no matter what their functions are.\n<BL>• Doctors: <N>They are the ones who will try to save the players from the assassins.\n<VP>• Detectives: <N>They are the ones who will try to discover and kill the killers.\n<J>• Victims: <N>They just keep praying not to be killed.\n\nThe game always ends when all killers, detectives or victims are killed.",
+	help = "<VP><b>Welcome to WereMice Revamped.</b>\n\n<N>In this game you must find out who the killers are and prevent them from killing all the detectives or all the victims.\n\nThe game basically consists of four classes of players:\n<R>• Killers: <N>They are the ones who will try to kill the other rats, no matter what their functions are.\n<BL>• Doctors: <N>They are the ones who will try to save the players from the assassins.\n<VP>• Detectives: <N>They are the ones who will try to discover and kill the killers.\n<J>• Victims: <N>They just keep praying not to be killed.\n\nThe game always ends when all killers or detectives are killed.",
 	reset = "<ROSE>Type !reset when the room has 5 or more players to start or restart the game.",
 	bar = "<N><b>WereMice Revamped</b> <N>- discover the killers or be killed by them!<",
 	f1 = "<VP>You have been chosen as killer.\n\nYour job will be to kill the other players. When it's your turn, type the name of the player you want to kill (with the #tag) in the text popup that will appear.\n",
@@ -278,7 +279,7 @@ function eventChatCommand(name,comando)
 	if unlocked == true then
 		if comando == "reset" then
 			if verifyNinjas(name) == true or verifyAdmin(name) == true then
-				tfm.exec.newGame(mapa)
+				tfm.exec.newGame(mapas[math.random(#mapas)])
 			end
 		end
 		if comando == "help" then
@@ -525,7 +526,6 @@ function eventLoop()
 					elseif data[name].type == 1 then
 						showMessage(text.s2..name.."!</b>")
 					elseif data[name].type == 2 then
-					elseif data[name].type == 2 then
 						showMessage(text.s3..name.."!</b>")
 					elseif data[name].type == 3 then
 						showMessage(text.s4..name.."!</b>")
@@ -583,7 +583,7 @@ function eventLoop()
 			end
 		end
 		if contador == 1000 then
-			tfm.exec.newGame(mapa)
+			tfm.exec.newGame(mapas[math.random(#mapas)])
 		end
 	end
 end
@@ -598,7 +598,7 @@ function eventTextAreaCallback(id,name,callback)
 			ui.removeTextArea(i,nil)
 		end
 		ui.addPopup(0,0,"",nil,-2048,-2048,10,false)
-		tfm.exec.newGame(mapa)
+		tfm.exec.newGame(mapas[math.random(#mapas)])
 	end
 	if callback == "en" then
 		text = lang.en
@@ -610,7 +610,7 @@ function eventTextAreaCallback(id,name,callback)
 			ui.removeTextArea(i,nil)
 		end
 		ui.addPopup(0,0,"",nil,-2048,-2048,10,false)
-		tfm.exec.newGame(mapa)
+		tfm.exec.newGame(mapas[math.random(#mapas)])
 	end
 end
 function eventPopupAnswer(id,name,message)
@@ -682,7 +682,7 @@ if tfm.get.room.isTribeHouse == false then
 		text = lang.en
 	end
 	unlocked=true;
-	tfm.exec.newGame(mapa)
+	tfm.exec.newGame(mapas[math.random(#mapas)])
 	for name,player in next,tfm.get.room.playerList do
 		eventNewPlayer(name)
 	end
