@@ -1,4 +1,4 @@
--- Module #arrows, versão v1.4, desenvolvido por Leblanc#5342.
+-- Module #arrows, versão v1.5, desenvolvido por Leblanc#5342.
 
 -- Se estiver rodando este código em uma sala FunCorp, insira os nicknames dos membros abaixo.
 admin={"Leblanc#5342"} -- Insira os nomes aqui! // Insert the nicknames here!
@@ -14,9 +14,9 @@ end
 for _,f in next,{"reset","change"} do
 	system.disableChatCommandDisplay(f)
 end
-modo="inicial"; lang={}; map="@7938991"; ratos=0; vivos=0; round=0; level=0; imgs={}; data={}; symbol={"⇦","⇧","⇨","⇩"}; symbol_l={"&lt;","^",">","v"}; keys={};
+modo="inicial"; lang={}; map="@7938991"; ratos=0; vivos=0; round=0; level=0; imgs={}; data={}; symbol={"⇦","⇧","⇨","⇩"}; symbol_l={"&lt;","^",">","v"}; keys={}; unlocked=false;
 lang.br = {
-	welcome = "<ROSE><b>Bem-vindo ao module #arrows!</b><br><N>O objetivo deste module é ser rápido e preciso, usando o teclado para responder a sequência de setas que aparecerá na sua tela!<br><br><VP>Module criado por Leblanc#5342. Ideia original de Shun_kazami#7014.<br><BL><b>Versão 1.4</b>",
+	welcome = "<ROSE><b>Bem-vindo ao module #arrows!</b><br><N>O objetivo deste module é ser rápido e preciso, usando o teclado para responder a sequência de setas que aparecerá na sua tela!<br><br><VP>Module criado por Leblanc#5342. Ideia original de Shun_kazami#7014.<br><BL><b>Versão 1.5</b>",
 	starting = "<J>Atenção! O jogo será iniciado em 5 segundos!",
 	wrong = "<R>Você errou!",
 	accept = "<VP>Parabéns! Você conseguiu avançar desta fase!",
@@ -29,7 +29,7 @@ lang.br = {
 	legacy = "<J>Caso não esteja conseguindo ver as setas corretamente, digite !change. Este comando mudará a forma como as setas são exibidas na tela.",
 }
 lang.en = {
-	welcome = "<ROSE><b>Welcome to the #arrows module!</b><br><N>The goal of this module is to use your keyboard to follow the sequence of arrows that will show on your screen! You need to be fast!<br><br><VP>Module developed by Leblanc#5342. Original idea from Shun_kazami#7014.<br><BL><b>Version 1.4</b>",
+	welcome = "<ROSE><b>Welcome to the #arrows module!</b><br><N>The goal of this module is to use your keyboard to follow the sequence of arrows that will show on your screen! You need to be fast!<br><br><VP>Module developed by Leblanc#5342. Original idea from Shun_kazami#7014.<br><BL><b>Version 1.5</b>",
 	starting = "<J>The game will be started in 5 seconds!",
 	wrong = "<R>Oh no! Wrong key!",
 	accept = "<VP>Congratulations! You passed this round!",
@@ -42,7 +42,7 @@ lang.en = {
 	legacy = "<J>If you are not seeing the arrows correctly, type !change. This will change the way that the arrows will be displayed.",
 }
 lang.es = {
-	welcome = "<ROSE><b>¡Bienvenidos al módulo #arrows!</b><br><N>¡El objetivo de este módulo es usar su teclado para seguir la secuencia de flechas que se mostrarán en su pantalla! ¡Tienes que ser rápido!<br><br><VP>Módulo hecho por Leblanc#5342. Idea original por Shun_kazami#7014.<br><BL><b>Versión 1.4</b>",
+	welcome = "<ROSE><b>¡Bienvenidos al módulo #arrows!</b><br><N>¡El objetivo de este módulo es usar su teclado para seguir la secuencia de flechas que se mostrarán en su pantalla! ¡Tienes que ser rápido!<br><br><VP>Módulo hecho por Leblanc#5342. Idea original por Shun_kazami#7014.<br><BL><b>Versión 1.5</b>",
 	starting = "<J>¡El juego comenzará en 5 segundos!",
 	wrong = "<R>Oh no! Wrong key!",
 	accept = "<VP>¡Oh, no! ¡Tecla incorrecta!",
@@ -204,78 +204,84 @@ function eventChatCommand(name,message)
 end
 function eventLoop(pass,rem)
 	passed=math.floor(pass/500); remain=math.floor(rem/500);
-	if passed == 20 then
-		showMessage(text.starting)
+	if pass > 3500 and unlocked == false then
+		unlocked=true
+		reset()
 	end
-	if remain <= 10 and modo == "jogar" then
-		for name,player in next,tfm.get.room.playerList do
-			if tfm.get.room.playerList[name].isDead == false then
-				if data[name].c < rawlen(keys) then
-					tfm.exec.killPlayer(name)
-					showMessage(text.notime,name)
-				end
-			end
+	if unlocked == true then
+		if passed == 20 then
+			showMessage(text.starting)
 		end
-		ui.removeTextArea(100,nil)
-		modo="espera";
-		tfm.exec.setGameTime(8-level)
-		for i=1,20 do
-			ui.removeTextArea(i,nil)
-		end
-	end
-	if remain > 1 and modo == "jogar" then
-		updateTimeBar();
-	end
-	if remain <= 1 then
-		if modo == "espera" or modo == "inicial" then
-			if round > 50 then
-				showMessage(text.end1..vivos..text.end2)
-				for name,player in next,tfm.get.room.playerList do
-					if tfm.get.room.playerList[name].isDead == false then
-						tfm.exec.giveCheese(name)
-						tfm.exec.playerVictory(name)
+		if remain <= 10 and modo == "jogar" then
+			for name,player in next,tfm.get.room.playerList do
+				if tfm.get.room.playerList[name].isDead == false then
+					if data[name].c < rawlen(keys) then
+						tfm.exec.killPlayer(name)
+						showMessage(text.notime,name)
 					end
 				end
-				modo="fim";
-			else
-				if vivos <= 0 then
-					modo="fim";
-					showMessage(text.nowinners)
-				elseif round > 5 and vivos == 1 and ratos >= 2 then
-					modo="fim";
+			end
+			ui.removeTextArea(100,nil)
+			modo="espera";
+			tfm.exec.setGameTime(8-level)
+			for i=1,20 do
+				ui.removeTextArea(i,nil)
+			end
+		end
+		if remain > 1 and modo == "jogar" then
+			updateTimeBar();
+		end
+		if remain <= 1 then
+			if modo == "espera" or modo == "inicial" then
+				if round > 50 then
+					showMessage(text.end1..vivos..text.end2)
 					for name,player in next,tfm.get.room.playerList do
 						if tfm.get.room.playerList[name].isDead == false then
-							showMessage("<VP><b>"..name..text.iswinner.."</b>")
 							tfm.exec.giveCheese(name)
 							tfm.exec.playerVictory(name)
 						end
 					end
-				elseif vivos >= 1 then
-					if round % 5 == 0 and level < 8 then
-						if round == 5 then
-							showMessage(text.winners)
-						end
-						tfm.exec.setGameTime(5)
-						level=level+1;
-						if level > 1 then showMessage(text.increase); end
-					end
-					exibeSetas();
+					modo="fim";
 				else
-					for name,player in next,tfm.get.room.playerList do
-						if tfm.get.room.playerList[name].isDead == false then
-							tfm.exec.giveCheese(name)
-							tfm.exec.playerVictory(name)
+					if vivos <= 0 then
+						modo="fim";
+						showMessage(text.nowinners)
+					elseif round > 5 and vivos == 1 and ratos >= 2 then
+						modo="fim";
+						for name,player in next,tfm.get.room.playerList do
+							if tfm.get.room.playerList[name].isDead == false then
+								showMessage("<VP><b>"..name..text.iswinner.."</b>")
+								tfm.exec.giveCheese(name)
+								tfm.exec.playerVictory(name)
+							end
 						end
+					elseif vivos >= 1 then
+						if round % 5 == 0 and level < 8 then
+							if round == 5 then
+								showMessage(text.winners)
+							end
+							tfm.exec.setGameTime(5)
+							level=level+1;
+							if level > 1 then showMessage(text.increase); end
+						end
+						exibeSetas();
+					else
+						for name,player in next,tfm.get.room.playerList do
+							if tfm.get.room.playerList[name].isDead == false then
+								tfm.exec.giveCheese(name)
+								tfm.exec.playerVictory(name)
+							end
+						end
+						modo="fim";
 					end
-					modo="fim";
 				end
 			end
 		end
+		if remain <= 1 and modo == "fim" then
+			reset();
+		end
+		ui.setMapName("<ROSE>#arrows by Leblanc#5342   <G>|   <N>Round : <V>"..round.."   <G>|   <N>"..text.mices.." : <V>"..vivos.."/"..ratos.."   <G>|   <N>"..text.difficulty.." : <V>"..level.."   <G>|   <J>v1.5<")
 	end
-	if remain <= 1 and modo == "fim" then
-		reset();
-	end
-	ui.setMapName("<ROSE>#arrows by Leblanc#5342   <G>|   <N>Round : <V>"..round.."   <G>|   <N>"..text.mices.." : <V>"..vivos.."/"..ratos.."   <G>|   <N>"..text.difficulty.." : <V>"..level.."   <G>|   <J>v1.4<")
 end
 function eventNewGame()
 	ui.setBackgroundColor("#111111")
