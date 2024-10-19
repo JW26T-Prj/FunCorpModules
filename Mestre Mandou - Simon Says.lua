@@ -45,7 +45,7 @@ acids2={type = 19,width = 2400,height = 10,miceCollision = true,groundCollision 
 acids3={type = 19,width = 10,height = 800,miceCollision = true,groundCollision = false, foreground = true}
 system.disableChatCommandDisplay(nil,true)
 lang.br = {
-	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><br><VP><b>Module criado e gerenciado por Jessiewind26#2546</b><br><br><R>Versão 7.11.0",
+	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b>\nSiga tudo o que o jogo mandar e teste seus limites até o fim!\n\n<VP><b>Module criado e gerenciado por Jessiewind26#2546</b>\n\n<R>Versão 7.12.0",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -57,7 +57,6 @@ lang.br = {
 	nchorem = "Não chorem!",
 	esquerda = "Não vá para a esquerda!",
 	direita = "Não vá para a direita!",
-	numero = "Digite o seguinte número: ",
 	digitar = "Digite qualquer coisa e mande para mim.",
 	falar = "Não falem nada!",
 	pular = "Não pulem!",
@@ -110,7 +109,7 @@ lang.br = {
 	mice = "Ratos",
 	round = "Rodada",
 	help = "Ajuda",
-	hcontent = "O objetivo deste module é muito simples:<br><b>Siga tudo o que o jogo mandar e teste seus limites até o fim!</b><br><br>Tenha cuidado, pois alguns comandos podem te matar de surpresa, portanto, é preciso ficar muito esperto!<br><br><BL>Module criado e gerenciado por Jessiewind26#2546",
+	hcontent = "O objetivo deste module é muito simples:\n<b>Siga tudo o que o jogo mandar e teste seus limites até o fim!</b>\n\nTenha cuidado, pois alguns comandos podem te matar de surpresa, portanto, é preciso ficar muito esperto!\n\n<BL>Module criado e gerenciado por Jessiewind26#2546",
 	mices = "Esta sala requer pelo menos 4 ratos.",
 	difficulty = "Dificuldade",
 	segundos = "segundos.",
@@ -145,7 +144,6 @@ lang.br = {
 	version = "Versão",
 	black = "Um buraco negro surgiu e está puxando todos vocês!",
 	creator = "Quem é o criador deste module?",
-	sister = "Quem é a irmã do criador deste module?",
 	counts = "Há quantos ratos nesta sala?",
 	counts_alive = "Há quantos ratos vivos nesta sala?",
 	facepalm = "Coloque a mão no rosto 5 vezes!",
@@ -160,8 +158,6 @@ lang.br = {
 	lava = "Saia da lava, ou seja engolido por ela!",
 	nowater = "Fique dentro da água!",
 	select = "<VP>O modo de comando seletivo está ativo nesta sala.",
-	newcreator = "Qual é o novo nome do criador deste module?",
-	funcorp = "O modo FunCorp deste jogo está habilitado.",
 	balloon = "Voar, voar, subir, subir...",
 	lava1 = "Cuidado! O chão está se transformando em lava!",
 	lava2 = "O chão é lava!",
@@ -189,12 +185,12 @@ lang.br = {
 	space = "Os ratos agora estão no espaço!",
 	chicken = "Está chovendo galinhas!",
 	ccr = "Tá pegando fogo bicho!",
-	submission = "<br><J>As avaliações de mapas do Mestre Mandou estão abertas!<br><VP><b>atelier801.com/topic?f=796133&t=915772&p=1</b><br>",
+	submission = "\n<J>As avaliações de mapas do Mestre Mandou estão abertas!\n<VP><b>atelier801.com/topic?f=796133&t=915772&p=1</b>\n",
 	verify = "<J>Para que possamos verificar a estabilidade do module e coletar estatísticas, a partir deste momento, todas as informações desta sala estão sendo registradas no banco de dados interno do module.",
 	souris = "<R>Jogadores convidados não podem participar deste module. Crie uma conta ou faça login para jogar.",
 }
 lang.en = {
-	welcome = "<N><b>Welcome to Simon Says module!</b><br>Follow everything the game told and test your limits until the end!<br><br><VP><b>Script made and developed by Jessiewind26#2546</b><br>Translation by Draw#6691<br><br><R>Version 7.11.0",
+	welcome = "<N><b>Welcome to Simon Says module!</b>\nFollow everything the game told and test your limits until the end!\n\n<VP><b>Script made and developed by Jessiewind26#2546</b>\nTranslation by Draw#6691\n\n<R>Version 7.12.0",
 	dancar = "Dance!",
 	sentar = "Sit down!",
 	confetar = "Throw 5 confetti!",
@@ -203,14 +199,13 @@ lang.en = {
 	dormir = "You are so much sleepy. Sleep to rest.",
 	raiva = "Tigrounette is evil! Be mad at him.",
 	chorem = "You didn't get cheese :( Cry!",
-	nchorem = "Dont cry!",
-	esquerda = "Dont go to the left!",
-	direita = "Dont go to the right!",
-	numero = "Type the following number: ",
+	nchorem = "Don't cry!",
+	esquerda = "Don't go to the left!",
+	direita = "Don't go to the right!",
 	digitar = "Type anything and send it to me.",
-	falar = "Dont speak!",
-	pular = "Dont jump!",
-	mexer = "Dont move!",
+	falar = "Don't speak!",
+	pular = "Don't jump!",
+	mexer = "Don't move!",
 	bandeira = "Swing any flag of a countrie!",
 	ano = "What year are we in?",
 	vesquerda = "Stay turned to the left!",
@@ -218,11 +213,11 @@ lang.en = {
 	quadradoa = "Stay on the blue square!",
 	quadradov = "Stay on the red square!",
 	quadrado = "Stay on the white square!",
-	nquadrado = "Dont stay on the white square!",
+	nquadrado = "Don't stay on the white square!",
 	retangulo = "Stay inside of the white rectangle!",
 	retangulov = "Stay inside of the red rectangle!",
-	nretangulo = "Dont stay inside of the white rectangle!",
-	nretangulov = "Dont stay inside of the red rectangle!",
+	nretangulo = "Don't stay inside of the white rectangle!",
+	nretangulov = "Don't stay inside of the red rectangle!",
 	preesquerda15 = "Press the left key 15 times!",
 	predireita15 = "Press the right key 15 times!",
 	preesquerda30 = "Press the left key 30 times!",
@@ -233,8 +228,8 @@ lang.en = {
 	predireita100 = "Press the right key 100 times!",
 	espaco = "Press the space bar 20 times!",
 	nome = "Type your nickname in game (with #number).",
-	ndance = "Dont dance!",
-	key1 = "Dont turn down!",
+	ndance = "Don't dance!",
+	key1 = "Don't turn down!",
 	action1 = "Dance, sit and sleep!",
 	laugh = "Laugh now!",
 	laugh2 = "Who laughs now dies.",
@@ -259,7 +254,7 @@ lang.en = {
 	mice = "Mice",
 	round = "Round",
 	help = "Help",
-	hcontent = "The objective of this module is very simple:<br><b>Follow everything that the game says and test your limits to the maximum!</b><br><br>Take care, because some commands can surprise you and kill your mice, so, you have to be very smart!<br><br><BL>Module made and developed by Jessiewind26#2546",
+	hcontent = "The objective of this module is very simple:\n<b>Follow everything that the game says and test your limits to the maximum!</b>\n\nTake care, because some commands can surprise you and kill your mice, so, you have to be very smart!\n\n<BL>Module made and developed by Jessiewind26#2546",
 	mices = "This room request at least 4 mice.",
 	difficulty = "Difficulty",
 	segundos = "seconds.",
@@ -267,7 +262,7 @@ lang.en = {
 	dofim = "No winners! Next starting in ",
 	abaixar = "Get down and get up!",
 	action = "Do any action!",
-	naction = "Dont do any action!",
+	naction = "Don't do any action!",
 	math = "How much it is 1+1?",
 	math1 = "How much it is 2+2?",
 	math2 = "How much it is 3-4?",
@@ -294,7 +289,6 @@ lang.en = {
 	version = "Version",
 	black = "A black hole has appeared and it's pulling all of you!",
 	creator = "Who's this module creator?",
-	sister = "Who's the sister of the creator of this module?",
 	counts = "How many mice this room has?",
 	counts_alive = "How many mice alive this room has?",
 	facepalm = "Put your hand on your face 5 times!",
@@ -304,20 +298,17 @@ lang.en = {
 	explosion = "Look the explosion!",
 	queijo = "All mices that catched the cheese will die!",
 	caps = "Press the CAPS LOCK key 10 times!",
-	tribe = "Type the name of your tribe! (if you have)",
 	acid = "Caution with the acid grounds!",
 	water = "Get out of the water!",
 	lava = "Get out of the lava!",
 	nowater = "Stay into the water!",
 	select = "<VP>The selective command mode is now enabled.",
-	newcreator = "Who's the new nickname of the module creator?",
-	funcorp = "The FunCorp mode of this module is now enabled.",
 	balloon = "Balloon party!",
 	lava1 = "Caution! The floor is turning into lava!",
 	lava2 = "The floor is lava!",
 	lava3 = "Caution! The floor is turning into acid!",
 	light = "The map is now black!",
-	ndurma = "Dont sleep!",
+	ndurma = "Don't sleep!",
 	clickhere = "<font size='8'>CLICK HERE",
 	apple = "Apple rain!",
 	cn = "Cannon rain!",
@@ -339,9 +330,154 @@ lang.en = {
 	space = "All the mices are now in space!",
 	chicken = "Chicken rain!",
 	ccr = "BEWARE! Get out of the fire!",
-	submission = "<br><J>The map submissions for this module are now open!<br><VP><b>atelier801.com/topic?f=796133&t=915772&p=1</b><br>",
+	submission = "\n<J>The map submissions for this module are now open!\n<VP><b>atelier801.com/topic?f=796133&t=915772&p=1</b>\n",
 	verify = "<J>From this moment on, all information from this room is being recorded in the module's internal database.",
 	souris = "<R>Souris aren't allowed to play on this game. Create an account or log in to play.",
+}
+lang.es = {
+	welcome = "<N><b>WBienvenido al juego Simón Dice!</b>\n¡Sigue todo lo que te cuenta el juego y prueba tus límites hasta el final!\n\n<VP><b>Código hecho por Jessiewind26#2546</b>\nTraducción por Nurzak#7525\n\n<R>Versión 7.12.0",
+	dancar = "¡Baile!",
+	sentar = "¡Siéntate!",
+	confetar = "¡Lanza 5 confetis!",
+	mouse = "¡Haga clic 10 veces en la pantalla!",
+	beijos = "¡Da 10 besos!",
+	dormir = "Tienes mucho sueño. Duerme para descansar.",
+	raiva = "Tigrounette es malvado! Enfadaos con él.",
+	chorem = "No te dieron queso :( ¡Llora!",
+	nchorem = "¡No llores!",
+	esquerda = "¡No vayas a la izquierda!",
+	direita = "¡No vayas a la derecha!",
+	digitar = "Escribe cualquier cosa y envíamelo.",
+	falar = "¡No hables!",
+	pular = "¡No saltes!",
+	mexer = "¡No te muevas!",
+	bandeira = "¡Blande cualquier bandera de un país!",
+	ano = "¿En que año estamos?",
+	vesquerda = "¡Permanezca girado a la izquierda!",
+	vdireita = "¡Permanezca girado a la derecha!",
+	quadradoa = "¡Permanezca en el cuadrado azul!",
+	quadradov = "¡Permanezca en el cuadrado rojo!",
+	quadrado = "¡Permanezca en el cuadrado branco!",
+	nquadrado = "¡No te quedes en el cuadrado blanco!",
+	retangulo = "¡Quédate dentro del rectángulo blanco!",
+	retangulov = "¡Quédate dentro del rectángulo rojo!",
+	nretangulo = "¡No te quedes en el rectángulo blanco!",
+	nretangulov = "¡No te quedes en el rectángulo rojo!",
+	preesquerda15 = "¡Presione la tecla para izquierda 15 veces!",
+	predireita15 = "¡Presione la tecla para derecha 15 veces!",
+	preesquerda30 = "¡Presione la tecla para izquierda 30 veces!",
+	predireita30 = "¡Presione la tecla para derecha 30 veces!",
+	preesquerda60 = "¡Presione la tecla para izquierda 60 veces!",
+	predireita60 = "¡Presione la tecla para derecha 60 veces!",
+	preesquerda100 = "¡Presione la tecla para izquierda 100 veces!",
+	predireita100 = "¡Presione la tecla para derecha 100 veces!",
+	espaco = "¡Presione la barra espaciadora 20 veces!",
+	nome = "Escribe tu nombre en el juego (con #número).",
+	ndance = "¡No bailes!",
+	key1 = "¡No rechaces!",
+	action1 = "¡Baila, siéntate y duerme!",
+	laugh = "¡Ríete!",
+	laugh2 = "Quien ríe ahora muere.",
+	stone = "¡Ojo con las piedras!",
+	noob = "Escribe: YO SOY NOOB",
+	action2 = "¡Llora y ríe!",
+	jump = "¡Saltar!",
+	number = "Escribe el siguiente número: ",
+	key = "¡Presione cualquier tecla!",
+	jump2 = "¡Salta 5 veces!",
+	jump3 = "¡Salta 15 veces!",
+	action3 = "¡Da un beso y llora!",
+	area = "¡Descubre dónde está el texto oculto y haz clic en él!",
+	dancing = "¡Es tiempo de fiesta!",
+	freeze = "¡PARADA!",
+	transform = "¡Baila y duerme!",
+	down1 = "¡Baja 3 veces!",
+	down2 = "¡Baja 10 veces!",
+	mestre = "Simón Dice",
+	map = "Mapa",
+	time = "Tiempo",
+	mice = "Ratones",
+	round = "Rodada",
+	help = "Ayuda",
+	hcontent = "El objetivo de este módulo es muy simple:\n<b>¡Sigue todo lo que dice el juego y prueba tus límites al máximo!</b>\n\n¡Ten cuidado, porque algunos comandos pueden sorprenderte y matarte, así que tendrás que ser muy inteligente!\n\n<BL>Código hecho por Jessiewind26#2546",
+	mices = "Este juego requiere al menos 4 ratones.",
+	difficulty = "Dificultad",
+	segundos = "segundos.",
+	fim = "¡El partido ha terminado! El próximo partido comenzará en ",
+	dofim = "¡No hay ganadores! El próximo partido comienza en ",
+	abaixar = "¡Baja y levantate!",
+	action = "¡Realiza cualquier acción!",
+	naction = "¡No realices ninguna acción!",
+	math = "¿Cuánto es 1+1?",
+	math1 = "¿Cuánto es 2+2?",
+	math2 = "¿Cuánto es 3-4?",
+	ds = "¡Baila y siéntate!",
+	seq4 = "¡Baila, siéntate, duerme y aplaude!",
+	seq5 = "¡Baila, aplaude y ríe!",
+	seq6 = "¡Baila y llora!",
+	seq7 = "¡Baila, da un beso y enójate!",
+	seq8 = "¡Da un beso, duerme y llora!",
+	seq9 = "¡Duerme, salta y lanza confeti!",
+	seq10 = "¡Da un beso, lanza confeti y baila!",
+	seq11 = "¡Ríe, baila, duerme, llora y llévate la mano a la cara!",
+	seq12 = "¡Enojate, siéntate, tira confeti, baila y siéntate de nuevo!",
+	seq13 = "¡Baila, siéntate, duerme, ríe, llora, da un beso y salta!",
+	seq14 = "¡Siéntate, llora, da un beso, baila y baja la mirada!",
+	spider = "¡Cuidado con las telarañas!",
+	spider1 = "¡Oh, no! ¡Una araña pasó por encima del mapa y lo llenó de telarañas!",
+	key2 = "¡Presione la tecla F4!",
+	clap = "¡Aplaude 5 veces!",
+	completed = "¡Completaste el comando con éxito!",
+	rain = "¡Llueve ovejas!",
+	skull = "¡Cuidado con los cráneos!",
+	gravity = "¡La gravedad ha cambiado!",
+	version = "Versión",
+	black = "¡Ha aparecido un agujero negro y está atrayendo a todos los ratones!",
+	creator = "¿Quién es el creador de este módulo?",
+	counts = "¿Cuantos ratones tiene esta sala?",
+	counts_alive = "¿Cuantos ratones con vida tiene esta sala?",
+	facepalm = "¡Pon tu mano sobre tu cara 5 veces!",
+	enterprise = "¿Qué empresa creó Transformice?",
+	collect = "¡Cuidado con la lluvia ácida!",
+	balls = "¡Está lloviendo bolas!",
+	explosion = "¡Mira la explosión!",
+	queijo = "¡Todos los movimientos que capturen el queso morirán!",
+	caps = "¡Presione la tecla CAPS LOCK 10 veces!",
+	acid = "¡Cuidado con los terrenos ácidos!",
+	water = "¡Sal del agua!",
+	lava = "¡Sal del lava!",
+	nowater = "¡Permanezca en el agua!",
+	select = "<VP>El modo de comando selectivo ahora está habilitado.",
+	balloon = "¡Fiesta con globos!",
+	lava1 = "¡Cuidado! ¡El suelo se está convirtiendo en lava!",
+	lava2 = "¡El suelo es lava!",
+	lava3 = "¡Cuidado! ¡El suelo se está convirtiendo en ácido!",
+	light = "¡El mapa ahora está oscuro!",
+	ndurma = "¡No duermas!",
+	clickhere = "<font size='8'>CLIC AQUÍ",
+	apple = "¡Lluvia de manzanas!",
+	cn = "¡Lluvia de cañones!",
+	people = "¿Cuantos humanos hay en esta sala?",
+	move = "¡Muevan sus ratones!",
+	fall = "¡Cuidado! ¡El daño por caída ahora está habilitado!",
+	collide = "¡Cuidado! ¡La colisión con ratones ahora está habilitada!",
+	ufo = "¡Cuidado! ¡Un ovni está pasando y está secuestrando a todos los ratones!",
+	emoji = "¡Usa un emoticón!",
+	emoji1 = "Utilice los siguientes emoticones en secuencia: 1 4 7 5 9 2 8 6",
+	emoji2 = "Utilice los siguientes emoticones en secuencia: 5 9 6 1 7 3 4 8",
+	emoji3 = "Utilice los siguientes emoticones en secuencia: 7 2 8 3 6",
+	meep = "¡El MEEP ahora está habilitado!",
+	portal = "¡Cuidado! ¡No entres al portal!",
+	vampires = "¡Todos los ratones se convirtieron en vampiros!",
+	catch = "Atrapa el '+1'!",
+	kills = "¡Suicidaos!",
+	raster = "¡Cuidado! Las zonas rojas serán sustituidas por ácido.",
+	space = "¡Todos los ratones están ahora en el espacio!",
+	chicken = "¡Lluvia de pollos!",
+	ccr = "¡Sal del fuego!",
+	submission = "\n<J>¡Los envíos de mapas para este módulo están abiertos!\n<VP><b>atelier801.com/topic?f=796133&t=915772&p=1</b>\n",
+	verify = "<J>A partir de este momento, toda la información de esta sala queda registrada en la base de datos interna del módulo.",
+	souris = "<R>Souris no pueden jugar en este juego. Crea una cuenta o inicia sesión para jugar.",
 }
 
 numbers1={{74,101,115,115,105,101,119,105,110,100,50,54,35,50,53,52,54},
@@ -390,12 +526,13 @@ function verifyNinjas(name)
 end
 function selectLanguage()
 	if rawlen(admin) == 0 then
-		ui.addPopup(0,0,"IMPORTANTE: Para que este código seja executado em um cafofo de tribo, é necessário colocar os nomes dos administradores na tabela presente na primeira linha do código.<br><br>IMPORTANT: For this code to run in a tribehouse, it is necessary to put the names of the administrators in the table present in the first line of the code.<br>",nil,150,25,500,true)
+		ui.addPopup(0,0,"IMPORTANTE: Para que este código seja executado em um cafofo de tribo, é necessário colocar os nomes dos administradores na tabela presente na primeira linha do código.\n\nIMPORTANT: For this code to run in a tribehouse, it is necessary to put the names of the administrators in the table present in the first line of the code.\n",nil,150,25,500,true)
 	end
 	for _,name in next,admin do
 		ui.addTextArea(2000,"<font size='14'><p align='center'>Select your language:",name,300,150,185,23,0x000001,0x505050,0.98,true)
 		ui.addTextArea(2001,"<font size='15'><p align='center'><a href='event:pt'>PT",name,370,180,40,23,0x000001,0x505050,0.98,true)
 		ui.addTextArea(2002,"<font size='15'><p align='center'><a href='event:en'>EN",name,370,210,40,23,0x000001,0x505050,0.98,true)
+		ui.addTextArea(2003,"<font size='15'><p align='center'><a href='event:es'>ES",name,370,240,40,23,0x000001,0x505050,0.98,true)
 	end
 end
 function showMessage(message,name)
@@ -444,7 +581,7 @@ function eventNewPlayer(name)
 	showMessage(text.welcome,name)
 	if string.find(tfm.get.room.name,name) then
 		table.insert(admin,name)
-		showMessage("<br>Available commands: <br>!command [1-136] - Run a command manually.<br>!run [@code] - Run the specified map.<br> !kill [player#tag] - Kill the specified player.<br>!limit [number] - Limit the number of maximum players on the room.<br> !pw [password] - Lock the room with a password.",name)
+		showMessage("\nAvailable commands: \n!command [1-136] - Run a command manually.\n!run [@code] - Run the specified map.\n !kill [player#tag] - Kill the specified player.\n!limit [number] - Limit the number of maximum players on the room.\n !pw [password] - Lock the room with a password.",name)
 	end
 end
 function completeCommand(name)
@@ -540,7 +677,7 @@ function showMenu(name,color,x,y,width,height,title,content)
 		data[name].opened=true
 		ui.addTextArea(1004,"",name,-1000,-600,2800,1600,0x000001,0x000001,0.65,true)
 		ui.addTextArea(1001,"",name,x+5,y+5,width,height,color,color,0.95,true)
-		ui.addTextArea(1000,"<font size='13'><i><br><br>"..content.."",name,x,y,width,height,0x151515,color,0.95,true)
+		ui.addTextArea(1000,"<font size='13'><i>\n\n"..content.."",name,x,y,width,height,0x151515,color,0.95,true)
 		ui.addTextArea(1002,"<font color='#f8d802'><font size='14'><p align='center'><i><b>"..title.."",name,x+5,y+5,width-11,22,0x101010,0x101010,0.95,true)
 		ui.addTextArea(1003,"<font color='#ff2300'><font size='14'><b><a href='event:close'>X</a>",name,x+width-25,y+5,width-10,20,0,0,0.95,true)
 	end
@@ -1410,7 +1547,7 @@ function eventTextAreaCallback(id,name,callback)
 		ui.removeTextArea(250,name)
 	end
 	if callback == "pt" then
-		for _,i in next,{2000,2001,2002} do
+		for _,i in next,{2000,2001,2002,2003} do
 			ui.removeTextArea(i,nil)
 		end
 		ui.addPopup(0,0,"",nil,-2048,-2048,10,false)
@@ -1422,11 +1559,23 @@ function eventTextAreaCallback(id,name,callback)
 		end
 	end
 	if callback == "en" then
-		for _,i in next,{2000,2001,2002} do
+		for _,i in next,{2000,2001,2002,2003} do
 			ui.removeTextArea(i,nil)
 		end
 		ui.addPopup(0,0,"",nil,-2048,-2048,10,false)
 		text = lang.en
+		unlocked=true;
+		tfm.exec.newGame(lobby_map)
+		for name,player in next,tfm.get.room.playerList do
+			eventNewPlayer(name)
+		end
+	end
+	if callback == "es" then
+		for _,i in next,{2000,2001,2002,2003} do
+			ui.removeTextArea(i,nil)
+		end
+		ui.addPopup(0,0,"",nil,-2048,-2048,10,false)
+		text = lang.es
 		unlocked=true;
 		tfm.exec.newGame(lobby_map)
 		for name,player in next,tfm.get.room.playerList do
@@ -1459,12 +1608,12 @@ function eventChatMessage(name,message)
 		end
 	end
 	if active == 41 then
-		if string.find(string.upper(message),"K") or string.find(string.upper(message),"HA") or string.find(string.upper(message),"LMAO") or string.find(string.upper(message),"HI") or string.find(string.upper(message),"HE") then
+		if string.find(string.upper(message),"K") or string.find(string.upper(message),"HA") or string.find(string.upper(message),"LMAO") or string.find(string.upper(message),"HI") or string.find(string.upper(message),"HE") or string.find(string.upper(message),"JA")  then
 			tfm.exec.killPlayer(name)
 		end
 	end
 	if active == 43 then
-		if string.upper(message) == "EU SOU NOOB" or string.upper(message) == "I AM NOOB" or string.upper(message) == "I AM A NOOB" then
+		if string.upper(message) == "EU SOU NOOB" or string.upper(message) == "I AM NOOB" or string.upper(message) == "YO SOY NOOB" then
 			completeCommand(name)
 		end
 		if string.find(string.upper(message),string.upper("PRO")) then
@@ -2183,13 +2332,13 @@ function eventLoop(passado,faltando)
 	if unlocked == true then
 		local tempo=math.floor(faltando/1000)
 		if active == -2 then
-			ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." 7.11.0</b><")
+			ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." 7.12.0</b><")
 		elseif active == -1 and vivo >= 1 then
-			ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.11.0</b><")
+			ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.12.0</b><")
 		elseif active == -1 and vivo <= 0 then
-			ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.11.0</b><")
+			ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.12.0</b><")
 		elseif active >= 0 then
-			ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." 7.11.0</b><")
+			ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." 7.12.0</b><")
 		end
 		if rato < 4 then
 			if tfm.get.room.currentMap == lobby_map then
@@ -2457,6 +2606,8 @@ end
 if tfm.get.room.isTribeHouse == false then
 	if tfm.get.room.community == "br" or tfm.get.room.community == "pt" then
 		text = lang.br
+	elseif tfm.get.room.community == "es" then
+		text = lang.es
 	else
 		text = lang.en
 	end
