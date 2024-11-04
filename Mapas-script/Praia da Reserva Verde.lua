@@ -4,7 +4,7 @@ end
 debug.disableEventLog(true)
 system.disableChatCommandDisplay("reset")
 tfm.exec.newGame("@7917999")
-changed=false; xml2=''; data={};
+changed=false; xml2=''; data={}; y_factor=1400;
 for i=0,8 do
 	system.disableChatCommandDisplay(tostring(i))
 end
@@ -15,7 +15,7 @@ function showMessage(message,name)
 	if tfm.get.room.isTribeHouse == false then
 		tfm.exec.chatMessage(message,name)
 	else
-		ui.addPopup(0,0,temp_text,name,250,75,400,true)
+		ui.addPopup(0,0,temp_text,name,200,50,400,true)
 	end
 end
 function showNPCs(name)
@@ -33,14 +33,36 @@ function showNPCs(name)
 	tfm.exec.addNPC("Camille Sanders",{title = 257, look = "1;44,40,87,3,62,91,37,52,0",x = 8586,y = 760,female = true,lookLeft = false,lookAtPlayer = true,interactive = true},name)
 end
 function showWater(name)
-for i=0,5 do
- 	tfm.exec.addImage("1897a810bb2.png", "!-1023", -1200+(i*2400), 1385, name, 1, 1, 0, 1)
-end
-for i=0,11 do
-		tfm.exec.addImage("1897a80b341.png", "!-1024", -1200+(i*1200), 1400, name, 5, 1, 0, 1)
-		tfm.exec.addImage("1897a80b341.png", "!-1024", -1200+(i*1200), 6400, name, 5, -1, 0, 1)
-end
-	tfm.exec.addImage("1883b1394a4.png","!1",2500,100,name,0.5,0.5)
+	tfm.exec.addImage("192e017de38.png", "!-1", -1200, y_factor+20, name,36,9,0,1)
+	for _,i in next,{0,2,4,6} do
+		tfm.exec.addImage("192e0181ef2.png", "?1", -1200+(i*2400), y_factor+100, name) 
+		tfm.exec.addImage("192e0184530.png", "?1", -600+(i*2400), y_factor+100, name) 
+		tfm.exec.addImage("192e0186807.png", "?1", i*2400, y_factor+100, name) 
+		tfm.exec.addImage("192e018872a.png", "?1", 600+(i*2400), y_factor+100, name)
+		tfm.exec.addImage("192e0181ef2.png", "?1", -1200+(i*2400), y_factor+3658, name,1,-1) 
+		tfm.exec.addImage("192e0184530.png", "?1", -600+(i*2400), y_factor+3658, name,1,-1) 
+		tfm.exec.addImage("192e0186807.png", "?1", i*2400, y_factor+3658, name,1,-1) 
+		tfm.exec.addImage("192e018872a.png", "?1", 600+(i*2400), y_factor+3658, name,1,-1)
+	end
+	for _,i in next,{1,3,5} do
+		tfm.exec.addImage("192e018872a.png", "?1", -600+(i*2400), y_factor+100, name,-1,1)
+		tfm.exec.addImage("192e0186807.png", "?1", i*2400, y_factor+100, name,-1,1) 
+		tfm.exec.addImage("192e0184530.png", "?1", 600+(i*2400), y_factor+100, name,-1,1) 
+		tfm.exec.addImage("192e0181ef2.png", "?1", 1200+(i*2400), y_factor+100, name,-1,1)
+		tfm.exec.addImage("192e018872a.png", "?1", -600+(i*2400), y_factor+3658, name,-1,-1)
+		tfm.exec.addImage("192e0186807.png", "?1", i*2400, y_factor+3658, name,-1,-1) 
+		tfm.exec.addImage("192e0184530.png", "?1", 600+(i*2400), y_factor+3658, name,-1,-1) 
+		tfm.exec.addImage("192e0181ef2.png", "?1", 1200+(i*2400), y_factor+3658, name,-1,-1) 
+	end
+	for _,i in next,{0,2,4,6,8,10} do
+		tfm.exec.addImage("192e0179669.png", "?1", -1200+(i*2400), y_factor-11, name)
+		tfm.exec.addImage("192e017ca61.png", "!-1", -1200+(i*2400), y_factor-11, name, 1, 1)
+	end
+	for _,i in next,{1,3,5,7,9,11} do
+ 		tfm.exec.addImage("192e0179669.png", "?1", 1200+(i*2400), y_factor-11, name, -1, 1)
+		tfm.exec.addImage("192e017ca61.png", "!-1", 1200+(i*2400), y_factor-11, name, -1, 1)
+	end
+
 	tfm.exec.addImage("17be536e980.png","?1",-800,3680,name)
 	for h=0,4 do
 		tfm.exec.addImage("1803e8e2250.jpg","?1",-1200+(h*2169),1050,name,1,0.75,0,1)
@@ -142,27 +164,27 @@ function displayShark(name,type,reverse)
 end
 function eventTalkToNPC(name, npc)
 	if npc == "Julia Lynner" then
-		showMessage("<V>[Julia Lynner] <N>Bem-vindo(a) ao Quiosque do Raposo Azul. Confira os preços de nossos produtos...<br><br>Espera, eu perdi meu papel com os preços!",name)
+		showMessage("<V>[Julia Lynner] <N>Bem-vindo(a) ao Quiosque do Raposo Azul. Confira os preços de nossos produtos...\n\nEspera, eu perdi meu papel com os preços!",name)
 	elseif npc == "Brand Northern" then
 		showMessage("<V>[Brand Northern] <N>Olha, olha, olha a água mineral, água mineral, água mineral...",name)
 	elseif npc == "John Grand" then
 		showMessage("<V>[John Grand] <J>Ah! Que delícia, cara!",name)
 	elseif npc == "Danniel Victor" then
-		showMessage("<V>[Danniel Victor] <N>Esta é a área conhecida como <R>Ilha do Dragão Vermelho.<N><br><br>Debaixo dela existe um recife de plantas muito grande, no qual vários peixes conseguem viver muito bem. É um lugar muito lindo, vale a pena conhecer. Ah, e tome cuidado com a água. Não fique muito tempo dentro do mar. Você pode afundar e não voltar mais.",name)
+		showMessage("<V>[Danniel Victor] <N>Esta é a área conhecida como <R>Ilha do Dragão Vermelho.<N>\n\nDebaixo dela existe um recife de plantas muito grande, no qual vários peixes conseguem viver muito bem. É um lugar muito lindo, vale a pena conhecer. Ah, e tome cuidado com a água. Não fique muito tempo dentro do mar. Você pode afundar e não voltar mais.",name)
 	elseif npc == "Kenner Henderson" then
-		showMessage("<V>[Kenner Henderson] <N>Foi você o <R>fi********* <N>que amarrou aquele pneu nas ligações elétricas?<br><br><VP>Não? Ainda bem. <N>Pois algum ser sem cérebro inventou de colocar um pneu nos fios para tentar fazer uma tirolesa. Como estou furioso por isso...<br><br>Ah, e se está curioso para saber o que é aquela escada, ela dá para o gerador nuclear principal, que fica bem no fundo do mar. Não me aventuraria a descer até lá...",name)
+		showMessage("<V>[Kenner Henderson] <N>Foi você o <R>fi********* <N>que amarrou aquele pneu nas ligações elétricas?\n\n<VP>Não? Ainda bem. <N>Pois algum ser sem cérebro inventou de colocar um pneu nos fios para tentar fazer uma tirolesa. Como estou furioso por isso...\n\nAh, e se está curioso para saber o que é aquela escada, ela dá para o gerador nuclear principal, que fica bem no fundo do mar. Não me aventuraria a descer até lá...",name)
 	elseif npc == "Keith Cramer" then
 		showMessage("<V>[Keith Cramer] <R>NÃO ESTÁ VENDO QUE ESTA É UMA ÁREA RESTRITA? SAIA DAQUI AGORA! QUER SER INFECTADO(A)? NÃO? ENTÃO SAIA AGORA, C******!",name)
 	elseif npc == "Mandery Under" then
 		showMessage("<V>[Mandery Under] <N>Ei, o que está fazendo na minha piscina suspensa?! Isso tudo é meu!",name)
 	elseif npc == "Katarina Worlynder" then
-		showMessage("<V>[Katarina Worlynder] <N>Sou a engenheira que ajudei a construir toda a parte elétrica desta praia, que é 100% ecológica.<br><br>Utilizamos energia renovável para alimentar o bar e as tirolesas, e ao mesmo tempo proteger o meio ambiente. Não é lindo?",name)
+		showMessage("<V>[Katarina Worlynder] <N>Sou a engenheira que ajudei a construir toda a parte elétrica desta praia, que é 100% ecológica.\n\nUtilizamos energia renovável para alimentar o bar e as tirolesas, e ao mesmo tempo proteger o meio ambiente. Não é lindo?",name)
 	elseif npc == "Mayra Flowers" then
 		showMessage("<V>[Mayra Flowers] <N>Muuuuuuuu! <font face='Segoe UI Symbol'>(●'◡'●) 🐄<font face='Verdana'>",name)
 	elseif npc == "Aaron Grand" then
-		showMessage("<V>[Aaron Grand] <N>Esta é a Torre do Nascer do Sol. O lugar mais alto da praia. Daqui dá para ver absolutamente tudo. Incluindo o pôr do sol que é lindo.<br><br>Se eu fosse você, nunca mais sairia daqui. Tenho um baita medo de mar...",name)
+		showMessage("<V>[Aaron Grand] <N>Esta é a Torre do Nascer do Sol. O lugar mais alto da praia. Daqui dá para ver absolutamente tudo. Incluindo o pôr do sol que é lindo.\n\nSe eu fosse você, nunca mais sairia daqui. Tenho um baita medo de mar...",name)
 	elseif npc == "Daniel Winngs" then
-		showMessage("<V>[Daniel Winngs] <N>Seja bem-vindo(a). Você definitivamente está em um lugar privilegiado.<br><br>Esta é uma praia totalmente paradisíaca. Com sua água cristinalina, duas tirolesas e uma piscina suspensa, você não vai querer sair daqui tão cedo.",name)
+		showMessage("<V>[Daniel Winngs] <N>Seja bem-vindo(a). Você definitivamente está em um lugar privilegiado.\n\nEsta é uma praia totalmente paradisíaca. Com sua água cristinalina, duas tirolesas e uma piscina suspensa, você não vai querer sair daqui tão cedo.",name)
 	elseif npc == "Camille Sanders" then
 		showMessage("<V>[Camille Sanders] <N>Me paga um passeio de barco? Tenho um desejo incrível de conhecer este lugar!",name)
 	end
@@ -203,7 +225,7 @@ function eventNewPlayer(name)
 	if changed == true then
 		ui.setMapName("Praia da Reserva Verde - <ROSE>Morgana's Mechanical Maps<")
 	end
-	showMessage("<VP><b>Bem-vindo(a) a Praia da Reserva Verde.</b><br><br><p align='left'><N>Este é um mapa-script de praia bem grande e com diversos recursos para se divertir. Aproveite e curta!<br><br><R>Aviso: Este mapa pode consumir até 1,8GB de RAM dependendo de casos específicos.<br><br><ROSE><b>Mapa feito por Morganadxana#0000.</b><br><J>Agradecimentos especiais para <b>Draw#6691, Soft#1388, Viincenzo#9526, Lacoste#8972, Lipersz#9863, Spectra_phantom#6089, Threshlimit#0000, Star#8558 e Lanadelrey#4862.</b><br><br><N>Deseja usar este mapa-script no cafofo de sua tribo? Use o link a seguir:<br><N><VP>raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/Mapas-script/Praia%20da%20Reserva%20Verde.lua<br><br><N>Revisão 2.2<br><br<BL>Digite ! juntamente com um número (ex.: !1) para virar um animal marinho.",name)
+	showMessage("<VP><b>Bem-vindo(a) a Praia da Reserva Verde.</b>\n\n<p align='left'><N>Este é um mapa-script de praia bem grande e com diversos recursos para se divertir. Aproveite e curta!\n\n<R>Aviso: Este mapa pode consumir até 1,8GB de RAM dependendo de casos específicos.\n\n<ROSE><b>Mapa feito por Morganadxana#0000.</b>\n<J>Agradecimentos especiais para <b>Draw#6691, Soft#1388, Viincenzo#9526, Lacoste#8972, Lipersz#9863, Spectra_phantom#6089, Shun_kazami#7014, Samira#4387, Threshlimit#0000, Star#8558 e Lanadelrey#4862.</b>\n\n<N>Deseja usar este mapa-script no cafofo de sua tribo? Use o link a seguir:\n<N><VP>raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/Mapas-script/Praia%20da%20Reserva%20Verde.lua\n\n<N>Revisão 2.3\n<br<BL>Digite ! juntamente com um número (ex.: !1) para virar um animal marinho.",name)
 	newData={
 		["s"]=0; ["id"]=-1;
 	};
