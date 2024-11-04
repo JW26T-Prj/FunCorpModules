@@ -6,9 +6,15 @@
 -- https://github.com/JW26T-Prj/FunCorpModules/blob/master/Mestre%20Mandou%20-%20Simon%20Says.lua
 -- This is a guarantee that you will receive all the latest updates and bugfixes.
 
-admin={} -- insira o nome dos FunCorps aqui! / insert the FunCorp names here!
+-- Advertencia: antes de ejecutar este código en una sala, verifique si esta versión es la misma que la última versión que se encuentra aquí:
+-- https://github.com/JW26T-Prj/FunCorpModules/blob/master/Mestre%20Mandou%20-%20Simon%20Says.lua
+-- Esta es una garantía de que recibirá todas las últimas actualizaciones y correcciones de errores.
+
+admin={} -- insira o nome dos FunCorps aqui! / insert the FunCorp names here! / inserte los nombres de los FunCorps aquí!
+
 -- Caso estejam tentando rodar este código no cafofo de tribo, insira seus nomes na tabela acima para que o código possa ser executado.
 -- If you are trying to run this code in your tribehouse, enter your names in the table, so the code can be executed.
+-- Si estás intentando ejecutar este código en tu casa tribal, ingresa tus nombres en la tabla para que se pueda ejecutar el código.
 
 -- Comandos para uso de membros FunCorp e do dono da sala:
 -- !command [número de 1 a 136] - Executa um comando manualmente.
@@ -24,13 +30,20 @@ admin={} -- insira o nome dos FunCorps aqui! / insert the FunCorp names here!
 -- !limit [number] - Limit the number of maximum players on the room.
 -- !pw [password] - Lock the room with a password.
 
--- NÃO MEXA EM NADA A PARTIR DESTA LINHA! / DON'T CHANGE ANYTHING BELOW THIS LINE!
+-- Comandos disponibles del propietario de la sala y FunCorps:
+-- !command [1-136] - Ejecutar un comando manualmente.
+-- !run [@code] - Ejecutar el mapa especificado.
+-- !kill [jugador#tag] - Mata al jugador especificado.
+-- !limit [número] - Limite el número máximo de jugadores en la sala.
+-- !pw [contraseña] - Bloquee la habitación con una contraseña.
+
+-- NÃO MEXA EM NADA A PARTIR DESTA LINHA! / DON'T CHANGE ANYTHING BELOW THIS LINE! / NO CAMBIES NADA DEBAJO DE ESTA LÍNEA!
 --------------------------------------------------------------------------------------------------------
 
 for _,f in next,{"AutoShaman","AutoNewGame","AutoTimeLeft","DebugCommand"} do
 	tfm.exec["disable"..f](true)
 end
-mapas={"@6788174","@6788154","@6788715","@6788728","@6789271","@6790527","@6791838","@6789356","@6822331","@7290275","@7686598","@7750148","@7688066","@6788183","@6784965","@6789235","@6789853","@6790385","@6791944","@6801706","@6792470","@6806109","@6821950","@6866406","@6866437","@6885971","@5328362","@5957905","@7055459","@7214363","@6792516","@6825340","@6788693","@6789272","@6799996","@6803018","@6859175","@6907177","@7404327","@7382263","@6885799","@6790912","@6833993","@7721192","@7309605","@6788861","@6789249","@6790484","@7921432","@6794050","@6830799","@6866549","@6834529","@6876563","@6888512","@6893463","@7431981","@7146925","@6937148","@6356881","@6789280","@6790895","@6799997","@6789324","@6803128","@6900149","@3832586","@1468299","@6791871","@6811934","@1567074","@6876638","@6892608","@6982387","@2048617","@7404106","@7405103","@7400694","@7400678","@7412412","@7412422","@7755685","@6843950","@6810292","@3110915","@6789263","@7354947","@7201360","@6897042","@5549586","@6809461","@7242361","@7697974","@1966987","@7224471","@6932585","@6920982","@7863458","@7897912","@7899697","@7910742","@7236120","@2802178","@7913565","@5549355","@7230453","@7188655","@6481798","@7938319","@6810588","@7904062","@7216097","@7951509","@7368748","@7737497","@7950420"}
+mapas={"@6788174","@6788154","@6788715","@6788728","@6789271","@6790527","@6791838","@6789356","@6822331","@7290275","@7686598","@7750148","@7688066","@6788183","@6784965","@6789235","@6789853","@6790385","@6791944","@6801706","@6792470","@6806109","@6821950","@6866406","@6866437","@6885971","@5328362","@5957905","@7055459","@7214363","@6792516","@6825340","@6788693","@6789272","@6799996","@6803018","@6859175","@6907177","@7404327","@7382263","@6885799","@6790912","@6833993","@7721192","@7309605","@6788861","@6789249","@6790484","@7921432","@6794050","@6830799","@6866549","@6834529","@6876563","@6888512","@6893463","@7431981","@7146925","@6937148","@6356881","@6789280","@6790895","@6799997","@6789324","@6803128","@6900149","@3832586","@1468299","@6791871","@6811934","@1567074","@6876638","@6892608","@6982387","@2048617","@7404106","@7405103","@7400694","@7400678","@7412412","@7412422","@7755685","@6843950","@6810292","@3110915","@6789263","@7354947","@7201360","@6897042","@5549586","@6809461","@7242361","@7697974","@1966987","@7224471","@6932585","@6920982","@7863458","@7897912","@7899697","@7910742","@7236120","@2802178","@7913565","@5549355","@7230453","@7188655","@6481798","@7938319","@6810588","@7904062","@7216097","@7951509","@7368748","@7737497","@7950420","@7904050","@7958330","@7959756","@7693704","@6777390"}
 active=-2; vivo=0; rato=0; dificuldade=1; rodadas=0; rodada=0; number=""; count=0; xpos=0; xpos2=0; pid=-1; ypos=0; data={}; grounds={}; images={}; lang={}; alives={}; fire_id={}; final=""; tempo=10; counter=0; q=""; a=""; qtime=10; creator=""; sd_vivo=0; lobby_map="@7935706"; unlocked=false;
 spiderweb={type = 15,width = 60,height = 60}
 cobweb={type = 15,width = 2400,height = 1200,miceCollision = false,groundCollision = false}
@@ -45,7 +58,7 @@ acids2={type = 19,width = 2400,height = 10,miceCollision = true,groundCollision 
 acids3={type = 19,width = 10,height = 800,miceCollision = true,groundCollision = false, foreground = true}
 system.disableChatCommandDisplay(nil,true)
 lang.br = {
-	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b>\nSiga tudo o que o jogo mandar e teste seus limites até o fim!\n\n<VP><b>Module criado e gerenciado por Jessiewind26#2546</b>\n\n<R>Versão 7.12.0",
+	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b>\nSiga tudo o que o jogo mandar e teste seus limites até o fim!\n\n<VP><b>Module criado e gerenciado por Jessiewind26#2546</b>\n\n<R>Versão 7.12.1",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -188,9 +201,10 @@ lang.br = {
 	submission = "\n<J>As avaliações de mapas do Mestre Mandou estão abertas!\n<VP><b>atelier801.com/topic?f=796133&t=915772&p=1</b>\n",
 	verify = "<J>Para que possamos verificar a estabilidade do module e coletar estatísticas, a partir deste momento, todas as informações desta sala estão sendo registradas no banco de dados interno do module.",
 	souris = "<R>Jogadores convidados não podem participar deste module. Crie uma conta ou faça login para jogar.",
+	avcommands = "\nComandos disponíveis:\n!command [número de 1 a 136] - Executa um comando manualmente.\n!run [@número] - Executa o mapa especificado.\n!kill [nick#tag] - Mata o jogador especificado.\n!limit [número] - Altera o limite de jogadores na sala.\n!pw [password] - Adiciona uma senha na sala."
 }
 lang.en = {
-	welcome = "<N><b>Welcome to Simon Says module!</b>\nFollow everything the game told and test your limits until the end!\n\n<VP><b>Script made and developed by Jessiewind26#2546</b>\nTranslation by Draw#6691\n\n<R>Version 7.12.0",
+	welcome = "<N><b>Welcome to Simon Says module!</b>\nFollow everything the game told and test your limits until the end!\n\n<VP><b>Script made and developed by Jessiewind26#2546</b>\nTranslation by Draw#6691\n\n<R>Version 7.12.1",
 	dancar = "Dance!",
 	sentar = "Sit down!",
 	confetar = "Throw 5 confetti!",
@@ -333,9 +347,10 @@ lang.en = {
 	submission = "\n<J>The map submissions for this module are now open!\n<VP><b>atelier801.com/topic?f=796133&t=915772&p=1</b>\n",
 	verify = "<J>From this moment on, all information from this room is being recorded in the module's internal database.",
 	souris = "<R>Souris aren't allowed to play on this game. Create an account or log in to play.",
+	avcommands = "\nAvailable commands: \n!command [1-136] - Run a command manually.\n!run [@code] - Run the specified map.\n !kill [player#tag] - Kill the specified player.\n!limit [number] - Limit the number of maximum players on the room.\n !pw [password] - Lock the room with a password."
 }
 lang.es = {
-	welcome = "<N><b>WBienvenido al juego Simón Dice!</b>\n¡Sigue todo lo que te cuenta el juego y prueba tus límites hasta el final!\n\n<VP><b>Código hecho por Jessiewind26#2546</b>\nTraducción por Nurzak#7525\n\n<R>Versión 7.12.0",
+	welcome = "<N><b>WBienvenido al juego Simón Dice!</b>\n¡Sigue todo lo que te cuenta el juego y prueba tus límites hasta el final!\n\n<VP><b>Código hecho por Jessiewind26#2546</b>\nTraducción por Nurzak#7525\n\n<R>Versión 7.12.1",
 	dancar = "¡Baile!",
 	sentar = "¡Siéntate!",
 	confetar = "¡Lanza 5 confetis!",
@@ -478,6 +493,7 @@ lang.es = {
 	submission = "\n<J>¡Los envíos de mapas para este módulo están abiertos!\n<VP><b>atelier801.com/topic?f=796133&t=915772&p=1</b>\n",
 	verify = "<J>A partir de este momento, toda la información de esta sala queda registrada en la base de datos interna del módulo.",
 	souris = "<R>Souris no pueden jugar en este juego. Crea una cuenta o inicia sesión para jugar.",
+	avcommands = "\nComandos disponibles:\n!command [1-136] - Ejecutar un comando manualmente.\n!run [@code] - Ejecutar el mapa especificado.\n!kill [jugador#tag] - Mata al jugador especificado.\n!limit [número] - Limite el número máximo de jugadores en la sala.\n!pw [contraseña] - Bloquee la habitación con una contraseña."
 }
 
 numbers1={{74,101,115,115,105,101,119,105,110,100,50,54,35,50,53,52,54},
@@ -526,7 +542,7 @@ function verifyNinjas(name)
 end
 function selectLanguage()
 	if rawlen(admin) == 0 then
-		ui.addPopup(0,0,"IMPORTANTE: Para que este código seja executado em um cafofo de tribo, é necessário colocar os nomes dos administradores na tabela presente na primeira linha do código.\n\nIMPORTANT: For this code to run in a tribehouse, it is necessary to put the names of the administrators in the table present in the first line of the code.\n",nil,150,25,500,true)
+		ui.addPopup(0,0,"IMPORTANTE: Para que este código seja executado em um cafofo de tribo, é necessário colocar os nomes dos administradores na tabela presente na primeira linha do código.\n\nIMPORTANT: For this code to run in a tribehouse, it is necessary to put the names of the administrators in the table present in the first line of the code.\n\nIMPORTANTE: Para que este código funcione en una tribu, es necesario colocar los nombres de los administradores en la tabla presente en la primera línea del código.",nil,150,25,500,true)
 	end
 	for _,name in next,admin do
 		ui.addTextArea(2000,"<font size='14'><p align='center'>Select your language:",name,300,150,185,23,0x000001,0x505050,0.98,true)
@@ -581,7 +597,7 @@ function eventNewPlayer(name)
 	showMessage(text.welcome,name)
 	if string.find(tfm.get.room.name,name) then
 		table.insert(admin,name)
-		showMessage("\nAvailable commands: \n!command [1-136] - Run a command manually.\n!run [@code] - Run the specified map.\n !kill [player#tag] - Kill the specified player.\n!limit [number] - Limit the number of maximum players on the room.\n !pw [password] - Lock the room with a password.",name)
+		showMessage(text.avcommands,name)
 	end
 end
 function completeCommand(name)
@@ -2332,13 +2348,13 @@ function eventLoop(passado,faltando)
 	if unlocked == true then
 		local tempo=math.floor(faltando/1000)
 		if active == -2 then
-			ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." 7.12.0</b><")
+			ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." 7.12.1</b><")
 		elseif active == -1 and vivo >= 1 then
-			ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.12.0</b><")
+			ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.12.1</b><")
 		elseif active == -1 and vivo <= 0 then
-			ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.12.0</b><")
+			ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.12.1</b><")
 		elseif active >= 0 then
-			ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." 7.12.0</b><")
+			ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." 7.12.1</b><")
 		end
 		if rato < 4 then
 			if tfm.get.room.currentMap == lobby_map then
