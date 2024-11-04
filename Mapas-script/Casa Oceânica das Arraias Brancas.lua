@@ -9,7 +9,7 @@ system.disableChatCommandDisplay("mode");
 for _,i in next,{"d1","d2","d3"} do system.disableChatCommandDisplay(i); end
 debug.disableEventLog(true)
 
-xml=''; changed=false; night=0; a1={4505,265,2925,4066}; a2={1529,1493,1742,1862}; a3={3517,6260,1711,4423}; a4={1622,1551,1537,1864};
+xml=''; y_factor=1305; changed=false; night=0; a1={4505,265,2925,4066}; a2={1529,1493,1742,1862}; a3={3517,6260,1711,4423}; a4={1622,1551,1537,1864};
 b1={888,2520,3095,4692,6810}; c1={560,1378,2048,2802,3307,4555,5369,6004,6750}; d1={1024,1536,2560,3072,4608,5120,6656,7168};
 data={};
 
@@ -53,17 +53,35 @@ function showWater(name)
 	for d=1,rawlen(a2) do tfm.exec.addImage("18a053a43b9.png","?1",a1[d],a2[d],name,-1,1); end
 	for d=1,rawlen(a4) do tfm.exec.addImage("18a053a43b9.png","?1",a3[d],a4[d],name); end
 	for d=1,rawlen(b1) do tfm.exec.addImage("189746d10d2.png","!1",b1[d],2903,name); end
+	tfm.exec.addImage("192e017f5a8.png", "!-1", -1200, y_factor+99, name,28,8,0,1)
 	for _,i in next,{0,2,4} do
-		tfm.exec.addImage("189749dd379.png", "?1", -1200+(i*2000), 1295, name, 1, 0.8, 0, 1)
-		tfm.exec.addImage("189749dd379.png", "!-1", -1200+(i*2000), 1295, name, 1, 0.8, 0, 0.65)
+		tfm.exec.addImage("192e0181ef2.png", "?1", -1200+(i*2400), y_factor+100, name) 
+		tfm.exec.addImage("192e0184530.png", "?1", -600+(i*2400), y_factor+100, name) 
+		tfm.exec.addImage("192e0186807.png", "?1", i*2400, y_factor+100, name) 
+		tfm.exec.addImage("192e018872a.png", "?1", 600+(i*2400), y_factor+100, name)
+		tfm.exec.addImage("192e0181ef2.png", "?1", -1200+(i*2400), y_factor+3658, name,1,-1) 
+		tfm.exec.addImage("192e0184530.png", "?1", -600+(i*2400), y_factor+3658, name,1,-1) 
+		tfm.exec.addImage("192e0186807.png", "?1", i*2400, y_factor+3658, name,1,-1) 
+		tfm.exec.addImage("192e018872a.png", "?1", 600+(i*2400), y_factor+3658, name,1,-1)
 	end
 	for _,i in next,{1,3,5} do
- 		tfm.exec.addImage("189749dd379.png", "?1", 800+(i*2000), 1295, name, -1, 0.8, 0, 1)
-		tfm.exec.addImage("189749dd379.png", "!-1", 800+(i*2000), 1295, name, -1, 0.8, 0, 0.65)
+		tfm.exec.addImage("192e018872a.png", "?1", -600+(i*2400), y_factor+100, name,-1,1)
+		tfm.exec.addImage("192e0186807.png", "?1", i*2400, y_factor+100, name,-1,1) 
+		tfm.exec.addImage("192e0184530.png", "?1", 600+(i*2400), y_factor+100, name,-1,1) 
+		tfm.exec.addImage("192e0181ef2.png", "?1", 1200+(i*2400), y_factor+100, name,-1,1)
+		tfm.exec.addImage("192e018872a.png", "?1", -600+(i*2400), y_factor+3658, name,-1,-1)
+		tfm.exec.addImage("192e0186807.png", "?1", i*2400, y_factor+3658, name,-1,-1) 
+		tfm.exec.addImage("192e0184530.png", "?1", 600+(i*2400), y_factor+3658, name,-1,-1) 
+		tfm.exec.addImage("192e0181ef2.png", "?1", 1200+(i*2400), y_factor+3658, name,-1,-1) 
 	end
-	tfm.exec.addImage("189749ce857.png", "?1", -1200, 1400, name, 8, 6, 0, 1)
-	tfm.exec.addImage("189749ce857.png", "!-1023", -1200, 1934, name, 8, 6, 0, 0.6)
-	tfm.exec.addImage("1897a80b341.png", "!-1023", -1200, 1834, name, 44, 1.2,0,0.75)
+	for _,i in next,{0,2,4,6,8} do
+		tfm.exec.addImage("192e01770df.png", "?1", -1200+(i*2400), y_factor-11, name)
+		tfm.exec.addImage("192e017b00d.png", "!-1", -1200+(i*2400), y_factor-11, name)
+	end
+	for _,i in next,{1,3,5,7,9} do
+ 		tfm.exec.addImage("192e01770df.png", "?1", 1200+(i*2400), y_factor-11, name, -1, 1)
+		tfm.exec.addImage("192e017b00d.png", "!-1", 1200+(i*2400), y_factor-11, name, -1, 1)
+	end
 	for i=0,6 do
 		tfm.exec.addImage("189746fe3a4.png", "!0", -1200+(i*2000), 2995, name, 1, 1, 0, 1)
 		tfm.exec.addImage("189746fe3a4.png", "!0", -1200+(i*2000), 3720, name, 1, -3, 0, 1)
@@ -320,7 +338,7 @@ function eventNewPlayer(name)
 			system.bindKeyboard(name,i,true,true)
 		end
 		ui.setMapName("<N>Casa Oceânica das Arraias Brancas - <ROSE>Morgana's Mechanical Maps<")
-		showMessage("<VP><b>Bem-vindo(a) a Casa Oceânica das Arraias Brancas.</b><br><br><p align='left'><N>Este é um mapa-script cujo intuito é simular uma casa-resort de luxo no meio do oceano. Aproveite e curta!<br><br><ROSE><b>Mapa feito por Morganadxana#0000.</b><br><J>Agradecimentos especiais para <b>Lynet#8558, Shun_kazami#7014, Maramara4#0000, Lacoste#8972, Irelia#7317, Some#2636, Jeancrazzy#0000 e Bielzinnfx#3859.</b><br><br><N>Deseja usar este mapa-script no cafofo de sua tribo? Use o link a seguir:<br><N><VP>raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/Mapas-script/Casa%20Oceânica%20das%20Arraias%20Brancas.lua<br><br><N>Revisão 1.3<br><br<BL>Digite ! juntamente com um número de 0 a 13 (ex.: !1) para virar um animal marinho.",name)
+		showMessage("<VP><b>Bem-vindo(a) a Casa Oceânica das Arraias Brancas.</b><br><br><p align='left'><N>Este é um mapa-script cujo intuito é simular uma casa-resort de luxo no meio do oceano. Aproveite e curta!<br><br><ROSE><b>Mapa feito por Morganadxana#0000.</b><br><J>Agradecimentos especiais para <b>Lynet#8558, Shun_kazami#7014, Maramara4#0000, Lacoste#8972, Irelia#7317, Some#2636, Jeancrazzy#0000 e Bielzinnfx#3859.</b><br><br><N>Deseja usar este mapa-script no cafofo de sua tribo? Use o link a seguir:<br><N><VP>raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/Mapas-script/Casa%20Oceânica%20das%20Arraias%20Brancas.lua<br><br><N>Revisão 1.4<br><br<BL>Digite ! juntamente com um número de 0 a 13 (ex.: !1) para virar um animal marinho.",name)
 		ui.setBackgroundColor("#000000")
 		showWater(name)
 		showNPCs(name)
