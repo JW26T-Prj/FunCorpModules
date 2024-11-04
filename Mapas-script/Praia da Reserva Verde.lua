@@ -5,7 +5,7 @@ debug.disableEventLog(true)
 system.disableChatCommandDisplay("reset")
 tfm.exec.newGame("@7917999")
 changed=false; xml2=''; data={}; y_factor=1400;
-for i=0,8 do
+for i=0,15 do
 	system.disableChatCommandDisplay(tostring(i))
 end
 
@@ -34,6 +34,7 @@ function showNPCs(name)
 end
 function showWater(name)
 	tfm.exec.addImage("192e017de38.png", "!-1", -1200, y_factor+20, name,36,9,0,1)
+	tfm.exec.addImage("192e017de38.png", "?1", -1200, y_factor+20, name,36,9,0,0.55)
 	for _,i in next,{0,2,4,6} do
 		tfm.exec.addImage("192e0181ef2.png", "?1", -1200+(i*2400), y_factor+100, name) 
 		tfm.exec.addImage("192e0184530.png", "?1", -600+(i*2400), y_factor+100, name) 
@@ -95,10 +96,14 @@ function eventChatCommand(name,message)
 	if message == "0" then
 		tfm.exec.removeImage(data[name].id)
 		data[name].s=0
+		tfm.exec.killPlayer(name)
 	end
-	for i=1,8 do
+	for i=1,15 do
 		if message == tostring(i) then
 			data[name].s=i
+			tfm.exec.removeImage(data[name].id)
+			displayShark(name,data[name].s,false)
+			tfm.exec.setPlayerCollision(name,3)
 		end
 	end
 end
@@ -117,48 +122,105 @@ function eventKeyboard(name,key,down,x,y)
 end
 function displayShark(name,type,reverse)
 	if data[name].s == 1 then
-		data[name].id=tfm.exec.addImage("189746ed93c.png", "$"..name.."", -80, -69, nil, 0.25, 0.25)
+		tfm.exec.changePlayerSize(name,2)
+		data[name].id=tfm.exec.addImage("189746ed93c.png", "%"..name.."", -78, -69, nil, 0.25, 0.25)
 	elseif data[name].s == 2 then
+		tfm.exec.changePlayerSize(name,1.9)
 		if reverse == true then
-			data[name].id=tfm.exec.addImage("1860ee201fd.png","$"..name.."", -185, -35, nil, 1, 1)
+			data[name].id=tfm.exec.addImage("1860ee201fd.png","%"..name.."", -185, -35, nil, 1, 1)
 		else
-			data[name].id=tfm.exec.addImage("1860ee201fd.png","$"..name.."", 185, -35, nil, -1, 1)
+			data[name].id=tfm.exec.addImage("1860ee201fd.png","%"..name.."", 185, -35, nil, -1, 1)
 		end
 	elseif data[name].s == 3 then
+		tfm.exec.changePlayerSize(name,4)
 		if reverse == false then
-			data[name].id=tfm.exec.addImage("1883efa1974.png","$"..name.."", -230, -50, nil)
+			data[name].id=tfm.exec.addImage("1883efa1974.png","%"..name.."", -230, -90, nil)
 		else
-			data[name].id=tfm.exec.addImage("1883efa1974.png","$"..name.."", 230, -50, nil, -1, 1)
+			data[name].id=tfm.exec.addImage("1883efa1974.png","%"..name.."", 230, -90, nil, -1, 1)
 		end
 	elseif data[name].s == 4 then
+		tfm.exec.changePlayerSize(name,2.5)
 		if reverse == false then
-			data[name].id=tfm.exec.addImage("1883efb5982.png","$"..name.."", -300, -75, nil)
+			data[name].id=tfm.exec.addImage("1883efb5982.png","%"..name.."", -300, -75, nil)
 		else
-			data[name].id=tfm.exec.addImage("1883efb5982.png","$"..name.."", 300, -75, nil, -1, 1)
+			data[name].id=tfm.exec.addImage("1883efb5982.png","%"..name.."", 300, -75, nil, -1, 1)
 		end
 	elseif data[name].s == 5 then
+		tfm.exec.changePlayerSize(name,1.8)
 		if reverse == false then
-			data[name].id=tfm.exec.addImage("185c2e9722e.png", "$"..name.."", 54, -65, nil, -1, 1)
+			data[name].id=tfm.exec.addImage("185c2e9722e.png", "%"..name.."", 44, -65, nil, -1, 1)
 		else
-			data[name].id=tfm.exec.addImage("185c2e9722e.png", "$"..name.."", -54, -65, nil)
+			data[name].id=tfm.exec.addImage("185c2e9722e.png", "%"..name.."", -54, -65, nil)
 		end
 	elseif data[name].s == 6 then
+		tfm.exec.changePlayerSize(name,3.6)
 		if reverse == false then
-			data[name].id=tfm.exec.addImage("18756e28db6.png", "$"..name.."", -150, -43, nil,0.5,0.5)
+			data[name].id=tfm.exec.addImage("18756e28db6.png", "%"..name.."", -270, -93, nil)
 		else
-			data[name].id=tfm.exec.addImage("18756e28db6.png", "$"..name.."", 150, -43, nil,-0.5,0.5)
+			data[name].id=tfm.exec.addImage("18756e28db6.png", "%"..name.."", 270, -93, nil,-1,1)
 		end
 	elseif data[name].s == 7 then
+		tfm.exec.changePlayerSize(name,3)
 		if reverse == false then
-			data[name].id=tfm.exec.addImage("18756e2e178.png", "$"..name.."", -140, -55, nil,0.5,0.5)
+			data[name].id=tfm.exec.addImage("18756e2e178.png", "%"..name.."", -250, -115, nil)
 		else
-			data[name].id=tfm.exec.addImage("18756e2e178.png", "$"..name.."", 128, -55, nil,-0.5,0.5)
+			data[name].id=tfm.exec.addImage("18756e2e178.png", "%"..name.."", 206, -115, nil,-1,1)
 		end
 	elseif data[name].s == 8 then
+		tfm.exec.changePlayerSize(name,2.1)
 		if reverse == false then
-			data[name].id=tfm.exec.addImage("18756e333d5.png", "$"..name.."", -150, -50, nil,0.5,0.5)
+			data[name].id=tfm.exec.addImage("18756e333d5.png", "%"..name.."", -150, -44, nil,0.5,0.5)
 		else
-			data[name].id=tfm.exec.addImage("18756e333d5.png", "$"..name.."", 150, -50, nil,-0.5,0.5)
+			data[name].id=tfm.exec.addImage("18756e333d5.png", "%"..name.."", 150, -44, nil,-0.5,0.5)
+		end
+	elseif data[name].s == 9 then
+		tfm.exec.changePlayerSize(name,2.6)
+		if reverse == false then
+			data[name].id=tfm.exec.addImage("18a0539e298.png", "%"..name.."", 90, -90, nil,-1,1)
+		else
+			data[name].id=tfm.exec.addImage("18a0539e298.png", "%"..name.."", -90, -90, nil)
+		end
+	elseif data[name].s == 10 then
+		tfm.exec.changePlayerSize(name,0.8)
+		if reverse == false then
+			data[name].id=tfm.exec.addImage("18a053a43b9.png", "%"..name.."", 90, -78, nil,-1,1)
+		else
+			data[name].id=tfm.exec.addImage("18a053a43b9.png", "%"..name.."", -90, -78, nil)
+		end
+	elseif data[name].s == 11 then
+		tfm.exec.changePlayerSize(name,2.5)
+		if reverse == false then
+			data[name].id=tfm.exec.addImage("18a053a9ab9.png", "%"..name.."", -137, -58, nil)
+		else
+			data[name].id=tfm.exec.addImage("18a053a9ab9.png", "%"..name.."", 137, -58, nil,-1,1)
+		end
+	elseif data[name].s == 12 then
+		tfm.exec.changePlayerSize(name,1.2)
+		if reverse == false then
+			data[name].id=tfm.exec.addImage("18a053af7df.png", "%"..name.."", 90, -86, nil,-1,1)
+		else
+			data[name].id=tfm.exec.addImage("18a053af7df.png", "%"..name.."", -90, -86, nil)
+		end
+	elseif data[name].s == 13 then
+		tfm.exec.changePlayerSize(name,1.2)
+		if reverse == false then
+			data[name].id=tfm.exec.addImage("18a053b5130.png", "%"..name.."", 90, -53, nil,-1,1)
+		else
+			data[name].id=tfm.exec.addImage("18a053b5130.png", "%"..name.."", -90, -53, nil)
+		end
+	elseif data[name].s == 14 then
+		tfm.exec.changePlayerSize(name,0.8)
+		if reverse == true then
+			data[name].id=tfm.exec.addImage("192e01914e1.png", "%"..name.."", 90, -42, nil,-1,1)
+		else
+			data[name].id=tfm.exec.addImage("192e01914e1.png", "%"..name.."", -90, -42, nil)
+		end
+	elseif data[name].s == 15 then
+		tfm.exec.changePlayerSize(name,0.8)
+		if reverse == false then
+			data[name].id=tfm.exec.addImage("192e01972a4.png", "%"..name.."", 90, -34, nil,-1,1)
+		else
+			data[name].id=tfm.exec.addImage("192e01972a4.png", "%"..name.."", -90, -34, nil)
 		end
 	end
 end
@@ -196,6 +258,11 @@ function eventPlayerWon(name)
 end
 function eventPlayerDied(name)
 	if changed == true then
+		tfm.exec.changePlayerSize(name,1)
+		tfm.exec.setPlayerCollision(name,1)
+		tfm.exec.removeImage(data[name].id)
+		data[name].id=-1
+		data[name].s=0
 		tfm.exec.respawnPlayer(name)
 	end
 end
@@ -225,7 +292,7 @@ function eventNewPlayer(name)
 	if changed == true then
 		ui.setMapName("Praia da Reserva Verde - <ROSE>Morgana's Mechanical Maps<")
 	end
-	showMessage("<VP><b>Bem-vindo(a) a Praia da Reserva Verde.</b>\n\n<p align='left'><N>Este é um mapa-script de praia bem grande e com diversos recursos para se divertir. Aproveite e curta!\n\n<R>Aviso: Este mapa pode consumir até 1,8GB de RAM dependendo de casos específicos.\n\n<ROSE><b>Mapa feito por Morganadxana#0000.</b>\n<J>Agradecimentos especiais para <b>Draw#6691, Soft#1388, Viincenzo#9526, Lacoste#8972, Lipersz#9863, Spectra_phantom#6089, Shun_kazami#7014, Samira#4387, Threshlimit#0000, Star#8558 e Lanadelrey#4862.</b>\n\n<N>Deseja usar este mapa-script no cafofo de sua tribo? Use o link a seguir:\n<N><VP>raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/Mapas-script/Praia%20da%20Reserva%20Verde.lua\n\n<N>Revisão 2.3\n<br<BL>Digite ! juntamente com um número (ex.: !1) para virar um animal marinho.",name)
+	showMessage("<VP><b>Bem-vindo(a) a Praia da Reserva Verde.</b>\n\n<p align='left'><N>Este é um mapa-script de praia bem grande e com diversos recursos para se divertir. Aproveite e curta!\n\n<R>Aviso: Este mapa pode consumir até 1,8GB de RAM dependendo de casos específicos.\n\n<ROSE><b>Mapa feito por Morganadxana#0000.</b>\n<J>Agradecimentos especiais para <b>Draw#6691, Soft#1388, Viincenzo#9526, Lacoste#8972, Lipersz#9863, Spectra_phantom#6089, Shun_kazami#7014, Samira#4387, Threshlimit#0000, Star#8558 e Lanadelrey#4862.</b>\n\n<N>Deseja usar este mapa-script no cafofo de sua tribo? Use o link a seguir:\n<N><VP>raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/Mapas-script/Praia%20da%20Reserva%20Verde.lua\n\n<N>Revisão 2.4\n<br<BL>Digite ! juntamente com um número (ex.: !1) para virar um animal marinho.",name)
 	newData={
 		["s"]=0; ["id"]=-1;
 	};
