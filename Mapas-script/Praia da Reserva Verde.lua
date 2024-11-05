@@ -33,8 +33,7 @@ function showNPCs(name)
 	tfm.exec.addNPC("Camille Sanders",{title = 257, look = "1;44,40,87,3,62,91,37,52,0",x = 8586,y = 760,female = true,lookLeft = false,lookAtPlayer = true,interactive = true},name)
 end
 function showWater(name)
-	tfm.exec.addImage("192e017de38.png", "!-1", -1200, y_factor+20, name,36,9,0,1)
-	tfm.exec.addImage("192e017de38.png", "?1", -1200, y_factor+20, name,36,9,0,0.55)
+	tfm.exec.addImage("192e017f5a8.png", "!-1", -1200, y_factor+99, name,40,10,0,1)
 	for _,i in next,{0,2,4,6} do
 		tfm.exec.addImage("192e0181ef2.png", "?1", -1200+(i*2400), y_factor+100, name) 
 		tfm.exec.addImage("192e0184530.png", "?1", -600+(i*2400), y_factor+100, name) 
@@ -45,7 +44,7 @@ function showWater(name)
 		tfm.exec.addImage("192e0186807.png", "?1", i*2400, y_factor+3658, name,1,-1) 
 		tfm.exec.addImage("192e018872a.png", "?1", 600+(i*2400), y_factor+3658, name,1,-1)
 	end
-	for _,i in next,{1,3,5} do
+	for _,i in next,{1,3,5,7} do
 		tfm.exec.addImage("192e018872a.png", "?1", -600+(i*2400), y_factor+100, name,-1,1)
 		tfm.exec.addImage("192e0186807.png", "?1", i*2400, y_factor+100, name,-1,1) 
 		tfm.exec.addImage("192e0184530.png", "?1", 600+(i*2400), y_factor+100, name,-1,1) 
@@ -56,14 +55,13 @@ function showWater(name)
 		tfm.exec.addImage("192e0181ef2.png", "?1", 1200+(i*2400), y_factor+3658, name,-1,-1) 
 	end
 	for _,i in next,{0,2,4,6,8,10} do
-		tfm.exec.addImage("192e0179669.png", "?1", -1200+(i*2400), y_factor-11, name)
-		tfm.exec.addImage("192e017ca61.png", "!-1", -1200+(i*2400), y_factor-11, name, 1, 1)
+		tfm.exec.addImage("192e01770df.png", "?1", -1200+(i*2400), y_factor-11, name)
+		tfm.exec.addImage("192e017b00d.png", "!-1", -1200+(i*2400), y_factor-11, name,1,1)
 	end
 	for _,i in next,{1,3,5,7,9,11} do
- 		tfm.exec.addImage("192e0179669.png", "?1", 1200+(i*2400), y_factor-11, name, -1, 1)
-		tfm.exec.addImage("192e017ca61.png", "!-1", 1200+(i*2400), y_factor-11, name, -1, 1)
+ 		tfm.exec.addImage("192e01770df.png", "?1", 1200+(i*2400), y_factor-11, name, -1, 1)
+		tfm.exec.addImage("192e017b00d.png", "!-1", 1200+(i*2400), y_factor-11, name, -1, 1)
 	end
-
 	tfm.exec.addImage("17be536e980.png","?1",-800,3680,name)
 	for h=0,4 do
 		tfm.exec.addImage("1803e8e2250.jpg","?1",-1200+(h*2169),1050,name,1,0.75,0,1)
@@ -88,7 +86,7 @@ function showWater(name)
 end
 function eventChatCommand(name,message)
 	if message == "reset" then
-		if name == "Morganadxana#0000" or name == "Leblanc#5342" or name == "Irelia#7317" then
+		if name == "Morganadxana#0000" or name == "Leblanc#5342" or name == "Irelia#7317" or name == "Rakan#3159" then
 			tfm.exec.newGame(xml2,false)
 			ui.removeTextArea(0,nil)
 		end
@@ -292,7 +290,7 @@ function eventNewPlayer(name)
 	if changed == true then
 		ui.setMapName("Praia da Reserva Verde - <ROSE>Morgana's Mechanical Maps<")
 	end
-	showMessage("<VP><b>Bem-vindo(a) a Praia da Reserva Verde.</b>\n\n<p align='left'><N>Este é um mapa-script de praia bem grande e com diversos recursos para se divertir. Aproveite e curta!\n\n<R>Aviso: Este mapa pode consumir até 1,8GB de RAM dependendo de casos específicos.\n\n<ROSE><b>Mapa feito por Morganadxana#0000.</b>\n<J>Agradecimentos especiais para <b>Draw#6691, Soft#1388, Viincenzo#9526, Lacoste#8972, Lipersz#9863, Spectra_phantom#6089, Shun_kazami#7014, Samira#4387, Threshlimit#0000, Star#8558 e Lanadelrey#4862.</b>\n\n<N>Deseja usar este mapa-script no cafofo de sua tribo? Use o link a seguir:\n<N><VP>raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/Mapas-script/Praia%20da%20Reserva%20Verde.lua\n\n<N>Revisão 2.4\n<br<BL>Digite ! juntamente com um número (ex.: !1) para virar um animal marinho.",name)
+	showMessage("<VP><b>Bem-vindo(a) a Praia da Reserva Verde.</b>\n\n<p align='left'><N>Este é um mapa-script de praia bem grande e com diversos recursos para se divertir. Aproveite e curta!\n\n<R>Aviso: Este mapa pode consumir até 1,8GB de RAM dependendo de casos específicos.\n\n<ROSE><b>Mapa feito por Morganadxana#0000.</b>\n<J>Agradecimentos especiais para <b>Draw#6691, Soft#1388, Viincenzo#9526, Lacoste#8972, Lipersz#9863, Spectra_phantom#6089, Shun_kazami#7014, Samira#4387, Threshlimit#0000, Star#8558 e Lanadelrey#4862.</b>\n\n<N>Deseja usar este mapa-script no cafofo de sua tribo? Use o link a seguir:\n<N><VP>raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/Mapas-script/Praia%20da%20Reserva%20Verde.lua\n\n<N>Revisão 2.5\n<br<BL>Digite ! juntamente com um número (ex.: !1) para virar um animal marinho.",name)
 	newData={
 		["s"]=0; ["id"]=-1;
 	};
