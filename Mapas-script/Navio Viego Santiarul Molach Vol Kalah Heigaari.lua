@@ -8,7 +8,7 @@ wood={type = 14,width = 800,height = 20,miceCollision = true, friction = 0.5, gr
 dolphins={{400,2595},{2590,2705}}
 dolphins_r={{5150,2775},{4220,3305}}
 
-xml=''; changed=false; y_factor=2000; boat_factor=42; depth_factor=1050; mapa="@7961204";
+xml=''; changed=false; y_factor=1950; boat_factor=-8; depth_factor=1000; mapa="@7961204";
 
 function showMessage(message,name)
 	temp_text=string.gsub(message,"<b>","") 
@@ -22,39 +22,39 @@ end
 
 function showWater(name)
 	-- animais voadores
-	tfm.exec.addImage("1877322de4e.png","!1",8046,750,name)
-	tfm.exec.addImage("1877322de4e.png","!1",1329,450,name,-1,1)
-	tfm.exec.addImage("1877322de4e.png","!1",59,927,name)
-	tfm.exec.addImage("187732271a7.png","!1",589,573,name)
-	tfm.exec.addImage("187732271a7.png","!1",2396,217,name)
-	tfm.exec.addImage("1877321eda8.png","!1",5249,723,name)
-	tfm.exec.addImage("1877321eda8.png","!1",6609,853,name,-1,1)
-	tfm.exec.addImage("18773209c5b.png","!1",8656,733,name)
+	tfm.exec.addImage("1877322de4e.png","!1",8046,708+boat_factor,name)
+	tfm.exec.addImage("1877322de4e.png","!1",1329,408+boat_factor,name,-1,1)
+	tfm.exec.addImage("1877322de4e.png","!1",59,885+boat_factor,name)
+	tfm.exec.addImage("187732271a7.png","!1",589,531+boat_factor,name)
+	tfm.exec.addImage("187732271a7.png","!1",2396,175+boat_factor,name)
+	tfm.exec.addImage("1877321eda8.png","!1",5249,681+boat_factor,name)
+	tfm.exec.addImage("1877321eda8.png","!1",6609,811+boat_factor,name,-1,1)
+	tfm.exec.addImage("18773209c5b.png","!1",8656,691+boat_factor,name)
 
 	-- animais marinhos
-	tfm.exec.addImage("1860ee201fd.png","!1",7767,1897,name)
-	tfm.exec.addImage("192e0192c52.png","?1",-217,4256,name)
-	tfm.exec.addImage("192e0192c52.png","?1",2324,4229,name,-1,1)
-	tfm.exec.addImage("192e01943c1.png","?1",2793,4354,name)
-	tfm.exec.addImage("192e01943c1.png","?1",1449,3940,name)
-	tfm.exec.addImage("192e01943c1.png","?1",4100,3924,name,-1,1)
-	tfm.exec.addImage("192e0195b33.png","?1",95,4000,name)
-	tfm.exec.addImage("192e0195b33.png","?1",1396,4106,name,-1,1)
-	tfm.exec.addImage("192e0195b33.png","?1",2994,4410,name)
-	tfm.exec.addImage("192e0195b33.png","?1",4350,4317,name,-1,1)
-	tfm.exec.addImage("192e01972a4.png","?1",5143,4294,name)
-	tfm.exec.addImage("192e01972a4.png","?1",3016,3730,name,-1,1)
-	tfm.exec.addImage("192e0198a16.png","?1",1656,4490,name)
-	tfm.exec.addImage("192e0198a16.png","?1",-173,4399,name,-1,1)
-	tfm.exec.addImage("192e0198a16.png","?1",4613,4516,name)
-	tfm.exec.addImage("192e0198a16.png","?1",5347,4014,name)
-	tfm.exec.addImage("192e0198a16.png","?1",3773,3834,name,-1,1)
-	tfm.exec.addImage("18a053a43b9.png","?1",4004,4396,name)
-	tfm.exec.addImage("18a053a43b9.png","?1",3086,4287,name)
-	tfm.exec.addImage("185c2e9722e.png","?1",1084,4434,name)
-	tfm.exec.addImage("1883efb5982.png","?1",280,3515,name)
-	tfm.exec.addImage("18756e28db6.png","?1",3250,3355,name,-1,1)
-	tfm.exec.addImage("18756e333d5.png","?1",1890,3444,name,-1,1)
+	tfm.exec.addImage("1860ee201fd.png","!1",7767,1847,name)
+	tfm.exec.addImage("192e0192c52.png","?1",-217,4206,name)
+	tfm.exec.addImage("192e0192c52.png","?1",2324,4179,name,-1,1)
+	tfm.exec.addImage("192e01943c1.png","?1",2793,4304,name)
+	tfm.exec.addImage("192e01943c1.png","?1",1449,3890,name)
+	tfm.exec.addImage("192e01943c1.png","?1",4100,3874,name,-1,1)
+	tfm.exec.addImage("192e0195b33.png","?1",95,3950,name)
+	tfm.exec.addImage("192e0195b33.png","?1",1396,4056,name,-1,1)
+	tfm.exec.addImage("192e0195b33.png","?1",2994,4360,name)
+	tfm.exec.addImage("192e0195b33.png","?1",4350,4267,name,-1,1)
+	tfm.exec.addImage("192e01972a4.png","?1",5143,4244,name)
+	tfm.exec.addImage("192e01972a4.png","?1",3016,3680,name,-1,1)
+	tfm.exec.addImage("192e0198a16.png","?1",1656,4440,name)
+	tfm.exec.addImage("192e0198a16.png","?1",-173,4349,name,-1,1)
+	tfm.exec.addImage("192e0198a16.png","?1",4613,4466,name)
+	tfm.exec.addImage("192e0198a16.png","?1",5347,3964,name)
+	tfm.exec.addImage("192e0198a16.png","?1",3773,3784,name,-1,1)
+	tfm.exec.addImage("18a053a43b9.png","?1",4004,4346,name)
+	tfm.exec.addImage("18a053a43b9.png","?1",3086,4237,name)
+	tfm.exec.addImage("185c2e9722e.png","?1",1084,4384,name)
+	tfm.exec.addImage("1883efb5982.png","?1",280,3465,name)
+	tfm.exec.addImage("18756e28db6.png","?1",3250,3305,name,-1,1)
+	tfm.exec.addImage("18756e333d5.png","?1",1890,3394,name,-1,1)
 
 	for d=1,rawlen(dolphins) do
 		tfm.exec.addImage("192e01914e1.png","?1",dolphins[d][1],dolphins[d][2]+boat_factor,name)
@@ -64,11 +64,11 @@ function showWater(name)
 	end
 
 	-- itens de dentro do mar
-	tfm.exec.addImage("192e019a18c.png","!1",0,4205,name)
-	tfm.exec.addImage("189746d10d2.png","!1",1285,4490,name)
-	tfm.exec.addImage("189746d76aa.png","!1",4060,4405,name)
-	tfm.exec.addImage("189746e4cb8.png","!1",4510,4316,name)
-	tfm.exec.addImage("189746e4cb8.png","!1",2117,4331,name)
+	tfm.exec.addImage("192e019a18c.png","!1",0,3155+depth_factor,name)
+	tfm.exec.addImage("189746d10d2.png","!1",1285,3440+depth_factor,name)
+	tfm.exec.addImage("189746d76aa.png","!1",4060,3355+depth_factor,name)
+	tfm.exec.addImage("189746e4cb8.png","!1",4510,3266+depth_factor,name)
+	tfm.exec.addImage("189746e4cb8.png","!1",2117,3281+depth_factor,name)
 
 	-- pisos
 	tfm.exec.addPhysicObject(-1,-100,2830+boat_factor,barrier)
@@ -78,8 +78,8 @@ function showWater(name)
 	end
 
 	-- mecanismo de entrada e saída da sala especial
-	ui.addTextArea(8972, "<a href='event:pw'>                                 ",name,4242,1077+boat_factor,58,30,0,0,1.0,false)
-	ui.addTextArea(1027, "<a href='event:exit'>                                      ",name,4320,1140+boat_factor,50,30,0,0,1.0,false)
+	ui.addTextArea(8972, "<a href='event:pw'>                                 ",name,4142,1077+boat_factor,58,30,0,0,1.0,false)
+	ui.addTextArea(1027, "<a href='event:exit'>                                      ",name,4220,1140+boat_factor,50,30,0,0,1.0,false)
 
 	-- nuvens
 	for a=0,6 do
@@ -188,7 +188,7 @@ function eventNewPlayer(name)
 		tfm.exec.changePlayerSize(name,1)
 		ui.setMapName("<VP>Navio Viego Santiarul Molach Vol Kalah Heigaari<")
 		tfm.exec.setGameTime(72000)
-		showMessage("<N>Este é um mapa-script de navio pirata. Na verdade, é uma casa completa dentro de um navio pirata, e tem tudo o que uma casa 'normal' possui e mais um pouco... Divirtam-se!<br><br><ROSE><b>Mapa feito por Hwei#1027, Viego#0345 e Samira#4387.</b><br><J>Agradecimentos especiais para Lacoste#8972, Shun_kazami#7014, Tanatosl#0000 e Miss_fortune#9548.<br><br><N>Revisão 1.2",name)
+		showMessage("<N>Este é um mapa-script de navio pirata. Na verdade, é uma casa completa dentro de um navio pirata, e tem tudo o que uma casa 'normal' possui e mais um pouco... Divirtam-se!<br><br><ROSE><b>Mapa feito por Hwei#1027, Viego#0345 e Samira#4387.</b><br><J>Agradecimentos especiais para Lacoste#8972, Shun_kazami#7014, Tanatosl#0000 e Miss_fortune#9548.<br><br><N>Revisão 1.4",name)
 		showWater(name)
 	end
 end
@@ -198,13 +198,13 @@ function eventTextAreaCallback(id,name,callback)
 		ui.addPopup(11,2,"",name,350,175,200,true)
 	end
 	if callback == "exit" then
-		tfm.exec.movePlayer(name,4184,1106,false,0,0,false)
+		tfm.exec.movePlayer(name,4084,1106,false,0,0,false)
 	end
 end
 
 function eventPopupAnswer(id,name,answer)
 	if answer == password then
-		tfm.exec.movePlayer(name,4536,1106,false,0,0,false)
+		tfm.exec.movePlayer(name,4236,1106,false,0,0,false)
 	end
 end
 
