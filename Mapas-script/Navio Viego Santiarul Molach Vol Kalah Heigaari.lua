@@ -101,7 +101,7 @@ function showWater(name)
 		tfm.exec.addImage("192e019c182.png", "?-1", -1200+(i*1017), y_factor+3550, name, 1, -2, 0, 1)
 	end
 
-	-- água do mar (azul)
+	-- água do mar
 	tfm.exec.addImage("192e017f5a8.png", "!-1", -1200, y_factor+99, name,28,8,0,1)
 	for _,i in next,{0,2,4} do
 		tfm.exec.addImage("192e0181ef2.png", "?1", -1200+(i*2400), y_factor+100, name) 
@@ -153,7 +153,7 @@ function showWater(name)
 	tfm.exec.addImage("192e0189c4a.png","!1",4750,4358+boat_factor,name,1,1,0.5,1)
 
 	-- céu
-	tfm.exec.addImage("192e018e5fd.png","?1",-1200,-1000,name,55,5) 
+	tfm.exec.addImage("192e018e5fd.png","?1",-1200,-1000,name,60,5) 
 end
 
 pw={75,101,105,116,104,32,72,101,114,116,122,111,110}; password="";
@@ -188,7 +188,7 @@ function eventNewPlayer(name)
 		tfm.exec.changePlayerSize(name,1)
 		ui.setMapName("<VP>Navio Viego Santiarul Molach Vol Kalah Heigaari<")
 		tfm.exec.setGameTime(72000)
-		showMessage("<N>Este é um mapa-script de navio pirata. Na verdade, é uma casa completa dentro de um navio pirata, e tem tudo o que uma casa 'normal' possui e mais um pouco... Divirtam-se!<br><br><ROSE><b>Mapa feito por Hwei#1027, Viego#0345 e Samira#4387.</b><br><J>Agradecimentos especiais para Lacoste#8972, Shun_kazami#7014, Tanatosl#0000 e Miss_fortune#9548.<br><br><N>Revisão 1.4",name)
+		showMessage("<N>Este é um mapa-script de navio pirata. Na verdade, é uma casa completa dentro de um navio pirata, e tem tudo o que uma casa 'normal' possui e mais um pouco... Divirtam-se!\n\n<ROSE><b>Mapa feito por Hwei#1027, Viego#0345 e Samira#4387.</b>\n<J>Agradecimentos especiais para Lacoste#8972, Shun_kazami#7014, Tanatosl#0000 e Miss_fortune#9548.\n\n<N>Revisão 1.5\n\n<N>Deseja usar este mapa-script no cafofo de sua tribo? Use o link a seguir:\n<VP>raw.githubusercontent.com/JW26T-Prj/FunCorpModules/refs/heads/master/Mapas-script/Navio%20Viego%20Santiarul%20Molach%20Vol%20Kalah%20Heigaari.lua",name)
 		showWater(name)
 	end
 end
@@ -198,13 +198,13 @@ function eventTextAreaCallback(id,name,callback)
 		ui.addPopup(11,2,"",name,350,175,200,true)
 	end
 	if callback == "exit" then
-		tfm.exec.movePlayer(name,4084,1106,false,0,0,false)
+		tfm.exec.movePlayer(name,4084,1120,false,0,0,false)
 	end
 end
 
 function eventPopupAnswer(id,name,answer)
 	if answer == password then
-		tfm.exec.movePlayer(name,4236,1106,false,0,0,false)
+		tfm.exec.movePlayer(name,4200,1120,false,0,0,false)
 	end
 end
 
