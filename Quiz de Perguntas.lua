@@ -4,10 +4,10 @@ admin={} -- FunCorps, insiram seus nomes aqui!
 tema=0 -- Edite conforme mostrado abaixo!
 -- 0 = transformice, 1 = conhecimentos gerais, 2 = música
 
--- Comandos de admin:
--- !tema [0-4] - Muda o tema das perguntas.
+-- Comandos de FunCorp e do dono da sala:
+-- !tema [0-2] - Muda o tema das perguntas.
 -- !reset - Redefine a lista de perguntas e reinicia a rodada.
--- !limite [5-30] - Altera o limite máximo de perguntas por rodada. Esta operação reinicia a rodada.
+-- !limite [5-30] - Altera o limite máximo de perguntas por rodada. Usar este comando vai reiniciar o jogo.
 
 -- NÃO MEXA EM NADA DEPOIS DESTA LINHA!
 -------------------------------------------------------------------------------------------------
