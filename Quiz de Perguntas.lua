@@ -26,8 +26,8 @@ perguntas={
 "Qual a função do comando /langue?","Muda a linguagem do jogo","Muda você de sala",1,
 "Qual destes jogos não foi feito pela Atelier 801?","Bombom","Fortoresse",1,
 "Qual o limite máximo de amigos do Transformice?","500","1000",1,
-"Há quantos emoticons no Transformice?","10","21",2,
-"Há quantas ações de rato no Transformice?","14","21",1,
+"Há quantos emoticons no Transformice?","31","36",2,
+"Há quantas ações de rato no Transformice?","15","21",1,
 "Qual o nome do antigo modo do module #deathmatch?","Baffbotffa","Baffbot",1,
 "A partir de qual nível todas as árvores de habilidades de shaman são exibidas?","20","30",1,
 "O que acontece se você digitar /version?","Mostra informações do jogo","Abre a versão do jogo",2,
@@ -224,7 +224,7 @@ perguntas={
 "Apenas membros da Module Team podem carregar modules nas salas do Transformice.","Verdadeiro","Falso",2,
 "Quantos servidores host da Atelier801 existem no Brasil?","0","1",1,
 "Qual é a margem máxima offscreen de largura e altura no qual os ratos podem permanecer vivos?","400px por lado","800px por lado",1,
-"Quantos modules oficiais existem no Transformice?","45","46",2,
+"Quantos modules oficiais existem no Transformice?","46","47",2,
 "Qual é a resolução de tela padrão na qual o Transformice funciona?","800x600","1024x768",1,
 "Qual a função da habilidade de shaman 'Arquiteto'?","Remover um objeto invocado","Alterar a transparência de um objeto invocado",2,
 "Quanto tempo dura um mapa normal no Transformice, sem o uso de powerups?","2 minutos","2 minutos e 30 segundos",1,
@@ -261,8 +261,16 @@ perguntas={
 "Depois de quanto tempo os ratos congelados desaparecem em salas oficiais?","10 segundos","15 segundos",1,
 "O sistema operacional mínimo para executar o Transformice atualmente é o Windows 2000.","Verdadeiro","Falso",1,
 "É possível modificar a água no Transformice para que os ratos que desçam mais fundo tenham mais dificuldade de subir.","Verdadeiro","Falso",2,
-"Qual o nome do module 'Verdade ou Desafio', versão adaptada da original feita por Haxhhhhhhhhh em 2014?","#mousetat","#perguntas",2,
+"Qual o nome do module 'Verdade ou Desafio', versão adaptada da original feita por Haxhhhhhhhhh em 2014?","#mousetat","#perguntas",1,
 "Qual o nome atual da antiga desenvolvedora de modules Morganadxana, que parou de jogar em 2023?","Diana#2258","Samira#4387",2,
+"Quantos itens existem no menu principal gráfico de salas do Transformice?","8","9",2,
+"Por padrão, qual é a tecla utilizada para lançar confetes no Transformice?","C","E",1,
+"Quantos cargos predefinidos são criados quando você cria uma tribo no Transformice?","10","12",1,
+"Qual o comando utilizado para mudar a foto de perfil no sistema do Atelier801?","/avatar","/profile",1,
+"Qual destes modules foi criado primeiro?","#volley","#lagball",2,
+"Quantos bootcamps são necessários para desbloquear o título Artista Solitário?","10","20",1,
+"O comando /clear apaga todas as mensagens do chat do Transformice.","Verdadeiro","Falso",2,
+"Qual destes mapas da vanilla possui bombas que caem do céu?","102","118",2,
 }
 perguntas1={
 "Vai na sorte :)","ok","ok",1,
@@ -282,7 +290,7 @@ perguntas1={
 "Na matemática, qual o nome da sequência onde o resultado é a soma dos dois números anteriores?","Fibonacci","Pascal",1,
 "A cidade do Rio de Janeiro foi capital do Brasil até que ano?","1889","1960",2,
 "A área de um círculo pode ser calculada utilizando qual fórmula?","2.πr","π.r²",2,
-"Quantos anos possui Silvio Santos?","94","95",1,
+"Com quantos anos morreu Silvio Santos?","94","95",1,
 "Qual destes mares possui maior concentração de sal por litro de água?","Mar Morto","Mar Mediterrâneo",1,
 "A Rodovia Presidente Dutra, que liga os estados do RJ e SP, foi construída em qual governo Brasileiro?","Getúlio Vargas","Eurico Gaspar Dutra",2,
 "Qual é a unidade utilizada para medir a altura de sons?","decibéis","watts",1,
@@ -897,7 +905,7 @@ function eventLoop(p,f)
 	else
 		ui.removeTextArea(3,nil)
 	end
-	if f <= 1500 and vivos == 1 and modo == "fim" then
+	if f <= 800 and vivos == 1 and modo == "fim" then
 		for name,player in next,tfm.get.room.playerList do
 			if not tfm.get.room.playerList[name].isDead then
 				showMessage("<VP><b>"..name.."</b> venceu a partida!")
