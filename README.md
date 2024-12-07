@@ -1,7 +1,7 @@
-# Welcome to the Jessiewind26's FunCorp Public Modules folder.
+# Welcome to the Jessie LinesPower TFM Utilities Group Modules folder.
 
 This folder contain all the scripts made by the old Spectra Advanced Module Group tribe and the codes that players sent to the folder administrators.
-These codes are intended to be used with FunCorp members, but other players will not have problems using the codes.
+These codes are intended to be used with FunCorp members, but other players usually will not have problems using the codes.
 
 To add a code to this folder, report an issue or comment anything about the codes, please contact one of the following users into Discord:
 - ventusjessegleen
