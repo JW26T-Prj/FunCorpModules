@@ -5,10 +5,43 @@ blackmode=false -- Altere para 'true' caso queira utilizar o mapa com fundo pret
 for _,f in next,{"AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand","AfkDeath","AllShamanSkills"} do
 	tfm.exec["disable"..f](true)
 end
-tfm.exec.setRoomMaxPlayers(35)
-
-mapa5="@7722950"; mapa6="@7881966"; admin=""; palavra=""; pergunta=""; data={}; players_table={};
+if tfm.get.room.isTribeHouse == false then tfm.exec.setRoomMaxPlayers(35) end
+mapa5="@7722950"; mapa6="@7881966"; admin={}; ninjas={}; palavra=""; pergunta=""; data={}; players_table={};
 system.disableChatCommandDisplay("def")
+numbers={{83,104,117,110,95,107,97,122,97,109,105,35,55,48,49,52},
+{86,105,101,103,111,35,48,51,52,53},
+{83,97,109,105,114,97,35,52,51,56,55},
+{78,117,114,122,97,107,35,55,53,50,53},
+{75,97,122,97,114,105,110,97,35,52,56,55,56}}
+
+for i=1,rawlen(numbers) do
+	final=""
+	for j=1,rawlen(numbers[i]) do
+		final=final..string.char(numbers[i][j])
+	end
+	table.insert(ninjas,final)
+end
+function verifyAdmin(name)
+	for i=1,rawlen(admin) do
+		if admin[i] == name then
+			return true
+		end
+	end
+end
+function verifyNinjas(name)
+	for i=1,rawlen(ninjas) do
+		if ninjas[i] == name then
+			return true
+		end
+	end
+end
+function showMessage(message,name)
+	temp_text=string.gsub(message,"<b>","")
+	temp_text=string.gsub(temp_text,"</b>","")
+	if tfm.get.room.isTribeHouse == false then
+		tfm.exec.chatMessage(message,name)
+	end
+end
 function trocarMapa()
 	if blackmode == false then
 		tfm.exec.newGame(mapa5)
@@ -32,11 +65,11 @@ function eventChatCommand(name,message)
 	end
 	if message == "skip" then
 		if tfm.get.room.playerList[name].isShaman then
-			tfm.exec.chatMessage("<ROSE>O shaman pulou sua vez.",nil)
+			showMessage("<ROSE>O shaman pulou sua vez.",nil)
 			trocarMapa()
 		end
 	end
-	if name == "Shun_kazami#7014" or name == "Viego#0345" or name == "Samira#4387" or name == admin then
+	if verifyNinjas(name) == true or verifyAdmin(name) == true then
 		if(message:sub(0,3) == "def") then
 			tfm.exec.setPlayerScore(message:sub(5),10,false)
 			trocarMapa()
@@ -61,7 +94,7 @@ function eventChatMessage(name,message)
 			tfm.exec.movePlayer(name,1500,360,false,1,1,false)
 		end
 		ui.removeTextArea(2,NIL)
-		tfm.exec.chatMessage("<VP>"..name.." respondeu corretamente! A resposta era "..string.upper(message).."")
+		showMessage("<VP>"..name.." respondeu corretamente! A resposta era "..string.upper(message).."")
 		tfm.exec.setGameTime(60)
 	end
 end
@@ -75,34 +108,30 @@ function eventPopupAnswer(id,name,answer)
 	end
 	if id == 1 then
 		if tfm.get.room.playerList[name].isShaman then
-			tfm.exec.chatMessage("<ROSE>Podem responder agora!")
+			showMessage("<ROSE>Podem responder agora!")
 			tfm.exec.setGameTime(60)
 			palavra=answer;
 		end
 	end	
 end
 function eventNewPlayer(name)
-	ui.setMapName("Corrida de Perguntas v10.10, gerenciado por Shun_kazami#7014.<")
+	ui.setMapName("Corrida de Perguntas v10.11, gerenciado por Shun_kazami#7014.<")
 	tfm.exec.respawnPlayer(name)
-	tfm.exec.chatMessage("<N>Script de Corrida das Perguntas, importado diretamente da versão original feita por Haxhhhhhhhhh.<br><VP><b>Versão 10.8</b><br><br><N>Atualmente administrado por Shun_kazami#7014, mapa feito também por Shun_kazami#7014.<br><br><ROSE>Proibida reutilização ou cópia sem autorização do criador.",name)
+	showMessage("<N>Script de Corrida das Perguntas, importado diretamente da versão original feita por Haxhhhhhhhhh.<br><VP><b>Versão 10.11</b><br><br><N>Atualmente administrado por Shun_kazami#7014, mapa feito também por Shun_kazami#7014.<br><br><ROSE>Proibida edição ou cópia sem autorização do criador.",name)
 	if not data[name] then
 		table.insert(players_table,name)
 		data[name]={p=0}
 	else
 		if data[name].p == 1 then
-			tfm.exec.movePlayer(name,380,360,false,1,1,false)
+			tfm.exec.movePlayer(name,650,360,false,1,1,false)
 		elseif data[name].p == 2 then
-			tfm.exec.movePlayer(name,550,360,false,1,1,false)
+			tfm.exec.movePlayer(name,850,360,false,1,1,false)
 		elseif data[name].p == 3 then
-			tfm.exec.movePlayer(name,720,360,false,1,1,false)
+			tfm.exec.movePlayer(name,1050,360,false,1,1,false)
 		elseif data[name].p == 4 then
-			tfm.exec.movePlayer(name,890,360,false,1,1,false)
+			tfm.exec.movePlayer(name,1250,360,false,1,1,false)
 		elseif data[name].p == 5 then
-			tfm.exec.movePlayer(name,1060,360,false,1,1,false)
-		elseif data[name].p == 6 then
-			tfm.exec.movePlayer(name,1230,360,false,1,1,false)
-		elseif data[name].p == 7 then
-			tfm.exec.movePlayer(name,1400,360,false,1,1,false)
+			tfm.exec.movePlayer(name,1450,360,false,1,1,false)
 		end
 		tfm.exec.setGameTime(60)
 		tfm.exec.setPlayerScore(name,1,true)
@@ -119,7 +148,7 @@ end
 function eventNewGame()
 	palavra=""
 	ui.removeTextArea(2,NIL)
-	ui.setMapName("Corrida de Perguntas v10.10, gerenciado por Shun_kazami#7014.<")
+	ui.setMapName("Corrida de Perguntas v10.11, gerenciado por Shun_kazami#7014.<")
 	for id,name in pairs(players_table) do
 		data[name].p=0
 	end
@@ -127,7 +156,7 @@ function eventNewGame()
 		tfm.exec.setPlayerScore(name,1,false)
 		if tfm.get.room.playerList[name].isShaman then
 			tfm.exec.setPlayerScore(name,-2,false)
-			tfm.exec.chatMessage("Digite !q para fazer uma pergunta.",name)
+			showMessage("Digite !q para fazer uma pergunta.",name)
 		end
 		ui.addPopup(0,0,"",name,-1000,-1000,200,true)
 		ui.addPopup(1,0,"",name,-1000,-1000,200,true)
@@ -140,7 +169,7 @@ end
 function eventSummoningEnd(name,type,x,y,angle,vx,vy,obj)
 	for name,player in pairs(tfm.get.room.playerList) do
 		if tfm.get.room.playerList[name].isShaman then
-			tfm.exec.chatMessage("<ROSE>Não é permitido o uso de objetos de shaman.",nil)
+			showMessage("<ROSE>Não é permitido o uso de objetos de shaman.",nil)
 			trocarMapa()
 		end
 	end
