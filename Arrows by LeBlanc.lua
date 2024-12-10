@@ -1,4 +1,7 @@
--- Module #arrows, versão v1.5, desenvolvido por Leblanc#5342.
+-- Arrows
+-- Developed by Leblanc#5342
+-- Version 1.6
+-- ® 2024 Jessie LinesPower TFM Utilities Group
 
 -- Se estiver rodando este código em uma sala FunCorp, insira os nicknames dos membros abaixo.
 admin={"Leblanc#5342"} -- Insira os nomes aqui! // Insert the nicknames here!
@@ -16,7 +19,7 @@ for _,f in next,{"reset","change"} do
 end
 modo="inicial"; lang={}; map="@7938991"; ratos=0; vivos=0; round=0; level=0; imgs={}; data={}; symbol={"⇦","⇧","⇨","⇩"}; symbol_l={"&lt;","^",">","v"}; keys={}; unlocked=false;
 lang.br = {
-	welcome = "<ROSE><b>Bem-vindo ao module #arrows!</b><br><N>O objetivo deste module é ser rápido e preciso, usando o teclado para responder a sequência de setas que aparecerá na sua tela!<br><br><VP>Module criado por Leblanc#5342. Ideia original de Shun_kazami#7014.<br><BL><b>Versão 1.5</b>",
+	welcome = "<ROSE><b>Bem-vindo ao module #arrows!</b>\n<N>O objetivo deste module é ser rápido e preciso, usando o teclado para responder a sequência de setas que aparecerá na sua tela!\n\n<VP>Module criado por Leblanc#5342. Ideia original de Shun_kazami#7014.\n<BL><b>Versão 1.6</b>",
 	starting = "<J>Atenção! O jogo será iniciado em 5 segundos!",
 	wrong = "<R>Você errou!",
 	accept = "<VP>Parabéns! Você conseguiu avançar desta fase!",
@@ -29,7 +32,7 @@ lang.br = {
 	legacy = "<J>Caso não esteja conseguindo ver as setas corretamente, digite !change. Este comando mudará a forma como as setas são exibidas na tela.",
 }
 lang.en = {
-	welcome = "<ROSE><b>Welcome to the #arrows module!</b><br><N>The goal of this module is to use your keyboard to follow the sequence of arrows that will show on your screen! You need to be fast!<br><br><VP>Module developed by Leblanc#5342. Original idea from Shun_kazami#7014.<br><BL><b>Version 1.5</b>",
+	welcome = "<ROSE><b>Welcome to the #arrows module!</b>\n<N>The goal of this module is to use your keyboard to follow the sequence of arrows that will show on your screen! You need to be fast!\n\n<VP>Module developed by Leblanc#5342. Original idea from Shun_kazami#7014.\n<BL><b>Version 1.6</b>",
 	starting = "<J>The game will be started in 5 seconds!",
 	wrong = "<R>Oh no! Wrong key!",
 	accept = "<VP>Congratulations! You passed this round!",
@@ -42,7 +45,7 @@ lang.en = {
 	legacy = "<J>If you are not seeing the arrows correctly, type !change. This will change the way that the arrows will be displayed.",
 }
 lang.es = {
-	welcome = "<ROSE><b>¡Bienvenidos al módulo #arrows!</b><br><N>¡El objetivo de este módulo es usar su teclado para seguir la secuencia de flechas que se mostrarán en su pantalla! ¡Tienes que ser rápido!<br><br><VP>Módulo hecho por Leblanc#5342. Idea original por Shun_kazami#7014.<br><BL><b>Versión 1.5</b>",
+	welcome = "<ROSE><b>¡Bienvenidos al módulo #arrows!</b>\n<N>¡El objetivo de este módulo es usar su teclado para seguir la secuencia de flechas que se mostrarán en su pantalla! ¡Tienes que ser rápido!\n\n<VP>Módulo hecho por Leblanc#5342. Idea original por Shun_kazami#7014.\n<BL><b>Versión 1.6</b>",
 	starting = "<J>¡El juego comenzará en 5 segundos!",
 	wrong = "<R>Oh no! Wrong key!",
 	accept = "<VP>¡Oh, no! ¡Tecla incorrecta!",
@@ -75,9 +78,9 @@ function showMessage(message,name)
 		tfm.exec.chatMessage(message,name)
 	elseif tfm.get.room.isTribeHouse == true then
 		if name == nil then
-			print("<ROSE>[Test Mode] : <br><BL>"..temp_text.."")
+			print("<ROSE>[Test Mode] : \n<BL>"..temp_text.."")
 		else
-			print("<ROSE>[Test Mode] - "..name.." : <br><BL>"..temp_text.."")
+			print("<ROSE>[Test Mode] - "..name.." : \n<BL>"..temp_text.."")
 		end
 	end
 end
@@ -97,14 +100,14 @@ function countVivos()
 	end
 end
 function updateTimeBar()
-	if level == 1 then ui.addTextArea(100,"",nil,10,125,10+(remain-11)*156,12,0xEDEDED,0xEDEDED,0.88,true);
-	elseif level == 2 then ui.addTextArea(100,"",nil,10,125,10+(remain-11)*195,12,0xEDEDED,0xEDEDED,0.88,true);
-	elseif level == 3 then ui.addTextArea(100,"",nil,10,125,10+(remain-11)*130,12,0xEDEDED,0xEDEDED,0.88,true);
-	elseif level == 4 then ui.addTextArea(100,"",nil,10,125,10+(remain-11)*156,12,0xEDEDED,0xEDEDED,0.88,true);
-	elseif level == 5 then ui.addTextArea(100,"",nil,10,125,10+(remain-11)*112,12,0xEDEDED,0xEDEDED,0.88,true);
-	elseif level == 6 then ui.addTextArea(100,"",nil,10,125,10+(remain-11)*130,12,0xEDEDED,0xEDEDED,0.88,true);
-	elseif level == 7 then ui.addTextArea(100,"",nil,10,125,10+(remain-11)*78,12,0xEDEDED,0xEDEDED,0.88,true);
-	elseif level == 8 then ui.addTextArea(100,"",nil,10,125,10+(remain-11)*112,12,0xEDEDED,0xEDEDED,0.88,true); end
+	if level == 1 then ui.addTextArea(100,"",nil,10,140,10+(remain-11)*156,12,0xEDEDED,0xEDEDED,0.88,true);
+	elseif level == 2 then ui.addTextArea(100,"",nil,10,140,10+(remain-11)*195,12,0xEDEDED,0xEDEDED,0.88,true);
+	elseif level == 3 then ui.addTextArea(100,"",nil,10,140,10+(remain-11)*130,12,0xEDEDED,0xEDEDED,0.88,true);
+	elseif level == 4 then ui.addTextArea(100,"",nil,10,140,10+(remain-11)*156,12,0xEDEDED,0xEDEDED,0.88,true);
+	elseif level == 5 then ui.addTextArea(100,"",nil,10,140,10+(remain-11)*112,12,0xEDEDED,0xEDEDED,0.88,true);
+	elseif level == 6 then ui.addTextArea(100,"",nil,10,140,10+(remain-11)*130,12,0xEDEDED,0xEDEDED,0.88,true);
+	elseif level == 7 then ui.addTextArea(100,"",nil,10,140,10+(remain-11)*78,12,0xEDEDED,0xEDEDED,0.88,true);
+	elseif level == 8 then ui.addTextArea(100,"",nil,10,140,10+(remain-11)*112,12,0xEDEDED,0xEDEDED,0.88,true); end
 end
 function exibeSetas()
 	round=round+1; modo="jogar"; keys={};
@@ -280,7 +283,7 @@ function eventLoop(pass,rem)
 		if remain <= 1 and modo == "fim" then
 			reset();
 		end
-		ui.setMapName("<ROSE>#arrows by Leblanc#5342   <G>|   <N>Round : <V>"..round.."   <G>|   <N>"..text.mices.." : <V>"..vivos.."/"..ratos.."   <G>|   <N>"..text.difficulty.." : <V>"..level.."   <G>|   <J>v1.5<")
+		ui.setMapName("<ROSE>#arrows by Leblanc#5342   <G>|   <N>Round : <V>"..round.."   <G>|   <N>"..text.mices.." : <V>"..vivos.."/"..ratos.."   <G>|   <N>"..text.difficulty.." : <V>"..level.."   <G>|   <J>v1.6<")
 	end
 end
 function eventNewGame()
@@ -300,7 +303,7 @@ function eventPlayerLeft(name)
 	countVivos();
 end
 function eventNewPlayer(name)
-	showMessage(text.welcome,name)
+	showMessage(text.welcome.."\n<BL>® Arrows is a registered name of Jessie LinesPower TFM Utilities Group.\nEditing and adapting this code without authorization is prohibited.<",name)
 	newData={
 		["c"]=1;
 		["s"]=1;
