@@ -58,7 +58,7 @@ acids2={type = 19,width = 2400,height = 10,miceCollision = true,groundCollision 
 acids3={type = 19,width = 10,height = 800,miceCollision = true,groundCollision = false, foreground = true}
 system.disableChatCommandDisplay(nil,true)
 lang.br = {
-	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b>\nSiga tudo o que o jogo mandar e teste seus limites até o fim!\n\n<VP><b>Module criado e gerenciado por Jessiewind26#2546</b>\n\n<R>Versão 7.12.1",
+	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b>\nSiga tudo o que o jogo mandar e teste seus limites até o fim!\n\n<VP><b>Module criado e gerenciado por Jessiewind26#2546</b>\n\n<R>Versão 7.13.0",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -204,7 +204,7 @@ lang.br = {
 	avcommands = "\nComandos disponíveis:\n!command [número de 1 a 136] - Executa um comando manualmente.\n!run [@número] - Executa o mapa especificado.\n!kill [nick#tag] - Mata o jogador especificado.\n!limit [número] - Altera o limite de jogadores na sala.\n!pw [password] - Adiciona uma senha na sala."
 }
 lang.en = {
-	welcome = "<N><b>Welcome to Simon Says module!</b>\nFollow everything the game told and test your limits until the end!\n\n<VP><b>Script made and developed by Jessiewind26#2546</b>\nTranslation by Draw#6691\n\n<R>Version 7.12.1",
+	welcome = "<N><b>Welcome to Simon Says module!</b>\nFollow everything the game told and test your limits until the end!\n\n<VP><b>Script made and developed by Jessiewind26#2546</b>\nTranslation by Draw#6691\n\n<R>Version 7.13.0",
 	dancar = "Dance!",
 	sentar = "Sit down!",
 	confetar = "Throw 5 confetti!",
@@ -350,7 +350,7 @@ lang.en = {
 	avcommands = "\nAvailable commands: \n!command [1-136] - Run a command manually.\n!run [@code] - Run the specified map.\n !kill [player#tag] - Kill the specified player.\n!limit [number] - Limit the number of maximum players on the room.\n !pw [password] - Lock the room with a password."
 }
 lang.es = {
-	welcome = "<N><b>WBienvenido al juego Simón Dice!</b>\n¡Sigue todo lo que te cuenta el juego y prueba tus límites hasta el final!\n\n<VP><b>Código hecho por Jessiewind26#2546</b>\nTraducción por Nurzak#7525\n\n<R>Versión 7.12.1",
+	welcome = "<N><b>WBienvenido al juego Simón Dice!</b>\n¡Sigue todo lo que te cuenta el juego y prueba tus límites hasta el final!\n\n<VP><b>Código hecho por Jessiewind26#2546</b>\nTraducción por Nurzak#7525\n\n<R>Versión 7.13.0",
 	dancar = "¡Baile!",
 	sentar = "¡Siéntate!",
 	confetar = "¡Lanza 5 confetis!",
@@ -498,10 +498,8 @@ lang.es = {
 
 numbers1={{74,101,115,115,105,101,119,105,110,100,50,54,35,50,53,52,54},
 {73,114,101,108,105,97,35,55,51,49,55},
-{72,119,101,105,35,49,48,50,55},
 {82,105,118,101,110,35,49,54,51,48},
 {71,108,111,98,111,95,114,117,114,97,108,35,54,53,51,50},
-{81,105,121,97,110,97,35,50,55,57,55},
 {83,107,121,121,109,101,108,108,117,35,48,48,48,48},
 {65,108,105,115,115,111,110,35,51,57,51,56},
 {86,105,101,103,111,35,48,51,52,53},
@@ -641,7 +639,7 @@ function eventPlayerDied(name)
 	end
 end
 function eventNewGame()
-	if rawlen(numbers1) == 13 then
+	if rawlen(numbers1) == 11 then
 		rodada=0; active=0; vivo=0; rato=0; dificuldade=1;
 		for i=0,2 do
 			ui.removeTextArea(i,nil)
@@ -1612,10 +1610,8 @@ function eventChatMessage(name,message)
 		tfm.exec.killPlayer(name)
 	end
 	if active == 16 then
-		if message == "2024" then
+		if message == "2024" or message == "2025" then
 			completeCommand(name)
-		elseif message == "2023" then
-			tfm.exec.killPlayer(name)
 		end
 	end
 	if active == 29 then
@@ -2348,13 +2344,13 @@ function eventLoop(passado,faltando)
 	if unlocked == true then
 		local tempo=math.floor(faltando/1000)
 		if active == -2 then
-			ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." 7.12.1</b><")
+			ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." 7.13.0</b><")
 		elseif active == -1 and vivo >= 1 then
-			ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.12.1</b><")
+			ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.13.0</b><")
 		elseif active == -1 and vivo <= 0 then
-			ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.12.1</b><")
+			ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.13.0</b><")
 		elseif active >= 0 then
-			ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." 7.12.1</b><")
+			ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." 7.13.0</b><")
 		end
 		if rato < 4 then
 			if tfm.get.room.currentMap == lobby_map then
