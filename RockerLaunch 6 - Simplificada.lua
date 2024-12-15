@@ -12,14 +12,44 @@ barrier=false; -- mude para 'true' para incluir barreiras invisíveis nos cantos
 for _,f in next,{"PhysicalConsumables","AutoNewGame","AutoTimeLeft","AllShamanSkills","DebugCommand"} do
 	tfm.exec["disable"..f](true)
 end
-changed=false; mode=""; id=50; map="@7930736"; xml2=''; passed=0; final="";
+changed=false; mode=""; id=50; map="@7930736"; xml2=''; passed=0; final=""; lang={};
 a1={500,1400}; a2={7500,6800}; b1={800,240}; b2={6360,5800}; c1={200,900}; c2={3800,3300}; d1={1500}; d2={4100};
 bar={type = 14,width = 10,height = 4000,foreground = false,friction = 0,restitution = 0,angle = 0, color = 0, miceCollision = true, groundCollision = true, dynamic = false}
 asteroid_1={type = 12,width = 40,height = 20,foreground = false,friction = 3,restitution = 0.1,angle = 0, color = 0, miceCollision = true, groundCollision = true, dynamic = true, fixedRotation = false, mass = 2000}
 asteroid_2={type = 12,width = 80,height = 40,foreground = false,friction = 4,restitution = 0.15,angle = 0, color = 0, miceCollision = true, groundCollision = true, dynamic = true, fixedRotation = false, mass = 5000}
 asteroid_3={type = 12,width = 160,height = 80,foreground = false,friction = 5,restitution = 0.2,angle = 0, color = 0, miceCollision = true, groundCollision = true, dynamic = true, fixedRotation = false, mass = 15000}
 asteroid_4={type = 12,width = 320,height = 160,foreground = false,friction = 6,restitution = 0.25,angle = 0, color = 0, miceCollision = true, groundCollision = true, dynamic = true, fixedRotation = false, mass = 30000}
-ajuda="<VP>Bem-vindos ao RockerLaunch 6!<br><N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço! Digite !help para saber como jogar.<br><br><BL>Créditos para Lynet#8558, Puffezinhaq#0000, Digo20games#0000, Dhanny_mheyran#6701 e Threshlimit#0000. Conceito original de Nettoork#0000.<br><J>Versão 6.10"
+lang.br = {
+	ajuda="<VP>Bem-vindos ao RockerLaunch 6!\n<N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço! Digite !help para saber como jogar.\n\n<BL>Créditos para Lynet#8558, Puffezinhaq#0000, Digo20games#0000, Dhanny_mheyran#6701 e Threshlimit#0000. Conceito original de Nettoork#0000.\n<J>Versão 6.11",
+	mapname="<b>RockerLaunch 6</b><N> - o céu é o limite! <VP>(versão reduzida)<",
+	start="<J>O shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço!",
+	loadingmap="<J>Carregando mapa. Por favor, aguarde...<",
+	canceled="<R>Rodada cancelada! Iniciando uma nova rodada...",
+	nextshaman="<VP>Shaman definido para a próxima rodada: ",
+	timeout="<R>Tempo esgotado! Está na hora de voar!",
+	fallings="<ROSE><b>Atenção! Objetos voadores estão caindo do céu!</b>",
+	meteor1="<R><b>Atenção!</b> Meteoros estão caindo do céu!",
+	meteor2="<R><b>Os meteoros estão gigantes! Tenham muito cuidado!</b>",
+	shamdied="<VP>O shaman morreu! Iniciando uma nova rodada...",
+}
+lang.en = {
+	ajuda="<VP>Welcome to RocketLaunch 6!\n<N>In this module, the shaman has 2 minutes to build a rocket that needs to take all the mice into space!\nType !help to see more information.\n\n<BL>Credits to Lynet#8558, Puffezinhaq#0000, Digo20games#0000, Dhanny_mheyran#6701 and Threshlimit#0000. Original concept by Nettoork#0000.\n<J>Version 6.11",
+	mapname="<b>RockerLaunch 6</b><N> - The Sky is the Limit! <VP>(reduced version)<",
+	start="<J>The shaman has 2 minutes to build a rocket that needs to take all mices into space!",
+	loadingmap="<J>Loading map. Please wait...<",
+	canceled="<R>Round canceled! Starting a new round...",
+	nextshaman="<VP>Next shaman defined: ",
+	timeout="<R>Time's up! It's time to fly!",
+	fallings="<ROSE><b>Caution! Objects are falling from the sky!</b>",
+	meteor1="<R><b>Caution!</b> Meteors are falling from the sky!",
+	meteor2="<R><b>The meteors are now huge! Be very careful!</b>",
+	shamdied="<VP>The shaman died! Starting a new round...",
+}
+if tfm.get.room.community == "br" or tfm.get.room.community == "pt" then
+	text = lang.br
+else
+	text = lang.en
+end
 objects1={1,3,6,23,33,39,60,65}
 objects2={1,3,6,23,33,39,60,65,2,68,69}
 objects3={1,3,6,23,33,39,60,65,2,68,69,4,7,10,17,35,85,90}
@@ -57,24 +87,16 @@ function verifyAdmin(name)
 	end
 end
 function showMessage(message,name)
-	temp_text=string.gsub(message,"<b>","")
-	temp_text=string.gsub(temp_text,"</b>","")
 	if tfm.get.room.isTribeHouse == false then
 		tfm.exec.chatMessage(message,name)
-	elseif tfm.get.room.isTribeHouse == true then
-		if name == nil then
-			print("<ROSE>[Test Mode] : <br><BL>"..temp_text.."")
-		else
-			print("<ROSE>[Test Mode] - "..name.." : <br><BL>"..temp_text.."")
-		end
 	end
 end
 function eventNewGame()
 	if changed == true then
 		id=50;
-		ui.setMapName("<b>RockerLaunch 6</b><N> - o céu é o limite! <VP>(versão reduzida)<")
+		ui.setMapName(text.mapname)
 		tfm.exec.setGameTime(400)
-		showMessage("<J>O shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço!")
+		showMessage(text.start)
 		mode="building"
 		for n,p in pairs(tfm.get.room.playerList) do
 			if tfm.get.room.playerList[n].isShaman then
@@ -97,7 +119,7 @@ function eventNewGame()
 		if changed == false then
 			xml2=tfm.get.room.xmlMapInfo.xml
 			ui.addTextArea(0,"",nil,-800,-400,2400,1200,0x6a7495,0x6a7495,1.0,true)
-			ui.setMapName("<J>Carregando mapa. Por favor, aguarde...<")
+			ui.setMapName(text.loadingmap)
 		else
 			ui.removeTextArea(0,nil)
 		end
@@ -110,11 +132,11 @@ function eventChatCommand(n,m)
 	if verifyNinjas(n) == true or verifyAdmin(n) == true then
 		if m == "cancel" then
 			tfm.exec.setGameTime(5)
-			showMessage("<R>Rodada cancelada! Iniciando uma nova rodada...")
+			showMessage(text.canceled)
 		end
 		if (m:sub(0,3) == "set") then
 			tfm.exec.setPlayerScore(m:sub(5),4444,true)
-			showMessage("<VP>Shaman definido para a próxima rodada: "..m:sub(5))
+			showMessage(text.nextshaman..m:sub(5))
 		end
 		if (m:sub(0,3) == "get") then
 			tfm.exec.setPlayerScore(m:sub(5),32,true)
@@ -231,7 +253,7 @@ function eventLoop(p,f)
 		if f >= 5000 then
 			if p > 123000 and mode == "building" then
 				mode="fly"
-				showMessage("<R>Tempo esgotado! Está na hora de voar!")
+				showMessage(text.timeout)
 				for n,player in pairs(tfm.get.room.playerList) do
 					tfm.exec.attachBalloon(n,false)
 					if tfm.get.room.playerList[n].isShaman then
@@ -241,7 +263,7 @@ function eventLoop(p,f)
 			end
 		end
 		if isf == 540 then
-			showMessage("<ROSE><b>Atenção! Objetos voadores estão caindo do céu!</b>")
+			showMessage(text.fallings)
 		end
 		if isf < 540 and isf >= 450 then
 			tfm.exec.addShamanObject(objects1[math.random(#objects1)], math.random(-400,2000), 1, 0, 0, 0, false)
@@ -259,10 +281,10 @@ function eventLoop(p,f)
 			end
 		end
 		if isf == 240 then
-			showMessage("<R><b>Atenção!</b> Meteoros estão caindo do céu!")
+			showMessage(text.meteor1)
 		end
 		if isf == 100 then
-			showMessage("<R><b>Os meteoros estão gigantes! Tenham muito cuidado!</b>")
+			showMessage(text.meteor2)
 		end
 		if p >= 150000 then
 			if isf < 240 and isf >= 160 then
@@ -300,7 +322,7 @@ function eventLoop(p,f)
 end
 function eventNewPlayer(n)
 	if changed == true then
-		ui.setMapName("<b>RockerLaunch 6</b><N> - o céu é o limite! <VP>(versão reduzida)<")
+		ui.setMapName(text.mapname)
 		showMessage(ajuda,n)
 		tfm.exec.setPlayerScore(n,0,false)
 		tfm.exec.addImage("17ae4e48770.png","&1",590,370,n,0.5,0.5)
@@ -312,7 +334,7 @@ function eventPlayerDied(name)
 		if tfm.get.room.playerList[name].isShaman then
 			tfm.exec.setGameTime(5)
 			tfm.exec.setPlayerScore(name,-2,false)
-			showMessage("<VP>O shaman morreu! Iniciando uma nova rodada...")
+			showMessage(text.shamdied)
 		end
 		local i=0
 		local n
