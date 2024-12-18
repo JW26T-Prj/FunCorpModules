@@ -1,10 +1,10 @@
 -- STOP
--- Escrito por Ninguem - 31/08/2015 // Atualizado por Akwimos#1937 e Leblanc#5342 - 22/08/2024
+-- Escrito por Ninguem - 31/08/2015 // Atualizado por Akwimos#1937, Viego#0345 e Yuh#0748 - 17/12/2024
 -- Mínimo de 5 temas e máximo de 20 temas.
 -- Para bloquear um jogador, digite !kick [nome#tag]. Digite o mesmo comando para desbloqueá-lo caso o mesmo já esteja bloqueado.
 
 -- IMPORTANTE: Se você não realizar o passo abaixo, o código não será executado, ele vai crashar!
--- Edite com seu(s) nome(s) abaixo! Exemplo: ADM = {"Leblanc#5342"}
+-- Edite com seu(s) nome(s) abaixo! Exemplo: ADM = {"Akwimos#1937"}
 ADM = {}
 ADMIN_ONLY = false -- Troque para 'true' se você quiser que só os votos dos jogadores que estejam na tabela 'ADM' contem
 SHOW = true -- Altere a variável para 'false' caso não queira ver as respostas dos jogadores
@@ -13,7 +13,7 @@ MAXROUND = 5 -- Número máximo de rounds
 -- NÃO MEXA EM NADA A PARTIR DESTA LINHA!
 ----------------------------------------------------------------------------------------------------
 
-CAT = {"Nome","Animal","Objeto","Cor","Marca","TV/Filme/Anime/Desenho","Parte do Corpo","Ator/Cantor/Celebridade","Comida/Bebida","País/Cidade/Estado","Apelido de Garçom","Profissão","O Tigrounette é..."}
+CAT = {"Nome","Animal","Objeto","Cor","Marca","TV/Filme/Anime/Desenho","Parte do Corpo","Ator/Cantor/Celebridade","Comida/Bebida","País/Cidade/Estado","Apelido de Garçom","Profissão","O Tigrounette é...","Natal"}
 
 ID = {cat=1,camada=2,add=3,msg=4,tempo=5,stop=6}
 PLAYER = {};
@@ -23,15 +23,18 @@ ROUND = 1
 PALAVRA = 1
 TEMPO = false
 LETRA = ""
-MAPA = "@7958330"
-BAR_TEXT = "<b>STOP!</b> <N>Script editado por Akwimos#1937 e Leblanc#5342 - 22/08/2024<"
+MAPA = "@7962880"
+BAR_TEXT = "<font color='#1178E6'><b>STOP!</b> <N>Script editado por Akwimos#1937, Viego#0345 e Yuh#0748 - 17/12/2024<"
 data = {};
 final = ""
 numbers={{71,108,111,98,111,95,114,117,114,97,108,35,54,53,51,50},
 {83,107,121,121,109,101,108,108,117,35,48,48,48,48},
 {86,105,101,103,111,35,48,51,52,53},
 {72,119,101,105,35,49,48,50,55},
-{76,101,98,108,97,110,99,35,53,51,52,50}}
+{89,117,104,35,48,55,52,56},
+{78,117,114,122,97,107,35,55,53,50,53},
+{71,105,108,108,35,50,57,54,54}}
+
 ninjas={}
 
 for i=1,rawlen(numbers) do
@@ -68,7 +71,7 @@ end
 
 function carregaMapa()
 	tfm.exec.newGame(MAPA)
-	ui.setBackgroundColor("#101010")
+	ui.setBackgroundColor("#000F36")
 end
 
 function findString(object,tb)
@@ -130,7 +133,7 @@ function atualizaCat(first)
 	end
 	txt = txt .. "<vp>- <a href='event:add'>Adicionar</a>\n\n<rose><p align='center'><font size='16px'><a href='event:start'>Começar</a></p></font>"
 	for i, v in pairs(ADM) do
-		ui.addTextArea(ID.cat, txt, v, 250, 42, 300, 330, 1, 0xFFCB2F, 0.85, true)
+		ui.addTextArea(ID.cat, txt, v, 250, 42, 300, 330, 1, 0x2A77EF, 0.85, true)
 	end
 end
 
@@ -214,13 +217,13 @@ function atualizaPalavras(p)
 	if data[p].banned == false then
 		local cont = 0
 		for i, v in pairs(CAT) do
-			ui.addTextArea(i+1000, string.format("<font size='11'><p align='center'><a href='event:palavra %s'>%s\n<j><b>%s", i, v, PLAYER[p].palavra[v]), p, ((i-1)%5)*160+5, math.floor((i-1)/5)*62+120, 150, 57, 1, 0xFFCB2F, 0.85, true)
+			ui.addTextArea(i+1000, string.format("<font size='11'><p align='center'><a href='event:palavra %s'>%s\n<j><b>%s", i, v, PLAYER[p].palavra[v]), p, ((i-1)%5)*160+5, math.floor((i-1)/5)*62+120, 150, 57, 1, 0x2A77EF, 0.85, true)
 			if PLAYER[p].palavra[v] ~= "" then
 				cont = cont + 1
 			end
 		end
 		if cont == #CAT then
-			ui.addTextArea(ID.stop, "<p align='center'>Você foi muito rápido! Tempo para pedir stop: <r>" .. math.floor((TEMPO - os.time())/1000), p, 5, 375, 790, 20, 1, 0xFFCB2F, 0.85, true)
+			ui.addTextArea(ID.stop, "<p align='center'>Você foi muito rápido! Tempo para pedir stop: <r>" .. math.floor((TEMPO - os.time())/1000), p, 5, 375, 790, 20, 1, 0x2A77EF, 0.85, true)
 		end
 	end
 end
@@ -228,7 +231,7 @@ end
 function atualizaSeleciona(p)
 	if data[p].banned == false then
 		for i, v in ipairs(ESCOLHA) do
-			ui.addTextArea(i+1000, string.format("<p align='center'><a href='event:escolha %d'><%s>%s", i, PLAYER[p].escolha[i] and "vp" or "r", v.p), p, ((i-1)%5)*160+5, math.floor((i-1)/5)*40+130, 150, 30, 1, 0xFFCB2F, 0.85, true)
+			ui.addTextArea(i+1000, string.format("<p align='center'><a href='event:escolha %d'><%s>%s", i, PLAYER[p].escolha[i] and "vp" or "r", v.p), p, ((i-1)%5)*160+5, math.floor((i-1)/5)*40+130, 150, 30, 1, 0x2A77EF, 0.85, true)
 		end
 	end
 end
@@ -268,9 +271,9 @@ function selecionaPalavra()
 			end
 		end
 	end
-	ui.addTextArea(ID.cat, "<p align='center'><font size='30px'>" .. CAT[PALAVRA] .. " com " .. LETRA, nil, 5, 80, 790, 40, 1, 0xFFCB2F, 0.85, true)
+	ui.addTextArea(ID.cat, "<p align='center'><font size='30px'>" .. CAT[PALAVRA] .. " com " .. LETRA, nil, 5, 80, 790, 40, 1, 0x2A77EF, 0.85, true)
 	TEMPO = os.time() + 15000+(1500*#ESCOLHA)
-	ui.addTextArea(ID.tempo, "<r><p align='center'><font size='25px'>--</font></p>", nil, 755, 358, 40, 40, 1, 0xFFCB2F, 0.85, true)
+	ui.addTextArea(ID.tempo, "<r><p align='center'><font size='25px'>--</font></p>", nil, 755, 358, 40, 40, 1, 0x2A77EF, 0.85, true)
 end
 
 function stop(p)
@@ -288,7 +291,7 @@ function stop(p)
 		end
 		MODO = "fim"
 		PALAVRA = 1
-		ui.addTextArea(ID.msg, "<p align='center'>Clique nas palavras ERRADAS e marque de <r>vermelho <n>para anular seus pontos.", nil, 5, 50, 790, 20, 1, 0xFFCB2F, 0.85, true)
+		ui.addTextArea(ID.msg, "<p align='center'>Clique nas palavras ERRADAS e marque de <r>vermelho <n>para anular seus pontos.", nil, 5, 50, 790, 20, 1, 0x2A77EF, 0.85, true)
 		ESCOLHA = {}
 		selecionaPalavra()
 		for i, v in pairs(PLAYER) do
@@ -336,10 +339,10 @@ function eventTextAreaCallback(id, p, cmd)
 				TEMPO = os.time()+15000
 				zeraTudo(true, true)
 				atualizaPlayer(true)
-				ui.addTextArea(ID.tempo, "<r><p align='center'><font size='25px'>--</font></p>", nil, 755, 358, 40, 40, 1, 0xFFCB2F, 0.85, true)
-				ui.addTextArea(ID.msg, "<r><p align='center'>Escolha um número</p>", nil, 150, 320, 490, 20, 1, 0xFFCB2F, 0.85, true)
+				ui.addTextArea(ID.tempo, "<r><p align='center'><font size='25px'>--</font></p>", nil, 755, 358, 40, 40, 1, 0x2A77EF, 0.85, true)
+				ui.addTextArea(ID.msg, "<r><p align='center'>Escolha um número</p>", nil, 150, 320, 490, 20, 1, 0x2A77EF, 0.85, true)
 				for i=1, 10 do
-					ui.addTextArea(i+30, string.format("<p align='center'><font size='28px'><a href='event:num %d'>%d", i, i), nil, 150+((i-1)*50), 350, 40, 40, 1, 0xFFCB2F, 0.85, true)
+					ui.addTextArea(i+30, string.format("<p align='center'><font size='28px'><a href='event:num %d'>%d", i, i), nil, 150+((i-1)*50), 350, 40, 40, 1, 0x2A77EF, 0.85, true)
 				end
 			else
 				showMessage("<R>São necessários no mínimo 5 temas para o jogo ser iniciado",p)
@@ -359,7 +362,7 @@ function eventTextAreaCallback(id, p, cmd)
 			if data[p].banned == false then
 				PLAYER[p].escolha[tonumber(arg[2],10)] = PLAYER[p].escolha and not PLAYER[p].escolha[tonumber(arg[2],10)] or false
 				if PLAYER[p].escolha then
-					ui.addTextArea(tonumber(arg[2],10)+1000, string.format("<p align='center'><a href='event:escolha %d'><%s>%s", tonumber(arg[2],10), PLAYER[p].escolha and PLAYER[p].escolha[tonumber(arg[2],10)] and "vp" or "r", ESCOLHA[tonumber(arg[2],10)] and ESCOLHA[tonumber(arg[2],10)].p or ""), p, ((tonumber(arg[2],10)-1)%5)*160+5, math.floor((tonumber(arg[2],10)-1)/5)*40+130, 150, 30, 1, 0xFFCB2F, 0.85, true)
+					ui.addTextArea(tonumber(arg[2],10)+1000, string.format("<p align='center'><a href='event:escolha %d'><%s>%s", tonumber(arg[2],10), PLAYER[p].escolha and PLAYER[p].escolha[tonumber(arg[2],10)] and "vp" or "r", ESCOLHA[tonumber(arg[2],10)] and ESCOLHA[tonumber(arg[2],10)].p or ""), p, ((tonumber(arg[2],10)-1)%5)*160+5, math.floor((tonumber(arg[2],10)-1)/5)*40+130, 150, 30, 1, 0x2A77EF, 0.85, true)
 				end
 			end
 		end
@@ -411,7 +414,7 @@ function eventNewPlayer(p)
 			};
 		data[p] = newData;
 	end
-	ui.setBackgroundColor("#050830")
+	ui.setBackgroundColor("#000F36")
 end
 
 for name,player in next,tfm.get.room.playerList do
@@ -461,7 +464,7 @@ function eventLoop(current, remaining)
 			MODO = "round"
 			TEMPO = os.time()+45000+(2500*#CAT)
 			ui.removeTextArea(ID.cat, nil)
-			ui.addTextArea(ID.cat, string.format("<p align='center'>A letra é:\n<font size='50px'><rose>%s</rose></font></p>", LETRA), nil, 300, 30, 200, 80, 1, 0xFFCB2F, 0.85, true)
+			ui.addTextArea(ID.cat, string.format("<p align='center'>A letra é:\n<font size='50px'><rose>%s</rose></font></p>", LETRA), nil, 300, 30, 200, 80, 1, 0x2A77EF, 0.85, true)
 			for i, v in pairs(PLAYER) do
 				atualizaPalavras(i)
 			end
@@ -519,10 +522,10 @@ function eventLoop(current, remaining)
 				if ROUND >= 2 then
 					showMessage("<VP>Todas as pontuações podem ser vistas na lista de jogadores da sala!")
 				end
-				ui.addTextArea(ID.tempo, "<r><p align='center'><font size='25px'>--</font></p>", nil, 755, 358, 40, 40, 1, 0xFFCB2F, 0.85, true)
-				ui.addTextArea(ID.msg, "<r><p align='center'>Escolha um número</p>", nil, 150, 320, 490, 20, 1, 0xFFCB2F, 0.85, true)
+				ui.addTextArea(ID.tempo, "<r><p align='center'><font size='25px'>--</font></p>", nil, 755, 358, 40, 40, 1, 0x2A77EF, 0.85, true)
+				ui.addTextArea(ID.msg, "<r><p align='center'>Escolha um número</p>", nil, 150, 320, 490, 20, 1, 0x2A77EF, 0.85, true)
 				for i=1, 10 do
-					ui.addTextArea(i+30, string.format("<p align='center'><font size='28px'><a href='event:num %d'>%d", i, i), nil, 150+((i-1)*50), 350, 40, 40, 1, 0xFFCB2F, 0.85, true)
+					ui.addTextArea(i+30, string.format("<p align='center'><font size='28px'><a href='event:num %d'>%d", i, i), nil, 150+((i-1)*50), 350, 40, 40, 1, 0x2A77EF, 0.85, true)
 				end
 				for i, v in pairs(ESCOLHA) do
 					ui.removeTextArea(i+1000, nil)
@@ -560,9 +563,9 @@ function eventLoop(current, remaining)
 			ROUND = 1
 			zeraTudo(false, true)
 			atualizaPlayer(true)
-			ui.addTextArea(ID.msg, "<r><p align='center'>Escolha um número</p>", nil, 150, 320, 490, 20, 1, 0xFFCB2F, 0.85, true)
+			ui.addTextArea(ID.msg, "<r><p align='center'>Escolha um número</p>", nil, 150, 320, 490, 20, 1, 0x2A77EF, 0.85, true)
 			for i=1, 10 do
-				ui.addTextArea(i+30, string.format("<p align='center'><font size='28px'><a href='event:num %d'>%d", i, i), nil, 150+((i-1)*50), 350, 40, 40, 1, 0xFFCB2F, 0.85, true)
+				ui.addTextArea(i+30, string.format("<p align='center'><font size='28px'><a href='event:num %d'>%d", i, i), nil, 150+((i-1)*50), 350, 40, 40, 1, 0x2A77EF, 0.85, true)
 			end
 		end
 	end
