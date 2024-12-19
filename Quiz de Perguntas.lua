@@ -1,4 +1,8 @@
+-- Script de Quiz de Perguntas
+-- Código gerenciado por Shun_kazami#7014, mapa feito por Yuh#0748.
 -- Créditos para Reksai_void2600#6638 e Dhanny_mheyran#6701 pelo código original.
+-- ® 2024 Jessie LinesPower TFM Utilities Group
+
 admin={} -- FunCorps, insiram seus nomes aqui!
 
 tema=0 -- Edite conforme mostrado abaixo!
@@ -689,8 +693,8 @@ perguntas2={
 "Paul Stanley é o nome do vocalista que se destacou por qual banda?","Kiss","System of a Down",2,
 }
 
-piso={type = 5,width = 400,height = 5,foregound = 1,friction = 1.0,restitution = 0.0,angle = 0,color = 0xffffff,miceCollision = true,groundCollision = true,dynamic = false}
-barreira={type = 5,width = 20,height = 100,foregound = 1,friction = 0.0,restitution = 0.0,angle = 0,color = 0xffffff,miceCollision = true,groundCollision = true,dynamic = false}
+piso={type = 14,width = 400,height = 5,foregound = 1,friction = 1.0,restitution = 0.0,angle = 0,color = 0,miceCollision = true,groundCollision = true}
+barreira={type = 12,width = 16,height = 100,foregound = 1,friction = 0.0,restitution = 0.0,angle = 0,color = 0xD3CFC7,miceCollision = true,groundCollision = true}
 for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand"} do
 	tfm.exec["disable"..f](true)
 end
@@ -700,10 +704,10 @@ numbers1={{82,97,107,97,110,35,51,49,53,57},
 {71,108,111,98,111,95,114,117,114,97,108,35,54,53,51,50},
 {72,119,101,105,35,49,48,50,55},
 {83,107,121,121,109,101,108,108,117,35,48,48,48,48},
-{83,97,109,105,114,97,35,52,51,56,55}}
-ratos=0; vivos=0; set_q=0; final=""; questions_list={}; modo="inicial"; pergunta=0; rodada=0; limite=20; count=0; fixed_cnt=0; ninjas={};
-mapa="@7958075";
-actual_question={quest="",a1="",a2="",answer=nil}
+{83,97,109,105,114,97,35,52,51,56,55},
+{89,117,104,35,48,55,52,56},
+{75,97,116,115,98,97,114,110,101,97,56,57,35,48,48,48,48}}
+mapa="@7962911"; ratos=0; vivos=0; set_q=0; final=""; questions_list={}; modo="inicial"; pergunta=0; rodada=0; limite=20; count=0; fixed_cnt=0; ninjas={}; actual_question={quest="",a1="",a2="",answer=nil}
 for i=1,rawlen(numbers1) do
 	final=""
 	for j=1,rawlen(numbers1[i]) do
@@ -756,7 +760,7 @@ function showMessage(message,name)
 	if tfm.get.room.isTribeHouse == false then
 		tfm.exec.chatMessage(message,name)
 	elseif tfm.get.room.isTribeHouse == true then
-		ui.addTextArea(0,"<p align='center'><font size='15'>"..message.."",name,10,120,780,60,0x000001,0x000001,0.9,true)
+		ui.addTextArea(0,"<p align='center'><font size='15'>"..message.."",name,10,132,780,60,0x000001,0x000001,0.85,true)
 	end
 end
 function questionChanger(id,remove)
@@ -849,16 +853,20 @@ end
 function eventPlayerLeft(name)
 	ratos=ratos-1
 end
+function addBarreira()
+	tfm.exec.addPhysicObject(2, 375, 250, barreira)
+	tfm.exec.addPhysicObject(3, 425, 250, barreira)
+end
 function eventLoop(p,f)
 	remain=math.floor(f/1000)
-	ui.setMapName("<N>Quiz de Perguntas   <BL>|   <N>Ratos : <V>"..vivos.."/"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/"..limite.."<")
+	ui.setMapName("<N>Quiz da LinesPower TFM Utilities Group   <BL>|   <N>Ratos : <V>"..vivos.."/"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/"..limite.."<")
 	if remain < 2 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
 	end
-	if f < 1250 and modo == "perguntar" then
+	if f < 1250 and modo == "aguardar" then
 		for name,player in next,tfm.get.room.playerList do
-			if tfm.get.room.playerList[name].x <= 427 and tfm.get.room.playerList[name].x >= 373 then
+			if tfm.get.room.playerList[name].x <= 425 and tfm.get.room.playerList[name].x >= 375 then
 				tfm.exec.killPlayer(name)
 			end
 		end
@@ -867,25 +875,29 @@ function eventLoop(p,f)
 			tfm.exec.removePhysicObject(1)
 			ui.addTextArea(1,"<p align='center'><font size='18'><VP>"..actual_question.a1.."",nil,10,346,385,50,0x010101,0x010101,0.95,true)
 			ui.addTextArea(2,"<p align='center'><font size='18'>"..actual_question.a2.."",nil,405,346,385,50,0x010101,0x010101,0.95,true)
-			modo="intervalo"
 		elseif actual_question.answer == true then
 			tfm.exec.removePhysicObject(0)
 			ui.addTextArea(1,"<p align='center'><font size='18'>"..actual_question.a1.."",nil,10,346,385,50,0x010101,0x010101,0.95,true)
 			ui.addTextArea(2,"<p align='center'><font size='18'><VP>"..actual_question.a2.."",nil,405,346,385,50,0x010101,0x010101,0.95,true)
-			modo="intervalo"
 		end
+		modo="intervalo"
+	end
+	if f < 1250 and modo == "perguntar" then
+		addBarreira()
+		modo="aguardar"
+		tfm.exec.setGameTime(5)
 	end
 	if modo == "intervalo" then
 		if remain >= 2 and remain <= 3 then
 			if actual_question.answer == false then
 				for name,player in next,tfm.get.room.playerList do
-					if tfm.get.room.playerList[name].x >= 427 then
+					if tfm.get.room.playerList[name].x >= 425 then
 						tfm.exec.killPlayer(name)
 					end
 				end
 			elseif actual_question.answer == true then
 				for name,player in next,tfm.get.room.playerList do
-					if tfm.get.room.playerList[name].x <= 373 then
+					if tfm.get.room.playerList[name].x <= 375 then
 						tfm.exec.killPlayer(name)
 					end
 				end
@@ -901,7 +913,7 @@ function eventLoop(p,f)
 		end
 	end
 	if modo == "perguntar" and remain >= 1 then
-		ui.addTextArea(3,"<p align='center'><font size='21'>"..math.ceil((f/1000)-1).."",nil,375,370,50,28,0x000001,0x000001,0.9,true)
+		ui.addTextArea(3,"<p align='center'><font size='21'>"..math.ceil((f/1000)-1).."",nil,375,310,50,28,0x000001,0x000001,1.0,true)
 	else
 		ui.removeTextArea(3,nil)
 	end
@@ -934,10 +946,9 @@ function randomQuests()
 		tfm.exec.setGameTime(13)
 	end
 	tfm.exec.removePhysicObject(4)
-	tfm.exec.addPhysicObject(2, 377, 240, barreira)
-	tfm.exec.addPhysicObject(3, 423, 240, barreira)
-	tfm.exec.addPhysicObject(0, 200, 305, piso)
-	tfm.exec.addPhysicObject(1, 600, 305, piso)
+	addBarreira()
+	tfm.exec.addPhysicObject(0, 200, 340, piso)
+	tfm.exec.addPhysicObject(1, 600, 340, piso)
 	modo="perguntar"
 	rodada=rodada+1
 	if tema == 0 then
@@ -994,7 +1005,8 @@ function randomQuests()
 	set_q=0
 	length1=math.ceil(string.len(actual_question.a1)/27)
 	length2=math.ceil(string.len(actual_question.a2)/27)
-	ui.addTextArea(0,"<p align='center'><font size='15'>Pergunta: "..actual_question.quest.."",nil,10,120,780,60,0x000001,0x000001,0.9,true)
+	ui.addTextArea(0,"<p align='center'><font size='15'>Pergunta: "..actual_question.quest.."",nil,10,132,780,60,0x000001,0x000001,0.9,true)
+	showMessage("Pergunta: "..actual_question.quest.."")
 	ui.addTextArea(1,"<p align='center'><font size='18'>"..actual_question.a1.."",nil,10,346,385,50,0x010101,0x010101,0.95,true)
 	ui.addTextArea(2,"<p align='center'><font size='18'>"..actual_question.a2.."",nil,405,346,385,50,0x010101,0x010101,0.95,true)
 end
