@@ -4,11 +4,11 @@ This folder contain all the scripts made by the old Spectra Advanced Module Grou
 These codes are intended to be used with FunCorp members, but other players usually will not have problems using the codes.
 
 To add a code to this folder, report an issue or comment anything about the codes, please contact one of the following users into Discord:
-- ventusjessegleen
-- shunkazami_cg
+- i_am_rrrrrakan
 - nurzaksubterra33
+- yuhzinha
 
-Into Transformice, contact Jessiewind26#2546, Shun_kazami#7014 or Nurzak#7525.
+Into Transformice, contact Jessiewind26#2546, Shun_kazami#7014, Yuh#0748 or Nurzak#7525.
 
 Link of our folder:
 https://github.com/JW26T-Prj/FunCorpModules/
