@@ -2,6 +2,8 @@
 -- Feito por / made by Patrick_mahomes#1795
 -- Agradecimentos a Spectra_phantom#6089 pela ideia original do jogo.
 -- Thanks to Spectra_phantom#6089 to the original idea.
+-- ® 2024 Jessie LinesPower TFM Utilities Group
+
 admin={}
 -- Insira o nome dos FunCorps ou dos gerenciadores de sala acima! (exemplo: admin={"Patrick_mahomes#1795"} )
 -- Insert the FunCorp or room managers names above! (e.g. admin={"Patrick_mahomes#1795"} )
@@ -24,7 +26,7 @@ jogadores={assassinos={},detetives={},medicos={},vivos=0,lista={}}
 quant={assassinos=0,detetives=0,medicos=0,vitimas=0,vivos=0}
 limites={assassinos=0,detetives=0,medicos=0}
 modo="inicial"; contador=0; count=0; contador_display=15; rodada=0; data={}; templist={}; ninjas={}; lang={}; display=""; unlocked=false;
-mapas={"@7896560","@7959702","@7959756"}
+mapas={"@7896560","@7959702","@7959756","@7963067","@7963083"}
 system.disableChatCommandDisplay(nil,true)
 
 lang.br = {
