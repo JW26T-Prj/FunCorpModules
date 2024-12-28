@@ -7,6 +7,7 @@ To add a code to this folder, report an issue or comment anything about the code
 - i_am_rrrrrakan
 - nurzaksubterra33
 - yuhzinha
+- reksai_malza_54
 
 Into Transformice, contact Jessiewind26#2546, Shun_kazami#7014, Yuh#0748 or Nurzak#7525.
 
