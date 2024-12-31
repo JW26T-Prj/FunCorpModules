@@ -1,18 +1,40 @@
 -- Esta é a versão reduzida do RockerLaunch 6, sem a arte do dragão espacial.
-
-admin={}; -- insira o nome dos FunCorps nesta tabela para habilitar algumas funções e comandos especiais
-afkdeath=true; -- mude para 'false' para desativar a morte dos ratos ausentes
-barrier=false; -- mude para 'true' para incluir barreiras invisíveis nos cantos do mapa, evitando que as construções se destruam ao sair do mapa
+-- This is the reduced version of RockerLaunch 6, without the space dragon artwork.
 
 -- Comandos:
 -- !cancel - Pula a vez do shaman atual.
 -- !set [nick#tag] - Define o usuário selecionado como shaman.
 
--- NÃO MUDE NADA DEPOIS DESTA LINHA!!
+-- Commands:
+-- !cancel - Skips the current shaman turn.
+-- !set [nick#tag] - Sets the selected user as shaman.
+
+admin={};
+-- insira o nome dos FunCorps na tabela acima para habilitar os comandos descritos acima.
+-- insert the FunCorps names in the table above to enable the commands described above.
+
+afkdeath=true;
+-- mude para 'false' para desativar a morte dos ratos ausentes
+-- change to 'false' to disable killing of AFK players
+
+barrier=false;
+-- mude para 'true' para incluir barreiras invisíveis nos cantos do mapa, evitando que as construções se destruam ao sair do mapa
+-- change to 'true' to include invisible barriers at the corners of the map, preventing buildings from being destroyed when leaving the map
+
+totem=false;
+-- mude para 'true' para permitir que os shamans usem totens no jogo
+-- change to 'true' to allow shamans to use totems in game
+
+gametime=4;
+-- quantidade de minutos que os shamans terão para deixar seus foguetes voarem, mínimo de 2 e máximo de 10 minutos
+-- amount of minutes that the shamans will have to let their rockets fly, minimum of 2 and maximum of 10 minutes
+
+-- NÃO MEXA EM NADA A PARTIR DESTA LINHA! / DON'T CHANGE ANYTHING BELOW THIS LINE!
+--------------------------------------------------------------------------------------------------------
 for _,f in next,{"PhysicalConsumables","AutoNewGame","AutoTimeLeft","AllShamanSkills","DebugCommand"} do
 	tfm.exec["disable"..f](true)
 end
-changed=false; mode=""; id=50; map="@7930736"; xml2=''; passed=0; final=""; lang={};
+changed=false; mode=""; id=50; map="@7930736"; xml2=''; passed=0; final=""; lang={}; shaman="";
 a1={500,1400}; a2={7500,6800}; b1={800,240}; b2={6360,5800}; c1={200,900}; c2={3800,3300}; d1={1500}; d2={4100};
 bar={type = 14,width = 10,height = 4000,foreground = false,friction = 0,restitution = 0,angle = 0, color = 0, miceCollision = true, groundCollision = true, dynamic = false}
 asteroid_1={type = 12,width = 40,height = 20,foreground = false,friction = 3,restitution = 0.1,angle = 0, color = 0, miceCollision = true, groundCollision = true, dynamic = true, fixedRotation = false, mass = 2000}
@@ -20,7 +42,7 @@ asteroid_2={type = 12,width = 80,height = 40,foreground = false,friction = 4,res
 asteroid_3={type = 12,width = 160,height = 80,foreground = false,friction = 5,restitution = 0.2,angle = 0, color = 0, miceCollision = true, groundCollision = true, dynamic = true, fixedRotation = false, mass = 15000}
 asteroid_4={type = 12,width = 320,height = 160,foreground = false,friction = 6,restitution = 0.25,angle = 0, color = 0, miceCollision = true, groundCollision = true, dynamic = true, fixedRotation = false, mass = 30000}
 lang.br = {
-	ajuda="<VP>Bem-vindos ao RockerLaunch 6!\n<N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço! Digite !help para saber como jogar.\n\n<BL>Créditos para Lynet#8558, Puffezinhaq#0000, Digo20games#0000, Dhanny_mheyran#6701 e Threshlimit#0000. Conceito original de Nettoork#0000.\n<J>Versão 6.11",
+	ajuda="<VP>Bem-vindos ao RockerLaunch 6!\n<N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço! Digite !help para saber como jogar.\n\n<BL>Créditos para Lynet#8558, Puffezinhaq#0000, Digo20games#0000, Dhanny_mheyran#6701 e Threshlimit#0000. Conceito original de Nettoork#0000.\n<J>Versão 6.12",
 	mapname="<b>RockerLaunch 6</b><N> - o céu é o limite! <VP>(versão reduzida)<",
 	start="<J>O shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço!",
 	loadingmap="<J>Carregando mapa. Por favor, aguarde...<",
@@ -31,9 +53,11 @@ lang.br = {
 	meteor1="<R><b>Atenção!</b> Meteoros estão caindo do céu!",
 	meteor2="<R><b>Os meteoros estão gigantes! Tenham muito cuidado!</b>",
 	shamdied="<VP>O shaman morreu! Iniciando uma nova rodada...",
+	buildingtime="Tempo para construir:",
+	flyingtime="Tempo restante:",
 }
 lang.en = {
-	ajuda="<VP>Welcome to RocketLaunch 6!\n<N>In this module, the shaman has 2 minutes to build a rocket that needs to take all the mice into space!\nType !help to see more information.\n\n<BL>Credits to Lynet#8558, Puffezinhaq#0000, Digo20games#0000, Dhanny_mheyran#6701 and Threshlimit#0000. Original concept by Nettoork#0000.\n<J>Version 6.11",
+	ajuda="<VP>Welcome to RocketLaunch 6!\n<N>In this module, the shaman has 2 minutes to build a rocket that needs to take all the mice into space!\nType !help to see more information.\n\n<BL>Credits to Lynet#8558, Puffezinhaq#0000, Digo20games#0000, Dhanny_mheyran#6701 and Threshlimit#0000. Original concept by Nettoork#0000.\n<J>Version 6.12",
 	mapname="<b>RockerLaunch 6</b><N> - The Sky is the Limit! <VP>(reduced version)<",
 	start="<J>The shaman has 2 minutes to build a rocket that needs to take all mices into space!",
 	loadingmap="<J>Loading map. Please wait...<",
@@ -44,6 +68,8 @@ lang.en = {
 	meteor1="<R><b>Caution!</b> Meteors are falling from the sky!",
 	meteor2="<R><b>The meteors are now huge! Be very careful!</b>",
 	shamdied="<VP>The shaman died! Starting a new round...",
+	buildingtime="Building time:",
+	flyingtime="Remaining time:",
 }
 if tfm.get.room.community == "br" or tfm.get.room.community == "pt" then
 	text = lang.br
@@ -72,6 +98,15 @@ for i=1,rawlen(numbers1) do
 	table.insert(managers,final)
 end
 
+for _,f in next,{"cancel","set","get","help"} do
+	system.disableChatCommandDisplay(f)
+end
+
+function run()
+	if gametime >= 2 and gametime <= 10 then
+		tfm.exec.newGame(map);
+	end
+end
 function verifyNinjas(name)
 	for i=1,rawlen(managers) do
 		if managers[i] == name then
@@ -87,6 +122,8 @@ function verifyAdmin(name)
 	end
 end
 function showMessage(message,name)
+	temp_text=string.gsub(message,"<b>","")
+	temp_text=string.gsub(temp_text,"</b>","")
 	if tfm.get.room.isTribeHouse == false then
 		tfm.exec.chatMessage(message,name)
 	end
@@ -95,13 +132,17 @@ function eventNewGame()
 	if changed == true then
 		id=50;
 		ui.setMapName(text.mapname)
-		tfm.exec.setGameTime(400)
+		tfm.exec.setGameTime(120+(gametime*60))
 		showMessage(text.start)
 		mode="building"
 		for n,p in pairs(tfm.get.room.playerList) do
 			if tfm.get.room.playerList[n].isShaman then
 				shaman=n
-				tfm.exec.setShamanMode(n,0)
+				if totem == false then
+					tfm.exec.setShamanMode(n,0)
+				else
+					tfm.exec.setShamanMode(n,1)
+				end
 			end
 			rodar(n)
 		end
@@ -139,7 +180,7 @@ function eventChatCommand(n,m)
 			showMessage(text.nextshaman..m:sub(5))
 		end
 		if (m:sub(0,3) == "get") then
-			tfm.exec.setPlayerScore(m:sub(5),32,true)
+			tfm.exec.setPlayerScore(m:sub(5),10,true)
 		end
 	end
 end
@@ -211,35 +252,43 @@ function eventLoop(p,f)
 		local isf=math.floor(f/500)
 		local m=math.floor(f/60000)
 		local s=math.floor((((m*60000)-f) * -1) / 1000)
-		remain=math.floor(f/1000)-280
+		remain=math.floor(f/1000)-(gametime*60)
 		passed=math.floor(p/1000)
 		local mr=math.floor(remain/60)
 		local sr=math.floor(((mr*60)-remain) * -1)
-		if s >= 10 then
-			ui.addTextArea(-1,"<font size='24'><font color='#222222'><font face='Trebuchet MS'><b><i>"..m..":"..s.."</b>",n,739,372,110,54,0,0,1.0,true)
-			ui.addTextArea(-2,"<font size='24'><font color='#d0d0d0'><font face='Trebuchet MS'><b><i>"..m..":"..s.."</b>",n,736,369,110,54,0,0,1.0,true)
-		else
-			ui.addTextArea(-1,"<font size='24'><font color='#222222'><font face='Trebuchet MS'><b><i>"..m..":0"..s.."</b>",n,739,372,110,54,0,0,1.0,true)
-			ui.addTextArea(-2,"<font size='24'><font color='#d0d0d0'><font face='Trebuchet MS'><b><i>"..m..":0"..s.."</b>",n,736,369,110,54,0,0,1.0,true)
-		end
-		if mr >= 0 and sr >= 0 then
-			if sr >= 10 then
-				ui.addTextArea(-3,"<font size='24'><font color='#222222'><font face='Trebuchet MS'><b><i>"..mr..":"..sr.." <VP>/</b>",n,659,372,140,54,0,0,1.0,true)
-				ui.addTextArea(-4,"<font size='24'><font color='#d0d0d0'><font face='Trebuchet MS'><b><i><R>"..mr..":"..sr.."</b>",n,656,369,140,54,0,0,1.0,true)
+		if mode == "fly" or mode == "ending" then
+			ui.addTextArea(-1,"<font size='20'><font color='#222222'><p align='center'>"..text.flyingtime.."",n,294,24,240,40,0,0,1.0,true)
+			ui.addTextArea(-2,"<font size='20'><font color='#d0d0d0'><p align='center'>"..text.flyingtime.."",n,292,22,240,40,0,0,1.0,true)
+			if s >= 10 then
+				ui.addTextArea(-3,"<font size='48'><font color='#222222'><font face='Ubuntu Mono,Consolas'><b>"..m..":"..s.."",n,359,42,240,50,0,0,1.0,true)
+				ui.addTextArea(-4,"<font size='48'><font color='#d0d0d0'><font face='Ubuntu Mono,Consolas'><b>"..m..":"..s.."",n,356,39,240,50,0,0,1.0,true)
 			else
-				ui.addTextArea(-3,"<font size='24'><font color='#222222'><font face='Trebuchet MS'><b><i>"..mr..":0"..sr.." <VP>/</b>",n,659,372,140,54,0,0,1.0,true)
-				ui.addTextArea(-4,"<font size='24'><font color='#d0d0d0'><font face='Trebuchet MS'><b><i><R>"..mr..":0"..sr.."</b>",n,656,369,140,54,0,0,1.0,true)
+				ui.addTextArea(-3,"<font size='48'><font color='#222222'><font face='Ubuntu Mono,Consolas'><b>"..m..":0"..s.." ",n,359,42,240,50,0,0,1.0,true)
+				ui.addTextArea(-4,"<font size='48'><font color='#d0d0d0'><font face='Ubuntu Mono,Consolas'><b>"..m..":0"..s.."",n,356,39,240,50,0,0,1.0,true)
+			end
+		end
+		if mode == "building" then
+			if mr >= 0 then
+				ui.addTextArea(-1,"<font size='20'><font color='#222222'><p align='center'>"..text.buildingtime.."",n,294,24,240,40,0,0,1.0,true)
+				ui.addTextArea(-2,"<font size='20'><font color='#d0d0d0'><p align='center'>"..text.buildingtime.."",n,292,22,240,40,0,0,1.0,true)
+				if sr >= 10 then
+					ui.addTextArea(-3,"<font size='48'><font color='#222222'><font face='Ubuntu Mono,Consolas'><b>"..mr..":"..sr.."",n,359,42,240,50,0,0,1.0,true)
+					ui.addTextArea(-4,"<font size='48'><font color='#d0d0d0'><font face='Ubuntu Mono,Consolas'><b>"..mr..":"..sr.."",n,356,39,240,50,0,0,1.0,true)
+				else
+					ui.addTextArea(-3,"<font size='48'><font color='#222222'><font face='Ubuntu Mono,Consolas'><b>"..mr..":0"..sr.." ",n,359,42,240,50,0,0,1.0,true)
+					ui.addTextArea(-4,"<font size='48'><font color='#d0d0d0'><font face='Ubuntu Mono,Consolas'><b>"..mr..":0"..sr.."",n,356,39,240,50,0,0,1.0,true)
+				end
 			end
 		end
 		if f <= 500 then
 			tfm.exec.newGame(xml2,false)
 			mode="building"
 		end
-		if p > 123000 then
+		if p > 121000 then
 			id=id+1;
 			if mode == "fly" then
 				for name,player in next,tfm.get.room.playerList do
-					if tfm.get.room.playerList[name].y < 111 and p > 123000 and isf >= 3 and mode=="fly" then
+					if tfm.get.room.playerList[name].y < 111 and p > 121000 and isf >= 3 and mode=="fly" then
 						if not tfm.get.room.playerList[name].isDead then
 							tfm.exec.giveCheese(name)
 							tfm.exec.playerVictory(name)
@@ -251,7 +300,7 @@ function eventLoop(p,f)
 			end
 		end
 		if f >= 5000 then
-			if p > 123000 and mode == "building" then
+			if p > 121000 and mode == "building" then
 				mode="fly"
 				showMessage(text.timeout)
 				for n,player in pairs(tfm.get.room.playerList) do
@@ -265,47 +314,49 @@ function eventLoop(p,f)
 		if isf == 540 then
 			showMessage(text.fallings)
 		end
-		if isf < 540 and isf >= 450 then
-			tfm.exec.addShamanObject(objects1[math.random(#objects1)], math.random(-400,2000), 1, 0, 0, 0, false)
-		elseif isf < 450 and isf >= 360 then
-			for i=1,2 do
-				tfm.exec.addShamanObject(objects2[math.random(#objects2)], math.random(-400,2000), 1, 0, 0, 0, false)
-			end
-		elseif isf < 360 and isf >= 240 then
-			for i=1,3 do
-				tfm.exec.addShamanObject(objects3[math.random(#objects3)], math.random(-400,2000), 1, 0, 0, 0, false)
-			end
-		elseif isf < 240 and isf >= 10 then
-			for i=1,4 do
-				tfm.exec.addShamanObject(objects4[math.random(#objects4)], math.random(-400,2000), 1, 0, 0, 0, false)
-			end
-		end
-		if isf == 240 then
-			showMessage(text.meteor1)
-		end
-		if isf == 100 then
-			showMessage(text.meteor2)
-		end
-		if p >= 150000 then
-			if isf < 240 and isf >= 160 then
-				if isf % 3 == 0 then
-					tfm.exec.addPhysicObject(id, math.random(-300,1900), 1, asteroid_1)
-					tfm.exec.addImage("182dc62db5c.png","+"..id.."",-23,-17,n,0.125,0.125)
+		if mode == "fly" then 
+			if isf < 540 and isf >= 450 then
+				tfm.exec.addShamanObject(objects1[math.random(#objects1)], math.random(-400,2000), 1, 0, 0, 0, false)
+			elseif isf < 450 and isf >= 360 then
+				for i=1,2 do
+					tfm.exec.addShamanObject(objects2[math.random(#objects2)], math.random(-400,2000), 1, 0, 0, 0, false)
 				end
-			elseif isf < 160 and isf >= 100 then
-				if isf % 4 == 0 then
-		 			tfm.exec.addPhysicObject(id, math.random(-300,1900), 1, asteroid_2)
-		 			tfm.exec.addImage("182dc62db5c.png","+"..id.."",-46,-32,n,0.25,0.25)
+			elseif isf < 360 and isf >= 240 then
+				for i=1,3 do
+					tfm.exec.addShamanObject(objects3[math.random(#objects3)], math.random(-400,2000), 1, 0, 0, 0, false)
 				end
-			elseif isf < 100 and isf >= 50 then
-				if isf % 5 == 0 then
-					tfm.exec.addPhysicObject(id, math.random(-300,1900), 1, asteroid_3)
-					tfm.exec.addImage("182dc62db5c.png","+"..id.."",-92,-60,n,0.5,0.5)
+			elseif isf < 240 and isf >= 10 then
+				for i=1,4 do
+					tfm.exec.addShamanObject(objects4[math.random(#objects4)], math.random(-400,2000), 1, 0, 0, 0, false)
 				end
-			elseif isf < 50 and isf >= 10 then
-				if isf % 6 == 0 then
-					tfm.exec.addPhysicObject(id, math.random(-300,1900), 1, asteroid_4)
-					tfm.exec.addImage("182dc62db5c.png","+"..id.."",-184,-90,n,nil)
+			end
+			if isf == 200 then
+				showMessage(text.meteor1)
+			end
+			if isf == 100 then
+				showMessage(text.meteor2)
+			end
+			if p >= 150000 then
+				if isf < 240 and isf >= 160 then
+					if isf % 2 == 0 then
+						tfm.exec.addPhysicObject(id, math.random(-300,1900), 1, asteroid_1)
+						tfm.exec.addImage("182dc62db5c.png","+"..id.."",-23,-17,n,0.125,0.125)
+					end
+				elseif isf < 160 and isf >= 100 then
+					if isf % 3 == 0 then
+		 				tfm.exec.addPhysicObject(id, math.random(-300,1900), 1, asteroid_2)
+		 				tfm.exec.addImage("182dc62db5c.png","+"..id.."",-46,-32,n,0.25,0.25)
+					end
+				elseif isf < 100 and isf >= 50 then
+					if isf % 4 == 0 then
+						tfm.exec.addPhysicObject(id, math.random(-300,1900), 1, asteroid_3)
+						tfm.exec.addImage("182dc62db5c.png","+"..id.."",-92,-60,n,0.5,0.5)
+					end
+				elseif isf < 50 and isf >= 10 then
+					if isf % 5 == 0 then
+						tfm.exec.addPhysicObject(id, math.random(-300,1900), 1, asteroid_4)
+						tfm.exec.addImage("182dc62db5c.png","+"..id.."",-184,-90,n,nil)
+					end
 				end
 			end
 		end
@@ -325,7 +376,6 @@ function eventNewPlayer(n)
 		ui.setMapName(text.mapname)
 		showMessage(ajuda,n)
 		tfm.exec.setPlayerScore(n,0,false)
-		tfm.exec.addImage("17ae4e48770.png","&1",590,370,n,0.5,0.5)
 		rodar(n)
 	end
 end
@@ -354,4 +404,4 @@ function eventPlayerDied(name)
 		end
 	end
 end
-tfm.exec.newGame(map);
+run();
