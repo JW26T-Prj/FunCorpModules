@@ -1,20 +1,17 @@
--- Antes de rodar este código em uma sala, verifique se esta versão coincide com a versão mais recente presente abaixo:
--- https://github.com/JW26T-Prj/FunCorpModules/blob/master/Mestre%20Mandou%20-%20Simon%20Says.lua
--- Isto vai garantir que você receba sempre as últimas atualizações e correções de bugs.
-
--- Warning: Before running this code into a room, check if this version is the same than the latest version located here:
--- https://github.com/JW26T-Prj/FunCorpModules/blob/master/Mestre%20Mandou%20-%20Simon%20Says.lua
--- This is a guarantee that you will receive all the latest updates and bugfixes.
-
--- Advertencia: antes de ejecutar este código en una sala, verifique si esta versión es la misma que la última versión que se encuentra aquí:
--- https://github.com/JW26T-Prj/FunCorpModules/blob/master/Mestre%20Mandou%20-%20Simon%20Says.lua
--- Esta es una garantía de que recibirá todas las últimas actualizaciones y correcciones de errores.
+-- Mestre Mandou / Simon Says / Simón Dice
+-- Desenvolvido por / Developed by / Hecho por Jessiewind26#2546
+-- Version 7.14.0
+-- ® 2025 Jessie LinesPower TFM Utilities Group
 
 admin={} -- insira o nome dos FunCorps aqui! / insert the FunCorp names here! / inserte los nombres de los FunCorps aquí!
-
--- Caso estejam tentando rodar este código no cafofo de tribo, insira seus nomes na tabela acima para que o código possa ser executado.
+-- Caso esteja tentando rodar este código no cafofo de tribo, insira seus nomes na tabela acima para que o código possa ser executado.
 -- If you are trying to run this code in your tribehouse, enter your names in the table, so the code can be executed.
 -- Si estás intentando ejecutar este código en tu casa tribal, ingresa tus nombres en la tabla para que se pueda ejecutar el código.
+
+testmode=false; -- leia abaixo! / read below! / leer abajo!
+-- Altere a variável acima para 'true' somente se quiser ver as mensagens do chat no cafofo da tribo.
+-- Change the above variable to 'true' only if you want to see chat messages in the tribehouse.
+-- Cambia la variable anterior a 'true' solo si quieres ver mensajes de chat en la casa tribal.
 
 -- Comandos para uso de membros FunCorp e do dono da sala:
 -- !command [número de 1 a 136] - Executa um comando manualmente.
@@ -58,7 +55,7 @@ acids2={type = 19,width = 2400,height = 10,miceCollision = true,groundCollision 
 acids3={type = 19,width = 10,height = 800,miceCollision = true,groundCollision = false, foreground = true}
 system.disableChatCommandDisplay(nil,true)
 lang.br = {
-	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b>\nSiga tudo o que o jogo mandar e teste seus limites até o fim!\n\n<VP><b>Module criado e gerenciado por Jessiewind26#2546</b>\n\n<R>Versão 7.13.2",
+	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b>\nSiga tudo o que o jogo mandar e teste seus limites até o fim!\n\n<VP><b>Module criado e gerenciado por Jessiewind26#2546</b>\n\n<R>Versão 7.14.0\n<BL>® 2014-25 Jessie LinesPower TFM Utilities Group",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -204,7 +201,7 @@ lang.br = {
 	avcommands = "\nComandos disponíveis:\n!command [número de 1 a 136] - Executa um comando manualmente.\n!run [@número] - Executa o mapa especificado.\n!kill [nick#tag] - Mata o jogador especificado.\n!limit [número] - Altera o limite de jogadores na sala.\n!pw [password] - Adiciona uma senha na sala."
 }
 lang.en = {
-	welcome = "<N><b>Welcome to Simon Says module!</b>\nFollow everything the game told and test your limits until the end!\n\n<VP><b>Script made and developed by Jessiewind26#2546</b>\nTranslation by Draw#6691\n\n<R>Version 7.13.2",
+	welcome = "<N><b>Welcome to Simon Says module!</b>\nFollow everything the game told and test your limits until the end!\n\n<VP><b>Script made and developed by Jessiewind26#2546</b>\nTranslation by Draw#6691\n\n<R>Version 7.14.0\n<BL>® 2014-25 Jessie LinesPower TFM Utilities Group",
 	dancar = "Dance!",
 	sentar = "Sit down!",
 	confetar = "Throw 5 confetti!",
@@ -350,7 +347,7 @@ lang.en = {
 	avcommands = "\nAvailable commands: \n!command [1-136] - Run a command manually.\n!run [@code] - Run the specified map.\n !kill [player#tag] - Kill the specified player.\n!limit [number] - Limit the number of maximum players on the room.\n !pw [password] - Lock the room with a password."
 }
 lang.es = {
-	welcome = "<N><b>WBienvenido al juego Simón Dice!</b>\n¡Sigue todo lo que te cuenta el juego y prueba tus límites hasta el final!\n\n<VP><b>Código hecho por Jessiewind26#2546</b>\nTraducción por Nurzak#7525\n\n<R>Versión 7.13.2",
+	welcome = "<N><b>WBienvenido al juego Simón Dice!</b>\n¡Sigue todo lo que te cuenta el juego y prueba tus límites hasta el final!\n\n<VP><b>Código hecho por Jessiewind26#2546</b>\nTraducción por Nurzak#7525\n\n<R>Versión 7.14.0\n<BL>® 2014-25 Jessie LinesPower TFM Utilities Group",
 	dancar = "¡Baile!",
 	sentar = "¡Siéntate!",
 	confetar = "¡Lanza 5 confetis!",
@@ -496,18 +493,19 @@ lang.es = {
 	avcommands = "\nComandos disponibles:\n!command [1-136] - Ejecutar un comando manualmente.\n!run [@code] - Ejecutar el mapa especificado.\n!kill [jugador#tag] - Mata al jugador especificado.\n!limit [número] - Limite el número máximo de jugadores en la sala.\n!pw [contraseña] - Bloquee la habitación con una contraseña."
 }
 
-numbers1={{74,101,115,115,105,101,119,105,110,100,50,54,35,50,53,52,54},
-{73,114,101,108,105,97,35,55,51,49,55},
-{82,105,118,101,110,35,49,54,51,48},
-{71,108,111,98,111,95,114,117,114,97,108,35,54,53,51,50},
+numbers1={
 {83,107,121,121,109,101,108,108,117,35,48,48,48,48},
-{65,108,105,115,115,111,110,35,51,57,51,56},
-{86,105,101,103,111,35,48,51,52,53},
-{83,97,109,105,114,97,35,52,51,56,55},
-{80,97,116,114,105,99,107,95,109,97,104,111,109,101,115,35,49,55,57,53},
-{83,107,121,95,104,100,116,118,35,52,57,52,50},
 {89,117,104,35,48,55,52,56},
-{78,117,114,122,97,107,35,55,53,50,53}}
+{86,105,101,103,111,35,48,51,52,53},
+{78,117,114,122,97,107,35,55,53,50,53},
+{83,97,109,105,114,97,35,52,51,56,55},
+{71,105,108,108,35,50,57,54,54},
+{83,107,121,95,101,122,101,113,117,105,101,108,35,56,53,52,48},
+{83,107,121,95,104,100,116,118,35,52,57,52,50},
+{77,97,108,122,97,104,97,114,35,56,49,55,56},
+{80,97,116,114,105,99,107,95,109,97,104,111,109,101,115,35,49,55,57,53},
+{83,101,116,116,35,54,52,52,50},
+{71,108,111,98,111,95,114,117,114,97,108,35,54,53,51,50}}
 ninjas={}
 
 for i=1,rawlen(numbers1) do
@@ -555,6 +553,13 @@ function showMessage(message,name)
 	temp_text=string.gsub(temp_text,"</b>","")
 	if tfm.get.room.isTribeHouse == false then
 		tfm.exec.chatMessage(message,name)
+	end
+	if testmode == true then
+		if name == nil then
+			print("<ROSE>[Test Mode] : \n<BL>"..temp_text.."")
+		else
+			print("<ROSE>[Test Mode] - "..name.." : \n<BL>"..temp_text.."")
+		end
 	end
 end
 function getAlives()
@@ -1611,8 +1616,13 @@ function eventChatMessage(name,message)
 		tfm.exec.killPlayer(name)
 	end
 	if active == 16 then
-		if message == "2024" or message == "2025" then
+		if message == "2025" then
 			completeCommand(name)
+		elseif message == "2024" then
+			tfm.exec.killPlayer(name)
+			if tfm.get.room.community == "br" or tfm.get.room.community == "pt" then
+				showMessage("hoje é um novo dia, de um novo tempo que começou",name)
+			end
 		end
 	end
 	if active == 29 then
@@ -2345,13 +2355,13 @@ function eventLoop(passado,faltando)
 	if unlocked == true then
 		local tempo=math.floor(faltando/1000)
 		if active == -2 then
-			ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." 7.13.2</b><")
+			ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." 7.14.0</b><")
 		elseif active == -1 and vivo >= 1 then
-			ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.13.2</b><")
+			ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.14.0</b><")
 		elseif active == -1 and vivo <= 0 then
-			ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.13.2</b><")
+			ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.14.0</b><")
 		elseif active >= 0 then
-			ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." 7.13.2</b><")
+			ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." 7.14.0</b><")
 		end
 		if rato < 4 then
 			if tfm.get.room.currentMap == lobby_map then
