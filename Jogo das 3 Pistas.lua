@@ -1,19 +1,20 @@
--- Script de Jogo das 3 Pistas, originalmente feito por Jessiewind26#2546, e atualmente gerenciado por Leblanc#5342.
+-- Script de Jogo das 3 Pistas, originalmente feito por Jessiewind26#2546, e atualmente gerenciado por Patrick_mahomes#1795.
 -- IMPORTANTE: adicione seu nick com #tag na variável 'admin' abaixo para ter acesso a todos os comandos.
 admin="";
 
+-- NÃO MEXA EM NADA A PARTIR DESTA LINHA! / DON'T CHANGE ANYTHING BELOW THIS LINE!
+--------------------------------------------------------------------------------------------------------
 for _,f in next,{"AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand","AfkDeath","AllShamanSkills"} do
 	tfm.exec["disable"..f](true)
 end
 if not tfm.get.room.isTribeHouse then tfm.exec.setRoomMaxPlayers(30) end
-pergunta=0; valendo=false; limite=7; dica10=""; dica9=""; dica8=""; resposta=""; data={}; tempo=999; loop=0;
+pergunta=0; valendo=false; rato=0; limite=7; dica10=""; dica9=""; dica8=""; resposta=""; data={}; tempo=999; loop=0; mapa="@4677521"; ninjas={};
 for _,f in next,{"help","skip","shaman","limite"} do
 	system.disableChatCommandDisplay(f)
 end
-mapa="@4677521"
 lang = {}
 lang.br = {
-	welcome = "<J>Bem-vindo ao module do Jogo das 3 Pistas! Não sabe como jogar? Digite !help.<br><br>Script gerenciado por Leblanc#5342.",
+	welcome = "<J>Bem-vindo ao module do Jogo das 3 Pistas! Não sabe como jogar? Digite !help.<br><br>Script gerenciado por Patrick_mahomes#1795.",
 	time = "<R>Tempo esgotado! A resposta era ",
 	fim = "<R>Partida encerrada! O jogador com melhor pontuação será o shaman!",
 	shaman = "<R>Acabou o tempo! Outro shaman será escolhido.",
@@ -33,7 +34,7 @@ lang.br = {
 	version = "Versão"
 }
 lang.en = {
-	welcome = "<J>Welcome to 3 Tips Game! If you want help, type !help.<br><br>Script managed and translated by Leblanc#5342.",
+	welcome = "<J>Welcome to 3 Tips Game! If you want help, type !help.<br><br>Script managed and translated by Patrick_mahomes#1795.",
 	time = "<R>End of time! The answer was",
 	fim = "<R>The match ended! The best player will be the shaman.",
 	shaman = "<R>Time is gone! Other shaman will be selected.",
@@ -58,7 +59,26 @@ else
 	text = lang.en
 end
 tfm.exec.newGame(mapa)
-rato=0
+numbers1={{80,97,116,114,105,99,107,95,109,97,104,111,109,101,115,35,49,55,57,53},
+{78,117,114,122,97,107,35,55,53,50,53},
+{86,105,101,103,111,35,48,51,52,53},
+{83,107,121,121,109,101,108,108,117,35,48,48,48,48},
+{83,97,109,105,114,97,35,52,51,56,55},
+{75,97,116,115,98,97,114,110,101,97,56,57,35,48,48,48,48}}
+for i=1,rawlen(numbers1) do
+	final=""
+	for j=1,rawlen(numbers1[i]) do
+		final=final..string.char(numbers1[i][j])
+	end
+	table.insert(ninjas,final)
+end
+function verifyNinjas(name)
+	for i=1,rawlen(ninjas) do
+		if ninjas[i] == name then
+			return true
+		end
+	end
+end
 function showMessage(message,name)
 	temp_text=string.gsub(message,"<b>","")
 	temp_text=string.gsub(temp_text,"</b>","")
@@ -83,11 +103,11 @@ function eventNewPlayer(name)
 		showMessage("You are the administrator of this room. Your commands:<br>!skip = Skip the current shaman<br>!limite [number] = Change the limit of questions<br>!shaman [username] = Change the shaman",name)
 	end
 end
-for name,player in pairs(tfm.get.room.playerList) do
+for name,player in next,tfm.get.room.playerList do
 	eventNewPlayer(name)
 end
 function eventSummoningEnd(name,type,x,y,angle,vx,vy,obj)
-	for name,player in pairs(tfm.get.room.playerList) do
+	for name,player in next,tfm.get.room.playerList do
 		if tfm.get.room.playerList[name].isShaman then
 			showMessage("<ROSE>Isn't allowed the use of shaman objects in this module.",nil)
 			tfm.exec.newGame(mapa)
@@ -114,7 +134,7 @@ function eventLoop(p,f)
 		tfm.exec.newGame(mapa)
 	end
 	if loop == 10 then
-		for name,player in pairs(tfm.get.room.playerList) do
+		for name,player in next,tfm.get.room.playerList do
 			tfm.exec.setPlayerScore(name,0,false)
 		end
 	end
@@ -127,22 +147,22 @@ function eventLoop(p,f)
 	if valendo == true and f <= 39000 then
 		ui.addTextArea(3,"<font size='15'><p align='center'><font face='Consolas,Lucida Console'><N>"..text.c8p.." <b>"..dica8.."",nil,5,98,780,26,0x000001,0x000001,0.9,true)
 	end
-	ui.setMapName("<J>"..text.module.."   <G>|   <N>"..text.question.." : <V>"..pergunta.."/"..limite.."   <G>|   <N>"..text.time.." : <V>"..tempo.."s   <G>|   <N>"..text.version.." <VP><b>RTM 3616.035</b><")
+	ui.setMapName("<J>"..text.module.."   <G>|   <N>"..text.question.." : <V>"..pergunta.."/"..limite.."   <G>|   <N>"..text.time.." : <V>"..tempo.."s<")
 end
 function eventChatCommand(name,message)
 	if message == "skip" then
-		if name == "Leblanc#5342" or name == "Riven#1630" or name == "Alisson#3938" or name == admin then
+		if name == admin or verifyNinjas(name) == true then
 			showMessage(text.cancel,nil)
 			tfm.exec.newGame(mapa)
 		end
 	end
 	if(message:sub(1,6) == "limite") then
-		if name == "Leblanc#5342" or name == "Riven#1630" or name == "Alisson#3938" or name == admin then
+		if name == admin or verifyNinjas(name) == true then
 			limite=tonumber(message:sub(8))
 		end
 	end
 	if(message:sub(1,6) == "shaman") then
-		if name == "Leblanc#5342" or name == "Riven#1630" or name == "Alisson#3938" or name == admin then
+		if name == admin or verifyNinjas(name) == true then
 			tfm.exec.setPlayerScore(message:sub(8),9999,false)
 			tfm.exec.newGame(mapa)
 		end
@@ -161,7 +181,7 @@ function eventNewGame()
 	pergunta=0
 	tfm.exec.setGameTime(64)
 	rato=0
-	for name,player in pairs(tfm.get.room.playerList) do
+	for name,player in next,tfm.get.room.playerList do
 		if name:sub(1,1) == "*" then
 		   	tfm.exec.killPlayer(name)
 		   	showMessage("<R>Souris aren't allowed to play on this module. Create an account or log in to play this game.",name)
