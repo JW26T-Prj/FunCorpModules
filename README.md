@@ -9,7 +9,7 @@ To add a code to this folder, report an issue or comment anything about the code
 - yuhzinha
 - reksai_malza_54
 
-Into Transformice, contact Jessiewind26#2546, Shun_kazami#7014, Yuh#0748 or Nurzak#7525.
+Into Transformice, contact Jessiewind26#2546, Shun_kazami#7014, Patrick_mahomes#1795, Yuh#0748 or Nurzak#7525.
 
 Link of our folder:
 https://github.com/JW26T-Prj/FunCorpModules/
