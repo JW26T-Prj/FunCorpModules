@@ -1,34 +1,47 @@
-for _,f in next,{"help","kill","restart"} do
-	system.disableChatCommandDisplay(f)
-end
+-- Rakan's Objects
+-- Developed by Rakan#3159
+-- Thanks for Jessiewind26#2546 for the original idea of the game.
+-- ® 2025 Jessie LinesPower TFM Utilities Group
+--------------------------------------------------------------------------------------------------------
 for _,G in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables"} do
 	tfm.exec["disable"..G](true)
 end
-
-tfm.exec.setRoomMaxPlayers(35)
+system.disableChatCommandDisplay(nil, true)
+if tfm.get.room.isTribeHouse == false then tfm.exec.setRoomMaxPlayers(35) end
 mapas={"@7565678","@7358458","@7356189","@7513747","@7488224","@7434176","@7566381","@7566353","@7566062","@7566079","@7566040","@7282115","@7284500","@7177229","@3859389","@4122612","@7568657","@7593122","@7593485","@7593959","@7593964","@7594550","@7120063","@7607195","@7627535","@7627546","@7627556","@7631682","@7634571","@4916014","@4005264","@7033610","@7308352","@3222646","@5937915","@7114147","@7288402","@7756165","@7757983","@7754765","@7754518"}
 map_names={"The Beginning of All","Platforms on The Heaven","Simple Circles","The Pyramid of Lava","The Damage of Fall","False Beach","Inside the Fire Cave","","","","A Simple Snow Box","The Maze of Lava","The Grasses that Disappear","Without Limits","Don't Jump!","Don't Touch on Lava","Choose Your Side","Where Are We?","The Island Forest","Black and White - Objects Edition","The Lake of Fall","On the Edge of Void - Objects Edition","White and Black","Mortal Cinema","Background Directions","Without Plans","Defilante Maze","Testing Purposes","Under the Darkness","Fallen Layers","Defilante Platform","Threshold of Boxes","Simple Black","Grassy Walls","Thickness of Clouds","Unreal Illusion","Testing Lava Cave","Ninja Directions","Limits of Tomorrow","",""}
 objects={1,2,3,4,6,7,10,33,35,39,40,45,46,54,60,61,65,68,69,85,89,90}
-actual_map=""; remaining=0; imageId=-1; actual_creator=""; bar=""; loop=0; winner=false; times=0;
+actual_map=""; remaining=0; imageId=-1; actual_creator=""; bar=""; loop=0; winner=false; times=0; ninjas={};
+numbers={{82,97,107,97,110,35,51,49,53,57},
+{89,117,104,35,48,55,52,56},
+{83,107,121,121,110,101,108,108,117,35,48,48,48,48},
+{86,105,101,103,111,35,48,51,52,53},
+{78,117,114,122,97,107,35,55,53,50,53}}
 functs={running=false,level=0,count=8}
+for i=1,rawlen(numbers) do
+	final=""
+	for j=1,rawlen(numbers[i]) do
+		final=final..string.char(numbers[i][j])
+	end
+	table.insert(ninjas,final)
+end
 function showMessage(message,name)
-	temp_text=string.gsub(message,"<b>","")
-	temp_text=string.gsub(temp_text,"</b>","")
 	if tfm.get.room.isTribeHouse == false then
 		tfm.exec.chatMessage(message,name)
-	elseif tfm.get.room.isTribeHouse == true then
-		if name == nil then
-			print("<ROSE>[Test Mode] : <br><BL>"..temp_text.."")
-		else
-			print("<ROSE>[Test Mode] - "..name.." : <br><BL>"..temp_text.."")
+	end
+end
+function verifyNinjas(name)
+	for i=1,rawlen(ninjas) do
+		if ninjas[i] == name then
+			return true
 		end
 	end
 end
 function eventChatCommand(name,message)
 	if message == "help" then
-		showMessage("<J>The objective of this module is survive! Don't hit the objects that are falling! The last alive player wins the game!<br><br><ROSE>Module managed by Rakan#3159",name)
+		showMessage("<J>The objective of this module is survive! Don't hit the objects that are falling! The last alive player wins the game!\n\n<ROSE>Module managed by Rakan#3159",name)
 	end
-	if name == "Rakan#3159" or name == "Shun_kazami#7014" or name == "Skyymellu#0000" or name == "Cassiopeia#1749" then
+	if verifyNinjas(name) == true then
 		if (message:sub(0,4) == "kill") then
 			tfm.exec.killPlayer(message:sub(6))
 		end
@@ -84,7 +97,7 @@ function throw()
 	tfm.exec.addShamanObject(0,position,100,0,0,1,false)
 end
 function eventNewPlayer(name)
-	showMessage("<J><b>Welcome to Rakan's Objects!</b><br><br>The objective of this module is survive! Don't hit the objects that are falling! The last alive player wins the game!<br><br><ROSE>Module developed by Rakan#3159",name)
+	showMessage("<J><b>Welcome to Rakan's Objects!</b>\n\n<N>The objective of this module is survive! Don't hit the objects that are falling! The last alive player wins the game!\n\n<ROSE>Module developed by Rakan#3159\n<BL>® Objects is a registered name of Jessie LinesPower TFM Utilities Group.\nEditing and adapting this code without authorization is prohibited.",name)
 end
 for name,player in pairs(tfm.get.room.playerList) do
 	eventNewPlayer(name)
