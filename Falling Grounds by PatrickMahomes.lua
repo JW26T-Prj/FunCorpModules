@@ -1,8 +1,6 @@
 -- Falling Grounds
 -- Feito por / made by Patrick_mahomes#1795
 -- ® 2025 Jessie LinesPower TFM Utilities Group
-
--- NÃO MEXA EM NADA A PARTIR DESTA LINHA! / DON'T CHANGE ANYTHING BELOW THIS LINE!
 --------------------------------------------------------------------------------------------------------
 for _,f in next,{"AutoShaman","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand"} do
 	tfm.exec["disable"..f](true)
@@ -44,8 +42,8 @@ end
 function eventNewGame()
 	ground_id=20; loop=-14; remain=9;
 	for i=1,20 do
-		size=math.random(10,40)
-		tfm.exec.addPhysicObject(i,math.random(50,1550),math.random(150,380),{type=grounds[math.random(#grounds)],width=size,height=size,friction=0.3,miceCollision=true,color=math.random(1,16777216)})
+		size=math.random(10,45)
+		tfm.exec.addPhysicObject(i,math.random(20,1580),math.random(160,395),{type=grounds[math.random(#grounds)],width=size,height=size,friction=0.3,miceCollision=true,color=math.random(1,16777216)})
 	end
 	tfm.exec.setGameTime(78)
 	for name,player in next,tfm.get.room.playerList do
@@ -53,7 +51,7 @@ function eventNewGame()
 	end
 end
 function eventNewPlayer(name)
-	showMessage("<J><b>Welcome to Falling Grounds!</b>\n\n<N>The objective of this module is survive! Test your luck and discover what ground will not be removed!\n\n<R>Module made by Patrick_mahomes#1795\n<BL>® Arrows is a registered name of Jessie LinesPower TFM Utilities Group.\nEditing and adapting this code without authorization is prohibited.",name)
+	showMessage("<J><b>Welcome to Falling Grounds!</b>\n\n<N>The objective of this module is survive! Test your luck and discover what ground will not be removed!\n\n<R>Module made by Patrick_mahomes#1795\n<BL>® Falling Grounds is a registered name of Jessie LinesPower TFM Utilities Group.\nEditing and adapting this code without authorization is prohibited.",name)
 end
 for name,player in next,tfm.get.room.playerList do
 	eventNewPlayer(name)
