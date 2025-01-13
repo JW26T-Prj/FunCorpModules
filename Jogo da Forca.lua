@@ -1,13 +1,12 @@
--- Script do module Jogo da Forca, versão RTM 1206.004, desenvolvido por Xayah_raster#7598.
+-- Script de Jogo da Forca, originalmente desenvolvido por Xayah_raster#7598, e atualmente administrado por Shun_kazami#7014.
+----------------------------------------------------------------------------------------------------
 
 for _,f in next,{"AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand","AllShamanSkills"} do
 	tfm.exec["disable"..f](true)
 end
 
-tempo_def=90
-
 letras={"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"}
-letters={}; letters_d={}; selec={}; palavra=""; modo="aguardar"; acctd=0; acctf=0; erros=0; accerted="";
+letters={}; letters_d={}; tempo_def=90; selec={}; palavra=""; modo="aguardar"; acctd=0; acctf=0; erros=0; accerted="";
 
 function resetWord()
 	letters={}; letters_d={}; accerted=""; acctd=0; acctf=0; erros=0; selec={}; palavra="";
@@ -39,9 +38,9 @@ function showMessage(message,name)
 		tfm.exec.chatMessage(message,name)
 	elseif tfm.get.room.isTribeHouse == true then
 		if name == nil then
-			print("<ROSE>[Test Mode] : <br><BL>"..temp_text.."")
+			print("<ROSE>[Test Mode] : \n<BL>"..temp_text.."")
 		else
-			print("<ROSE>[Test Mode] - "..name.." : <br><BL>"..temp_text.."")
+			print("<ROSE>[Test Mode] - "..name.." : \n<BL>"..temp_text.."")
 		end
 	end
 end
@@ -154,11 +153,11 @@ end
 function eventNewGame()
 	resetWord()
 	modo="aguardar"
-	ui.setMapName("<N>Jogo da Forca <J><b>RTM 1206.004</b> <N>- Script criado por <ROSE>Xayah_raster#7598<")
+	ui.setMapName("<N>Jogo da Forca <N>- Script gerenciado por <V>Shun_kazami#7014<")
 	for name,player in next,tfm.get.room.playerList do
 		if tfm.get.room.playerList[name].isShaman then
 			tfm.exec.setPlayerScore(name,-1,false)
-			showMessage("<N>Pressione o botão abaixo para escolher uma palavra.<br><br><J><b>NÃO ESQUEÇA DE SE MOVER, OU MORRERÁ DE AFK!</b>",name)
+			showMessage("<N>Pressione o botão abaixo para escolher uma palavra.\n\n<J><b>NÃO ESQUEÇA DE SE MOVER, OU MORRERÁ DE AFK!</b>",name)
 			ui.addTextArea(150,"<a href='event:def'><p align='center'>Escolher uma palavra",name,300,280,490,19,0x424242,0x989898,1.0,true)
 		end
 	end
@@ -166,9 +165,9 @@ function eventNewGame()
 end
 
 function eventNewPlayer(name)
-	ui.setMapName("<N>Jogo da Forca <J><b>RTM 1206.004</b> <N>- Script criado por <ROSE>Xayah_raster#7598<")
+	ui.setMapName("<N>Jogo da Forca <N>- Script gerenciado por <V>Shun_kazami#7014<")
 	tfm.exec.setPlayerScore(name,0,false)
-	showMessage("<br><br><br><p align='center'><N><b>Bem-vindos ao module Jogo da Forca!</b><br>O objetivo deste module é: Tentar descobrir a palavra definida pelo shaman errando o mínimo possível!<br><VP>Digite ! e uma letra do alfabeto para chutar.<br><br><J><b>Script desenvolvido por Xayah_raster#7598</b><br><br><ROSE>Versão RTM 1206.004<br><br><p align='left'>",name)
+	showMessage("<N><b>Bem-vindos ao module Jogo da Forca!</b>\nO objetivo deste module é tentar descobrir a palavra definida pelo shaman errando o mínimo possível!\n<VP>Digite ! e uma letra do alfabeto para chutar.\n\n<J><b>Script gerenciado por Shun_kazami#7014. Desenvolvido originalmente por Xayah_raster#7598.",name)
 end
 
 for name,player in next,tfm.get.room.playerList do
@@ -317,7 +316,7 @@ function forcaShow()
 		pendu = pendu.."<font size='8'> <font size='16'><N>══╩═════ <R>/////\\\\\\\\\\"
 		palavra=""
 		tfm.exec.setGameTime(10)
-		showMessage("<R>Vocês erraram demais e mataram o boneco!<br>Iniciando nova rodada...")
+		showMessage("<R>Vocês erraram demais e mataram o boneco!\nIniciando nova rodada...")
 		modo="reset"
 	end
 	ui.addTextArea(3400, pendu, nil, 10, 105, 258, 198, 0, 0, 1)
@@ -341,7 +340,7 @@ function eventPopupAnswer(id,name,answer)
 			end
 			displayLetters()
 			modo="jogo"
-			showMessage("<VP>Palavra escolhida: <b>"..palavra.."</b><br>",name)
+			showMessage("<VP>Palavra escolhida: <b>"..palavra.."</b>\n",name)
 			showMessage("<J>Palavra definida! Para chutar uma letra, digite ! e uma letra. Para chutar a palvra, digite ! e a palavra desejada.")
 			tfm.exec.setGameTime(tempo_def)
 			ui.removeTextArea(150,nil)
