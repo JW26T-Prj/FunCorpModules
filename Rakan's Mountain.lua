@@ -1,8 +1,10 @@
+-- Rakan's WaterCatch
+-- Developed by Rakan#3159, map by Spectra_phantom#6089
+-- Version 1.3.1
+-- ® 2025 Jessie LinesPower TFM Utilities Group
+------------------------------------------------------------------------------------------
 for _,f in next,{"AutoNewGame","AutoTimeLeft","AfkDeath","AutoShaman","AutoScore","DebugCommand","PhysicalConsumables"} do
 	tfm.exec["disable"..f](true)
-end
-for _,g in next,{"help","powerups","creditos","changelog"} do
-	system.disableChatCommandDisplay(g)
 end
 number_scale={8240,7400,6760,6230,5760,5350,4970,4620,4260,4000,3693,3417,3175,2900,2650,2390,2180,1950,1750,1550,1360,1150,935,770}
 data={}; lang={}; loop=0; map_count=0; event_selected=0; running=false; pass_int=0; falt_int=0; run_int=0; event_int=0; endgame=false; changed=false; vencedor="";
@@ -13,9 +15,9 @@ events_pt={"Fúria da Tormenta","Chuva de Caixas","Anomalia Gravitacional","Quei
 events_en={"Wind Fury","Box Rain","Gravity Anomaly","Cheese for All"}
 power_d={p2={8,10,12,14},p3={12,14,16,18,20,22}}
 lang.br = {
-	mapname = "<N><b>Rakan's Mountain</b>  <V>-  <N>versão <ROSE>v1.3.0   <G>|   <N>Desenvolvido por <J>Rakan#3159<",
-	enter = "<N>Bem-vindo ao module <J><b>Rakan's Mountain!</b><br><N>Você tem pouco mais que 3 minutos para escalar a grande montanha que há pelo caminho!<br><br><ROSE>Versão v1.3.0 - desenvolvido por Rakan#3159<br><VP>O module foi atualizado! Para descobrir as novidades, digite !changelog.",
-	newgame = "<N>Caso não saiba o que fazer neste module, digite <b>!help</b>.",
+	mapname = "<N><b>Rakan's Mountain</b>  <V>-  <N>versão <ROSE>v1.3.1   <G>|   <N>Desenvolvido por <J>Rakan#3159<",
+	enter = "<N>Bem-vindo ao module <J><b>Rakan's Mountain!</b>\n<N>Você tem pouco mais que 3 minutos para escalar a grande montanha que há pelo caminho!\n\n<ROSE>Versão v1.3.1 - desenvolvido por Rakan#3159",
+	newgame = "<N>Caso não saiba o que fazer neste module, vá no Menu e clique em Ajuda.",
 	getready = "<J>Se prepare! A estrada para a montanha será liberada em breve!",
 	start = "<VP><b>E que comece a batalha!</b>",
 	event1 = "O evento",
@@ -27,22 +29,22 @@ lang.br = {
 	scaled = "Ele(a) subiu ",
 	recognized = "metros e agora é reconhecido pelos deuses da montanha!",
 	event5 = " foi encerrado!",
-	reached2 = "<G>Você atingiu os 2000 metros de altura.<br>Ventos bem gelados começam a te rodear e você começa a sentir falta de ar.",
-	reached3 = "<G>Você atingiu os 5000 metros de altura.<br>Já está impossível de suportar o extremo frio, e você começa a ter sérias dificuldades para respirar.",
-	reached4 = "<G>Você atingiu os 10000 metros de altura.<br>As correntes geladas começam a te fazer congelar, e seu rato passa a ter um sério problema de asfixia devido a falta de ar.",
-	reached5 = "<G>Você atingiu os 20000 metros de altura.<br>Você começa a ver as estrelas muito mais claramente, mesmo no dia claro. No entanto, isto é um péssimo sinal. O ar rarefeito e as baixíssimas temperaturas fazem seu rato morrer aos poucos.",
+	reached2 = "<G>Você atingiu os 2000 metros de altura.\nVentos bem gelados começam a te rodear e você começa a sentir falta de ar.",
+	reached3 = "<G>Você atingiu os 5000 metros de altura.\nJá está impossível de suportar o extremo frio, e você começa a ter sérias dificuldades para respirar.",
+	reached4 = "<G>Você atingiu os 10000 metros de altura.\nAs correntes geladas começam a te fazer congelar, e seu rato passa a ter um sério problema de asfixia devido a falta de ar.",
+	reached5 = "<G>Você atingiu os 20000 metros de altura.\nVocê começa a ver as estrelas muito mais claramente, mesmo no dia claro. No entanto, isto é um péssimo sinal. O ar rarefeito e as baixíssimas temperaturas fazem seu rato morrer aos poucos.",
 	reached6 = "<VP>Você chegou no pico da montanha! Os deuses reconheceram sua bravura e coragem e te acolheram para o céu!",
-	reached7 = " <VP>chegou até o topo da montanha!<br><N>Ele(a) agora se integra nas estrelas e passa a brilhar como nunca!",
+	reached7 = " <VP>chegou até o topo da montanha!\n<N>Ele(a) agora se integra nas estrelas e passa a brilhar como nunca!",
 	nowinners = "<R>Não há vencedores!",
-	help = "<p align='center'><VP><b>Bem-vindo ao module Rakan's Mountain.</b><br><br><p align='left'><N>Este modo é bem simples. O objetivo é subir o máximo possível a grande montanha que há pela frente.<br><br>No entanto, os deuses da montanha estão furiosos, e podem atacar com vários contratempos.<br><br>A partida acaba depois de 3 minutos, quando todos os ratos morrem ou quando alguém chega no pico da montanha.<br><br><ROSE>Quaisquer bugs ou problemas reporte para Rakan#3159.",
-	powerups = "<G>• Fúria da Tormenta: <N>Correntes de vento começam a pairar em volta da montanha.<br><G>• Chuva de Caixas: <N>Caixas começam a cair do céu, fazendo com que você caia.<br><G>• Anomalia Gravitacional: <N>Um campo gravítico intenso aparece na montanha, alterando de forma aleatória a gravidade do mapa.<br><G>• Queijo para Todos: <N>Todos os jogadores recebem queijo.",
-	credits = "As seguintes pessoas ajudaram no desenvolvimento deste module:<br><br><ROSE><b>• Rakan#3159</b><N> - Desenvolvedor do código<br><ROSE><b>• Akwimos#1937</b><N> - Tradução do código para o Inglês<br><ROSE><b>• Spectra_phantom#6089</b><N> - Criação das artes",
+	help = "<p align='center'><VP><b>Bem-vindo ao module Rakan's Mountain.</b>\n\n<p align='left'><N>Este modo é bem simples. O objetivo é subir o máximo possível a grande montanha que há pela frente.\n\nNo entanto, os deuses da montanha estão furiosos, e podem atacar com vários contratempos.\n\nA partida acaba depois de 3 minutos, quando todos os ratos morrem ou quando alguém chega no pico da montanha.\n\n<ROSE>Quaisquer bugs ou problemas reporte para Rakan#3159.",
+	powerups = "<G>• Fúria da Tormenta: <N>Correntes de vento começam a pairar em volta da montanha.\n<G>• Chuva de Caixas: <N>Caixas começam a cair do céu, fazendo com que você caia.\n<G>• Anomalia Gravitacional: <N>Um campo gravítico intenso aparece na montanha, alterando de forma aleatória a gravidade do mapa.\n<G>• Queijo para Todos: <N>Todos os jogadores recebem queijo.",
+	credits = "As seguintes pessoas ajudaram no desenvolvimento deste module:\n\n<ROSE><b>• Rakan#3159</b><N> - Desenvolvedor do código\n<ROSE><b>• Akwimos#1937</b><N> - Tradução do código para o Inglês\n<ROSE><b>• Spectra_phantom#6089</b><N> - Criação das artes",
 	memory_error = "<R>Aviso: Não há mais memória disponível para o Transformice. Para continuar jogando este module, saia do jogo e entre novamente.",
 }
 lang.en = {
-	mapname = "<N><b>Rakan's Mountain</b>  <V>-  <N>version <ROSE>v1.3.0   <G>|   <N>Developed by <J>Rakan#3159<",
-	enter = "<N>Welcome to the <J><b>Rakan's Mountain</b> module!<br><N>You have about 3 minutes to scale the big mountain that is on your way!<br><ROSE>Version v1.3.0 - developed by Rakan#3159<br><VP>If you want to see the latest updates, type !changelog.",
-	newgame = "<N>If you don't know about this module, please type <b>!help</b>.",
+	mapname = "<N><b>Rakan's Mountain</b>  <V>-  <N>version <ROSE>v1.3.1   <G>|   <N>Developed by <J>Rakan#3159<",
+	enter = "<N>Welcome to the <J><b>Rakan's Mountain</b> module!\n<N>You have about 3 minutes to scale the big mountain that is on your way!\n<ROSE>Version v1.3.1 - developed by Rakan#3159",
+	newgame = "<N>If you don't know about this module, go to the Menu and access the Help.",
 	getready = "<J>Get ready! The road to the mountain will be opened!",
 	start = "<VP><b>Go!</b>",
 	event1 = "The event",
@@ -54,16 +56,16 @@ lang.en = {
 	scaled = "(S)he scaled ",
 	recognized = "meters and now is recognized by the mountain gods!",
 	event5 = " is gone!",
-	reached2 = "<G>You reached 2000 meters of height.<br>The cold wings starts to surround you, and the air starts to be rarefied...",
-	reached3 = "<G>You reached 5000 meters of height.<br>It's almost impossible to tolerate the extreme cold temperatures, and you starts to have serious difficulties to breathe correctly.",
-	reached4 = "<G>You reached 10000 meters of height.<br>The strong cold wings starts to freeze you, and your mice starts to have serious suffocation problems because of lack of air...",
-	reached5 = "<G>You reached 20000 meters of height.<br>You starts to see the stars with much more clarity, even on the clear day. However, the rarified air and the extremely low temperatures is making your mice to die.",
+	reached2 = "<G>You reached 2000 meters of height.\nThe cold wings starts to surround you, and the air starts to be rarefied...",
+	reached3 = "<G>You reached 5000 meters of height.\nIt's almost impossible to tolerate the extreme cold temperatures, and you starts to have serious difficulties to breathe correctly.",
+	reached4 = "<G>You reached 10000 meters of height.\nThe strong cold wings starts to freeze you, and your mice starts to have serious suffocation problems because of lack of air...",
+	reached5 = "<G>You reached 20000 meters of height.\nYou starts to see the stars with much more clarity, even on the clear day. However, the rarified air and the extremely low temperatures is making your mice to die.",
 	reached6 = "<VP>You reached the peak of the mountain! The gods recognized your bravery and courage. Now, you is part of the heaven!",
-	reached7 = " <VP>reached the top of the mountain!<br><N>(S)he now is part of the stars and will bright many more!",
+	reached7 = " <VP>reached the top of the mountain!\n<N>(S)he now is part of the stars and will bright many more!",
 	nowinners = "<R>No winners!",
-	help = "<p align='center'><VP><b>Welcome to the Rakan's Mountain module.</b><br><br><p align='left'><N>This game is very simple. The objective is scale the big mountain that is in front of you.<br><br>However, the mountain gods are furious, and can attack you with various events.<br><br>The match will end after 3 minutes, when there is no more alive mices or when someone reaches the top of the mountain.<br><br><ROSE>Bugs and problems? Report to Rakan#3159.",
-	powerups = "<G>• Wind Fury: <N>Strong winds hover around the mountain.<br><G>• Box Rain: <N>Some boxes will fall from the heaven, making you go down.<br><G>• Gravity Anomaly: <N>A strong gravitational field appears on the mountain, randomly changing the gravity of the map.<br><G>• Cheese For All: <N>All the players will have cheese.",
-	credits = "The following players helped on this module:<br><br><ROSE><b>• Rakan#3159</b><N> - Code developer<br><ROSE><b>• Akwimos#1937</b><N> - English translation<br><ROSE><b>• Spectra_phantom#6089</b><N> - Image creation",
+	help = "<p align='center'><VP><b>Welcome to the Rakan's Mountain module.</b>\n\n<p align='left'><N>This game is very simple. The objective is scale the big mountain that is in front of you.\n\nHowever, the mountain gods are furious, and can attack you with various events.\n\nThe match will end after 3 minutes, when there is no more alive mices or when someone reaches the top of the mountain.\n\n<ROSE>Bugs and problems? Report to Rakan#3159.",
+	powerups = "<G>• Wind Fury: <N>Strong winds hover around the mountain.\n<G>• Box Rain: <N>Some boxes will fall from the heaven, making you go down.\n<G>• Gravity Anomaly: <N>A strong gravitational field appears on the mountain, randomly changing the gravity of the map.\n<G>• Cheese For All: <N>All the players will have cheese.",
+	credits = "The following players helped on this module:\n\n<ROSE><b>• Rakan#3159</b><N> - Code developer\n<ROSE><b>• Akwimos#1937</b><N> - English translation\n<ROSE><b>• Spectra_phantom#6089</b><N> - Image creation",
 	memory_error = "<R>Warning: There's no more available memory for Transformice. To continue playing this game, log out of your account and enter again.",
 }
 if tfm.get.room.community == "br" or tfm.get.room.community == "pt" then
@@ -85,7 +87,7 @@ function showMenu(name,color,x,y,width,height,title,content)
 		data[name].opened=true
 		ui.addTextArea(1004,"",name,-1000,-600,2800,1600,0x000001,0x000001,0.65,true)
 		ui.addTextArea(1001,"",name,x+5,y+5,width,height,color,color,0.95,true)
-		ui.addTextArea(1000,"<font size='13'><i><br><br>"..content.."",name,x,y,width,height,0x151515,color,0.95,true)
+		ui.addTextArea(1000,"<font size='13'><i>\n\n"..content.."",name,x,y,width,height,0x151515,color,0.95,true)
 		ui.addTextArea(1002,"<font color='#f8d802'><font size='14'><p align='center'><i><b>"..title.."",name,x+5,y+5,width-10,22,0x101010,0x101010,0.95,true)
 		ui.addTextArea(1003,"<font color='#ff2300'><font size='14'><b><a href='event:close'>X</a>",name,x+width-25,y+5,width-10,20,0,0,0.95,true)
 	end
@@ -137,22 +139,8 @@ function resetEvents()
 	end
 	tfm.exec.setWorldGravity(0,10)
 end
-function eventChatCommand(name,command)
-	if command == "help" then
-		showMenu(name,0x808080,150,120,500,250,"Help",text.help)
-	end
-	if command == "powerups" then
-		showMenu(name,0xf2a267,150,120,500,140,"Powerups",text.powerups)
-	end
-	if command == "creditos" then
-		showMenu(name,0xb6e980,140,90,520,130,"Credits",text.credits)
-	end
-	if command == "changelog" then
-		showMenu(name,0x2578f6,140,60,520,245,"Changelog","<font size='11'>[v1.3.0]:<br>• New module owner<br><br>[v1.2.1]:<br>• The powerup 'Meteor Rain' was changed to 'Box Rain'<br>• Some changes on timers and match time<br><br>[v1.2.0]:<br>• Changes on the ownership<br><br>[v1.1.3.0]:<br>• Almost all NPCs was removed<br><br>[v1.1.2]:<br>• Addiction of new NPC")
-	end
-end
 function eventNewPlayer(name)
-	showMessage(text.enter,name)
+	showMessage(text.enter.."\n<BL>® Mountain is a registered name of Jessie LinesPower TFM Utilities Group.\nEditing and adapting this code without authorization is prohibited.<",name)
 	ui.setMapName(text.mapname)
 	newData={
 		["x"]=0; ["a"]=0; ["enabled"]=false; ["opened"]=false; }
@@ -186,7 +174,7 @@ end
 function eventTextAreaCallback(id,name,callback)
 	if callback == "show_menu" then
 		ui.addTextArea(299,"<p align='center'><a href='event:hide_menu'><font size='18'>Menu",name,365,25,70,24,0x000001,0x000001,0.75,true)
-		ui.addTextArea(298,"<p align='center'><a href='event:help'>Help</a><br><a href='event:powerups'>Powerups</a><br><a href='event:cred'>Credits</a><br><a href='event:change'>Changelog</a>",name,355,57,90,60,0x000001,0x000001,0.80,true)
+		ui.addTextArea(298,"<p align='center'><a href='event:help'>Help</a>\n<a href='event:powerups'>Powerups</a>\n<a href='event:cred'>Credits</a>\n<a href='event:change'>Changelog</a>",name,355,57,90,60,0x000001,0x000001,0.80,true)
 	end
 	if callback == "hide_menu" then
 		ui.addTextArea(299,"<p align='center'><a href='event:show_menu'><font size='18'>Menu",name,365,25,70,24,0x000001,0x000001,0.75,true)
@@ -199,16 +187,16 @@ function eventTextAreaCallback(id,name,callback)
 		data[name].opened=false
 	end
 	if callback == "help" then
-		eventChatCommand(name,"help")
+		showMenu(name,0x808080,150,120,500,250,"Help",text.help)
 	end
 	if callback == "powerups" then
-		eventChatCommand(name,"powerups")
+		showMenu(name,0xf2a267,150,120,500,140,"Powerups",text.powerups)
 	end
 	if callback == "cred" then
-		eventChatCommand(name,"creditos")
+		showMenu(name,0xb6e980,140,90,520,130,"Credits",text.credits)
 	end
 	if callback == "change" then
-		eventChatCommand(name,"changelog")
+		showMenu(name,0x2578f6,140,60,520,245,"Changelog","<font size='11'>[v1.3.1]:\n• Some code cleaning\n• Changes on the commands handling\n\n[v1.3.0]:\n• New module owner\n\n[v1.2.1]:\n• The powerup 'Meteor Rain' was changed to 'Box Rain'\n• Some changes on timers and match time\n\n[v1.2.0]:\n• Changes on the ownership\n\n[v1.1.3.1]:\n• Almost all NPCs was removed")
 	end
 end
 function eventNewGame()
@@ -345,7 +333,7 @@ function eventLoop(passado,faltando)
 			tfm.exec.giveCheese(vencedor)
 			tfm.exec.playerVictory(vencedor)
 			tfm.exec.setPlayerScore(vencedor,data[vencedor].a,true)
-			showMessage("<VP><V><b>"..vencedor.."</b> <VP>"..text.winner.."<br><N>"..text.scaled.."<V>"..math.floor(math.pow((tfm.get.room.playerList[vencedor].y/-1+10565)/100,2.2)).." <N>"..text.recognized.."")
+			showMessage("<VP><V><b>"..vencedor.."</b> <VP>"..text.winner.."\n<N>"..text.scaled.."<V>"..math.floor(math.pow((tfm.get.room.playerList[vencedor].y/-1+10565)/100,2.2)).." <N>"..text.recognized.."")
 			tfm.exec.setGameTime(15)
 			falt_int=15
 			endgame=true
