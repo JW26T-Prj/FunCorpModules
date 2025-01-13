@@ -1,6 +1,6 @@
--- Rakan's WaterCatch
+-- Rakan's Mountain
 -- Developed by Rakan#3159, map by Spectra_phantom#6089
--- Version 1.3.1
+-- Version 1.4.0
 -- ® 2025 Jessie LinesPower TFM Utilities Group
 ------------------------------------------------------------------------------------------
 for _,f in next,{"AutoNewGame","AutoTimeLeft","AfkDeath","AutoShaman","AutoScore","DebugCommand","PhysicalConsumables"} do
@@ -15,8 +15,8 @@ events_pt={"Fúria da Tormenta","Chuva de Caixas","Anomalia Gravitacional","Quei
 events_en={"Wind Fury","Box Rain","Gravity Anomaly","Cheese for All"}
 power_d={p2={8,10,12,14},p3={12,14,16,18,20,22}}
 lang.br = {
-	mapname = "<N><b>Rakan's Mountain</b>  <V>-  <N>versão <ROSE>v1.3.1   <G>|   <N>Desenvolvido por <J>Rakan#3159<",
-	enter = "<N>Bem-vindo ao module <J><b>Rakan's Mountain!</b>\n<N>Você tem pouco mais que 3 minutos para escalar a grande montanha que há pelo caminho!\n\n<ROSE>Versão v1.3.1 - desenvolvido por Rakan#3159",
+	mapname = "<N><b>Rakan's Mountain</b>  <V>-  <N>versão <ROSE>v1.4.0   <G>|   <N>Desenvolvido por <J>Rakan#3159<",
+	enter = "<N>Bem-vindo ao module <J><b>Rakan's Mountain!</b>\n<N>Você tem pouco mais que 3 minutos para escalar a grande montanha que há pelo caminho!\n\n<ROSE>Versão v1.4.0 - desenvolvido por Rakan#3159",
 	newgame = "<N>Caso não saiba o que fazer neste module, vá no Menu e clique em Ajuda.",
 	getready = "<J>Se prepare! A estrada para a montanha será liberada em breve!",
 	start = "<VP><b>E que comece a batalha!</b>",
@@ -42,8 +42,8 @@ lang.br = {
 	memory_error = "<R>Aviso: Não há mais memória disponível para o Transformice. Para continuar jogando este module, saia do jogo e entre novamente.",
 }
 lang.en = {
-	mapname = "<N><b>Rakan's Mountain</b>  <V>-  <N>version <ROSE>v1.3.1   <G>|   <N>Developed by <J>Rakan#3159<",
-	enter = "<N>Welcome to the <J><b>Rakan's Mountain</b> module!\n<N>You have about 3 minutes to scale the big mountain that is on your way!\n<ROSE>Version v1.3.1 - developed by Rakan#3159",
+	mapname = "<N><b>Rakan's Mountain</b>  <V>-  <N>version <ROSE>v1.4.0   <G>|   <N>Developed by <J>Rakan#3159<",
+	enter = "<N>Welcome to the <J><b>Rakan's Mountain</b> module!\n<N>You have about 3 minutes to scale the big mountain that is on your way!\n<ROSE>Version v1.4.0 - developed by Rakan#3159",
 	newgame = "<N>If you don't know about this module, go to the Menu and access the Help.",
 	getready = "<J>Get ready! The road to the mountain will be opened!",
 	start = "<VP><b>Go!</b>",
@@ -196,7 +196,7 @@ function eventTextAreaCallback(id,name,callback)
 		showMenu(name,0xb6e980,140,90,520,130,"Credits",text.credits)
 	end
 	if callback == "change" then
-		showMenu(name,0x2578f6,140,60,520,245,"Changelog","<font size='11'>[v1.3.1]:\n• Some code cleaning\n• Changes on the commands handling\n\n[v1.3.0]:\n• New module owner\n\n[v1.2.1]:\n• The powerup 'Meteor Rain' was changed to 'Box Rain'\n• Some changes on timers and match time\n\n[v1.2.0]:\n• Changes on the ownership\n\n[v1.1.3.1]:\n• Almost all NPCs was removed")
+		showMenu(name,0x2578f6,140,60,520,265,"Changelog","<font size='11'>[v1.4.0]:\n• Some code cleaning\n• Changes on the commands handling\n• Added copyright information\n\n[v1.3.0]:\n• New module owner\n\n[v1.2.1]:\n• The powerup 'Meteor Rain' was changed to 'Box Rain'\n• Some changes on timers and match time\n\n[v1.2.0]:\n• Changes on the ownership\n\n[v1.1.4.0]:\n• Almost all NPCs was removed")
 	end
 end
 function eventNewGame()
