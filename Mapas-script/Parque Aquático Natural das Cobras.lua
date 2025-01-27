@@ -2,7 +2,6 @@ for _,f in next,{"AutoNewGame","AfkDeath","AutoShaman","MinimalistMode","Physica
 	tfm.exec["disable"..f](true)
 end
 debug.disableEventLog(true)
-system.disableChatCommandDisplay("reset")
 tfm.exec.newGame("@7917579")
 data={}; changed=false; xml2='';
 npc_01={title = 5,look = "1;190_dbe10f+767576+585155+c44444+e0ddce+202020+e7e6e5,0,30_1f618d+2fb9a2+3a2cf0,0,54,111,49,0,0",x = 141,y = 2275,female = false,lookLeft = false,lookAtPlayer = true,interactive = true}
@@ -38,21 +37,21 @@ end
 
 function eventTalkToNPC(name, npc)
 	if npc == "Keith Hertzon" then
-		showMessage("<V>[Keith Hertzon] <N>Quem é você? Ah, mais um visitante...<br><br>Bem, se quer saber o destino deste elevador... Bem, eu acho que não deve ser bem o que você espera.<br><br>Você vai descer bastante dentro do rio. Chuto que deva ser uns 20 metros de profundidade... Você vai encontrar umas cápsulas bem antigas que era usadas para navegação, mas aquilo já existe há anos, então duvido que ainda funcione. Mas vai que, né...",name)
+		showMessage("<V>[Keith Hertzon] <N>Quem é você? Ah, mais um visitante...\n\nBem, se quer saber o destino deste elevador... Bem, eu acho que não deve ser bem o que você espera.\n\nVocê vai descer bastante dentro do rio. Chuto que deva ser uns 10 metros de profundidade... Você vai encontrar umas cápsulas bem antigas que era usadas para navegação, mas aquilo já existe há anos, então duvido que ainda funcione. Mas vai que, né...",name)
 	elseif npc == "Dhanny Dier" then
-		showMessage("<V>[Dhanny Dier] <N>Você é muito(a) corajoso(a) para estar neste lugar. A pressão aqui é bem alta.<br><br>Mas se quiser saber o que são aquelas coisas, são esferas submarinas. Elas eram utilizadas há décadas atrás, mas acredito que estejam todas enferrujadas. Não recomendo tentar ir para lá, a não ser que realmente seja muito curioso(a). <b>E sim, isto é um aviso.</b>",name)
+		showMessage("<V>[Dhanny Dier] <N>Você é muito(a) corajoso(a) para estar neste lugar. A pressão aqui é bem alta.\n\nMas se quiser saber o que são aquelas coisas, são esferas submarinas. Elas eram utilizadas há décadas atrás, mas acredito que estejam todas enferrujadas. Não recomendo tentar ir para lá, a não ser que realmente seja muito curioso(a). <b>E sim, isto é um aviso.</b>",name)
 	elseif npc == "Andressa Nyeder" then
-		showMessage("<V>[Andressa Nyeder] <N>Seja bem-vindo(a). Este é o mirante de observação do Parque Aquático Natural das Cobras. Daqui é possível ver quase toda a extensão do rio com muito mais clareza.<br><br>As cobras não são lindas? E o melhor de tudo, não são venenosas! Você pode fazer carinho nelas sem medo.",name)
+		showMessage("<V>[Andressa Nyeder] <N>Seja bem-vindo(a). Este é o mirante de observação do Parque Aquático Natural das Cobras. Daqui é possível ver quase toda a extensão do rio com muito mais clareza.\n\nAs cobras não são lindas? E o melhor de tudo, não são venenosas! Você pode fazer carinho nelas sem medo.",name)
 	elseif npc == "Fabia Murray" then
 		showMessage("<V>[Fabia Murray] <N>Alguém aqui está preparado(a) para grandes emoções? Tomem cuidado apenas com as cobras!",name)
 	elseif npc == "Dereek Nandertz" then
-		showMessage("<V>[Dereek Nandertz] <N>Está perdido(a)? Não precisa se preocupar. Eu serei o seu guia.<br><br>Ali na frente, há uma tirolesa bem grande e um trampolim. Desse jeito, você consegue sentir a água gelada do rio com muito mais propriedade.<br><br><R>Só vê se não fica muito tempo pulando no trampolim... Aquilo já quebrou várias vezes por conta de alguns que nem quero comentar.",name)
+		showMessage("<V>[Dereek Nandertz] <N>Está perdido(a)? Não precisa se preocupar. Eu serei o seu guia.\n\nAli na frente, há uma tirolesa bem grande e um trampolim. Desse jeito, você consegue sentir a água gelada do rio com muito mais propriedade.\n\n<R>Só vê se não fica muito tempo pulando no trampolim... Aquilo já quebrou várias vezes por conta de alguns que nem quero comentar.",name)
 	elseif npc == "Damian Henderson" then
-		showMessage("<V>[Damian Henderson] <N>Está preparado? Pois se não estiver, é melhor estar. Esta é o maior escorregador aquático do mundo!<br><br>Com quase 55 metros de altura, é literalmente uma aventura de cair o queixo. Definitivamente não é um brinquedo para medrosos.<br><br>E aí, vai encarar?",name)
+		showMessage("<V>[Damian Henderson] <N>Está preparado(a)? Pois se não estiver, é melhor estar. Esta é o maior escorregador aquático do mundo!\n\nCom quase 50 metros de altura, é literalmente uma aventura de cair o queixo. Definitivamente não é um brinquedo para medrosos.\n\nE aí, vai encarar?",name)
 	elseif npc == "Luciana Bander" then
-		showMessage("<V>[Luciana Bander] <N>Espera! Não está chovendo! Como eu queria uma boa chuva por aqui... Faz muito tempo que não cai uma água. Fora a que já tem no rio.",name)
+		showMessage("<V>[Luciana Bander] <N>Espera! Não está chovendo! Como eu queria uma boa chuva por aqui... Faz muito tempo que não cai uma água. Fora a que já tem no rio...",name)
 	elseif npc == "Jesse Malcolm" then
-		showMessage("<V>[Jesse Malcolm] <N>Nunca imaginarei que alguém pudesse chegar neste lugar tão ruim... No fundo de um gelado rio... Mas se quiser saber quem eu sou, então deixe-me explicar.<br><br>Certo dia estava me divertindo aqui no parque e praticando natação no rio, que é meu esporte favorito. Mas certo dia, o feitiço de uma mulher desconhecida me atacou e agora sou obrigado a viver aqui. Na escuridão. No frio.<br><br>Ah, vê se não fica muito tempo aqui em baixo, ou você pode congelar.",name)
+		showMessage("<V>[Jesse Malcolm] <N>Nunca imaginarei que alguém pudesse chegar neste lugar tão ruim... No fundo de um gelado rio... Mas se quiser saber quem eu sou, então deixe-me explicar.\n\nCerto dia estava me divertindo aqui no parque e praticando natação no rio, que é meu esporte favorito. Mas certo dia, o feitiço de uma mulher desconhecida me atacou e agora sou obrigado a viver aqui. Na escuridão. No frio.\n\nAh, vê se não fica muito tempo aqui em baixo, ou você pode congelar.",name)
 	elseif npc == "Mayra Flowers" then
 		showMessage("<V>[Mayra Flowers] <N>Muuuuuuuu! <font face='Segoe UI Symbol'>(●'◡'●)<font face='Verdana'>",name)
 	end
@@ -107,14 +106,6 @@ function showWater(name)
 	tfm.exec.addImage("182386211f8.png","+2",-90,-90,name)
 	tfm.exec.addImage("182386211f8.png","+3",-90,-90,name)
 end
-function eventChatCommand(name,message)
-	if message == "reset" then
-		if name == "Morganadxana#0000" or name == "Leblanc#5342" or name == "Irelia#7317" then
-			tfm.exec.newGame(xml2,false)
-			ui.removeTextArea(0,nil)
-		end
-	end
-end
 function eventPlayerWon(name)
 	if changed == true then
 		tfm.exec.respawnPlayer(name)
@@ -129,7 +120,7 @@ end
 function eventNewGame(name)
 	if changed == true then
 		for name,_ in next,tfm.get.room.playerList do
-			showMessage("<VP><b>Bem-vindo(a) ao Parque Aquático Natural das Cobras.</b><br><br><p align='left'><N>Este é um mapa-script bem diferente de tudo o que você já viu.<br>O rio é muito profundo! Caso não saiba nadar, recomendo sair desta sala agora! Mas se souber, apenas aproveite e curta!<br><br><R>Aviso: Este mapa pode consumir até 1,2GB de RAM dependendo de casos específicos.<br><br><ROSE><b>Mapa feito por Morganadxana#0000.</b><br><J>Agradecimentos especiais para Sivir#3502, Dharak#7603, Lanadelrey#4862, Lorena#0960, Star#8558, Soft#1388, Some#2636, Leticia1k#0000, Draw#6691 e Joanaanne#0000.<b></b><br><br><N>Deseja usar este mapa-script no cafofo de sua tribo? Use o link a seguir:<br><N><VP>raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/Mapas-script/Parque%20Aqu%C3%A1tico%20Natural%20das%20Cobras.lua<br><br><N>Revisão 1.4",name)
+			showMessage("<VP><b>Bem-vindo(a) ao Parque Aquático Natural das Cobras.</b>\n\n<p align='left'><N>Este é um mapa-script bem diferente de tudo o que você já viu.\nO rio é muito profundo! Caso não saiba nadar, recomendo sair desta sala agora! Mas se souber, apenas aproveite e curta!\n\n<R>Aviso: Este mapa pode consumir até 1,2GB de RAM dependendo de casos específicos.\n\n<ROSE><b>Mapa feito por Morganadxana#0000.</b>\n<J>Agradecimentos especiais para Sivir#3502, Dharak#7603, Lanadelrey#4862, Lorena#0960, Star#8558, Soft#1388, Some#2636, Leticia1k#0000, Draw#6691 e Joanaanne#0000.<b></b>\n\nRevisão 1.5",name)
 			showWater(name)
 			initNPC(name)
 		end
@@ -157,7 +148,7 @@ function eventNewPlayer(name)
 	data[name] = newData;
 	if changed == true then
 		ui.setMapName("<VP>Parque Aquático Natural das Cobras - <ROSE>Morgana's Mechanical Maps<")
-		showMessage("<VP><b>Bem-vindo(a) ao Parque Aquático Natural das Cobras.</b><br><br><p align='left'><N>Este é um mapa-script bem diferente de tudo o que você já viu.<br>O rio é muito profundo! Caso não saiba nadar, recomendo sair desta sala agora! Mas se souber, apenas aproveite e curta!<br><br><R>Aviso: Este mapa pode consumir até 1,2GB de RAM dependendo de casos específicos.<br><br><ROSE><b>Mapa feito por Morganadxana#0000.</b><br><J>Agradecimentos especiais para Sivir#3502, Dharak#7603, Lanadelrey#4862, Lorena#0960, Star#8558, Soft#1388, Some#2636, Leticia1k#0000, Draw#6691 e Joanaanne#0000.<b></b><br><br><N>Deseja usar este mapa-script no cafofo de sua tribo? Use o link a seguir:<br><N><VP>raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/Mapas-script/Parque%20Aqu%C3%A1tico%20Natural%20das%20Cobras.lua<br><br><N>Revisão 1.4",name)
+		showMessage("<VP><b>Bem-vindo(a) ao Parque Aquático Natural das Cobras.</b>\n\n<p align='left'><N>Este é um mapa-script bem diferente de tudo o que você já viu.\nO rio é muito profundo! Caso não saiba nadar, recomendo sair desta sala agora! Mas se souber, apenas aproveite e curta!\n\n<R>Aviso: Este mapa pode consumir até 1,2GB de RAM dependendo de casos específicos.\n\n<ROSE><b>Mapa feito por Morganadxana#0000.</b>\n<J>Agradecimentos especiais para Sivir#3502, Dharak#7603, Lanadelrey#4862, Lorena#0960, Star#8558, Soft#1388, Some#2636, Leticia1k#0000, Draw#6691 e Joanaanne#0000.<b></b>\n\nRevisão 1.5",name)
 		showWater(name)
 		initNPC(name)
 	end
@@ -168,13 +159,13 @@ end
 function eventLoop(p,f)
 	if changed == true then
 	for name,player in next,tfm.get.room.playerList do
-		if tfm.get.room.playerList[name].y >= 2550 then
+		if tfm.get.room.playerList[name].y >= 2450 then
 			data[name].fs=data[name].fs+1
 			if data[name].fs == 5 and data[name].warn == false then
 				data[name].warn=true
-				showMessage("<VP>Tenha cuidado: A água do rio é muito gelada. Ficar por muito tempo pode congelar seu rato.",name)
+				showMessage("<VP>Tenha cuidado: A água do rio é muito gelada. Ficar por muito tempo no rio pode congelar seu rato.",name)
 			end
-			if data[name].fs == 150 then
+			if data[name].fs == 100 then
 				data[name].freezed=true
 				tfm.exec.freezePlayer(name)
 				tfm.exec.setPlayerGravityScale(name,2)
