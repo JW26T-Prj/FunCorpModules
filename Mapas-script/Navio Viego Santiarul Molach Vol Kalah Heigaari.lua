@@ -156,7 +156,7 @@ function showWater(name)
 	tfm.exec.addImage("192e018e5fd.png","?1",-1200,-1000,name,60,5) 
 end
 
-pw={75,101,105,116,104,32,72,101,114,116,122,111,110}; password="";
+pw={86,73,69,71,79,32,76,73,78,68,195,131,79}; password="";
 
 function resetMap()
 	if xml == '' then
@@ -188,7 +188,7 @@ function eventNewPlayer(name)
 		tfm.exec.changePlayerSize(name,1)
 		ui.setMapName("<VP>Navio Viego Santiarul Molach Vol Kalah Heigaari<")
 		tfm.exec.setGameTime(72000)
-		showMessage("<N>Este é um mapa-script de navio pirata. Na verdade, é uma casa completa dentro de um navio pirata, e tem tudo o que uma casa 'normal' possui e mais um pouco... Divirtam-se!\n\n<ROSE><b>Mapa feito por Hwei#1027, Viego#0345 e Samira#4387.</b>\n<J>Agradecimentos especiais para Lacoste#8972, Shun_kazami#7014, Tanatosl#0000 e Miss_fortune#9548.\n\n<N>Revisão 1.5\n\n<N>Deseja usar este mapa-script no cafofo de sua tribo? Use o link a seguir:\n<VP>raw.githubusercontent.com/JW26T-Prj/FunCorpModules/refs/heads/master/Mapas-script/Navio%20Viego%20Santiarul%20Molach%20Vol%20Kalah%20Heigaari.lua",name)
+		showMessage("<N>Este é um mapa-script de navio pirata. Na verdade, é uma casa completa dentro de um navio pirata, e tem tudo o que uma casa 'normal' possui e mais um pouco... Divirtam-se!\n\n<ROSE><b>Mapa feito por Hwei#1027, Viego#0345 e Samira#4387.</b>\n<J>Agradecimentos especiais para Lacoste#8972, Shun_kazami#7014, Yuh#0748, Tanatosl#0000 e Miss_fortune#9548.\n\n<N>Revisão 1.6",name)
 		showWater(name)
 	end
 end
