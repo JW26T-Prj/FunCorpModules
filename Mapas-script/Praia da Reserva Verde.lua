@@ -84,12 +84,6 @@ function showWater(name)
 	ui.setBackgroundColor("#7DB1E0")
 end
 function eventChatCommand(name,message)
-	if message == "reset" then
-		if name == "Morganadxana#0000" or name == "Leblanc#5342" or name == "Irelia#7317" or name == "Rakan#3159" then
-			tfm.exec.newGame(xml2,false)
-			ui.removeTextArea(0,nil)
-		end
-	end
 	if message == "0" then
 		tfm.exec.removeImage(data[name].id)
 		data[name].s=0
@@ -285,7 +279,7 @@ function eventNewPlayer(name)
 	if changed == true then
 		ui.setMapName("Praia da Reserva Verde - <ROSE>Morgana's Mechanical Maps<")
 	end
-	showMessage("<VP><b>Bem-vindo(a) a Praia da Reserva Verde.</b>\n\n<p align='left'><N>Este é um mapa-script de praia bem grande e com diversos recursos para se divertir. Aproveite e curta!\n\n<R>Aviso: Este mapa pode consumir até 1,8GB de RAM dependendo de casos específicos.\n\n<ROSE><b>Mapa feito por Morganadxana#0000.</b>\n<J>Agradecimentos especiais para <b>Draw#6691, Soft#1388, Viincenzo#9526, Lacoste#8972, Lipersz#9863, Spectra_phantom#6089, Shun_kazami#7014, Samira#4387, Threshlimit#0000, Star#8558 e Lanadelrey#4862.</b>\n\n<N>Deseja usar este mapa-script no cafofo de sua tribo? Use o link a seguir:\n<N><VP>raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/Mapas-script/Praia%20da%20Reserva%20Verde.lua\n\n<N>Revisão 2.7\n<br<BL>Digite ! juntamente com um número (ex.: !1) para virar um animal marinho.",name)
+	showMessage("<VP><b>Bem-vindo(a) a Praia da Reserva Verde.</b>\n\n<p align='left'><N>Este é um mapa-script de praia bem grande e com diversos recursos para se divertir. Aproveite e curta!\n\n<R>Aviso: Este mapa pode consumir até 1,8GB de RAM dependendo de casos específicos.\n\n<ROSE><b>Mapa feito por Morganadxana#0000.</b>\n<J>Agradecimentos especiais para <b>Draw#6691, Soft#1388, Viincenzo#9526, Lacoste#8972, Lipersz#9863, Spectra_phantom#6089, Shun_kazami#7014, Samira#4387, Threshlimit#0000, Star#8558 e Lanadelrey#4862.</b>\n\nRevisão 2.8\n<br<BL>Digite ! juntamente com um número (ex.: !1) para virar um animal marinho.",name)
 	newData={
 		["s"]=0; ["id"]=-1;
 	};
