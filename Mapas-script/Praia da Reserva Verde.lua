@@ -4,11 +4,40 @@ end
 debug.disableEventLog(true)
 system.disableChatCommandDisplay("reset")
 tfm.exec.newGame("@7917999")
-changed=false; xml2=''; data={}; y_factor=1400;
-for i=0,15 do
-	system.disableChatCommandDisplay(tostring(i))
+changed=false; xml2=''; y_factor=1400; lang={};
+lang.br = {
+	npc01 = "<V>[Julia Lynner] <N>Bem-vindo(a) ao Quiosque do Raposo Azul. Confira os preços de nossos produtos...\n\nEspera, eu perdi meu papel com os preços!",
+	npc02 = "<V>[Brand Northern] <N>Olha, olha, olha a água mineral, água mineral, água mineral...",
+	npc03 = "<V>[John Grand] <J>Ah! Que delícia, cara!",
+	npc04 = "<V>[Danniel Victor] <N>Esta é a área conhecida como <R>Ilha do Dragão Vermelho.<N>\n\nDebaixo dela existe um recife de plantas muito grande, no qual vários peixes conseguem viver muito bem. É um lugar muito lindo, vale a pena conhecer. Ah, e tome cuidado com a água. Não fique muito tempo dentro do mar. Você pode afundar e não voltar mais.",
+	npc05 = "<V>[Kenner Henderson] <N>Foi você o <R>fi********* <N>que amarrou aquele pneu nas ligações elétricas?\n\n<VP>Não? Ainda bem. <N>Pois algum ser sem cérebro inventou de colocar um pneu nos fios para tentar fazer uma tirolesa. Como estou furioso por conta isso...\n\nAh, e se está curioso para saber o que é aquela escada, ela dá para o gerador nuclear principal, que fica bem no fundo do mar. Não me arriscaria a descer até lá...",
+	npc06 = "<V>[Keith Cramer] <R>NÃO ESTÁ VENDO QUE ESTA É UMA ÁREA RESTRITA? SAIA DAQUI AGORA! QUER SER INFECTADO(A)? NÃO? ENTÃO SAIA AGORA, C******!",
+	npc07 = "<V>[Mandery Under] <N>Ei, o que está fazendo na minha piscina suspensa?! Isso tudo é meu!",
+	npc08 = "<V>[Aaron Grand] <N>Esta é a Torre do Nascer do Sol. O lugar mais alto da praia. Daqui dá para ver absolutamente tudo. Incluindo o pôr do sol que é lindo.\n\nSe eu fosse você, nunca mais sairia daqui. Tenho um baita medo de mar...",
+	npc09 = "<V>[Daniel Winngs] <N>Seja bem-vindo(a). Você definitivamente está em um lugar privilegiado.\n\nEsta é uma praia totalmente paradisíaca. Com sua água cristinalina, duas tirolesas e uma piscina suspensa, você não vai querer sair daqui tão cedo.",
+	loadingmap = "Carregando mapa. Por favor, aguarde...<",
+	welcome1 = "<VP><b>Bem-vindo(a) a Praia da Reserva Verde.</b>\n\n<p align='left'><N>Este é um mapa-script de praia bem grande e com diversos recursos para se divertir. Aproveite e curta!\n\n<J>Agradecimentos especiais para <b>Draw#6691, Soft#1388, Viincenzo#9526, Lacoste#8972, Lipersz#9863, Spectra_phantom#6089, Shun_kazami#7014, Samira#4387, Threshlimit#0000, Star#8558 e Lanadelrey#4862.</b>\n\nRevisão 2.9",
+	title = "Praia da Reserva Verde<",
+}
+lang.en = {
+	npc01 = "<V>[Julia Lynner] <N>Welcome to the Blue Fox Kiosk. Check out the prices of our products...\n\nWait, I lost my paper with the prices!",
+	npc02 = "<V>[Brand Northern] <N>Look at the mineral water!",
+	npc03 = "<V>[John Grand] <J>Ah! How delicious, man!",
+	npc04 = "<V>[Danniel Victor] <N>This is the area known as <R>Red Dragon Island.<N>\n\nUnderneath it, there is a very large reef of plants, where many fish lives very well. It is a very beautiful place, worth visiting.\n\nOh, and be careful with the water. Don't stay in the sea for too long. You might sink and never come back up.",
+	npc05 = "<V>[Kenner Henderson] <N>Were you the <R>f********* <N>who tied that tire to the electrical connections?\n\n<VP>No? That is good. <N>Because some brainless being decided to put a tire on the wires to try to make a zip line. How furious I am about this...\n\nOh, and if you're curious about what that ladder is, it leads to the main nuclear generator, which is right at the bottom of the sea. I wouldn't risk going down there...",
+	npc06 = "<V>[Keith Cramer] <R>CAN'T YOU SEE THIS IS A RESTRICTED AREA? GET OUT OF HERE NOW! DO YOU WANT TO GET INFECTED? NO? THEN GET OUT NOW, YOU F******!",
+	npc07 = "<V>[Mandery Under] <N>Hey, what are you doing in my above ground pool?! This is all mine!",
+	npc08 = "<V>[Aaron Grand] <N>This is the Sunrise Tower. The highest point of the beach. From here you can see absolutely everything. Including the sunset, which is beautiful.\n\nIf I were you, I would never leave here. I'm terrified of the sea...",
+	npc09 = "<V>[Daniel Winngs] <N>Welcome. You're definitely in a privileged place.\n\nThis is a totally paradisiacal beach. With its crystal clear water, two zip lines and a suspended pool, you won't want to leave any time soon.",
+	loadingmap = "Loading map. Please wait...<",
+	welcome1 = "<VP><b>Welcome to the Green Reserve Beath!</b>\n\n<p align='left'><N>This is a very large beach script map with lots of features to keep you entertained. Enjoy and have fun!\n\n<J>Special thanks to <b>Draw#6691, Soft#1388, Viincenzo#9526, Lacoste#8972, Lipersz#9863, Spectra_phantom#6089, Shun_kazami#7014, Samira#4387, Threshlimit#0000, Star#8558 and Lanadelrey#4862.</b>\n\nRevision 2.9",
+	title = "Green Reserve Beath<",
+}
+if tfm.get.room.community == "br" or tfm.get.room.community == "pt" then
+	text = lang.br
+else
+	text = lang.en
 end
-
 function showMessage(message,name)
 	temp_text=string.gsub(message,"<b>","")
 	temp_text=string.gsub(temp_text,"</b>","")
@@ -83,159 +112,27 @@ function showWater(name)
 	end
 	ui.setBackgroundColor("#7DB1E0")
 end
-function eventChatCommand(name,message)
-	if message == "0" then
-		tfm.exec.removeImage(data[name].id)
-		data[name].s=0
-		tfm.exec.killPlayer(name)
-	end
-	for i=1,15 do
-		if message == tostring(i) then
-			data[name].s=i
-			tfm.exec.removeImage(data[name].id)
-			displayShark(name,data[name].s,false)
-			tfm.exec.setPlayerCollision(name,3)
-		end
-	end
-end
-function eventKeyboard(name,key,down,x,y)
-	if key >= 0 and key <= 3 then
-		if data[name] and data[name].s > 0 then
-			if key == 2 then
-				tfm.exec.removeImage(data[name].id)
-				displayShark(name,data[name].s,false)
-			elseif key == 0 then
-				tfm.exec.removeImage(data[name].id)
-				displayShark(name,data[name].s,true)
-			end
-		end
-	end
-end
-function displayShark(name,type,reverse)
-	if data[name].s == 1 then
-		tfm.exec.changePlayerSize(name,2)
-		data[name].id=tfm.exec.addImage("189746ed93c.png", "%"..name.."", -78, -69, nil, 0.25, 0.25)
-	elseif data[name].s == 2 then
-		tfm.exec.changePlayerSize(name,1.9)
-		if reverse == true then
-			data[name].id=tfm.exec.addImage("1860ee201fd.png","%"..name.."", -185, -35, nil, 1, 1)
-		else
-			data[name].id=tfm.exec.addImage("1860ee201fd.png","%"..name.."", 185, -35, nil, -1, 1)
-		end
-	elseif data[name].s == 3 then
-		tfm.exec.changePlayerSize(name,4)
-		if reverse == false then
-			data[name].id=tfm.exec.addImage("1883efa1974.png","%"..name.."", -230, -90, nil)
-		else
-			data[name].id=tfm.exec.addImage("1883efa1974.png","%"..name.."", 230, -90, nil, -1, 1)
-		end
-	elseif data[name].s == 4 then
-		tfm.exec.changePlayerSize(name,2.5)
-		if reverse == false then
-			data[name].id=tfm.exec.addImage("1883efb5982.png","%"..name.."", -300, -75, nil)
-		else
-			data[name].id=tfm.exec.addImage("1883efb5982.png","%"..name.."", 300, -75, nil, -1, 1)
-		end
-	elseif data[name].s == 5 then
-		tfm.exec.changePlayerSize(name,1.8)
-		if reverse == false then
-			data[name].id=tfm.exec.addImage("185c2e9722e.png", "%"..name.."", 44, -65, nil, -1, 1)
-		else
-			data[name].id=tfm.exec.addImage("185c2e9722e.png", "%"..name.."", -54, -65, nil)
-		end
-	elseif data[name].s == 6 then
-		tfm.exec.changePlayerSize(name,3.6)
-		if reverse == false then
-			data[name].id=tfm.exec.addImage("18756e28db6.png", "%"..name.."", -270, -93, nil)
-		else
-			data[name].id=tfm.exec.addImage("18756e28db6.png", "%"..name.."", 270, -93, nil,-1,1)
-		end
-	elseif data[name].s == 7 then
-		tfm.exec.changePlayerSize(name,3)
-		if reverse == false then
-			data[name].id=tfm.exec.addImage("18756e2e178.png", "%"..name.."", -250, -115, nil)
-		else
-			data[name].id=tfm.exec.addImage("18756e2e178.png", "%"..name.."", 206, -115, nil,-1,1)
-		end
-	elseif data[name].s == 8 then
-		tfm.exec.changePlayerSize(name,2.1)
-		if reverse == false then
-			data[name].id=tfm.exec.addImage("18756e333d5.png", "%"..name.."", -150, -44, nil,0.5,0.5)
-		else
-			data[name].id=tfm.exec.addImage("18756e333d5.png", "%"..name.."", 150, -44, nil,-0.5,0.5)
-		end
-	elseif data[name].s == 9 then
-		tfm.exec.changePlayerSize(name,2.6)
-		if reverse == false then
-			data[name].id=tfm.exec.addImage("18a0539e298.png", "%"..name.."", 90, -90, nil,-1,1)
-		else
-			data[name].id=tfm.exec.addImage("18a0539e298.png", "%"..name.."", -90, -90, nil)
-		end
-	elseif data[name].s == 10 then
-		tfm.exec.changePlayerSize(name,0.8)
-		if reverse == false then
-			data[name].id=tfm.exec.addImage("18a053a43b9.png", "%"..name.."", 90, -78, nil,-1,1)
-		else
-			data[name].id=tfm.exec.addImage("18a053a43b9.png", "%"..name.."", -90, -78, nil)
-		end
-	elseif data[name].s == 11 then
-		tfm.exec.changePlayerSize(name,2.5)
-		if reverse == false then
-			data[name].id=tfm.exec.addImage("18a053a9ab9.png", "%"..name.."", -137, -58, nil)
-		else
-			data[name].id=tfm.exec.addImage("18a053a9ab9.png", "%"..name.."", 137, -58, nil,-1,1)
-		end
-	elseif data[name].s == 12 then
-		tfm.exec.changePlayerSize(name,1.2)
-		if reverse == false then
-			data[name].id=tfm.exec.addImage("18a053af7df.png", "%"..name.."", 90, -86, nil,-1,1)
-		else
-			data[name].id=tfm.exec.addImage("18a053af7df.png", "%"..name.."", -90, -86, nil)
-		end
-	elseif data[name].s == 13 then
-		tfm.exec.changePlayerSize(name,1.2)
-		if reverse == false then
-			data[name].id=tfm.exec.addImage("18a053b5130.png", "%"..name.."", 90, -53, nil,-1,1)
-		else
-			data[name].id=tfm.exec.addImage("18a053b5130.png", "%"..name.."", -90, -53, nil)
-		end
-	elseif data[name].s == 14 then
-		tfm.exec.changePlayerSize(name,0.8)
-		if reverse == true then
-			data[name].id=tfm.exec.addImage("192e01914e1.png", "%"..name.."", 90, -42, nil,-1,1)
-		else
-			data[name].id=tfm.exec.addImage("192e01914e1.png", "%"..name.."", -90, -42, nil)
-		end
-	elseif data[name].s == 15 then
-		tfm.exec.changePlayerSize(name,0.8)
-		if reverse == false then
-			data[name].id=tfm.exec.addImage("192e01972a4.png", "%"..name.."", 90, -34, nil,-1,1)
-		else
-			data[name].id=tfm.exec.addImage("192e01972a4.png", "%"..name.."", -90, -34, nil)
-		end
-	end
-end
 function eventTalkToNPC(name, npc)
 	if npc == "Julia Lynner" then
-		showMessage("<V>[Julia Lynner] <N>Bem-vindo(a) ao Quiosque do Raposo Azul. Confira os preços de nossos produtos...\n\nEspera, eu perdi meu papel com os preços!",name)
+		showMessage(text.npc01,name)
 	elseif npc == "Brand Northern" then
-		showMessage("<V>[Brand Northern] <N>Olha, olha, olha a água mineral, água mineral, água mineral...",name)
+		showMessage(text.npc02,name)
 	elseif npc == "John Grand" then
-		showMessage("<V>[John Grand] <J>Ah! Que delícia, cara!",name)
+		showMessage(text.npc03,name)
 	elseif npc == "Danniel Victor" then
-		showMessage("<V>[Danniel Victor] <N>Esta é a área conhecida como <R>Ilha do Dragão Vermelho.<N>\n\nDebaixo dela existe um recife de plantas muito grande, no qual vários peixes conseguem viver muito bem. É um lugar muito lindo, vale a pena conhecer. Ah, e tome cuidado com a água. Não fique muito tempo dentro do mar. Você pode afundar e não voltar mais.",name)
+		showMessage(text.npc04,name)
 	elseif npc == "Kenner Henderson" then
-		showMessage("<V>[Kenner Henderson] <N>Foi você o <R>fi********* <N>que amarrou aquele pneu nas ligações elétricas?\n\n<VP>Não? Ainda bem. <N>Pois algum ser sem cérebro inventou de colocar um pneu nos fios para tentar fazer uma tirolesa. Como estou furioso por isso...\n\nAh, e se está curioso para saber o que é aquela escada, ela dá para o gerador nuclear principal, que fica bem no fundo do mar. Não me aventuraria a descer até lá...",name)
+		showMessage(text.npc05,name)
 	elseif npc == "Keith Cramer" then
-		showMessage("<V>[Keith Cramer] <R>NÃO ESTÁ VENDO QUE ESTA É UMA ÁREA RESTRITA? SAIA DAQUI AGORA! QUER SER INFECTADO(A)? NÃO? ENTÃO SAIA AGORA, C******!",name)
+		showMessage(text.npc06,name)
 	elseif npc == "Mandery Under" then
-		showMessage("<V>[Mandery Under] <N>Ei, o que está fazendo na minha piscina suspensa?! Isso tudo é meu!",name)
+		showMessage(text.npc07,name)
 	elseif npc == "Mayra Flowers" then
 		showMessage("<V>[Mayra Flowers] <N>Muuuuuuuu! <font face='Segoe UI Symbol'>(●'◡'●)<font face='Verdana'> ",name)
 	elseif npc == "Aaron Grand" then
-		showMessage("<V>[Aaron Grand] <N>Esta é a Torre do Nascer do Sol. O lugar mais alto da praia. Daqui dá para ver absolutamente tudo. Incluindo o pôr do sol que é lindo.\n\nSe eu fosse você, nunca mais sairia daqui. Tenho um baita medo de mar...",name)
+		showMessage(text.npc08,name)
 	elseif npc == "Daniel Winngs" then
-		showMessage("<V>[Daniel Winngs] <N>Seja bem-vindo(a). Você definitivamente está em um lugar privilegiado.\n\nEsta é uma praia totalmente paradisíaca. Com sua água cristinalina, duas tirolesas e uma piscina suspensa, você não vai querer sair daqui tão cedo.",name)
+		showMessage(text.npc09,name)
 	end
 end
 function eventPlayerWon(name)
@@ -245,12 +142,9 @@ function eventPlayerWon(name)
 end
 function eventPlayerDied(name)
 	if changed == true then
+		tfm.exec.respawnPlayer(name)
 		tfm.exec.changePlayerSize(name,1)
 		tfm.exec.setPlayerCollision(name,1)
-		tfm.exec.removeImage(data[name].id)
-		data[name].id=-1
-		data[name].s=0
-		tfm.exec.respawnPlayer(name)
 	end
 end
 function eventNewGame(name)
@@ -259,14 +153,14 @@ function eventNewGame(name)
 			showWater(name)
 			showNPCs(name)
 		end
-		ui.setMapName("Praia da Reserva Verde - <ROSE>Morgana's Mechanical Maps<")
+		ui.setMapName(text.title)
 		tfm.exec.setGameTime(3600)
 	else
 		tfm.exec.setGameTime(5)
 		if changed == false then
 			xml2=tfm.get.room.xmlMapInfo.xml
 			ui.addTextArea(0,"",nil,-800,-400,2400,1200,0x6a7495,0x6a7495,1.0,true)
-			ui.setMapName("<J>Carregando mapa. Por favor, aguarde...<")
+			ui.setMapName(text.loadingmap)
 		else
 			ui.removeTextArea(0,nil)
 		end
@@ -277,13 +171,9 @@ function eventNewPlayer(name)
 	showWater(name)
 	showNPCs(name)
 	if changed == true then
-		ui.setMapName("Praia da Reserva Verde - <ROSE>Morgana's Mechanical Maps<")
+		ui.setMapName(text.title)
 	end
-	showMessage("<VP><b>Bem-vindo(a) a Praia da Reserva Verde.</b>\n\n<p align='left'><N>Este é um mapa-script de praia bem grande e com diversos recursos para se divertir. Aproveite e curta!\n\n<R>Aviso: Este mapa pode consumir até 1,8GB de RAM dependendo de casos específicos.\n\n<ROSE><b>Mapa feito por Morganadxana#0000.</b>\n<J>Agradecimentos especiais para <b>Draw#6691, Soft#1388, Viincenzo#9526, Lacoste#8972, Lipersz#9863, Spectra_phantom#6089, Shun_kazami#7014, Samira#4387, Threshlimit#0000, Star#8558 e Lanadelrey#4862.</b>\n\nRevisão 2.8\n<br<BL>Digite ! juntamente com um número (ex.: !1) para virar um animal marinho.",name)
-	newData={
-		["s"]=0; ["id"]=-1;
-	};
-	data[name] = newData;
+	showMessage(text.welcome1,name)
 	for i=0,3 do
 		system.bindKeyboard(name,i,true,true)
 	end
