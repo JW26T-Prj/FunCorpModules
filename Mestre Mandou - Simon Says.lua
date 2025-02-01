@@ -1,6 +1,6 @@
 -- Mestre Mandou / Simon Says / Simón Dice
 -- Desenvolvido por / Developed by / Hecho por Jessiewind26#2546
--- Version 7.15.1
+-- Version 7.16.0
 -- ® 2025 Jessie LinesPower TFM Utilities Group
 
 admin={} -- insira o nome dos FunCorps aqui! / insert the FunCorp names here! / inserte los nombres de los FunCorps aquí!
@@ -8,7 +8,7 @@ admin={} -- insira o nome dos FunCorps aqui! / insert the FunCorp names here! / 
 -- If you are trying to run this code in your tribehouse, enter your names in the table, so the code can be executed.
 -- Si estás intentando ejecutar este código en tu casa tribal, ingresa tus nombres en la tabla para que se pueda ejecutar el código.
 
-testmode=false; -- leia abaixo! / read below! / leer abajo!
+testmode=true; -- leia abaixo! / read below! / leer abajo!
 -- Altere a variável acima para 'true' somente se quiser ver as mensagens do chat no cafofo da tribo.
 -- Change the above variable to 'true' only if you want to see chat messages in the tribehouse.
 -- Cambia la variable anterior a 'true' solo si quieres ver mensajes de chat en la casa tribal.
@@ -57,7 +57,7 @@ acids2={type = 19,width = 2400,height = 10,miceCollision = true,groundCollision 
 acids3={type = 19,width = 10,height = 800,miceCollision = true,groundCollision = false, foreground = true}
 system.disableChatCommandDisplay(nil,true)
 lang.br = {
-	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b>\nSiga tudo o que o jogo mandar e teste seus limites até o fim!\n\n<VP><b>Module criado e gerenciado por Jessiewind26#2546</b>\n\n<R>Versão 7.15.1\n<BL>® 2014-25 Jessie LinesPower TFM Utilities Group",
+	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b>\nSiga tudo o que o jogo mandar e teste seus limites até o fim!\n\n<VP><b>Module criado e gerenciado por Jessiewind26#2546</b>\n\n<R>Versão 7.16.0\n<BL>® 2014-25 Jessie LinesPower TFM Utilities Group",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -206,7 +206,7 @@ lang.br = {
 	avcommands = "\nComandos disponíveis:\n!command [número de 1 a 139] - Executa um comando manualmente.\n!run [@número] - Executa o mapa especificado.\n!kill [nick#tag] - Mata o jogador especificado.\n!limit [número] - Altera o limite de jogadores na sala.\n!pw [password] - Adiciona uma senha na sala."
 }
 lang.en = {
-	welcome = "<N><b>Welcome to Simon Says module!</b>\nFollow everything the game told and test your limits until the end!\n\n<VP><b>Script made and developed by Jessiewind26#2546</b>\nTranslation by Draw#6691\n\n<R>Version 7.15.1\n<BL>® 2014-25 Jessie LinesPower TFM Utilities Group",
+	welcome = "<N><b>Welcome to Simon Says module!</b>\nFollow everything the game told and test your limits until the end!\n\n<VP><b>Script made and developed by Jessiewind26#2546</b>\nTranslation by Draw#6691\n\n<R>Version 7.16.0\n<BL>® 2014-25 Jessie LinesPower TFM Utilities Group",
 	dancar = "Dance!",
 	sentar = "Sit down!",
 	confetar = "Throw 5 confetti!",
@@ -355,7 +355,7 @@ lang.en = {
 	avcommands = "\nAvailable commands: \n!command [1-139] - Run a command manually.\n!run [@code] - Run the specified map.\n !kill [player#tag] - Kill the specified player.\n!limit [number] - Limit the number of maximum players on the room.\n !pw [password] - Lock the room with a password."
 }
 lang.es = {
-	welcome = "<N><b>WBienvenido al juego Simón Dice!</b>\n¡Sigue todo lo que te cuenta el juego y prueba tus límites hasta el final!\n\n<VP><b>Código hecho por Jessiewind26#2546</b>\nTraducción por Nurzak#7525\n\n<R>Versión 7.15.1\n<BL>® 2014-25 Jessie LinesPower TFM Utilities Group",
+	welcome = "<N><b>WBienvenido al juego Simón Dice!</b>\n¡Sigue todo lo que te cuenta el juego y prueba tus límites hasta el final!\n\n<VP><b>Código hecho por Jessiewind26#2546</b>\nTraducción por Nurzak#7525\n\n<R>Versión 7.16.0\n<BL>® 2014-25 Jessie LinesPower TFM Utilities Group",
 	dancar = "¡Baile!",
 	sentar = "¡Siéntate!",
 	confetar = "¡Lanza 5 confetis!",
@@ -607,7 +607,7 @@ function eventNewPlayer(name)
 		["s"]=0;
 		["count"]=0;
 		["opened"]=true;
-		};
+	};
 	data[name] = newData;
 	showMessage(text.welcome,name)
 	if string.find(tfm.get.room.name,name) then
@@ -675,7 +675,6 @@ function eventNewGame()
 			rato=rato+1
 			if data[name] then
 				data[name].c=0
-				data[name].key=0
 				data[name].count=0
 			end
 			if verifyNinjas(name) == true then
@@ -2080,71 +2079,35 @@ function eventKeyboard(name,id,down,x,y)
 		tfm.exec.killPlayer(name)
 	end
 	if active == 24 then
-		if id == 37 or id == 65 then
-			if data[name] and data[name].key == 0 then
-				data[name].key=id
-			end
+		if id == 0 then
 			addCommandCount(name)
 			if data[name].s >= 30 then
 				completeCommand(name)
 			end
 		end
-		if data[name].key == 37 and id == 65 then
-			tfm.exec.killPlayer(name)
-		end
-		if data[name].key == 65 and id == 37 then
-			tfm.exec.killPlayer(name)
-		end
 	end
 	if active == 25 then
-		if id == 39 or id == 68 then
-			if data[name] and data[name].key == 0 then
-				data[name].key=id
-			end
+		if id == 2 then
 			addCommandCount(name)
-			if data[name] and data[name].s >= 30 then
+			if data[name].s >= 30 then
 				completeCommand(name)
 			end
-		end
-		if data[name].key == 39 and id == 68 then
-			tfm.exec.killPlayer(name)
-		end
-		if data[name].key == 68 and id == 39 then
-			tfm.exec.killPlayer(name)
 		end
 	end
 	if active == 26 then
-		if id == 37 or id == 65 then
-			if data[name] and data[name].key == 0 then
-				data[name].key=id
-			end
+		if id == 0 then
 			addCommandCount(name)
-			if data[name] and data[name].s >= 60 then
+			if data[name].s >= 60 then
 				completeCommand(name)
 			end
-		end
-		if data[name].key == 37 and id == 65 then
-			tfm.exec.killPlayer(name)
-		end
-		if data[name].key == 65 and id == 37 then
-			tfm.exec.killPlayer(name)
 		end
 	end
 	if active == 27 then
-		if id == 39 or id == 68 then
-			if data[name] and data[name].key == 0 then
-				data[name].key=id
-			end
+		if id == 2 then
 			addCommandCount(name)
-			if data[name] and data[name].s >= 60 then
+			if data[name].s >= 60 then
 				completeCommand(name)
 			end
-		end
-		if data[name].key == 39 and id == 68 then
-			tfm.exec.killPlayer(name)
-		end
-		if data[name].key == 68 and id == 39 then
-			tfm.exec.killPlayer(name)
 		end
 	end
 	if active == 28 then
@@ -2195,37 +2158,19 @@ function eventKeyboard(name,id,down,x,y)
 		end
 	end
 	if active == 65 then
-		if id == 37 or id == 65 then
-			if data[name] and data[name].key == 0 then
-				data[name].key=id
-			end
-			addCommandCount(name)
-			if data[name] and data[name].s >= 15 then
-				completeCommand(name)
-			end
-		end
-		if data[name].key == 37 and id == 65 then
-			tfm.exec.killPlayer(name)
-		end
-		if data[name].key == 65 and id == 37 then
-			tfm.exec.killPlayer(name)
-		end
-	end
-	if active == 66 then
-		if id == 39 or id == 68 then
-			if data[name] and data[name] and data[name].key == 0 then
-				data[name].key=id
-			end
+		if id == 0 then
 			addCommandCount(name)
 			if data[name].s >= 15 then
 				completeCommand(name)
 			end
 		end
-		if data[name].key == 39 and id == 68 then
-			tfm.exec.killPlayer(name)
-		end
-		if data[name].key == 68 and id == 39 then
-			tfm.exec.killPlayer(name)
+	end
+	if active == 66 then
+		if id == 2 then
+			addCommandCount(name)
+			if data[name].s >= 15 then
+				completeCommand(name)
+			end
 		end
 	end
 	if active == 83 then
@@ -2237,37 +2182,19 @@ function eventKeyboard(name,id,down,x,y)
 		end
 	end
 	if active == 92 then
-		if id == 37 or id == 65 then
-			if data[name] and data[name].key == 0 then
-				data[name].key=id
-			end
+		if id == 0 then
 			addCommandCount(name)
-			if data[name] and data[name].s >= 100 then
+			if data[name].s >= 100 then
 				completeCommand(name)
 			end
-		end
-		if data[name].key == 37 and id == 65 then
-			tfm.exec.killPlayer(name)
-		end
-		if data[name].key == 65 and id == 37 then
-			tfm.exec.killPlayer(name)
 		end
 	end
 	if active == 93 then
-		if id == 39 or id == 68 then
-			if data[name] and data[name].key == 0 then
-				data[name].key=id
-			end
+		if id == 2 then
 			addCommandCount(name)
-			if data[name] and data[name].s >= 100 then
+			if data[name].s >= 100 then
 				completeCommand(name)
 			end
-		end
-		if data[name].key == 39 and id == 68 then
-			tfm.exec.killPlayer(name)
-		end
-		if data[name].key == 68 and id == 39 then
-			tfm.exec.killPlayer(name)
 		end
 	end
 	if active == 102 then
@@ -2398,13 +2325,13 @@ function eventLoop(passado,faltando)
 	if unlocked == true then
 		local tempo=math.floor(faltando/1000)
 		if active == -2 then
-			ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." 7.15.1</b><")
+			ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." 7.16.0</b><")
 		elseif active == -1 and vivo >= 1 then
-			ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.15.1</b><")
+			ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.16.0</b><")
 		elseif active == -1 and vivo <= 0 then
-			ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.15.1</b><")
+			ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.16.0</b><")
 		elseif active >= 0 then
-			ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." 7.15.1</b><")
+			ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." 7.16.0</b><")
 		end
 		if rato < 4 then
 			if tfm.get.room.currentMap == lobby_map then
@@ -2650,8 +2577,10 @@ function eventLoop(passado,faltando)
 			for i=1,15 do
 				tfm.exec.removeBonus(i)
 			end
-			for i=1,2 do
-				tfm.exec.removeImage(fire_id[i])
+			if rawlen(fire_id) >= 1 then
+				for i=1,2 do
+					tfm.exec.removeImage(fire_id[i])
+				end
 			end
 			fire_id={}
 			active=0
@@ -2659,7 +2588,6 @@ function eventLoop(passado,faltando)
 				dificuldade=dificuldade+1
 			end
 			for name,player in next,tfm.get.room.playerList do
-				data[name].key=0
 				ui.removeTextArea(24,nil)
 				if data[name].c == 0 then
 					tfm.exec.killPlayer(name)
