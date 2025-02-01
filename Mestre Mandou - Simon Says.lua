@@ -1664,7 +1664,7 @@ function eventChatMessage(name,message)
 		end
 	end
 	if active == 43 then
-		if string.upper(message) == "EU SOU NOOB" or string.upper(message) == "I AM NOOB" or string.upper(message) == "YO SOY NOOB" then
+		if string.upper(message) == "EU SOU NOOB" or string.upper(message) == "I AM A NOOB" or string.upper(message) == "YO SOY NOOB" then
 			completeCommand(name)
 		end
 		if string.find(string.upper(message),string.upper("PRO")) then
