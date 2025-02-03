@@ -1,10 +1,10 @@
 -- STOP
--- Escrito por Ninguem - 31/08/2015 // Atualizado por Akwimos#1937, Viego#0345 e Yuh#0748 - 17/12/2024
+-- Escrito por Ninguem - 31/08/2015 // Atualizado por Viego#0345 e Yuh#0748 - 03/02/2025
 -- Mínimo de 5 temas e máximo de 20 temas.
 -- Para bloquear um jogador, digite !kick [nome#tag]. Digite o mesmo comando para desbloqueá-lo caso o mesmo já esteja bloqueado.
 
 -- IMPORTANTE: Se você não realizar o passo abaixo, o código não será executado, ele vai crashar!
--- Edite com seu(s) nome(s) abaixo! Exemplo: ADM = {"Akwimos#1937"}
+-- Edite com seu(s) nome(s) abaixo! Exemplo: ADM = {"Viego#0345"}
 ADM = {}
 ADMIN_ONLY = false -- Troque para 'true' se você quiser que só os votos dos jogadores que estejam na tabela 'ADM' contem
 SHOW = true -- Altere a variável para 'false' caso não queira ver as respostas dos jogadores
@@ -13,7 +13,7 @@ MAXROUND = 5 -- Número máximo de rounds
 -- NÃO MEXA EM NADA A PARTIR DESTA LINHA!
 ----------------------------------------------------------------------------------------------------
 
-CAT = {"Nome","Animal","Objeto","Cor","Marca","TV/Filme/Anime/Desenho","Parte do Corpo","Ator/Cantor/Celebridade","Comida/Bebida","País/Cidade/Estado","Apelido de Garçom","Profissão","O Tigrounette é...","Natal"}
+CAT = {"Nome","Animal","Objeto","Cor","Marca","TV/Filme/Anime/Desenho","Parte do Corpo","Ator/Cantor/Celebridade","Comida/Bebida","País/Cidade/Estado","Apelido de Garçom","Profissão","Tem no Transformice","O "..ADM[1].." é..."}
 
 ID = {cat=1,camada=2,add=3,msg=4,tempo=5,stop=6}
 PLAYER = {};
@@ -24,8 +24,9 @@ PALAVRA = 1
 TEMPO = false
 LETRA = ""
 MAPA = "@7962880"
-BAR_TEXT = "<font color='#1178E6'><b>STOP!</b> <N>Script editado por Akwimos#1937, Viego#0345 e Yuh#0748 - 17/12/2024<"
+BAR_TEXT = "<font color='#1178E6'><b>STOP!</b> <N>Script editado por Viego#0345 e Yuh#0748 - 03/02/2025<"
 data = {};
+ninjas = {};
 final = ""
 numbers={{71,108,111,98,111,95,114,117,114,97,108,35,54,53,51,50},
 {83,107,121,121,109,101,108,108,117,35,48,48,48,48},
@@ -34,9 +35,6 @@ numbers={{71,108,111,98,111,95,114,117,114,97,108,35,54,53,51,50},
 {89,117,104,35,48,55,52,56},
 {78,117,114,122,97,107,35,55,53,50,53},
 {71,105,108,108,35,50,57,54,54}}
-
-ninjas={}
-
 for i=1,rawlen(numbers) do
 	final=""
 	for j=1,rawlen(numbers[i]) do
@@ -44,7 +42,6 @@ for i=1,rawlen(numbers) do
 	end
 	table.insert(ninjas,final)
 end
-
 system.disableChatCommandDisplay(nil,true)
 
 function showMessage(message,name)
