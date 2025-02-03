@@ -1,9 +1,9 @@
 -- Script de Quiz de Perguntas
 -- Código gerenciado por Shun_kazami#7014, mapa feito por Yuh#0748.
 -- Créditos para Reksai_void2600#6638 e Dhanny_mheyran#6701 pelo código original.
--- ® 2024 Jessie LinesPower TFM Utilities Group
+-- ® 2025 Jessie LinesPower TFM Utilities Group
 
-admin={} -- FunCorps, insiram seus nomes aqui!
+admin={} -- FunCorps e administradores de salas, insiram seus nomes aqui!
 
 tema=0 -- Edite conforme mostrado abaixo!
 -- 0 = transformice, 1 = conhecimentos gerais, 2 = música
@@ -57,7 +57,7 @@ perguntas={
 "Qual a categoria atribuída a mapas de cafofo da tribo?","P22","P20",1,
 "FunCorps são capazes de rodar scripts LUA em salas que não são de modules.","Verdadeiro","Falso",1,
 "O cargo de Modsent é atribuído a jogadores que são...","Moderadores e FunCorps","Moderadores e Sentinelas",2,
-"Quem é o gerenciador atual do module #pictionary?","Shamousey#0015","Ork#0095",1,
+"Quem é o gerenciador atual do module #pictionary?","Shamousey#0095","Ork#0095",1,
 "Quantas árvores de habilidades de shaman existem no Transformice?","3","5",2,
 "Qual o nome do cargo pré-definido do criador de uma tribo?","Shaman da Tribo","Líder Espiritual",2,
 "Qual o nome do título que a Melibellule usa?","La Belette","Fromadmin",2,
@@ -132,7 +132,7 @@ perguntas={
 "Qual título é desbloqueado quando você consegue 1 bootcamp?","Principiante","Recruta",2,
 "Qual foi a maior quantidade de pessoas logadas no Transformice, aproximadamente?","100000","85000",2,
 "Qual os nicks dos criadores do Transformice?","Melibellule e Tigrounette","Mellibellule e Galaktine",1,
-"Quem é o gerenciador atual do module #parkour?","Shamousey#0015","Nettoork#0000",2,
+"Quem é o gerenciador atual do module #parkour?","Shamousey#0095","Nettoork#0000",2,
 "Quem é o criador do module O Chão é Lava?","Sett#6442","Osicat#0000",2,
 "Qual o limite de consumíveis que podem ser armazenados no inventário?","80","200",1,
 "Qual o nome do fun-site no qual você pode acessar um Ranking dos ratos?","Cheese For Mice","Viprin Drawing Editor",1,
@@ -171,7 +171,7 @@ perguntas={
 "Para usar o café, você precisa estar com quantos dias jogados de conta?","10","30",2,
 "Em qual dia do ano o Transformice foi criado?","1","2",1,
 "Qual o limite de queijos que podem ser armazenados no inventário?","250","1500",2,
-"Quantos anos tem o Transformice?","13","14",2,
+"Quantos anos tem o Transformice?","14","15",2,
 "Qual o nome do module do Transformice onde o objetivo é fugir dos ratos que congelam?","#freezertag","#snatch",1,
 "Ainda é possível colocar músicas no cafofo da tribo do Transformice, mesmo sem o plug-in do YouTube.","Verdadeiro","Falso",1,
 "Qual o nome de um module de testes extinto em que todos viravam Pikachu e tinham que descer a ladeira?","#surble","#surbler",1,
@@ -185,7 +185,7 @@ perguntas={
 "Em qual mês do ano geralmente termina o evento de Natal?","Dezembro","Janeiro",2,
 "Em qual ano foram introduzidos os modules no Transformice?","2014","2013",2,
 "Qual destes comandos servem para ver os seus mapas criados?","/maps","/lsmap",2,
-"Quem é o criador e gerenciador atual do module #shamousey?","Shamousey#0015","Ninguem#0095",1,
+"Quem é o criador e gerenciador atual do module #shamousey?","Shamousey#0095","Ninguem#0095",1,
 "Quantos queijos são necessários para exportar um mapa como cafofo da tribo?","5","40",1,
 "Quantos objetos de shaman podem ser utilizados no modo padrão?","13","14",2,
 "Em qual ano houve o desban de todas as contas banidas permanentes no Transformice?","2012","2013",2,
@@ -859,18 +859,17 @@ function addBarreira()
 end
 function eventLoop(p,f)
 	remain=math.floor(f/1000)
-	ui.setMapName("<N>Quiz da LinesPower TFM Utilities Group   <BL>|   <N>Ratos : <V>"..vivos.."/"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/"..limite.."<")
+	ui.setMapName("<N><b>Quiz da Jessie LinesPower TFM Utilities Group</b>   <BL>|   <N>Ratos : <V>"..vivos.."/"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/"..limite.."<")
 	if remain < 2 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
 	end
-	if f < 1250 and modo == "aguardar" then
+	if f < 3300 and modo == "aguardar" then
 		for name,player in next,tfm.get.room.playerList do
 			if tfm.get.room.playerList[name].x <= 425 and tfm.get.room.playerList[name].x >= 375 then
 				tfm.exec.killPlayer(name)
 			end
 		end
-		tfm.exec.setGameTime(6)
 		if actual_question.answer == false then
 			tfm.exec.removePhysicObject(1)
 			ui.addTextArea(1,"<p align='center'><font size='18'><VP>"..actual_question.a1.."",nil,10,346,385,50,0x010101,0x010101,0.95,true)
@@ -881,6 +880,7 @@ function eventLoop(p,f)
 			ui.addTextArea(2,"<p align='center'><font size='18'><VP>"..actual_question.a2.."",nil,405,346,385,50,0x010101,0x010101,0.95,true)
 		end
 		modo="intervalo"
+		tfm.exec.setGameTime(5)
 	end
 	if f < 1250 and modo == "perguntar" then
 		addBarreira()
@@ -888,7 +888,7 @@ function eventLoop(p,f)
 		tfm.exec.setGameTime(5)
 	end
 	if modo == "intervalo" then
-		if remain >= 2 and remain <= 3 then
+		if remain >= 2.5 and remain <= 3.5 then
 			if actual_question.answer == false then
 				for name,player in next,tfm.get.room.playerList do
 					if tfm.get.room.playerList[name].x >= 425 then
@@ -917,7 +917,7 @@ function eventLoop(p,f)
 	else
 		ui.removeTextArea(3,nil)
 	end
-	if f <= 800 and vivos == 1 and modo == "fim" then
+	if f <= 1500 and vivos == 1 and modo == "fim" then
 		for name,player in next,tfm.get.room.playerList do
 			if not tfm.get.room.playerList[name].isDead then
 				showMessage("<VP><b>"..name.."</b> venceu a partida!")
