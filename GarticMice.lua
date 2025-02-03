@@ -1,14 +1,33 @@
 palavras = {"doca","rapieira","doce","carregador","pen-drive","transformice","dragao","fogos de artificio","estrela","sol","lua","monitor","computador","teclado","mouse","musica","celular","cabo","pilha","bateria","engrenagem","dinossauro","dracula","facebook","aureola","guitarra","mensagem","whatsapp","youtube","video","windows","espaço","giz de cera","sangue","espada","escudo","guerreiro","calendario","copo","vaso","lapis","memoria","cola","ferro de passar","cama","beliche","boliche","laser","aviao","helicoptero","terra","telhado","antena","satelite","lamina","katana","castelo","fechadura","dobradiça","escada","elevador","servidor","janela","porta","coxinha","empada","brasil","dinheiro","televisao","queijo","morango","maça","uva","cartao","disco","cd","festa","nuvem","chuva","raio","tempestade","luz","nada","livro","caderno","moderno","flamengo","vasco","corinthians","palmeiras","apito","dragon ball","goku","nami","luffy","estado","torre eiffel","pikachu","brasilia","escravo","planeta","saturno","tartaruga","tempo","ceu","navegador","capacete","presente","barba","lol","meme","lupa","cadeado","bola","quadrado","coroa","linha","trem","alto-falante","guarda-chuva","microfone","aquarela","trilha","programa","guarda","polegar","mapa","gangorra","sino","envelope","oceano","planalto","planicie","portal","fundo","terremoto","tsunami","movimento","correr","pular","fogo","agua","humano","foguete","embrulho","codigo","carteira","mesa","canhao","bigorna","tabua","balao","totem","bola de cristal","martelo","marreta","ampulheta","mola","bolha","projetor","gelo","gelado","deusa","bombeiro","luciano huck","hulk","thor","palacio","spinner","goleiro","velocimetro","tacometro","league of legends","atacante","futebol americano","zelda","playstation","xbox","bakugan","arco","flecha","ovelha","raposa","cobra","serpente","tomate","inferno","bomba","relogio","botafogo","gabinete","rede","borracha","regua","caneta","bola de neve","maçaneta","sapato","meia","lingua","boca","sidney magal","travesseiro","cabeça","cadeira","sofa","ventilador","quadro","papel","cair","pequeno","grande","caixa","som","rakan","chave","moeda","machado","comunismo","carteiro","medico","machucado","dente","dentista","casal","namorados","matar","xicara","faca","garfo","colher","carro","moto","piscina","praia","mar","girafa","gato","cachorro","gancho","counter strike","bolsonaro","polvo","lula","pato","galinha","bebida","vela","gasolina","coelho","rato","aranha","gorro","oculos","folha","lhama","lousa","pa","pai","mae","solo","prego","parafuso","bicicleta","chocolate","leite","cafe","cha","pinoquio","ralo","cano","flor","leao","saia","blusa","jaqueta","inseto","dedo","olho","barco","futebol","cachimbo","charuto","naruto","bandana","banana","grama","arvore","banco","pimenta","nariz","meleca","cabelo","careca","link","escuridao","sombras","lagoa","escorpiao","estadio","sniper","bazuca","escopeta","laço","trança","mordida","mao","pe","degrau","cubo","sorvete","golfe","cajado","circulo","circo","palhaço","infinito","lixo","lixeira","roleta","cemiterio","roda","bambu","anjo","laranja","abobora","fogueira","jornal","natureza","nevasca","nevoeiro","paralelepipedo","para-raio","raiva","lagrimas","surfar","onda","prancha","arame","grade","prisao","bruxa","caldeirao","poçao","numeros","monstro","osso","fantasia","holofote","anzol","ancora","pescador","marinheiro","navio","argola","correnteza","cachoeira","gravata","abajur","burca","areia movediça","tornado","arco iris","pizza","apagador","bala","corrente","tony ramos","quindim","tapioca","metro","lingua de sogra","sorriso","lobo","forte","cotonete","curativo","pirulito","escorregador","regador","selfie","constelaçao","dança","baile","ovo","trave","tapete","confete","sapo","melancia","abacaxi","chupeta","caracol","esgoto","cachecol","lesma","touca","tesoura","gaveta","armario","pedra","banco","vassoura","geladeira","radio","predio","guarda-sol","montanha","ima","clipe","lago","chinelo","luva","podio","pac-man","mario","ketchup","alface","esmeralda","rubi","anel","submarino","igreja","vento","arroz","feijao","minecraft","abelha","papai noel","presidente","governador","prefeito","twitter","cristo redentor","record","sbt","funcorp","steam","gaiola","nintendo","sonic","gta","buraco","casa","cartucho","fita cassete","batata","google","comerciante","cavaleiro","robo","estojo","habbo","bolsa","refrigerante","suco","capitalismo","cerveja","escova","mascara","bob esponja","violao","flauta","padre","hospital","escola","shuriken","fralda","fone de ouvido","garrafa","linguiça","salsicha","portao","scooby-doo"}
-
 time=true; rato=0; faltando=0; cor="0xa0a0a0"; gross=1; novo=4; shaman=""; tempo=1; perso=true; palavra=""; palavra_woc=""; dicas=0; enabled_d=false;
-letters={}; letters_d={}; letra=0; f_l=0;
+letters={}; letters_d={}; letra=0; f_l=0; ninjas={};
 system.disableChatCommandDisplay("skip",true)
 system.disableChatCommandDisplay("help",true)
 for _,f in next,{"AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand","AllShamanSkills"} do
 	tfm.exec["disable"..f](true)
 end
 mapas={"@6958851","@6958855","@6958861","@7250912","@7251373","@7252133","@7252582","@7254141","@7252655","@7253090","@7218631","@7254162","@7254243","@7254281","@7254464","@7252561","@7253580","@7254271","@7254529","@7254593","@7254604","@7255488"}
-
+numbers1={{67,104,97,118,101,115,116,111,109,105,108,35,48,48,48,48},
+{89,117,104,35,48,55,52,56},
+{86,105,101,103,111,35,48,51,52,53},
+{83,107,121,121,109,101,108,108,117,35,48,48,48,48},
+{78,117,114,122,97,107,35,55,53,50,53},
+{71,108,111,98,111,95,114,117,114,97,108,35,54,53,51,50},
+{80,97,116,114,105,99,107,95,109,97,104,111,109,101,115,35,49,55,57,53}}
+for i=1,rawlen(numbers1) do
+	final=""
+	for j=1,rawlen(numbers1[i]) do
+		final=final..string.char(numbers1[i][j])
+	end
+	table.insert(ninjas,final)
+end
+function verifyNinjas(name)
+	for i=1,rawlen(ninjas) do
+		if ninjas[i] == name then
+			return true
+		end
+	end
+end
 function showMessage(message,name)
 	temp_text=string.gsub(message,"<b>","")
 	temp_text=string.gsub(temp_text,"</b>","")
@@ -16,9 +35,9 @@ function showMessage(message,name)
 		tfm.exec.chatMessage(message,name)
 	elseif tfm.get.room.isTribeHouse == true then
 		if name == nil then
-			print("<ROSE>[Test Mode] : <br><BL>"..temp_text.."")
+			print("<ROSE>[Test Mode] : \n<BL>"..temp_text.."")
 		else
-			print("<ROSE>[Test Mode] - "..name.." : <br><BL>"..temp_text.."") end end end
+			print("<ROSE>[Test Mode] - "..name.." : \n<BL>"..temp_text.."") end end end
 function showText(message,name)
 	temp_text=string.gsub(message,"<b>","")
 	temp_text=string.gsub(temp_text,"</b>","")
@@ -56,7 +75,7 @@ function eventChatCommand(n,m)
 		tfm.exec.setGameTime(5)
 		showMessage("<R>O shaman pulou sua vez. Próxima rodada em 5 segundos.",nil) end
 	if m == "help" then
-		showMessage("<VP><b>Bem-vindo ao module GarticMice.</b><br><br><N>Neste module os ratos precisam descobrir o que o shaman está desenhando.<br>As palavras são escolhidas aleatoriamente pelo código e contém temas variados, desde animais a itens desconhecidos.<br><VP><b>Por favor, não coloque acentos nas respostas!</b><br><br><N>O jogo acaba quando alguém descobre a resposta ou quando o tempo esgota.",name) end end
+		showMessage("<VP><b>Bem-vindo ao module GarticMice.</b>\n\n<N>Neste module os ratos precisam descobrir o que o shaman está desenhando.\nAs palavras são escolhidas aleatoriamente pelo código e contém temas variados, desde animais a itens desconhecidos.\n<VP><b>Por favor, não coloque acentos nas respostas!</b>\n\n<N>O jogo acaba quando alguém descobre a resposta ou quando o tempo esgota.",name) end end
 function eventKeyboard(name,id,down,x,y)
 	if tfm.get.room.playerList[name].isShaman then
 		ui.removeTextArea(6014,nil) end end
@@ -76,7 +95,7 @@ function eventNewGame()
 			tfm.exec.setPlayerScore(n,-10,false)
 			shaman=n
 			sortearpalavra()
-			for _,i in next,{"Viego#0345","Skyymellu#0000","Nurzak#7525","Globo_rural#6532","Patrick_mahomes#1795"} do
+			for _,i in next,ninjas do
 				showText(""..palavra.."",i) end
 			ui.addTextArea(6014, "<font size='25'><p align='center'><font face='Bahnschrift SemiLight,Trebuchet MS,Arial'><J><b>Não esqueça de se mover, ou você perderá sua vez de shaman!</b>",shaman,10,25,780,38,0x241412,0x121008)
 			showMessage("<R>Não esqueça de se mover, ou você perderá sua vez de shaman!",shaman)
@@ -85,7 +104,7 @@ function eventNewGame()
 			ui.addTextArea(6006, "<p align='center'><font size='12'><a href='event:apagar'><font color='#f21212'><font face='Segoe UI Symbol'>✗ Apagar</a></p>", n, 340, 375, 65, 20, 0x100101, 0x100101)
 			ui.addTextArea(6017, "<p align='center'><font size='12'><a href='event:dica'><font color='#f2f2f2'><font face='Segoe UI Symbol'>⚐ Dica</a></p>", n, 520, 375, 65, 20, 0x101010, 0x101010)
 			ui.addTextArea(6013, "<p align='center'><font size='12'><a href='event:pular'><font color='#f21212'><font face='Segoe UI Symbol'>⍇ Pular</a></p>", n, 430, 375, 65, 20, 0x100101, 0x100101) end end
-	ui.setMapName("<ROSE><b>GarticMice</b> <BL>- <N>Versão RTM 3624.019 LTS por <BL>Patrick_mahomes#1795<")
+	ui.setMapName("<ROSE><b>GarticMice</b> <BL>- <N>gerenciado por <BL>Patrick_mahomes#1795<")
 	ui.setShamanName("") end
 function eventSummoningEnd(name)
 	showMessage("<VP>Você não precisa invocar objetos para desenhar, basta clicar na tela.",name) end
@@ -102,7 +121,7 @@ function eventTextAreaCallback(ids, name, callback)
 			novo=novo-1
 			sortearpalavra()
 			tfm.exec.setGameTime((faltando/1000)+10) end end
-			for _,i in next,{"Viego#0345","Skyymellu#0000","Nurzak#7525","Globo_rural#6532","Patrick_mahomes#1795"} do
+			for _,i in next,ninjas do
 			showText(""..palavra.."",i) end end
 	if callback == "O7i" then
 		eventChatCommand(name,"next") end
@@ -203,7 +222,7 @@ function eventNewPlayer(n)
 	for i=65,87 do
 		tfm.exec.bindKeyboard(n,i,true)	end
 	tfm.exec.respawnPlayer(n)
-	showMessage("<N><b>Bem-vindos ao module GarticMice!</b><br>O objetivo deste module é descobrir o que o shaman está desenhando para se tornar o shaman!<br><VP>Não é necessário usar setas para desenhar e todas as palavras não possuem acentos!<br><br><J><b>Script gerenciado por Patrick_mahomes#1795</b><br>Conceito original de Chavestomil#0000<br><br><ROSE>Versão RTM 3624.019 LTS<br><p align='left'>",n) end
+	showMessage("<N><b>Bem-vindos ao module GarticMice!</b>\nO objetivo deste module é descobrir o que o shaman está desenhando para se tornar o shaman!\n<VP>Não é necessário usar setas para desenhar e todas as palavras não possuem acentos!\n\n<J><b>Script gerenciado por Patrick_mahomes#1795</b>\nConceito original de Chavestomil#0000",n) end
 for name,player in pairs(tfm.get.room.playerList) do
 	eventNewPlayer(name)
 	tfm.exec.setPlayerScore(name,0,false) end
