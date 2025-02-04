@@ -13,7 +13,7 @@ lang.br = {
 	npc15 = "<V>[Damian Henderson] <N>Está preparado(a)? Pois se não estiver, é melhor estar. Esta é o maior escorregador aquático do mundo!\n\nCom quase 50 metros de altura, é literalmente uma aventura de cair o queixo. Definitivamente não é um brinquedo para medrosos.\n\nE aí, vai encarar?",
 	npc16 = "<V>[Luciana Bander] <N>Espera! Não está chovendo! Como eu queria uma boa chuva por aqui... Faz muito tempo que não cai uma água. Fora a que já tem no rio...",
 	npc17 = "<V>[Jesse Malcolm] <N>Nunca imaginei que alguém pudesse chegar neste lugar tão ruim... No fundo de um gelado rio... Mas se quiser saber como eu vim parar aqui, então deixe-me explicar.\n\nCerto dia, estava me divertindo aqui no parque e praticando natação no rio, que é meu esporte favorito. Mas o feitiço de uma mulher desconhecida me atacou e agora sou obrigado a viver aqui. Na escuridão. No frio.\n\nAh, vê se não fica muito tempo aqui em baixo, ou você pode congelar.",
-	welcome2 = "<VP><b>Bem-vindo(a) ao Parque Aquático Natural das Cobras.</b>\n\n<p align='left'><N>Este é um mapa-script bem diferente de tudo o que você já viu.\nO rio é muito gelado! Caso tenha medo de água gelada, recomendo sair desta sala agora! Mas se souber, apenas aproveite e curta!\n\n<J>Agradecimentos especiais para <b>Sivir#3502, Dharak#7603, Lanadelrey#4862, Lorena#0960, Spectra_phantom#6089, Star#8558, Soft#1388, Some#2636, Leticia1k#0000, Draw#6691 e Joanaanne#0000.</b>\n\nRevisão 1.6",
+	welcome2 = "<VP><b>Bem-vindo(a) ao Parque Aquático Natural das Cobras.</b>\n\n<p align='left'><N>Este é um mapa-script bem diferente de tudo o que você já viu.\nO rio é muito gelado! Caso tenha medo de água gelada, recomendo sair desta sala agora! Mas se souber, apenas aproveite e curta!\n\n<J>Agradecimentos especiais para <b>Sivir#3502, Dharak#7603, Lanadelrey#4862, Lorena#0960, Spectra_phantom#6089, Star#8558, Soft#1388, Some#2636, Leticia1k#0000, Draw#6691 e Joanaanne#0000.</b>\n\nRevisão 1.7",
 	loadingmap = "Carregando mapa. Por favor, aguarde...<",
 	canfreeze = "Tenha cuidado: A água do rio é muito gelada. Ficar por muito tempo no rio pode congelar seu rato.",
 	title = "<VP>Parque Aquático Natural das Cobras<"
@@ -27,7 +27,7 @@ lang.en = {
 	npc15 = "<V>[Damian Henderson] <N>Are you ready? Well, if you're not, you better be. This is the tallest water slide in the world!\n\nAt almost 50 meters high, it's literally a jaw-dropping adventure. It's definitely not a ride for the faint-hearted.\n\nSo, are you up for it?",
 	npc16 = "<V>[Luciana Bander] <N>Wait! It's not raining! How I wish it would rain here... It's been a long time since any rain fell. Besides the rain that's already in the river...",
 	npc17 = "<V>[Jesse Malcolm] <N>I never imagined that someone could end up in such a bad place... At the bottom of a cold river... But if you want to know how I ended up here, then let me explain.\n\nOne day, I was having fun here in the park and swimming in the river, which is my favorite sport. But the spell of an unknown woman attacked me and now I am forced to live here. In the darkness. In the cold.\n\nOh, try not to stay down here too long, or you might freeze.",
-	welcome2 = "<VP><b>Welcome to Snake's Natural Aquatic Park!</b>\n\n<p align='left'><N>This is a script map unlike anything you've ever seen before.\nThe river is freezing! If you're afraid of freezing water, I recommend you leave this room now! But if you know how, just enjoy it!\n\n<J>Special thanks to <b>Sivir#3502, Dharak#7603, Lanadelrey#4862, Lorena#0960, Spectra_phantom#6089, Star#8558, Soft#1388, Some#2636, Leticia1k#0000, Draw#6691 and Joanaanne#0000.</b>\n\Revision 1.6",
+	welcome2 = "<VP><b>Welcome to Snake's Natural Aquatic Park!</b>\n\n<p align='left'><N>This is a script map unlike anything you've ever seen before.\nThe river is freezing! If you're afraid of freezing water, I recommend you leave this room now! But if you know how, just enjoy it!\n\n<J>Special thanks to <b>Sivir#3502, Dharak#7603, Lanadelrey#4862, Lorena#0960, Spectra_phantom#6089, Star#8558, Soft#1388, Some#2636, Leticia1k#0000, Draw#6691 and Joanaanne#0000.</b>\n\nRevision 1.7",
 	loadingmap = "Loading map. Please wait...<",
 	canfreeze = "Be careful: The river water is very cold. Staying in the water for too long can freeze your mice.",
 	title = "<VP>Snake's Natural Aquatic Park<"
@@ -75,7 +75,7 @@ function eventTalkToNPC(name, npc)
 	elseif npc == "Jesse Malcolm" then
 		showMessage(text.npc17,name)
 	elseif npc == "Mayra Flowers" then
-		showMessage("<V>[Mayra Flowers] <N>Muuuuuuuu! <font face='Segoe UI Symbol'>(●'◡'●)<font face='Verdana'>",name)
+		showMessage("<V>[Mayra Flowers] <N>Muuuuuuuu! (●'v'●) ",name)
 	end
 end
 function showWater(name)
