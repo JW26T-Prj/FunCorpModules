@@ -7,12 +7,12 @@ xml=''; changed=false; night=0; loop=0; a1={4505,265,2925,4066}; a2={1529,1493,1
 b1={888,2520,3095,4692,6810}; c1={560,1378,2048,2802,3307,4555,5369,6004,6750}; d1={1024,1536,2560,3072,4608,5120,6656,7168}; data={}; lang={};
 lang.br = {
 	loadingmap = "Carregando mapa. Por favor, aguarde...<",
-	welcome3 = "<VP><b>Bem-vindo(a) a Casa Oceânica das Arraias Brancas.</b>\n\n<p align='left'><N>Este é um mapa-script cujo intuito é simular uma casa-resort de luxo no meio do oceano. Aproveite e curta!\n\n<J>Agradecimentos especiais para <b>Lynet#8558, Shun_kazami#7014, Maramara4#0000, Lacoste#8972, Irelia#7317, Some#2636, Jeancrazzy#0000 e Bielzinnfx#3859.</b>\n\n<N>Revisão 2.1",
+	welcome3 = "<VP><b>Bem-vindo(a) a Casa Oceânica das Arraias Brancas.</b>\n\n<p align='left'><N>Este é um mapa-script cujo intuito é simular uma casa-resort de luxo no meio do oceano. Aproveite e curta!\n\n<J>Agradecimentos especiais para <b>Lynet#8558, Shun_kazami#7014, Maramara4#0000, Lacoste#8972, Irelia#7317, Some#2636, Jeancrazzy#0000 e Bielzinnfx#3859.</b>\n\n<N>Revisão 2.2",
 	title = "<N>Casa Oceânica das Arraias Brancas<"
 }
 lang.en = {
 	loadingmap = "Loading map. Please wait...<",
-	welcome3 = "<VP><b>Welcome to White's Stingray Ocean House!</b>\n\n<p align='left'><N>This is a script map whose purpose is to simulate a luxury resort house in the middle of the ocean. Enjoy and enjoy!\n\n<J>Special thanks to <b>Lynet#8558, Shun_kazami#7014, Maramara4#0000, Lacoste#8972, Irelia#7317, Some#2636, Jeancrazzy#0000 and Bielzinnfx#3859.</b>\n\n<N>Revision 2.1",
+	welcome3 = "<VP><b>Welcome to White's Stingray Ocean House!</b>\n\n<p align='left'><N>This is a script map whose purpose is to simulate a luxury resort house in the middle of the ocean. Enjoy and enjoy!\n\n<J>Special thanks to <b>Lynet#8558, Shun_kazami#7014, Maramara4#0000, Lacoste#8972, Irelia#7317, Some#2636, Jeancrazzy#0000 and Bielzinnfx#3859.</b>\n\n<N>Revision 2.2",
 	title = "<N>White's Stingray Ocean House<"
 }
 if tfm.get.room.community == "br" or tfm.get.room.community == "pt" then
@@ -75,7 +75,7 @@ function showWater(name)
 	for _,h in next,{0,2,4} do table.insert(data[name].backId3,tfm.exec.addImage("18773217882.png","?1",-1200+(h*1900),888,name,1,1,0,0.3)); end
 	for _,h in next,{1,3} do table.insert(data[name].backId3,tfm.exec.addImage("18773217882.png","?1",700+(h*1900),888,name,-1,1,0,0.3)) end
 	data[name].backId2 = tfm.exec.addImage("1883b1394a4.png","!1",1040,-330,name)
-	data[name].backId1 = tfm.exec.addImage("17fe3741e5f.jpg", "?1", -1200, -950, name,32,2.1)
+	data[name].backId1 = tfm.exec.addImage("17fe3741e5f.jpg", "?1", -1200, -950, name,32,2.2)
 end
 function resetMap()
 	if xml == '' then
@@ -95,7 +95,7 @@ function resetMap()
 end
 function eventTalkToNPC(name, npc)
 	if npc == "Mayra Flowers" then
-		showMessage("<V>[Mayra Flowers] <N>Muuuuuuuu! <font face='Segoe UI Symbol'>(●'◡'●)",name)
+		showMessage("<V>[Mayra Flowers] <N>Muuuuuuuu! (●'v'●) ",name)
 	end
 end
 function eventChatCommand(name,message)
@@ -139,7 +139,7 @@ function eventChatCommand(name,message)
 					for _,h in next,{0,2,4} do table.insert(data[name].backId3,tfm.exec.addImage("18773217882.png","?1",-1200+(h*1900),888,name,1,1,0,0.3)); end
 					for _,h in next,{1,3} do table.insert(data[name].backId3,tfm.exec.addImage("18773217882.png","?1",700+(h*1900),888,name,-1,1,0,0.3)) end
 					data[name].backId2 = tfm.exec.addImage("1883b1394a4.png","!1",1040,-330,name)
-					data[name].backId1 = tfm.exec.addImage("17fe3741e5f.jpg", "?1", -1200, -950, name,32,2.1)
+					data[name].backId1 = tfm.exec.addImage("17fe3741e5f.jpg", "?1", -1200, -950, name,32,2.2)
 				end
 				night=0
 			end
@@ -184,7 +184,7 @@ function eventLoop(p,r)
 	end
 	if changed == true then
 		loop=loop+0.5
-		if loop == 900 then
+		if loop == 720 then
 			eventChatCommand("Samira#4387","mode")
 			loop=0
 		end
