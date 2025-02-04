@@ -6,15 +6,15 @@ barrier={type = 14,width = 10,height = 4000,miceCollision = true, friction = 0, 
 wood={type = 14,width = 800,height = 20,miceCollision = true, friction = 0.5, groundCollision = true}
 dolphins={{400,2595},{2590,2705}}
 dolphins_r={{5150,2775},{4220,3305}}
-xml=''; changed=false; y_factor=1950; boat_factor=-8; depth_factor=1000; mapa="@7961204"; lang={};
+xml=''; changed=false; y_factor=1947; boat_factor=-8; depth_factor=1000; mapa="@7961204"; lang={};
 lang.br = {
 	loadingmap = "Carregando mapa. Por favor, aguarde...<",
-	welcome4 = "<VP><b>Bem-vindo(a) ao Navio Viego Santiarul Molach Vol Kalah Heigaari.</b>\n\n<p align='left'><N>Este é um mapa-script de navio pirata. Na verdade, é uma casa completa dentro de um navio pirata, e tem tudo o que uma casa 'normal' possui e mais um pouco... Divirtam-se!\n\n<J>Agradecimentos especiais para Lacoste#8972, Shun_kazami#7014, Yuh#0748, Tanatosl#0000 e Miss_fortune#9548.\n\n<N>Revisão 1.7",
+	welcome4 = "<VP><b>Bem-vindo(a) ao Navio Viego Santiarul Molach Vol Kalah Heigaari.</b>\n\n<p align='left'><N>Este é um mapa-script de navio pirata. Na verdade, é uma casa completa dentro de um navio pirata, e tem tudo o que uma casa 'normal' possui e mais um pouco... Divirtam-se!\n\n<J>Agradecimentos especiais para Lacoste#8972, Shun_kazami#7014, Yuh#0748, Tanatosl#0000 e Miss_fortune#9548.\n\n<N>Revisão 1.8",
 	title = "<VP>Navio Viego Santiarul Molach Vol Kalah Heigaari<"
 }
 lang.en = {
 	loadingmap = "Loading map. Please wait...<",
-	welcome4 = "<VP><b>Welcome to the Viego Santiarul Molach Vol Kalah Heigaari's Ship!</b>\n\n<p align='left'><N>This is a pirate ship script map. It's actually a complete house inside a pirate ship, and has everything a 'normal' house has and more... Enjoy!\n\n<J>Special thanks to Lacoste#8972, Shun_kazami#7014, Yuh#0748, Tanatosl#0000 and Miss_fortune#9548.\n\n<N>Revision 1.7",
+	welcome4 = "<VP><b>Welcome to the Viego Santiarul Molach Vol Kalah Heigaari's Ship!</b>\n\n<p align='left'><N>This is a pirate ship script map. It's actually a complete house inside a pirate ship, and has everything a 'normal' house has and more... Enjoy!\n\n<J>Special thanks to Lacoste#8972, Shun_kazami#7014, Yuh#0748, Tanatosl#0000 and Miss_fortune#9548.\n\n<N>Revision 1.8",
 	title = "<VP>Viego Santiarul Molach Vol Kalah Heigaari's Ship<"
 }
 if tfm.get.room.community == "br" or tfm.get.room.community == "pt" then
@@ -36,7 +36,7 @@ function showNPCs(name)
 end
 function eventTalkToNPC(name, npc)
 	if npc == "Mayra Flowers" then
-		showMessage("<V>[Mayra Flowers] <N>Muuuuuuuu! <font face='Segoe UI Symbol'>(●'◡'●)",name)
+		showMessage("<V>[Mayra Flowers] <N>Muuuuuuuu! (●'v'●) ",name)
 	end
 end
 function showWater(name)
@@ -128,11 +128,11 @@ function showWater(name)
 	end
 	for _,i in next,{0,2,4,6,8} do
 		tfm.exec.addImage("192e01770df.png", "?1", -1200+(i*2400), y_factor-11, name)
-		tfm.exec.addImage("192e017b00d.png", "!-1", -1200+(i*2400), y_factor-11, name,1,1,0,0.9)
+		tfm.exec.addImage("192e017b00d.png", "!-1", -1200+(i*2400), y_factor-11, name,1,1)
 	end
 	for _,i in next,{1,3,5,7,9} do
  		tfm.exec.addImage("192e01770df.png", "?1", 1200+(i*2400), y_factor-11, name, -1, 1)
-		tfm.exec.addImage("192e017b00d.png", "!-1", 1200+(i*2400), y_factor-11, name, -1, 1,0,0.9)
+		tfm.exec.addImage("192e017b00d.png", "!-1", 1200+(i*2400), y_factor-11, name, -1, 1)
 	end
 	for _,h in next,{0,2,4} do
 		tfm.exec.addImage("192e018d27c.png","?1",-1200+(h*2578),y_factor-350,name,1,1,0,0.25)
