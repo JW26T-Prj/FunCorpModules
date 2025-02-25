@@ -1,4 +1,4 @@
--- Script de Jogo da Forca, originalmente desenvolvido por Xayah_raster#7598, e atualmente administrado por Shun_kazami#7014.
+-- Script de Jogo da Forca, atualmente administrado por Shun_kazami#7014.
 ----------------------------------------------------------------------------------------------------
 
 for _,f in next,{"AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand","AllShamanSkills"} do
@@ -153,7 +153,7 @@ end
 function eventNewGame()
 	resetWord()
 	modo="aguardar"
-	ui.setMapName("<N>Jogo da Forca <N>- Script gerenciado por <V>Shun_kazami#7014<")
+	ui.setMapName("<N>Jogo da Forca <N>- script gerenciado por <V>Shun_kazami#7014<")
 	for name,player in next,tfm.get.room.playerList do
 		if tfm.get.room.playerList[name].isShaman then
 			tfm.exec.setPlayerScore(name,-1,false)
@@ -165,9 +165,9 @@ function eventNewGame()
 end
 
 function eventNewPlayer(name)
-	ui.setMapName("<N>Jogo da Forca <N>- Script gerenciado por <V>Shun_kazami#7014<")
+	ui.setMapName("<N>Jogo da Forca <N>- script gerenciado por <V>Shun_kazami#7014<")
 	tfm.exec.setPlayerScore(name,0,false)
-	showMessage("<N><b>Bem-vindos ao module Jogo da Forca!</b>\nO objetivo deste module é tentar descobrir a palavra definida pelo shaman errando o mínimo possível!\n<VP>Digite ! e uma letra do alfabeto para chutar.\n\n<J><b>Script gerenciado por Shun_kazami#7014. Desenvolvido originalmente por Xayah_raster#7598.",name)
+	showMessage("<N><b>Bem-vindos ao module Jogo da Forca!</b>\nO objetivo deste module é tentar descobrir a palavra definida pelo shaman errando o mínimo possível!\n<VP>Digite ! e uma letra do alfabeto para chutar.\n\n<J><b>Script gerenciado por Shun_kazami#7014.",name)
 end
 
 for name,player in next,tfm.get.room.playerList do
