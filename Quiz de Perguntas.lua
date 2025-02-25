@@ -1,5 +1,5 @@
 -- Script de Quiz de Perguntas
--- Código gerenciado por Shun_kazami#7014, mapa feito por Yuh#0748.
+-- Código gerenciado por Shun_kazami#7014.
 -- Créditos para Reksai_void2600#6638 e Dhanny_mheyran#6701 pelo código original.
 -- ® 2025 Jessie LinesPower TFM Utilities Group
 
