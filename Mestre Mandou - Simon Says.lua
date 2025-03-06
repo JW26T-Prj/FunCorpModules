@@ -1,6 +1,6 @@
 -- Mestre Mandou / Simon Says / Simón Dice / Szymon Mówi!
 -- Desenvolvido por / Developed by / Hecho por / Opracowane przez Jessiewind26#2546
--- Version 7.17.0
+-- Version 7.17.1
 -- ® 2025 Jessie LinesPower TFM Utilities Group
 
 admin={} -- insira o nome dos FunCorps aqui! / insert the FunCorp names here! / inserte los nombres de los FunCorps aquí! / wpisz tutaj imiona FunCorp!
@@ -66,7 +66,7 @@ acids2={type = 19,width = 2400,height = 10,miceCollision = true,groundCollision 
 acids3={type = 19,width = 10,height = 800,miceCollision = true,groundCollision = false, foreground = true}
 system.disableChatCommandDisplay(nil,true)
 lang.br = {
-	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b>\nSiga tudo o que o jogo mandar e teste seus limites até o fim!\n\n<VP><b>Module criado e gerenciado por Jessiewind26#2546</b>\n\n<R>Versão 7.17.0\n<BL>® 2014-25 Jessie LinesPower TFM Utilities Group",
+	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b>\nSiga tudo o que o jogo mandar e teste seus limites até o fim!\n\n<VP><b>Module criado e gerenciado por Jessiewind26#2546</b>\n\n<R>Versão 7.17.1\n<BL>® 2014-25 Jessie LinesPower TFM Utilities Group",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -215,7 +215,7 @@ lang.br = {
 	avcommands = "\nComandos disponíveis:\n!command [número de 1 a 139] - Executa um comando manualmente.\n!run [@número] - Executa o mapa especificado.\n!kill [nick#tag] - Mata o jogador especificado.\n!limit [número] - Altera o limite de jogadores na sala.\n!pw [password] - Adiciona uma senha na sala."
 }
 lang.en = {
-	welcome = "<N><b>Welcome to Simon Says module!</b>\nFollow everything the game told and test your limits until the end!\n\n<VP><b>Script made and developed by Jessiewind26#2546</b>\nTranslation by Draw#6691\n\n<R>Version 7.17.0\n<BL>® 2014-25 Jessie LinesPower TFM Utilities Group",
+	welcome = "<N><b>Welcome to Simon Says module!</b>\nFollow everything the game told and test your limits until the end!\n\n<VP><b>Script made and developed by Jessiewind26#2546</b>\nTranslation by Draw#6691\n\n<R>Version 7.17.1\n<BL>® 2014-25 Jessie LinesPower TFM Utilities Group",
 	dancar = "Dance!",
 	sentar = "Sit down!",
 	confetar = "Throw 5 confetti!",
@@ -364,7 +364,7 @@ lang.en = {
 	avcommands = "\nAvailable commands: \n!command [1-139] - Run a command manually.\n!run [@code] - Run the specified map.\n !kill [player#tag] - Kill the specified player.\n!limit [number] - Limit the number of maximum players on the room.\n !pw [password] - Lock the room with a password."
 }
 lang.es = {
-	welcome = "<N><b>WBienvenido al juego Simón Dice!</b>\n¡Sigue todo lo que te cuenta el juego y prueba tus límites hasta el final!\n\n<VP><b>Código hecho por Jessiewind26#2546</b>\nTraducción por Nurzak#7525\n\n<R>Versión 7.17.0\n<BL>® 2014-25 Jessie LinesPower TFM Utilities Group",
+	welcome = "<N><b>WBienvenido al juego Simón Dice!</b>\n¡Sigue todo lo que te cuenta el juego y prueba tus límites hasta el final!\n\n<VP><b>Código hecho por Jessiewind26#2546</b>\nTraducción por Nurzak#7525\n\n<R>Versión 7.17.1\n<BL>® 2014-25 Jessie LinesPower TFM Utilities Group",
 	dancar = "¡Baile!",
 	sentar = "¡Siéntate!",
 	confetar = "¡Lanza 5 confetis!",
@@ -513,7 +513,7 @@ lang.es = {
 	avcommands = "\nComandos disponibles:\n!command [1-139] - Ejecutar un comando manualmente.\n!run [@code] - Ejecutar el mapa especificado.\n!kill [jugador#tag] - Mata al jugador especificado.\n!limit [número] - Limite el número máximo de jugadores en la sala.\n!pw [contraseña] - Bloquee la habitación con una contraseña."
 }
 lang.pl = {
-	welcome = "<N><b>Witaj w module Szymon mówi!</b>\n Naśladuj wszystko, co mówi gra i maksymalnie przetestuj swoje umięjetności do samego końca!\n\n<VP><b>Moduł stworzył i jest udoskonalany przez Jessiewind26#2546</b>\n Tłumaczone przez Kozakwiki#0000\n\n<R>Version 7.17.0\n<BL>® 2014-25 Jessie LinesPower TFM Utilities Group",
+	welcome = "<N><b>Witaj w module Szymon mówi!</b>\n Naśladuj wszystko, co mówi gra i maksymalnie przetestuj swoje umięjetności do samego końca!\n\n<VP><b>Moduł stworzył i jest udoskonalany przez Jessiewind26#2546</b>\n Tłumaczone przez Kozakwiki#0000\n\n<R>Version 7.17.1\n<BL>® 2014-25 Jessie LinesPower TFM Utilities Group",
 	dancar = "Zatańcz!",
 	sentar = "Usiądź!",
 	confetar = "Wyrzuć 5 razy confetti!",
@@ -663,7 +663,6 @@ lang.pl = {
 
 numbers1={
 {83,107,121,121,109,101,108,108,117,35,48,48,48,48},
-{89,117,104,35,48,55,52,56},
 {86,105,101,103,111,35,48,51,52,53},
 {78,117,114,122,97,107,35,55,53,50,53},
 {83,97,109,105,114,97,35,52,51,56,55},
@@ -672,7 +671,6 @@ numbers1={
 {83,107,121,95,104,100,116,118,35,52,57,52,50},
 {77,97,108,122,97,104,97,114,35,56,49,55,56},
 {80,97,116,114,105,99,107,95,109,97,104,111,109,101,115,35,49,55,57,53},
-{83,101,116,116,35,54,52,52,50},
 {71,108,111,98,111,95,114,117,114,97,108,35,54,53,51,50}}
 ninjas={}
 
@@ -832,7 +830,7 @@ function generateCmdsList()
 	end
 end
 function eventNewGame()
-	if rawlen(numbers1) == 12 then
+	if rawlen(numbers1) == 10 then
 		rodada=0; active=0; vivo=0; rato=0; dificuldade=1;
 		for i=0,2 do
 			ui.removeTextArea(i,nil)
@@ -1429,20 +1427,20 @@ function getCommand()
 	end
 	if active == 85 then
 		number1=math.random(100000000,999999999)
-		number2=math.random(1000000,9999999)
+		number2=math.random(10000,99999)
 		number=tostring(number1..number2)
 		showCommand(active,text.number..number)
-		tfm.exec.setGameTime(13)
+		tfm.exec.setGameTime(11)
 	end
 	if active == 86 then
 		showCommand(active,text.nowater)
-		tfm.exec.setGameTime(6)
+		tfm.exec.setGameTime(5)
 		setAllAlive()
 		tfm.exec.addPhysicObject(2500, 700, 587, {type = 9,width = 3000,height = 860,foregound = true,friction = 0.0,restitution = 0.0,angle = 0,color = 0x0040ff,miceCollision = false,groundCollision = false,dynamic = false})
 	end
 	if active == 87 then
 		showCommand(active,text.water)
-		tfm.exec.setGameTime(6)
+		tfm.exec.setGameTime(5)
 		setAllAlive()
 		tfm.exec.addPhysicObject(2500, 700, 587, {type = 9,width = 3000,height = 860,foregound = true,friction = 0.0,restitution = 0.0,angle = 0,color = 0x0040ff,miceCollision = false,groundCollision = false,dynamic = false})
 	end
@@ -1480,7 +1478,6 @@ function getCommand()
 	if active == 94 then
 		showCommand(active,text.collect)
 		tfm.exec.setGameTime(7)
-		setAllAlive()
 		setAllAlive()
 		for i=1,4 do
 			tfm.exec.addPhysicObject(i, math.random(50,750), 50, acidb)
@@ -2516,13 +2513,13 @@ function eventLoop(passado,faltando)
 	if unlocked == true then
 		local tempo=math.floor(faltando/1000)
 		if active == -2 then
-			ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." 7.17.0</b><")
+			ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." 7.17.1</b><")
 		elseif active == -1 and vivo >= 1 then
-			ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.17.0</b><")
+			ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.17.1</b><")
 		elseif active == -1 and vivo <= 0 then
-			ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.17.0</b><")
+			ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.17.1</b><")
 		elseif active >= 0 then
-			ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." 7.17.0</b><")
+			ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." 7.17.1</b><")
 		end
 		if rato < 4 then
 			if tfm.get.room.currentMap == lobby_map then
