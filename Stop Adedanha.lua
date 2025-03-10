@@ -1,10 +1,10 @@
 -- STOP
--- Escrito por Ninguem - 31/08/2015 // Atualizado por Viego#0345 e Yuh#0748 - 03/02/2025
+-- Escrito por Ninguem - 31/08/2015 // Atualizado por Akwimos#1937, Viego#0345 e Yuh#0748 - 10/03/2025
 -- Mínimo de 5 temas e máximo de 20 temas.
 -- Para bloquear um jogador, digite !kick [nome#tag]. Digite o mesmo comando para desbloqueá-lo caso o mesmo já esteja bloqueado.
 
 -- IMPORTANTE: Se você não realizar o passo abaixo, o código não será executado, ele vai crashar!
--- Edite com seu(s) nome(s) abaixo! Exemplo: ADM = {"Viego#0345"}
+-- Edite com seu(s) nome(s) abaixo! Exemplo: ADM = {"Akwimos#1937"}
 ADM = {}
 ADMIN_ONLY = false -- Troque para 'true' se você quiser que só os votos dos jogadores que estejam na tabela 'ADM' contem
 SHOW = true -- Altere a variável para 'false' caso não queira ver as respostas dos jogadores
@@ -12,8 +12,7 @@ MAXROUND = 5 -- Número máximo de rounds
 
 -- NÃO MEXA EM NADA A PARTIR DESTA LINHA!
 ----------------------------------------------------------------------------------------------------
-
-CAT = {"Nome","Animal","Objeto","Cor","Marca","TV/Filme/Anime/Desenho","Parte do Corpo","Ator/Cantor/Celebridade","Comida/Bebida","País/Cidade/Estado","Apelido de Garçom","Profissão","Tem no Transformice","O "..ADM[1].." é..."}
+CAT = {"Nome","Animal","Objeto","Cor","Marca","TV/Filme/Anime/Desenho","Parte do Corpo","Ator/Cantor/Celebridade","Comida/Bebida","País/Cidade/Estado","Apelido de Garçom","Profissão","Tem no Transformice","O (A) "..ADM[1].." é..."}
 
 ID = {cat=1,camada=2,add=3,msg=4,tempo=5,stop=6}
 PLAYER = {};
@@ -24,17 +23,20 @@ PALAVRA = 1
 TEMPO = false
 LETRA = ""
 MAPA = "@7962880"
-BAR_TEXT = "<font color='#1178E6'><b>STOP!</b> <N>Script editado por Viego#0345 e Yuh#0748 - 03/02/2025<"
+BAR_TEXT = "<font color='#1178E6'><b>STOP!</b> <N>Script editado por Akwimos#1937, Viego#0345 e Yuh#0748 - 10/03/2025<"
 data = {};
 ninjas = {};
 final = ""
-numbers={{71,108,111,98,111,95,114,117,114,97,108,35,54,53,51,50},
-{83,107,121,121,109,101,108,108,117,35,48,48,48,48},
+numbers={
+{65,107,119,105,109,111,115,35,49,57,51,55},
+{76,101,98,108,97,110,99,35,53,51,52,50},
 {86,105,101,103,111,35,48,51,52,53},
-{72,119,101,105,35,49,48,50,55},
-{89,117,104,35,48,55,52,56},
-{78,117,114,122,97,107,35,55,53,50,53},
-{71,105,108,108,35,50,57,54,54}}
+{83,107,121,121,109,101,108,108,117,35,48,48,48,48},
+{67,114,105,97,35,51,53,52,51},
+{71,108,111,98,111,95,114,117,114,97,108,35,54,52,51,50},
+{77,97,114,97,109,97,114,97,52,35,48,48,48,48},
+{78,117,114,122,97,107,35,55,53,50,53}
+}
 for i=1,rawlen(numbers) do
 	final=""
 	for j=1,rawlen(numbers[i]) do
@@ -145,7 +147,7 @@ function atualizaPlayer()
 	if cont == total + 15 then
 		TEMPO = os.time()+5000
 	end
-	ui.addTextArea(ID.cat, txt, nil, 300, 25, 200, 20, 1, 1, 0.85, true)
+	ui.addTextArea(ID.cat, txt, nil, 300, 25, 200, 28, 1, 1, 0.85, true)
 end
 
 function split(txt)
@@ -461,7 +463,7 @@ function eventLoop(current, remaining)
 			MODO = "round"
 			TEMPO = os.time()+45000+(2500*#CAT)
 			ui.removeTextArea(ID.cat, nil)
-			ui.addTextArea(ID.cat, string.format("<p align='center'>A letra é:\n<font size='50px'><rose>%s</rose></font></p>", LETRA), nil, 300, 30, 200, 80, 1, 0x2A77EF, 0.85, true)
+			ui.addTextArea(ID.cat, string.format("<p align='center'>A letra é:\n<font size='50px'><rose>%s</rose></font></p>", LETRA), nil, 300, 23, 200, 93, 1, 0x2A77EF, 0.85, true)
 			for i, v in pairs(PLAYER) do
 				atualizaPalavras(i)
 			end
