@@ -57,7 +57,7 @@ for name,player in next,tfm.get.room.playerList do
 	eventNewPlayer(name)
 end
 function eventLoop(p,f)
-	ui.setMapName("<N>Falling Grounds by Patrick_mahomes#1795")
+	ui.setMapName("<N>Falling Grounds")
 	loop=loop+1; remain=remain-0.5
 	if remain == 3 then imageId = tfm.exec.addImage("17a4e9afa86.png",":1",358,280,nul) end
 	if remain == 2.5 then tfm.exec.removeImage(imageId,true) end
