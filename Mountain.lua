@@ -2,8 +2,7 @@ for _,f in next,{"AutoNewGame","AutoTimeLeft","AfkDeath","AutoShaman","AutoScore
 	tfm.exec["disable"..f](true)
 end
 number_scale={8240,7400,6760,6230,5760,5350,4970,4620,4260,4000,3693,3417,3175,2900,2650,2390,2180,1950,1750,1550,1360,1150,935,770}
-data={}; lang={}; loop=0; map_count=0; event_selected=0; running=false; pass_int=0; falt_int=0; run_int=0; event_int=0; endgame=false; changed=false; vencedor="";
-map="@7901662"; xml2=''
+data={}; lang={}; loop=0; map_count=0; event_selected=0; running=false; pass_int=0; falt_int=0; run_int=0; event_int=0; endgame=false; changed=false; vencedor=""; map="@7901662"; xml2='';
 ground={type = 12,width = 10,height = 210,foregound = 1,friction = 0.0,restitution = 1.0,angle = 0,color = 0xffffff,miceCollision = true,groundCollision = true,dynamic = false}
 powerups={wind=false,meteor=false,gravity=false,cheese=false}
 events_pt={"Fúria da Tormenta","Chuva de Caixas","Anomalia Gravitacional","Queijo para Todos"}
