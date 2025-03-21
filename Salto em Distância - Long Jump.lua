@@ -1,7 +1,6 @@
 -- Salto em Distância / Long Jump
--- Feito por / made by Patrick_mahomes#1795 e Akwimos#1937
--- Version 3.1
--- ® 2025 Jessie LinesPower TFM Utilities Group
+-- Feito por / made by Patrick_mahomes#1795
+-- Version 3.2
 
 admin={} -- insira o nome dos FunCorps aqui! / insert the FunCorp names here!
 
@@ -57,7 +56,7 @@ function showMessage(message,name)
 	end
 end
 function updateBar()
-	ui.setMapName("<D>Salto em Distância / Long Jump <V><b>v3.1</b> <CH>- by Patrick_mahomes#1795, Akwimos#1937<")
+	ui.setMapName("<D>Salto em Distância / Long Jump <V><b>v3.2</b> <CH>- by Patrick_mahomes#1795<")
 end
 function eventChatCommand(n,m)
 	if verifyNinjas(n) == true or verifyAdmin(n) == true then
@@ -124,7 +123,7 @@ function eventNewPlayer(n)
 		end
 		ui.setBackgroundColor("#000000")
 		tfm.exec.setPlayerScore(n,0,false)
-		showMessage("<VP>Jogo de salto em distância feito por (Long Jump Module made by) Patrick_mahomes#1795, Akwimos#1937. <b>Versão / Version 3.1</b>\n\n<N>Digite /mort para retornar ao ponto inicial sempre que necessário.\nType /mort to return to the start point when necessary",n)
+		showMessage("<VP>Jogo de salto em distância feito por (Long Jump Module made by) Patrick_mahomes#1795. <b>Versão / Version 3.2</b>\n\n<N>Digite /mort para retornar ao ponto inicial sempre que necessário.\nType /mort to return to the start point when necessary",n)
 		for a=1,5 do tfm.exec.addImage("182d6e2305b.png","?1",math.random(100,20000),math.random(-850,450),n) end
 		for b=1,5 do tfm.exec.addImage("182d6e2305b.png","?1",math.random(100,20000),math.random(-850,450),n,-1,1) end
 		for c=1,7 do tfm.exec.addImage("182d6e1e45c.png","?1",math.random(100,20000),math.random(-850,450),n) end
