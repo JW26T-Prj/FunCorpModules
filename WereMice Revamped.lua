@@ -2,7 +2,6 @@
 -- Feito por / made by Patrick_mahomes#1795
 -- Agradecimentos a Spectra_phantom#6089 pela ideia original do jogo.
 -- Thanks to Spectra_phantom#6089 to the original idea.
--- ® 2024 Jessie LinesPower TFM Utilities Group
 
 admin={}
 -- Insira o nome dos FunCorps ou dos gerenciadores de sala acima! (exemplo: admin={"Patrick_mahomes#1795"} )
