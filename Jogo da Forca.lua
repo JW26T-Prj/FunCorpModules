@@ -1,10 +1,6 @@
--- Script de Jogo da Forca, atualmente administrado por Shun_kazami#7014.
-----------------------------------------------------------------------------------------------------
-
 for _,f in next,{"AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand","AllShamanSkills"} do
 	tfm.exec["disable"..f](true)
 end
-
 letras={"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"}
 letters={}; letters_d={}; tempo_def=90; selec={}; palavra=""; modo="aguardar"; acctd=0; acctf=0; erros=0; accerted="";
 
@@ -153,7 +149,7 @@ end
 function eventNewGame()
 	resetWord()
 	modo="aguardar"
-	ui.setMapName("<N>Jogo da Forca <N>- script gerenciado por <V>Shun_kazami#7014<")
+	ui.setMapName("<N>Jogo da Forca<")
 	for name,player in next,tfm.get.room.playerList do
 		if tfm.get.room.playerList[name].isShaman then
 			tfm.exec.setPlayerScore(name,-1,false)
@@ -165,9 +161,9 @@ function eventNewGame()
 end
 
 function eventNewPlayer(name)
-	ui.setMapName("<N>Jogo da Forca <N>- script gerenciado por <V>Shun_kazami#7014<")
+	ui.setMapName("<N>Jogo da Forca<")
 	tfm.exec.setPlayerScore(name,0,false)
-	showMessage("<N><b>Bem-vindos ao module Jogo da Forca!</b>\nO objetivo deste module é tentar descobrir a palavra definida pelo shaman errando o mínimo possível!\n<VP>Digite ! e uma letra do alfabeto para chutar.\n\n<J><b>Script gerenciado por Shun_kazami#7014.",name)
+	showMessage("<N><b>Bem-vindos ao module Jogo da Forca!</b>\nO objetivo deste module é tentar descobrir a palavra definida pelo shaman errando o mínimo possível!\n<VP>Digite ! e uma letra do alfabeto para chutar.",name)
 end
 
 for name,player in next,tfm.get.room.playerList do
