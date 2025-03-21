@@ -62,7 +62,7 @@ function eventNewGame()
 			limits.mices_alive=limits.mices_alive+1
 		else
 			tfm.exec.setPlayerScore(name,-1,false)
-			showMessage("<VP>Please type <b>!per</b> to make a question. Type <b>!skip</b> to skip your turn.",name)
+			showMessage("<VP>Type <b>!per</b> to make a question, or type <b>!skip</b> to skip your turn.",name)
 		end
 		if name:sub(1,1) == "*" then
 			tfm.exec.killPlayer(name)
