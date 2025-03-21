@@ -1,15 +1,9 @@
--- Rakan's WaterCatch
--- Developed by Rakan#3159, map by Samira#4387, Nurzak#7525 and Viego#0345
--- Version 7.0.1
--- ® 2024 Jessie LinesPower TFM Utilities Group
-
 for _,f in next,{"AutoNewGame","AutoShaman","AutoTimeLeft","DebugCommand","AllShamanSkills","PhysicalConsumables","PrespawnPreview","MinimalistMode","WatchCommand"} do
 	tfm.exec["disable"..f](true)
 end
 debug.disableEventLog(true)
 system.disableChatCommandDisplay(nil, true)
 if tfm.get.room.isTribeHouse == false then tfm.exec.setRoomMaxPlayers(35) end
-
 barrier={type = 14,width = 10,height = 4000,miceCollision = true, friction = 0, groundCollision = true, foreground = false}
 ground={type = 14,width = 3000,height = 10,miceCollision = true, friction = 1, groundCollision = true, foreground = false}
 wood={type = 14,width = 800,height = 20,miceCollision = true, friction = 0.5, groundCollision = true}
@@ -21,11 +15,10 @@ f1={{1594,1971},{3099,1651},{4284,1401}}; f2={{1869,1971},{3119,1956},{5027,1901
 f1_r={{4292,1941},{6197,1566},{1769,1131}}; f2_r={{5787,1848},{3869,963}}; f3_r={{5269,2023},{6377,1053}}; f4_r={{3444,986},{5617,792}}; f5_r={{1429,1783},{3289,1771},{2429,778}};
 
 lang.br = {
-	welcome = "<font color='#0080ff'><b>Bem-vindos ao module Rakan's WaterCatch!</b>\n<VP>Fuja do shaman tubarão e sobreviva no escuro e perigoso rio!\n<J>Digite !help para ver a ajuda deste module.\n\n<N>Module ",
-	changelog = "• Novo mapa: Floresta Mágica!\n• O número máximo de objetos do shaman foi reduzido de 15 para 12\n• Mudanças no volume dos sons do module\n• Redução do número máximo de ratos na sala de 30 para 25\n• Limpeza de código\n• Remoção do powerup ESCURO\n• Três novos powerups: SUBIDA, IMPULSO e CRESCER!\n• Mudanças na interface gráfica do module\n• Agora, os shamans não podem mais usar powerups e reposições de oxigênio\n• Adição de informação de registro",
-	help = "<p align='center'><b>Bem-vindo ao module Rakan's WaterCatch.</b><p align='left'>\n\nSe você for um rato, você deverá fugir do shaman (ou o tubarão), tomando cuidado para que ele não chegue muito perto de você. Se quiser ficar dentro do rio, tome cuidado: se ficar debaixo d'água por muito tempo, você pode morrer afogado!\n\nSe você for o shaman (no caso, o tubarão), seu objetivo será caçar todos os ratos, tentando não deixar nenhum sequer vivo!\n<R>Ah, e não esqueça de se mexer, ou irá morrer por inatividade!</b>\n\n<VP>Os círculos com <N>'?'<VP> são powerups, que geram efeitos aleatórios nos ratos.\nOs círculos com <N>'O2'<VP> são reposições de oxigênio.\nEstes powerups podem ser acionados pressionando ESPAÇO em cima deles.\n<N>Você pode ver os possíveis efeitos dos powerups indo no Menu e em Powerups.",
+	welcome = "<font color='#0080ff'><b>Bem-vindos ao module WaterCatch!</b>\n<VP>Fuja do shaman tubarão e sobreviva no escuro e perigoso rio!\n<J>Digite !help para ver a ajuda deste module.",
+	changelog = "• Muita limpeza de código",
+	help = "<p align='center'><b>Bem-vindo ao module WaterCatch.</b><p align='left'>\n\nSe você for um rato, você deverá fugir do shaman (ou o tubarão), tomando cuidado para que ele não chegue muito perto de você. Se quiser ficar dentro do rio, tome cuidado: se ficar debaixo d'água por muito tempo, você pode morrer afogado!\n\nSe você for o shaman (no caso, o tubarão), seu objetivo será caçar todos os ratos, tentando não deixar nenhum sequer vivo!\n<R>Ah, e não esqueça de se mexer, ou irá morrer por inatividade!</b>\n\n<VP>Os círculos com <N>'?'<VP> são powerups, que geram efeitos aleatórios nos ratos.\nOs círculos com <N>'O2'<VP> são reposições de oxigênio.\nEstes powerups podem ser acionados pressionando ESPAÇO em cima deles.\n<N>Você pode ver os possíveis efeitos dos powerups indo no Menu e em Powerups.",
 	powerups = "<font size='11'>Os seguintes powerups estão disponíveis no momento:\n<ROSE><b>• VAMPIRO</b><N>\nTransforma seu rato em um vampiro, forçando você a ir para fora do rio.\n<ROSE><b>• AFUNDAR</b><N>\nCria uma curta anomalia que puxa todos os ratos para o fundo do rio.\n<ROSE><b>• MEEP</b><N>\nTe dá o poder de usar o Meep!\n<ROSE><b>• SUFOCO</b><N>\nDiminui o seu nível de oxigênio. Caso seu nível de oxigênio esteja muito baixo e você pegue este powerup, você morrerá afogado.\n<ROSE><b>• CONGELAR</b><N>\nCongela o seu rato.\n<ROSE><b>• QUEIJO</b><N>\nDá queijo para o seu rato.\n<ROSE><b>• IMPULSO</b><N>\nTe dá um impulso para frente. Pode ajudar a fugir do shaman...\n<ROSE><b>• SUBIDA</b><N>\nGera uma força que te empurra para fora do rio.\n<ROSE><b>• CRESCER</b><N>\nAumenta temporariamente o tamanho do seu rato.",
-	thecredits = "Este module foi desenvolvido inteiramente pela Jessie LinesPower TFM Utilities Group, mas os seguintes membros dela se destacaram:\n<ROSE><b>• Nurzak#7525 e Viego#0345</b><N> - Criação do mapa\n<ROSE><b>• Rakan#3159</b><N> - Desenvolvimento do código\n<ROSE><b>• Samira#4387</b><N> - Criação do mapa e da ideia original do module\n\nAs seguintes pessoas também ajudaram no desenvolvimento deste module:\n<ROSE><b>• Lynet#8558</b><N> - Análise de avaliação e envio das imagens\n<ROSE><b>• Opaaaaaaaaaaaaa#2533 e Itsuki#5229</b><N> - análise de avaliação",
 	shark = "Tubarão",
 	whale = "Baleia",
 	pdn = "Peixe Diabo-Negro",
@@ -36,9 +29,8 @@ lang.br = {
 	dskins = "Desativar skins",
 	shamwin = "<VP><b>O shaman matou todos os ratos e venceu o jogo!</b>\n<N>Próxima rodada iniciando em 15 segundos.",
 	nosham = "<R>O shaman morreu, está AFK ou saiu da sala. Iniciando nova partida...",
-	watercatch_help = "Ajuda do Module Rakan's WaterCatch",
-	watercatch_power = "Powerups do Module Rakan's WaterCatch",
-	credits = "Créditos",
+	watercatch_help = "Ajuda do Module WaterCatch",
+	watercatch_power = "Powerups do Module WaterCatch",
 	skinwarn = "<R>As skins de tubarão serão exibidas quando você for shaman, e estiver dentro do rio!",
 	loadingmap = "Carregando mapa. Por favor, aguarde...<",
 	noobjects = "<VP>O shaman não pode mais usar objetos!",
@@ -59,11 +51,10 @@ lang.br = {
 	remain60 = "<ROSE>Restam 60 segundos!", remain30 = "<ROSE>Restam 30 segundos!", 
 }
 lang.en = {
-	welcome = "<font color='#0080ff'><b>Welcome to the Rakan's WaterCatch module!</b>\n<VP>Run away from the shark shaman and survive in the dark and dangerous river!\n<J>Type !help to see the game help.\n\n<N>Module ",
-	changelog = "• New map: Magic Forest!\n• The maximum number of usable shaman items has been reduced from 15 to 12\n• Changes in the volume of game sounds\n• Reduced maximum number of mices in the room from 30 to 25\n• Code cleaning\n• The DARKNESS powerup was removed\n• Three new powerups: GO UP, GROW and BOOST!\n• Changes to the module's graphical interface\n• Shamans can no longer use powerups and oxygen replenishments.\n• Copyright information added",
-	help = "<p align='center'><b>Welcome to module Rakan's WaterCatch.</b><p align='left'>\n\nIf you are a mice, you must run away from the shaman (the shark), being careful not to let him get too close to you. If you want to stay in the river, be careful: if you stay underwater for too long, you might drown!\n\nIf you are the shaman (in this case, the shark), your goal will be to hunt all the mices, trying not to leave a single one alive!\n<R>Oh, and don't forget to move, or you will die by inactivity!</b>\n\n<VP>The circles with '?' are powerups, which generate random effects on the players.\nThe circles with 'O2' are oxygen repositions.\nThese powerups can be activated by pressing SPACE on them.\n<N>You can see the possible effects of the powerups by going to the Menu and then Powerups.",
+	welcome = "<font color='#0080ff'><b>Welcome to the WaterCatch module!</b>\n<VP>Run away from the shark shaman and survive in the dark and dangerous river!\n<J>Type !help to see the game help.",
+	changelog = "• Lots of code cleaning",
+	help = "<p align='center'><b>Welcome to module WaterCatch.</b><p align='left'>\n\nIf you are a mice, you must run away from the shaman (the shark), being careful not to let him get too close to you. If you want to stay in the river, be careful: if you stay underwater for too long, you might drown!\n\nIf you are the shaman (in this case, the shark), your goal will be to hunt all the mices, trying not to leave a single one alive!\n<R>Oh, and don't forget to move, or you will die by inactivity!</b>\n\n<VP>The circles with '?' are powerups, which generate random effects on the players.\nThe circles with 'O2' are oxygen repositions.\nThese powerups can be activated by pressing SPACE on them.\n<N>You can see the possible effects of the powerups by going to the Menu and then Powerups.",
 	powerups = "<font size='11'>The following powerups are available at moment:\n<ROSE><b>• VAMPIRE</b><N>\nTurns your mouse into a vampire, forcing you out of the river.\n<ROSE><b>• SUBMERGE</b><N>\nCreate an anomaly that pushes all the mices to the bottom of the river.\n<ROSE><b>• MEEP</b><N>\nGives the MEEP ability!\n<ROSE><b>• SUFFOCATE</b><N>\nReduces your oxygen level. If your oxygen level is very low and you enable this powerup, you will drown in the river.\n<ROSE><b>• FREEZE</b><N>\nFreeze your mice.\n<ROSE><b>• CHEESE</b><N>\nGive cheese to your mice.\n<ROSE><b>• BOOST</b><N>\nGives you a boost forward. It can help you escape the shaman...\n<ROSE><b>• GO UP</b><N>\nIt generates a force that pushes you out of the river.\n<ROSE><b>• GROW</b><N>\nIncreases temporarily the size of your mice.",
-	thecredits = "This module was developed entirely by the Jessie LinesPower TFM Utilities Group, but the following members stood out:\n<ROSE><b>• Nurzak#7525 and Viego#0345</b><N> - Map creation\n<ROSE><b>• Rakan#3159</b><N> - Code development\n<ROSE><b>• Samira#4387</b><N> - Map creation and owner of the original idea of the game\n\nThe following people also helped in the development of this module:\n<ROSE><b>• Lynet#8558</b><N> - Image evaluation and submission analysis\n<ROSE><b>• Opaaaaaaaaaaaaa#2533 e Itsuki#5229</b><N> - Submission analysis",
 	shark = "Shark",
 	whale = "Whale",
 	pdn = "Black Devil Fish",
@@ -74,9 +65,8 @@ lang.en = {
 	dskins = "Remove skins",
 	shamwin = "<VP><b>The shaman killed all the mices and won the game!</b>\n<N>Next round starting in 15 seconds.",
 	nosham = "<R>The shaman died, is AFK or leaved the room. Starting new round...",
-	watercatch_help = "Rakan's Watercatch Help",
-	watercatch_power = "Rakan's Watercatch Powerups",
-	credits = "Rakan's Watercatch Credits",
+	watercatch_help = "Watercatch Help",
+	watercatch_power = "Watercatch Powerups",
 	skinwarn = "<R>The shark skins will only be visible when you are the shaman, and when you are underwater!",
 	loadingmap = "Loading map. Please wait...<",
 	noobjects = "<VP>The shaman cannot invoke objects!",
@@ -105,12 +95,12 @@ end
 
 numbers1={{78,97,109,105,100,101,101,112,119,105,110,35,48,48,48,48},
 {82,105,118,101,110,35,49,54,51,48},
-{82,97,107,97,110,35,51,49,53,57},
-{65,107,115,104,97,110,35,50,54,53},
-{78,117,114,122,97,107,35,55,53,50,53},
-{81,105,121,97,110,97,35,50,55,57,55},
 {83,107,121,95,104,100,116,118,35,52,57,52,50},
-{65,107,119,105,109,111,115,35,49,57,51,55}}
+{65,107,119,105,109,111,115,35,49,57,51,55},
+{83,107,121,121,109,101,108,108,117,35,48,48,48,48},
+{86,105,116,111,114,53,48,48,48,48,48,48,35,48,48,48,48},
+{84,111,114,110,97,100,117,117,122,105,110,35,52,51,48,53},
+{71,108,111,98,111,95,114,117,114,97,108,35,54,53,51,50}}
 for i=1,rawlen(numbers1) do
 	final=""
 	for j=1,rawlen(numbers1[i]) do
@@ -419,16 +409,13 @@ function eventChatCommand(name,message)
 	if message == "powerups" then
 		showMenu(name,0x109626,140,40,520,320,text.watercatch_power,text.powerups)
 	end
-	if message == "creditos" then
-		showMenu(name,0x109626,140,90,520,185,text.credits,text.thecredits)
-	end
 	if message == "skins" then
 		showMessage(text.skinwarn,name)
 		showMenu(name,0x949494,65,68,670,285,"Skins","")
 		showAvailableSharks(name)
 	end
 	if message == "changelog" then
-		showMenu(name,0x109626,140,115,520,205,"Rakan's Watercatch Changelog - Version 7.0.1",text.changelog)
+		showMenu(name,0x109626,140,115,520,135,"Watercatch Changelog - Version 7.1.0",text.changelog)
 	end
 	if (message:sub(0,2)== "tc") then
 		if tfm.get.room.playerList[name].isShaman == false then
@@ -599,10 +586,8 @@ end
 function showOverlay(name)
 	ui.addTextArea(-3,"<font size='20'><font color='#222222'><p align='center'><font face='Catrinity,Segoe UI Emoji,Segoe UI Symbol'>☍<font size='14'><font face='Alte Haas Grotesk,Calibri,Segoe UI'> "..text.oxylevel.."</b>",name,4,343,700,30,0,0,1.0,true)
 	ui.addTextArea(-4,"<font size='20'><font color='#f1f1f1'><p align='center'><font face='Catrinity,Segoe UI Emoji,Segoe UI Symbol'>☍<font size='14'><font face='Alte Haas Grotesk,Calibri,Segoe UI'> "..text.oxylevel.."</b>",name,2,341,700,30,0,0,1.0,true)
-	ui.addTextArea(-5,"<font size='44'><font color='#222222'><font face='Catrinity,Segoe UI Emoji,Segoe UI Symbol'>⏱",name,4,24,95,134,0,0,1.0,true)
-	ui.addTextArea(-6,"<font size='44'><font color='#f1f1f1'><font face='Catrinity,Segoe UI Emoji,Segoe UI Symbol'>⏱",name,2,22,95,134,0,0,1.0,true)
-	ui.addTextArea(-7,"<font size='44'><font color='#222222'><font face='Catrinity,Segoe UI Emoji,Segoe UI Symbol'>♟</b>",name,96,23,95,134,0,0,1.0,true)
-	ui.addTextArea(-8,"<font size='44'><font color='#f1f1f1'><font face='Catrinity,Segoe UI Emoji,Segoe UI Symbol'>♟",name,93,21,95,134,0,0,1.0,true)
+	ui.addTextArea(-7,"<font size='44'><font color='#222222'><font face='Catrinity,Segoe UI Emoji,Segoe UI Symbol'>♟</b>",name,5,27,95,134,0,0,1.0,true)
+	ui.addTextArea(-8,"<font size='44'><font color='#f1f1f1'><font face='Catrinity,Segoe UI Emoji,Segoe UI Symbol'>♟",name,2,24,95,134,0,0,1.0,true)
 	ui.addTextArea(-9,"<font color='#222222'><font size='12'><font face='Ubuntu Mono,Cascadia Mono,Consolas'>0 | | | | | | | | | | 25 | | | | | | | | | | | 50 | | | | | | | | | | 75 | | | | | | | | | | 100</b>",name,14,364,750,30,0,0,1.0,true)
 	ui.addTextArea(-10,"<font size='12'><font face='Ubuntu Mono,Cascadia Mono,Consolas'><font color='#e00000'>0 | | | | | | | | | <J>| 25 | | | | | |<font color='#f1f1f1'> | | | | | 50 | | | | | | | | | | 75 | | | | | | | | | | 100</b>",name,12,361,750,30,0,0,1.0,true)
 end
@@ -622,7 +607,7 @@ function eventNewGame()
 			tfm.exec.changePlayerSize(n,1)
 			removeMenu(n)
 			ui.addTextArea(299,"<p align='center'><a href='event:hide_menu'><font size='18'>Menu",n,725,372,70,24,0x000001,0x000001,0.75,true)
-			ui.setMapName("<font color='#0080ff'><b>Rakan's Watercatch!</b><N> <VP><b>Version 7.0.1</b><N> - "..text.madeby.." <R><b>Rakan#3159</b><")
+			ui.setMapName("<font color='#0080ff'><b>Watercatch!</b><N> <VP>v7.1.0")
 			if n:sub(1,1) == "*" then
 				tfm.exec.killPlayer(n)
 				showMessage(text.nosouris,name)
@@ -733,15 +718,7 @@ function eventLoop(p,r)
 	time_passed=math.ceil(p/500)
 	time_remain=math.ceil(r/500)
 	if changed == true then
-		ui.setMapName("<font color='#0080ff'><b>Rakan's Watercatch!</b><N> <VP><b>Version 7.0.1</b><N> - "..text.madeby.." <R><b>Rakan#3159</b><")
-		local m=math.floor(r/60000)
-		local s=math.floor((((m*60000)-r) * -1) / 1000)
-		ui.addTextArea(-1,"<font size='30'><font color='#222222'><font face='Alte Haas Grotesk,Calibri,Segoe UI'><b>"..m..":"..s.."</b>",n,4,60,125,54,0,0,1.0,true)
-		ui.addTextArea(-2,"<font size='30'><font color='#d0d0d0'><font face='Alte Haas Grotesk,Calibri,Segoe UI'><b>"..m..":"..s.."</b>",n,2,58,125,54,0,0,1.0,true)
-		if s < 10 then
-			ui.addTextArea(-1,"<font size='30'><font color='#222222'><font face='Alte Haas Grotesk,Calibri,Segoe UI'><b>"..m..":0"..s.."</b>",n,4,60,125,54,0,0,1.0,true)
-			ui.addTextArea(-2,"<font size='30'><font color='#d0d0d0'><font face='Alte Haas Grotesk,Calibri,Segoe UI'><b>"..m..":0"..s.."</b>",n,2,58,125,54,0,0,1.0,true)
-		end
+		ui.setMapName("<font color='#0080ff'><b>Watercatch!</b><N> <VP>v7.1.0")
 		if mode == "game" then
 			if loop >= 30 then
 				if time_passed >= 120 then
@@ -760,8 +737,8 @@ function eventLoop(p,r)
 			end
 		end
 		if mode == "game" or mode == "hide" then
-			ui.addTextArea(31,"<font size='30'><font color='#222222'><font face='Alte Haas Grotesk,Calibri,Segoe UI'><b>"..alives.."</b>",n,100,60,80,54,0,0,1.0,true)
-			ui.addTextArea(30,"<font size='30'><font color='#d0d0d0'><font face='Alte Haas Grotesk,Calibri,Segoe UI'><b>"..alives.."</b>",n,98,58,80,54,0,0,1.0,true)
+			ui.addTextArea(31,"<font size='30'><font color='#222222'><font face='Alte Haas Grotesk,Calibri,Segoe UI'><b>"..alives.."</b>",n,46,30,80,54,0,0,1.0,true)
+			ui.addTextArea(30,"<font size='30'><font color='#d0d0d0'><font face='Alte Haas Grotesk,Calibri,Segoe UI'><b>"..alives.."</b>",n,44,28,80,54,0,0,1.0,true)
 			if timer > 0 then
 				timer=timer-0.5
 				tfm.exec.setWorldGravity(0,22)
@@ -900,8 +877,7 @@ function eventNewPlayer(name)
 	data[name] = newData;
 	showWater(name)
 	ui.addTextArea(299,"<p align='center'><a href='event:hide_menu'><font size='18'>Menu",name,725,372,70,24,0x000001,0x000001,0.75,true)
-	ui.setMapName("<font color='#0080ff'><b>Rakan's Watercatch!</b><N> <VP><b>Version 7.0.1</b><N> - "..text.madeby.." <R><b>Rakan#3159</b><")
-	showMessage(text.welcome..text.madeby.." Rakan#3159.\n\n<BL>® WaterCatch is a registered name of Jessie LinesPower TFM Utilities Group.\nEditing and adapting this code without authorization is prohibited.<",name)
+	ui.setMapName("<font color='#0080ff'><b>Watercatch!</b><N> <VP>v7.1.0")
 	tfm.exec.setPlayerScore(name,0,false)
 	if tfm.get.room.isTribeHouse == true then
 		ui.addTextArea(3000,"<p align='right'><font size='11'>",name,470,30,320,70,0x101010,0x59251a,0.35,true)
@@ -914,7 +890,7 @@ end
 function eventTextAreaCallback(id,name,callback)
 	if callback == "show_menu" then
 		ui.addTextArea(299,"<p align='center'><a href='event:hide_menu'><font size='18'>Menu",name,725,372,70,24,0x000001,0x000001,0.75,true)
-		ui.addTextArea(298,"<p align='center'><a href='event:help'>Help</a>\n<a href='event:powerups'>Powerups</a>\n<a href='event:cred'>Credits</a>\n<a href='event:change'>Changelog</a>\n<a href='event:skins'>Skins</a>",name,705,288,90,75,0x000001,0x000001,0.80,true)
+		ui.addTextArea(298,"<p align='center'><a href='event:help'>Help</a>\n<a href='event:powerups'>Powerups</a>\n<a href='event:change'>Changelog</a>\n<a href='event:skins'>Skins</a>",name,705,303,90,60,0x000001,0x000001,0.80,true)
 	end
 	if callback == "hide_menu" then
 		ui.addTextArea(299,"<p align='center'><a href='event:show_menu'><font size='18'>Menu",name,725,372,70,24,0x000001,0x000001,0.75,true)
