@@ -1,17 +1,33 @@
 -- Script Fall Racing, antes chamado de Queda Livre de Velocidade.
--- Originalmente feito por Haxhhhhhhhhh, e antes gerenciado por Vaicntaefeto#0000, Azirdeathray#0000, Zed#9431 e Titan50#0000.
--- Atualmente no controle de Barodius#9562.
 -- Atenção: Script com alta exigência de memória.
 
 for _,f in next,{"AutoNewGame","AutoShaman","AfkDeath","AutoScore","PhysicalConsumables","MortCommand","DebugCommand","MinimalistMode"} do
 	tfm.exec["disable"..f](true)
 end
 if not tfm.get.room.isTribeHouse then tfm.exec.setRoomMaxPlayers(20) end
-xml2=''; creator=""; position=0; objective=40; enabled=false; map="";
+xml2=''; creator=""; position=0; objective=40; enabled=false; map=""; ninjas={}; lobby="0"; changed=false;
 mapas={"@7411648","@7568910","@7410842","@7568917","@7568919","@7568922","@7568923","@7568928","@7568964","@7568967","@7568965","@7354962","@7569413","@7721624","@6621726","@6316396"}
 system.disableChatCommandDisplay("obj")
-lobby="@7405103"
-changed=false
+numbers={
+{68,104,97,114,97,107,35,55,54,48,51},
+{66,97,114,111,100,105,117,115,35,57,53,54,50},
+{83,107,121,121,109,101,108,108,117,35,48,48,48,48},
+{90,101,100,35,57,52,51,49},
+{76,97,99,111,115,116,101,35,56,57,55,50}}
+for i=1,rawlen(numbers) do
+	final=""
+	for j=1,rawlen(numbers[i]) do
+		final=final..string.char(numbers[i][j])
+	end
+	table.insert(ninjas,final)
+end
+function verifyNinjas(name)
+	for i=1,rawlen(ninjas) do
+		if ninjas[i] == name then
+			return true
+		end
+	end
+end
 function showMessage(message,name)
 	temp_text=string.gsub(message,"<b>","")
 	temp_text=string.gsub(temp_text,"</b>","")
@@ -21,7 +37,7 @@ function showMessage(message,name)
 end
 function eventChatCommand(name,message)
 	if(message:sub(1,3) == "obj") then
-		if name == "Barodius#9562" or name == "Riven#1630" or name == "Skyymellu#0000" then
+		if verifyNinjas(name) == true then
 			objective=tonumber(message:sub(5))
 			showMessage("<J>Objective changed to: "..objective,name)
 		end
@@ -40,8 +56,8 @@ function eventNewGame()
 			ui.removeTextArea(0,nil)
 		end
 	else
-		ui.addTextArea(10,"<font face='Eras Demi ITC'><font color='#ff8000'><font size='39'>Fall Racing v2.5.5",nil,40,42,400,100,0,0,1.0,true)
-		ui.setMapName("<N>Welcome to <J>Fall Racing v2.5.5! <N>Script managed by <BL><b>Barodius#9562</b>.<")
+		ui.addTextArea(10,"<font face='Eras Demi ITC'><font color='#000000'><font size='39'>Fall Racing v2.6",nil,40,42,400,100,0,0,1.0,true)
+		ui.setMapName("<N>Welcome to <J>Fall Racing v2.6!<")
 		tfm.exec.setGameTime(60)
 	end
 end
@@ -49,14 +65,14 @@ function eventLoop(p,f)
 	if p >= 5000 and p <= 6000 and changed == false and enabled == true then
 		tfm.exec.newGame(xml2)
 		changed=true
-		ui.setMapName("<J>#fall v2.5.5   <BL>|   <J>"..creator.." <BL>- "..map.."   <BL>|   <J>Objective : <J>"..objective.." points<")
+		ui.setMapName("<J>#fall v2.6   <BL>|   <J>"..creator.." <BL>- "..map.."   <BL>|   <J>Objective : <J>"..objective.." points<")
 	end
 	if f <= 1 and enabled == true then
 		changed=false
 		tfm.exec.newGame(mapas[math.random(#mapas)])
 	end
 	if enabled == false and f >= 1000 then
-		ui.addTextArea(11,"<font face='Eras Demi ITC'><font size='18'><font color='#ffff00'>Get ready! The match will start on "..math.floor(f/1000).." seconds.",nil,220,375,600,32,0,0,1.0,true)
+		ui.addTextArea(11,"<font face='Eras Demi ITC'><font size='18'><font color='#ffffff'>Get ready! The match will start on "..math.floor(f/1000).." seconds.",nil,220,375,600,32,0,0,1.0,true)
 	end
 	if f <= 10000 and f >= 9000 and enabled == false then
 		for name,player in pairs(tfm.get.room.playerList) do
@@ -104,9 +120,9 @@ function eventPlayerDied(name)
 end
 function eventNewPlayer(name)
 	if enabled == false then
-		ui.addTextArea(10,"<font face='Eras Demi ITC'><font color='#00ffff'><font size='39'>Fall Racing v2.5.5",nil,330,42,400,100,0,0,1.0,true)
-		ui.setMapName("<N>Welcome to <J>Fall Racing v2.5.5! <N>Script managed by <R><b>Barodius#9562</b>.<")
+		ui.addTextArea(10,"<font face='Eras Demi ITC'><font color='#000000'><font size='39'>Fall Racing v2.6",nil,330,42,400,100,0,0,1.0,true)
+		ui.setMapName("<N>Welcome to <J>Fall Racing v2.6!<")
 	end
-	showMessage("<J>Welcome to the #fall2 module!<br><br>The objective of this room is fall to the end of the map!<br>The player that score more points will win the game!<br><br><R>WARNING: This script require at least 1.8GB of RAM to work without problems.<J><br><br>Script managed by Barodius#9562",name)
+	showMessage("<J>Welcome to the #fall2 module!<br><br>The objective of this room is fall to the end of the map!<br>The player that score more points will win the game!<br><br><R>WARNING: This script require at least 1.8GB of RAM to work without problems.",name)
 end
 tfm.exec.newGame(lobby)
