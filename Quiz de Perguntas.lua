@@ -1,8 +1,3 @@
--- Script de Quiz de Perguntas
--- Código gerenciado por Shun_kazami#7014.
--- Créditos para Reksai_void2600#6638 e Dhanny_mheyran#6701 pelo código original.
--- ® 2025 Jessie LinesPower TFM Utilities Group
-
 admin={} -- FunCorps e administradores de salas, insiram seus nomes aqui!
 
 tema=0 -- Edite conforme mostrado abaixo!
@@ -859,7 +854,7 @@ function addBarreira()
 end
 function eventLoop(p,f)
 	remain=math.floor(f/1000)
-	ui.setMapName("<N><b>Quiz da Jessie LinesPower TFM Utilities Group</b>   <BL>|   <N>Ratos : <V>"..vivos.."/"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/"..limite.."<")
+	ui.setMapName("<N><b>Quiz de Perguntas</b>   <BL>|   <N>Ratos : <V>"..vivos.."/"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/"..limite.."<")
 	if remain < 2 and modo == "inicial" then
 		modo="perguntar"
 		randomQuests()
