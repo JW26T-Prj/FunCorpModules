@@ -1,6 +1,6 @@
 -- Falling Grounds
 -- Feito por / made by Patrick_mahomes#1795
--- ® 2025 Jessie LinesPower TFM Utilities Group
+-- DOESN'T EDIT NOTHING BELOW THIS LINE!!
 --------------------------------------------------------------------------------------------------------
 for _,f in next,{"AutoShaman","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand"} do
 	tfm.exec["disable"..f](true)
@@ -51,7 +51,7 @@ function eventNewGame()
 	end
 end
 function eventNewPlayer(name)
-	showMessage("<J><b>Welcome to Falling Grounds!</b>\n\n<N>The objective of this module is survive! Test your luck and discover what ground will not be removed!\n\n<R>Module made by Patrick_mahomes#1795\n<BL>® Falling Grounds is a registered name of Jessie LinesPower TFM Utilities Group.\nEditing and adapting this code without authorization is prohibited.",name)
+	showMessage("<J><b>Welcome to Falling Grounds!</b>\n\n<N>The objective of this module is survive! Test your luck and discover what ground will not be removed!\n\n<R>Module made by Patrick_mahomes#1795",name)
 end
 for name,player in next,tfm.get.room.playerList do
 	eventNewPlayer(name)
