@@ -1,8 +1,3 @@
--- Arrows
--- Developed by Leblanc#5342
--- Version 1.7
--- ® 2024 Jessie LinesPower TFM Utilities Group
-
 -- Se estiver rodando este código em uma sala FunCorp, insira os nicknames dos membros abaixo.
 admin={""} -- Insira os nomes aqui! // Insert the nicknames here!
 -- If you are running this code into a FunCorp room, insert the FunCorp names above.
@@ -20,7 +15,7 @@ for _,f in next,{"reset","change"} do
 end
 modo="inicial"; lang={}; map="@7938991"; ratos=0; vivos=0; round=0; level=0; imgs={}; data={}; current_max=0; symbol={"⇦","⇧","⇨","⇩"}; symbol_l={"&lt;","^",">","v"}; keys={}; unlocked=false;
 lang.br = {
-	welcome = "<ROSE><b>Bem-vindo ao module #arrows!</b>\n<N>O objetivo deste module é ser rápido e preciso, usando o teclado para responder a sequência de setas que aparecerá na sua tela!\n\n<VP>Module criado por Leblanc#5342. Ideia original de Shun_kazami#7014.\n<BL><b>Versão 1.7</b>",
+	welcome = "<ROSE><b>Bem-vindo ao module #arrows!</b>\n<N>O objetivo deste module é ser rápido e preciso, usando o teclado para responder a sequência de setas que aparecerá na sua tela!\n\n<BL><b>Versão 1.8</b>",
 	starting = "<J>Atenção! O jogo será iniciado em 5 segundos!",
 	wrong = "<R>Você errou!",
 	accept = "<VP>Parabéns! Você conseguiu avançar desta fase!",
@@ -33,7 +28,7 @@ lang.br = {
 	legacy = "<J>Caso não esteja conseguindo ver as setas corretamente, digite !change. Este comando mudará a forma como as setas são exibidas na tela.",
 }
 lang.en = {
-	welcome = "<ROSE><b>Welcome to the #arrows module!</b>\n<N>The goal of this module is to use your keyboard to follow the sequence of arrows that will show on your screen! You need to be fast!\n\n<VP>Module developed by Leblanc#5342. Original idea from Shun_kazami#7014.\n<BL><b>Version 1.7</b>",
+	welcome = "<ROSE><b>Welcome to the #arrows module!</b>\n<N>The goal of this module is to use your keyboard to follow the sequence of arrows that will show on your screen! You need to be fast!\n\n<b>Version 1.8</b>",
 	starting = "<J>The game will be started in 5 seconds!",
 	wrong = "<R>Oh no! Wrong key!",
 	accept = "<VP>Congratulations! You passed this round!",
@@ -46,7 +41,7 @@ lang.en = {
 	legacy = "<J>If you are not seeing the arrows correctly, type !change. This will change the way that the arrows will be displayed.",
 }
 lang.es = {
-	welcome = "<ROSE><b>¡Bienvenidos al módulo #arrows!</b>\n<N>¡El objetivo de este módulo es usar su teclado para seguir la secuencia de flechas que se mostrarán en su pantalla! ¡Tienes que ser rápido!\n\n<VP>Módulo hecho por Leblanc#5342. Idea original por Shun_kazami#7014.\n<BL><b>Versión 1.7</b>",
+	welcome = "<ROSE><b>¡Bienvenidos al módulo #arrows!</b>\n<N>¡El objetivo de este módulo es usar su teclado para seguir la secuencia de flechas que se mostrarán en su pantalla! ¡Tienes que ser rápido!\n\n<b>Versión 1.8</b>",
 	starting = "<J>¡El juego comenzará en 5 segundos!",
 	wrong = "<R>Oh no! Wrong key!",
 	accept = "<VP>¡Oh, no! ¡Tecla incorrecta!",
@@ -277,7 +272,7 @@ function eventLoop(pass,rem)
 		if remain <= 1 and modo == "fim" then
 			reset();
 		end
-		ui.setMapName("<ROSE>#arrows by Leblanc#5342   <G>|   <N>Round : <V>"..round.."   <G>|   <N>"..text.mices.." : <V>"..vivos.."/"..ratos.."   <G>|   <N>"..text.difficulty.." : <V>"..level.."   <G>|   <J>v1.7<")
+		ui.setMapName("<ROSE>#arrows   <G>|   <N>Round : <V>"..round.."   <G>|   <N>"..text.mices.." : <V>"..vivos.."/"..ratos.."   <G>|   <N>"..text.difficulty.." : <V>"..level.."   <G>|   <J>v1.8<")
 	end
 end
 function eventNewGame()
@@ -297,7 +292,6 @@ function eventPlayerLeft(name)
 	countVivos();
 end
 function eventNewPlayer(name)
-	showMessage(text.welcome.."\n<BL>® Arrows is a registered name of Jessie LinesPower TFM Utilities Group.\nEditing and adapting this code without authorization is prohibited.<",name)
 	newData={
 		["c"]=1;
 		["s"]=1;
