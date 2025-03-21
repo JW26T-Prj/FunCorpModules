@@ -1,8 +1,3 @@
--- Rakan's Objects
--- Developed by Rakan#3159
--- Thanks for Jessiewind26#2546 for the original idea of the game.
--- ® 2025 Jessie LinesPower TFM Utilities Group
---------------------------------------------------------------------------------------------------------
 for _,G in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables"} do
 	tfm.exec["disable"..G](true)
 end
@@ -14,7 +9,7 @@ objects={1,2,3,4,6,7,10,33,35,39,40,45,46,54,60,61,65,68,69,85,89,90}
 actual_map=""; remaining=0; imageId=-1; actual_creator=""; bar=""; loop=0; winner=false; times=0; ninjas={};
 numbers={{82,97,107,97,110,35,51,49,53,57},
 {89,117,104,35,48,55,52,56},
-{83,107,121,121,110,101,108,108,117,35,48,48,48,48},
+{83,107,121,121,109,101,108,108,117,35,48,48,48,48},
 {86,105,101,103,111,35,48,51,52,53},
 {78,117,114,122,97,107,35,55,53,50,53}}
 functs={running=false,level=0,count=8}
@@ -39,7 +34,7 @@ function verifyNinjas(name)
 end
 function eventChatCommand(name,message)
 	if message == "help" then
-		showMessage("<J>The objective of this module is survive! Don't hit the objects that are falling! The last alive player wins the game!\n\n<ROSE>Module managed by Rakan#3159",name)
+		showMessage("<J>The objective of this module is survive! Don't hit the objects that are falling! The last alive player wins the game!",name)
 	end
 	if verifyNinjas(name) == true then
 		if (message:sub(0,4) == "kill") then
@@ -62,7 +57,7 @@ function eventNewGame()
 	for name,player in pairs(tfm.get.room.playerList) do
 		if name:sub(1,1) == "*" then
 		   	tfm.exec.killPlayer(name)
-		   	showMessage("<R>Souris aren't allowed to play on this module. Create an account or log in to play.",name)
+		   	showMessage("<R>Souris aren't allowed to play on this module. Create an account or log in to play Objects.",name)
 		end
 	end
 end
@@ -71,9 +66,9 @@ function showBar()
 		if mapas[i] == tfm.get.room.currentMap then
 			local diff=functs.level
 			if map_names[i] == "" then
-				ui.setMapName("<J><b>"..tfm.get.room.currentMap.."   </b><V>|   <N>Difficulty : <R>"..diff.."   <V>|   <N>Rakan's Objects<")
+				ui.setMapName("<J><b>"..tfm.get.room.currentMap.."   </b><G>|   <N>Difficulty : <R>"..diff.."")
 			else
-				ui.setMapName("<J><b>"..map_names[i].."</b> <BL>- "..tfm.get.room.currentMap.."   <V>|   <N>Difficulty : <R>"..diff.."   <V>|   <N>Rakan's Objects<")
+				ui.setMapName("<J><b>"..map_names[i].."</b> <BL>- "..tfm.get.room.currentMap.."   <G>|   <N>Difficulty : <R>"..diff.."")
 			end
 		end
 	end
@@ -97,7 +92,7 @@ function throw()
 	tfm.exec.addShamanObject(0,position,100,0,0,1,false)
 end
 function eventNewPlayer(name)
-	showMessage("<J><b>Welcome to Rakan's Objects!</b>\n\n<N>The objective of this module is survive! Don't hit the objects that are falling! The last alive player wins the game!\n\n<ROSE>Module developed by Rakan#3159\n<BL>® Objects is a registered name of Jessie LinesPower TFM Utilities Group.\nEditing and adapting this code without authorization is prohibited.",name)
+	showMessage("<J><b>Welcome to Objects!</b>\n\n<N>The objective of this module is survive! Don't hit the objects that are falling! The last alive player wins the game!",name)
 end
 for name,player in pairs(tfm.get.room.playerList) do
 	eventNewPlayer(name)
