@@ -1,4 +1,4 @@
-# Welcome to the Jessie LinesPower TFM Utilities Group Modules folder.
+# Welcome to my Transformice public modules folder.
 
 This folder contain all the scripts made by the old Spectra Advanced Module Group tribe and the codes that players sent to the folder administrators.
 These codes are intended to be used with FunCorp members, but other players usually will not have problems using the codes.
