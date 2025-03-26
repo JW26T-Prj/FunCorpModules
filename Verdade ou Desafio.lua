@@ -5,6 +5,7 @@ admin="Shun_kazami#7014" -- insira seu nome aqui e digite !shaman para escolher 
 -- Na sequência, o jogo insira passo a passo como o jogo é feito.
 
 -- NÃO MUDE NADA A PARTIR DESTA LINHA!
+--------------------------------------------------------------------------------------------------------
 for _,f in next,{"AutoNewGame","AutoShaman","AutoScore","AutoTimeLeft","AllShamanSkills","DebugCommand","AfkDeath","PhysicalConsumables"} do
 	tfm.exec["disable"..f](true)
 end
@@ -61,7 +62,7 @@ function eventChatCommand(name,message)
 end
 function eventNewGame()
 	tfm.exec.snow(0,0)
-	tfm.exec.setUIMapName("<N>Verdade ou Desafio versão <VP>7.1")
+	tfm.exec.setUIMapName("<N>Verdade ou Desafio versão <VP>7.2")
 	tfm.exec.setShaman(shaman)
 	for name,player in pairs(tfm.get.room.playerList) do
 		if tfm.get.room.playerList[name].isShaman then
@@ -84,9 +85,9 @@ function eventPopupAnswer(id,name,answer)
 	if id == 2 then
 		if answer == "yes" then
 			tfm.exec.newGame(mapa)
-			shaman="Haxhhhhhhhhh"
+			shaman="."
 			player=""
-			eventChatCommand("shaman","Haxhhhhhhhhh")
+			eventChatCommand("shaman",".")
 		end
 	end
 end
