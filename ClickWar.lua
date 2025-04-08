@@ -5,7 +5,7 @@ for _,g in next,{"p","pw","help","powerups"} do
 system.disableChatCommandDisplay(g,true)
 end
 sudden=false; winner=""; data={}; players_table={}; increase=0; intensity=40; nightmode=false; night=0; mices=0; remain=10; last_win=""; times=1; imageId=-1; enabled=false;
-if tfm.get.room.isTribeHouse == false then tfm.exec.setRoomMaxPlayers(30) end
+if tfm.get.room.isTribeHouse == false then tfm.exec.setRoomMaxPlayers(35) end
 function showMessage(message,name)
 	temp_text=string.gsub(message,"<b>","")
 	temp_text=string.gsub(temp_text,"</b>","")
