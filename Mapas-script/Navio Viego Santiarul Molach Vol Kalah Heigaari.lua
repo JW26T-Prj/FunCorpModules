@@ -4,22 +4,22 @@ end
 debug.disableEventLog(true)
 barrier={type = 14,width = 10,height = 4000,miceCollision = true, friction = 0, groundCollision = true, foreground = false}
 wood={type = 14,width = 800,height = 20,miceCollision = true, friction = 0.5, groundCollision = true}
-dolphins={{6793,2174},{6183,2264},{7344,2066}}; dolphins_r={{7170,2121},{6536,2592},{7968,2098}};
+dolphins={{6793,2174},{6183,2264},{7344,2066}}; dolphins_r={{7170,2121},{6536,2592},{7568,2098}};
 dolphins1={{6284,2356},{6167,3000},{6911,2204}}; dolphins1_r={{6722,2381},{6835,2075},{7641,2089}};
 fish1={{-188,4304},{2015,4314},{2735,4074},{4079,4041},{3385,3441},{452,3344}}; fish1_r={{3399,4347},{4875,3457},{3349,4014},{1615,3754}};
 fish2={{681,4401},{1867,4022},{3301,4254},{4581,4383}}; fish2_r={{1322,3851},{2872,3971},{5049,3707}};
 fish3={{282,4197},{2309,4374},{4432,3384},{5312,3867}}; fish3_r={{3922,4444},{972,4041},{1692,4337}};
 fish4={{1315,4451},{4719,4427},{2965,4187}}; fish4_r={{392,4344},{2002,3504}};
 fish5={{1899,4224},{2645,4341},{3652,4131},{4875,4284}}; fish5_r={{5029,4087},{4399,3891},{2502,3634},{185,3827}};
-xml=''; changed=false; y_factor=1853; boat_factor=-78; depth_factor=980; mapa="@7967014"; lang={};
+xml=''; changed=false; y_factor=1898; boat_factor=-150; depth_factor=980; mapa="@7967014"; lang={};
 lang.br = {
 	loadingmap = "Carregando mapa. Por favor, aguarde...<",
-	welcome4 = "<VP><b>Bem-vindo(a) ao Navio Viego Santiarul Molach Vol Kalah Heigaari.</b>\n\n<p align='left'><N>Este é um mapa-script de navio pirata. Na verdade, é uma casa completa dentro de um navio pirata, e tem tudo o que uma casa 'normal' possui e mais um pouco... Divirtam-se!\n\n<J>Agradecimentos especiais para Lacoste#8972, Shun_kazami#7014, Yuh#0748, Tanatosl#0000 e Miss_fortune#9548.\n\n<N>Revisão 2.0",
+	welcome4 = "<VP><b>Bem-vindo(a) ao Navio Viego Santiarul Molach Vol Kalah Heigaari.</b>\n\n<p align='left'><N>Este é um mapa-script de navio pirata. Na verdade, é uma casa completa dentro de um navio pirata, e tem tudo o que uma casa 'normal' possui e mais um pouco... Divirtam-se!\n\n<J>Agradecimentos especiais para Lacoste#8972, Shun_kazami#7014, Yuh#0748, Tanatosl#0000 e Miss_fortune#9548.\n\n<N>Revisão 2.1",
 	title = "<VP>Navio Viego Santiarul Molach Vol Kalah Heigaari<"
 }
 lang.en = {
 	loadingmap = "Loading map. Please wait...<",
-	welcome4 = "<VP><b>Welcome to the Viego Santiarul Molach Vol Kalah Heigaari's Ship!</b>\n\n<p align='left'><N>This is a pirate ship script map. It's actually a complete house inside a pirate ship, and has everything a 'normal' house has and more... Enjoy!\n\n<J>Special thanks to Lacoste#8972, Shun_kazami#7014, Yuh#0748, Tanatosl#0000 and Miss_fortune#9548.\n\n<N>Revision 2.0",
+	welcome4 = "<VP><b>Welcome to the Viego Santiarul Molach Vol Kalah Heigaari's Ship!</b>\n\n<p align='left'><N>This is a pirate ship script map. It's actually a complete house inside a pirate ship, and has everything a 'normal' house has and more... Enjoy!\n\n<J>Special thanks to Lacoste#8972, Shun_kazami#7014, Yuh#0748, Tanatosl#0000 and Miss_fortune#9548.\n\n<N>Revision 2.1",
 	title = "<VP>Viego Santiarul Molach Vol Kalah Heigaari's Ship<"
 }
 if tfm.get.room.community == "br" or tfm.get.room.community == "pt" then
@@ -37,7 +37,7 @@ function showMessage(message,name)
 	end
 end
 function showNPCs(name)
-	tfm.exec.addNPC("Mayra Flowers",{title = 1, look = "112;0,4,0,74_212121+d2d2d2,39,39,44,0,1",x = 1336,y = 1123,female = true,lookLeft = true,lookAtPlayer = true,interactive = true},name)
+	tfm.exec.addNPC("Mayra Flowers",{title = 1, look = "112;0,4,0,74_212121+d2d2d2,39,39,44,0,1",x = 1336,y = 1131+boat_factor,female = true,lookLeft = true,lookAtPlayer = true,interactive = true},name)
 end
 function eventTalkToNPC(name, npc)
 	if npc == "Mayra Flowers" then
@@ -54,26 +54,26 @@ function showWater(name)
 	tfm.exec.addImage("1877321eda8.png","!1",6609,811+boat_factor,name,-1,1)
 	tfm.exec.addImage("18773209c5b.png","!1",8656,691+boat_factor,name)
 
-	tfm.exec.addImage("189746d10d2.png","!1",2040,4450+boat_factor,name)
-	tfm.exec.addImage("189746d76aa.png","!1",4181,4381+boat_factor,name)
-	tfm.exec.addImage("189746e4cb8.png","!1",2123,4299+boat_factor,name)
-	tfm.exec.addImage("189746e4cb8.png","!1",4067,4291+boat_factor,name)
-	tfm.exec.addImage("192e019a18c.png","?0",-481,4043+boat_factor,name)
-	tfm.exec.addImage("192e019a18c.png","?0",7305,1637+boat_factor,name)
+	tfm.exec.addImage("189746d10d2.png","!1",2040,4450,name)
+	tfm.exec.addImage("189746d76aa.png","!1",4181,4381,name)
+	tfm.exec.addImage("189746e4cb8.png","!1",2123,4299,name)
+	tfm.exec.addImage("189746e4cb8.png","!1",4067,4291,name)
+	tfm.exec.addImage("192e019a18c.png","?0",-481,4043,name)
+	tfm.exec.addImage("192e019a18c.png","!0",7723,1697,name)
 
-	tfm.exec.addImage("189746ed93c.png","?1",-16,3344+boat_factor,name,0.5,0.5)
-	tfm.exec.addImage("1860ee201fd.png","?-1",7777,1849+boat_factor,name)
-	tfm.exec.addImage("1897471d01c.png","?10",-303,3886+boat_factor,name)
-	tfm.exec.addImage("1860ee29c2f.png","?1",3413,4144+boat_factor,name)
-	tfm.exec.addImage("1860ee29c2f.png","?1",2581,4092+boat_factor,name)
-	tfm.exec.addImage("1860ee29c2f.png","?1",1182,3994+boat_factor,name)
-	tfm.exec.addImage("1883efa1974.png","?1",4020,3469+boat_factor,name,-1,1)
-	tfm.exec.addImage("18756e388d1.png","?1",1944,3637+boat_factor,name)
-	tfm.exec.addImage("1883efb5982.png","?1",5319,3275+boat_factor,name,-1,1)
-	tfm.exec.addImage("185c2e9722e.png","?1",1446,4118+boat_factor,name,-1,1)
-	tfm.exec.addImage("18756e28db6.png","?1",2493,3321+boat_factor,name)
-	tfm.exec.addImage("18756e2e178.png","?1",5622,2841+boat_factor,name,-1,1)
-	tfm.exec.addImage("18756e333d5.png","?1",615,4187+boat_factor,name)
+	tfm.exec.addImage("189746ed93c.png","?1",-16,3344,name,0.5,0.5)
+	tfm.exec.addImage("1860ee201fd.png","?-1",9346,1233,name)
+	tfm.exec.addImage("1897471d01c.png","?10",-303,3886,name)
+	tfm.exec.addImage("1860ee29c2f.png","?1",3413,4144,name)
+	tfm.exec.addImage("1860ee29c2f.png","?1",2581,4092,name)
+	tfm.exec.addImage("1860ee29c2f.png","?1",1182,3994,name)
+	tfm.exec.addImage("1883efa1974.png","?1",4020,3469,name,-1,1)
+	tfm.exec.addImage("18756e388d1.png","?1",1944,3637,name)
+	tfm.exec.addImage("1883efb5982.png","?1",5319,3275,name,-1,1)
+	tfm.exec.addImage("185c2e9722e.png","?1",1446,4118,name,-1,1)
+	tfm.exec.addImage("18756e28db6.png","?1",2493,3321,name)
+	tfm.exec.addImage("18756e2e178.png","?1",5622,2841,name,-1,1)
+	tfm.exec.addImage("18756e333d5.png","?1",615,4187,name)
 	for a=1,rawlen(fish1) do
 		tfm.exec.addImage("192e0192c52.png","?0",fish1[a][1],fish1[a][2]+boat_factor,name,-0.5,0.5)
 	end
@@ -121,25 +121,25 @@ function showWater(name)
 	for j=1,12 do
 		tfm.exec.addPhysicObject(j+333,-400+(j*800),3515+depth_factor,wood)
 	end
-	ui.addTextArea(8972, "<a href='event:pw'>                                 ",name,4142,1077+boat_factor,58,30,0,0,1.0,false)
-	ui.addTextArea(1027, "<a href='event:exit'>                                      ",name,4220,1140+boat_factor,50,30,0,0,1.0,false)
-	for a=0,19 do
-		tfm.exec.addImage("181ba85ccc2.png","?2",math.random(-400,9000),math.random(-200,1500),name,1,1,0,(math.random(60,100)/100));
-		tfm.exec.addImage("181ba86195e.png","?2",math.random(-400,9000),math.random(-200,1500),name,1,1,0,(math.random(60,100)/100));
-		tfm.exec.addImage("181ba86655c.png","?2",math.random(-400,9000),math.random(-200,1500),name,1,1,0,(math.random(60,100)/100));
-		tfm.exec.addImage("181ba86b15a.png","?2",math.random(-400,9000),math.random(-200,1500),name,1,1,0,(math.random(60,100)/100));
+	ui.addTextArea(8972, "<a href='event:pw'>                                 ",name,4142,1100+boat_factor,58,30,0,0,1.0,false)
+	ui.addTextArea(1027, "<a href='event:exit'>                                      ",name,4220,1163+boat_factor,50,30,0,0,1.0,false)
+	for a=0,24 do
+		tfm.exec.addImage("181ba85ccc2.png","?2",math.random(-400,9000),math.random(-200,1600),name,1,1,0,(math.random(50,100)/100));
+		tfm.exec.addImage("181ba86195e.png","?2",math.random(-400,9000),math.random(-200,1600),name,1,1,0,(math.random(50,100)/100));
+		tfm.exec.addImage("181ba86655c.png","?2",math.random(-400,9000),math.random(-200,1600),name,1,1,0,(math.random(50,100)/100));
+		tfm.exec.addImage("181ba86b15a.png","?2",math.random(-400,9000),math.random(-200,1600),name,1,1,0,(math.random(50,100)/100));
 	end
 	for a=0,7 do
-		tfm.exec.addImage("181ba85ccc2.png","!2",math.random(-400,5000),math.random(-250,480),name,0.5,0.5);
-		tfm.exec.addImage("181ba86195e.png","!2",math.random(-400,5000),math.random(-250,480),name,0.5,0.5);
-		tfm.exec.addImage("181ba86655c.png","!2",math.random(-400,5000),math.random(-250,480),name,0.5,0.5);
-		tfm.exec.addImage("181ba86b15a.png","!2",math.random(-400,5000),math.random(-250,480),name,0.5,0.5);
+		tfm.exec.addImage("181ba85ccc2.png","!2",math.random(-400,5000),math.random(-250,400),name,0.5,0.5);
+		tfm.exec.addImage("181ba86195e.png","!2",math.random(-400,5000),math.random(-250,400),name,0.5,0.5);
+		tfm.exec.addImage("181ba86655c.png","!2",math.random(-400,5000),math.random(-250,400),name,0.5,0.5);
+		tfm.exec.addImage("181ba86b15a.png","!2",math.random(-400,5000),math.random(-250,400),name,0.5,0.5);
 	end
 	for a=0,8 do
-		tfm.exec.addImage("181ba85ccc2.png","!2",math.random(5500,9500),math.random(120,850),name,0.5,0.5);
-		tfm.exec.addImage("181ba86195e.png","!2",math.random(5500,9500),math.random(120,850),name,0.5,0.5);
-		tfm.exec.addImage("181ba86655c.png","!2",math.random(5500,9500),math.random(120,850),name,0.5,0.5);
-		tfm.exec.addImage("181ba86b15a.png","!2",math.random(5500,9500),math.random(120,850),name,0.5,0.5);
+		tfm.exec.addImage("181ba85ccc2.png","!2",math.random(5000,9500),math.random(120,850),name,0.5,0.5);
+		tfm.exec.addImage("181ba86195e.png","!2",math.random(5000,9500),math.random(120,850),name,0.5,0.5);
+		tfm.exec.addImage("181ba86655c.png","!2",math.random(5000,9500),math.random(120,850),name,0.5,0.5);
+		tfm.exec.addImage("181ba86b15a.png","!2",math.random(5000,9500),math.random(120,850),name,0.5,0.5);
 	end
 	for i=0,11 do
 		tfm.exec.addImage("192e019c182.png", "?1", -1200+(i*1017), y_factor+2590, name, 1, 1, 0, 1)
@@ -180,6 +180,12 @@ function showWater(name)
 	end
 	for _,h in next,{1,3,5} do 
 		tfm.exec.addImage("192e018d27c.png","?1",1378+(h*2578),y_factor-350,name,-1,1)
+	end
+	for _,n in next,{0,2,4} do
+		tfm.exec.addImage("18773217882.png","?1",-800+(n*1900),y_factor-684,name,1,1,0,0.4)
+	end
+	for _,n in next,{1,3,5} do
+		tfm.exec.addImage("18773217882.png","?1",1100+(n*1900),y_factor-684,name,-1,1,0,0.4)
 	end
 	for o=1,8 do
 		tfm.exec.addImage("183b4bf34ba.png","+"..o.."",-50,-33,name)
@@ -233,12 +239,12 @@ function eventTextAreaCallback(id,name,callback)
 		ui.addPopup(11,2,"",name,350,175,200,true)
 	end
 	if callback == "exit" then
-		tfm.exec.movePlayer(name,4084,1120,false,0,0,false)
+		tfm.exec.movePlayer(name,4084,985,false,0,0,false)
 	end
 end
 function eventPopupAnswer(id,name,answer)
 	if answer == password then
-		tfm.exec.movePlayer(name,4200,1120,false,0,0,false)
+		tfm.exec.movePlayer(name,4200,985,false,0,0,false)
 	end
 end
 function eventLoop(p,r)
