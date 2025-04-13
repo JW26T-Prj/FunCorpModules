@@ -7,7 +7,7 @@ if tfm.get.room.isTribeHouse == false then tfm.exec.setRoomMaxPlayers(35) end
 barrier={type = 14,width = 10,height = 4000,miceCollision = true, friction = 0, groundCollision = true, foreground = false}
 ground={type = 14,width = 3000,height = 10,miceCollision = true, friction = 1, groundCollision = true, foreground = false}
 wood={type = 14,width = 800,height = 20,miceCollision = true, friction = 0.5, groundCollision = true}
-shaman=""; alives=0; cannons=12; data={}; lang={}; ninjas={}; mode="load"; changed=false; loop=0; display=""; timer=0; xml=''; time_passed=0; time_remain=1024; mapa="@7962594";
+shaman=""; alives=0; cannons=12; data={}; lang={}; ninjas={}; mode="load"; changed=false; loop=0; display=""; timer=0; xml=''; time_passed=0; time_remain=1024; mapa="@7967041";
 active_imgs={}; active_imgs2={}; powerups_x={}; powerups_y={}; powerups_types={}; oxygen_x={}; oxygen_y={}; id=0; round=0; y_factor=600; depth_factor=1550;
 dolphins={{1549,1821},{3404,1546},{5338,771},{5507,1958},{2915,1138},{1362,1228}}; dolphins_r={{2839,1928},{3945,1551},{5834,741},{6242,1488},{3792,832},{2057,878}}
 dolphins2={{3952,821},{3154,1430}}; dolphins2_r={{4859,1854},{1296,1504}} 
@@ -16,7 +16,7 @@ f1_r={{4292,1941},{6197,1566},{1769,1131}}; f2_r={{5787,1848},{3869,963}}; f3_r=
 
 lang.br = {
 	welcome = "<font color='#0080ff'><b>Bem-vindos ao module WaterCatch!</b>\n<VP>Fuja do shaman tubarão e sobreviva no escuro e perigoso rio!\n<J>Digite !help para ver a ajuda deste module.",
-	changelog = "• Muita limpeza de código",
+	changelog = "• Mudanças na exibição dos ratos restantes\n• A partir de agora, não é mais possível subir nas árvores, com exceção daquelas que dão acesso às tirolesas\n• A visibilidade dentro da água foi aumentada",
 	help = "<p align='center'><b>Bem-vindo ao module WaterCatch.</b><p align='left'>\n\nSe você for um rato, você deverá fugir do shaman (ou o tubarão), tomando cuidado para que ele não chegue muito perto de você. Se quiser ficar dentro do rio, tome cuidado: se ficar debaixo d'água por muito tempo, você pode morrer afogado!\n\nSe você for o shaman (no caso, o tubarão), seu objetivo será caçar todos os ratos, tentando não deixar nenhum sequer vivo!\n<R>Ah, e não esqueça de se mexer, ou irá morrer por inatividade!</b>\n\n<VP>Os círculos com <N>'?'<VP> são powerups, que geram efeitos aleatórios nos ratos.\nOs círculos com <N>'O2'<VP> são reposições de oxigênio.\nEstes powerups podem ser acionados pressionando ESPAÇO em cima deles.\n<N>Você pode ver os possíveis efeitos dos powerups indo no Menu e em Powerups.",
 	powerups = "<font size='11'>Os seguintes powerups estão disponíveis no momento:\n<ROSE><b>• VAMPIRO</b><N>\nTransforma seu rato em um vampiro, forçando você a ir para fora do rio.\n<ROSE><b>• AFUNDAR</b><N>\nCria uma curta anomalia que puxa todos os ratos para o fundo do rio.\n<ROSE><b>• MEEP</b><N>\nTe dá o poder de usar o Meep!\n<ROSE><b>• SUFOCO</b><N>\nDiminui o seu nível de oxigênio. Caso seu nível de oxigênio esteja muito baixo e você pegue este powerup, você morrerá afogado.\n<ROSE><b>• CONGELAR</b><N>\nCongela o seu rato.\n<ROSE><b>• QUEIJO</b><N>\nDá queijo para o seu rato.\n<ROSE><b>• IMPULSO</b><N>\nTe dá um impulso para frente. Pode ajudar a fugir do shaman...\n<ROSE><b>• SUBIDA</b><N>\nGera uma força que te empurra para fora do rio.\n<ROSE><b>• CRESCER</b><N>\nAumenta temporariamente o tamanho do seu rato.",
 	shark = "Tubarão",
@@ -48,11 +48,12 @@ lang.br = {
 	timeup = "Tempo esgotado!", survived = "ratos sobreviveram! Iniciando nova partida...",
 	using = "Você está agora usando a skin", disabled = "<N>Você desativou as skins de tubarão.",
 	oxylevel = "Oxigênio",
-	remain60 = "<ROSE>Restam 60 segundos!", remain30 = "<ROSE>Restam 30 segundos!", 
+	remain60 = "<ROSE>Restam 60 segundos!", remain30 = "<ROSE>Restam 30 segundos!",
+	remainmices = "Ratos restantes: "
 }
 lang.en = {
 	welcome = "<font color='#0080ff'><b>Welcome to the WaterCatch module!</b>\n<VP>Run away from the shark shaman and survive in the dark and dangerous river!\n<J>Type !help to see the game help.",
-	changelog = "• Lots of code cleaning",
+	changelog = "• Changes on remaining mice count\n• From now on, it is no longer possible to climb trees, with the exception of those that give access to ziplines.\n• Visibility underwater has been increased",
 	help = "<p align='center'><b>Welcome to module WaterCatch.</b><p align='left'>\n\nIf you are a mice, you must run away from the shaman (the shark), being careful not to let him get too close to you. If you want to stay in the river, be careful: if you stay underwater for too long, you might drown!\n\nIf you are the shaman (in this case, the shark), your goal will be to hunt all the mices, trying not to leave a single one alive!\n<R>Oh, and don't forget to move, or you will die by inactivity!</b>\n\n<VP>The circles with '?' are powerups, which generate random effects on the players.\nThe circles with 'O2' are oxygen repositions.\nThese powerups can be activated by pressing SPACE on them.\n<N>You can see the possible effects of the powerups by going to the Menu and then Powerups.",
 	powerups = "<font size='11'>The following powerups are available at moment:\n<ROSE><b>• VAMPIRE</b><N>\nTurns your mouse into a vampire, forcing you out of the river.\n<ROSE><b>• SUBMERGE</b><N>\nCreate an anomaly that pushes all the mices to the bottom of the river.\n<ROSE><b>• MEEP</b><N>\nGives the MEEP ability!\n<ROSE><b>• SUFFOCATE</b><N>\nReduces your oxygen level. If your oxygen level is very low and you enable this powerup, you will drown in the river.\n<ROSE><b>• FREEZE</b><N>\nFreeze your mice.\n<ROSE><b>• CHEESE</b><N>\nGive cheese to your mice.\n<ROSE><b>• BOOST</b><N>\nGives you a boost forward. It can help you escape the shaman...\n<ROSE><b>• GO UP</b><N>\nIt generates a force that pushes you out of the river.\n<ROSE><b>• GROW</b><N>\nIncreases temporarily the size of your mice.",
 	shark = "Shark",
@@ -85,6 +86,7 @@ lang.en = {
 	using = "You are now using the following skin:", disabled = "<N>You disabled the shark skins.",
 	oxylevel = "Oxygen Level",
 	remain60 = "<ROSE>60 seconds remaining!", remain30 = "<ROSE>30 seconds remaining!", 
+	remainmices = "Remaining mice: "
 }
 
 if tfm.get.room.community == "br" or tfm.get.room.community == "pt" then
@@ -283,7 +285,7 @@ function showWater(name)
 	tfm.exec.addImage("185c2e9722e.png","?-1",1562,1933,name,-1,1)
 	tfm.exec.addImage("1883efb5982.png","+1",-300,125,name)
 	
-	tfm.exec.addPhysicObject(-1,-100,1000,barrier)
+	tfm.exec.addPhysicObject(-1,-50,1000,barrier)
 	tfm.exec.addPhysicObject(-2,7050,1000,barrier)
 	tfm.exec.addPhysicObject(-3,1000,y_factor+depth_factor-25,ground)
 	tfm.exec.addPhysicObject(-4,4000,y_factor+depth_factor-25,ground)
@@ -301,7 +303,8 @@ function showWater(name)
 		tfm.exec.addImage("189746fe3a4.png", "?-1", -1200+(i*2000), y_factor+depth_factor+470, name, 1, -2, 0, 1)
 	end
 
-	tfm.exec.addImage("192e017de38.png", "!-1", -1200, y_factor+23, name,30,5,0,1)
+	tfm.exec.addImage("192e017de38.png", "!-1", -1200, y_factor+23, name,30,5,0,0.925)
+	tfm.exec.addImage("192e017de38.png", "!-1", -1200, y_factor+3623, name,30,-5,0,0.925)
 	for _,i in next,{0,2,4} do
 		tfm.exec.addImage("192e0181ef2.png", "?1", -1200+(i*2400), y_factor+30, name) 
 		tfm.exec.addImage("192e0184530.png", "?1", -600+(i*2400), y_factor+30, name) 
@@ -415,7 +418,7 @@ function eventChatCommand(name,message)
 		showAvailableSharks(name)
 	end
 	if message == "changelog" then
-		showMenu(name,0x109626,140,115,520,135,"Watercatch Changelog - Version 7.1.0",text.changelog)
+		showMenu(name,0x109626,140,115,520,135,"Watercatch Changelog - Version 7.2.0",text.changelog)
 	end
 	if (message:sub(0,2)== "tc") then
 		if tfm.get.room.playerList[name].isShaman == false then
@@ -586,8 +589,6 @@ end
 function showOverlay(name)
 	ui.addTextArea(-3,"<font size='20'><font color='#222222'><p align='center'><font face='Catrinity,Segoe UI Emoji,Segoe UI Symbol'>☍<font size='14'><font face='Alte Haas Grotesk,Calibri,Segoe UI'> "..text.oxylevel.."</b>",name,4,343,700,30,0,0,1.0,true)
 	ui.addTextArea(-4,"<font size='20'><font color='#f1f1f1'><p align='center'><font face='Catrinity,Segoe UI Emoji,Segoe UI Symbol'>☍<font size='14'><font face='Alte Haas Grotesk,Calibri,Segoe UI'> "..text.oxylevel.."</b>",name,2,341,700,30,0,0,1.0,true)
-	ui.addTextArea(-7,"<font size='44'><font color='#222222'><font face='Catrinity,Segoe UI Emoji,Segoe UI Symbol'>♟</b>",name,5,27,95,134,0,0,1.0,true)
-	ui.addTextArea(-8,"<font size='44'><font color='#f1f1f1'><font face='Catrinity,Segoe UI Emoji,Segoe UI Symbol'>♟",name,2,24,95,134,0,0,1.0,true)
 	ui.addTextArea(-9,"<font color='#222222'><font size='12'><font face='Ubuntu Mono,Cascadia Mono,Consolas'>0 | | | | | | | | | | 25 | | | | | | | | | | | 50 | | | | | | | | | | 75 | | | | | | | | | | 100</b>",name,14,364,750,30,0,0,1.0,true)
 	ui.addTextArea(-10,"<font size='12'><font face='Ubuntu Mono,Cascadia Mono,Consolas'><font color='#e00000'>0 | | | | | | | | | <J>| 25 | | | | | |<font color='#f1f1f1'> | | | | | 50 | | | | | | | | | | 75 | | | | | | | | | | 100</b>",name,12,361,750,30,0,0,1.0,true)
 end
@@ -607,7 +608,7 @@ function eventNewGame()
 			tfm.exec.changePlayerSize(n,1)
 			removeMenu(n)
 			ui.addTextArea(299,"<p align='center'><a href='event:hide_menu'><font size='18'>Menu",n,725,372,70,24,0x000001,0x000001,0.75,true)
-			ui.setMapName("<font color='#0080ff'><b>Watercatch!</b><N> <VP>v7.1.0")
+			ui.setMapName("<N>"..text.remainmices.."<VP>"..alives.."")
 			if n:sub(1,1) == "*" then
 				tfm.exec.killPlayer(n)
 				showMessage(text.nosouris,name)
@@ -718,7 +719,7 @@ function eventLoop(p,r)
 	time_passed=math.ceil(p/500)
 	time_remain=math.ceil(r/500)
 	if changed == true then
-		ui.setMapName("<font color='#0080ff'><b>Watercatch!</b><N> <VP>v7.1.0")
+		ui.setMapName("<N>"..text.remainmices.."<VP>"..alives.."")
 		if mode == "game" then
 			if loop >= 30 then
 				if time_passed >= 120 then
@@ -737,8 +738,6 @@ function eventLoop(p,r)
 			end
 		end
 		if mode == "game" or mode == "hide" then
-			ui.addTextArea(31,"<font size='30'><font color='#222222'><font face='Alte Haas Grotesk,Calibri,Segoe UI'><b>"..alives.."</b>",n,46,30,80,54,0,0,1.0,true)
-			ui.addTextArea(30,"<font size='30'><font color='#d0d0d0'><font face='Alte Haas Grotesk,Calibri,Segoe UI'><b>"..alives.."</b>",n,44,28,80,54,0,0,1.0,true)
 			if timer > 0 then
 				timer=timer-0.5
 				tfm.exec.setWorldGravity(0,22)
@@ -877,7 +876,6 @@ function eventNewPlayer(name)
 	data[name] = newData;
 	showWater(name)
 	ui.addTextArea(299,"<p align='center'><a href='event:hide_menu'><font size='18'>Menu",name,725,372,70,24,0x000001,0x000001,0.75,true)
-	ui.setMapName("<font color='#0080ff'><b>Watercatch!</b><N> <VP>v7.1.0")
 	tfm.exec.setPlayerScore(name,0,false)
 	if tfm.get.room.isTribeHouse == true then
 		ui.addTextArea(3000,"<p align='right'><font size='11'>",name,470,30,320,70,0x101010,0x59251a,0.35,true)
