@@ -1,7 +1,6 @@
-for _,f in next,{"AutoNewGame","AfkDeath","AutoShaman","MinimalistMode","PhysicalConsumables"} do
+for _,f in next,{"AutoNewGame","AfkDeath","AutoShaman","MinimalistMode","PhysicalConsumables","MortCommand","DebugCommand"} do
 	tfm.exec["disable"..f](true)
 end
-system.disableChatCommandDisplay("mode")
 debug.disableEventLog(true)
 xml=''; changed=false; night=0; loop=0; data={}; lang={};
 dolphins={{254,1421},{1027,1555}}; dolphins_r={{1690,1381},{2714,1415}};
@@ -119,21 +118,17 @@ function showWater(name)
 		tfm.exec.addImage("189746fe3a4.png", "?-1", -1200+(i*2000), 2295, name, 1, 1, 0, 1)
 		tfm.exec.addImage("189746fe3a4.png", "?-1", -1200+(i*2000), 3020, name, 1, -3, 0, 1)
 	end
-	for i=1,6 do
-		tfm.exec.addImage("181ba85ccc2.png","?1",math.random(-50,2300),math.random(-50,630),name)
-		tfm.exec.addImage("181ba85ccc2.png","?1",math.random(5300,7500),math.random(-50,630),name)
+	for i=1,15 do
+		tfm.exec.addImage("181ba85ccc2.png","?1",math.random(-50,7500),math.random(-50,630),name)
 	end
-	for i=1,6 do
-		tfm.exec.addImage("181ba86195e.png","?1",math.random(-50,2300),math.random(-50,630),name)
-		tfm.exec.addImage("181ba86195e.png","?1",math.random(5300,7500),math.random(-50,630),name)
+	for i=1,15 do
+		tfm.exec.addImage("181ba86195e.png","?1",math.random(-50,7500),math.random(-50,630),name)
 	end
-	for i=1,6 do
-		tfm.exec.addImage("181ba86655c.png","?1",math.random(-50,2300),math.random(-50,630),name)
-		tfm.exec.addImage("181ba86655c.png","?1",math.random(5300,7500),math.random(-50,630),name)
+	for i=1,15 do
+		tfm.exec.addImage("181ba86655c.png","?1",math.random(-50,7500),math.random(-50,630),name)
 	end
-	for i=1,6 do
-		tfm.exec.addImage("181ba86b15a.png","?1",math.random(-50,2300),math.random(-50,630),name)
-		tfm.exec.addImage("181ba86b15a.png","?1",math.random(5300,7500),math.random(-50,630),name)
+	for i=1,15 do
+		tfm.exec.addImage("181ba86b15a.png","?1",math.random(-50,7500),math.random(-50,630),name)
 	end
 	tfm.exec.addImage("192e019a18c.png","?1",1848,1860,name)
 	for _,h in next,{0,2,4} do table.insert(data[name].backId3,tfm.exec.addImage("18773217882.png","?1",-1200+(h*1900),888,name,1,1,0,0.6)); end
@@ -209,9 +204,7 @@ function changeMapMode()
 	end
 end
 function eventPlayerDied(name)
-	tfm.exec.setPlayerGravityScale(name,0.9)
 	if changed == true then
-		tfm.exec.changePlayerSize(name,1)
 		tfm.exec.setPlayerCollision(name,1)
 		tfm.exec.respawnPlayer(name)
 	end
