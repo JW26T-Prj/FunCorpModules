@@ -15,7 +15,7 @@ f1={{1594,1971},{3099,1651},{4284,1401}}; f2={{1869,1971},{3119,1956},{5027,1901
 f1_r={{4292,1941},{6197,1566},{1769,1131}}; f2_r={{5787,1848},{3869,963}}; f3_r={{5269,2023},{6377,1053}}; f4_r={{3444,986},{5617,792}}; f5_r={{1429,1783},{3289,1771},{2429,778}};
 
 lang.br = {
-	welcome = "<font color='#0080ff'><b>Bem-vindos ao module WaterCatch!</b>\n<VP>Fuja do shaman tubarão e sobreviva no escuro e perigoso rio!\n<J>Digite !help para ver a ajuda deste module.",
+	welcome = "<font color='#0080ff'><b>Bem-vindos ao module WaterCatch!</b>\n<VP>Fuja do shaman tubarão e sobreviva no perigoso rio!\n<J>Digite !help para ver a ajuda deste module.",
 	changelog = "• Mudanças na exibição dos ratos restantes\n• A partir de agora, não é mais possível subir nas árvores, com exceção daquelas que dão acesso às tirolesas\n• A visibilidade dentro da água foi aumentada",
 	help = "<p align='center'><b>Bem-vindo ao module WaterCatch.</b><p align='left'>\n\nSe você for um rato, você deverá fugir do shaman (ou o tubarão), tomando cuidado para que ele não chegue muito perto de você. Se quiser ficar dentro do rio, tome cuidado: se ficar debaixo d'água por muito tempo, você pode morrer afogado!\n\nSe você for o shaman (no caso, o tubarão), seu objetivo será caçar todos os ratos, tentando não deixar nenhum sequer vivo!\n<R>Ah, e não esqueça de se mexer, ou irá morrer por inatividade!</b>\n\n<VP>Os círculos com <N>'?'<VP> são powerups, que geram efeitos aleatórios nos ratos.\nOs círculos com <N>'O2'<VP> são reposições de oxigênio.\nEstes powerups podem ser acionados pressionando ESPAÇO em cima deles.\n<N>Você pode ver os possíveis efeitos dos powerups indo no Menu e em Powerups.",
 	powerups = "<font size='11'>Os seguintes powerups estão disponíveis no momento:\n<ROSE><b>• VAMPIRO</b><N>\nTransforma seu rato em um vampiro, forçando você a ir para fora do rio.\n<ROSE><b>• AFUNDAR</b><N>\nCria uma curta anomalia que puxa todos os ratos para o fundo do rio.\n<ROSE><b>• MEEP</b><N>\nTe dá o poder de usar o Meep!\n<ROSE><b>• SUFOCO</b><N>\nDiminui o seu nível de oxigênio. Caso seu nível de oxigênio esteja muito baixo e você pegue este powerup, você morrerá afogado.\n<ROSE><b>• CONGELAR</b><N>\nCongela o seu rato.\n<ROSE><b>• QUEIJO</b><N>\nDá queijo para o seu rato.\n<ROSE><b>• IMPULSO</b><N>\nTe dá um impulso para frente. Pode ajudar a fugir do shaman...\n<ROSE><b>• SUBIDA</b><N>\nGera uma força que te empurra para fora do rio.\n<ROSE><b>• CRESCER</b><N>\nAumenta temporariamente o tamanho do seu rato.",
@@ -52,8 +52,8 @@ lang.br = {
 	remainmices = "Ratos restantes: "
 }
 lang.en = {
-	welcome = "<font color='#0080ff'><b>Welcome to the WaterCatch module!</b>\n<VP>Run away from the shark shaman and survive in the dark and dangerous river!\n<J>Type !help to see the game help.",
-	changelog = "• Changes on remaining mice count\n• From now on, it is no longer possible to climb trees, with the exception of those that give access to ziplines.\n• Visibility underwater has been increased",
+	welcome = "<font color='#0080ff'><b>Welcome to the WaterCatch module!</b>\n<VP>Run away from the shark shaman and survive in the dangerous river!\n<J>Type !help to see the game help.",
+	changelog = "• Changes on remaining mice count\n• From now on, it is no longer possible to climb trees, with the exception of those that give access to ziplines.\n• The water was changed and the visibility underwater has been increased",
 	help = "<p align='center'><b>Welcome to module WaterCatch.</b><p align='left'>\n\nIf you are a mice, you must run away from the shaman (the shark), being careful not to let him get too close to you. If you want to stay in the river, be careful: if you stay underwater for too long, you might drown!\n\nIf you are the shaman (in this case, the shark), your goal will be to hunt all the mices, trying not to leave a single one alive!\n<R>Oh, and don't forget to move, or you will die by inactivity!</b>\n\n<VP>The circles with '?' are powerups, which generate random effects on the players.\nThe circles with 'O2' are oxygen repositions.\nThese powerups can be activated by pressing SPACE on them.\n<N>You can see the possible effects of the powerups by going to the Menu and then Powerups.",
 	powerups = "<font size='11'>The following powerups are available at moment:\n<ROSE><b>• VAMPIRE</b><N>\nTurns your mouse into a vampire, forcing you out of the river.\n<ROSE><b>• SUBMERGE</b><N>\nCreate an anomaly that pushes all the mices to the bottom of the river.\n<ROSE><b>• MEEP</b><N>\nGives the MEEP ability!\n<ROSE><b>• SUFFOCATE</b><N>\nReduces your oxygen level. If your oxygen level is very low and you enable this powerup, you will drown in the river.\n<ROSE><b>• FREEZE</b><N>\nFreeze your mice.\n<ROSE><b>• CHEESE</b><N>\nGive cheese to your mice.\n<ROSE><b>• BOOST</b><N>\nGives you a boost forward. It can help you escape the shaman...\n<ROSE><b>• GO UP</b><N>\nIt generates a force that pushes you out of the river.\n<ROSE><b>• GROW</b><N>\nIncreases temporarily the size of your mice.",
 	shark = "Shark",
@@ -303,30 +303,31 @@ function showWater(name)
 		tfm.exec.addImage("189746fe3a4.png", "?-1", -1200+(i*2000), y_factor+depth_factor+470, name, 1, -2, 0, 1)
 	end
 
-	tfm.exec.addImage("192e017de38.png", "!-1", -1200, y_factor+23, name,30,5,0,0.925)
-	tfm.exec.addImage("192e017de38.png", "!-1", -1200, y_factor+3623, name,30,-5,0,0.925)
+	tfm.exec.addImage("192e017de38.png", "?1", -1200, 690, name,40,10,0,0.4)
 	for _,i in next,{0,2,4} do
-		tfm.exec.addImage("192e0181ef2.png", "?1", -1200+(i*2400), y_factor+30, name) 
-		tfm.exec.addImage("192e0184530.png", "?1", -600+(i*2400), y_factor+30, name) 
-		tfm.exec.addImage("192e0186807.png", "?1", i*2400, y_factor+30, name) 
-		tfm.exec.addImage("192e018872a.png", "?1", 600+(i*2400), y_factor+30, name)
+		tfm.exec.addImage("192e0181ef2.png", "?1", -1200+(i*2400), 690, name) 
+		tfm.exec.addImage("192e0184530.png", "?1", -600+(i*2400), 690, name) 
+		tfm.exec.addImage("192e0186807.png", "?1", i*2400, 690, name) 
+		tfm.exec.addImage("192e018872a.png", "?1", 600+(i*2400), 690, name)
 	end
 	for _,i in next,{1,3,5} do
-		tfm.exec.addImage("192e018872a.png", "?1", -600+(i*2400), y_factor+30, name,-1,1)
-		tfm.exec.addImage("192e0186807.png", "?1", i*2400, y_factor+30, name,-1,1) 
-		tfm.exec.addImage("192e0184530.png", "?1", 600+(i*2400), y_factor+30, name,-1,1) 
-		tfm.exec.addImage("192e0181ef2.png", "?1", 1200+(i*2400), y_factor+30, name,-1,1)
+		tfm.exec.addImage("192e018872a.png", "?1", -600+(i*2400), 690, name,-1,1)
+		tfm.exec.addImage("192e0186807.png", "?1", i*2400, 690, name,-1,1) 
+		tfm.exec.addImage("192e0184530.png", "?1", 600+(i*2400), 690, name,-1,1) 
+		tfm.exec.addImage("192e0181ef2.png", "?1", 1200+(i*2400), 690, name,-1,1)
 	end
 	for _,i in next,{0,2,4} do
-		tfm.exec.addImage("192e0179669.png", "?1", -1200+(i*2400), y_factor-11, name,1,1,0,1)
-		tfm.exec.addImage("192e017ca61.png", "!-1", -1200+(i*2400), y_factor-11, name,1,1,0,1)
+		tfm.exec.addImage("189749dd379.png", "?1", -1200+(i*2000), 600, name, 1, 1, 0, 1)
+		tfm.exec.addImage("189749dd379.png", "!-1", -1200+(i*2000), 600, name, 1, 1, 0, 0.75)
 	end
 	for _,i in next,{1,3,5} do
- 		tfm.exec.addImage("192e0179669.png", "?1", 1200+(i*2400), y_factor-11, name, -1, 1,0,1)
-		tfm.exec.addImage("192e017ca61.png", "!-1", 1200+(i*2400), y_factor-11, name, -1, 1,0,1)
+ 		tfm.exec.addImage("189749dd379.png", "?1", 800+(i*2000), 600, name, -1, 1, 0, 1)
+		tfm.exec.addImage("189749dd379.png", "!-1", 800+(i*2000), 600, name, -1, 1, 0, 0.75)
 	end
+	tfm.exec.addImage("189749ce857.png", "!-1023", -1200, 1399, name, 8, 6, 0, 0.75)
+	tfm.exec.addImage("1897a80b341.png", "!-1023", -1200, 1834, name, 44, 4,0,0.5)
 
-	for i=0,12 do tfm.exec.addImage("192e019006a.png","?1",-1200+(i*750),y_factor-88,name,1,0.5,0,1) end
+	for i=0,12 do tfm.exec.addImage("192e019006a.png","?1",-1200+(i*750),y_factor-80,name,1,0.5,0,1) end
 
 	for i=0,4 do tfm.exec.addImage("181ba85ccc2.png","!1",math.random(-300,7000),math.random(-70,200),name,0.5,0.5,0,0.8) end
 	for j=0,4 do tfm.exec.addImage("181ba86195e.png","!1",math.random(-300,7000),math.random(-70,200),name,0.5,0.5,0,0.8) end
@@ -418,7 +419,7 @@ function eventChatCommand(name,message)
 		showAvailableSharks(name)
 	end
 	if message == "changelog" then
-		showMenu(name,0x109626,140,115,520,135,"Watercatch Changelog - Version 7.2.0",text.changelog)
+		showMenu(name,0x109626,140,115,520,135,"Watercatch Changelog - Version 7.2.1",text.changelog)
 	end
 	if (message:sub(0,2)== "tc") then
 		if tfm.get.room.playerList[name].isShaman == false then
