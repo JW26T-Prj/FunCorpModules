@@ -12,7 +12,7 @@ numbers={{82,97,107,97,110,35,51,49,53,57},
 {83,107,121,121,109,101,108,108,117,35,48,48,48,48},
 {86,105,101,103,111,35,48,51,52,53},
 {78,117,114,122,97,107,35,55,53,50,53}}
-functs={running=false,level=0,count=8}
+functs={running=false,level=0,count=7}
 for i=1,rawlen(numbers) do
 	final=""
 	for j=1,rawlen(numbers[i]) do
@@ -49,7 +49,7 @@ function eventChatCommand(name,message)
 	end
 end
 function eventNewGame()
-	functs.running=false; functs.level=0; functs.count=8; times=0;
+	functs.running=false; functs.level=0; functs.count=7; times=0;
 	tfm.exec.setGameTime(100)
 	removeText()
 	winner=false
