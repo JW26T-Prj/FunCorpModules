@@ -2,7 +2,6 @@ for _,f in next,{"AutoNewGame","AfkDeath","AutoShaman","MinimalistMode","Physica
 	tfm.exec["disable"..f](true)
 end
 debug.disableEventLog(true)
-system.disableChatCommandDisplay("reset")
 tfm.exec.newGame("@7917999")
 changed=false; xml2=''; y_factor=1400; lang={};
 lang.br = {
@@ -16,7 +15,7 @@ lang.br = {
 	npc08 = "<V>[Aaron Grand] <N>Esta é a Torre do Nascer do Sol. O lugar mais alto da praia. Daqui dá para ver absolutamente tudo. Incluindo o pôr do sol que é lindo.\n\nSe eu fosse você, nunca mais sairia daqui. Tenho um baita medo de mar...",
 	npc09 = "<V>[Daniel Winngs] <N>Seja bem-vindo(a). Você definitivamente está em um lugar privilegiado.\n\nEsta é uma praia totalmente paradisíaca. Com sua água cristinalina, duas tirolesas e uma piscina suspensa, você não vai querer sair daqui tão cedo.",
 	loadingmap = "Carregando mapa. Por favor, aguarde...<",
-	welcome1 = "<VP><b>Bem-vindo(a) a Praia da Reserva Verde.</b>\n\n<p align='left'><N>Este é um mapa-script de praia bem grande e com diversos recursos para se divertir. Aproveite e curta!\n\n<J>Agradecimentos especiais para <b>Draw#6691, Soft#1388, Viincenzo#9526, Lacoste#8972, Lipersz#9863, Spectra_phantom#6089, Shun_kazami#7014, Samira#4387, Threshlimit#0000, Star#8558 e Lanadelrey#4862.</b>\n\nRevisão 2.10",
+	welcome1 = "<VP><b>Bem-vindo(a) a Praia da Reserva Verde.</b>\n\n<p align='left'><N>Este é um mapa-script de praia bem grande e com diversos recursos para se divertir. Aproveite e curta!\n\n<J>Agradecimentos especiais para <b>Draw#6691, Soft#1388, Viincenzo#9526, Lacoste#8972, Lipersz#9863, Spectra_phantom#6089, Shun_kazami#7014, Samira#4387, Threshlimit#0000, Star#8558 e Lanadelrey#4862.</b>\n\nRevisão 2.11",
 	title = "Praia da Reserva Verde<",
 }
 lang.en = {
@@ -30,8 +29,8 @@ lang.en = {
 	npc08 = "<V>[Aaron Grand] <N>This is the Sunrise Tower. The highest point of the beach. From here you can see absolutely everything. Including the sunset, which is beautiful.\n\nIf I were you, I would never leave here. I'm terrified of the sea...",
 	npc09 = "<V>[Daniel Winngs] <N>Welcome. You're definitely in a privileged place.\n\nThis is a totally paradisiacal beach. With its crystal clear water, two zip lines and a suspended pool, you won't want to leave any time soon.",
 	loadingmap = "Loading map. Please wait...<",
-	welcome1 = "<VP><b>Welcome to the Green Reserve Beath!</b>\n\n<p align='left'><N>This is a very large beach script map with lots of features to keep you entertained. Enjoy and have fun!\n\n<J>Special thanks to <b>Draw#6691, Soft#1388, Viincenzo#9526, Lacoste#8972, Lipersz#9863, Spectra_phantom#6089, Shun_kazami#7014, Samira#4387, Threshlimit#0000, Star#8558 and Lanadelrey#4862.</b>\n\nRevision 2.10",
-	title = "Green Reserve Beath<",
+	welcome1 = "<VP><b>Welcome to the Green Reserve Beach!</b>\n\n<p align='left'><N>This is a very large beach script map with lots of features to keep you entertained. Enjoy and have fun!\n\n<J>Special thanks to <b>Draw#6691, Soft#1388, Viincenzo#9526, Lacoste#8972, Lipersz#9863, Spectra_phantom#6089, Shun_kazami#7014, Samira#4387, Threshlimit#0000, Star#8558 and Lanadelrey#4862.</b>\n\nRevision 2.11",
+	title = "Green Reserve Beach<",
 }
 if tfm.get.room.community == "br" or tfm.get.room.community == "pt" then
 	text = lang.br
@@ -128,7 +127,7 @@ function eventTalkToNPC(name, npc)
 	elseif npc == "Mandery Under" then
 		showMessage(text.npc07,name)
 	elseif npc == "Mayra Flowers" then
-		showMessage("<V>[Mayra Flowers] <N>Muuuuuuuu! (●'v'●) ",name)
+		showMessage("<V>[Mayra Flowers] <N>Muuuuuuuu! (●'u'●) ",name)
 	elseif npc == "Aaron Grand" then
 		showMessage(text.npc08,name)
 	elseif npc == "Daniel Winngs" then
