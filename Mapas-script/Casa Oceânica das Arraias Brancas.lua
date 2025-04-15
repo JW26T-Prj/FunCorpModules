@@ -1,6 +1,7 @@
 for _,f in next,{"AutoNewGame","AfkDeath","AutoShaman","MinimalistMode","PhysicalConsumables","MortCommand","DebugCommand"} do
 	tfm.exec["disable"..f](true)
 end
+for i=0,15 do system.disableChatCommandDisplay(tostring(i)); end
 debug.disableEventLog(true)
 xml=''; changed=false; night=0; loop=0; data={}; lang={};
 dolphins={{254,1421},{1027,1555}}; dolphins_r={{1690,1381},{2714,1415}};
@@ -13,13 +14,11 @@ fish5={{1124,2096},{2947,2133},{6223,1956},{6846,2123}}; fish5_r={{460,2099},{33
 ray={{3937,2002},{6887,1661},{1897,2086},{106,2046}}; ray_r={{3261,1919},{4896,2112},{5899,1944},{904,1797}};
 lang.br = {
 	loadingmap = "Carregando mapa. Por favor, aguarde...<",
-	welcome3 = "<VP><b>Bem-vindo(a) a Casa Oceânica das Arraias Brancas.</b>\n\n<p align='left'><N>Este é um mapa-script cujo intuito é simular uma casa-resort de luxo no meio do oceano. Aproveite e curta!\n\n<J>Agradecimentos especiais para <b>Lynet#8558, Shun_kazami#7014, Maramara4#0000, Lacoste#8972, Irelia#7317, Some#2636, Jeancrazzy#0000 e Bielzinnfx#3859.</b>\n\n<N>Revisão 3.0",
-	title = "<N>Casa Oceânica das Arraias Brancas<"
+	welcome3 = "<VP><b>Bem-vindo(a) a Casa Oceânica das Arraias Brancas.</b>\n\n<p align='left'><N>Este é um mapa-script cujo intuito é simular uma casa-resort de luxo no meio do oceano. Aproveite e curta!\n\n<J>Agradecimentos especiais para <b>Lynet#8558, Shun_kazami#7014, Maramara4#0000, Lacoste#8972, Irelia#7317, Some#2636, Jeancrazzy#0000 e Bielzinnfx#3859.</b>\n\n<N>Revisão 3.1",	title = "<N>Casa Oceânica das Arraias Brancas<"
 }
 lang.en = {
 	loadingmap = "Loading map. Please wait...<",
-	welcome3 = "<VP><b>Welcome to White's Stingray Ocean House!</b>\n\n<p align='left'><N>This is a script map whose purpose is to simulate a luxury resort house in the middle of the ocean. Enjoy and enjoy!\n\n<J>Special thanks to <b>Lynet#8558, Shun_kazami#7014, Maramara4#0000, Lacoste#8972, Irelia#7317, Some#2636, Jeancrazzy#0000 and Bielzinnfx#3859.</b>\n\n<N>Revision 3.0",
-	title = "<N>White's Stingray Ocean House<"
+	welcome3 = "<VP><b>Welcome to White's Stingray Ocean House!</b>\n\n<p align='left'><N>This is a script map whose purpose is to simulate a luxury resort house in the middle of the ocean. Enjoy and enjoy!\n\n<J>Special thanks to <b>Lynet#8558, Shun_kazami#7014, Maramara4#0000, Lacoste#8972, Irelia#7317, Some#2636, Jeancrazzy#0000 and Bielzinnfx#3859.</b>\n\n<N>Revision 3.1",	title = "<N>White's Stingray Ocean House<"
 }
 if tfm.get.room.community == "br" or tfm.get.room.community == "pt" then
 	text = lang.br
@@ -157,6 +156,135 @@ function eventTalkToNPC(name, npc)
 		showMessage("<V>[Mayra Flowers] <N>Muuuuuuuu! (●'u'●) ",name)
 	end
 end
+function eventChatCommand(name,message)
+	if changed == true then
+		if message == "0" then
+			tfm.exec.setPlayerGravityScale(name,0.9)
+			tfm.exec.killPlayer(name);
+			tfm.exec.setPlayerCollision(name,1)
+		end
+		for i=1,15 do
+			if message == tostring(i) then
+				data[name].s=i
+				tfm.exec.removeImage(data[name].id)
+				displayShark(name,data[name].s,false)
+			end
+		end
+	end
+end
+function displayShark(name,type,reverse)
+	if data[name].s == 1 then
+		data[name].id=tfm.exec.addImage("189746ed93c.png", "$"..name.."", -78, -69, nil, 0.25, 0.25)
+	elseif data[name].s == 2 then
+		if reverse == true then
+			data[name].id=tfm.exec.addImage("1860ee201fd.png","$"..name.."", -185, -35, nil, 1, 1)
+		else
+			data[name].id=tfm.exec.addImage("1860ee201fd.png","$"..name.."", 185, -35, nil, -1, 1)
+		end
+	elseif data[name].s == 3 then
+		if reverse == false then
+			data[name].id=tfm.exec.addImage("1883efa1974.png","$"..name.."", -230, -90, nil)
+		else
+			data[name].id=tfm.exec.addImage("1883efa1974.png","$"..name.."", 230, -90, nil, -1, 1)
+		end
+	elseif data[name].s == 4 then
+		if reverse == false then
+			data[name].id=tfm.exec.addImage("1883efb5982.png","$"..name.."", -300, -75, nil)
+		else
+			data[name].id=tfm.exec.addImage("1883efb5982.png","$"..name.."", 300, -75, nil, -1, 1)
+		end
+	elseif data[name].s == 5 then
+		if reverse == false then
+			data[name].id=tfm.exec.addImage("185c2e9722e.png", "$"..name.."", 44, -65, nil, -1, 1)
+		else
+			data[name].id=tfm.exec.addImage("185c2e9722e.png", "$"..name.."", -54, -65, nil)
+		end
+	elseif data[name].s == 6 then
+		if reverse == false then
+			data[name].id=tfm.exec.addImage("18756e28db6.png", "$"..name.."", -270, -93, nil)
+		else
+			data[name].id=tfm.exec.addImage("18756e28db6.png", "$"..name.."", 270, -93, nil,-1,1)
+		end
+	elseif data[name].s == 7 then
+		if reverse == false then
+			data[name].id=tfm.exec.addImage("18756e2e178.png", "$"..name.."", -250, -115, nil)
+		else
+			data[name].id=tfm.exec.addImage("18756e2e178.png", "$"..name.."", 206, -115, nil,-1,1)
+		end
+	elseif data[name].s == 8 then
+		if reverse == false then
+			data[name].id=tfm.exec.addImage("18756e333d5.png", "$"..name.."", -150, -44, nil,0.5,0.5)
+		else
+			data[name].id=tfm.exec.addImage("18756e333d5.png", "$"..name.."", 150, -44, nil,-0.5,0.5)
+		end
+	elseif data[name].s == 9 then
+		if reverse == false then
+			data[name].id=tfm.exec.addImage("18a0539e298.png", "$"..name.."", 90, -85, nil,-1,1)
+		else
+			data[name].id=tfm.exec.addImage("18a0539e298.png", "$"..name.."", -90, -85, nil)
+		end
+	elseif data[name].s == 10 then
+		tfm.exec.changePlayerSize(name,0.5)
+		if reverse == false then
+			data[name].id=tfm.exec.addImage("18a053a43b9.png", "$"..name.."", 90, -78, nil,-1,1)
+		else
+			data[name].id=tfm.exec.addImage("18a053a43b9.png", "$"..name.."", -90, -78, nil)
+		end
+	elseif data[name].s == 11 then
+		if reverse == false then
+			data[name].id=tfm.exec.addImage("18a053a9ab9.png", "$"..name.."", -137, -58, nil)
+		else
+			data[name].id=tfm.exec.addImage("18a053a9ab9.png", "$"..name.."", 137, -58, nil,-1,1)
+		end
+	elseif data[name].s == 12 then
+		if reverse == false then
+			data[name].id=tfm.exec.addImage("18a053af7df.png", "$"..name.."", 90, -86, nil,-1,1)
+		else
+			data[name].id=tfm.exec.addImage("18a053af7df.png", "$"..name.."", -90, -86, nil)
+		end
+	elseif data[name].s == 13 then
+		if reverse == false then
+			data[name].id=tfm.exec.addImage("18a053b5130.png", "$"..name.."", 90, -45, nil,-1,1)
+		else
+			data[name].id=tfm.exec.addImage("18a053b5130.png", "$"..name.."", -90, -45, nil)
+		end
+	elseif data[name].s == 14 then
+		tfm.exec.changePlayerSize(name,0.5)
+		if reverse == true then
+			data[name].id=tfm.exec.addImage("192e01914e1.png", "$"..name.."", 90, -42, nil,-1,1)
+		else
+			data[name].id=tfm.exec.addImage("192e01914e1.png", "$"..name.."", -90, -42, nil)
+		end
+	elseif data[name].s == 15 then
+		tfm.exec.changePlayerSize(name,0.5)
+		if reverse == false then
+			data[name].id=tfm.exec.addImage("192e01972a4.png", "$"..name.."", 90, -34, nil,-1,1)
+		else
+			data[name].id=tfm.exec.addImage("192e01972a4.png", "$"..name.."", -90, -34, nil)
+		end
+	end
+end
+function eventKeyboard(name,key,down,x,y)
+	if y >= 1310 then
+		if key >= 0 and key <= 3 then
+			if data[name] and data[name].s > 0 then
+				if key == 2 then
+					tfm.exec.removeImage(data[name].id)
+					displayShark(name,data[name].s,false)
+					tfm.exec.setPlayerCollision(name,0)
+				elseif key == 0 then
+					tfm.exec.removeImage(data[name].id)
+					displayShark(name,data[name].s,true)
+					tfm.exec.setPlayerCollision(name,0)
+				end
+			end
+		end
+	else
+		tfm.exec.removeImage(data[name].id)
+		tfm.exec.setPlayerCollision(name,1)
+		tfm.exec.changePlayerSize(name,1)
+	end
+end
 function changeMapMode()
 	if changed == true then
 		if night == 0 then
@@ -206,6 +334,7 @@ end
 function eventPlayerDied(name)
 	if changed == true then
 		tfm.exec.setPlayerCollision(name,1)
+		tfm.exec.changePlayerSize(name,1)
 		tfm.exec.respawnPlayer(name)
 	end
 end
@@ -215,9 +344,8 @@ end
 function eventNewPlayer(name)
 	if changed == true then
 		tfm.exec.respawnPlayer(name)
-		tfm.exec.changePlayerSize(name,1)
 		newData={
-			["backId1"]=-1; ["backId2"]=-1; ["backId3"]={};
+			["s"]=0; ["id"]=-1; ["backId1"]=-1; ["backId2"]=-1; ["backId3"]={};
 		};
 		data[name] = newData;
 		for i=0,3 do
