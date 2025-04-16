@@ -1,6 +1,7 @@
 for _,f in next,{"AutoNewGame","AfkDeath","AutoShaman","DebugCommand","MinimalistMode","PhysicalConsumables","MortCommand"} do
 	tfm.exec["disable"..f](true)
 end
+for i=0,15 do system.disableChatCommandDisplay(tostring(i)); end
 debug.disableEventLog(true)
 barrier={type = 14,width = 10,height = 4000,miceCollision = true, friction = 0, groundCollision = true, foreground = false}
 wood={type = 14,width = 800,height = 20,miceCollision = true, friction = 0.5, groundCollision = true}
@@ -11,15 +12,15 @@ fish2={{681,4401},{1867,4022},{3301,4254},{4581,4383}}; fish2_r={{1322,3851},{28
 fish3={{282,4197},{2309,4374},{4432,3384},{5312,3867}}; fish3_r={{3922,4444},{972,4041},{1692,4337}};
 fish4={{1315,4451},{4719,4427},{2965,4187}}; fish4_r={{392,4344},{2002,3504}};
 fish5={{1899,4224},{2645,4341},{3652,4131},{4875,4284}}; fish5_r={{5029,4087},{4399,3891},{2502,3634},{185,3827}};
-xml=''; changed=false; y_factor=1898; boat_factor=-150; depth_factor=980; mapa="@7967014"; lang={};
+xml=''; changed=false; y_factor=1898; boat_factor=-150; depth_factor=980; mapa="@7967014"; data={}; lang={};
 lang.br = {
 	loadingmap = "Carregando mapa. Por favor, aguarde...<",
-	welcome4 = "<VP><b>Bem-vindo(a) ao Navio Viego Santiarul Molach Vol Kalah Heigaari.</b>\n\n<p align='left'><N>Este é um mapa-script de navio pirata. Na verdade, é uma casa completa dentro de um navio pirata, e tem tudo o que uma casa 'normal' possui e mais um pouco... Divirtam-se!\n\n<J>Agradecimentos especiais para Lacoste#8972, Shun_kazami#7014, Yuh#0748, Tanatosl#0000 e Miss_fortune#9548.\n\n<N>Revisão 2.1",
+	welcome4 = "<VP><b>Bem-vindo(a) ao Navio Viego Santiarul Molach Vol Kalah Heigaari.</b>\n\n<p align='left'><N>Este é um mapa-script de navio pirata. Na verdade, é uma casa completa dentro de um navio pirata, e tem tudo o que uma casa 'normal' possui e mais um pouco... Divirtam-se!\n\n<J>Agradecimentos especiais para Lacoste#8972, Shun_kazami#7014, Yuh#0748, Tanatosl#0000 e Miss_fortune#9548.\n\n<N>Revisão 2.2",
 	title = "<VP>Navio Viego Santiarul Molach Vol Kalah Heigaari<"
 }
 lang.en = {
 	loadingmap = "Loading map. Please wait...<",
-	welcome4 = "<VP><b>Welcome to the Viego Santiarul Molach Vol Kalah Heigaari's Ship!</b>\n\n<p align='left'><N>This is a pirate ship script map. It's actually a complete house inside a pirate ship, and has everything a 'normal' house has and more... Enjoy!\n\n<J>Special thanks to Lacoste#8972, Shun_kazami#7014, Yuh#0748, Tanatosl#0000 and Miss_fortune#9548.\n\n<N>Revision 2.1",
+	welcome4 = "<VP><b>Welcome to the Viego Santiarul Molach Vol Kalah Heigaari's Ship!</b>\n\n<p align='left'><N>This is a pirate ship script map. It's actually a complete house inside a pirate ship, and has everything a 'normal' house has and more... Enjoy!\n\n<J>Special thanks to Lacoste#8972, Shun_kazami#7014, Yuh#0748, Tanatosl#0000 and Miss_fortune#9548.\n\n<N>Revision 2.2",
 	title = "<VP>Viego Santiarul Molach Vol Kalah Heigaari's Ship<"
 }
 if tfm.get.room.community == "br" or tfm.get.room.community == "pt" then
@@ -42,6 +43,146 @@ end
 function eventTalkToNPC(name, npc)
 	if npc == "Mayra Flowers" then
 		showMessage("<V>[Mayra Flowers] <N>Muuuuuuuu! (●'u'●)",name)
+	end
+end
+function eventChatCommand(name,message)
+	if changed == true then
+		if message == "0" then
+			tfm.exec.killPlayer(name);
+			tfm.exec.setPlayerCollision(name,1)
+		end
+		for i=1,15 do
+			if message == tostring(i) then
+				data[name].s=i
+				tfm.exec.removeImage(data[name].id)
+			end
+		end
+	end
+end
+function displayShark(name,type,reverse)
+	if data[name].s == 1 then
+		tfm.exec.changePlayerSize(name,0.5)
+		data[name].id=tfm.exec.addImage("189746ed93c.png", "$"..name.."", -78, -69, nil, 0.25, 0.25)
+	elseif data[name].s == 2 then
+		tfm.exec.changePlayerSize(name,1)
+		if reverse == true then
+			data[name].id=tfm.exec.addImage("1860ee201fd.png","$"..name.."", -185, -40, nil, 1, 1)
+		else
+			data[name].id=tfm.exec.addImage("1860ee201fd.png","$"..name.."", 185, -40, nil, -1, 1)
+		end
+	elseif data[name].s == 3 then
+		tfm.exec.changePlayerSize(name,1)
+		if reverse == false then
+			data[name].id=tfm.exec.addImage("1883efa1974.png","$"..name.."", -230, -90, nil)
+		else
+			data[name].id=tfm.exec.addImage("1883efa1974.png","$"..name.."", 230, -90, nil, -1, 1)
+		end
+	elseif data[name].s == 4 then
+		tfm.exec.changePlayerSize(name,1)
+		if reverse == false then
+			data[name].id=tfm.exec.addImage("1883efb5982.png","$"..name.."", -300, -75, nil)
+		else
+			data[name].id=tfm.exec.addImage("1883efb5982.png","$"..name.."", 300, -75, nil, -1, 1)
+		end
+	elseif data[name].s == 5 then
+		tfm.exec.changePlayerSize(name,1)
+		if reverse == false then
+			data[name].id=tfm.exec.addImage("185c2e9722e.png", "$"..name.."", 44, -65, nil, -1, 1)
+		else
+			data[name].id=tfm.exec.addImage("185c2e9722e.png", "$"..name.."", -54, -65, nil)
+		end
+	elseif data[name].s == 6 then
+		tfm.exec.changePlayerSize(name,1)
+		if reverse == false then
+			data[name].id=tfm.exec.addImage("18756e28db6.png", "$"..name.."", -270, -93, nil)
+		else
+			data[name].id=tfm.exec.addImage("18756e28db6.png", "$"..name.."", 270, -93, nil,-1,1)
+		end
+	elseif data[name].s == 7 then
+		tfm.exec.changePlayerSize(name,1)
+		if reverse == false then
+			data[name].id=tfm.exec.addImage("18756e2e178.png", "$"..name.."", -250, -115, nil)
+		else
+			data[name].id=tfm.exec.addImage("18756e2e178.png", "$"..name.."", 206, -115, nil,-1,1)
+		end
+	elseif data[name].s == 8 then
+		tfm.exec.changePlayerSize(name,1)
+		if reverse == false then
+			data[name].id=tfm.exec.addImage("18756e333d5.png", "$"..name.."", -150, -44, nil,0.5,0.5)
+		else
+			data[name].id=tfm.exec.addImage("18756e333d5.png", "$"..name.."", 150, -44, nil,-0.5,0.5)
+		end
+	elseif data[name].s == 9 then
+		tfm.exec.changePlayerSize(name,1)
+		if reverse == false then
+			data[name].id=tfm.exec.addImage("18a0539e298.png", "$"..name.."", 90, -85, nil,-1,1)
+		else
+			data[name].id=tfm.exec.addImage("18a0539e298.png", "$"..name.."", -90, -85, nil)
+		end
+	elseif data[name].s == 10 then
+		tfm.exec.changePlayerSize(name,0.5)
+		if reverse == false then
+			data[name].id=tfm.exec.addImage("18a053a43b9.png", "$"..name.."", 90, -78, nil,-1,1)
+		else
+			data[name].id=tfm.exec.addImage("18a053a43b9.png", "$"..name.."", -90, -78, nil)
+		end
+	elseif data[name].s == 11 then
+		tfm.exec.changePlayerSize(name,1)
+		if reverse == false then
+			data[name].id=tfm.exec.addImage("18a053a9ab9.png", "$"..name.."", -137, -58, nil)
+		else
+			data[name].id=tfm.exec.addImage("18a053a9ab9.png", "$"..name.."", 137, -58, nil,-1,1)
+		end
+	elseif data[name].s == 12 then
+		tfm.exec.changePlayerSize(name,0.5)
+		if reverse == false then
+			data[name].id=tfm.exec.addImage("18a053af7df.png", "$"..name.."", 90, -86, nil,-1,1)
+		else
+			data[name].id=tfm.exec.addImage("18a053af7df.png", "$"..name.."", -90, -86, nil)
+		end
+	elseif data[name].s == 13 then
+		tfm.exec.changePlayerSize(name,1)
+		if reverse == false then
+			data[name].id=tfm.exec.addImage("18a053b5130.png", "$"..name.."", 90, -45, nil,-1,1)
+		else
+			data[name].id=tfm.exec.addImage("18a053b5130.png", "$"..name.."", -90, -45, nil)
+		end
+	elseif data[name].s == 14 then
+		tfm.exec.changePlayerSize(name,0.5)
+		if reverse == true then
+			data[name].id=tfm.exec.addImage("192e01914e1.png", "$"..name.."", 90, -33, nil,-1,1)
+		else
+			data[name].id=tfm.exec.addImage("192e01914e1.png", "$"..name.."", -90, -33, nil)
+		end
+	elseif data[name].s == 15 then
+		tfm.exec.changePlayerSize(name,0.5)
+		if reverse == false then
+			data[name].id=tfm.exec.addImage("192e01972a4.png", "$"..name.."", 90, -29, nil,-1,1)
+		else
+			data[name].id=tfm.exec.addImage("192e01972a4.png", "$"..name.."", -90, -29, nil)
+		end
+	end
+end
+function eventKeyboard(name,key,down,x,y)
+	if y >= 1910 then
+		if key >= 0 and key <= 3 then
+			if data[name] and data[name].s > 0 then
+				if key == 2 then
+					tfm.exec.removeImage(data[name].id)
+					displayShark(name,data[name].s,false)
+					tfm.exec.setPlayerGravityScale(name,2.2)
+				elseif key == 0 then
+					tfm.exec.removeImage(data[name].id)
+					displayShark(name,data[name].s,true)
+					tfm.exec.setPlayerGravityScale(name,2.2)
+				end
+			end
+		end
+	else
+		tfm.exec.removeImage(data[name].id)
+		tfm.exec.setPlayerGravityScale(name,1)
+		tfm.exec.setPlayerCollision(name,1)
+		tfm.exec.changePlayerSize(name,1)
 	end
 end
 function showWater(name)
@@ -142,8 +283,8 @@ function showWater(name)
 		tfm.exec.addImage("181ba86b15a.png","!2",math.random(5000,9500),math.random(120,850),name,0.5,0.5);
 	end
 	for i=0,11 do
-		tfm.exec.addImage("192e019c182.png", "?1", -1200+(i*1017), y_factor+2590, name, 1, 1, 0, 1)
-		tfm.exec.addImage("192e019c182.png", "?1", -1200+(i*1017), y_factor+3565, name, 1, -2, 0, 1)
+		tfm.exec.addImage("192e019c182.png", "?1", -1200+(i*1017), y_factor+2560, name, 1, 1, 0, 1)
+		tfm.exec.addImage("192e019c182.png", "?1", -1200+(i*1017), y_factor+3535, name, 1, -2, 0, 1)
 	end
 	tfm.exec.addImage("192e017f5a8.png", "!-1", -1200, y_factor+99, name,28,8,0,0.95)
 	tfm.exec.addImage("192e017f5a8.png", "!-1", -1200, y_factor+5827, name,28,-8,0,0.95)
@@ -226,6 +367,14 @@ function eventNewGame()
 end
 function eventNewPlayer(name)
 	if changed == true then
+		tfm.exec.respawnPlayer(name)
+		newData={
+			["s"]=0; ["id"]=-1;
+		};
+		data[name] = newData;
+		for i=0,3 do
+			system.bindKeyboard(name,i,true,true)
+		end
 		tfm.exec.respawnPlayer(name)
 		ui.setMapName(text.title)
 		tfm.exec.setGameTime(72000)
