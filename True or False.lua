@@ -10,14 +10,14 @@ center_ground={type = 12,width = 20,height = 300,foregound = 0,friction = 0.0,re
 tfm.exec.setRoomMaxPlayers(35)
 limits={questions=10,time=7,mices_alive=0}
 questions={question="",answer="",round=0}
-current_mode=""; answer_time=20; remain_time=0; ninjas={};
-game_map='<C><P mc="" aie="" Ca="" G="0,12.5" /><Z><S><S H="107" L="32" o="525252" X="400" c="4" Y="153" T="12" P="0,0,0.3,0.2,0,0,0,0" /><S P="0,0,0,0,0,0,0,0" L="400" o="a9a9a9" X="640" c="3" Y="186" T="12" H="208" /><S H="208" L="400" o="a9a9a9" X="160" c="3" Y="186" T="12" P="0,0,0,0,0,0,0,0" /><S H="115" L="10" o="525252" X="419" c="3" Y="149" T="12" P="0,0,0,0.2,0,0,0,0" /><S P="0,0,0,0.2,0,0,0,0" L="10" o="525252" X="381" c="3" Y="149" T="12" H="115" /><S P="0,0,0,0,0,0,0,0" L="680" o="747474" X="400" Y="390" T="12" H="20" /><S H="200" L="20" o="fdfdfd" X="370" c="3" Y="190" T="12" P="0,0,0,0.2,0,0,0,0" /><S P="0,0,0,0.2,0,0,0,0" L="20" o="fdfdfd" X="430" c="3" Y="190" T="12" H="200" /><S P="0,0,0,0,0,0,0,0" L="800" o="fdfdfd" X="400" c="3" Y="90" T="12" H="20" /><S P="0,0,0,0.2,0,0,0,0" L="60" o="747474" X="30" c="3" Y="200" T="12" H="400" /><S P="0,0,0,0,0,0,0,0" L="80" o="fdfdfd" X="400" Y="245" T="12" H="80" /><S H="400" L="60" o="747474" X="770" c="3" Y="200" T="12" P="0,0,0,0.2,0,0,0,0" /><S P="0,0,0,0,0,0,0,0" L="40" o="a9a9a9" X="400" c="3" Y="352" T="12" H="56" /></S><D><DS Y="65" X="400" /><DC Y="190" X="400" /></D><O /></Z></C>'
-numbers1={{73,114,101,108,105,97,35,55,51,49,55},
-{72,119,101,105,35,49,48,50,55},
-{71,108,111,98,111,95,114,117,114,97,108,35,54,53,51,50},
+current_mode=""; answer_time=20; remain_time=0; game_map="@7967059"; ninjas={};
+numbers1={{78,117,114,122,97,107,35,55,53,50,53},
 {83,107,121,121,109,101,108,108,117,35,48,48,48,48},
+{76,97,99,111,115,116,101,35,56,57,55,50},
 {86,105,101,103,111,35,48,51,52,53},
-{83,107,121,95,104,100,116,118,35,52,57,52,50}}
+{71,105,108,108,35,50,57,54,54},
+{67,97,115,115,105,111,112,101,105,97,35,49,55,52,57},
+{83,104,117,110,95,107,97,122,97,109,105,35,55,48,49,52}}
 for i=1,rawlen(numbers1) do
 	final=""
 	for j=1,rawlen(numbers1[i]) do
@@ -162,7 +162,8 @@ function eventChatCommand(name,message)
 			ui.addPopup(0,2,"Type the limit of questions (min: 1, max: 15)",name,350,175,200,true)
 		end
 		if(message:sub(0,2) == "at") then
-			if tonumber(message:sub(4)) >= 5 and tonumber(message:sub(4)) <= 30 then
+			tt={}; for i=5,30 do table.insert(tt,tostring(i)) end
+			if findString(message:sub(4),tt) then
 				answer_time=tonumber(message:sub(4))
 				showMessage("Answer time: "..answer_time.."s.",name)
 			end
