@@ -365,6 +365,9 @@ function eventNewGame()
 		ui.setMapName(text.loadingmap)
 	end
 end
+function eventPlayerDied(name)
+	tfm.exec.respawnPlayer(name)
+end
 function eventNewPlayer(name)
 	if changed == true then
 		tfm.exec.respawnPlayer(name)
