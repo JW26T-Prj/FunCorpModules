@@ -1,8 +1,9 @@
 ﻿-- Versão original do jogo Verdade ou Desafio, feita por Haxhhhhhhhhh no dia 27 de fevereiro de 2016 e posteriormente recriada como o module #mousetat.
 -- Esta versão foi atualizada de acordo com as normas da equipe de verificação e pode ser utilizada em salas FunCorp.
 
-admin="Shun_kazami#7014" -- insira seu nome aqui e digite !shaman para escolher um shaman.
--- Na sequência, o jogo insira passo a passo como o jogo é feito.
+admin=""
+-- Insira seu nome na variável acima e digite !shaman para escolher um shaman.
+-- Na sequência, o jogo ensina passo a passo como tudo é feito.
 
 -- NÃO MUDE NADA A PARTIR DESTA LINHA!
 --------------------------------------------------------------------------------------------------------
@@ -62,7 +63,7 @@ function eventChatCommand(name,message)
 end
 function eventNewGame()
 	tfm.exec.snow(0,0)
-	tfm.exec.setUIMapName("<N>Verdade ou Desafio versão <VP>7.2")
+	tfm.exec.setUIMapName("<N>Verdade ou Desafio versão <VP>7.3")
 	tfm.exec.setShaman(shaman)
 	for name,player in pairs(tfm.get.room.playerList) do
 		if tfm.get.room.playerList[name].isShaman then
