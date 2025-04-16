@@ -10,4 +10,4 @@ To add a code to this folder, report an issue or comment anything about the code
 Into Transformice, contact Shun_kazami#7014, Patrick_mahomes#1795 or Nurzak#7525.
 
 Link of our folder:
-https://github.com/JW26T-Prj/FunCorpModules/
+https://github.com/JW26T-Prj/TFM_Modules/
