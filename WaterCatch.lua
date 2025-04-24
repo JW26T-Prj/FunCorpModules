@@ -16,7 +16,7 @@ f1_r={{4292,1941},{6197,1566},{1769,1131}}; f2_r={{5787,1848},{3869,963}}; f3_r=
 
 lang.br = {
 	welcome = "<font color='#0080ff'><b>Bem-vindos ao module WaterCatch!</b>\n<VP>Fuja do shaman tubarão e sobreviva no perigoso rio!\n<J>Digite !help para ver a ajuda deste module.\n<BL>Gerenciado por Lacoste#8972",
-	changelog = "• Mudança de comando no module",
+	changelog = "• Pequenas correções de bugs\n• Adição de 4 novos peixes!",
 	help = "<p align='center'><b>Bem-vindo ao module WaterCatch.</b><p align='left'>\n\nSe você for um rato, você deverá fugir do shaman (ou o tubarão), tomando cuidado para que ele não chegue muito perto de você. Se quiser ficar dentro do rio, tome cuidado: se ficar debaixo d'água por muito tempo, você pode morrer afogado!\n\nSe você for o shaman (no caso, o tubarão), seu objetivo será caçar todos os ratos, tentando não deixar nenhum sequer vivo!\n<R>Ah, e não esqueça de se mexer, ou irá morrer por inatividade!</b>\n\n<VP>Os círculos com <N>'?'<VP> são powerups, que geram efeitos aleatórios nos ratos.\nOs círculos com <N>'O2'<VP> são reposições de oxigênio.\nEstes powerups podem ser acionados pressionando ESPAÇO em cima deles.\n<N>Você pode ver os possíveis efeitos dos powerups indo no Menu e em Powerups.",
 	powerups = "<font size='11'>Os seguintes powerups estão disponíveis no momento:\n<ROSE><b>• VAMPIRO</b><N>\nTransforma seu rato em um vampiro, forçando você a ir para fora do rio.\n<ROSE><b>• AFUNDAR</b><N>\nCria uma curta anomalia que puxa todos os ratos para o fundo do rio.\n<ROSE><b>• MEEP</b><N>\nTe dá o poder de usar o Meep!\n<ROSE><b>• SUFOCO</b><N>\nDiminui o seu nível de oxigênio. Caso seu nível de oxigênio esteja muito baixo e você pegue este powerup, você morrerá afogado.\n<ROSE><b>• CONGELAR</b><N>\nCongela o seu rato.\n<ROSE><b>• QUEIJO</b><N>\nDá queijo para o seu rato.\n<ROSE><b>• IMPULSO</b><N>\nTe dá um impulso para frente. Pode ajudar a fugir do shaman...\n<ROSE><b>• SUBIDA</b><N>\nGera uma força que te empurra para fora do rio.\n<ROSE><b>• CRESCER</b><N>\nAumenta temporariamente o tamanho do seu rato.",
 	shark = "Tubarão",
@@ -53,7 +53,7 @@ lang.br = {
 }
 lang.en = {
 	welcome = "<font color='#0080ff'><b>Welcome to the WaterCatch module!</b>\n<VP>Run away from the shark shaman and survive in the dangerous river!\n<J>Type !help to see the game help.\n<BL>Managed by Lacoste#8972",
-	changelog = "• Change in the module ownership",
+	changelog = "• Small bugfixes\n• 5 new fishes are now available!",
 	help = "<p align='center'><b>Welcome to module WaterCatch.</b><p align='left'>\n\nIf you are a mice, you must run away from the shaman (the shark), being careful not to let him get too close to you. If you want to stay in the river, be careful: if you stay underwater for too long, you might drown!\n\nIf you are the shaman (in this case, the shark), your goal will be to hunt all the mices, trying not to leave a single one alive!\n<R>Oh, and don't forget to move, or you will die by inactivity!</b>\n\n<VP>The circles with '?' are powerups, which generate random effects on the players.\nThe circles with 'O2' are oxygen repositions.\nThese powerups can be activated by pressing SPACE on them.\n<N>You can see the possible effects of the powerups by going to the Menu and then Powerups.",
 	powerups = "<font size='11'>The following powerups are available at moment:\n<ROSE><b>• VAMPIRE</b><N>\nTurns your mouse into a vampire, forcing you out of the river.\n<ROSE><b>• SUBMERGE</b><N>\nCreate an anomaly that pushes all the mices to the bottom of the river.\n<ROSE><b>• MEEP</b><N>\nGives the MEEP ability!\n<ROSE><b>• SUFFOCATE</b><N>\nReduces your oxygen level. If your oxygen level is very low and you enable this powerup, you will drown in the river.\n<ROSE><b>• FREEZE</b><N>\nFreeze your mice.\n<ROSE><b>• CHEESE</b><N>\nGive cheese to your mice.\n<ROSE><b>• BOOST</b><N>\nGives you a boost forward. It can help you escape the shaman...\n<ROSE><b>• GO UP</b><N>\nIt generates a force that pushes you out of the river.\n<ROSE><b>• GROW</b><N>\nIncreases temporarily the size of your mice.",
 	shark = "Shark",
@@ -128,9 +128,13 @@ function showMessage(message,name)
 			tfm.exec.chatMessage(message,name)
 		elseif tfm.get.room.isTribeHouse == true then
 			if name == nil then
-				updateArea1(message)
+				if data[name] and data[name].opened == false then
+					updateArea1(message)
+				end
 			else
-				updateArea2(message,name)
+				if data[name] and data[name].opened == false then
+					updateArea2(message,name)
+				end
 			end
 		end
 	end
@@ -147,17 +151,17 @@ function updateArea2(text,name)
 	end
 end
 function showAvailableSharks(name)
-	coords={{83,60},{83,113},{83,158},{83,215},{83,272},{293,63},{293,110},{293,159},{293,207},{516,53},{503,110},{503,163},{496,214}}
-	imgs={"18309d69a5a.png","18309d64e58.png","18309d7325a.png","18412b7b55e.png","18412b71ce2.png","18309d6029f.png","18412b7695c.png","1883efa677b.png","18309d6e65a.png","185c2e9722e.png","185c2ea0c4f.png","185c2e9bf2f.png","1883efb0ba3.png"}
+	coords={{83,60},{83,113},{83,158},{83,215},{83,272},{303,63},{293,110},{293,159},{293,207},{516,53},{503,110},{503,163},{496,214},{83,313},{493,316},{293,318},{500,268}}
+	imgs={"18309d69a5a.png","18309d64e58.png","18309d7325a.png","18412b7b55e.png","18412b71ce2.png","18309d6029f.png","18412b7695c.png","1883efa677b.png","18309d6e65a.png","185c2e9722e.png","185c2ea0c4f.png","185c2e9bf2f.png","1883efb0ba3.png","19650c4bf68.png","19650c4ee4b.png","19650c51d2c.png","19650c54c10.png"}
 	for i=1,rawlen(imgs) do
-		image_id=tfm.exec.addImage(imgs[i],"&1",coords[i][1],coords[i][2]+45,name,0.5,0.5,0,1.0)
+		image_id=tfm.exec.addImage(imgs[i],"&1",coords[i][1],coords[i][2]+5,name,0.5,0.5,0,1.0)
 		table.insert(data[name].active_imgs,image_id)
 	end
-	image_id=tfm.exec.addImage("1883efa1974.png","&1",293,303,name,0.2,0.2,0,1.0)
+	image_id=tfm.exec.addImage("1883efa1974.png","&1",293,263,name,0.2,0.2,0,1.0)
 	table.insert(data[name].active_imgs,image_id)
-	ui.addTextArea(1006,"<font face='Ubuntu Mono,Cascadia Mono,Consolas'><font size='10'><b>"..text.shark.." 1</b>\n\n<a href='event:a1'>"..text.use.."</a>\n\n<b>"..text.shark.." 2</b>\n\n<a href='event:a2'>"..text.use.."</a>\n\n<b>"..text.shark.." 3</b>\n\n<a href='event:a3'>"..text.use.."</a>\n\n<b>"..text.shark.." 4</b>\n\n<a href='event:a6'>"..text.use.."</a>\n\n<b>Barracuda</b>\n\n<a href='event:a13'>"..text.use.."</a>",name,170,100,175,315,0,0,1.0,true)
-	ui.addTextArea(1007,"<font face='Ubuntu Mono,Cascadia Mono,Consolas'><font size='10'><b>"..text.ws.." 1</b>\n\n<a href='event:a4'>"..text.use.."</a>\n\n<b>"..text.ws.." 2</b>\n\n<a href='event:a7'>"..text.use.."</a>\n\n<b>"..text.ws.." 3</b>\n\n<a href='event:a5'>"..text.use.."</a>\n\n<b>"..text.tm.."</b>\n\n<a href='event:a8'>"..text.use.."</a>\n\n<b>"..text.whale.." 3</b>\n\n<a href='event:a14'>"..text.use.."</a>",name,380,100,175,265,0,0,1.0,true)
-	ui.addTextArea(1008,"<font face='Ubuntu Mono,Cascadia Mono,Consolas'><font size='10'><b>"..text.pdn.."</b>\n\n<a href='event:a9'>"..text.use.."</a>\n\n<b>"..text.tt.."</b>\n\n<a href='event:a11'>"..text.use.."</a>\n\n<b>"..text.whale.." 1</b>\n\n<a href='event:a10'>"..text.use.."</a>\n\n<b>"..text.whale.." 2</b>\n\n<a href='event:a12'>"..text.use.."</a>\n\n\n<b><a href='event:a0'>"..text.dskins.."</a>",name,590,100,175,265,0,0,1.0,true)
+	ui.addTextArea(1006,"<font face='Ubuntu Mono,Cascadia Mono,Consolas'><font size='10'><b>"..text.shark.." 1</b>\n\n<a href='event:a1'>"..text.use.."</a>\n\n<b>"..text.shark.." 2</b>\n\n<a href='event:a2'>"..text.use.."</a>\n\n<b>"..text.shark.." 3</b>\n\n<a href='event:a3'>"..text.use.."</a>\n\n<b>"..text.shark.." 4</b>\n\n<a href='event:a6'>"..text.use.."</a>\n\n<b>Barracuda 1</b>\n\n<a href='event:a13'>"..text.use.."</a>\n\n<b>Orca</b>\n\n<a href='event:a15'>"..text.use.."</a>",name,170,60,175,345,0,0,1.0,true)
+	ui.addTextArea(1007,"<font face='Ubuntu Mono,Cascadia Mono,Consolas'><font size='10'><b>"..text.ws.." 1</b>\n\n<a href='event:a4'>"..text.use.."</a>\n\n<b>"..text.ws.." 2</b>\n\n<a href='event:a7'>"..text.use.."</a>\n\n<b>"..text.ws.." 3</b>\n\n<a href='event:a5'>"..text.use.."</a>\n\n<b>"..text.tm.." 1</b>\n\n<a href='event:a8'>"..text.use.."</a>\n\n<b>"..text.whale.." 3</b>\n\n<a href='event:a14'>"..text.use.."</a>\n\n<b>"..text.tm.." 2</b>\n\n<a href='event:a17'>"..text.use.."</a>",name,380,60,175,345,0,0,1.0,true)
+	ui.addTextArea(1008,"<font face='Ubuntu Mono,Cascadia Mono,Consolas'><font size='10'><b>"..text.pdn.."</b>\n\n<a href='event:a9'>"..text.use.."</a>\n\n<b>"..text.tt.."</b>\n\n<a href='event:a11'>"..text.use.."</a>\n\n<b>"..text.whale.." 1</b>\n\n<a href='event:a10'>"..text.use.."</a>\n\n<b>"..text.whale.." 2</b>\n\n<a href='event:a12'>"..text.use.."</a>\n\n<b>Barracuda 2</b>\n\n<a href='event:a18'>"..text.use.."</a>\n\n<b>"..text.whale.." 4</b>\n\n<a href='event:a16'>"..text.use.."</a>\n<b><a href='event:a0'>"..text.dskins.."</a>",name,590,60,175,345,0,0,1.0,true)
 end
 function removeImagePlayers(name)
 	if rawlen(data[name].active_imgs) > 0 then
@@ -251,6 +255,30 @@ function displayShark(name,type,reverse)
 			data[name].shark_id=tfm.exec.addImage("1883efa1974.png","$"..name.."",-115,-37,nil,0.5,0.5)
 		else
 			data[name].shark_id=tfm.exec.addImage("1883efa1974.png","$"..name.."",100,-37,nil,-0.5,0.5)
+		end
+	elseif type == 15 then
+		if reverse == false then
+			data[name].shark_id=tfm.exec.addImage("19650c4a7f6.png","$"..name.."",-125,-44,nil,0.5,0.5)
+		else
+			data[name].shark_id=tfm.exec.addImage("19650c4a7f6.png","$"..name.."",125,-44,nil,-0.5,0.5)
+		end
+	elseif type == 16 then
+		if reverse == false then
+			data[name].shark_id=tfm.exec.addImage("19650c4d6da.png","$"..name.."",-125,-44,nil,0.5,0.5)
+		else
+			data[name].shark_id=tfm.exec.addImage("19650c4d6da.png","$"..name.."",125,-44,nil,-0.5,0.5)
+		end
+	elseif type == 17 then
+		if reverse == false then
+			data[name].shark_id=tfm.exec.addImage("19650c505be.png","$"..name.."",-125,-44,nil,0.5,0.5)
+		else
+			data[name].shark_id=tfm.exec.addImage("19650c505be.png","$"..name.."",125,-44,nil,-0.5,0.5)
+		end
+	elseif type == 18 then
+		if reverse == false then
+			data[name].shark_id=tfm.exec.addImage("19650c5349f.png","$"..name.."",-140,-46,nil,0.5,0.5)
+		else
+			data[name].shark_id=tfm.exec.addImage("19650c5349f.png","$"..name.."",140,-46,nil,-0.5,0.5)
 		end
 	end
 end
@@ -416,11 +444,11 @@ function eventChatCommand(name,message)
 	end
 	if message == "skins" then
 		showMessage(text.skinwarn,name)
-		showMenu(name,0x949494,65,68,670,285,"Skins","")
+		showMenu(name,0x949494,65,30,670,342,"Skins","")
 		showAvailableSharks(name)
 	end
 	if message == "changelog" then
-		showMenu(name,0x109626,140,115,520,115,"Watercatch Changelog - Version 7.3.0",text.changelog)
+		showMenu(name,0x109626,140,115,520,115,"Watercatch Changelog - Version 7.4.0",text.changelog)
 	end
 	if (message:sub(0,2)== "tc") then
 		if tfm.get.room.playerList[name].isShaman == false then
@@ -890,7 +918,7 @@ end
 function eventTextAreaCallback(id,name,callback)
 	if callback == "show_menu" then
 		ui.addTextArea(299,"<p align='center'><a href='event:hide_menu'><font size='18'>Menu",name,725,372,70,24,0x000001,0x000001,0.75,true)
-		ui.addTextArea(298,"<p align='center'><a href='event:help'>Help</a>\n<a href='event:powerups'>Powerups</a>\n<a href='event:change'>Changelog</a>\n<a href='event:skins'>Skins</a>",name,705,303,90,60,0x000001,0x000001,0.80,true)
+		ui.addTextArea(298,"<p align='center'><a href='event:help'>Help</a>\n<a href='event:powerups'>Powerups</a>\n<a href='event:change'>Changelog</a>\n<a href='event:skins'>Skins</a>",name,705,295,90,68,0x000001,0x000001,0.80,true)
 	end
 	if callback == "hide_menu" then
 		ui.addTextArea(299,"<p align='center'><a href='event:show_menu'><font size='18'>Menu",name,725,372,70,24,0x000001,0x000001,0.75,true)
@@ -950,7 +978,7 @@ function eventTextAreaCallback(id,name,callback)
 	end
 	if callback == "a8" then
 		data[name].shark=8
-		showMessage("<VP>"..text.using.." <b>"..text.tm.."</b>",name)
+		showMessage("<VP>"..text.using.." <b>"..text.tm.." 1.</b>",name)
 	end
 	if callback == "a9" then
 		data[name].shark=9
@@ -970,11 +998,27 @@ function eventTextAreaCallback(id,name,callback)
 	end
 	if callback == "a13" then
 		data[name].shark=13
-		showMessage("<VP>"..text.using.." <b>Barracuda.</b>",name)
+		showMessage("<VP>"..text.using.." <b>Barracuda 1.</b>",name)
 	end
 	if callback == "a14" then
 		data[name].shark=14
 		showMessage("<VP>"..text.using.." <b>"..text.whale.." 3.</b>",name)
+	end
+	if callback == "a15" then
+		data[name].shark=15
+		showMessage("<VP>"..text.using.." <b>Orca.</b>",name)
+	end
+	if callback == "a16" then
+		data[name].shark=16
+		showMessage("<VP>"..text.using.." <b>"..text.whale.." 4.</b>",name)
+	end
+	if callback == "a17" then
+		data[name].shark=17
+		showMessage("<VP>"..text.using.." <b>"..text.tm.." 2.</b>",name)
+	end
+	if callback == "a18" then
+		data[name].shark=18
+		showMessage("<VP>"..text.using.." <b>Barracuda 2.</b>",name)
 	end
 end
 resetMap()
