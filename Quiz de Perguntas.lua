@@ -25,7 +25,7 @@ perguntas={
 "Qual a função do comando /langue?","Muda a linguagem do jogo","Muda você de sala",1,
 "Qual destes jogos não foi feito pela Atelier 801?","Bombom","Fortoresse",1,
 "Qual o limite máximo de amigos do Transformice?","500","1000",1,
-"Há quantos emoticons no Transformice?","31","36",2,
+"Há quantos emoticons no Transformice?","36","37",2,
 "Há quantas ações de rato no Transformice?","15","21",1,
 "Qual o nome do antigo modo do module #deathmatch?","Baffbotffa","Baffbot",1,
 "A partir de qual nível todas as árvores de habilidades de shaman são exibidas?","20","30",1,
@@ -261,7 +261,7 @@ perguntas={
 "O sistema operacional mínimo para executar o Transformice atualmente é o Windows 2000.","Verdadeiro","Falso",1,
 "É possível modificar a água no Transformice para que os ratos que desçam mais fundo tenham mais dificuldade de subir.","Verdadeiro","Falso",2,
 "Qual o nome do module 'Verdade ou Desafio', versão adaptada da original feita por Haxhhhhhhhhh em 2014?","#mousetat","#perguntas",1,
-"Qual o nome atual da antiga desenvolvedora de modules Morganadxana, que parou de jogar em 2023?","Diana#2258","Samira#4387",2,
+"Qual o nome atual da antiga desenvolvedora de modules Morganadxana, que parou de jogar em 2023?","Diana#2258","Qiyana#2797",2,
 "Quantos itens existem no menu principal gráfico de salas do Transformice?","8","9",2,
 "Por padrão, qual é a tecla utilizada para lançar confetes no Transformice?","C","E",1,
 "Quantos cargos predefinidos são criados quando você cria uma tribo no Transformice?","10","12",1,
@@ -270,6 +270,16 @@ perguntas={
 "Quantos bootcamps são necessários para desbloquear o título Artista Solitário?","10","20",1,
 "O comando /clear apaga todas as mensagens do chat do Transformice.","Verdadeiro","Falso",2,
 "Qual destes mapas da vanilla possui bombas que caem do céu?","102","118",2,
+"Quando você cria uma conta no Transformice, você começa com quantos queijos na loja?","0","100",2,
+"Qual a categoria atribuída a mapas que foram excluídos por conteúdo inapropriado?","P43","P45",1,
+"Quantos itens você precisa comprar na loja para adquirir o título 'Rato Bonitinho'?","5","7",1,
+"Qual o nome da habilidade de shaman que aumenta a velocidade de subida dos balões?","Balão Aerodinâmico","Foguete",1,
+"Quem é o desenvolvedor do module #volley?","Ratatouille#5327","Refletz#6472",2,
+"Por padrão, qual destas teclas serve para o rato soltar confete?","C","E",1,
+"O Transformice possui menos de 8 milhões de mapas criados.","Verdadeiro","Falso",1,
+"Quantos ratos são necessários em uma sala para que os firsts comecem a contar?","11","12",1,
+"Em qual dia da semana são lançados os novos visuais da Fashion Squad?","Segunda-feira","Terça-feira",2,
+"Em que ano Melibellule deixou o cargo de administradora do Transformice?","2021","2022",2,
 }
 perguntas1={
 "Vai na sorte :)","ok","ok",1,
@@ -543,6 +553,17 @@ perguntas1={
 "Qual é o maior animal terrestre do Planeta Terra?","Baleia Azul","Elefante-africano",2,
 "Em qual ano foi lançado o primeiro aparelho celular com câmera do mundo?","2001","2005",1,
 "Qual é o nome do apresentador de televisão conhecido como Ratinho?","Carlos Alberto Massa","Carlos Roberto Massa",2,
+"Quem pintou a Mona Lisa?","Pablo Picasso","Leonardo da Vinci",2,
+"Quantos feriados nacionais são comemorados no Brasil, no mês de Novembro?","2","3",2,
+"Qual é a 19ª letra do nosso alfabeto?","S","T",1,
+"Em que ano começou e em que ano terminou a Guerra dos Farrapos, respectivamente?","1835 e 1845","1833 e 1844",1,
+"Em que ano ocorreu a Revolução Francesa?","1776","1789",2,
+"A Terra do Fogo, localizada no Sul da América do Sul, é dividida entre quais países?","Chile e Argentina","Paraguai e Argentina",2,
+"A Ilha de Páscoa pertence a qual país?","Chile","Argentina",1,
+"Qual destes navegadores portugueses foi responsável pela primeira viagem em volta ao mundo, no século XVI?","Fernão de Magalhães","Américo Vespúcio",1,
+"Quais destes municípios pertencem ao Estado do Pará?","Santarém e Carueira","Santarém e Itaituba",2,
+"Em qual estado brasileiro fica localizado o Parque Nacional da Serra dos Órgãos?","Rio de Janeiro","Minas Gerais",1,
+"Na informática, qual o termo usado para um vírus cuja finalidade é 'roubar' dos dados do usuário?","Cavalo de Tróia","Malware",1,
 }
 perguntas2={
 "Vai na sorte :)","ok","ok",1,
@@ -686,6 +707,7 @@ perguntas2={
 "Behemoth é uma banda de Metal originada de qual país?","Turquia","Holanda",1,
 "Qual destes álbuns foi o segundo gravado pela banda Fruto Sagrado, em 1993?","O que a Gente Faz Fala Muito Mais do que só Falar","Na Contramão do Sistema",2,
 "Paul Stanley é o nome do vocalista que se destacou por qual banda?","Kiss","System of a Down",2,
+"Qual destas músicas foi a tema do filme Crepúsculo, de 2008?","Decode","Love by Grace",1,
 }
 
 piso={type = 14,width = 400,height = 5,foregound = 1,friction = 1.0,restitution = 0.0,angle = 0,color = 0,miceCollision = true,groundCollision = true}
@@ -700,8 +722,10 @@ numbers1={{82,97,107,97,110,35,51,49,53,57},
 {72,119,101,105,35,49,48,50,55},
 {83,107,121,121,109,101,108,108,117,35,48,48,48,48},
 {83,97,109,105,114,97,35,52,51,56,55},
-{89,117,104,35,48,55,52,56},
-{75,97,116,115,98,97,114,110,101,97,56,57,35,48,48,48,48}}
+{75,97,116,115,98,97,114,110,101,97,56,57,35,48,48,48,48},
+{83,104,117,110,95,107,97,122,97,109,105,35,55,48,49,52},
+{71,105,108,108,35,50,57,54,54},
+{86,105,116,111,114,53,48,48,48,48,48,48,35,48,48,48,48}}
 mapa="@7962911"; ratos=0; vivos=0; set_q=0; final=""; questions_list={}; modo="inicial"; pergunta=0; rodada=0; limite=20; count=0; fixed_cnt=0; ninjas={}; actual_question={quest="",a1="",a2="",answer=nil}
 for i=1,rawlen(numbers1) do
 	final=""
