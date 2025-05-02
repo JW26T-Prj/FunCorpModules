@@ -763,6 +763,7 @@ function eventNewPlayer(name)
 	for i=0,125 do
 		tfm.exec.bindKeyboard(name,i,false,true)
 	end
+	system.bindMouse(name,true)
 	tfm.exec.setPlayerScore(name,0,false)
 	newData={
 		["c"]=0;
