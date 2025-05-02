@@ -1,6 +1,5 @@
 -- Mestre Mandou / Simon Says / Simón Dice / Szymon Mówi!
--- Desenvolvido por / Developed by / Hecho por / Opracowane przez Jessiewind26#2546
--- Version 7.19.0
+-- Version 7.19.1
 
 admin={} -- insira o nome dos FunCorps aqui! / insert the FunCorp names here! / inserte los nombres de los FunCorps aquí! / wpisz tutaj imiona FunCorp!
 -- Caso esteja tentando rodar este código no cafofo de tribo, insira seus nomes na tabela acima para que o código possa ser executado.
@@ -49,7 +48,7 @@ for _,f in next,{"AutoShaman","AutoNewGame","AutoTimeLeft","DebugCommand"} do
 	tfm.exec["disable"..f](true)
 end
 mapas={"@6788174","@6788154","@6788715","@6788728","@6789271","@6790527","@6791838","@6789356","@6822331","@7290275","@7686598","@7750148","@7688066","@6788183","@6784965","@6789235","@6789853","@6790385","@6791944","@6801706","@6792470","@6806109","@6821950","@6866406","@6866437","@6885971","@5328362","@5957905","@7055459","@7214363","@6792516","@6825340","@6788693","@6789272","@6799996","@6803018","@6859175","@6907177","@7404327","@7382263","@6885799","@6790912","@6833993","@7721192","@7309605","@6788861","@6789249","@6790484","@7921432","@6794050","@6830799","@6866549","@6834529","@6876563","@6888512","@6893463","@7431981","@7146925","@6937148","@6356881","@6789280","@6790895","@6799997","@6789324","@6803128","@6900149","@3832586","@1468299","@6791871","@6811934","@1567074","@6876638","@6892608","@6982387","@2048617","@7404106","@7405103","@7400694","@7400678","@7412412","@7412422","@7755685","@6843950","@6810292","@3110915","@6789263","@7354947","@7201360","@6897042","@5549586","@6809461","@7242361","@7697974","@1966987","@7224471","@6932585","@6920982","@7863458","@7897912","@7899697","@7910742","@7236120","@2802178","@7913565","@5549355","@7230453","@7188655","@6481798","@7938319","@6810588","@7904062","@7216097","@7951509","@7368748","@7737497","@7950420","@7904050","@7958330","@7959756","@7693704","@6777390","@2637755","@2684847","@1445145","@7817584","@7658479","@7729901","@7695643","@7759938","@7175199","@7910467"}
-active=-2; vivo=0; rato=0; dificuldade=1; rodadas=0; rodada=0; number=""; count=0; xpos=0; xpos2=0; pid=-1; ypos=0; data={}; cmds={}; grounds={}; images={}; lang={}; alives={}; fire_id={}; final=""; tempo=10; counter=0; q=""; a=""; qtime=10; creator=""; sd_vivo=0; lobby_map="@7935706"; unlocked=false;
+active=-2; vivo=0; rato=0; dificuldade=1; rodadas=0; rodada=0; number=""; count=0; xpos=0; xpos2=0; pid=-1; ypos=0; data={}; cmds={}; grounds={}; images={}; lang={}; alives={}; fire_id={}; final=""; tempo=10; counter=0; q=""; a=""; qtime=10; creator=""; sd_vivo=0; lobby_map="@7916613"; unlocked=false;
 spiderweb={type = 15,width = 60,height = 60}
 cobweb={type = 15,width = 2400,height = 1200,miceCollision = false,groundCollision = false}
 acidb={type = 19,width = 10,height = 25,miceCollision = true,groundCollision = false,dynamic = true,fixedRotation = true,mass = 5000}
@@ -65,7 +64,7 @@ acids2={type = 19,width = 2400,height = 10,miceCollision = true,groundCollision 
 acids3={type = 19,width = 10,height = 800,miceCollision = true,groundCollision = false, foreground = true}
 system.disableChatCommandDisplay(nil,true)
 lang.br = {
-	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b>\nSiga tudo o que o jogo mandar e teste seus limites até o fim!\n\n<VP><b>® 2014-25 Jessiewind26#2546</b>\n<R>Versão 7.19.0",
+	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b>\nSiga tudo o que o jogo mandar e teste seus limites até o fim!\n\n<R>Versão 7.19.1",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -129,7 +128,7 @@ lang.br = {
 	mice = "Ratos",
 	round = "Rodada",
 	help = "Ajuda",
-	hcontent = "O objetivo deste module é muito simples:\n<b>Siga tudo o que o jogo mandar e teste seus limites até o fim!</b>\n\nTenha cuidado, pois alguns comandos podem te matar de surpresa, portanto, é preciso ficar muito esperto!\n\n<BL>Module criado e gerenciado por Jessiewind26#2546",
+	hcontent = "O objetivo deste module é muito simples:\n<b>Siga tudo o que o jogo mandar e teste seus limites até o fim!</b>\n\nTenha cuidado, pois alguns comandos podem te matar de surpresa, portanto, é preciso ficar muito esperto!",
 	mices = "Esta sala requer pelo menos 4 ratos.",
 	difficulty = "Dificuldade",
 	segundos = "segundos.",
@@ -164,7 +163,7 @@ lang.br = {
 	gravity = "A gravidade foi alterada!",
 	version = "Versão",
 	black = "Um buraco negro surgiu e está puxando todos vocês!",
-	creator = "Quem é o criador deste module?",
+	creator = "Pressione F10!",
 	counts = "Há quantos ratos nesta sala?",
 	counts_alive = "Há quantos ratos vivos nesta sala?",
 	facepalm = "Coloque a mão no rosto 5 vezes!",
@@ -215,7 +214,7 @@ lang.br = {
 	avcommands = "\nComandos disponíveis:\n!command [número de 1 a 140] - Executa um comando manualmente.\n!run [@número] - Executa o mapa especificado.\n!kill [nick#tag] - Mata o jogador especificado.\n!limit [número] - Altera o limite de jogadores na sala.\n!pw [password] - Adiciona uma senha na sala."
 }
 lang.en = {
-	welcome = "<N><b>Welcome to Simon Says module!</b>\nFollow everything the game told and test your limits until the end!\n\n<VP><b>® 2014-25 Jessiewind26#2546</b>\nTranslation by Draw#6691\n<R>Version 7.19.0",
+	welcome = "<N><b>Welcome to Simon Says module!</b>\nFollow everything the game told and test your limits until the end!\n\n<R>Version 7.19.1",
 	dancar = "Dance!",
 	sentar = "Sit down!",
 	confetar = "Throw 5 confetti!",
@@ -279,7 +278,7 @@ lang.en = {
 	mice = "Mice",
 	round = "Round",
 	help = "Help",
-	hcontent = "The objective of this module is very simple:\n<b>Follow everything that the game says and test your limits to the maximum!</b>\n\nTake care, because some commands can surprise you and kill your mice, so, you have to be very smart!\n\n<BL>Module made and developed by Jessiewind26#2546",
+	hcontent = "The objective of this module is very simple:\n<b>Follow everything that the game says and test your limits to the maximum!</b>\n\nTake care, because some commands can surprise you and kill your mice, so, you have to be very smart!",
 	mices = "This room request at least 4 mice.",
 	difficulty = "Difficulty",
 	segundos = "seconds.",
@@ -314,7 +313,7 @@ lang.en = {
 	gravity = "The gravity has been changed!",
 	version = "Version",
 	black = "A black hole has appeared and it's pulling all of you!",
-	creator = "Who's this module creator?",
+	creator = "Press F10!",
 	counts = "How many mice this room has?",
 	counts_alive = "How many mice alive this room has?",
 	facepalm = "Put your hand on your face 5 times!",
@@ -365,7 +364,7 @@ lang.en = {
 	avcommands = "\nAvailable commands: \n!command [1-140] - Run a command manually.\n!run [@code] - Run the specified map.\n !kill [player#tag] - Kill the specified player.\n!limit [number] - Limit the number of maximum players on the room.\n !pw [password] - Lock the room with a password."
 }
 lang.es = {
-	welcome = "<N><b>WBienvenido al juego Simón Dice!</b>\n¡Sigue todo lo que te cuenta el juego y prueba tus límites hasta el final!\n\n<VP><b>® 2014-25 Jessiewind26#2546</b>\nTraducción por Nurzak#7525\n<R>Versión 7.19.0",
+	welcome = "<N><b>WBienvenido al juego Simón Dice!</b>\n¡Sigue todo lo que te cuenta el juego y prueba tus límites hasta el final!\n\n<R>Versión 7.19.1",
 	dancar = "¡Baile!",
 	sentar = "¡Siéntate!",
 	confetar = "¡Lanza 5 confetis!",
@@ -429,7 +428,7 @@ lang.es = {
 	mice = "Ratones",
 	round = "Rodada",
 	help = "Ayuda",
-	hcontent = "El objetivo de este módulo es muy simple:\n<b>¡Sigue todo lo que dice el juego y prueba tus límites al máximo!</b>\n\n¡Ten cuidado, porque algunos comandos pueden sorprenderte y matarte, así que tendrás que ser muy inteligente!\n\n<BL>Código hecho por Jessiewind26#2546",
+	hcontent = "El objetivo de este módulo es muy simple:\n<b>¡Sigue todo lo que dice el juego y prueba tus límites al máximo!</b>\n\n¡Ten cuidado, porque algunos comandos pueden sorprenderte y matarte, así que tendrás que ser muy inteligente!",
 	mices = "Este juego requiere al menos 4 ratones.",
 	difficulty = "Dificultad",
 	segundos = "segundos.",
@@ -464,7 +463,7 @@ lang.es = {
 	gravity = "¡La gravedad ha cambiado!",
 	version = "Versión",
 	black = "¡Ha aparecido un agujero negro y está atrayendo a todos los ratones!",
-	creator = "¿Quién es el creador de este módulo?",
+	creator = "¡Presione la tecla F10!",
 	counts = "¿Cuantos ratones tiene esta sala?",
 	counts_alive = "¿Cuantos ratones con vida tiene esta sala?",
 	facepalm = "¡Pon tu mano sobre tu cara 5 veces!",
@@ -515,7 +514,7 @@ lang.es = {
 	avcommands = "\nComandos disponibles:\n!command [1-140] - Ejecutar un comando manualmente.\n!run [@code] - Ejecutar el mapa especificado.\n!kill [jugador#tag] - Mata al jugador especificado.\n!limit [número] - Limite el número máximo de jugadores en la sala.\n!pw [contraseña] - Bloquee la habitación con una contraseña."
 }
 lang.pl = {
-	welcome = "<N><b>Witaj w module Szymon mówi!</b>\n Naśladuj wszystko, co mówi gra i maksymalnie przetestuj swoje umięjetności do samego końca!\n\n<VP><b>® 2014-25 Jessiewind26#2546</b>\n Tłumaczone przez Kozakwiki#0000\n<R>Version 7.19.0",
+	welcome = "<N><b>Witaj w module Szymon mówi!</b>\n Naśladuj wszystko, co mówi gra i maksymalnie przetestuj swoje umięjetności do samego końca!\n\nTłumaczone przez Kozakwiki#0000\n<R>Version 7.19.1",
 	dancar = "Zatańcz!",
 	sentar = "Usiądź!",
 	confetar = "Wyrzuć 5 razy confetti!",
@@ -579,7 +578,7 @@ lang.pl = {
 	mice = "Myszy",
 	round = "Runda",
 	help = "Pomoc",
-	hcontent = "Cel tego modułu jest bardzo prosty:\n<b>Naśladuj wszystko, co mówi gra i maksymalnie przetestuj swoje umięjetności do samego końca!</b>\n\nUważaj,niektóre komendy mogą Cię zaskoczyć i zabić myszy, więc używaj ich bardzo mądrze!\n\n<BL>Moduł stworzył i jest udoskonalany przez Jessiewind26#2546",
+	hcontent = "Cel tego modułu jest bardzo prosty:\n<b>Naśladuj wszystko, co mówi gra i maksymalnie przetestuj swoje umięjetności do samego końca!</b>\n\nUważaj,niektóre komendy mogą Cię zaskoczyć i zabić myszy, więc używaj ich bardzo mądrze!",
 	mices = "Ten pokój wymaga co najmniej 4 myszy do gry.",
 	difficulty = "Trudność",
 	segundos = "sekundy.",
@@ -614,7 +613,7 @@ lang.pl = {
 	gravity = "Grawitacja została zmieniona!",
 	version = "Wersja",
 	black = "Czarna dziura pojawiła się i chce Was wszystkich wciągnąć!",
-	creator = "Kto jest twórcą tego modułu?",
+	creator = "Naciśnij F10!",
 	counts = "Ile myszek jest w pokoju?",
 	counts_alive = "Ile myszek jest na mapie?",
 	facepalm = "Położ łapki na pyszczek 5 razy!",
@@ -761,14 +760,9 @@ function setAllNightMode()
 end
 function eventNewPlayer(name)
 	rato=rato+1
-	for i=0,3 do
+	for i=0,125 do
 		tfm.exec.bindKeyboard(name,i,false,true)
 	end
-	for k=20,90 do
-		tfm.exec.bindKeyboard(name,k,false,true)
-	end
-	tfm.exec.bindKeyboard(name,115,false,true)
-	system.bindMouse(name,true)
 	tfm.exec.setPlayerScore(name,0,false)
 	newData={
 		["c"]=0;
@@ -927,7 +921,7 @@ function eventChatCommand(name,message)
 					end
 				end
 				if(message:sub(0,7) == "command") then
-					tt={}; for i=1,141 do table.insert(tt,tostring(i)) end
+					tt={}; for i=1,142 do table.insert(tt,tostring(i)) end
 					if findString(message:sub(9),tt) then
 						active=tonumber(message:sub(9))
 						getCommand()
@@ -1511,7 +1505,7 @@ function getCommand()
 	end
 	if active == 98 then
 		showCommand(active,text.creator)
-		tfm.exec.setGameTime(10)
+		tfm.exec.setGameTime(5)
 	end
 	if active == 99 then
 		showCommand(active,text.seq8)
@@ -1916,11 +1910,6 @@ function eventChatMessage(name,message)
 			tfm.exec.killPlayer(name)
 		elseif message == "5" then
 			tfm.exec.killPlayer(name)
-		end
-	end
-	if active == 98 then
-		if string.upper(message) == "JESSIEWIND26#2546" then
-			completeCommand(name)
 		end
 	end
 	if active == 101 then
@@ -2397,6 +2386,11 @@ function eventKeyboard(name,id,down,x,y)
 			end
 		end
 	end
+	if active == 98 then
+		if id == 121 then
+			completeCommand(name)
+		end
+	end
 	if active == 102 then
 		if id >= 0 and id <= 3 then
 			completeCommand(name)
@@ -2525,13 +2519,13 @@ function eventLoop(passado,faltando)
 	if unlocked == true then
 		local tempo=math.floor(faltando/1000)
 		if active == -2 then
-			ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." 7.19.0</b><")
+			ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." 7.19.1</b><")
 		elseif active == -1 and vivo >= 1 then
-			ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.19.0</b><")
+			ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.19.1</b><")
 		elseif active == -1 and vivo <= 0 then
-			ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.19.0</b><")
+			ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.19.1</b><")
 		elseif active >= 0 then
-			ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." 7.19.0</b><")
+			ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." 7.19.1</b><")
 		end
 		if rato < 4 then
 			if tfm.get.room.currentMap == lobby_map then
