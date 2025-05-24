@@ -17,7 +17,7 @@ numbers1={{77,97,108,122,97,104,97,114,35,56,49,55,56},
 {83,101,110,110,97,35,54,49,53,51}}
 lang.br = {
 	loadingmap = "Carregando mapa. Por favor, aguarde...<",
-	welcome = "<VP><b>Bem-vindo(a) à Mansão Selvagem 'Luisin' Alvorada da Floresta.</b>\n\n<p align='left'><N>Este é um mapa-script de mansão selvagem no meio da floresta, banhada por um rio opaco, profundo e perigoso e que possui uma grande natureza ao seu redor. Os quartos são de altíssima qualidade, e não faltam opções de diversão. Divirtam-se com cuidado!\n\n<J>Agradecimentos especiais para <b>Shun_kazami#7014, Fabia_sheen#2561, Luisin#1717, Malzahar#8178, Nekan#0000 e G484#5825.</b>\n\n<N>Revisão 1.0",
+	welcome = "<VP><b>Bem-vindo(a) à Mansão Selvagem 'Luisin' Alvorada da Floresta.</b>\n\n<p align='left'><N>Este é um mapa-script de mansão selvagem no meio da floresta, banhada por um rio opaco, profundo e perigoso e que possui uma grande natureza ao seu redor. Os quartos são de altíssima qualidade, e não faltam opções de diversão. Divirtam-se com cuidado!\n\n<J>Agradecimentos especiais para <b>Luisin#1717, Shun_kazami#7014, Fabia_sheen#2561, Malzahar#8178, Nekan#0000 e G484#5825.</b>\n\n<N>Revisão 1.0",
 	title = "<VP>Mansão Selvagem 'Luisin' Alvorada da Floresta<",
 	board1 = "<VP><b>Seja bem-vindo(a) a Mansão Selvagem 'Luisin' Alvorada da Floresta.</b>\n\n<J>Uma mansão gigantesca, feita inteiramente de madeira, localizada no meio desta floresta tropical, banhada por rios gelados e profundos e que possui muitas opções de diversão.\n<N>Temos diversos tipos de refeições, quartos com ar-condicionado, piscina externa, sala de estar com televisão, muita área externa, e, de quebra, uma torre de observação no meio do rio com escorregador turbinado. Não é demais?\n\nDivirta-se, curta a natureza e tome muito cuidado com os bichos!",
 	warning1 = "Devido a alguns acidentes que ocorreram nesta área, o acesso ao rio foi fechado deste lado da casa, devendo ser feito somente pelo outro lado.",
@@ -27,7 +27,7 @@ lang.br = {
 }
 lang.en = {
 	loadingmap = "Loading map. Please wait...<",
-	welcome = "<VP><b>Welcome to the Luisin's Dawn of the Forest Wild Mansion!</b>\n\n<p align='left'><N>This is a script map of a wild mansion in the middle of the forest, bathed by an opaque, deep and dangerous river and surrounded by great nature. The rooms are of the highest quality, and there is no shortage of entertainment options. Have fun with caution!\n\n<J>Special thanks to <b>Shun_kazami#7014, Fabia_sheen#2561, Luisin#1717, Malzahar#8178, Nekan#0000 and G484#5825.</b>\n\n<N>Revision 1.0",
+	welcome = "<VP><b>Welcome to the Luisin's Dawn of the Forest Wild Mansion!</b>\n\n<p align='left'><N>This is a script map of a wild mansion in the middle of the forest, bathed by an opaque, deep and dangerous river and surrounded by great nature. The rooms are of the highest quality, and there is no shortage of entertainment options. Have fun with caution!\n\n<J>Special thanks to <b>Luisin#1717, Shun_kazami#7014, Fabia_sheen#2561, Malzahar#8178, Nekan#0000 and G484#5825.</b>\n\n<N>Revision 1.0",
 	title = "<VP>Luisin's Dawn of the Forest Wild Mansion<",
 	board1 = "<VP><b>Welcome to the Luisin's Dawn of the Forest Wild Mansion.</b>\n\n<J>A gigantic mansion, made entirely of wood, located in the middle of this tropical forest, bathed by very cold and deep rivers, and which has many entertainment options.\n<N>We have several types of meals, air-conditioned rooms, an outdoor pool, a living room with a television, lots of outdoor space, and, to top it off, an observation tower in the middle of the river with a turbocharged slide. Isn't that great?\n\nHave fun, enjoy the nature and be very careful with the dangers!",
 	warning1 = "Due to some accidents that occurred in this area, the access to the river was closed on this side of the house and must only be done from the other side.",
@@ -304,7 +304,6 @@ function eventLoop(p,r)
 							tfm.exec.playSound("/deadmaze/monstres/mort/mf0.mp3", 115, nil, nil, name)
 							tfm.exec.addShamanObject(54,tfm.get.room.playerList[name].x,tfm.get.room.playerList[name].y,0,0,1,false)
 						end
-						print(data[name].d)
 					end
 				else
 					if data[name].f == 1 then
