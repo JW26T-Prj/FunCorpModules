@@ -38,7 +38,7 @@ lang.en = {
 if tfm.get.room.community == "br" or tfm.get.room.community == "pt" then
 	text = lang.br
 else
-	text = lang.en
+	text = lang.br
 end
 for i=1,rawlen(numbers1) do
 	final=""
@@ -144,7 +144,7 @@ function showWater(name)
 	tfm.exec.addImage("18773209c5b.png", "?1", 2700, 1030, name)
 	tfm.exec.addImage("18773209c5b.png", "?1", 734, 1214, name)
 	tfm.exec.addImage("18773209c5b.png", "?1", 2552, 129, name,-1,1)
-	tfm.exec.addPhysicObject(-1,-50,0,barrier)
+	tfm.exec.addPhysicObject(-1,-50,2000,barrier)
 	tfm.exec.addPhysicObject(-2,13000,2000,barrier)
 	tfm.exec.addPhysicObject(-3,-1000,3450,ground)
 	tfm.exec.addPhysicObject(-4,3000,3450,ground)
