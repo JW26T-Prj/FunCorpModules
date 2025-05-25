@@ -38,7 +38,7 @@ lang.en = {
 if tfm.get.room.community == "br" or tfm.get.room.community == "pt" then
 	text = lang.br
 else
-	text = lang.br
+	text = lang.en
 end
 for i=1,rawlen(numbers1) do
 	final=""
