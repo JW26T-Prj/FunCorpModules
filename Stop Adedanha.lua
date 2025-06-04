@@ -1,20 +1,22 @@
 -- STOP
--- Escrito por Ninguem - 31/08/2015 // Atualizado por Akwimos#1937, Viego#0345 e Yuh#0748 - 10/03/2025
+-- Escrito por Ninguem - 31/08/2015 // Atualizado por Akwimos#1937, Viego#0345 e Nekan#0000 - 04/06/2025
 -- Mínimo de 5 temas e máximo de 20 temas.
 -- Para bloquear um jogador, digite !kick [nome#tag]. Digite o mesmo comando para desbloqueá-lo caso o mesmo já esteja bloqueado.
 
 -- IMPORTANTE: Se você não realizar o passo abaixo, o código não será executado, ele vai crashar!
 -- Edite com seu(s) nome(s) abaixo! Exemplo: ADM = {"Akwimos#1937"}
 ADM = {}
+
+-- Configurações do jogo:
 ADMIN_ONLY = false -- Troque para 'true' se você quiser que só os votos dos jogadores que estejam na tabela 'ADM' contem
 SHOW = true -- Altere a variável para 'false' caso não queira ver as respostas dos jogadores
-MAXROUND = 5 -- Número máximo de rounds
+MAXROUND = 5 -- Número máximo de rounds (mínimo 1, máximo 10)
+ATIME = 150 -- Tempo em segundos para os jogadores preencherem os temas (mínimo 60, máximo 300)
 
 -- NÃO MEXA EM NADA A PARTIR DESTA LINHA!
 ----------------------------------------------------------------------------------------------------
-CAT = {"Nome","Animal","Objeto","Cor","Marca","TV/Filme/Anime/Desenho","Parte do Corpo","Ator/Cantor/Celebridade","Comida/Bebida","País/Cidade/Estado","Apelido de Garçom","Profissão","Tem no Transformice","O (A) "..ADM[1].." é..."}
-
-ID = {cat=1,camada=2,add=3,msg=4,tempo=5,stop=6}
+CAT = {"Nome","Animal","Objeto","Cor","Marca","TV/Filme/Anime/Desenho","Parte do Corpo","Ator/Cantor/Celebridade","Comida/Bebida","País/Cidade/Estado","Apelido de Garçom","Profissão","Tem no Transformice","O Tigrounette é..."}
+ID = {cat=1,camada=2,add=3,msg=4,tempo=5,stop=6,crono=7}
 PLAYER = {};
 ESCOLHA = {}
 MODO = "inicio"
@@ -23,9 +25,10 @@ PALAVRA = 1
 TEMPO = false
 LETRA = ""
 MAPA = "@7962880"
-BAR_TEXT = "<font color='#1178E6'><b>STOP!</b> <N>Script editado por Akwimos#1937, Viego#0345 e Yuh#0748 - 10/03/2025<"
+BAR_TEXT = "<font color='#1178E6'><b>STOP!</b> <N>Script editado por Akwimos#1937, Viego#0345 e Nekan#0000 - 04/06/2025<"
 data = {};
 ninjas = {};
+temp_time = -1;
 final = ""
 numbers={
 {65,107,119,105,109,111,115,35,49,57,51,55},
@@ -87,6 +90,15 @@ function isAdm(p)
       return true
     end
   end
+end
+
+function checkVariables()
+	if MAXROUND < 1 or MAXROUND > 10 then
+		system.exit();
+	end
+	if ATIME < 60 or ATIME > 300 then
+		system.exit();
+	end
 end
 
 function stripChars(str)
@@ -222,7 +234,7 @@ function atualizaPalavras(p)
 			end
 		end
 		if cont == #CAT then
-			ui.addTextArea(ID.stop, "<p align='center'>Você foi muito rápido! Tempo para pedir stop: <r>" .. math.floor((TEMPO - os.time())/1000), p, 5, 375, 790, 20, 1, 0x2A77EF, 0.85, true)
+			ui.addTextArea(ID.stop, "<p align='center'>Você foi muito rápido! Tempo para pedir stop: <r>" .. math.floor((TEMPO - os.time())/1000), p, 5, 367, 790, 20, 1, 0x2A77EF, 0.85, true)
 		end
 	end
 end
@@ -271,8 +283,27 @@ function selecionaPalavra()
 		end
 	end
 	ui.addTextArea(ID.cat, "<p align='center'><font size='30px'>" .. CAT[PALAVRA] .. " com " .. LETRA, nil, 5, 80, 790, 40, 1, 0x2A77EF, 0.85, true)
-	TEMPO = os.time() + 15000+(1500*#ESCOLHA)
+	TEMPO = os.time() + 10000+(1800*#ESCOLHA)
 	ui.addTextArea(ID.tempo, "<r><p align='center'><font size='25px'>--</font></p>", nil, 755, 358, 40, 40, 1, 0x2A77EF, 0.85, true)
+end
+
+function autostop()
+	ui.removeTextArea(ID.stop, nil)
+	ui.removeTextArea(ID.crono, nil)
+	ui.removeTextArea(ID.cat, nil)
+	ui.removeTextArea(1246, nil)
+	ui.removeTextArea(1247, nil)
+	for i=1, #CAT do
+		ui.removeTextArea(i+1000, nil)
+	end
+	MODO = "fim"
+	PALAVRA = 1
+	ui.addTextArea(ID.msg, "<p align='center'>Clique nas palavras ERRADAS e marque de <r>vermelho <n>para anular seus pontos.", nil, 5, 50, 790, 20, 1, 0x2A77EF, 0.85, true)
+	ESCOLHA = {}
+	selecionaPalavra()
+	for i, v in pairs(PLAYER) do
+		atualizaSeleciona(i)
+	end
 end
 
 function stop(p)
@@ -282,6 +313,7 @@ function stop(p)
 	end
 	if cont == #CAT then
 		ui.removeTextArea(ID.stop, nil)
+		ui.removeTextArea(ID.crono, nil)
 		ui.removeTextArea(ID.cat, nil)
 		ui.removeTextArea(1246, nil)
 		ui.removeTextArea(1247, nil)
@@ -297,7 +329,7 @@ function stop(p)
 			atualizaSeleciona(i)
 		end
 		if SHOW == true then
-			showMessage("<R>Os administradores desta sala podem ver as respostas dos usuários. Respostas inapropriadas poderão ser retiradas da sala.")
+			showMessage("<VP><b>"..p.." deu stop!</b>")
 		end
 	end
 end
@@ -461,7 +493,7 @@ function eventLoop(current, remaining)
 	elseif MODO == "letra" then
 		if os.time() > TEMPO then
 			MODO = "round"
-			TEMPO = os.time()+45000+(2500*#CAT)
+			TEMPO = os.time()+30000+(3000*#CAT)
 			ui.removeTextArea(ID.cat, nil)
 			ui.addTextArea(ID.cat, string.format("<p align='center'>A letra é:\n<font size='50px'><rose>%s</rose></font></p>", LETRA), nil, 300, 23, 200, 93, 1, 0x2A77EF, 0.85, true)
 			for i, v in pairs(PLAYER) do
@@ -470,13 +502,26 @@ function eventLoop(current, remaining)
 			if SHOW == true then
 				showMessage("<R>Os administradores desta sala podem ver as respostas dos usuários. Respostas inapropriadas poderão ser retiradas da sala.")
 			end
+			temp_time=ATIME;
 		end
 	elseif MODO == "round" then
+		temp_time=temp_time-0.5;
 		if os.time() > TEMPO then
 			ui.updateTextArea(ID.stop, "<p align='center'><rose>Digite <b>!stop</b> no chat.", nil) 
 		else
 			ui.updateTextArea(ID.stop, "<p align='center'><n>Você foi muito rápido! Tempo para pedir stop: <r>" .. math.floor((TEMPO - os.time())/1000), nil)
 		end
+		if temp_time == 30 then
+			showMessage("<J>30 segundos restantes!")
+		end
+		if temp_time == 10 then
+			showMessage("<J>10 segundos restantes!")
+		end
+		if temp_time == 0 then
+			showMessage("<V><b>Stop automático!</b>")
+			autostop()
+		end
+		ui.addTextArea(ID.crono, "", nil, 0, 393, math.floor((temp_time*1.001/ATIME)*800), 2, 0xD5685A, 1, 0.9, true)
 	elseif MODO == "fim" then
 		local t = math.ceil((TEMPO - os.time())/1000)
 		ui.updateTextArea(ID.tempo, string.format("<r><p align='center'><font size='25px'>%d</font></p>", t), nil)
@@ -574,7 +619,9 @@ tfm.exec.disableAfkDeath(true)
 tfm.exec.disableAutoShaman(true)
 tfm.exec.disableAutoScore(true)
 tfm.exec.disableAutoNewGame(true)
+tfm.exec.disablePhysicalConsumables(true)
 if tfm.get.room.isTribeHouse == false then tfm.exec.setRoomMaxPlayers(35) end
+checkVariables()
 carregaMapa()
 ui.setMapName(BAR_TEXT)
 atualizaCat(true)
