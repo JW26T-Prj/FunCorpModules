@@ -2,6 +2,7 @@ for _,f in next,{"AutoNewGame","AfkDeath","AutoShaman","MortCommand","DebugComma
 	tfm.exec["disable"..f](true)
 end
 debug.disableEventLog(true)
+if tfm.get.room.isTribeHouse == false then tfm.exec.setRoomMaxPlayers(6) end
 tfm.exec.newGame("@7917579")
 data={}; changed=false; xml2=''; lang={};
 lang.br = {
