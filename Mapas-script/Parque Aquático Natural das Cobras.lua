@@ -1,35 +1,35 @@
-for _,f in next,{"AutoNewGame","AfkDeath","AutoShaman","MinimalistMode","PhysicalConsumables","AutoTimeLeft"} do
+for _,f in next,{"AutoNewGame","AfkDeath","AutoShaman","MortCommand","DebugCommand","MinimalistMode","PhysicalConsumables","AutoTimeLeft"} do
 	tfm.exec["disable"..f](true)
 end
 debug.disableEventLog(true)
 tfm.exec.newGame("@7917579")
 data={}; changed=false; xml2=''; lang={};
 lang.br = {
-	npc10 = "<V>[Keith Hertzon] <N>Quem é você? Ah, mais um visitante...\n\nBem, se quer saber o destino deste elevador... Bem, eu acho que não deve ser bem o que você espera.\n\nVocê vai descer bastante dentro do rio. Chuto que deva ser uns 10 metros de profundidade... Você vai encontrar umas cápsulas bem antigas que era usadas para navegação, mas aquilo já existe há anos, então duvido que ainda funcione. Mas vai que, né...",
+	npc10 = "<V>[Keith Hertzon] <N>Quem é você? Ah, mais um visitante...\n\nBem, se quer saber o destino deste elevador... Bem, eu acho que não deve ser bem o que você espera.\n\nVocê vai descer bastante dentro do lago. Chuto que deva ser uns 10 metros de profundidade... Você vai encontrar umas cápsulas bem antigas que era usadas para navegação, mas aquilo já existe há anos, então duvido que ainda funcione. Mas vai que, né...",
 	npc11 = "<V>[Henry Dier] <N>Você é muito(a) corajoso(a) para estar neste lugar. A pressão aqui é bem alta.\n\nMas se quiser saber o que são aquelas coisas, são esferas submarinas. Elas eram utilizadas há décadas atrás, mas acredito que estejam todas enferrujadas. Não recomendo tentar ir para lá, a não ser que realmente seja muito curioso(a). <b>E sim, isto é um aviso.</b>",
-	npc12 = "<V>[Andressa Nyeder] <N>Seja bem-vindo(a). Este é o mirante de observação do Parque Aquático Natural das Cobras. Daqui é possível ver quase toda a extensão do rio com muito mais clareza.\n\nAs cobras não são lindas? E o melhor de tudo, não são venenosas! Você pode fazer carinho nelas sem medo.",
+	npc12 = "<V>[Andressa Nyeder] <N>Seja bem-vindo(a). Este é o mirante de observação do Parque Aquático Natural das Cobras. Daqui é possível ver quase toda a extensão do lago com muito mais clareza.\n\nAs cobras não são lindas? E o melhor de tudo, não são venenosas! Você pode fazer carinho nelas sem medo.",
 	npc13 = "<V>[Fabia Murray] <N>Alguém aqui está preparado(a) para grandes emoções? Tomem cuidado apenas com as cobras!",
-	npc14 = "<V>[Dereek Nandertz] <N>Está perdido(a)? Não precisa se preocupar. Eu serei o seu guia.\n\nAli na frente, há uma tirolesa bem grande e um trampolim. Desse jeito, você consegue sentir a água gelada do rio com muito mais propriedade.\n\n<R>Só vê se não fica muito tempo pulando no trampolim... Aquilo já quebrou várias vezes por conta de alguns que nem quero comentar.",
+	npc14 = "<V>[Dereek Nandertz] <N>Está perdido(a)? Não precisa se preocupar. Eu serei o seu guia.\n\nAli na frente, há uma tirolesa bem grande e um trampolim. Desse jeito, você consegue sentir a água gelada do lago com muito mais propriedade.\n\n<R>Só vê se não fica muito tempo pulando no trampolim... Aquilo já quebrou várias vezes por conta de alguns que nem quero comentar.",
 	npc15 = "<V>[Damian Henderson] <N>Está preparado(a)? Pois se não estiver, é melhor estar. Esta é o maior escorregador aquático do mundo!\n\nCom quase 50 metros de altura, é literalmente uma aventura de cair o queixo. Definitivamente não é um brinquedo para medrosos.\n\nE aí, vai encarar?",
-	npc16 = "<V>[Luciana Bander] <N>Espera! Não está chovendo! Como eu queria uma boa chuva por aqui... Faz muito tempo que não cai uma água. Fora a que já tem no rio...",
-	npc17 = "<V>[Jesse Malcolm] <N>Nunca imaginei que alguém pudesse chegar neste lugar tão ruim... No fundo de um gelado rio... Mas se quiser saber como eu vim parar aqui, então deixe-me explicar.\n\nCerto dia, estava me divertindo aqui no parque e praticando natação no rio, que é meu esporte favorito. Mas o feitiço de uma mulher desconhecida me atacou e agora sou obrigado a viver aqui. Na escuridão. No frio.\n\nAh, vê se não fica muito tempo aqui em baixo, ou você pode congelar.",
-	welcome2 = "<VP><b>Bem-vindo(a) ao Parque Aquático Natural das Cobras.</b>\n\n<p align='left'><N>Este é um mapa-script bem diferente de tudo o que você já viu.\nO rio é muito gelado! Caso tenha medo de água gelada, recomendo sair desta sala agora! Mas se souber, apenas aproveite e curta!\n\n<J>Agradecimentos especiais para <b>Sivir#3502, Dharak#7603, Lanadelrey#4862, Lorena#0960, Spectra_phantom#6089, Star#8558, Soft#1388, Some#2636, Leticia1k#0000, Draw#6691 e Joanaanne#0000.</b>\n\nRevisão 1.7",
+	npc16 = "<V>[Luciana Bander] <N>Espera! Não está chovendo! Como eu queria uma boa chuva por aqui... Faz muito tempo que não cai uma água. Fora a que já tem no lago...",
+	npc17 = "<V>[Jesse Malcolm] <N>Nunca imaginei que alguém pudesse chegar neste lugar tão ruim... No fundo de um lago gelado... Mas se quiser saber como eu vim parar aqui, então deixe-me explicar.\n\nCerto dia, estava me divertindo aqui no parque e praticando natação, que é meu esporte favorito. Mas o feitiço de uma mulher desconhecida me atacou e agora sou obrigado a viver aqui. Na escuridão. No frio.\n\nAh, vê se não fica muito tempo aqui em baixo, ou você pode congelar.",
+	welcome2 = "<VP><b>Bem-vindo(a) ao Parque Aquático Natural das Cobras.</b>\n\n<p align='left'><N>Este é um mapa-script bem diferente de tudo o que você já viu.\nO lago é muito gelado! Caso tenha medo de água gelada, recomendo sair desta sala agora! Mas se souber, apenas aproveite e curta!\n\n<J>Agradecimentos especiais para <b>Sivir#3502, Dharak#7603, Lanadelrey#4862, Lorena#0960, Spectra_phantom#6089, Star#8558, Soft#1388, Some#2636, Quintela#3163, Leticia1k#0000, Draw#6691 e Joanaanne#0000.</b>\n\nRevisão 1.8",
 	loadingmap = "Carregando mapa. Por favor, aguarde...<",
-	canfreeze = "Tenha cuidado: A água do rio é muito gelada. Ficar por muito tempo no rio pode congelar seu rato.",
+	canfreeze = "Tenha cuidado: A água do lago é muito gelada. Ficar por muito tempo no rio pode congelar seu rato.",
 	title = "<VP>Parque Aquático Natural das Cobras<"
 }
 lang.en = {
-	npc10 = "<V>[Keith Hertzon] <N>Who are you? Ah yes, another visitor...\n\nWell, if you want to know the destination of this elevator... Well, I guess it's not quite what you expect.\n\nYou'll go quite a way down into the river. I guess it's about 10 meters deep... You'll find some very old capsules that were used for navigation, but they've been around for years, so I doubt they still work. But just in case...",
+	npc10 = "<V>[Keith Hertzon] <N>Who are you? Ah yes, another visitor...\n\nWell, if you want to know the destination of this elevator... Well, I guess it's not quite what you expect.\n\nYou'll go quite a way down into the lake. I guess it's about 10 meters deep... You'll find some very old capsules that were used for navigation, but they've been around for years, so I doubt they still work. But just in case...",
 	npc11 = "<V>[Henry Dier] <N>You are very brave to be in this place. The water pressure here is quite high.\n\nBut if you want to know what those things are, they are underwater spheres. They were used decades ago, but I believe they are all rusty. I do not recommend trying to go there, unless you are really very curious. <b>And yes, this is a warning.</b>",
-	npc12 = "<V>[Andressa Nyeder] <N>Welcome! This is the observation deck. From here you can see almost the entire length of the river much more clearly.\n\nAren't the snakes beautiful? And best of all, they're not poisonous! You can pet them without fear.",
+	npc12 = "<V>[Andressa Nyeder] <N>Welcome! This is the observation deck. From here you can see almost the entire length of the lake much more clearly.\n\nAren't the snakes beautiful? And best of all, they're not poisonous! You can pet them without fear.",
 	npc13 = "<V>[Fabia Murray] <N>Is anyone here ready for some big thrills? Just watch out for the snakes!",
-	npc14 = "<V>[Dereek Nandertz] <N>Are you lost? Don't worry. I'll be your guide.\n\nThere's a big zip line and a diving board up ahead. That way, you can feel the cold water of the river much more clearly.\n\n<R>Just make sure you don't spend too much time jumping on the trampoline... It has broken several times due to some things that I don't even want to mention.",
+	npc14 = "<V>[Dereek Nandertz] <N>Are you lost? Don't worry. I'll be your guide.\n\nThere's a big zip line and a diving board up ahead. That way, you can feel the cold water of the lake much more clearly.\n\n<R>Just make sure you don't spend too much time jumping on the trampoline... It has broken several times due to some things that I don't even want to mention.",
 	npc15 = "<V>[Damian Henderson] <N>Are you ready? Well, if you're not, you better be. This is the tallest water slide in the world!\n\nAt almost 50 meters high, it's literally a jaw-dropping adventure. It's definitely not a ride for the faint-hearted.\n\nSo, are you up for it?",
-	npc16 = "<V>[Luciana Bander] <N>Wait! It's not raining! How I wish it would rain here... It's been a long time since any rain fell. Besides the rain that's already in the river...",
-	npc17 = "<V>[Jesse Malcolm] <N>I never imagined that someone could end up in such a bad place... At the bottom of a cold river... But if you want to know how I ended up here, then let me explain.\n\nOne day, I was having fun here in the park and swimming in the river, which is my favorite sport. But the spell of an unknown woman attacked me and now I am forced to live here. In the darkness. In the cold.\n\nOh, try not to stay down here too long, or you might freeze.",
-	welcome2 = "<VP><b>Welcome to Snake's Natural Aquatic Park!</b>\n\n<p align='left'><N>This is a script map unlike anything you've ever seen before.\nThe river is freezing! If you're afraid of freezing water, I recommend you leave this room now! But if you know how, just enjoy it!\n\n<J>Special thanks to <b>Sivir#3502, Dharak#7603, Lanadelrey#4862, Lorena#0960, Spectra_phantom#6089, Star#8558, Soft#1388, Some#2636, Leticia1k#0000, Draw#6691 and Joanaanne#0000.</b>\n\nRevision 1.7",
+	npc16 = "<V>[Luciana Bander] <N>Wait! It's not raining! How I wish it would rain here... It's been a long time since any rain fell. Besides the rain that's already in the lake...",
+	npc17 = "<V>[Jesse Malcolm] <N>I never imagined that someone could end up in such a bad place... At the bottom of a cold lake... But if you want to know how I ended up here, then let me explain.\n\nOne day, I was having fun here in the park and swimming in the lake, which is my favorite sport. But the spell of an unknown woman attacked me and now I am forced to live here. In the darkness. In the cold.\n\nOh, try not to stay down here too long, or you might freeze.",
+	welcome2 = "<VP><b>Welcome to Snake's Natural Aquatic Park!</b>\n\n<p align='left'><N>This is a script map unlike anything you've ever seen before.\nThe lake is freezing! If you're afraid of freezing water, I recommend you leave this room now! But if you know how, just enjoy it!\n\n<J>Special thanks to <b>Sivir#3502, Dharak#7603, Lanadelrey#4862, Lorena#0960, Spectra_phantom#6089, Star#8558, Soft#1388, Some#2636, Quintela#3163, Leticia1k#0000, Draw#6691 and Joanaanne#0000.</b>\n\nRevision 1.8",
 	loadingmap = "Loading map. Please wait...<",
-	canfreeze = "Be careful: The river water is very cold. Staying in the water for too long can freeze your mice.",
+	canfreeze = "Be careful: The lake water is very cold. Staying in the water for too long can freeze your mice.",
 	title = "<VP>Snake's Natural Aquatic Park<"
 }
 if tfm.get.room.community == "br" or tfm.get.room.community == "pt" then
@@ -119,7 +119,7 @@ function showWater(name)
 	end
 	for a=0,3 do
 		for c=0,4 do
-			tfm.exec.addImage("181b9de5c95.png","?1",-800+(c*1920),2380-(a*1080),name, 1, 1, 0, 0.2+(a*0.2))
+			tfm.exec.addImage("181b9de5c95.png","?1",-800+(c*1920),2380-(a*1080),name, 1, 1, 0, 0.125+(a*0.125))
 		end
 	end
 	tfm.exec.addImage("17e937f4f5a.png","?1",-800,-1735,name,30,1)
@@ -168,7 +168,7 @@ function eventNewPlayer(name)
 	};
 	data[name] = newData;
 	if changed == true then
-		ui.setMapName(text.welcome2,name)
+		showMessage(text.welcome2,name)
 		showWater(name)
 		initNPC(name)
 	end
