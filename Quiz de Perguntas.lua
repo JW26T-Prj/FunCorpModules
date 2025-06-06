@@ -42,7 +42,7 @@ perguntas={
 "Qual destes pregos não pode ser utilizado no modo difícil?","Vermelho","Amarelo",1,
 "Há quantas categorias na loja?","22","27",2,
 "Em que ano o Transformice atingiu seu número máximo de jogadores ativos?","2012","2013",1,
-"Quantos queijos custa a exportação de um mapa como cafofo da tribo?","5","40",1,
+"Quantos queijos custam a exportação de um mapa como cafofo da tribo?","5","40",1,
 "Quantos jogos a Atelier 801 tem atualmente?","5","6",2,
 "Qual é a fricção e a restituição, respectivamente, de um piso de chocolate?","20 e 0","0 e 20",1,
 "Qual destes usuários é responsável pelo module #anvilwar?","Spectra_phantom#6089","Jessiewind26#2546",1,
@@ -212,7 +212,7 @@ perguntas={
 "Qual o nome do antigo jogo do Transformice para celular?","Dead Maze","Run For Cheese",2,
 "Os donos da Atelier 801 e da Ubisoft já se encontraram pessoalmente.","Não","Sim",1,
 "Em qual árvore de habilidades está presente a habilidade 'Volta da natureza'?","Físico","Selvagem",2,
-"Qual o nome atual da ex-modsent Racola?","Alriy#0095","Keith#0095",1,
+"Qual o nome atual da ex modsent Racola?","Alriy#0095","Keith#0095",1,
 "Quantos ratos salvos são necessários para desbloquear o modo normal?","0","1000",1,
 "Quando você cria uma conta no Transformice, seu inventário vem vazio.","Verdadeiro","Falso",2,
 "Qual o comando que desbloqueia um item de cabeça de bolo?","/atelier801","/transformice",1,
@@ -320,13 +320,13 @@ perguntas1={
 "Uma polegada equivale a quantos centímetros, aproximadamente?","2.5 cm","3.3 cm",1,
 "Em qual ano ocorreu o último Censo do IBGE?","2010","2022",2,
 "O Arco do Triunfo, localizado na França, é uma homenagem a...","Napoleão Bonaparte","George Washington",1,
-"Na matemática, qual o nome do triângulo em que a soma dos números centrais é igual à soma das coeficientes binomiais?","Triângulo de Newton","Triângulo de Pascal",2,
+"Na matemática, qual o nome do triângulo em que a soma dos números centrais é igual à soma dos coeficientes binomiais?","Triângulo de Newton","Triângulo de Pascal",2,
 "Quais os povos que dominaram a região da Islândia no século IX?","Bárbaros","Vikings",2,
 "Qual o nome da região de relevo localizada na região Nordeste do Brasil, sendo responsável pelo clima da região?","Planalto da Borborema","Pico das Agulhas Negras",1,
 "Em qual continente fica localizado o monte Everest?","Europa","Ásia",2,
 "De onde é a invenção do chuveiro elétrico?","França","Brasil",2,
 "Qual destes pontos turísticos brasileiros fica localizado no estado da Bahia?","Casa de Santos Dumont","Elevador Lacerda",2,
-"Quantos elementos químicos a tabela periódica possui?","113","118",2,
+"Quantos elementos químicos possui a tabela periódica?","113","118",2,
 "Qual a montanha mais alta do Brasil?","Pico da Neblina","Pico da Bandeira",1,
 "Qual destes reinos de seres vivos é considerado o Reino das Bactérias?","Monera","Protista",1,
 "Quantos presidentes tivemos no Brasil desde a Redemocraticação, em 1985?","7","8",2,
@@ -360,7 +360,7 @@ perguntas1={
 "Qual foi o cineasta foi responsável por dirigir os filmes Titanic e Avatar?","James Cameron","Jacques Piccard",1,
 "Qual é o nome dado para as bactérias que não precisam de oxigênio para se reproduzirem?","Aeróbicas","Anaeróbias",2,
 "Qual destes tipos de clima é encontrado no Brasil?","Semiárido","Mediterrâneo",1,
-"Quantas capitais a África do Sul possui?","2","3",2,
+"Quantas capitais possui a África do Sul?","2","3",2,
 "Quem é o Deus da mitologia Nórdica?","Zeus","Odin",2,
 "Em 1889, qual destas cidades foi a capital do Brasil?","Rio de Janeiro","Petrópolis",2,
 "Por quantos anos durou a Era Vargas, primeiro período no qual Getúlio Vargas foi presidente do Brasil?","8","15",2,
@@ -371,7 +371,7 @@ perguntas1={
 "Qual o nome da cidade que fica localizada entre os rios Tigre e Eufrates?","Jerusalém","Mesopotâmia",2,
 "A partir de qual ano passou a ser utilizado o Novo Padrão Ortográfico no Brasil?","2009","2010",1,
 "Qual destes municípios faz parte da chamada Região dos Lagos do estado do Rio de Janeiro?","Angra dos Reis","Armação dos Búzios",2,
-"Quantos quilômetros a luz percorre no vácuo durante 1 mês?","777062051136000","777600000000000",1,
+"Quantos quilômetros a luz percorre no vácuo durante um mês?","777062051136000","777600000000000",1,
 "Copacabana é um bairro ou uma cidade?","Bairro","Cidade",1,
 "Qual o nome do cartunista que fez a Turma da Mônica?","Maurício de Sousa","Maurício de Souza",1,
 "Qual o nome do cartunista que fez o Menino Maluquinho?","Ziraldo","Monteiro Lobato",1,
@@ -381,7 +381,7 @@ perguntas1={
 "Quantos reinos de seres vivos existem na Terra?","5","7",1,
 "Um microfone pode ser utilizado para geração de energia elétrica.","Verdadeiro","Falso",1,
 "Na matemática, qual o nome da operação inversa da Derivação?","Integração","Generalização",1,
-"Qual o nome dado a doença nos homens cujo possuem problemas onde o pênis não completa totalmente a glande?","Balanite","Fimose",2,
+"Qual o nome dado a doença nos homens quando o pênis não completa totalmente a glande?","Balanite","Fimose",2,
 "Quanto tempo leva para a Terra dar uma volta completa em torno do Sol, aproximadamente?","365 dias","365 dias e 6 horas",2,
 "Qual o nome dado para o espectro de luz que fica acima da luz visível?","Infravermelho","Ultravioleta",2,
 "Qual o nome do empresário que foi responsável pela inauguração da Televisão no Brasil?","Silvio Santos","Assis Chateaubriand",2,
@@ -398,7 +398,7 @@ perguntas1={
 "A Bolívia é o único país da América do Sul localizado próximo da Cordilheira dos Andes.","Verdadeiro","Falso",2,
 "Em média, quantos metros de profundidade você precisa descer para chegar a uma pressão atmosférica de 2 atm?","10 metros","20 metros",1,
 "No geral, Terremotos e maremotos acontecem quando duas ou mais placas tectônicas...","Se separam uma da outra","Colidem uma com outra",2,
-"Qual o nome da tecnologia que era utilizada na maioria dos equipamentos eletrônicos, do início do século XX até o anos 70?","Válvula","Transformador",1,
+"Qual o nome da tecnologia que era utilizada na maioria dos equipamentos eletrônicos, do início do século XX até os anos 70?","Válvula","Transformador",1,
 "Em qual ano terminou a Segunda Guerra Mundial?","1942","1945",2,
 "Em qual ano ocorreu a Quebra da Bolsa de Nova York?","1929","1930",1,
 "Qual destes gases geralmente é presente dentro dos túneis de trânsito, e que podem causar problemas ao sistema respiratório?","CO","CO₂",1,
@@ -407,7 +407,7 @@ perguntas1={
 "Com quantos anos morreu a Rainha Elizabeth?","96","97",1,
 "A partir de que ano Plutão deixou de ser considerado Planeta e foi considerado Planeta Anão?","2005","2006",2,
 "O seriado Chaves foi produzido em qual país?","México","Argentina",1,
-"A primeira emissora da Rede Globo foi lançado em qual estado do Brasil?","São Paulo","Rio de Janeiro",2,
+"A primeira emissora da Rede Globo foi lançada em qual estado do Brasil?","São Paulo","Rio de Janeiro",2,
 "Quantos continentes tem o Planeta Terra?","5","6",2,
 "É possível atirar com uma arma no espaço.","Verdadeiro","Falso",1,
 "Qual o nome do lugar mais quente do Planeta Terra?","Rio de Janeiro","Núcleo",2,
@@ -457,7 +457,7 @@ perguntas1={
 "Em que ano a vereadora Marielle Franco e o motorista Anderson Gomes foram assasinados?","2017","2018",2,
 "O município de Duque de Caxias, no Rio de Janeiro, antes era conhecido por qual nome?","Cisplatina de Ferro","Porto da Estrela",2,
 "A chuva e a neve são, geograficamente falando, chamadas de...","Precipitações","Condensações",1,
-"Qual foi o município de Minas Gerais no qual houveram diversas minerações de ouro durante o século XVII?","Ouro Preto","Juiz de Fora",1,
+"Qual foi o município de Minas Gerais no qual houve diversas minerações de ouro durante o século XVII?","Ouro Preto","Juiz de Fora",1,
 "Em qual ano ocorreu o rompimento da barragem em Brumadinho, responsável por destruir grande parte da vida e vegetação presente por lá?","2015","2019",2,
 "Qual o nome da lei que existia dos anos 70 até meados dos anos 80, na qual proibia os candidatos a falarem durante o horário eleitoral?","Lei Elefante","Lei Falcão",2,
 "Em qual ano foi lançado o Windows 7?","2007","2009",2,
@@ -486,7 +486,7 @@ perguntas1={
 "A Lagoa de Araruama, no Rio de Janeiro, corta todos os municípios da chamada Região dos Lagos.","Verdadeiro","Falso",2,
 "Em que ano foi fundada a União Soviética?","1922","1946",1,
 "Qual era o antigo nome da marca que hoje conhecemos como LG?","Goldstar","Luckystar",1,
-"O salário mínimo surgiu em qual governo brasileiro?","Washington Luís","Getúlio Vargas",2,
+"O salário-mínimo surgiu em qual governo brasileiro?","Washington Luís","Getúlio Vargas",2,
 "A primeira emissora de Sílvio Santos foi inaugurada em qual estado do Brasil?","São Paulo","Rio de Janeiro",2,
 "Em um computador, onde ficam armazenados todos os arquivos como fotos, vídeos e jogos?","Memória RAM","Disco Rígido",2,
 "Em que ano foi inaugurada a Avenida Brasil, principal via expressa da cidade do Rio de Janeiro?","1946","1966",1,
@@ -504,14 +504,14 @@ perguntas1={
 "A Primeira Guerra Mundial durou mais que a Segunda Guerra Mundial.","Verdadeiro","Falso",2,
 "Qual o nome da maior favela do Brasil?","Favela da Rocinha","Favela do Sol Nascente",2,
 "Em qual ano foi lançada a codificação Unicode, que podia ser utilizada em vários dispositivos, e que inclui os famosos Emojis?","1991","2008",1,
-"A diabetes é uma doença causada pelo excesso do quê no sangue?","Açúcar","Sal",1,
+"A diabetes é uma doença causada pelo excesso de qual elemento no sangue?","Açúcar","Sal",1,
 "Quantas estrelas existem na bandeira dos Estados Unidos?","48","50",2,
 "Em qual dia e mês do ano é comemorado o feriado de Tiradentes?","21 de Abril","21 de Junho",1,
 "Em qual país foi inventada a Calça Jeans?","Estados Unidos","Inglaterra",1,
 "Em qual continente fica localizado o México?","América do Norte","América Central",1,
 "Em qual ano foi lançada a primeira versão do sistema operacional Android?","2008","2010",1,
 "Segundo a Bíblia Sagrada, qual o nome do bandido que foi solto no episódio da crucificação de Jesus?","Pilatos","Barrabás",2,
-"Em qual ano foi fundada a empresa AMD, que hoje fabrica processadores, placas de vídeo e outros itens?","1969","1989",1,
+"Em qual ano foi fundada a empresa AMD, que fabrica processadores, placas de vídeo e outros itens?","1969","1989",1,
 "Qual é a fórmula utilizada para o cálculo do Índice de Massa Corporal?","peso em kg x (altura em metros)²","peso em kg / (altura em metros)²",2,
 "O Brasil possui 3 dos 10 maiores rios do planeta Terra.","Verdadeiro","Falso",2,
 "O Feriado de Carnaval é sempre comemorado no mês de Fevereiro.","Verdadeiro","Falso",2,
@@ -523,7 +523,7 @@ perguntas1={
 "Em que ano estreou o programa de televisão Fantástico?","1973","1987",1,
 "Qual destes municípios fica localizado no estado do Rio Grande do Norte?","São Miguel do Gostoso","São Miguel do Araguaia",1,
 "Em que ano foi extinta a antiga rede social Orkut?","2013","2014",2,
-"Qual o nome da material utilizado para a produção de folhas de papel?","Sacarose","Celulose",2,
+"Qual o nome do material utilizado para a produção de folhas de papel?","Sacarose","Celulose",2,
 "Em que ano Vladimir Putin foi eleito presidente da Rússia pela primeira vez?","2004","2008",1,
 "Quais destes municípios fazem parte da chamada Baixada Fluminense?","Duque de Caxias, Nilópolis e Mesquita","Duque de Caxias, Nilópolis e Niterói",1,
 "Em que ano foi lançado o famoso programa de criação de documentos e edição de textos Microsoft Word?","1983","1989",1,
@@ -577,7 +577,7 @@ perguntas2={
 "Qual é o nome da música utilizada na abertura da novela O Rei do Gado?","O Rei do Gado","Orquestra da Terra",1,
 "De quem é a música 'Meu Mundo e Nada Mais'?","Antônio Fagundes","Guilherme Arantes",2,
 "Qual é a música, que quando ouvida ao contrário, há referências satânicas?","Hotel Califórnia","Empty Spaces",1,
-"Em qual ano foi introduzidos os CDs no Brasil?","1982","1984",2,
+"Em qual ano foram introduzidos os CDs no Brasil?","1982","1984",2,
 "A música 'Festa do Apê', do cantor Latino, é uma versão brasileira adaptada de qual música?","O-Zone","Dragostea Din Tei",2,
 "Qual é o limite máximo de músicas que podem ser colocadas em um LP?","10","Não existe limite teórico",2,
 "Qual destas músicas não foi cantada pela cantora Evanescence?","Bring Me To Life","Over and Under",2,
@@ -636,7 +636,7 @@ perguntas2={
 "A música 'Because of You' foi originalmente gravada por qual cantora em 2004?","Kelly Clarkson","Lana del Rey",1,
 "A música 'Caneta Azul', que fez muito sucesso em 2019, foi gravada por quem?","Manoel Elias","Manoel Gomes",2,
 "O CD foi o primeiro formato de mídia digital que existiu.","Verdadeiro","Falso",2,
-"Quantos álbuns a cantora Vanusa gravou?","20","22",2,
+"A cantora Vanusa gravou quantos álbuns?","20","22",2,
 "Antes de entrar na carreira solo, a cantora Ivete Sangalo fazia parte de qual grupo?","Banda Eva","Banda Canal",1,
 "A nota 'Lá' representa uma frequência de quantos Hz, aproximadamente?","400 Hz","440 Hz",2,
 "Qual destas músicas foi tema da novela Anjo Mau, na versão de 1976?","Meu Mundo e Nada Mais","Sonho de Ícaro",1,
@@ -812,12 +812,16 @@ function eventNewGame()
 	showMessage("<N><b>Quantidade de perguntas presentes: "..fixed_cnt.."</b>")
 end
 function reset()
-	rodada=0
-	for i=0,5 do
-		ui.removeTextArea(i)
+	if rawlen(numbers1) == 10 then
+		rodada=0
+		for i=0,5 do
+			ui.removeTextArea(i)
+		end
+		modo="inicial"
+		tfm.exec.newGame(mapa)
+	else
+		system.exit()
 	end
-	modo="inicial"
-	tfm.exec.newGame(mapa)
 end
 function eventChatCommand(name,message)
 	if verifyNinjas(name) == true or verifyAdmin(name) == true then
