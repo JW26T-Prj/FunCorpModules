@@ -1,6 +1,5 @@
--- Atualizações feitas em 21/03/2025:
--- Aumento do tempo de espera após o 3º colocado para 8 segundos
--- Limpeza de código
+-- Atualizações feitas em 06/06/2025:
+-- Pequenas correções de texto
 
 admin="" -- Insira seu nome aqui, FunCorp! / Insert your nickname here, FunCorp!
 
@@ -63,7 +62,7 @@ lang.br = {
 	help = "<p align='center'><N><b>Bem-vindo ao module TribeWar Renewed.</b>\n\n<p align='left'>Neste module, os jogadores representam suas tribos em uma competição. Conseguir pódios garantirá pontos para a sua tribo.\n\nAo final de um determinado número de rounds, a tribo que conseguir pontuar mais vencerá o jogo.\n\n<VP>Pontuações do jogo:\n<BL>• <N>1º lugar = <VP>6 pontos\n<BL>• <N>2º lugar = <VP>4 pontos\n<BL>• <N>3º lugar = <VP>2 pontos\n\n<R>Caso você saia de uma tribo e vá para outra, você poderá representá-la somente no próximo jogo."
 }
 lang.en = {
-	welcome = "<N><b>Welcome to TribeWar Renewed module!</b>\nGather the players of your tribe, win matches and represent her with success!\n<ROSE>Type !help to see the game help.\n\Original credits to Lynezx#0000, Nasus_assassin#1534 and Dhanny_mheyran#6701",
+	welcome = "<N><b>Welcome to TribeWar Renewed module!</b>\nGather the players of your tribe, win matches and represent her with success!\n<ROSE>Type !help to see the game help.\n\nOriginal credits to Lynezx#0000, Nasus_assassin#1534 and Dhanny_mheyran#6701",
 	tribelock1 = "<VP>You are representing the following tribe: <b>",
 	tribelock2 = ".</b>\n<N>If you join another tribe, you only can represent her in the next game.",
 	notribe = "<R>You still can play this game, if you are invited to join any tribe. However, you can only represent one tribe at time.",
