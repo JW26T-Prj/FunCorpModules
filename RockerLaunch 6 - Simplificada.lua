@@ -51,6 +51,7 @@ lang.br = {
 	shamdied="<VP>O shaman morreu! Iniciando uma nova rodada...",
 	buildingtime="Tempo para construir:",
 	flyingtime="Tempo restante:",
+	player_sync="Jogador com menor ping para sync: ",
 }
 lang.en = {
 	ajuda="<VP>Welcome to RocketLaunch 6!\n<N>In this module, the shaman has 2 minutes to build a rocket that needs to take all the mice into space!\nType !help to see more information.\n\n<BL>Credits to Lynet#8558, Puffezinhaq#0000, Digo20games#0000, Dhanny_mheyran#6701 and Threshlimit#0000. Original concept by Nettoork#0000.\n<J>Version 6.14",
@@ -66,6 +67,7 @@ lang.en = {
 	shamdied="<VP>The shaman died! Starting a new round...",
 	buildingtime="Building time:",
 	flyingtime="Remaining time:",
+	player_sync="Player with lowest ping for sync: ",
 }
 if tfm.get.room.community == "br" or tfm.get.room.community == "pt" then
 	text = lang.br
