@@ -25,6 +25,10 @@ totem=false;
 -- mude para 'true' para permitir que os shamans usem totens no jogo
 -- change to 'true' to allow shamans to use totems in game
 
+auto_sync=true;
+-- mude para 'false' para desativar a sincronização automática com o jogador de menor latência da sala
+-- change to 'false' to disable auto-syncing with the lowest latency player in the room
+
 -- NÃO MEXA EM NADA A PARTIR DESTA LINHA! / DON'T CHANGE ANYTHING BELOW THIS LINE!
 --------------------------------------------------------------------------------------------------------
 for _,f in next,{"PhysicalConsumables","AutoNewGame","AutoTimeLeft","AllShamanSkills","DebugCommand"} do
