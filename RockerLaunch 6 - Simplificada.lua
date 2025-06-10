@@ -13,9 +13,9 @@ admin={};
 -- insira o nome dos FunCorps na tabela acima para habilitar os comandos descritos acima.
 -- insert the FunCorps names in the table above to enable the commands described above.
 
-afkdeath=true;
--- mude para 'false' para desativar a morte dos ratos ausentes
--- change to 'false' to disable killing of AFK players
+afkdeath=false;
+-- mude para 'true' para habilitar a morte dos ratos ausentes
+-- change to 'true' to enable killing of AFK players
 
 barrier=false;
 -- mude para 'true' para incluir barreiras invisíveis nos cantos do mapa, evitando que as construções se destruam ao sair do mapa
@@ -33,12 +33,12 @@ end
 changed=false; mode=""; id=50; xml2=''; passed=0; final=""; lang={}; shaman=""; map="@7930736";
 a1={500,1400}; a2={7500,6800}; b1={800,240}; b2={6360,5800}; c1={200,900}; c2={3800,3300}; d1={1500}; d2={4100};
 bar={type = 14,width = 10,height = 4000,foreground = false,friction = 0,restitution = 0,angle = 0, color = 0, miceCollision = true, groundCollision = true, dynamic = false}
-asteroid_1={type = 12,width = 40,height = 20,foreground = false,friction = 3,restitution = 0.1,angle = 0, color = 0, miceCollision = true, groundCollision = true, dynamic = true, fixedRotation = false, mass = 2000}
-asteroid_2={type = 12,width = 80,height = 40,foreground = false,friction = 4,restitution = 0.15,angle = 0, color = 0, miceCollision = true, groundCollision = true, dynamic = true, fixedRotation = false, mass = 5000}
-asteroid_3={type = 12,width = 160,height = 80,foreground = false,friction = 5,restitution = 0.2,angle = 0, color = 0, miceCollision = true, groundCollision = true, dynamic = true, fixedRotation = false, mass = 15000}
-asteroid_4={type = 12,width = 320,height = 160,foreground = false,friction = 6,restitution = 0.25,angle = 0, color = 0, miceCollision = true, groundCollision = true, dynamic = true, fixedRotation = false, mass = 30000}
+asteroid_1={type = 12,width = 40,height = 20,foreground = false,friction = 3,restitution = 0.1,angle = 0, color = 0, miceCollision = true, groundCollision = true, dynamic = true, fixedRotation = false, mass = 6000}
+asteroid_2={type = 12,width = 80,height = 40,foreground = false,friction = 4,restitution = 0.15,angle = 0, color = 0, miceCollision = true, groundCollision = true, dynamic = true, fixedRotation = false, mass = 12000}
+asteroid_3={type = 12,width = 160,height = 80,foreground = false,friction = 5,restitution = 0.2,angle = 0, color = 0, miceCollision = true, groundCollision = true, dynamic = true, fixedRotation = false, mass = 25000}
+asteroid_4={type = 12,width = 320,height = 160,foreground = false,friction = 6,restitution = 0.25,angle = 0, color = 0, miceCollision = true, groundCollision = true, dynamic = true, fixedRotation = false, mass = 50000}
 lang.br = {
-	ajuda="<VP>Bem-vindos ao RockerLaunch 6!\n<N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço! Digite !help para saber como jogar.\n\n<BL>Créditos para Lynet#8558, Puffezinhaq#0000, Digo20games#0000, Dhanny_mheyran#6701 e Threshlimit#0000. Conceito original de Nettoork#0000.\n<J>Versão 6.13",
+	ajuda="<VP>Bem-vindos ao RockerLaunch 6!\n<N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço! Digite !help para saber como jogar.\n\n<BL>Créditos para Lynet#8558, Puffezinhaq#0000, Digo20games#0000, Dhanny_mheyran#6701 e Threshlimit#0000. Conceito original de Nettoork#0000.\n<J>Versão 6.14",
 	mapname="<b>RockerLaunch 6</b><N> - o céu é o limite! <VP>(versão reduzida)<",
 	start="<J>O shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço!",
 	loadingmap="<J>Carregando mapa. Por favor, aguarde...<",
@@ -53,7 +53,7 @@ lang.br = {
 	flyingtime="Tempo restante:",
 }
 lang.en = {
-	ajuda="<VP>Welcome to RocketLaunch 6!\n<N>In this module, the shaman has 2 minutes to build a rocket that needs to take all the mice into space!\nType !help to see more information.\n\n<BL>Credits to Lynet#8558, Puffezinhaq#0000, Digo20games#0000, Dhanny_mheyran#6701 and Threshlimit#0000. Original concept by Nettoork#0000.\n<J>Version 6.13",
+	ajuda="<VP>Welcome to RocketLaunch 6!\n<N>In this module, the shaman has 2 minutes to build a rocket that needs to take all the mice into space!\nType !help to see more information.\n\n<BL>Credits to Lynet#8558, Puffezinhaq#0000, Digo20games#0000, Dhanny_mheyran#6701 and Threshlimit#0000. Original concept by Nettoork#0000.\n<J>Version 6.14",
 	mapname="<b>RockerLaunch 6</b><N> - The Sky is the Limit! <VP>(reduced version)<",
 	start="<J>The shaman has 2 minutes to build a rocket that needs to take all mices into space!",
 	loadingmap="<J>Loading map. Please wait...<",
@@ -95,7 +95,7 @@ for i=1,rawlen(numbers1) do
 	table.insert(managers,final)
 end
 
-for _,f in next,{"cancel","set","get","help"} do
+for _,f in next,{"cancel","set","get","kill","help"} do
 	system.disableChatCommandDisplay(f)
 end
 
@@ -121,6 +121,17 @@ function showMessage(message,name)
 		tfm.exec.chatMessage(message,name)
 	end
 end
+function checkLatencies()
+	latency=1048576; player="";
+	for name,_ in next,tfm.get.room.playerList do
+		if tfm.get.room.playerList[name].averageLatency < latency then
+			latency=tfm.get.room.playerList[name].averageLatency
+			player=name
+		end
+	end
+	showMessage("<VP>"..text.player_sync..player.." ("..latency.."ms)")
+	return player
+end
 function eventNewGame()
 	if changed == true then
 		id=50;
@@ -144,6 +155,9 @@ function eventNewGame()
 				tfm.exec.addPhysicObject(2048+i, 0, 2750+(4000*i), bar)
 				tfm.exec.addPhysicObject(2060+i, 1600, 2750+(4000*i), bar)
 			end
+		end
+		if tfm.get.room.isTribeHouse == false and auto_sync == true then
+			tfm.exec.setPlayerSync(checkLatencies())
 		end
 	else
 		if afkdeath == true then
@@ -173,7 +187,10 @@ function eventChatCommand(n,m)
 			showMessage(text.nextshaman..m:sub(5))
 		end
 		if (m:sub(0,3) == "get") then
-			tfm.exec.setPlayerScore(m:sub(5),10,true)
+			tfm.exec.setPlayerScore(m:sub(5),4,true)
+		end
+		if (m:sub(0,4) == "kill") then
+			tfm.exec.killPlayer(m:sub(6))
 		end
 	end
 end
@@ -277,11 +294,11 @@ function eventLoop(p,f)
 			tfm.exec.newGame(xml2,false)
 			mode="building"
 		end
-		if p > 123000 then
+		if p > 121000 then
 			id=id+1;
 			if mode == "fly" then
 				for name,player in next,tfm.get.room.playerList do
-					if tfm.get.room.playerList[name].y < 111 and p > 123000 and isf >= 3 and mode=="fly" then
+					if tfm.get.room.playerList[name].y < 111 and p > 121000 and isf >= 3 and mode=="fly" then
 						if not tfm.get.room.playerList[name].isDead then
 							tfm.exec.giveCheese(name)
 							tfm.exec.playerVictory(name)
@@ -293,7 +310,7 @@ function eventLoop(p,f)
 			end
 		end
 		if f >= 5000 then
-			if p > 123000 and mode == "building" then
+			if p > 121000 and mode == "building" then
 				mode="fly"
 				showMessage(text.timeout)
 				for n,player in pairs(tfm.get.room.playerList) do
@@ -325,26 +342,26 @@ function eventLoop(p,f)
 		if isf == 240 then
 			showMessage(text.meteor1)
 		end
-		if isf == 100 then
+		if isf == 120 then
 			showMessage(text.meteor2)
 		end
 		if p >= 150000 then
-			if isf < 240 and isf >= 160 then
+			if isf < 240 and isf >= 180 then
 				if isf % 3 == 0 then
 					tfm.exec.addPhysicObject(id, math.random(-300,1900), 1, asteroid_1)
 					tfm.exec.addImage("182dc62db5c.png","+"..id.."",-23,-17,n,0.125,0.125)
 				end
-			elseif isf < 160 and isf >= 100 then
+			elseif isf < 180 and isf >= 120 then
 				if isf % 4 == 0 then
 		 			tfm.exec.addPhysicObject(id, math.random(-300,1900), 1, asteroid_2)
 		 			tfm.exec.addImage("182dc62db5c.png","+"..id.."",-46,-32,n,0.25,0.25)
 				end
-			elseif isf < 100 and isf >= 50 then
+			elseif isf < 120 and isf >= 60 then
 				if isf % 5 == 0 then
 					tfm.exec.addPhysicObject(id, math.random(-300,1900), 1, asteroid_3)
 					tfm.exec.addImage("182dc62db5c.png","+"..id.."",-92,-60,n,0.5,0.5)
 				end
-			elseif isf < 50 and isf >= 10 then
+			elseif isf < 60 and isf >= 10 then
 				if isf % 6 == 0 then
 					tfm.exec.addPhysicObject(id, math.random(-300,1900), 1, asteroid_4)
 					tfm.exec.addImage("182dc62db5c.png","+"..id.."",-184,-90,n,nil)
