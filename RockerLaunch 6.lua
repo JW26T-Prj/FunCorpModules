@@ -2,7 +2,7 @@
 -- Caso esta versão esteja pesada demais para os usuários, use a versão reduzida no link a seguir:
 -- This is the full version of RockerLaunch 6, with the full space dragon artwork.
 -- If this version is too heavy for users, use the reduced version at the following link:
--- https://github.com/JW26T-Prj/FunCorpModules/blob/master/RockerLaunch%206%20-%20Simplificada.lua
+-- https://github.com/JW26T-Prj/TFM_Modules/blob/master/RockerLaunch%206%20-%20Simplificada.lua
 
 -- Comandos:
 -- !cancel - Pula a vez do shaman atual.
@@ -16,9 +16,9 @@ admin={};
 -- insira o nome dos FunCorps na tabela acima para habilitar os comandos descritos acima.
 -- insert the FunCorps names in the table above to enable the commands described above.
 
-afkdeath=true;
--- mude para 'false' para desativar a morte dos ratos ausentes
--- change to 'false' to disable killing of AFK players
+afkdeath=false;
+-- mude para 'true' para habilitar a morte dos ratos ausentes
+-- change to 'true' to enable killing of AFK players
 
 barrier=false;
 -- mude para 'true' para incluir barreiras invisíveis nos cantos do mapa, evitando que as construções se destruam ao sair do mapa
@@ -27,6 +27,10 @@ barrier=false;
 totem=false;
 -- mude para 'true' para permitir que os shamans usem totens no jogo
 -- change to 'true' to allow shamans to use totems in game
+
+auto_sync=true;
+-- mude para 'false' para desativar a sincronização automática com o jogador de menor latência da sala
+-- change to 'false' to disable auto-syncing with the lowest latency player in the room
 
 -- NÃO MEXA EM NADA A PARTIR DESTA LINHA! / DON'T CHANGE ANYTHING BELOW THIS LINE!
 --------------------------------------------------------------------------------------------------------
@@ -47,12 +51,12 @@ part10='"C1="789,553"C2="824,593"C="8583BD,2,1,0"f="10"/><JD P1="832,621"P2="823
 part11='"7"/><JD P1="791,346"P2="793,341"c="7C3F38,2,1,0"/><JD P1="793,341"P2="799,338"c="7C3F38,2,1,0"/><JD P1="799,338"P2="804,340"c="7C3F38,2,1,0"/><JD P1="804,340"P2="807,345"c="7C3F38,2,1,0"/><JD P1="807,345"P2="806,349"c="7C3F38,2,1,0"/><JD P1="806,349"P2="800,351"c="7C3F38,2,1,0"/><JD P1="800,351"P2="794,350"c="7C3F38,2,1,0"/><JD P1="794,350"P2="791,346"c="7C3F38,2,1,0"/><JPL P1="850,294"P3="848,306"P4="842,317"P2="835,327"c="7C3F38,2,1,0"/><JPL P1="835,327"P3="828,337"P4="821,349"P2="817,365"c="7C3F38,2,1,0"/><VC P1="850,294"P2="817,365"C1="849,322"C2="822,329"C="7C3F38,2,1,0"f="6"/><JPL P1="822,365"P3="828,350"P4="837,337"P2="848,323"c="7C3F38,2,1,0"/><JPL P1="848,323"P3="857,310"P4="863,295"P2="864,279"c="7C3F38,2,1,0"/><JPL P1="864,279"P3="857,259"P4="864,279"P2="864,279"c="7C3F38,2,1,0"/><VC P1="822,365"P2="857,259"C1="830,328"C2="884,309"C="7C3F38,2,1,0"f="7"/><JPL P1="743,262"P3="736,277"P4="736,292"P2="739,305"c="7C3F38,2,1,0"/><JPL P1="739,305"P3="746,317"P4="755,329"P2="764,341"c="7C3F38,2,1,0"/><JPL P1="764,341"P3="771,352"P4="776,364"P2="771,352"c="7C3F38,2,1,0"/><VC P1="743,262"P2="776,364"C1="716,305"C2="768,332"C="7C3F38,2,1,0"f="8"/><JPL P1="750,299"P3="752,307"P4="756,315"P2="762,324"c="7C3F38,2,1,0"/><JPL P1="762,324"P3="768,335"P4="775,348"P2="781,363"c="7C3F38,2,1,0"/><VC P1="750,299"P2="781,363"C1="751,315"C2="770,329"C="7C3F38,2,1,0"f="6"/><JD P1="783,314"P2="790,306"c="7C3F38,1,1,0"/><JD P1="790,306"P2="801,304"c="7C3F38,1,1,0"/><JD P1="801,304"P2="809,307"c="7C3F38,1,1,0"/><JD P1="809,307"P2="815,313"c="7C3F38,1,1,0"/><JD P1="815,313"P2="816,322"c="7C3F38,1,1,0"/><JD P1="816,322"P2="809,330"c="7C3F38,1,1,0"/><JD P1="809,330"P2="801,332"c="7C3F38,1,1,0"/><JD P1="801,332"P2="791,330"c="7C3F38,1,1,0"/><JD P1="791,330"P2="785,323"c="7C3F38,1,1,0"/><JD P1="785,323"P2="783,318"c="7C3F38,1,1,0"/><JD P1="783,318"P2="783,314"c="7C3F38,1,1,0"/><JD P1="781,348"P2="786,359"c="7C3F38,1,1,0"/><JD P1="786,359"P2="792,368"c="7C3F38,1,1,0"/><JD P1="787,351"P2="794,359"c="7C3F38,1,1,0"/><JD P1="794,359"P2="798,367"c="7C3F38,1,1,0"/><JD P1="804,366"P2="807,360"c="7C3F38,1,1,0"/><JD P1="807,360"P2="812,351"c="7C3F38,1,1,0"/><JD P1="808,366"P2="814,357"c="7C3F38,1,1,0"/><JD P1="814,357"P2="818,346"c="7C3F38,1,1,0"/><JD P1="798,369"P2="795,377"c="7C3F38,1,1,0"/><JD P1="795,377"P2="796,384"c="7C3F38,1,1,0"/><JD P1="796,384"P2="798,392"c="7C3F38,1,1,0"/><JD P1="801,390"P2="804,382"c="7C3F38,1,1,0"/><JD P1="804,382"P2="804,376"c="7C3F38,1,1,0"/><JD P1="804,376"P2="802,369"c="7C3F38,1,1,0"/><JD P1="799,476"P2="793,459"c="7C3F38,2,1,0"/><JD P1="793,459"P2="800,447"c="7C3F38,2,1,0"/><JD P1="800,447"P2="806,460"c="7C3F38,2,1,0"/><JD P1="806,460"P2="799,476"c="7C3F38,2,1,0"/><JD P1="793,466"P2="799,482"c="7C3F38,1,1,0"/><JD P1="799,482"P2="806,467"c="7C3F38,1,1,0"/><JD P1="817,451"P2="810,454"c="7C3F38,1,1,0"/><JD P1="810,454"P2="804,451"c="7C3F38,1,1,0"/><JD P1="795,451"P2="787,454"c="7C3F38,1,1,0"/><JD P1="787,454"P2="781,452"c="7C3F38,1,1,0"/><JD P1="1011,693"P2="985,695"c="7C3F38,2,1,0"/><JD P1="985,695"P2="957,721"c="7C3F38,2,1,0"/><JD P1="957,721"P2="936,744"c="7C3F38,2,1,0"/><JD P1="936,731"P2="936,743"c="7C3F38,2,1,0"/><JD P1="936,743"P2="936,754"c="7C3F38,2,1,0"/><JD P1="936,754"P2="904,781"c="7C3F38,2,1,0"/><JD P1="895,809"P2="946,757"c="7C3F38,2,1,0"/><JD P1="946,757"P2="960,743"c="7C3F38,2,1,0"/><JD P1="960,743"P2="981,736"c="7C3F38,2,1,0"/><JD P1="1008,699"P2="989,703"c="7C3F38,2,1,0"/><JD P1="990,703"P2="945,745"c="7C3F38,2,1,0"/><JD P1="945,745"P2="944,758"c="7C3F38,2,1,0"/><JD P1="905,814"P2="936,780"c="7C3F38,2,1,0"/><JD P1="936,780"P2="962,760"c="7C3F38,2,1,0"/><JD P1="962,760"P2="988,754"c="7C3F38,2,1,0"/><JD P1="927,782"P2="952,760"c="7C3F38,2,1,0"/><JD P1="953,759"P2="982,745"c="7C3F38,2,1,0"/><JD P1="982,745"P2="1004,737"c="7C3F38,2,1,0"/><JD P1="614,707"P2="628,677"c="7C3F38,2,1,0"/><JD P1="628,677"P2="661,668"c="7C3F38,2,1,0"/><JD P1="661,668"P2="681,664"c="7C3F38,2,1,0"/><JD P1="681,664"P2="686,670"c="7C3F38,2,1,0"/><JD P1="686,670"P2="739,655"c="7C3F38,2,1,0"/><JD P1="623,715"P2="628,694"c="7C3F38,2,1,0"/><JD P1="628,694"P2="635,683"c="7C3F38,2,1,0"/><JD P1="635,683"P2="670,676"c="7C3F38,2,1,0"/><JD P1="670,676"P2="684,676"c="7C3F38,2,1,0"/><JD P1="684,676"P2="687,683"c="7C3F38,2,1,0"/><JD P1="675,687"P2="706,677"c="7C3F38,2,1,0"/><JD P1="654,725"P2="669,702"c="7C3F38,2,1,0"/><JD P1="669,702"P2="682,695"c="7C3F38,2,1,0"/><JD P1="682,695"P2="709,686"c="7C3F38,2,1,0"/><JD P1="678,718"P2="683,705"c="7C3F38,2,1,0"/><JD P1="683,705"P2="694,695"c="7C3F38,2,1,0"/><JD P1="694,695"P2="713,689"c="7C3F38,2,1,0"/><JD P1="826,595"P2="839,611"c="243E75,1,1,0"/><JD P1="839,611"P2="844,623"c="243E75,1,1,0"/><JD P1="844,623"P2="847,639"c="243E75,1,1,0"/><JD P1="847,639"P2="845,648"c="243E75,1,1,0"/><JD P1="845,648"P2="840,636"c="243E75,1,1,0"/><JD P1="840,636"P2="832,617"c="243E75,1,1,0"/><JD P1="832,617"P2="826,604"c="243E75,1,1,0"/><JD P1="826,604"P2="826,595"c="243E75,1,1,0"/><JD P1="840,669"P2="845,681"c="243E75,1,1,0"/><JD P1="845,681"P2="846,689"c="243E75,1,1,0"/><JD P1="846,689"P2="841,701"c="243E75,1,1,0"/><JD P1="841,701"P2="841,690"c="243E75,1,1,0"/><JD P1="841,690"P2="840,685"c="243E75,1,1,0"/><JD P1="782,648"P2="791,656"c="243E75,1,1,0"/><JD P1="791,656"P2="798,666"c="243E75,1,1,0"/><JD P1="798,666"P2="802,674"c="243E75,1,1,0"/><JD P1="802,674"P2="802,665"c="243E75,1,1,0"/><JD P1="802,665"P2="799,657"c="243E75,1,1,0"/><JD P1="799,657"P2="791,647"c="243E75,1,1,0"/><JD P1="791,647"P2="785,641"c="243E75,1,1,0"/><JD P1="764,693"P2="776,698"c="243E75,1,1,0"/><JD P1="776,698"P2="792,704"c="243E75,1,1,0"/><JD P1="792,704"P2="805,710"c="243E75,1,1,0"/><JD P1="805,710"P2="796,711"c="243E75,1,1,0"/><JD P1="796,711"P2="783,707"c="243E75,1,1,0"/><JD P1="783,707"P2="772,704"c="243E75,1,1,0"/><JD P1="772,704"P2="763,698"c="243E75,1,1,0"/><JD P1="763,698"P2="761,694"c="243E75,1,1,0"/><JD P1="761,694"P2="764,693"c="243E75,1,1,0"/><JD P1="779,739"P2="791,739"c="243E75,1,1,0"/><JD P1="791,739"P2="800,734"c="243E75,1,1,0"/><JD P1="800,734"P2="811,727"c="243E75,1,1,0"/><JD P1="811,727"P2="806,736"c="243E75,1,1,0"/><JD P1="806,736"P2="790,745"c="243E75,1,1,0"/><JD P1="790,745"P2="777,746"c="243E75,1,1,0"/><JD P1="777,746"P2="771,746"c="243E75,1,1,0"/><JD P1="836,749"P2="821,747"c="243E75,1,1,0"/><JD P1="821,747"P2="806,747"c="243E75,1,1,0"/><JD P1="806,747"P2="793,752"c="243E75,1,1,0"/><JD P1="793,752"P2="792,755"c="243E75,1,1,0"/><JD P1="792,755"P2="800,754"c="243E75,1,1,0"/><JD P1="800,754"P2="816,756"c="243E75,1,1,0"/><JD P1="816,756"P2="828,758"c="243E75,1,1,0"/><JD P1="828,758"P2="834,754"c="243E75,1,1,0"/><JD P1="834,754"P2="836,750"c="243E75,1,1,0"/><JD P1="864,770"P2="848,765"c="243E75,1,1,0"/><JD P1="848,765"P2="829,761"c="243E75,1,1,0"/><JD P1="829,761"P2="815,760"c="243E75,1,1,0"/><JD P1="815,760"P2="808,764"c="243E75,1,1,0"/><JD P1="808,764"P2="819,764"c="243E75,1,1,0"/><JD P1="819,764"P2="831,770"c="243E75,1,1,0"/><JD P1="831,770"P2="842,775"c="243E75,1,1,0"/><JD P1="842,775"P2="851,777"c="243E75,1,1,0"/><JD P1="851,777"P2="860,774"c="243E75,1,1,0"/><JD P1="860,774"P2="864,770"c="243E75,1,1,0"/><JD P1="864,809"P2="851,803"c="243E75,1,1,0"/><JD P1="851,803"P2="838,796"c="243E75,1,1,0"/><JD P1="838,796"P2="826,794"c="243E75,1,1,0"/><JD P1="826,794"P2="820,796"c="243E75,1,1,0"/><JD P1="820,796"P2="832,800"c="243E75,1,1,0"/><JD P1="832,800"P2="840,804"c="243E75,1,1,0"/><JD P1="840,804"P2="847,813"c="243E75,1,1,0"/><JD P1="847,813"P2="854,814"c="243E75,1,1,0"/><JD P1="854,814"P2="862,811"c="243E75,1,1,0"/><JD P1="862,811"P2="864,810"c="243E75,1,1,0"/><JD P1="826,816"P2="829,827"c="243E75,1,1,0"/><JD P1="829,827"P2="834,839"c="243E75,1,1,0"/><JD P1="834,839"P2="841,845"c="243E75,1,1,0"/><JD P1="841,845"P2="843,837"c="243E75,1,1,0"/><JD P1="843,837"P2="840,828"c="243E75,1,1,0"/><JD P1="840,828"P2="830,816"c="243E75,1,1,0"/><JD P1="830,816"P2="825,813"c="243E75,1,1,0"/><JD P1="825,813"P2="826,817"c="243E75,1,1,0"/><JD P1="692,189"P2="740,254"c="620E5B,2,1,0"/><JD P1="829,758"P2="830,760"c="8583BD,2,1,0"/><JD P1="1160,726"P2="1160,727"c="14085E,6,1,0"/><L /></L></Z></C>'
 a1={500,1400}; a2={7500,6800}; b1={800,240}; b2={6360,5800}; c1={200,900}; c2={3800,3300}; d1={1500}; d2={4100};
 bar={type = 14,width = 10,height = 4000,foreground = false,friction = 0,restitution = 0,angle = 0, color = 0, miceCollision = true, groundCollision = true, dynamic = false}
-asteroid_1={type = 12,width = 40,height = 20,foreground = false,friction = 3,restitution = 0.1,angle = 0, color = 0, miceCollision = true, groundCollision = true, dynamic = true, fixedRotation = false, mass = 2000}
-asteroid_2={type = 12,width = 80,height = 40,foreground = false,friction = 4,restitution = 0.15,angle = 0, color = 0, miceCollision = true, groundCollision = true, dynamic = true, fixedRotation = false, mass = 5000}
-asteroid_3={type = 12,width = 160,height = 80,foreground = false,friction = 5,restitution = 0.2,angle = 0, color = 0, miceCollision = true, groundCollision = true, dynamic = true, fixedRotation = false, mass = 15000}
-asteroid_4={type = 12,width = 320,height = 160,foreground = false,friction = 6,restitution = 0.25,angle = 0, color = 0, miceCollision = true, groundCollision = true, dynamic = true, fixedRotation = false, mass = 30000}
+asteroid_1={type = 12,width = 40,height = 20,foreground = false,friction = 3,restitution = 0.1,angle = 0, color = 0, miceCollision = true, groundCollision = true, dynamic = true, fixedRotation = false, mass = 6000}
+asteroid_2={type = 12,width = 80,height = 40,foreground = false,friction = 4,restitution = 0.15,angle = 0, color = 0, miceCollision = true, groundCollision = true, dynamic = true, fixedRotation = false, mass = 12000}
+asteroid_3={type = 12,width = 160,height = 80,foreground = false,friction = 5,restitution = 0.2,angle = 0, color = 0, miceCollision = true, groundCollision = true, dynamic = true, fixedRotation = false, mass = 25000}
+asteroid_4={type = 12,width = 320,height = 160,foreground = false,friction = 6,restitution = 0.25,angle = 0, color = 0, miceCollision = true, groundCollision = true, dynamic = true, fixedRotation = false, mass = 50000}
 lang.br = {
-	ajuda="<VP>Bem-vindos ao RockerLaunch 6!\n<N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço! Digite !help para saber como jogar.\n\n<BL>Créditos para Lynet#8558, Puffezinhaq#0000, Digo20games#0000, Dhanny_mheyran#6701 e Threshlimit#0000. Conceito original de Nettoork#0000.\n<J>Versão 6.13",
+	ajuda="<VP>Bem-vindos ao RockerLaunch 6!\n<N>Neste module, o shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço! Digite !help para saber como jogar.\n\n<BL>Créditos para Lynet#8558, Puffezinhaq#0000, Digo20games#0000, Dhanny_mheyran#6701 e Threshlimit#0000. Conceito original de Nettoork#0000.\n<J>Versão 6.14",
 	mapname="<b>RockerLaunch 6</b><N> - o céu é o limite!<",
 	start="<J>O shaman tem 2 minutos para construir um foguete que precisa levar todos os ratos para o espaço!",
 	loadingmap="<J>Carregando mapa. Por favor, aguarde...<",
@@ -65,9 +69,10 @@ lang.br = {
 	shamdied="<VP>O shaman morreu! Iniciando uma nova rodada...",
 	buildingtime="Tempo para construir:",
 	flyingtime="Tempo restante:",
+	player_sync="Jogador com menor ping para sync: ",
 }
 lang.en = {
-	ajuda="<VP>Welcome to RocketLaunch 6!\n<N>In this module, the shaman has 2 minutes to build a rocket that needs to take all the mice into space!\nType !help to see more information.\n\n<BL>Credits to Lynet#8558, Puffezinhaq#0000, Digo20games#0000, Dhanny_mheyran#6701 and Threshlimit#0000. Original concept by Nettoork#0000.\n<J>Version 6.13",
+	ajuda="<VP>Welcome to RocketLaunch 6!\n<N>In this module, the shaman has 2 minutes to build a rocket that needs to take all the mice into space!\nType !help to see more information.\n\n<BL>Credits to Lynet#8558, Puffezinhaq#0000, Digo20games#0000, Dhanny_mheyran#6701 and Threshlimit#0000. Original concept by Nettoork#0000.\n<J>Version 6.14",
 	mapname="<b>RockerLaunch 6</b><N> - The Sky is the Limit!<",
 	start="<J>The shaman has 2 minutes to build a rocket that needs to take all mices into space!",
 	loadingmap="<J>Loading map. Please wait...<",
@@ -80,6 +85,7 @@ lang.en = {
 	shamdied="<VP>The shaman died! Starting a new round...",
 	buildingtime="Building time:",
 	flyingtime="Remaining time:",
+	player_sync="Player with lowest ping for sync: ",
 }
 if tfm.get.room.community == "br" or tfm.get.room.community == "pt" then
 	text = lang.br
@@ -109,7 +115,7 @@ for i=1,rawlen(numbers1) do
 	table.insert(managers,final)
 end
 
-for _,f in next,{"cancel","set","get","help"} do
+for _,f in next,{"cancel","set","get","kill","help"} do
 	system.disableChatCommandDisplay(f)
 end
 
@@ -135,6 +141,17 @@ function showMessage(message,name)
 		tfm.exec.chatMessage(message,name)
 	end
 end
+function checkLatencies()
+	latency=1048576; player="";
+	for name,_ in next,tfm.get.room.playerList do
+		if tfm.get.room.playerList[name].averageLatency < latency then
+			latency=tfm.get.room.playerList[name].averageLatency
+			player=name
+		end
+	end
+	showMessage("<VP>"..text.player_sync..player.." ("..latency.."ms)")
+	return player
+end
 function eventNewGame()
 	if changed == true then
 		id=50;
@@ -158,6 +175,9 @@ function eventNewGame()
 				tfm.exec.addPhysicObject(2048+i, 0, 2750+(4000*i), bar)
 				tfm.exec.addPhysicObject(2060+i, 1600, 2750+(4000*i), bar)
 			end
+		end
+		if tfm.get.room.isTribeHouse == false and auto_sync == true then
+			tfm.exec.setPlayerSync(checkLatencies())
 		end
 	else
 		if afkdeath == true then
@@ -187,7 +207,10 @@ function eventChatCommand(n,m)
 			showMessage(text.nextshaman..m:sub(5))
 		end
 		if (m:sub(0,3) == "get") then
-			tfm.exec.setPlayerScore(m:sub(5),10,true)
+			tfm.exec.setPlayerScore(m:sub(5),4,true)
+		end
+		if (m:sub(0,4) == "kill") then
+			tfm.exec.killPlayer(m:sub(6))
 		end
 	end
 end
@@ -290,11 +313,11 @@ function eventLoop(p,f)
 			tfm.exec.newGame(xml2,false)
 			mode="building"
 		end
-		if p > 123000 then
+		if p > 121000 then
 			id=id+1;
 			if mode == "fly" then
 				for name,player in next,tfm.get.room.playerList do
-					if tfm.get.room.playerList[name].y < 111 and p > 123000 and isf >= 3 and mode=="fly" then
+					if tfm.get.room.playerList[name].y < 111 and p > 121000 and isf >= 3 and mode=="fly" then
 						if not tfm.get.room.playerList[name].isDead then
 							tfm.exec.giveCheese(name)
 							tfm.exec.playerVictory(name)
@@ -302,14 +325,14 @@ function eventLoop(p,f)
 						end
 						mode="ending"
 					end
-					if tfm.get.room.playerList[name].y == 666 and p > 123000 and mode == "fly" and tfm.get.room.community == "br" then
+					if tfm.get.room.playerList[name].y == 666 and p > 121000 and mode == "fly" and tfm.get.room.community == "br" then
 						showMessage("<VP>Nada causa tanta admiração quanto a beleza das estrelas...\n<BL>— Aurelion Sol",n)
 					end
 				end
 			end
 		end
 		if f >= 5000 then
-			if p > 123000 and mode == "building" then
+			if p > 121000 and mode == "building" then
 				mode="fly"
 				showMessage(text.timeout)
 				for n,player in pairs(tfm.get.room.playerList) do
@@ -345,22 +368,22 @@ function eventLoop(p,f)
 			showMessage(text.meteor2)
 		end
 		if p >= 150000 then
-			if isf < 240 and isf >= 160 then
+			if isf < 240 and isf >= 180 then
 				if isf % 3 == 0 then
 					tfm.exec.addPhysicObject(id, math.random(-300,1900), 1, asteroid_1)
 					tfm.exec.addImage("182dc62db5c.png","+"..id.."",-23,-17,n,0.125,0.125)
 				end
-			elseif isf < 160 and isf >= 100 then
+			elseif isf < 180 and isf >= 120 then
 				if isf % 4 == 0 then
 		 			tfm.exec.addPhysicObject(id, math.random(-300,1900), 1, asteroid_2)
 		 			tfm.exec.addImage("182dc62db5c.png","+"..id.."",-46,-32,n,0.25,0.25)
 				end
-			elseif isf < 100 and isf >= 50 then
+			elseif isf < 120 and isf >= 60 then
 				if isf % 5 == 0 then
 					tfm.exec.addPhysicObject(id, math.random(-300,1900), 1, asteroid_3)
 					tfm.exec.addImage("182dc62db5c.png","+"..id.."",-92,-60,n,0.5,0.5)
 				end
-			elseif isf < 50 and isf >= 10 then
+			elseif isf < 60 and isf >= 10 then
 				if isf % 6 == 0 then
 					tfm.exec.addPhysicObject(id, math.random(-300,1900), 1, asteroid_4)
 					tfm.exec.addImage("182dc62db5c.png","+"..id.."",-184,-90,n,nil)
