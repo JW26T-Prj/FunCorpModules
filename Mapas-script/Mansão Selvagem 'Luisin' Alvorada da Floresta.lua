@@ -4,7 +4,7 @@ end
 debug.disableEventLog(true)
 system.disableChatCommandDisplay(nil, true)
 if tfm.get.room.isTribeHouse == false then tfm.exec.setRoomMaxPlayers(8) end
-y_factor=1800; data={}; mapa="@7963647"; xml=''; changed=false; lang={}; stage=1; stage_time=0;
+y_factor=1650; data={}; mapa="@7963647"; xml=''; changed=false; lang={}; stage=1; stage_time=0;
 ground={type = 14,width = 4000,height = 100,miceCollision = true, friction = 1, groundCollision = true, color = 0}
 barrier={type = 14,width = 10,height = 4000,miceCollision = true, friction = 0, groundCollision = true, color = 0}
 f1={{157,3086},{5409,3201},{7248,2980},{9620,3100}}; f2={{1519,3249},{7478,3144},{9383,3100}}; f3={{-212,3057},{2035,3218},{7035,3083},{10372,3104}}; f4={{10425,2843},{10906,3179},{11531,3243},{11961,2852},{12425,3189},{12913,3061}}; f5={{4965,2847},{6181,3245},{5818,3218},{10828,3261}}; 
@@ -44,9 +44,9 @@ function showMessage(message,name)
 	end
 end
 function showNPCs(name)
-	tfm.exec.addNPC("Luisin#1717",{title = 62, look = "46;57,5,11_312e23+312e23,0,6_312e23+ffffff,0,0,0,0,0,0,0",x = 5845,y = 1480,female = false,lookLeft = true,lookAtPlayer = true,interactive = true},name)
-	tfm.exec.addNPC("Nekan#0000",{title = 71, look = "97;127_3e3643+ffffff,45_3e3643+3e3643+3e3643+3e3643+3e3643+3e3643,94_3e3643+3e3643+3e3643+e9cebb+e9cebb+3e3643+3e3643+3e3643+7c6f66+3e3643,0,0,50_3e3643,0,84,0,0,0,1_0+0",x = 8586,y = 1042,female = false,lookLeft = true,lookAtPlayer = true,interactive = false},name)
-	tfm.exec.addNPC("Malzahar#8178",{title = 3, look = "176;292,46_340d8e,0,0,108_1f1ba9+6731d2+6731d2+6731d2+6731d2+6731d2+8a2eb4+420bad+4c2ac5+1f0f93,118,84_8a2eb4+8a2eb4+8a2eb4+8a2eb4+420bad+340d8e,85,43_340d8e+340d8e+340d8e+6731d2+340d8e+340d8e,0,0,0",x = 1512,y = 1328,female = false,lookLeft = false,lookAtPlayer = true,interactive = false},name)
+	tfm.exec.addNPC("Luisin#1717",{title = 62, look = "46;57,5,11_312e23+312e23,0,6_312e23+ffffff,0,0,0,0,0,0,0",x = 5845,y = 1330,female = false,lookLeft = true,lookAtPlayer = true,interactive = true},name)
+	tfm.exec.addNPC("Nekan#0000",{title = 71, look = "97;127_3e3643+ffffff,45_3e3643+3e3643+3e3643+3e3643+3e3643+3e3643,94_3e3643+3e3643+3e3643+e9cebb+e9cebb+3e3643+3e3643+3e3643+7c6f66+3e3643,0,0,50_3e3643,0,84,0,0,0,1_0+0",x = 8586,y = 892,female = false,lookLeft = true,lookAtPlayer = true,interactive = false},name)
+	tfm.exec.addNPC("Malzahar#8178",{title = 3, look = "176;292,46_340d8e,0,0,108_1f1ba9+6731d2+6731d2+6731d2+6731d2+6731d2+8a2eb4+420bad+4c2ac5+1f0f93,118,84_8a2eb4+8a2eb4+8a2eb4+8a2eb4+420bad+340d8e,85,43_340d8e+340d8e+340d8e+6731d2+340d8e+340d8e,0,0,0",x = 1512,y = 1178,female = false,lookLeft = false,lookAtPlayer = true,interactive = false},name)
 end
 function eventTalkToNPC(name, npc)
 	if npc == "Luisin#1717" then
@@ -92,81 +92,81 @@ function changeBackground(name)
 end
 function showWater(name)
 	tfm.exec.playMusic("/cite18/amb/302.mp3", "jg_backg", 20, true, true, name)
-	ui.addTextArea(21, "<a href='event:board1'>                                                                  ",name,3538,1594,54,70,0,0,1.2,false)
-	ui.addTextArea(22, "<a href='event:warning1'>                                                                       ",name,9048,1442,50,38,0,0,1.2,false)
-	ui.addTextArea(23, "<a href='event:warning2'>                                                                       ",name,11434,1098,50,38,0,0,1.2,false)
-	ui.addTextArea(24, "<a href='event:warning3'>                                                                       ",name,2486,1686,46,30,0,0,1.2,false)
+	ui.addTextArea(21, "<a href='event:board1'>                                                                  ",name,3538,1444,54,70,0,0,1.2,false)
+	ui.addTextArea(22, "<a href='event:warning1'>                                                                       ",name,9048,1292,50,38,0,0,1.2,false)
+	ui.addTextArea(23, "<a href='event:warning2'>                                                                       ",name,11434,948,50,38,0,0,1.2,false)
+	ui.addTextArea(24, "<a href='event:warning3'>                                                                       ",name,2486,1536,46,30,0,0,1.2,false)
 
 	tfm.exec.addImage("19650c65000.png", "+1", -217, -32, name)
 	tfm.exec.addImage("19650c68474.png", "+2", -217, -32, name)
 	tfm.exec.addImage("19650c69be5.png", "+3", -217, -32, name)
-	for d=1,rawlen(f1) do tfm.exec.	addImage("192e0192c52.png","?-1",f1[d][1],f1[d][2]-400,name,0.5,0.5) end
-	for e=1,rawlen(f1_r) do tfm.exec.addImage("192e0192c52.png","?-1",f1_r[e][1],f1_r[e][2]-400,name,-0.5,0.5) end
-	for d=1,rawlen(f2) do tfm.exec.addImage("192e01943c1.png","?-1",f2[d][1],f2[d][2]-400,name)	end
-	for e=1,rawlen(f2_r) do tfm.exec.addImage("192e01943c1.png","?-1",f2_r[e][1],f2_r[e][2]-400,name,-1) end
-	for d=1,rawlen(f3) do tfm.exec.addImage("192e0195b33.png","?-1",f3[d][1],f3[d][2]-400,name,0.5,0.5)	end
-	for e=1,rawlen(f3_r) do tfm.exec.addImage("192e0195b33.png","?-1",f3_r[e][1],f3_r[e][2]-400,name,-0.5,0.5) end
-	for d=1,rawlen(f4) do tfm.exec.addImage("192e01972a4.png","?-1",f4[d][1],f4[d][2]-400,name,0.5,0.5)	end
-	for e=1,rawlen(f4_r) do tfm.exec.addImage("192e01972a4.png","?-1",f4_r[e][1],f4_r[e][2]-400,name,-0.5,0.5) end
-	for d=1,rawlen(f5) do tfm.exec.addImage("192e0198a16.png","?-1",f5[d][1],f5[d][2]-400,name)	end
-	for e=1,rawlen(f5_r) do tfm.exec.addImage("192e0198a16.png","?-1",f5_r[e][1],f5_r[e][2]-400,name,-1) end
-	tfm.exec.addImage("18756e28db6.png", "?0", 6878, 2472, name,-1,1)
-	tfm.exec.addImage("18756e2e178.png", "?0", 4391, 2515, name)
-	tfm.exec.addImage("18756e333d5.png", "?0", 3782, 2614, name,-1,1)
-	tfm.exec.addImage("189746e4cb8.png", "!1", 3131, 2708, name)
-	tfm.exec.addImage("189746d76aa.png", "?1", 7100, 2786, name)
-	tfm.exec.addImage("185c2e9722e.png", "?1", 2480, 2780, name)
-	tfm.exec.addImage("19650c5349f.png", "?0", 1500, 2430, name)
-	tfm.exec.addImage("192e019a18c.png", "!1", 7521, 2580, name)
-	tfm.exec.addImage("192e019a18c.png", "!1", 3813, 2566, name)
-	tfm.exec.addImage("1877322de4e.png", "?1", 2790, 910, name)
-	tfm.exec.addImage("1877322de4e.png", "?1", 3916, 171, name,-1,1)
-	tfm.exec.addImage("187732271a7.png", "?1", 1880, 1140, name)
-	tfm.exec.addImage("187732271a7.png", "?1", 520, 1040, name,-1,1)
-	tfm.exec.addImage("187732271a7.png", "?1", 8968, 328, name)
-	tfm.exec.addImage("187732271a7.png", "?1", 12450, 950, name,-1,1)
-	tfm.exec.addImage("1877321eda8.png", "?1", 2034, 796, name)
-	tfm.exec.addImage("1877321eda8.png", "?1", 884, 261, name,-1,1)
-	tfm.exec.addImage("1877321eda8.png", "?1", 6353, 134, name)
-	tfm.exec.addImage("1877321eda8.png", "?1", 10292, 1038, name,-1,1)
-	tfm.exec.addImage("18773209c5b.png", "?1", 9720, 663, name)
-	tfm.exec.addImage("18773209c5b.png", "?1", 9654, 1158, name,-1,1)
-	tfm.exec.addImage("18773209c5b.png", "?1", 2700, 1030, name)
-	tfm.exec.addImage("18773209c5b.png", "?1", 734, 1214, name)
-	tfm.exec.addImage("18773209c5b.png", "?1", 2552, 129, name,-1,1)
-	tfm.exec.addPhysicObject(-1,-50,2000,barrier)
-	tfm.exec.addPhysicObject(-2,13000,2000,barrier)
-	tfm.exec.addPhysicObject(-3,-1000,3050,ground)
-	tfm.exec.addPhysicObject(-4,3000,3050,ground)
-	tfm.exec.addPhysicObject(-5,7000,3050,ground)
-	tfm.exec.addPhysicObject(-6,11000,3050,ground)
-	tfm.exec.addImage("185c2e9252b.png", "?-1", 7334, 1094, name,1,1)
-	tfm.exec.addImage("185c2e9252b.png", "!-20", 7334, 1094, name,1,1,0,0.6)
+	for d=1,rawlen(f1) do tfm.exec.	addImage("192e0192c52.png","?-1",f1[d][1],f1[d][2]-550,name,0.5,0.5) end
+	for e=1,rawlen(f1_r) do tfm.exec.addImage("192e0192c52.png","?-1",f1_r[e][1],f1_r[e][2]-550,name,-0.5,0.5) end
+	for d=1,rawlen(f2) do tfm.exec.addImage("192e01943c1.png","?-1",f2[d][1],f2[d][2]-550,name)	end
+	for e=1,rawlen(f2_r) do tfm.exec.addImage("192e01943c1.png","?-1",f2_r[e][1],f2_r[e][2]-550,name,-1) end
+	for d=1,rawlen(f3) do tfm.exec.addImage("192e0195b33.png","?-1",f3[d][1],f3[d][2]-550,name,0.5,0.5)	end
+	for e=1,rawlen(f3_r) do tfm.exec.addImage("192e0195b33.png","?-1",f3_r[e][1],f3_r[e][2]-550,name,-0.5,0.5) end
+	for d=1,rawlen(f4) do tfm.exec.addImage("192e01972a4.png","?-1",f4[d][1],f4[d][2]-550,name,0.5,0.5)	end
+	for e=1,rawlen(f4_r) do tfm.exec.addImage("192e01972a4.png","?-1",f4_r[e][1],f4_r[e][2]-550,name,-0.5,0.5) end
+	for d=1,rawlen(f5) do tfm.exec.addImage("192e0198a16.png","?-1",f5[d][1],f5[d][2]-550,name)	end
+	for e=1,rawlen(f5_r) do tfm.exec.addImage("192e0198a16.png","?-1",f5_r[e][1],f5_r[e][2]-550,name,-1) end
+	tfm.exec.addImage("18756e28db6.png", "?0", 6878, 2322, name,-1,1)
+	tfm.exec.addImage("18756e2e178.png", "?0", 4391, 2365, name)
+	tfm.exec.addImage("18756e333d5.png", "?0", 3782, 2464, name,-1,1)
+	tfm.exec.addImage("189746e4cb8.png", "!1", 3131, 2558, name)
+	tfm.exec.addImage("189746d76aa.png", "?1", 7100, 2636, name)
+	tfm.exec.addImage("185c2e9722e.png", "?1", 2480, 2630, name)
+	tfm.exec.addImage("19650c5349f.png", "?0", 1500, 2280, name)
+	tfm.exec.addImage("192e019a18c.png", "!1", 7521, 2430, name)
+	tfm.exec.addImage("192e019a18c.png", "!1", 3813, 2416, name)
+	tfm.exec.addImage("1877322de4e.png", "?1", 2790, 760, name)
+	tfm.exec.addImage("1877322de4e.png", "?1", 3916, 21, name,-1,1)
+	tfm.exec.addImage("187732271a7.png", "?1", 1880, 990, name)
+	tfm.exec.addImage("187732271a7.png", "?1", 520, 890, name,-1,1)
+	tfm.exec.addImage("187732271a7.png", "?1", 8968, 178, name)
+	tfm.exec.addImage("187732271a7.png", "?1", 12450, 800, name,-1,1)
+	tfm.exec.addImage("1877321eda8.png", "?1", 2034, 646, name)
+	tfm.exec.addImage("1877321eda8.png", "?1", 884, 111, name,-1,1)
+	tfm.exec.addImage("1877321eda8.png", "?1", 6353, -16, name)
+	tfm.exec.addImage("1877321eda8.png", "?1", 10292, 888, name,-1,1)
+	tfm.exec.addImage("18773209c5b.png", "?1", 9720, 513, name)
+	tfm.exec.addImage("18773209c5b.png", "?1", 9654, 1008, name,-1,1)
+	tfm.exec.addImage("18773209c5b.png", "?1", 2700, 880, name)
+	tfm.exec.addImage("18773209c5b.png", "?1", 734, 1064, name)
+	tfm.exec.addImage("18773209c5b.png", "?1", 2552, -21, name,-1,1)
+	tfm.exec.addPhysicObject(-1,-50,1850,barrier)
+	tfm.exec.addPhysicObject(-2,13000,1850,barrier)
+	tfm.exec.addPhysicObject(-3,-1000,2900,ground)
+	tfm.exec.addPhysicObject(-4,3000,2900,ground)
+	tfm.exec.addPhysicObject(-5,7000,2900,ground)
+	tfm.exec.addPhysicObject(-6,11000,2900,ground)
+	tfm.exec.addImage("185c2e9252b.png", "?-1", 7334, 944, name,1,1)
+	tfm.exec.addImage("185c2e9252b.png", "!-20", 7334, 944, name,1,1,0,0.6)
 	for a=0,29 do
-		tfm.exec.addImage("181ba85ccc2.png","?2",math.random(-400,14000),math.random(-200,1300),name,1,1,0,(math.random(70,100)/100));
-		tfm.exec.addImage("181ba86195e.png","?2",math.random(-400,14000),math.random(-200,1300),name,1,1,0,(math.random(70,100)/100));
-		tfm.exec.addImage("181ba86655c.png","?2",math.random(-400,14000),math.random(-200,1300),name,1,1,0,(math.random(70,100)/100));
-		tfm.exec.addImage("181ba86b15a.png","?2",math.random(-400,14000),math.random(-200,1300),name,1,1,0,(math.random(70,100)/100));
+		tfm.exec.addImage("181ba85ccc2.png","?2",math.random(-400,14000),math.random(-200,1150),name,1,1,0,(math.random(70,100)/100));
+		tfm.exec.addImage("181ba86195e.png","?2",math.random(-400,14000),math.random(-200,1150),name,1,1,0,(math.random(70,100)/100));
+		tfm.exec.addImage("181ba86655c.png","?2",math.random(-400,14000),math.random(-200,1150),name,1,1,0,(math.random(70,100)/100));
+		tfm.exec.addImage("181ba86b15a.png","?2",math.random(-400,14000),math.random(-200,1150),name,1,1,0,(math.random(70,100)/100));
 	end
 	for a=0,7 do
-		tfm.exec.addImage("181ba85ccc2.png","!2",math.random(-400,2500),math.random(-150,600),name,0.5,0.5);
-		tfm.exec.addImage("181ba86195e.png","!2",math.random(-400,2500),math.random(-150,600),name,0.5,0.5);
-		tfm.exec.addImage("181ba86655c.png","!2",math.random(-400,2500),math.random(-150,600),name,0.5,0.5);
-		tfm.exec.addImage("181ba86b15a.png","!2",math.random(-400,2500),math.random(-150,600),name,0.5,0.5);
+		tfm.exec.addImage("181ba85ccc2.png","!2",math.random(-400,2500),math.random(-150,450),name,0.5,0.5);
+		tfm.exec.addImage("181ba86195e.png","!2",math.random(-400,2500),math.random(-150,450),name,0.5,0.5);
+		tfm.exec.addImage("181ba86655c.png","!2",math.random(-400,2500),math.random(-150,450),name,0.5,0.5);
+		tfm.exec.addImage("181ba86b15a.png","!2",math.random(-400,2500),math.random(-150,450),name,0.5,0.5);
 	end
 	for a=0,8 do
-		tfm.exec.addImage("181ba85ccc2.png","!2",math.random(7500,13500),math.random(-150,600),name,0.5,0.5);
-		tfm.exec.addImage("181ba86195e.png","!2",math.random(7500,13500),math.random(-150,600),name,0.5,0.5);
-		tfm.exec.addImage("181ba86655c.png","!2",math.random(7500,13500),math.random(-150,600),name,0.5,0.5);
-		tfm.exec.addImage("181ba86b15a.png","!2",math.random(7500,13500),math.random(-150,600),name,0.5,0.5);
+		tfm.exec.addImage("181ba85ccc2.png","!2",math.random(7500,13500),math.random(-150,450),name,0.5,0.5);
+		tfm.exec.addImage("181ba86195e.png","!2",math.random(7500,13500),math.random(-150,450),name,0.5,0.5);
+		tfm.exec.addImage("181ba86655c.png","!2",math.random(7500,13500),math.random(-150,450),name,0.5,0.5);
+		tfm.exec.addImage("181ba86b15a.png","!2",math.random(7500,13500),math.random(-150,450),name,0.5,0.5);
 	end
 	for i=0,9 do
-		tfm.exec.addImage("189746fe3a4.png", "?0", -1200+(i*2000), 2930, name, 1, 1, 0, 1)
-		tfm.exec.addImage("189746fe3a4.png", "?0", -1200+(i*2000), 3670, name, 1, -3, 0, 1)
+		tfm.exec.addImage("189746fe3a4.png", "?0", -1200+(i*2000), 2780, name, 1, 1, 0, 1)
+		tfm.exec.addImage("189746fe3a4.png", "?0", -1200+(i*2000), 3520, name, 1, -3, 0, 1)
 	end
 	tfm.exec.addImage("19650c70348.png", "!-20", -1200, y_factor+23, name,120,10,0,1.03)
 	tfm.exec.addImage("19650c70348.png", "!-20", -1200, y_factor+4023, name,120,-10,0,1.03)
-	tfm.exec.addImage("1897471d01c.png", "?2", 875, 2450, name,-1,1,0.2,1)
+	tfm.exec.addImage("1897471d01c.png", "?2", 875, 2300, name,-1,1,0.2,1)
 	for o=11,14 do
 		tfm.exec.addImage("183b4bf34ba.png","+"..o.."",-50,-29,name)
 	end
@@ -278,8 +278,8 @@ function eventLoop(p,r)
 						tfm.exec.addShamanObject(54,tfm.get.room.playerList[name].x,tfm.get.room.playerList[name].y,0,0,1,false)
 					end
 					if tfm.get.room.playerList[name].y >= y_factor+25 then
-						data[name].d=data[name].d+math.floor(math.pow((tfm.get.room.playerList[name].y-y_factor)/40,1.9)/5)
-						if data[name].d >= 100 and data[name].w == false then
+						data[name].d=data[name].d+math.floor(math.pow((tfm.get.room.playerList[name].y-y_factor)/40,1.92)/5)
+						if data[name].d >= 50 and data[name].w == false then
 							data[name].w=true
 							showMessage(text.warning4,name)
 						end
@@ -287,7 +287,7 @@ function eventLoop(p,r)
 							if data[name].fr == false then
 								tfm.exec.freezePlayer(name)
 								data[name].fr=true
-								tfm.exec.setPlayerGravityScale(name,1.9)
+								tfm.exec.setPlayerGravityScale(name,1.875)
 							end
 						end
 						if data[name].d >= 15000 then
