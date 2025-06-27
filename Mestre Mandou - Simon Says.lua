@@ -1,5 +1,5 @@
 -- Mestre Mandou / Simon Says / Simón Dice / Szymon Mówi!
--- Version 7.21
+-- Version 7.22
 -- Managed by Shun_kazami#7014
 
 admin={} -- insira o nome dos FunCorps aqui! / insert the FunCorp names here! / inserte los nombres de los FunCorps aquí! / wpisz tutaj imiona FunCorp!
@@ -15,28 +15,28 @@ testmode=false; -- leia abaixo! / read below! / leer abajo! / przeczytaj poniże
 -- Zmień powyższą zmienną na 'true' tylko wtedy, gdy chcesz widzieć wiadomości czatu w dom plemienny.
 
 -- Comandos para uso de membros FunCorp e do dono da sala:
--- !command [número de 1 a 140] - Executa um comando manualmente.
+-- !command [número de 1 a 143] - Executa um comando manualmente.
 -- !run [@número] - Executa o mapa especificado.
 -- !kill [nick#tag] - Mata o jogador especificado.
 -- !limit [número] - Altera o limite de jogadores na sala.
 -- !pw [texto] - Adiciona uma senha na sala.
 
 -- FunCorp and Room Owner Available commands:
--- !command [1-140] - Run a command manually.
+-- !command [1-143] - Run a command manually.
 -- !run [@code] - Run the specified map.
 -- !kill [player#tag] - Kill the specified player.
 -- !limit [number] - Limit the number of maximum players on the room.
 -- !pw [password] - Lock the room with a password.
 
 -- Comandos disponibles del propietario de la sala y FunCorps:
--- !command [1-140] - Ejecutar un comando manualmente.
+-- !command [1-143] - Ejecutar un comando manualmente.
 -- !run [@code] - Ejecutar el mapa especificado.
 -- !kill [jugador#tag] - Mata al jugador especificado.
 -- !limit [número] - Limite el número máximo de jugadores en la sala.
 -- !pw [contraseña] - Bloquee la habitación con una contraseña.
 
 -- Właściciel w FunCorp pokoju Dostępne polecenia:
--- !command [1-140] - Uruchom konkretną komendę.
+-- !command [1-143] - Uruchom konkretną komendę.
 -- !run [@code] - Uruchom konkretną mapę.
 -- !kill [player#tag] - Zabij wybranego gracza.
 -- !limit [liczba] - Ogranicz maksymalną liczbę graczy w pokoju.
@@ -47,8 +47,8 @@ testmode=false; -- leia abaixo! / read below! / leer abajo! / przeczytaj poniże
 for _,f in next,{"AutoShaman","AutoNewGame","AutoTimeLeft","DebugCommand"} do
 	tfm.exec["disable"..f](true)
 end
-mapas={"@6788174","@6788154","@6788715","@6788728","@6789271","@6790527","@6791838","@6789356","@6822331","@7290275","@7686598","@7750148","@7688066","@6788183","@6784965","@6402930","@6789235","@6789853","@6790385","@6791944","@6801706","@6792470","@6806109","@6821950","@6866406","@6866437","@6885971","@5328362","@5957905","@7055459","@7214363","@6792516","@6825340","@6788693","@6789272","@6799996","@6803018","@6859175","@6907177","@7404327","@7382263","@6885799","@6790912","@6833993","@7721192","@7309605","@6788861","@6789249","@6790484","@7921432","@6794050","@6830799","@6866549","@6834529","@6876563","@6888512","@6893463","@7431981","@7146925","@6937148","@6356881","@6789280","@6790895","@6799997","@6789324","@6803128","@6900149","@3832586","@1468299","@6791871","@6811934","@1567074","@6876638","@6892608","@6982387","@2048617","@7404106","@7405103","@7400694","@7400678","@7412412","@7412422","@7755685","@6843950","@6810292","@3110915","@6789263","@7354947","@7201360","@6897042","@5549586","@6809461","@7242361","@7697974","@1966987","@7224471","@6932585","@6920982","@7863458","@7897912","@7899697","@7910742","@7236120","@2802178","@7913565","@5549355","@7230453","@7188655","@6481798","@7938319","@6810588","@7904062","@7216097","@7951509","@7368748","@7737497","@7950420","@7904050","@7958330","@7959756","@7693704","@6777390","@2637755","@2684847","@1445145","@7817584","@7658479","@7729901","@7695643","@7759938","@7175199","@7910467","@7923068","@7949791","@7219676"}
-active=-2; vivo=0; rato=0; dificuldade=1; rodadas=0; rodada=0; number=""; count=0; xpos=0; xpos2=0; pid=-1; ypos=0; data={}; cmds={}; grounds={}; images={}; lang={}; alives={}; fire_id={}; final=""; tempo=10; counter=0; q=""; a=""; qtime=10; creator=""; sd_vivo=0; lobby_map="@7710965"; unlocked=false;
+mapas={"@6788174","@6788154","@6788715","@6788728","@6789271","@6790527","@6791838","@6789356","@6822331","@7290275","@7686598","@7750148","@7688066","@6788183","@6784965","@6402930","@6789235","@6789853","@6790385","@6791944","@6801706","@6792470","@6806109","@6821950","@6866406","@6866437","@6885971","@5328362","@5957905","@7055459","@7214363","@6792516","@6825340","@6788693","@6789272","@6799996","@6803018","@6859175","@6907177","@7404327","@7382263","@6885799","@6790912","@6833993","@7721192","@7309605","@6788861","@6789249","@6790484","@7921432","@6794050","@6830799","@6866549","@6834529","@6876563","@6888512","@6893463","@7431981","@7146925","@6937148","@6356881","@6789280","@6790895","@6799997","@6789324","@6803128","@6900149","@3832586","@1468299","@6791871","@6811934","@6876638","@6892608","@6982387","@2048617","@7404106","@7405103","@7400694","@7400678","@7412412","@7412422","@7755685","@6843950","@6810292","@3110915","@6789263","@7354947","@7201360","@6897042","@6809461","@7242361","@7224471","@6932585","@7863458","@7897912","@7899697","@7910742","@7236120","@2802178","@5549355","@7230453","@7938319","@7904062","@7216097","@7951509","@7368748","@7950420","@7958330","@6777390","@2637755","@2684847","@1445145","@7759938","@7923068","@7949791","@7219676"}
+active=-2; vivo=0; rato=0; dificuldade=1; rodadas=0; rodada=0; number=""; count=0; xpos=0; xpos2=0; pid=-1; ypos=0; data={}; cmds={}; grounds={}; images={}; lang={}; alives={}; fire_id={}; final=""; tempo=10; counter=0; q=""; a=""; qtime=10; maker=""; sd_vivo=0; lobby_map="@7970278"; unlocked=false;
 spiderweb={type = 15,width = 60,height = 60}
 cobweb={type = 15,width = 2400,height = 1200,miceCollision = false,groundCollision = false}
 acidb={type = 19,width = 10,height = 25,miceCollision = true,groundCollision = false,dynamic = true,fixedRotation = true,mass = 5000}
@@ -64,7 +64,7 @@ acids2={type = 19,width = 2400,height = 10,miceCollision = true,groundCollision 
 acids3={type = 19,width = 10,height = 800,miceCollision = true,groundCollision = false, foreground = true}
 system.disableChatCommandDisplay(nil,true)
 lang.br = {
-	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b>\nSiga tudo o que o jogo mandar e teste seus limites até o fim!\n\n<BL>Gerenciado por Shun_kazami#7014\nIdea original de Jessiewind26#2546\n<R>Versão 7.21",
+	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b>\nSiga tudo o que o jogo mandar e teste seus limites até o fim!\n\n<BL>Gerenciado por Shun_kazami#7014\nIdea original de Jessiewind26#2546\n<R>Versão 7.22",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -130,6 +130,7 @@ lang.br = {
 	help = "Ajuda",
 	hcontent = "O objetivo deste module é muito simples:\n<b>Siga tudo o que o jogo mandar e teste seus limites até o fim!</b>\n\nTenha cuidado, pois alguns comandos podem te matar de surpresa, portanto, é preciso ficar muito esperto!",
 	mices = "Esta sala requer pelo menos 4 ratos.",
+	mices2 = "Esta sala requer pelo menos 2 ratos.",
 	difficulty = "Dificuldade",
 	segundos = "segundos.",
 	fim = "Partida encerrada! Próxima partida iniciando em ",
@@ -153,6 +154,7 @@ lang.br = {
 	seq13 = "Dance, sente, durma, ria, chore, dê um beijo e pule!",
 	seq14 = "Sente, chore, dê um beijo, dance e se abaixe!",
 	seq15 = "Bata palmas, fique com raiva, dance, durma e se abaixe!",
+	seq16 = "Chore, solte um confete, durma, chore de novo, dance e solte confete novamente!",
 	spider = "Cuidado com as teias de aranha!",
 	spider1 = "Essa não! Uma aranha passou no mapa e o encheu de teias!",
 	key2 = "Pressione F4!",
@@ -208,13 +210,15 @@ lang.br = {
 	chicken = "Está chovendo galinhas!",
 	ccr = "Tá pegando fogo bicho!",
 	nocheese = "Sem queijo para você! ^_^",
+	submitter = "Quem é o criador deste mapa?",
 	submission = "\n<J>As avaliações de mapas do Mestre Mandou estão abertas!\n<VP><b>atelier801.com/topic?f=796133&t=915772&p=1</b>\n",
 	verify = "<J>Para que possamos verificar a estabilidade do module e coletar estatísticas, a partir deste momento, todas as informações desta sala estão sendo registradas no banco de dados interno do module.",
 	souris = "<R>Jogadores convidados não podem participar deste module. Crie uma conta ou faça login para jogar.",
-	avcommands = "\nComandos disponíveis:\n!command [número de 1 a 140] - Executa um comando manualmente.\n!run [@número] - Executa o mapa especificado.\n!kill [nick#tag] - Mata o jogador especificado.\n!limit [número] - Altera o limite de jogadores na sala.\n!pw [password] - Adiciona uma senha na sala."
+	avcommands = "\nComandos disponíveis:\n!command [número de 1 a 143] - Executa um comando manualmente.\n!run [@número] - Executa o mapa especificado.\n!kill [nick#tag] - Mata o jogador especificado.\n!limit [número] - Altera o limite de jogadores na sala.\n!pw [password] - Adiciona uma senha na sala.",
+	cds = "Comandos",
 }
 lang.en = {
-	welcome = "<N><b>Welcome to Simon Says module!</b>\nFollow everything the game told and test your limits until the end!\n\n<BL>Original idea from Jessiewind26#2546, managed by Shun_kazami#7014\n<R>Version 7.21",
+	welcome = "<N><b>Welcome to Simon Says module!</b>\nFollow everything the game told and test your limits until the end!\n\n<BL>Original idea from Jessiewind26#2546, managed by Shun_kazami#7014\n<R>Version 7.22",
 	dancar = "Dance!",
 	sentar = "Sit down!",
 	confetar = "Throw 5 confetti!",
@@ -280,6 +284,7 @@ lang.en = {
 	help = "Help",
 	hcontent = "The objective of this module is very simple:\n<b>Follow everything that the game says and test your limits to the maximum!</b>\n\nTake care, because some commands can surprise you and kill your mice, so, you have to be very smart!",
 	mices = "This room request at least 4 mice.",
+	mices2 = "This room request at least 2 mice.",
 	difficulty = "Difficulty",
 	segundos = "seconds.",
 	fim = "The match is over! Next starting in ",
@@ -303,6 +308,7 @@ lang.en = {
 	seq13 = "Dance, sit, sleep, laugh, cry, give a kiss and jump!",
 	seq14 = "Sit, cry, give a kiss, dance and turn down!",
 	seq15 = "Clap, get angry, dance, sleep and turn down!",
+	seq16 = "Cry, throw confetti, sleep, cry again, dance and throw confetti again!",
 	spider = "Watch out at the cobwebs!",
 	spider1 = "Oh no! A spider passed over the map and filled it with cobwebs!",
 	key2 = "Press F4!",
@@ -358,13 +364,15 @@ lang.en = {
 	chicken = "Chicken rain!",
 	ccr = "BEWARE! Get out of the fire!",
 	nocheese = "No cheese for you! ^_^",
+	submitter = "Who made this map?",
 	submission = "\n<J>The map submissions for this module are now open!\n<VP><b>atelier801.com/topic?f=796133&t=915772&p=1</b>\n",
 	verify = "<J>From this moment on, all information from this room is being recorded in the module's internal database.",
 	souris = "<R>Souris aren't allowed to play on this game. Create an account or log in to play.",
-	avcommands = "\nAvailable commands: \n!command [1-140] - Run a command manually.\n!run [@code] - Run the specified map.\n !kill [player#tag] - Kill the specified player.\n!limit [number] - Limit the number of maximum players on the room.\n !pw [password] - Lock the room with a password."
+	avcommands = "\nAvailable commands: \n!command [1-143] - Run a command manually.\n!run [@code] - Run the specified map.\n !kill [player#tag] - Kill the specified player.\n!limit [number] - Limit the number of maximum players on the room.\n !pw [password] - Lock the room with a password.",
+	cds = "Commands",
 }
 lang.es = {
-	welcome = "<N><b>WBienvenido al juego Simón Dice!</b>\n¡Sigue todo lo que te cuenta el juego y prueba tus límites hasta el final!\n\n<BL>Administrado por Shun_kazami#7014\nIdea original de Jessiewind26#2546\n<R>Versión 7.21",
+	welcome = "<N><b>WBienvenido al juego Simón Dice!</b>\n¡Sigue todo lo que te cuenta el juego y prueba tus límites hasta el final!\n\n<BL>Administrado por Shun_kazami#7014\nIdea original de Jessiewind26#2546\n<R>Versión 7.22",
 	dancar = "¡Baile!",
 	sentar = "¡Siéntate!",
 	confetar = "¡Lanza 5 confetis!",
@@ -430,6 +438,7 @@ lang.es = {
 	help = "Ayuda",
 	hcontent = "El objetivo de este módulo es muy simple:\n<b>¡Sigue todo lo que dice el juego y prueba tus límites al máximo!</b>\n\n¡Ten cuidado, porque algunos comandos pueden sorprenderte y matarte, así que tendrás que ser muy inteligente!",
 	mices = "Este juego requiere al menos 4 ratones.",
+	mices2 = "Este juego requiere al menos 2 ratones.",
 	difficulty = "Dificultad",
 	segundos = "segundos.",
 	fim = "¡El partido ha terminado! El próximo partido comenzará en ",
@@ -453,6 +462,7 @@ lang.es = {
 	seq13 = "¡Baila, siéntate, duerme, ríe, llora, da un beso y salta!",
 	seq14 = "¡Siéntate, llora, da un beso, baila y baja la mirada!",
 	seq15 = "¡Aplaude, enójate, baila, duerme y baja la mirada!",
+	seq16 = "¡Llora, tira confeti, duerme, llora de nuevo, baila y tira confeti de nuevo!",
 	spider = "¡Cuidado con las telarañas!",
 	spider1 = "¡Oh, no! ¡Una araña pasó por encima del mapa y lo llenó de telarañas!",
 	key2 = "¡Presione la tecla F4!",
@@ -508,13 +518,15 @@ lang.es = {
 	chicken = "¡Lluvia de pollos!",
 	ccr = "¡Sal del fuego!",
 	nocheese = "¡No hay queso para ti! ^_^",
+	submitter = "¿Quién hizo este mapa?",
 	submission = "\n<J>¡Los envíos de mapas para este módulo están abiertos!\n<VP><b>atelier801.com/topic?f=796133&t=915772&p=1</b>\n",
 	verify = "<J>A partir de este momento, toda la información de esta sala queda registrada en la base de datos interna del módulo.",
 	souris = "<R>Souris no pueden jugar en este juego. Crea una cuenta o inicia sesión para jugar.",
-	avcommands = "\nComandos disponibles:\n!command [1-140] - Ejecutar un comando manualmente.\n!run [@code] - Ejecutar el mapa especificado.\n!kill [jugador#tag] - Mata al jugador especificado.\n!limit [número] - Limite el número máximo de jugadores en la sala.\n!pw [contraseña] - Bloquee la habitación con una contraseña."
+	avcommands = "\nComandos disponibles:\n!command [1-143] - Ejecutar un comando manualmente.\n!run [@code] - Ejecutar el mapa especificado.\n!kill [jugador#tag] - Mata al jugador especificado.\n!limit [número] - Limite el número máximo de jugadores en la sala.\n!pw [contraseña] - Bloquee la habitación con una contraseña.",
+	cds = "Comandos",
 }
 lang.pl = {
-	welcome = "<N><b>Witaj w module Szymon mówi!</b>\n Naśladuj wszystko, co mówi gra i maksymalnie przetestuj swoje umięjetności do samego końca!\n\n<BL>Oryginalny pomysł z Jessiewind26#2546, Zarządzane przez Shun_kazami#7014\nTłumaczone przez Kozakwiki#0000\n<R>Version 7.21",
+	welcome = "<N><b>Witaj w module Szymon mówi!</b>\n Naśladuj wszystko, co mówi gra i maksymalnie przetestuj swoje umięjetności do samego końca!\n\n<BL>Oryginalny pomysł z Jessiewind26#2546, Zarządzane przez Shun_kazami#7014\nTłumaczone przez Kozakwiki#0000\n<R>Version 7.22",
 	dancar = "Zatańcz!",
 	sentar = "Usiądź!",
 	confetar = "Wyrzuć 5 razy confetti!",
@@ -580,6 +592,7 @@ lang.pl = {
 	help = "Pomoc",
 	hcontent = "Cel tego modułu jest bardzo prosty:\n<b>Naśladuj wszystko, co mówi gra i maksymalnie przetestuj swoje umięjetności do samego końca!</b>\n\nUważaj,niektóre komendy mogą Cię zaskoczyć i zabić myszy, więc używaj ich bardzo mądrze!",
 	mices = "Ten pokój wymaga co najmniej 4 myszy do gry.",
+	mices2 = "Ten pokój wymaga co najmniej 2 myszy do gry.",
 	difficulty = "Trudność",
 	segundos = "sekundy.",
 	fim = "Gra się zakończyła! Następna wystartuje za ",
@@ -603,6 +616,7 @@ lang.pl = {
 	seq13 = "Zatańcz, usiądź, śpij, śmiej się, płacz, daj buziaka i skocz!",
 	seq14 = "Usiądź, płacz, daj buziaka, tańcz i schyl się!",
 	seq15 = "Klaszcz, złość się, tańcz, śpij i schyl się!",
+	seq16 = "Płacz, rzuć confetti, zaśnij, płacz ponownie, zatańcz i rzuć confetti ponownie!",
 	spider = "Uważaj na pajęczyny!",
 	spider1 = "Oh nie! Pająk tutaj był i wypełnił mapę pajęczyną!",
 	key2 = "Naciśnij F4!",
@@ -658,9 +672,12 @@ lang.pl = {
 	chicken = "Deszcz kurczaków!",
 	ccr = "Streż się! Ucieknij od ognia!",
 	nocheese = "Nie ma serka dla Ciebie! ^_^",
+	submitter = "Kto stworzył tę mapę?",
+	submission = "\n<J>Przyjmowanie zgłoszeń map do tego module jest już otwarte!\n<VP><b>atelier801.com/topic?f=796133&t=915772&p=1</b>\n",
 	verify = "<J>Od tego momentu wszystkie informacje z tego pokoju są zapisywane w wewnętrznej bazie danych modułu.",
 	souris = "<R>Souris nie może grać w tę grę. Utwórz konto lub zaloguj się, aby zagrać.",
-	avcommands = "\nDostępne komendy: \n!command [1-140] - Uruchom konkretną komendę.\n!run [@code] - Uruchom konkretną mapę.\n!kill [player#tag] - Zabij wybranego gracza.\n!limit [number] - Ogranicz maksymalną liczbę graczy w pokoju.\n !pw [password] - Zamknij pokój na hasło."
+	avcommands = "\nDostępne komendy: \n!command [1-143] - Uruchom konkretną komendę.\n!run [@code] - Uruchom konkretną mapę.\n!kill [player#tag] - Zabij wybranego gracza.\n!limit [number] - Ogranicz maksymalną liczbę graczy w pokoju.\n !pw [password] - Zamknij pokój na hasło.",
+	cds = "Komendy",
 }
 
 numbers1={
@@ -709,6 +726,32 @@ function verifyNinjas(name)
 	for i=1,rawlen(ninjas) do
 		if ninjas[i] == name then
 			return true
+		end
+	end
+end
+function checkKeys(name,key)
+	if data[name] then
+		if data[name].s == 0 then
+			data[name].k=key
+		end
+		if data[name].c == 0 then
+			if data[name].k == 65 then
+				if key == 37 then
+					tfm.exec.killPlayer(name)
+				end
+			elseif data[name].k == 37 then
+				if key == 65 then
+					tfm.exec.killPlayer(name)
+				end
+			elseif data[name].k == 68 then
+				if key == 39 then
+					tfm.exec.killPlayer(name)
+				end
+			elseif data[name].k == 39 then
+				if key == 68 then
+					tfm.exec.killPlayer(name)
+				end
+			end
 		end
 	end
 end
@@ -765,11 +808,13 @@ function eventNewPlayer(name)
 	end
 	system.bindMouse(name,true)
 	tfm.exec.setPlayerScore(name,0,false)
+	ui.addTextArea(299,"<p align='center'><a href='event:show_menu'><font size='18'>Menu",n,725,372,70,24,0x000001,0x000001,0.75,true)
 	newData={
 		["c"]=0;
+		["k"]=0;
 		["s"]=0;
 		["count"]=0;
-		["opened"]=true;
+		["opened"]=false;
 	};
 	data[name] = newData;
 	showMessage(text.welcome,name)
@@ -819,10 +864,10 @@ function eventPlayerDied(name)
 	end
 end
 function generateCmdsList()
-	for i=1,142 do
+	for i=1,145 do
 		table.insert(cmds,i)
 	end
-	for _,j in next,{24,25,26,27,28,49,55,65,66,83,92,93,104,130} do
+	for _,j in next,{24,25,26,27,28,49,55,65,66,83,92,93,104,130,143} do
 		if findString(j,cmds) == true then
 			table.remove(cmds,findTableId(j,cmds))
 		end
@@ -830,6 +875,7 @@ function generateCmdsList()
 end
 function eventNewGame()
 	if rawlen(numbers1) == 11 then
+		maker=tfm.get.room.xmlMapInfo.author
 		rodada=0; active=0; vivo=0; rato=0; dificuldade=1;
 		for i=0,2 do
 			ui.removeTextArea(i,nil)
@@ -848,8 +894,10 @@ function eventNewGame()
 			rato=rato+1
 			if data[name] then
 				data[name].c=0
+				data[name].k=0
 				data[name].count=0
 			end
+			showMessage(text.submission)
 			if verifyNinjas(name) == true then
 				showMessage(text.select)
 			end
@@ -864,7 +912,7 @@ function eventPlayerLeft()
 end
 function sortearComandos()
 	if vivo <= 12 then
-		active=math.random(1,140)
+		active=math.random(1,143)
 	else
 		active=math.random(cmds[math.random(#cmds)])
 	end
@@ -903,9 +951,9 @@ function eventPlayerBonusGrabbed(name, id)
 end
 function eventChatCommand(name,message)
 	if unlocked == true then
-		if message == "help" then
-			showMenu(name,0x185412,200,125,400,163,text.help,text.hcontent)
-		end
+		if message == "help" then showMenu(name,0x185412,150,125,500,148,text.help,text.hcontent); end
+		if message == "changelog" then showMenu(name,0x808080,150,125,500,168,"Changelog - Version 7.22","• New introduction map!\n• Added 3 new commands\n• Added credits with all module managers from 2014 to now\n• New system to avoid undue advantage with the 'Press xx times the LEFT/RIGHT key'\n• Changes in test mode (only for developers)"); end
+		if message == "credits" then showMenu(name,0x808080,150,135,500,158,"Credits","<font size='12'><b>The following people were responsible for taking such good care of this script to this day:</b>\n\n• Jessiewind26#2546 (2014-2019, 2023-2025)\n• Nasus_assassin#1534 (2019-2020)\n• Rakan_raster#0000 (2020-2022)\n• Dhanny_mheyran#6701 (2022-2023)\n• Shun_kazami#7014 (2025-)"); end
 		if verifyNinjas(name) == true then
 			if(message:sub(0,5) == "stmsg") then
 				showCommand(1024,message:sub(7))
@@ -922,7 +970,7 @@ function eventChatCommand(name,message)
 					end
 				end
 				if(message:sub(0,7) == "command") then
-					tt={}; for i=1,142 do table.insert(tt,tostring(i)) end
+					tt={}; for i=1,145 do table.insert(tt,tostring(i)) end
 					if findString(message:sub(9),tt) then
 						active=tonumber(message:sub(9))
 						getCommand()
@@ -935,6 +983,7 @@ function eventChatCommand(name,message)
 					tfm.exec.setRoomMaxPlayers(tonumber(message:sub(7)))
 				end
 			end
+			if message == "cmd" then showMenu(name,0x185412,150,125,500,163,text.cds,text.avcommands); end
 			if message == "verify" then showMessage(text.verify); end
 			if message == "sd" then	system.exit(); end
 			if(message:sub(0,1) == "q") then q=message:sub(3); end
@@ -1760,16 +1809,57 @@ function getCommand()
 		end
 	end
 	if active == 141 then
+		showCommand(active,text.portal)
+		tfm.exec.setGameTime(24)
+		setAllAlive()
+		for name,player in next,tfm.get.room.playerList do
+			tfm.exec.freezePlayer(name,true)
+		end
+		table.insert(grounds,tfm.exec.addShamanObject(2700, 400, 4054))
+	end
+	if active == 142 then
+		showCommand(active,text.seq16)
+		tfm.exec.setGameTime(11)
+	end
+	if active == 143 then
+		showCommand(active,text.submitter)
+		tfm.exec.setGameTime(11)
+	end
+	if active == 144 then
 		showCommand(active,q)
 		tfm.exec.setGameTime(qtime)
 		setAllAlive()
 	end
-	if active == 142 then
+	if active == 145 then
 		showCommand(active,q)
 		tfm.exec.setGameTime(qtime)
 	end
 end
 function eventTextAreaCallback(id,name,callback)
+	if callback == "show_menu" then
+		ui.addTextArea(299,"<p align='center'><a href='event:hide_menu'><font size='18'>Menu",name,725,372,70,24,0x000001,0x000001,0.75,true)
+		if verifyNinjas(name) == true or verifyAdmin(name) == true then
+			ui.addTextArea(298,"<p align='center'><a href='event:help'>Help</a>\n<a href='event:credits'>Credits</a>\n<a href='event:change'>Changelog</a>\n<a href='event:skins'>Commands</a>",name,705,303,90,60,0x000001,0x000001,0.80,true)
+		else
+			ui.addTextArea(298,"<p align='center'><a href='event:help'>Help</a>\n<a href='event:credits'>Credits</a>\n<a href='event:change'>Changelog</a>",name,705,317,90,46,0x000001,0x000001,0.80,true)
+		end
+	end
+	if callback == "hide_menu" then
+		ui.addTextArea(299,"<p align='center'><a href='event:show_menu'><font size='18'>Menu",name,725,372,70,24,0x000001,0x000001,0.75,true)
+		ui.removeTextArea(298,name)
+	end
+	if callback == "help" then
+		eventChatCommand(name,"help")
+	end
+	if callback == "skins" then
+		eventChatCommand(name,"cmd")
+	end
+	if callback == "credits" then
+		eventChatCommand(name,"credits")
+	end
+	if callback == "change" then
+		eventChatCommand(name,"changelog")
+	end
 	if callback == "close" then
 		for _,i in next,{1000,1001,1002,1003,1004} do
 			ui.removeTextArea(i,name)
@@ -1834,9 +1924,6 @@ function eventChatMessage(name,message)
 		if string.len(message) >= 2 then
 			completeCommand(name)
 		end
-		if string.upper(message) == "A" then
-			tfm.exec.killPlayer(name)
-		end
 	end
 	if active == 12 then
 		tfm.exec.killPlayer(name)
@@ -1844,7 +1931,7 @@ function eventChatMessage(name,message)
 	if active == 16 then
 		if message == "2025" then
 			completeCommand(name)
-		elseif message == "2024" then
+		elseif message == "2024" or message == "2026" then
 			tfm.exec.killPlayer(name)
 		end
 	end
@@ -1917,6 +2004,9 @@ function eventChatMessage(name,message)
 		if string.find(string.upper(message),"ZZ") then
 			tfm.exec.killPlayer(name)
 		end
+		if string.upper(message) == "Z" then
+			tfm.exec.killPlayer(name)
+		end
 	end
 	if active == 103 then
 		if message == "0" then
@@ -1930,7 +2020,12 @@ function eventChatMessage(name,message)
 			tfm.exec.killPlayer(name)
 		end
 	end
-	if active == 142 then
+	if active == 143 then
+		if string.upper(message) == string.upper(maker) then
+			completeCommand(name)
+		end
+	end
+	if active == 145 then
 		if string.upper(message) == string.upper(a) then
 			completeCommand(name)
 		end
@@ -2229,6 +2324,26 @@ function eventEmotePlayed(name,id)
 			data[name].s=4
 		end
 	end
+	if active == 142 then
+		if id == 2 and data[name].s == 0 then
+			data[name].s=1
+		end
+		if id == 9 and data[name].s == 1 then
+			data[name].s=2
+		end
+		if id == 6 and data[name].s == 2 then
+			data[name].s=3
+		end
+		if id == 2 and data[name].s == 3 then
+			data[name].s=4
+		end
+		if id == 0 and data[name].s == 4 then
+			data[name].s=5
+		end
+		if id == 9 and data[name].s == 5 then
+			completeCommand(name)
+		end
+	end
 end
 function eventPlayerWon(name)
 	if vivo >= 2 then
@@ -2269,7 +2384,8 @@ function eventKeyboard(name,id,down,x,y)
 		tfm.exec.killPlayer(name)
 	end
 	if active == 24 then
-		if id == 0 then
+		if id == 37 or id == 65 then
+			checkKeys(name,id)
 			addCommandCount(name)
 			if data[name].s >= 30 then
 				completeCommand(name)
@@ -2277,7 +2393,8 @@ function eventKeyboard(name,id,down,x,y)
 		end
 	end
 	if active == 25 then
-		if id == 2 then
+		if id == 39 or id == 68 then
+			checkKeys(name,id)
 			addCommandCount(name)
 			if data[name].s >= 30 then
 				completeCommand(name)
@@ -2285,7 +2402,8 @@ function eventKeyboard(name,id,down,x,y)
 		end
 	end
 	if active == 26 then
-		if id == 0 then
+		if id == 37 or id == 65 then
+			checkKeys(name,id)
 			addCommandCount(name)
 			if data[name].s >= 60 then
 				completeCommand(name)
@@ -2294,6 +2412,7 @@ function eventKeyboard(name,id,down,x,y)
 	end
 	if active == 27 then
 		if id == 2 then
+			checkKeys(name,id)
 			addCommandCount(name)
 			if data[name].s >= 60 then
 				completeCommand(name)
@@ -2301,7 +2420,7 @@ function eventKeyboard(name,id,down,x,y)
 		end
 	end
 	if active == 28 then
-		if id == 32 then
+		if id == 39 or id == 68 then
 			addCommandCount(name)
 			if data[name].s >= 20 then
 				completeCommand(name)
@@ -2372,7 +2491,8 @@ function eventKeyboard(name,id,down,x,y)
 		end
 	end
 	if active == 92 then
-		if id == 0 then
+		if id == 37 or id == 65 then
+			checkKeys(name,id)
 			addCommandCount(name)
 			if data[name].s >= 100 then
 				completeCommand(name)
@@ -2380,7 +2500,8 @@ function eventKeyboard(name,id,down,x,y)
 		end
 	end
 	if active == 93 then
-		if id == 2 then
+		if id == 39 or id == 68 then
+			checkKeys(name,id)
 			addCommandCount(name)
 			if data[name].s >= 100 then
 				completeCommand(name)
@@ -2519,30 +2640,52 @@ end
 function eventLoop(passado,faltando)
 	if unlocked == true then
 		local tempo=math.floor(faltando/1000)
-		if active == -2 then
-			ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." 7.21</b><")
+		if active == -2 and testmode == false then
+			ui.setMapName("<N>"..text.mices.."   <G>|   <J><b>"..text.version.." 7.22</b><")
+		elseif active == -2 and testmode == true then
+			ui.setMapName("<N>"..text.mices2.."   <G>|   <J><b>"..text.version.." 7.22</b><")
 		elseif active == -1 and vivo >= 1 then
-			ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.21</b><")
+			ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.22</b><")
 		elseif active == -1 and vivo <= 0 then
-			ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.21</b><")
+			ui.setMapName("<N>"..text.dofim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <J><b>"..text.version.." 7.22</b><")
 		elseif active >= 0 then
-			ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." 7.21</b><")
+			ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <J><b>"..text.version.." 7.22</b><")
 		end
-		if rato < 4 then
-			if tfm.get.room.currentMap == lobby_map then
-				active=-2
-				tfm.exec.setGameTime(8000)
-			else
-				if passado > 5000 then
-					tfm.exec.newGame(lobby_map)
+		if testmode == true then
+			if rato < 2 then
+				if tfm.get.room.currentMap == lobby_map then
+					active=-2
 					tfm.exec.setGameTime(8000)
-					showMessage("<R>"..text.mices.."",nil)
+				else
+					if passado > 5000 then
+						tfm.exec.newGame(lobby_map)
+						tfm.exec.setGameTime(8000)
+						showMessage("<R>"..text.mices.."",nil)
+					end
 				end
 			end
-		end
-		if rato >= 4 and passado >= 15000 then
-			if tfm.get.room.currentMap == lobby_map then
-				tfm.exec.newGame(mapas[math.random(#mapas)],nil)
+			if rato >= 2 and passado >= 15000 then
+				if tfm.get.room.currentMap == lobby_map then
+					tfm.exec.newGame(mapas[math.random(#mapas)],nil)
+				end
+			end
+		else
+			if rato < 4 then
+				if tfm.get.room.currentMap == lobby_map then
+					active=-2
+					tfm.exec.setGameTime(8000)
+				else
+					if passado > 5000 then
+						tfm.exec.newGame(lobby_map)
+						tfm.exec.setGameTime(8000)
+						showMessage("<R>"..text.mices.."",nil)
+					end
+				end
+			end
+			if rato >= 4 and passado >= 15000 then
+				if tfm.get.room.currentMap == lobby_map then
+					tfm.exec.newGame(mapas[math.random(#mapas)],nil)
+				end
 			end
 		end
 		if active < 0 and faltando <= 1000 and faltando >= 400 then
@@ -2559,9 +2702,11 @@ function eventLoop(passado,faltando)
 			count=count+1
 			table.insert(grounds,tfm.exec.addPhysicObject(count, 800, 405-count*10, upacid))
 		end
-		if active == 120 and tempo % 2 == 0 and tempo >= 2 then
-			tfm.exec.removeObject(pid)
-			pid=tfm.exec.addShamanObject(2600,math.random(40,760),math.random(50,350))
+		if active == 120 or active == 141 then
+			if tempo % 2 == 0 and tempo >= 2 then
+				tfm.exec.removeObject(pid)
+				pid=tfm.exec.addShamanObject(2600,math.random(40,760),math.random(50,350))
+			end
 		end
 		if active == 126 and tempo == 9 then
 			for i=1,4 do
@@ -2735,7 +2880,7 @@ function eventLoop(passado,faltando)
 				end
 				grounds={}
 			end
-			if active == 120 then
+			if active == 120 or active == 141 then
 				tfm.exec.removeObject(pid)
 				pid=tfm.exec.addShamanObject(2600,400,-4054)
 			end
@@ -2784,8 +2929,11 @@ function eventLoop(passado,faltando)
 			end
 			for name,player in next,tfm.get.room.playerList do
 				ui.removeTextArea(24,nil)
-				if data[name].c == 0 then
+				if data[name] and data[name].c == 0 then
 					tfm.exec.killPlayer(name)
+				end
+				if data[name] then
+					data[name].k=0
 				end
 				tfm.exec.setNameColor(name,0xc2c2da)
 				tfm.exec.setPlayerNightMode(false, name)
