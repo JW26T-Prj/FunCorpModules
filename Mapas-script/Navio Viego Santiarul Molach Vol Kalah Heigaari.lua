@@ -12,15 +12,15 @@ fish2={{681,4401},{1867,4022},{3301,4254},{4581,4383}}; fish2_r={{1322,3851},{28
 fish3={{282,4197},{2309,4374},{4432,3384},{5312,3867}}; fish3_r={{3922,4444},{972,4041},{1692,4337}};
 fish4={{1315,4451},{4719,4427},{2965,4187}}; fish4_r={{392,4344},{2002,3504}};
 fish5={{1899,4224},{2645,4341},{3652,4131},{4875,4284}}; fish5_r={{5029,4087},{4399,3891},{2502,3634},{185,3827}};
-xml=''; changed=false; y_factor=1898; boat_factor=-150; depth_factor=980; mapa="@7967014"; lang={};
+xml=''; changed=false; y_factor=1898; boat_factor=-150; depth_factor=980; mapa="@7943220"; lang={};
 lang.br = {
 	loadingmap = "Carregando mapa. Por favor, aguarde...<",
-	welcome4 = "<VP><b>Bem-vindo(a) ao Navio Viego Santiarul Molach Vol Kalah Heigaari.</b>\n\n<p align='left'><N>Este é um mapa-script de navio pirata. Na verdade, é uma casa completa dentro de um navio pirata, e tem tudo o que uma casa 'normal' possui e mais um pouco... Divirtam-se!\n\n<J>Agradecimentos especiais para Lacoste#8972, Shun_kazami#7014, Fabricio#0519, Yuh#0748, Tanatosl#0000 e Miss_fortune#9548.\n\n<N>Revisão 2.3",
+	welcome4 = "<VP><b>Bem-vindo(a) ao Navio Viego Santiarul Molach Vol Kalah Heigaari.</b>\n\n<p align='left'><N>Este é um mapa-script de navio pirata. Na verdade, é uma casa completa dentro de um navio pirata, e tem tudo o que uma casa 'normal' possui e mais um pouco... Divirtam-se!\n\n<J>Agradecimentos especiais para Lacoste#8972, Shun_kazami#7014, Fabricio#0519, Yuh#0748, Tanatosl#0000 e Miss_fortune#9548.\n\n<N>Revisão 2.4",
 	title = "<VP>Navio Viego Santiarul Molach Vol Kalah Heigaari<"
 }
 lang.en = {
 	loadingmap = "Loading map. Please wait...<",
-	welcome4 = "<VP><b>Welcome to the Viego Santiarul Molach Vol Kalah Heigaari's Ship!</b>\n\n<p align='left'><N>This is a pirate ship script map. It's actually a complete house inside a pirate ship, and has everything a 'normal' house has and more... Enjoy!\n\n<J>Special thanks to Lacoste#8972, Shun_kazami#7014, Fabricio#0519, Yuh#0748, Tanatosl#0000 and Miss_fortune#9548.\n\n<N>Revision 2.3",
+	welcome4 = "<VP><b>Welcome to the Viego Santiarul Molach Vol Kalah Heigaari's Ship!</b>\n\n<p align='left'><N>This is a pirate ship script map. It's actually a complete house inside a pirate ship, and has everything a 'normal' house has and more... Enjoy!\n\n<J>Special thanks to Lacoste#8972, Shun_kazami#7014, Fabricio#0519, Yuh#0748, Tanatosl#0000 and Miss_fortune#9548.\n\n<N>Revision 2.4",
 	title = "<VP>Viego Santiarul Molach Vol Kalah Heigaari's Ship<"
 }
 if tfm.get.room.community == "br" or tfm.get.room.community == "pt" then
@@ -182,7 +182,8 @@ function showWater(name)
 	end
 	tfm.exec.addImage("19650c66a4a.png", "+9", -217, -34, name)
 	tfm.exec.addImage("19650c65000.png", "+10", -217, -35, name)
-	for o=1,8 do
+	tfm.exec.addImage("197b1fe1f9c.png", "+20", -385, -105, name)
+	for o=1,2 do
 		tfm.exec.addImage("183b4bf34ba.png","+"..o.."",-50,-33,name)
 	end
 	tfm.exec.addImage("192e018b3ba.png","?-1",4657,1351+boat_factor,name)
