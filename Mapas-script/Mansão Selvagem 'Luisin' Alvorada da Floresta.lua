@@ -4,14 +4,14 @@ end
 debug.disableEventLog(true)
 system.disableChatCommandDisplay(nil, true)
 if tfm.get.room.isTribeHouse == false then tfm.exec.setRoomMaxPlayers(8) end
-y_factor=1650; data={}; mapa="@7963647"; xml=''; changed=false; lang={}; stage=1; stage_time=0;
+y_factor=1650; data={}; mapa="@7968780"; xml=''; changed=false; lang={}; stage=1; stage_time=0;
 ground={type = 14,width = 4000,height = 100,miceCollision = true, friction = 1, groundCollision = true, color = 0}
 barrier={type = 14,width = 10,height = 4000,miceCollision = true, friction = 0, groundCollision = true, color = 0}
 f1={{157,3086},{5409,3201},{7248,2980},{9620,3100}}; f2={{1519,3249},{7478,3144},{9383,3100}}; f3={{-212,3057},{2035,3218},{7035,3083},{10372,3104}}; f4={{10425,2843},{10906,3179},{11531,3243},{11961,2852},{12425,3189},{12913,3061}}; f5={{4965,2847},{6181,3245},{5818,3218},{10828,3261}}; 
 f1_r={{2610,3104},{6108,3031},{6713,3141},{10254,3090}}; f2_r={{4260,3136},{7910,3135},{10000,3044}}; f3_r={{601,3086},{5646,3193},{7703,3102}}; f4_r={{11292,3161},{11813,3236},{12210,2753},{12495,3252}}; f5_r={{754,3225},{5239,2958},{8585,3000},{6837,2839}};
 lang.br = {
 	loadingmap = "Carregando mapa. Por favor, aguarde...<",
-	welcome = "<VP><b>Bem-vindo(a) à Mansão Selvagem 'Luisin' Alvorada da Floresta.</b>\n\n<p align='left'><N>Este é um mapa-script de mansão selvagem no meio da floresta, banhada por um rio opaco, profundo e perigoso e que possui uma grande natureza ao seu redor. Os quartos são de altíssima qualidade, e não faltam opções de diversão. Divirtam-se com cuidado!\n\n<J>Agradecimentos especiais para <b>Luisin#1717, Shun_kazami#7014, Fabia_sheen#2561, Malzahar#8178, Nekan#0000 e G484#5825.</b>\n\n<N>Revisão 1.2",
+	welcome = "<VP><b>Bem-vindo(a) à Mansão Selvagem 'Luisin' Alvorada da Floresta.</b>\n\n<p align='left'><N>Este é um mapa-script de mansão selvagem no meio da floresta, banhada por um rio opaco, profundo e perigoso e que possui uma grande natureza ao seu redor. Os quartos são de altíssima qualidade, e não faltam opções de diversão. Divirtam-se com cuidado!\n\n<J>Agradecimentos especiais para <b>Luisin#1717, Shun_kazami#7014, Fabia_sheen#2561, Malzahar#8178, Nekan#0000 e G484#5825.</b>\n\n<N>Revisão 1.3",
 	title = "<VP>Mansão Selvagem 'Luisin' Alvorada da Floresta<",
 	board1 = "<VP><b>Seja bem-vindo(a) a Mansão Selvagem 'Luisin' Alvorada da Floresta.</b>\n\n<J>Uma mansão gigantesca, feita inteiramente de madeira, localizada no meio desta floresta tropical, banhada por rios gelados e profundos e que possui muitas opções de diversão.\n<N>Temos diversos tipos de refeições, quartos com ar-condicionado, piscina externa, sala de estar com televisão, muita área externa, e, de quebra, uma torre de observação no meio do rio com escorregador turbinado. Não é demais?\n\nDivirta-se, curta a natureza e tome muito cuidado com os bichos!",
 	warning1 = "Devido a alguns acidentes que ocorreram nesta área, o acesso ao rio foi fechado deste lado da casa, devendo ser feito somente pelo outro lado.",
@@ -21,7 +21,7 @@ lang.br = {
 }
 lang.en = {
 	loadingmap = "Loading map. Please wait...<",
-	welcome = "<VP><b>Welcome to the Luisin's Dawn of the Forest Wild Mansion!</b>\n\n<p align='left'><N>This is a script map of a wild mansion in the middle of the forest, bathed by an opaque, deep and dangerous river and surrounded by great nature. The rooms are of the highest quality, and there is no shortage of entertainment options. Have fun with caution!\n\n<J>Special thanks to <b>Luisin#1717, Shun_kazami#7014, Fabia_sheen#2561, Malzahar#8178, Nekan#0000 and G484#5825.</b>\n\n<N>Revision 1.2",
+	welcome = "<VP><b>Welcome to the Luisin's Dawn of the Forest Wild Mansion!</b>\n\n<p align='left'><N>This is a script map of a wild mansion in the middle of the forest, bathed by an opaque, deep and dangerous river and surrounded by great nature. The rooms are of the highest quality, and there is no shortage of entertainment options. Have fun with caution!\n\n<J>Special thanks to <b>Luisin#1717, Shun_kazami#7014, Fabia_sheen#2561, Malzahar#8178, Nekan#0000 and G484#5825.</b>\n\n<N>Revision 1.3",
 	title = "<VP>Luisin's Dawn of the Forest Wild Mansion<",
 	board1 = "<VP><b>Welcome to the Luisin's Dawn of the Forest Wild Mansion.</b>\n\n<J>A gigantic mansion, made entirely of wood, located in the middle of this tropical forest, bathed by very cold and deep rivers, and which has many entertainment options.\n<N>We have several types of meals, air-conditioned rooms, an outdoor pool, a living room with a television, lots of outdoor space, and, to top it off, an observation tower in the middle of the river with a turbocharged slide. Isn't that great?\n\nHave fun, enjoy the nature and be very careful with the dangers!",
 	warning1 = "Due to some accidents that occurred in this area, the access to the river was closed on this side of the house and must only be done from the other side.",
@@ -92,14 +92,13 @@ function changeBackground(name)
 end
 function showWater(name)
 	tfm.exec.playMusic("/cite18/amb/302.mp3", "jg_backg", 20, true, true, name)
-	ui.addTextArea(21, "<a href='event:board1'>                                                                  ",name,3538,1444,54,70,0,0,1.2,false)
-	ui.addTextArea(22, "<a href='event:warning1'>                                                                       ",name,9048,1292,50,38,0,0,1.2,false)
-	ui.addTextArea(23, "<a href='event:warning2'>                                                                       ",name,11434,948,50,38,0,0,1.2,false)
-	ui.addTextArea(24, "<a href='event:warning3'>                                                                       ",name,2486,1536,46,30,0,0,1.2,false)
+	ui.addTextArea(21, "<a href='event:board1'>                                                                  ",name,3538,1444,54,70,0,0,1.3,false)
+	ui.addTextArea(22, "<a href='event:warning1'>                                                                       ",name,9048,1292,50,38,0,0,1.3,false)
+	ui.addTextArea(23, "<a href='event:warning2'>                                                                       ",name,11434,948,50,38,0,0,1.3,false)
+	ui.addTextArea(24, "<a href='event:warning3'>                                                                       ",name,2486,1536,46,30,0,0,1.3,false)
 
-	tfm.exec.addImage("19650c65000.png", "+1", -217, -32, name)
-	tfm.exec.addImage("19650c68474.png", "+2", -217, -32, name)
-	tfm.exec.addImage("19650c69be5.png", "+3", -217, -32, name)
+	tfm.exec.addImage("197b1fe0829.png", "+1", -326, -41, name)
+	tfm.exec.addImage("197b1fe1f9c.png", "+3", -365, -105, name)
 	for d=1,rawlen(f1) do tfm.exec.	addImage("192e0192c52.png","?-1",f1[d][1],f1[d][2]-550,name,0.5,0.5) end
 	for e=1,rawlen(f1_r) do tfm.exec.addImage("192e0192c52.png","?-1",f1_r[e][1],f1_r[e][2]-550,name,-0.5,0.5) end
 	for d=1,rawlen(f2) do tfm.exec.addImage("192e01943c1.png","?-1",f2[d][1],f2[d][2]-550,name)	end
@@ -213,7 +212,7 @@ function resetMap()
 	if xml == '' then
 		tfm.exec.disableAutoShaman(true)
 		tfm.exec.newGame(mapa)
-		ui.addTextArea(0,"",nil,-1000,-500,3000,1500,0x6a7495,0x6a7495,1.2,true)
+		ui.addTextArea(0,"",nil,-1000,-500,3000,1500,0x6a7495,0x6a7495,1.3,true)
 		ui.setMapName(text.loadingmap)
 		changed=false
 	else
